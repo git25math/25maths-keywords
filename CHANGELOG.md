@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.8] - 2026-03-05 — 桌面侧栏常驻展开 + 登录弹窗溢出修复
+
+### 修复
+- **桌面端侧栏常驻展开**：移除 click-outside 收缩逻辑（仅桌面），侧栏始终保持 260px 展开
+- **登录页教师注册弹窗溢出**：`.auth-card` 添加 `max-height: 90vh; overflow-y: auto`，教师注册表单展开后可滚动
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/ui.js` | click-outside collapse 守卫 `appBP === 'desktop'` |
+| `css/style.css` | `.auth-card` 加 max-height + overflow-y |
+
 ## [1.0.7] - 2026-03-04 — 教师账号隐藏段位 + 侧栏默认展开
 
 ### 教师账号段位隐藏

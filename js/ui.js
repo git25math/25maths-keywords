@@ -253,8 +253,9 @@ document.addEventListener('click', function(e) {
   }
 });
 
-/* Click outside sidebar → collapse */
+/* Click outside sidebar → collapse (tablet/phone only; desktop stays expanded) */
 document.addEventListener('click', function(e) {
+  if (appBP === 'desktop') return;
   var sidebarEl = E('sidebar');
   if (!sidebarEl || !sidebarEl.classList.contains('expanded')) return;
   if (!sidebarEl.contains(e.target)) {
