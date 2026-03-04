@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.3] - 2026-03-04 — 学生管理：操作下拉菜单（改名 / 重置密码 / 移动班级）
+
+### 新增
+- **操作下拉菜单**：班级详情页 Action 列替换为"操作 ▾"下拉按钮，包含 3 项操作
+  - ✏️ 改名：修改学生姓名（同步 class_students + leaderboard + auth user_metadata）
+  - 🔑 重置密码：保持原有逻辑，入口移至下拉菜单
+  - ↗️ 移动班级：将学生移至同校其他班级（同步 class_students + leaderboard + auth user_metadata）
+- **Edge Function `update-student`**：更新学生 auth user_metadata（nickname / class_id / board），含教师身份 + 同校校验
+
+### 文件变更
+| 文件 | 类型 | 变更 |
+|------|------|------|
+| `js/admin.js` | 修改 | +142 行（action dropdown HTML + toggleActionMenu + showRenameModal + doRenameStudent + showMoveClassModal + doMoveStudent + 全局 click 关闭）|
+| `css/style.css` | 修改 | +22 行（.action-dropdown / .action-menu / .action-item 样式 + 暗色模式适配）|
+| `supabase/functions/update-student/index.ts` | 新增 | ~96 行（教师验证 + 同校校验 + user_metadata 更新）|
+
 ## [1.0.2] - 2026-03-04 — 排行榜 Sub Pills：维度内选择具体项目
 
 ### 新增

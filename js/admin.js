@@ -348,7 +348,15 @@ async function renderClassDetail(classId) {
     html += '</td>';
     html += '<td class="admin-td-words">' + mastered + '/' + total + '</td>';
     html += '<td>' + (s.rank_emoji || '\ud83e\udd49') + '</td>';
-    html += '<td><button class="btn btn-ghost btn-sm" onclick="showResetPasswordModal(\'' + s.user_id + '\', \'' + (s.student_name || '').replace(/'/g, "\\'") + '\')">' + t('Reset PW', '重置密码') + '</button></td>';
+    var safeName = (s.student_name || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    html += '<td class="admin-td-action">';
+    html += '<div class="action-dropdown">';
+    html += '<button class="btn btn-ghost btn-sm action-trigger" onclick="toggleActionMenu(this)">' + t('Actions', '操作') + ' ▾</button>';
+    html += '<div class="action-menu">';
+    html += '<button class="action-item" onclick="showRenameModal(\'' + s.user_id + '\', \'' + safeName + '\', \'' + classId + '\')">✏️ ' + t('Rename', '改名') + '</button>';
+    html += '<button class="action-item" onclick="showResetPasswordModal(\'' + s.user_id + '\', \'' + safeName + '\')">🔑 ' + t('Reset PW', '重置密码') + '</button>';
+    html += '<button class="action-item" onclick="showMoveClassModal(\'' + s.user_id + '\', \'' + safeName + '\', \'' + classId + '\')">↗️ ' + t('Move Class', '移动班级') + '</button>';
+    html += '</div></div></td>';
     html += '</tr>';
   });
 
@@ -564,6 +572,139 @@ function summaryCard(label, value, color) {
     '<div class="admin-summary-val" style="color:' + color + '">' + value + '</div>' +
     '<div class="admin-summary-label">' + label + '</div>' +
     '</div>';
+}
+
+/* ═══ ACTION DROPDOWN ═══ */
+function toggleActionMenu(btn) {
+  var menu = btn.nextElementSibling;
+  var wasOpen = menu.classList.contains('open');
+
+  /* Close all open menus first */
+  document.querySelectorAll('.action-menu.open').forEach(function(m) {
+    m.classList.remove('open');
+  });
+
+  if (!wasOpen) menu.classList.add('open');
+}
+
+/* Global click to close menus */
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.action-dropdown')) {
+    document.querySelectorAll('.action-menu.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+  }
+});
+
+/* ═══ RENAME STUDENT ═══ */
+function showRenameModal(userId, currentName, classId) {
+  var html = '<div class="section-title">' + t('Rename Student', '修改姓名') + '</div>' +
+    '<label class="settings-label">' + t('New Name', '新姓名') + '</label>' +
+    '<input class="auth-input" id="rn-name" type="text" value="' + currentName.replace(/"/g, '&quot;') + '">' +
+    '<div id="rn-msg" class="settings-msg"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:12px">' +
+    '<button class="btn btn-primary" style="flex:1" onclick="doRenameStudent(\'' + userId + '\', \'' + classId + '\')">' + t('Confirm', '确认') + '</button>' +
+    '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>' +
+    '</div>';
+  showModal(html);
+  /* Auto-focus and select */
+  setTimeout(function() { var inp = E('rn-name'); if (inp) { inp.focus(); inp.select(); } }, 100);
+}
+
+async function doRenameStudent(userId, classId) {
+  var newName = E('rn-name').value.trim();
+  var msg = E('rn-msg');
+  if (!newName) { msg.textContent = t('Please enter a name', '请输入姓名'); msg.className = 'settings-msg error'; return; }
+
+  msg.textContent = t('Updating...', '更新中...');
+  msg.className = 'settings-msg';
+
+  try {
+    /* 1. Update class_students */
+    var r1 = await sb.from('class_students').update({ student_name: newName }).eq('user_id', userId);
+    if (r1.error) throw new Error(r1.error.message);
+
+    /* 2. Update leaderboard nickname */
+    var r2 = await sb.from('leaderboard').update({ nickname: newName }).eq('user_id', userId);
+    if (r2.error) throw new Error(r2.error.message);
+
+    /* 3. Update auth user_metadata via edge function */
+    var r3 = await callEdgeFunction('update-student', { student_user_id: userId, nickname: newName });
+    if (r3.error) throw new Error(r3.error);
+
+    hideModal();
+    showToast(t('Name updated!', '姓名已更新！'));
+    _adminCache = null;
+    renderClassDetail(classId);
+  } catch (e) {
+    msg.textContent = e.message;
+    msg.className = 'settings-msg error';
+  }
+}
+
+/* ═══ MOVE STUDENT TO ANOTHER CLASS ═══ */
+async function showMoveClassModal(userId, studentName, currentClassId) {
+  /* Load all classes for this school */
+  var res = await sb.from('classes')
+    .select('id, name, grade')
+    .eq('school_id', _teacherData.school_id)
+    .order('created_at', { ascending: true });
+  var classes = (res.data || []).filter(function(c) { return c.id !== currentClassId; });
+
+  if (classes.length === 0) {
+    showToast(t('No other classes available', '没有其他班级可供选择'));
+    return;
+  }
+
+  var opts = '';
+  classes.forEach(function(c) {
+    var gradeOpt = BOARD_OPTIONS.find(function(o) { return o.value === c.grade; });
+    var gradeLabel = gradeOpt ? t(gradeOpt.name, gradeOpt.nameZh) : c.grade;
+    opts += '<option value="' + c.id + '" data-grade="' + c.grade + '">' + c.name + ' (' + gradeLabel + ')</option>';
+  });
+
+  var html = '<div class="section-title">' + t('Move Student', '移动学生') + '</div>' +
+    '<p style="font-size:13px;color:var(--c-text2);margin-bottom:12px">' +
+    t('Move ', '移动 ') + '<strong>' + studentName + '</strong>' + t(' to:', ' 到：') + '</p>' +
+    '<select class="auth-input" id="mc-target">' + opts + '</select>' +
+    '<div id="mc-msg" class="settings-msg"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:12px">' +
+    '<button class="btn btn-primary" style="flex:1" onclick="doMoveStudent(\'' + userId + '\', \'' + currentClassId + '\')">' + t('Confirm', '确认') + '</button>' +
+    '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>' +
+    '</div>';
+  showModal(html);
+}
+
+async function doMoveStudent(userId, currentClassId) {
+  var sel = E('mc-target');
+  var newClassId = sel.value;
+  var newGrade = sel.options[sel.selectedIndex].getAttribute('data-grade');
+  var msg = E('mc-msg');
+
+  msg.textContent = t('Moving...', '移动中...');
+  msg.className = 'settings-msg';
+
+  try {
+    /* 1. Update class_students */
+    var r1 = await sb.from('class_students').update({ class_id: newClassId }).eq('user_id', userId);
+    if (r1.error) throw new Error(r1.error.message);
+
+    /* 2. Update leaderboard (class_id + board) */
+    var r2 = await sb.from('leaderboard').update({ class_id: newClassId, board: newGrade }).eq('user_id', userId);
+    if (r2.error) throw new Error(r2.error.message);
+
+    /* 3. Update auth user_metadata via edge function */
+    var r3 = await callEdgeFunction('update-student', { student_user_id: userId, class_id: newClassId, board: newGrade });
+    if (r3.error) throw new Error(r3.error);
+
+    hideModal();
+    showToast(t('Student moved!', '学生已移动！'));
+    _adminCache = null;
+    renderClassDetail(currentClassId);
+  } catch (e) {
+    msg.textContent = e.message;
+    msg.className = 'settings-msg error';
+  }
 }
 
 /* ═══ UTILITIES ═══ */

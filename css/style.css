@@ -2200,6 +2200,28 @@ input { font-family: inherit; }
 }
 .admin-grade-class-name { font-weight: 600; }
 
+/* Action dropdown */
+.admin-td-action { position: relative; }
+.action-dropdown { position: relative; display: inline-block; }
+.action-menu {
+  display: none; position: absolute; right: 0; top: 100%;
+  min-width: 140px; background: var(--c-surface);
+  border: 1px solid var(--c-border-light);
+  border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  z-index: 100; overflow: hidden; margin-top: 4px;
+}
+.action-menu.open { display: block; }
+.action-item {
+  display: block; width: 100%; padding: 8px 14px;
+  font-size: 13px; text-align: left; border: none;
+  background: none; cursor: pointer; color: var(--c-text);
+  white-space: nowrap;
+}
+.action-item:hover { background: var(--c-surface-alt); }
+[data-theme="dark"] .action-menu {
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+}
+
 /* Admin empty & loading */
 .admin-empty, .admin-loading {
   text-align: center; padding: 40px 16px;
