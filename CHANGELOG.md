@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.7.0] - 2026-03-04 — 添加 25Maths 校本课程 Y7-Y11 词汇（1,502 词）
+
+### 新增
+- **25Maths 校本课程词汇**：173 个词汇组，1,502 个词汇，覆盖 Year 7-11 五个年级
+  - Year 7（31 组，257 词）：Circle、Constructions、Cylinders and Cones、Division of Fraction 等 11 单元
+  - Year 8（31 组，278 词）：Algebraic Formula、Co-ordinates、Further Algebra、Review of Numbers 等 9 单元
+  - Year 9（49 组，424 词）：2D Shape、Algebraic Functions、Mastery of Angles、Working with Expressions 等 12 单元
+  - Year 10（36 组，327 词）：3D Geometry、Functions、Further Trigonometry、Quadratic Equations 等 12 单元
+  - Year 11（26 组，216 词）：Differentiation、Estimation & Bounds、Set Notation & Venn Diagrams 等 11 单元
+- **BOARDS 新增第三考试局**：25Maths Curriculum（🏫）含 5 个年级分类（7️⃣-1️⃣1️⃣）
+- **自动拆分脚本** `scripts/gen-25m-levels.py`：从 Dashboard 提取的 JSON 自动生成 levels.js 数据
+
+### 拆分策略
+- 55 个教学单元均超过 10 词（范围 13-65），按每 10 词切分为闪卡级别
+- 拆分后标题带序号：`"Circle (1)"` / `"圆 (1)"`，单组不加序号
+- Slug 规则：`25m-y{N}-{slug}-{seq}`，与现有 CIE/Edexcel key 无冲突
+
+### 向后兼容
+- CIE + Edexcel 词汇 key 不变（现有进度数据完全保留）
+- 25m 词汇 key 带 `25m-` 前缀，无冲突
+- 7 种游戏模式 + UI 组件无需修改（多 board 架构在 v0.6.0 已完成）
+
+### 文件变更
+- `js/config.js` — BOARDS 数组追加 25m board（5 个 year categories）
+- `js/levels.js` — 追加 173 个 25m level（+2,558 行）
+- `scripts/gen-25m-levels.py` — 新增数据生成脚本
+
+### 数据统计
+- 总词汇量：2,200 词（CIE 390 + Edexcel 308 + 25Maths 1,502）
+- 总级数：264 级（CIE 50 + Edexcel 41 + 25Maths 173）
+- 总分类：20 个（CIE 8 + Edexcel 7 + 25Maths 5）
+
+---
+
 ## [0.6.0] - 2026-03-04 — 添加 Edexcel IGCSE 4MA1 词汇 + 多考试局架构
 
 ### 新增

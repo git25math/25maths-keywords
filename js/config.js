@@ -88,6 +88,16 @@ var BOARDS = [
       { id: 'edx-vectors', name: 'Vectors & Transformations', emoji: '\u27a1\ufe0f', nameZh: '\u5411\u91cf\u4e0e\u53d8\u6362' },
       { id: 'edx-statistics', name: 'Statistics & Probability', emoji: '\ud83d\udcc8', nameZh: '\u7edf\u8ba1\u4e0e\u6982\u7387' }
     ]
+  },
+  {
+    id: '25m', name: '25Maths Curriculum', nameZh: '25Maths\u6821\u672c\u8bfe\u7a0b', code: 'Y7-11', emoji: '\ud83c\udfeb',
+    categories: [
+      { id: '25m-y7',  name: 'Year 7',  emoji: '7\ufe0f\u20e3',  nameZh: '\u4e03\u5e74\u7ea7' },
+      { id: '25m-y8',  name: 'Year 8',  emoji: '8\ufe0f\u20e3',  nameZh: '\u516b\u5e74\u7ea7' },
+      { id: '25m-y9',  name: 'Year 9',  emoji: '9\ufe0f\u20e3',  nameZh: '\u4e5d\u5e74\u7ea7' },
+      { id: '25m-y10', name: 'Year 10', emoji: '\ud83d\udd1f', nameZh: '\u5341\u5e74\u7ea7' },
+      { id: '25m-y11', name: 'Year 11', emoji: '1\ufe0f\u20e31\ufe0f\u20e3', nameZh: '\u5341\u4e00\u5e74\u7ea7' }
+    ]
   }
 ];
 

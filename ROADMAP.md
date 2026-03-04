@@ -107,9 +107,19 @@
 - [ ] 与 25maths-website 会员系统深度对接
 - [ ] 学习数据可视化（趋势图、日历热力图）
 
+## Phase 4.1 — 25Maths 校本课程 Y7-Y11 词汇 [DONE]
+- [x] 25Maths Curriculum board（🏫 Y7-11，5 个年级分类）
+- [x] 55 个教学单元拆分为 173 个闪卡级别（≤10 词/级）
+- [x] 1,502 个英中双语术语，覆盖 Year 7-11
+- [x] 自动生成脚本 `scripts/gen-25m-levels.py`
+- [x] 总规模：3 个考试局/课程，264 级，2,200 词
+
+---
+
 ## Phase 9 — 内容扩展
 - [x] Edexcel 4MA1 vocabulary sets → Phase 4 完成
-- [ ] IB Mathematics vocabulary sets（第三考试局）
+- [x] 25Maths Curriculum Y7-Y11 vocabulary sets → Phase 4.1 完成
+- [ ] IB Mathematics vocabulary sets
 - [ ] AQA GCSE Mathematics vocabulary sets
 - [ ] 用户创建 + 分享自定义词库（community decks）
 - [ ] Import/Export 增加 Anki 格式支持
