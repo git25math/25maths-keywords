@@ -1154,35 +1154,6 @@ input { font-family: inherit; }
 .settings-msg.error { color: var(--c-danger); }
 .settings-msg.success { color: var(--c-success); }
 
-/* ═══ MEMBERSHIP TABLE ═══ */
-.membership-table {
-  width: 100%; border-collapse: collapse;
-  font-size: 12px; text-align: left; margin-top: 12px;
-}
-
-.membership-table th {
-  padding: 8px 10px; background: var(--c-surface-alt);
-  font-weight: 700; font-size: 11px; color: var(--c-text2);
-  border-bottom: 1px solid var(--c-border);
-}
-
-.membership-table td {
-  padding: 10px; border-bottom: 1px solid var(--c-border-light);
-  vertical-align: top; line-height: 1.5;
-}
-
-.membership-table tr.current td { background: var(--c-primary-bg); }
-
-.membership-badge {
-  display: inline-block; padding: 2px 8px;
-  border-radius: 10px; font-size: 10px; font-weight: 700;
-  white-space: nowrap;
-}
-.membership-badge.current { background: var(--c-primary); color: #fff; }
-.membership-badge.soon { background: var(--c-warning-bg); color: var(--c-warning); }
-.membership-badge.plan { background: var(--c-surface-alt); color: var(--c-muted); }
-
-
 /* ═══ GUIDE MODALS ═══ */
 .rank-row {
   display: flex; align-items: center; gap: 10px;

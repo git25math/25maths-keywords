@@ -212,8 +212,7 @@ function showSettings() {
     '<button class="btn btn-primary" style="flex:1" onclick="saveSettings()">保存</button>' +
     '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">取消</button>' +
     '</div>' +
-    '<div class="settings-divider"></div>' +
-    '<button class="btn btn-ghost btn-block" onclick="showMembershipInfo()" style="margin-top:4px">⭐ 会员升级</button>';
+    '';
   showModal(html);
 }
 
@@ -267,21 +266,6 @@ async function saveSettings() {
   } else {
     hideModal();
   }
-}
-
-/* ═══ MEMBERSHIP INFO ═══ */
-function showMembershipInfo() {
-  var html = '<div class="section-title">⭐ 会员路线</div>' +
-    '<table class="membership-table">' +
-    '<thead><tr><th>等级</th><th>功能</th><th>状态</th></tr></thead>' +
-    '<tbody>' +
-    '<tr class="current"><td>免费版</td><td>3 个代数词组 · 7 种学习模式<br>云端同步 · 艾宾浩斯复习</td><td><span class="membership-badge current">当前</span></td></tr>' +
-    '<tr><td>Pro</td><td>全部 CIE 0580 词组 (~40 组 317 词)<br>每日挑战 · 学习数据统计</td><td><span class="membership-badge soon">即将推出</span></td></tr>' +
-    '<tr><td>Premium</td><td>Edexcel 4MA1 + IB 词组<br>自定义词库分享 · 离线模式</td><td><span class="membership-badge plan">规划中</span></td></tr>' +
-    '</tbody></table>' +
-    '<div style="font-size:12px;color:var(--c-muted);margin-top:16px">敬请期待 · 更多功能持续开发中</div>' +
-    '<button class="btn btn-ghost btn-block" onclick="showSettings()" style="margin-top:12px">← 返回设置</button>';
-  showModal(html);
 }
 
 /* ═══ RANK GUIDE MODAL ═══ */

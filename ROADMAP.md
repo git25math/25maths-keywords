@@ -25,13 +25,13 @@
 - [x] 登录按钮加载状态 + 中文错误翻译
 - [ ] **待手动配置**：Supabase Dashboard 添加 `https://keywords.25maths.com/` 到 Redirect URLs
 
-## Phase 2.2 — 会员设置 + 昵称 + 密码 [DONE]
+## Phase 2.2 — 账号设置 + 昵称 + 密码 [DONE]
 - [x] 设置 Modal（⚙ 按钮），侧栏 + 顶栏双入口
 - [x] 修改昵称（Supabase user_metadata，无需建表）
 - [x] 修改密码（校验≥6位 + 两次一致）
 - [x] 昵称优先显示（侧栏/顶栏/排行榜统一逻辑）
-- [x] 会员升级路线说明页（免费/Pro/Premium 三级展示）
 - [x] Guest 模式设置入口拦截（Toast 提示）
+- [x] 移除会员分级（免费/Pro/Premium），全部功能免费开放
 
 ## Phase 2.3 — 云端实时排行榜 [DONE]
 - [x] 新建 `leaderboard` 表（Supabase 迁移，RLS 全员可读 / 本人可写）

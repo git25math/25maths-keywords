@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.2] - 2026-03-04 — 移除会员分级，全部功能免费
+
+### 变更
+- 移除设置页「⭐ 会员升级」按钮
+- 移除 `showMembershipInfo()` 函数及免费/Pro/Premium 三级会员路线表
+- 移除 `.membership-table` / `.membership-badge` 相关 CSS（-27 行）
+- 所有功能（50 组 390 词、7 种模式、云端同步、排行榜）仅需登录即可使用
+
+### 文件变更
+- `js/auth.js` — 删除会员按钮 + `showMembershipInfo()`（-16 行）
+- `css/style.css` — 删除会员表格样式（-27 行）
+
+---
+
 ## [0.4.1] - 2026-03-04 — 侧栏分类精简
 
 ### 侧栏优化
