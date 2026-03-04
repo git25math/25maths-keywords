@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.9.5] - 2026-03-04 — 分享结果卡片 (Share Result Card)
+
+### 新增
+- **分享结果卡片**：所有结果页（Daily / Quiz / Spell / Match）新增绿色"📤 分享"按钮
+- **Canvas 2D 品牌卡片**：400×560 紫色渐变卡片（2x 视网膜），含得分/用时/streak/段位/日期/URL
+- **Web Share API**：移动端调用系统分享面板（支持分享 PNG 图片到微信/WhatsApp 等）
+- **桌面回退下载**：不支持 Web Share 的浏览器自动下载 PNG 文件
+- **固定紫色主题**：卡片始终使用品牌紫色渐变（#5248C9 → #3D35A0），不随深色模式变化
+
+### 设计决策
+- **零外部依赖**：Canvas 2D 原生绘制，无需 html2canvas 等库
+- **不新建 JS 文件**：`drawShareCard()` / `shareResult()` 追加到 `quiz.js`，复用已有架构
+- **全局 `_lastShareOpts`**：各结果页写入共享选项对象，分享按钮统一读取
+
+### 文件变更
+- `js/quiz.js` — 新增 `drawShareCard()` + `roundRect()` + `shareResult()` 三个函数 + `finishDaily()` 设置分享选项并插入分享按钮（~120 行）
+- `js/ui.js` — 新增 `_lastShareOpts` 全局变量 + `resultScreenHTML()` 设置分享选项并插入分享按钮（~6 行）
+- `js/match.js` — `finishMatch()` 设置 `_lastShareOpts` 并插入分享按钮（~6 行）
+- `js/spell.js` — `finishSpell()` 传递 mode 参数给 `resultScreenHTML()`（~1 行）
+- `css/style.css` — `.btn-share` 绿色渐变按钮样式（~10 行）
+
+---
+
 ## [0.9.4] - 2026-03-04 — 每日挑战模式 (Daily Challenge)
 
 ### 新增

@@ -123,7 +123,7 @@ function finishSpell() {
   var html = '<div class="text-center">';
   html += resultScreenHTML(SP.correct, total,
     'startSpell(' + currentLvl + ')',
-    'openDeck(' + currentLvl + ')');
+    'openDeck(' + currentLvl + ')', 'spell');
   html += '</div>';
   E('panel-spell').innerHTML = html;
   updateSidebar();

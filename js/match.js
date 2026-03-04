@@ -146,12 +146,18 @@ function finishMatch() {
   var ok = total - MT.errors;
   if (ok < 0) ok = 0;
 
+  var matchEmoji = MT.errors === 0 ? '\ud83c\udfc6' : MT.errors <= 2 ? '\ud83c\udf89' : '\ud83d\udcaa';
+  _lastShareOpts = {
+    mode: 'match', score: ok, total: total, emoji: matchEmoji, time: elapsed
+  };
+
   var html = '<div class="text-center">';
-  html += '<div class="result-emoji">' + (MT.errors === 0 ? '\ud83c\udfc6' : MT.errors <= 2 ? '\ud83c\udf89' : '\ud83d\udcaa') + '</div>';
+  html += '<div class="result-emoji">' + matchEmoji + '</div>';
   html += '<div class="result-title">' + t('Match Complete!', '\u914d\u5bf9\u5b8c\u6210\uff01') + '</div>';
   html += '<div class="result-sub">' + t('Time ' + elapsed + 's \xb7 Errors ' + MT.errors, '\u7528\u65f6 ' + elapsed + ' \u79d2 \xb7 \u9519\u8bef ' + MT.errors + ' \u6b21') + '</div>';
   html += '<div class="result-actions">';
   html += '<button class="btn btn-primary" onclick="startMatch(' + currentLvl + ')">\ud83d\udd01 ' + t('Try again', '\u518d\u6765\u4e00\u6b21') + '</button>';
+  html += '<button class="btn btn-share" onclick="shareResult(_lastShareOpts)">\ud83d\udce4 ' + t('Share', '\u5206\u4eab') + '</button>';
   html += '<button class="btn btn-ghost" onclick="openDeck(' + currentLvl + ')">\u2190 ' + t('Back', '\u8fd4\u56de\u5361\u7ec4') + '</button>';
   html += '</div>';
   html += '</div>';

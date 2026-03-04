@@ -2,6 +2,8 @@
    ui.js — Panel navigation, Toast, Modal, breakpoint, language
    ══════════════════════════════════════════════════════════════ */
 
+var _lastShareOpts = null;
+
 /* ═══ PANEL NAVIGATION ═══ */
 function showPanel(id) {
   document.querySelectorAll('.panel').forEach(function(p) {
@@ -344,7 +346,7 @@ function sortCards(pairs) {
 }
 
 /* Generic result screen HTML */
-function resultScreenHTML(ok, total, retryId, backId) {
+function resultScreenHTML(ok, total, retryId, backId, mode) {
   var pct = total > 0 ? Math.round(ok / total * 100) : 0;
   var emoji, title;
   if (pct >= 90) { emoji = '\ud83c\udfc6'; title = t('Excellent!', '\u592a\u68d2\u4e86\uff01'); }
@@ -352,12 +354,15 @@ function resultScreenHTML(ok, total, retryId, backId) {
   else if (pct >= 50) { emoji = '\ud83d\udcaa'; title = t('Keep going!', '\u7ee7\u7eed\u52a0\u6cb9\uff01'); }
   else { emoji = '\ud83d\udcda'; title = t('Try again!', '\u518d\u7ec3\u7ec3\uff01'); }
 
+  _lastShareOpts = { mode: mode || 'quiz', score: ok, total: total, emoji: emoji };
+
   return '<div class="result-emoji">' + emoji + '</div>' +
     '<div class="result-title">' + title + '</div>' +
     '<div class="result-score">' + pct + '%</div>' +
     '<div class="result-detail">' + ok + ' / ' + total + ' ' + t('correct', '\u6b63\u786e') + '</div>' +
     '<div class="result-actions">' +
     '<button class="btn btn-primary" onclick="' + retryId + '">\ud83d\udd01 ' + t('Try again', '\u518d\u6765\u4e00\u6b21') + '</button>' +
+    '<button class="btn btn-share" onclick="shareResult(_lastShareOpts)">\ud83d\udce4 ' + t('Share', '\u5206\u4eab') + '</button>' +
     '<button class="btn btn-ghost" onclick="' + backId + '">\u2190 ' + t('Back', '\u8fd4\u56de') + '</button>' +
     '</div>';
 }

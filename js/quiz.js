@@ -135,7 +135,7 @@ function finishQuiz() {
   var html = '<div class="text-center">';
   html += resultScreenHTML(Q.correct, total,
     'startQuiz(' + currentLvl + ')',
-    'openDeck(' + currentLvl + ')');
+    'openDeck(' + currentLvl + ')', 'quiz');
   html += '</div>';
   E('panel-quiz').innerHTML = html;
   updateSidebar();
@@ -342,6 +342,12 @@ function finishDaily() {
   else if (pct >= 50) { emoji = '\ud83d\udcaa'; title = t('Keep going!', '继续加油！'); }
   else { emoji = '\ud83d\udcda'; title = t('Try again!', '再练练！'); }
 
+  _lastShareOpts = {
+    mode: 'daily', score: DC.score, total: DC.words.length, emoji: emoji,
+    time: elapsed, date: new Date().toLocaleDateString('en-CA'),
+    streak: getStreakCount()
+  };
+
   var html = '<div class="text-center" style="padding-top:48px">';
   html += '<div class="result-emoji">' + emoji + '</div>';
   html += '<div class="result-title">' + title + '</div>';
@@ -354,9 +360,164 @@ function finishDaily() {
   }
   html += '<div class="result-actions">';
   html += '<button class="btn btn-primary" onclick="startDaily()">' + t('Try Again', '再来一次') + '</button>';
+  html += '<button class="btn btn-share" onclick="shareResult(_lastShareOpts)">\ud83d\udce4 ' + t('Share', '\u5206\u4eab') + '</button>';
   html += '<button class="btn btn-ghost" onclick="navTo(\'home\')">' + t('Home', '返回首页') + '</button>';
   html += '</div>';
   html += '</div>';
 
   E('panel-daily').innerHTML = html;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SHARE RESULT CARD — Canvas 2D branded card + Web Share API
+   ══════════════════════════════════════════════════════════════ */
+
+function drawShareCard(opts) {
+  var W = 400, H = 560, S = 2; /* 2x retina */
+  var c = document.createElement('canvas');
+  c.width = W * S; c.height = H * S;
+  var ctx = c.getContext('2d');
+  ctx.scale(S, S);
+
+  /* Background gradient */
+  var grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#5248C9');
+  grad.addColorStop(1, '#3D35A0');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(20, 0); ctx.lineTo(W - 20, 0);
+  ctx.quadraticCurveTo(W, 0, W, 20);
+  ctx.lineTo(W, H - 20); ctx.quadraticCurveTo(W, H, W - 20, H);
+  ctx.lineTo(20, H); ctx.quadraticCurveTo(0, H, 0, H - 20);
+  ctx.lineTo(0, 20); ctx.quadraticCurveTo(0, 0, 20, 0);
+  ctx.closePath(); ctx.fill();
+
+  /* Subtle pattern overlay */
+  ctx.fillStyle = 'rgba(255,255,255,0.03)';
+  for (var i = 0; i < 8; i++) {
+    ctx.beginPath();
+    ctx.arc(W * 0.8, H * 0.2, 60 + i * 30, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /* Brand name */
+  ctx.fillStyle = '#fff';
+  ctx.font = '600 20px "Bricolage Grotesque", "DM Sans", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('25Maths Keywords', W / 2, 48);
+
+  /* Mode pill */
+  var modeLabels = {
+    daily: t('\u26a1 Daily Challenge', '\u26a1 \u6bcf\u65e5\u6311\u6218'),
+    quiz: t('\ud83d\udcdd Quiz', '\ud83d\udcdd \u6d4b\u9a8c'),
+    spell: t('\u2328\ufe0f Spelling', '\u2328\ufe0f \u62fc\u5199'),
+    match: t('\ud83d\udd17 Match', '\ud83d\udd17 \u914d\u5bf9')
+  };
+  var modeText = modeLabels[opts.mode] || opts.mode;
+  ctx.font = '600 13px "DM Sans", sans-serif';
+  var pillW = ctx.measureText(modeText).width + 24;
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  roundRect(ctx, (W - pillW) / 2, 60, pillW, 26, 13);
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.fillText(modeText, W / 2, 78);
+
+  /* Result emoji */
+  ctx.font = '64px serif';
+  ctx.fillText(opts.emoji || '\ud83c\udfc6', W / 2, 160);
+
+  /* Score */
+  ctx.fillStyle = '#fff';
+  ctx.font = '700 52px "Bricolage Grotesque", "DM Sans", sans-serif';
+  ctx.fillText(opts.score + ' / ' + opts.total, W / 2, 228);
+
+  /* Time (if present) */
+  var yAfterScore = 260;
+  if (opts.time !== undefined) {
+    ctx.font = '400 18px "DM Sans", sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.fillText(opts.time + 's', W / 2, yAfterScore);
+    yAfterScore += 16;
+  }
+
+  /* Divider */
+  var divY = yAfterScore + 16;
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, divY); ctx.lineTo(W - 40, divY); ctx.stroke();
+
+  /* Streak + Rank row */
+  var rowY = divY + 36;
+  var streak = opts.streak || getStreakCount();
+  var r = getRank();
+  var rn = rankName(r);
+
+  ctx.font = '600 15px "DM Sans", "Noto Sans SC", sans-serif';
+  ctx.fillStyle = '#fff';
+  var leftText = '\ud83d\udd25 ' + streak + t('-day', '\u5929');
+  var rightText = r.emoji + ' ' + rn;
+  ctx.textAlign = 'center';
+  ctx.fillText(leftText + '   \u2502   ' + rightText, W / 2, rowY);
+
+  /* Second divider */
+  var div2Y = rowY + 22;
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.beginPath(); ctx.moveTo(40, div2Y); ctx.lineTo(W - 40, div2Y); ctx.stroke();
+
+  /* Date */
+  var dateStr = opts.date || new Date().toLocaleDateString('en-CA');
+  ctx.font = '400 14px "DM Sans", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.textAlign = 'center';
+  ctx.fillText(dateStr, W / 2, div2Y + 32);
+
+  /* URL */
+  ctx.font = '600 13px "DM Sans", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('keywords.25maths.com', W / 2, div2Y + 56);
+
+  return c;
+}
+
+/* Helper: rounded rect path */
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function shareResult(opts) {
+  if (!opts) opts = _lastShareOpts;
+  if (!opts) return;
+
+  document.fonts.ready.then(function() {
+    var canvas = drawShareCard(opts);
+    canvas.toBlob(function(blob) {
+      if (!blob) return;
+      var file = new File([blob], '25maths-result.png', { type: 'image/png' });
+
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+          files: [file],
+          title: '25Maths Keywords',
+          text: t('My result on 25Maths Keywords!', '\u6211\u5728 25Maths Keywords \u7684\u6210\u7ee9\uff01')
+        }).catch(function() {});
+      } else {
+        /* Desktop fallback: download PNG */
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '25maths-result.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function() { URL.revokeObjectURL(url); }, 5000);
+        showToast(t('Image saved!', '\u56fe\u7247\u5df2\u4fdd\u5b58\uff01'));
+      }
+    }, 'image/png');
+  });
 }
