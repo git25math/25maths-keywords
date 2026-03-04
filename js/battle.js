@@ -33,7 +33,7 @@ function renderBattle(lv) {
   /* Header */
   html += '<div class="study-topbar">';
   html += '<button class="back-btn" onclick="exitBattle()">\u2190</button>';
-  html += '<div style="flex:1;text-align:center"><div style="font-family:var(--font-display);font-weight:800;font-size:16px">STAGE ' + (G.lvlIdx + 1) + ': ' + lv.title + '</div></div>';
+  html += '<div style="flex:1;text-align:center"><div style="font-family:var(--font-display);font-weight:800;font-size:16px">STAGE ' + (G.lvlIdx + 1) + ': ' + lvTitle(lv) + '</div></div>';
   html += '</div>';
 
   /* HUD */

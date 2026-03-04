@@ -104,7 +104,7 @@ function renderHome() {
       html += '<div class="deck-card" onclick="openDeck(' + cl.idx + ')">';
       html += '<div class="deck-card-head">';
       html += '<div class="deck-card-emoji">' + cat.emoji + '</div>';
-      html += '<div><div class="deck-card-name">' + cl.lv.title + '</div>';
+      html += '<div><div class="deck-card-name">' + lvTitle(cl.lv) + '</div>';
       html += '<div class="deck-card-count">' + (cl.lv.vocabulary.length / 2) + ' ' + t('words', '\u8bcd') + '</div></div>';
       html += '</div>';
       html += '<div class="deck-progress"><div class="deck-progress-fill" style="width:' + stats.pct + '%"></div></div>';
@@ -138,7 +138,7 @@ function renderDeck(idx) {
   html += '<div class="deck-header">';
   html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
   var catInfo = getCategoryInfo(lv.category);
-  html += '<div class="deck-title">' + catInfo.emoji + ' ' + lv.title + '</div>';
+  html += '<div class="deck-title">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
   html += '</div>';
 
   /* Mode grid */
@@ -215,7 +215,7 @@ function renderPreview(idx) {
   var html = '';
   html += '<div class="deck-header">';
   html += '<button class="back-btn" onclick="openDeck(' + idx + ')">\u2190</button>';
-  html += '<div class="deck-title">' + t('Preview', '\u9884\u89c8') + ': ' + lv.title + '</div>';
+  html += '<div class="deck-title">' + t('Preview', '\u9884\u89c8') + ': ' + lvTitle(lv) + '</div>';
   html += '</div>';
 
   html += '<div class="preview-grid">';

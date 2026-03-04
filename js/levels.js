@@ -11,7 +11,7 @@ var LEVELS = [
 
 // Level 1: Number Types (10 words)
 {
-  slug: 'num-types', category: 'number', title: 'Number Types', timer: 70, comboBonus: 2,
+  slug: 'num-types', category: 'number', title: 'Number Types', titleZh: '\u6570\u7684\u7c7b\u578b', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Natural number"},{id:"0",type:"def",content:"\u81ea\u7136\u6570"},
     {id:"1",type:"word",content:"Integer"},{id:"1",type:"def",content:"\u6574\u6570"},
@@ -28,7 +28,7 @@ var LEVELS = [
 
 // Level 2: Factors & Multiples (7 words)
 {
-  slug: 'num-factors', category: 'number', title: 'Factors & Multiples', timer: 80, comboBonus: 3,
+  slug: 'num-factors', category: 'number', title: 'Factors & Multiples', titleZh: '\u56e0\u6570\u4e0e\u500d\u6570', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"HCF"},{id:"0",type:"def",content:"\u6700\u5927\u516c\u56e0\u6570"},
     {id:"1",type:"word",content:"LCM"},{id:"1",type:"def",content:"\u6700\u5c0f\u516c\u500d\u6570"},
@@ -42,7 +42,7 @@ var LEVELS = [
 
 // Level 3: Sets (7 words)
 {
-  slug: 'num-sets', category: 'number', title: 'Sets', timer: 80, comboBonus: 3,
+  slug: 'num-sets', category: 'number', title: 'Sets', titleZh: '\u96c6\u5408', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Set"},{id:"0",type:"def",content:"\u96c6\u5408"},
     {id:"1",type:"word",content:"Universal set"},{id:"1",type:"def",content:"\u5168\u96c6"},
@@ -56,7 +56,7 @@ var LEVELS = [
 
 // Level 4: Powers, Roots & Standard Form (8 words)
 {
-  slug: 'num-powers', category: 'number', title: 'Powers, Roots & Standard Form', timer: 80, comboBonus: 3,
+  slug: 'num-powers', category: 'number', title: 'Powers, Roots & Standard Form', titleZh: '\u5e42\u3001\u6839\u4e0e\u6807\u51c6\u5f0f', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Square root"},{id:"0",type:"def",content:"\u5e73\u65b9\u6839"},
     {id:"1",type:"word",content:"Cube root"},{id:"1",type:"def",content:"\u7acb\u65b9\u6839"},
@@ -71,7 +71,7 @@ var LEVELS = [
 
 // Level 5: Fractions, Decimals & Percentages (9 words)
 {
-  slug: 'num-fractions', category: 'number', title: 'Fractions, Decimals & Percentages', timer: 70, comboBonus: 2,
+  slug: 'num-fractions', category: 'number', title: 'Fractions, Decimals & Percentages', titleZh: '\u5206\u6570\u3001\u5c0f\u6570\u4e0e\u767e\u5206\u6570', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Numerator"},{id:"0",type:"def",content:"\u5206\u5b50"},
     {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"\u5206\u6bcd"},
@@ -87,7 +87,7 @@ var LEVELS = [
 
 // Level 6: Operations & Ordering (10 words)
 {
-  slug: 'num-ops', category: 'number', title: 'Operations & Ordering', timer: 70, comboBonus: 2,
+  slug: 'num-ops', category: 'number', title: 'Operations & Ordering', titleZh: '\u8fd0\u7b97\u4e0e\u6392\u5e8f', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Sum"},{id:"0",type:"def",content:"\u548c"},
     {id:"1",type:"word",content:"Difference"},{id:"1",type:"def",content:"\u5dee"},
@@ -104,7 +104,7 @@ var LEVELS = [
 
 // Level 7: Estimation & Accuracy (7 words)
 {
-  slug: 'num-accuracy', category: 'number', title: 'Estimation & Accuracy', timer: 80, comboBonus: 3,
+  slug: 'num-accuracy', category: 'number', title: 'Estimation & Accuracy', titleZh: '\u4f30\u7b97\u4e0e\u7cbe\u786e\u5ea6', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Significant figure"},{id:"0",type:"def",content:"\u6709\u6548\u6570\u5b57"},
     {id:"1",type:"word",content:"Estimation"},{id:"1",type:"def",content:"\u4f30\u7b97"},
@@ -118,7 +118,7 @@ var LEVELS = [
 
 // Level 8: Ratio, Proportion & Percentage (9 words)
 {
-  slug: 'num-ratio', category: 'number', title: 'Ratio, Proportion & Percentage', timer: 70, comboBonus: 2,
+  slug: 'num-ratio', category: 'number', title: 'Ratio, Proportion & Percentage', titleZh: '\u6bd4\u3001\u6bd4\u4f8b\u4e0e\u767e\u5206\u6bd4', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Ratio"},{id:"0",type:"def",content:"\u6bd4"},
     {id:"1",type:"word",content:"Proportion"},{id:"1",type:"def",content:"\u6bd4\u4f8b"},
@@ -134,7 +134,7 @@ var LEVELS = [
 
 // Level 9: Rates, Money & Time (7 words)
 {
-  slug: 'num-rates', category: 'number', title: 'Rates, Money & Time', timer: 80, comboBonus: 3,
+  slug: 'num-rates', category: 'number', title: 'Rates, Money & Time', titleZh: '\u7387\u3001\u8d27\u5e01\u4e0e\u65f6\u95f4', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Rate"},{id:"0",type:"def",content:"\u6bd4\u7387"},
     {id:"1",type:"word",content:"Speed"},{id:"1",type:"def",content:"\u901f\u5ea6"},
@@ -152,7 +152,7 @@ var LEVELS = [
 
 // Level 10: Algebraic Expressions (10 words)
 {
-  slug: 'alg-expr', category: 'algebra', title: 'Algebraic Expressions', timer: 70, comboBonus: 2,
+  slug: 'alg-expr', category: 'algebra', title: 'Algebraic Expressions', titleZh: '\u4ee3\u6570\u8868\u8fbe\u5f0f', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Variable"},{id:"0",type:"def",content:"\u53d8\u91cf"},
     {id:"1",type:"word",content:"Constant"},{id:"1",type:"def",content:"\u5e38\u91cf"},
@@ -169,7 +169,7 @@ var LEVELS = [
 
 // Level 11: Algebraic Manipulation (8 words)
 {
-  slug: 'alg-manip', category: 'algebra', title: 'Algebraic Manipulation', timer: 80, comboBonus: 3,
+  slug: 'alg-manip', category: 'algebra', title: 'Algebraic Manipulation', titleZh: '\u4ee3\u6570\u8fd0\u7b97', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Simplify"},{id:"0",type:"def",content:"\u5316\u7b80"},
     {id:"1",type:"word",content:"Expand"},{id:"1",type:"def",content:"\u5c55\u5f00"},
@@ -184,7 +184,7 @@ var LEVELS = [
 
 // Level 12: Equations (9 words)
 {
-  slug: 'alg-eq', category: 'algebra', title: 'Equations', timer: 70, comboBonus: 2,
+  slug: 'alg-eq', category: 'algebra', title: 'Equations', titleZh: '\u65b9\u7a0b', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Index (indices)"},{id:"0",type:"def",content:"\u6307\u6570"},
     {id:"1",type:"word",content:"Linear equation"},{id:"1",type:"def",content:"\u4e00\u6b21\u65b9\u7a0b"},
@@ -200,7 +200,7 @@ var LEVELS = [
 
 // Level 13: Inequalities & Sequences (8 words)
 {
-  slug: 'alg-ineq', category: 'algebra', title: 'Inequalities & Sequences', timer: 80, comboBonus: 3,
+  slug: 'alg-ineq', category: 'algebra', title: 'Inequalities & Sequences', titleZh: '\u4e0d\u7b49\u5f0f\u4e0e\u6570\u5217', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Inequality"},{id:"0",type:"def",content:"\u4e0d\u7b49\u5f0f"},
     {id:"1",type:"word",content:"Number line"},{id:"1",type:"def",content:"\u6570\u8f74"},
@@ -215,7 +215,7 @@ var LEVELS = [
 
 // Level 14: Graphs (8 words)
 {
-  slug: 'alg-graphs', category: 'algebra', title: 'Graphs', timer: 80, comboBonus: 3,
+  slug: 'alg-graphs', category: 'algebra', title: 'Graphs', titleZh: '\u56fe\u50cf', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Gradient (Slope)"},{id:"0",type:"def",content:"\u659c\u7387"},
     {id:"1",type:"word",content:"y-intercept"},{id:"1",type:"def",content:"y\u8f74\u622a\u8ddd"},
@@ -230,7 +230,7 @@ var LEVELS = [
 
 // Level 15: Functions (7 words)
 {
-  slug: 'alg-func', category: 'algebra', title: 'Functions', timer: 80, comboBonus: 3,
+  slug: 'alg-func', category: 'algebra', title: 'Functions', titleZh: '\u51fd\u6570', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Function"},{id:"0",type:"def",content:"\u51fd\u6570"},
     {id:"1",type:"word",content:"Domain"},{id:"1",type:"def",content:"\u5b9a\u4e49\u57df"},
@@ -244,7 +244,7 @@ var LEVELS = [
 
 // Level 16: Proportion & Calculus (6 words)
 {
-  slug: 'alg-prop', category: 'algebra', title: 'Proportion & Calculus', timer: 90, comboBonus: 3,
+  slug: 'alg-prop', category: 'algebra', title: 'Proportion & Calculus', titleZh: '\u6bd4\u4f8b\u4e0e\u5fae\u79ef\u5206', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Direct proportion"},{id:"0",type:"def",content:"\u6b63\u6bd4\u4f8b"},
     {id:"1",type:"word",content:"Inverse proportion"},{id:"1",type:"def",content:"\u53cd\u6bd4\u4f8b"},
@@ -261,7 +261,7 @@ var LEVELS = [
 
 // Level 17: Coordinate System (8 words)
 {
-  slug: 'coord-system', category: 'coord', title: 'Coordinate System', timer: 80, comboBonus: 3,
+  slug: 'coord-system', category: 'coord', title: 'Coordinate System', titleZh: '\u5750\u6807\u7cfb', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Cartesian coordinates"},{id:"0",type:"def",content:"\u7b1b\u5361\u5c14\u5750\u6807"},
     {id:"1",type:"word",content:"x-axis"},{id:"1",type:"def",content:"x\u8f74"},
@@ -276,7 +276,7 @@ var LEVELS = [
 
 // Level 18: Linear Graphs & Gradient (8 words)
 {
-  slug: 'coord-linear', category: 'coord', title: 'Linear Graphs & Gradient', timer: 80, comboBonus: 3,
+  slug: 'coord-linear', category: 'coord', title: 'Linear Graphs & Gradient', titleZh: '\u7ebf\u6027\u56fe\u50cf\u4e0e\u659c\u7387', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Linear function"},{id:"0",type:"def",content:"\u4e00\u6b21\u51fd\u6570"},
     {id:"1",type:"word",content:"Straight-line graph"},{id:"1",type:"def",content:"\u76f4\u7ebf\u56fe"},
@@ -291,7 +291,7 @@ var LEVELS = [
 
 // Level 19: Line Equations (7 words)
 {
-  slug: 'coord-line-eq', category: 'coord', title: 'Line Equations', timer: 80, comboBonus: 3,
+  slug: 'coord-line-eq', category: 'coord', title: 'Line Equations', titleZh: '\u76f4\u7ebf\u65b9\u7a0b', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"x-intercept"},{id:"0",type:"def",content:"x\u8f74\u622a\u8ddd"},
     {id:"1",type:"word",content:"Slope-intercept form"},{id:"1",type:"def",content:"\u659c\u622a\u5f0f"},
@@ -305,7 +305,7 @@ var LEVELS = [
 
 // Level 20: Parallel & Perpendicular Lines (7 words)
 {
-  slug: 'coord-parallel', category: 'coord', title: 'Parallel & Perpendicular Lines', timer: 80, comboBonus: 3,
+  slug: 'coord-parallel', category: 'coord', title: 'Parallel & Perpendicular Lines', titleZh: '\u5e73\u884c\u4e0e\u5782\u76f4', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Parallel lines"},{id:"0",type:"def",content:"\u5e73\u884c\u7ebf"},
     {id:"1",type:"word",content:"Perpendicular lines"},{id:"1",type:"def",content:"\u5782\u76f4\u7ebf"},
@@ -319,7 +319,7 @@ var LEVELS = [
 
 // Level 21: Distance & Midpoint (6 words)
 {
-  slug: 'coord-distance', category: 'coord', title: 'Distance & Midpoint', timer: 90, comboBonus: 3,
+  slug: 'coord-distance', category: 'coord', title: 'Distance & Midpoint', titleZh: '\u8ddd\u79bb\u4e0e\u4e2d\u70b9', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Distance formula"},{id:"0",type:"def",content:"\u8ddd\u79bb\u516c\u5f0f"},
     {id:"1",type:"word",content:"Length of line segment"},{id:"1",type:"def",content:"\u7ebf\u6bb5\u957f\u5ea6"},
@@ -336,7 +336,7 @@ var LEVELS = [
 
 // Level 22: Angles (9 words)
 {
-  slug: 'geom-angles-basic', category: 'geometry', title: 'Angles', timer: 70, comboBonus: 2,
+  slug: 'geom-angles-basic', category: 'geometry', title: 'Angles', titleZh: '\u89d2', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"\u9510\u89d2"},
     {id:"1",type:"word",content:"Right angle"},{id:"1",type:"def",content:"\u76f4\u89d2"},
@@ -352,7 +352,7 @@ var LEVELS = [
 
 // Level 23: Shapes & Triangles (9 words)
 {
-  slug: 'geom-triangles', category: 'geometry', title: 'Shapes & Triangles', timer: 70, comboBonus: 2,
+  slug: 'geom-triangles', category: 'geometry', title: 'Shapes & Triangles', titleZh: '\u56fe\u5f62\u4e0e\u4e09\u89d2\u5f62', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Point"},{id:"0",type:"def",content:"\u70b9"},
     {id:"1",type:"word",content:"Angle"},{id:"1",type:"def",content:"\u89d2"},
@@ -368,7 +368,7 @@ var LEVELS = [
 
 // Level 24: Quadrilaterals & Polygons (9 words)
 {
-  slug: 'geom-polygons', category: 'geometry', title: 'Quadrilaterals & Polygons', timer: 70, comboBonus: 2,
+  slug: 'geom-polygons', category: 'geometry', title: 'Quadrilaterals & Polygons', titleZh: '\u56db\u8fb9\u5f62\u4e0e\u591a\u8fb9\u5f62', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Quadrilateral"},{id:"0",type:"def",content:"\u56db\u8fb9\u5f62"},
     {id:"1",type:"word",content:"Parallelogram"},{id:"1",type:"def",content:"\u5e73\u884c\u56db\u8fb9\u5f62"},
@@ -384,7 +384,7 @@ var LEVELS = [
 
 // Level 25: Circle Parts (10 words)
 {
-  slug: 'geom-circles', category: 'geometry', title: 'Circle Parts', timer: 70, comboBonus: 2,
+  slug: 'geom-circles', category: 'geometry', title: 'Circle Parts', titleZh: '\u5706\u7684\u90e8\u5206', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Circle"},{id:"0",type:"def",content:"\u5706"},
     {id:"1",type:"word",content:"Radius"},{id:"1",type:"def",content:"\u534a\u5f84"},
@@ -401,7 +401,7 @@ var LEVELS = [
 
 // Level 26: Solids & Constructions (10 words)
 {
-  slug: 'geom-solids', category: 'geometry', title: 'Solids & Constructions', timer: 70, comboBonus: 2,
+  slug: 'geom-solids', category: 'geometry', title: 'Solids & Constructions', titleZh: '\u7acb\u4f53\u4e0e\u4f5c\u56fe', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Net"},{id:"0",type:"def",content:"\u5c55\u5f00\u56fe"},
     {id:"1",type:"word",content:"Prism"},{id:"1",type:"def",content:"\u68f1\u67f1"},
@@ -418,7 +418,7 @@ var LEVELS = [
 
 // Level 27: Similarity, Symmetry & Congruence (6 words)
 {
-  slug: 'geom-similarity', category: 'geometry', title: 'Similarity, Symmetry & Congruence', timer: 90, comboBonus: 3,
+  slug: 'geom-similarity', category: 'geometry', title: 'Similarity, Symmetry & Congruence', titleZh: '\u76f8\u4f3c\u3001\u5bf9\u79f0\u4e0e\u5168\u7b49', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Similar"},{id:"0",type:"def",content:"\u76f8\u4f3c"},
     {id:"1",type:"word",content:"Congruent"},{id:"1",type:"def",content:"\u5168\u7b49"},
@@ -431,7 +431,7 @@ var LEVELS = [
 
 // Level 28: Angle Properties & Circle Theorems (7 words)
 {
-  slug: 'geom-circle-thm', category: 'geometry', title: 'Angle Properties & Circle Theorems', timer: 80, comboBonus: 3,
+  slug: 'geom-circle-thm', category: 'geometry', title: 'Angle Properties & Circle Theorems', titleZh: '\u89d2\u7684\u6027\u8d28\u4e0e\u5706\u5b9a\u7406', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Interior angle"},{id:"0",type:"def",content:"\u5185\u89d2"},
     {id:"1",type:"word",content:"Exterior angle"},{id:"1",type:"def",content:"\u5916\u89d2"},
@@ -449,7 +449,7 @@ var LEVELS = [
 
 // Level 29: Units & Measurement (7 words)
 {
-  slug: 'mens-units', category: 'mensuration', title: 'Units & Measurement', timer: 80, comboBonus: 3,
+  slug: 'mens-units', category: 'mensuration', title: 'Units & Measurement', titleZh: '\u5355\u4f4d\u4e0e\u6d4b\u91cf', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Metric unit"},{id:"0",type:"def",content:"\u516c\u5236\u5355\u4f4d"},
     {id:"1",type:"word",content:"Convert"},{id:"1",type:"def",content:"\u6362\u7b97"},
@@ -463,7 +463,7 @@ var LEVELS = [
 
 // Level 30: Area & Perimeter (8 words)
 {
-  slug: 'mens-area', category: 'mensuration', title: 'Area & Perimeter', timer: 80, comboBonus: 3,
+  slug: 'mens-area', category: 'mensuration', title: 'Area & Perimeter', titleZh: '\u9762\u79ef\u4e0e\u5468\u957f', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Perimeter"},{id:"0",type:"def",content:"\u5468\u957f"},
     {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"\u9762\u79ef"},
@@ -478,7 +478,7 @@ var LEVELS = [
 
 // Level 31: Circles, Arcs & Sectors (7 words)
 {
-  slug: 'mens-circles', category: 'mensuration', title: 'Circles, Arcs & Sectors', timer: 80, comboBonus: 3,
+  slug: 'mens-circles', category: 'mensuration', title: 'Circles, Arcs & Sectors', titleZh: '\u5706\u3001\u5f27\u4e0e\u6247\u5f62', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Circumference (formula)"},{id:"0",type:"def",content:"\u5706\u5468\u957f\u516c\u5f0f"},
     {id:"1",type:"word",content:"Pi (\u03c0)"},{id:"1",type:"def",content:"\u5706\u5468\u7387"},
@@ -492,7 +492,7 @@ var LEVELS = [
 
 // Level 32: Surface Area & Volume (8 words)
 {
-  slug: 'mens-surface', category: 'mensuration', title: 'Surface Area & Volume', timer: 80, comboBonus: 3,
+  slug: 'mens-surface', category: 'mensuration', title: 'Surface Area & Volume', titleZh: '\u8868\u9762\u79ef\u4e0e\u4f53\u79ef', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Surface area"},{id:"0",type:"def",content:"\u8868\u9762\u79ef"},
     {id:"1",type:"word",content:"Volume"},{id:"1",type:"def",content:"\u4f53\u79ef"},
@@ -507,7 +507,7 @@ var LEVELS = [
 
 // Level 33: 3D Solids & Compound Shapes (8 words)
 {
-  slug: 'mens-3d', category: 'mensuration', title: '3D Solids & Compound Shapes', timer: 80, comboBonus: 3,
+  slug: 'mens-3d', category: 'mensuration', title: '3D Solids & Compound Shapes', titleZh: '\u4e09\u7ef4\u7acb\u4f53\u4e0e\u7ec4\u5408\u56fe\u5f62', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Hemisphere"},{id:"0",type:"def",content:"\u534a\u7403"},
     {id:"1",type:"word",content:"Frustum"},{id:"1",type:"def",content:"\u68f1\u53f0"},
@@ -526,7 +526,7 @@ var LEVELS = [
 
 // Level 34: Pythagoras' Theorem (7 words)
 {
-  slug: 'trig-pythag', category: 'trigonometry', title: "Pythagoras' Theorem", timer: 80, comboBonus: 3,
+  slug: 'trig-pythag', category: 'trigonometry', title: "Pythagoras' Theorem", titleZh: '\u52fe\u80a1\u5b9a\u7406', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Pythagoras' theorem"},{id:"0",type:"def",content:"\u52fe\u80a1\u5b9a\u7406"},
     {id:"1",type:"word",content:"Hypotenuse"},{id:"1",type:"def",content:"\u659c\u8fb9"},
@@ -540,7 +540,7 @@ var LEVELS = [
 
 // Level 35: Trigonometric Ratios (7 words)
 {
-  slug: 'trig-ratios', category: 'trigonometry', title: 'Trigonometric Ratios', timer: 80, comboBonus: 3,
+  slug: 'trig-ratios', category: 'trigonometry', title: 'Trigonometric Ratios', titleZh: '\u4e09\u89d2\u6bd4', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Sine (sin)"},{id:"0",type:"def",content:"\u6b63\u5f26"},
     {id:"1",type:"word",content:"Cosine (cos)"},{id:"1",type:"def",content:"\u4f59\u5f26"},
@@ -554,7 +554,7 @@ var LEVELS = [
 
 // Level 36: Trig Graphs & Exact Values (8 words)
 {
-  slug: 'trig-graphs', category: 'trigonometry', title: 'Trig Graphs & Exact Values', timer: 80, comboBonus: 3,
+  slug: 'trig-graphs', category: 'trigonometry', title: 'Trig Graphs & Exact Values', titleZh: '\u4e09\u89d2\u56fe\u50cf\u4e0e\u7cbe\u786e\u503c', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Exact value"},{id:"0",type:"def",content:"\u7cbe\u786e\u503c"},
     {id:"1",type:"word",content:"Trigonometric graph"},{id:"1",type:"def",content:"\u4e09\u89d2\u51fd\u6570\u56fe\u50cf"},
@@ -569,7 +569,7 @@ var LEVELS = [
 
 // Level 37: Non-Right-Angled Triangles (7 words)
 {
-  slug: 'trig-non-right', category: 'trigonometry', title: 'Non-Right-Angled Triangles', timer: 80, comboBonus: 3,
+  slug: 'trig-non-right', category: 'trigonometry', title: 'Non-Right-Angled Triangles', titleZh: '\u975e\u76f4\u89d2\u4e09\u89d2\u5f62', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Sine rule"},{id:"0",type:"def",content:"\u6b63\u5f26\u5b9a\u7406"},
     {id:"1",type:"word",content:"Cosine rule"},{id:"1",type:"def",content:"\u4f59\u5f26\u5b9a\u7406"},
@@ -583,7 +583,7 @@ var LEVELS = [
 
 // Level 38: 3D Trigonometry (6 words)
 {
-  slug: 'trig-3d', category: 'trigonometry', title: '3D Trigonometry', timer: 90, comboBonus: 3,
+  slug: 'trig-3d', category: 'trigonometry', title: '3D Trigonometry', titleZh: '\u4e09\u7ef4\u4e09\u89d2', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"3D problem"},{id:"0",type:"def",content:"\u4e09\u7ef4\u95ee\u9898"},
     {id:"1",type:"word",content:"Angle between line and plane"},{id:"1",type:"def",content:"\u7ebf\u9762\u89d2"},
@@ -600,7 +600,7 @@ var LEVELS = [
 
 // Level 39: Transformations (9 words)
 {
-  slug: 'vec-transform', category: 'vectors', title: 'Transformations', timer: 70, comboBonus: 2,
+  slug: 'vec-transform', category: 'vectors', title: 'Transformations', titleZh: '\u53d8\u6362', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Transformation"},{id:"0",type:"def",content:"\u53d8\u6362"},
     {id:"1",type:"word",content:"Image"},{id:"1",type:"def",content:"\u50cf"},
@@ -616,7 +616,7 @@ var LEVELS = [
 
 // Level 40: Rotation & Enlargement (8 words)
 {
-  slug: 'vec-rotation', category: 'vectors', title: 'Rotation & Enlargement', timer: 80, comboBonus: 3,
+  slug: 'vec-rotation', category: 'vectors', title: 'Rotation & Enlargement', titleZh: '\u65cb\u8f6c\u4e0e\u653e\u5927', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Rotation"},{id:"0",type:"def",content:"\u65cb\u8f6c"},
     {id:"1",type:"word",content:"Centre of rotation"},{id:"1",type:"def",content:"\u65cb\u8f6c\u4e2d\u5fc3"},
@@ -631,7 +631,7 @@ var LEVELS = [
 
 // Level 41: Vector Basics (7 words)
 {
-  slug: 'vec-basics', category: 'vectors', title: 'Vector Basics', timer: 80, comboBonus: 3,
+  slug: 'vec-basics', category: 'vectors', title: 'Vector Basics', titleZh: '\u5411\u91cf\u57fa\u7840', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Vector"},{id:"0",type:"def",content:"\u5411\u91cf"},
     {id:"1",type:"word",content:"Column vector"},{id:"1",type:"def",content:"\u5217\u5411\u91cf"},
@@ -645,7 +645,7 @@ var LEVELS = [
 
 // Level 42: Magnitude & Special Vectors (5 words)
 {
-  slug: 'vec-magnitude', category: 'vectors', title: 'Magnitude & Special Vectors', timer: 90, comboBonus: 3,
+  slug: 'vec-magnitude', category: 'vectors', title: 'Magnitude & Special Vectors', titleZh: '\u6a21\u4e0e\u7279\u6b8a\u5411\u91cf', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Magnitude"},{id:"0",type:"def",content:"\u6a21"},
     {id:"1",type:"word",content:"Unit vector"},{id:"1",type:"def",content:"\u5355\u4f4d\u5411\u91cf"},
@@ -657,7 +657,7 @@ var LEVELS = [
 
 // Level 43: Vector Relationships (6 words)
 {
-  slug: 'vec-relations', category: 'vectors', title: 'Vector Relationships', timer: 90, comboBonus: 3,
+  slug: 'vec-relations', category: 'vectors', title: 'Vector Relationships', titleZh: '\u5411\u91cf\u5173\u7cfb', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Parallel vectors"},{id:"0",type:"def",content:"\u5e73\u884c\u5411\u91cf"},
     {id:"1",type:"word",content:"Equal vectors"},{id:"1",type:"def",content:"\u76f8\u7b49\u5411\u91cf"},
@@ -674,7 +674,7 @@ var LEVELS = [
 
 // Level 44: Data Classification (9 words)
 {
-  slug: 'stat-data', category: 'statistics', title: 'Data Classification', timer: 70, comboBonus: 2,
+  slug: 'stat-data', category: 'statistics', title: 'Data Classification', titleZh: '\u6570\u636e\u5206\u7c7b', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Data"},{id:"0",type:"def",content:"\u6570\u636e"},
     {id:"1",type:"word",content:"Discrete data"},{id:"1",type:"def",content:"\u79bb\u6563\u6570\u636e"},
@@ -690,7 +690,7 @@ var LEVELS = [
 
 // Level 45: Averages & Spread (10 words)
 {
-  slug: 'stat-averages', category: 'statistics', title: 'Averages & Spread', timer: 70, comboBonus: 2,
+  slug: 'stat-averages', category: 'statistics', title: 'Averages & Spread', titleZh: '\u5e73\u5747\u6570\u4e0e\u79bb\u6563\u5ea6', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Mean"},{id:"0",type:"def",content:"\u5e73\u5747\u6570"},
     {id:"1",type:"word",content:"Median"},{id:"1",type:"def",content:"\u4e2d\u4f4d\u6570"},
@@ -707,7 +707,7 @@ var LEVELS = [
 
 // Level 46: Charts & Diagrams (9 words)
 {
-  slug: 'stat-charts', category: 'statistics', title: 'Charts & Diagrams', timer: 70, comboBonus: 2,
+  slug: 'stat-charts', category: 'statistics', title: 'Charts & Diagrams', titleZh: '\u56fe\u8868', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Bar chart"},{id:"0",type:"def",content:"\u6761\u5f62\u56fe"},
     {id:"1",type:"word",content:"Pie chart"},{id:"1",type:"def",content:"\u997c\u56fe"},
@@ -723,7 +723,7 @@ var LEVELS = [
 
 // Level 47: Advanced Statistics (8 words)
 {
-  slug: 'stat-advanced', category: 'statistics', title: 'Advanced Statistics', timer: 80, comboBonus: 3,
+  slug: 'stat-advanced', category: 'statistics', title: 'Advanced Statistics', titleZh: '\u9ad8\u7ea7\u7edf\u8ba1', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Cumulative frequency"},{id:"0",type:"def",content:"\u7d2f\u79ef\u9891\u7387"},
     {id:"1",type:"word",content:"Cumulative frequency diagram"},{id:"1",type:"def",content:"\u7d2f\u79ef\u9891\u7387\u56fe"},
@@ -738,7 +738,7 @@ var LEVELS = [
 
 // Level 48: Basic Probability (8 words)
 {
-  slug: 'stat-prob', category: 'statistics', title: 'Basic Probability', timer: 80, comboBonus: 3,
+  slug: 'stat-prob', category: 'statistics', title: 'Basic Probability', titleZh: '\u57fa\u7840\u6982\u7387', timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Probability"},{id:"0",type:"def",content:"\u6982\u7387"},
     {id:"1",type:"word",content:"Event"},{id:"1",type:"def",content:"\u4e8b\u4ef6"},
@@ -753,7 +753,7 @@ var LEVELS = [
 
 // Level 49: Combined Probability (6 words)
 {
-  slug: 'stat-prob-comb', category: 'statistics', title: 'Combined Probability', timer: 90, comboBonus: 3,
+  slug: 'stat-prob-comb', category: 'statistics', title: 'Combined Probability', titleZh: '\u7ec4\u5408\u6982\u7387', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Independent events"},{id:"0",type:"def",content:"\u72ec\u7acb\u4e8b\u4ef6"},
     {id:"1",type:"word",content:"Dependent events"},{id:"1",type:"def",content:"\u76f8\u4f9d\u4e8b\u4ef6"},
@@ -766,7 +766,7 @@ var LEVELS = [
 
 // Level 50: Conditional Probability & Sets (6 words)
 {
-  slug: 'stat-prob-cond', category: 'statistics', title: 'Conditional Probability & Sets', timer: 90, comboBonus: 3,
+  slug: 'stat-prob-cond', category: 'statistics', title: 'Conditional Probability & Sets', titleZh: '\u6761\u4ef6\u6982\u7387\u4e0e\u96c6\u5408', timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Conditional probability"},{id:"0",type:"def",content:"\u6761\u4ef6\u6982\u7387"},
     {id:"1",type:"word",content:"Sample space diagram"},{id:"1",type:"def",content:"\u6837\u672c\u7a7a\u95f4\u56fe"},

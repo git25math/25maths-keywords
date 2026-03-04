@@ -31,6 +31,11 @@ function updateNav() {
   document.querySelectorAll('.bnav-item').forEach(function(n) {
     n.classList.toggle('active', n.dataset.panel === appView);
   });
+  /* i18n nav labels */
+  var langKey = appLang === 'en' ? 'en' : 'zh';
+  document.querySelectorAll('[data-en][data-zh]').forEach(function(el) {
+    el.textContent = el.dataset[langKey];
+  });
   /* Review badge */
   var rc = getReviewCount();
   var badges = [E('nav-rv-badge')];

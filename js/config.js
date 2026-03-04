@@ -98,5 +98,11 @@ function catName(cat) {
   return cat.name + ' ' + cat.nameZh;
 }
 
+/* Returns level display title */
+function lvTitle(lv) {
+  if (appLang === 'en' || !lv.titleZh) return lv.title;
+  return lv.title + ' ' + lv.titleZh;
+}
+
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };
