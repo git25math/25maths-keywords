@@ -139,11 +139,23 @@ function updateSidebar() {
   }
   if (E('hb-name')) E('hb-name').textContent = displayShort;
 
+  /* Sidebar board tag */
+  var sbBoard = E('sb-board');
+  if (sbBoard) {
+    var boardOpt = getUserBoardOption();
+    if (boardOpt) {
+      sbBoard.textContent = boardOpt.emoji + ' ' + t(boardOpt.name, boardOpt.nameZh);
+      sbBoard.style.display = 'inline-block';
+    } else {
+      sbBoard.style.display = 'none';
+    }
+  }
+
   /* Sidebar: multi-board accordions with category sub-items */
   var deckEl = E('sidebar-decks');
   if (deckEl) {
     var html = '';
-    BOARDS.forEach(function(board) {
+    getVisibleBoards().forEach(function(board) {
       var isOpen = sidebarBoardOpen[board.id] ? true : false;
       html += '<div class="sidebar-cat-group' + (isOpen ? ' open' : '') + '">';
       html += '<button class="sidebar-deck-item sidebar-cat-toggle" onclick="toggleBoardSidebar(\'' + board.id + '\')">' +

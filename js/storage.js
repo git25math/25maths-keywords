@@ -82,6 +82,7 @@ function getAllWords() {
   var all = [];
   var wd = getWordData();
   LEVELS.forEach(function(lv, li) {
+    if (!isLevelVisible(lv)) return;
     var m = {};
     lv.vocabulary.forEach(function(v) {
       if (!m[v.id]) m[v.id] = {};
@@ -118,13 +119,7 @@ function getDueWords() {
 }
 
 function getReviewCount() {
-  var wd = getWordData();
-  var count = 0;
-  var now = Date.now();
-  for (var k in wd) {
-    if (wd[k].st !== 'mastered' && wd[k].nr <= now) count++;
-  }
-  return count;
+  return getDueWords().length;
 }
 
 /* Custom levels persistence */
@@ -165,6 +160,7 @@ async function syncToCloud() {
       rank_emoji: r.emoji,
       total_words: allW.length,
       mastered_words: mastered,
+      board: userBoard || '',
       updated_at: now
     }, { onConflict: 'user_id' });
   } catch (e) { /* silently fail */ }

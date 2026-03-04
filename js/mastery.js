@@ -115,7 +115,7 @@ function renderHome() {
   html += '</div>';
 
   /* Deck grid grouped by BOARDS → categories → levels */
-  BOARDS.forEach(function(board) {
+  getVisibleBoards().forEach(function(board) {
     /* Board section header */
     html += '<div class="board-section" id="board-' + board.id + '">';
     html += '<div class="board-header">';

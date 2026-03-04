@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.8.0] - 2026-03-04 — 注册选课 + 按模块过滤 + 按模块排行榜/段位
+
+### 新增
+- **注册选课**：登录/注册后显示课程选择页（7 个选项：CIE 0580 / Edexcel 4MA1 / 25Maths Y7-Y11）
+- **按模块过滤**：选课后首页、侧栏、复习、统计仅显示对应模块词汇
+  - CIE/Edexcel 按 `board` 字段过滤
+  - 25m-yN 按 `category` 字段过滤
+  - 自定义导入词汇始终可见
+- **按模块排行榜**：排行榜仅显示同模块用户，标题附带模块标签
+- **按模块段位**：掌握率、段位均基于所选模块词汇计算
+- **设置页更换课程**：设置 Modal 新增"考试局/年级"区域，显示当前模块 + 更换按钮
+- **Guest 支持**：访客 board 存 localStorage，选课后同样过滤
+
+### 数据库迁移
+- `leaderboard` 表新增 `board TEXT NOT NULL DEFAULT ''` 列 + 索引
+
+### 设计决策
+- **一人一行**：leaderboard 主键不变（user_id），board 列用于过滤
+- **进度不丢**：word key 按 slug 存，切模块不删数据，切回进度还在
+- **getReviewCount 改用 getDueWords**：确保复习计数也按模块过滤
+
+### 文件变更
+- `js/config.js` — 新增 `userBoard` 全局 + `BOARD_OPTIONS` 数组 + `isLevelVisible()` / `getVisibleBoards()` / `getUserBoardOption()` 过滤函数
+- `index.html` — 新增 `ov-board` 选课 overlay + `sb-board` 侧栏模块标签
+- `css/style.css` — 新增 `.board-sel-btn` 卡片按钮 + `.settings-board-current` + `.sidebar-user-board` 样式
+- `js/auth.js` — 新增 `showBoardSelection()` / `selectBoard()` / `changeBoardFromSettings()` + `afterLogin()` 门控 + 设置页 board section
+- `js/app.js` — session 读 board + 排行榜查询加 `.eq('board', userBoard)` + 标题加模块标签
+- `js/storage.js` — `getAllWords()` 加 `isLevelVisible()` 过滤 + `getReviewCount()` 改用 `getDueWords()` + `syncToCloud()` 加 `board` 字段
+- `js/mastery.js` — `renderHome()` 改为 `getVisibleBoards().forEach`
+- `js/ui.js` — `updateSidebar()` 改为 `getVisibleBoards().forEach` + 新增 `sb-board` 显示
+- `supabase/migrations/20260304144007_add_board_to_leaderboard.sql` — leaderboard 加 board 列 + 索引
+
+---
+
 ## [0.7.1] - 2026-03-04 — 关闭邮箱验证 + 客户端防刷保护
 
 ### 变更

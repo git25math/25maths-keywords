@@ -77,6 +77,7 @@ E('auth-login').addEventListener('click', async function() {
       /* Sign-up succeeded — check if session exists (Confirm email OFF) */
       if (res2.data.session) {
         currentUser = { email: email, id: res2.data.user.id, nickname: '' };
+        /* New user — no board yet, will be prompted */
       } else {
         /* Dashboard still has Confirm email ON — tell user to login */
         E('auth-err').textContent = '';
@@ -99,6 +100,7 @@ E('auth-login').addEventListener('click', async function() {
     } else {
       var meta = res.data.user.user_metadata || {};
       currentUser = { email: email, id: res.data.user.id, nickname: meta.nickname || '' };
+      if (meta.board) userBoard = meta.board;
     }
 
     authSuccess();
@@ -116,6 +118,10 @@ E('auth-login').addEventListener('click', async function() {
 /* Guest mode */
 E('auth-skip').addEventListener('click', function() {
   currentUser = { email: 'guest', id: 'local' };
+  /* Restore board from localStorage for guest */
+  var guestBoard = null;
+  try { guestBoard = localStorage.getItem('userBoard'); } catch (e) {}
+  if (guestBoard) userBoard = guestBoard;
   afterLogin();
 });
 
@@ -136,7 +142,55 @@ E('btn-logout-hb').addEventListener('click', function() { doLogout(); });
 
 /* Post-login setup */
 function afterLogin() {
+  if (!userBoard) {
+    showBoardSelection();
+  } else {
+    showApp();
+  }
+}
+
+/* ═══ BOARD SELECTION ═══ */
+function showBoardSelection() {
+  E('ov-auth').classList.remove('vis');
+  E('ov-auth').style.display = 'none';
+  E('board-sel-title').textContent = t('Choose Your Course', '\u9009\u62e9\u4f60\u7684\u8bfe\u7a0b');
+  E('board-sel-sub').textContent = t('You will only see vocabulary for your course. Change anytime in settings.', '\u9009\u8bfe\u540e\u53ea\u663e\u793a\u5bf9\u5e94\u6a21\u5757\u7684\u8bcd\u6c47\uff0c\u53ef\u5728\u8bbe\u7f6e\u4e2d\u66f4\u6362');
+  var html = '<div class="board-sel-grid">';
+  BOARD_OPTIONS.forEach(function(opt) {
+    html += '<button class="board-sel-btn" onclick="selectBoard(\'' + opt.value + '\')">';
+    html += '<span class="board-sel-emoji">' + opt.emoji + '</span>';
+    html += '<span class="board-sel-name">' + t(opt.name, opt.nameZh) + '</span>';
+    html += '</button>';
+  });
+  html += '</div>';
+  E('board-sel-list').innerHTML = html;
+  E('ov-board').style.display = 'flex';
+  E('ov-board').classList.add('vis');
+}
+
+function hideBoardSelection() {
+  E('ov-board').classList.remove('vis');
+  E('ov-board').style.display = 'none';
+}
+
+async function selectBoard(value) {
+  userBoard = value;
+  /* Persist to localStorage (guest support) */
+  try { localStorage.setItem('userBoard', value); } catch (e) {}
+  /* Save to user_metadata if logged in */
+  if (sb && currentUser && currentUser.id !== 'local') {
+    try {
+      await sb.auth.updateUser({ data: { board: value } });
+    } catch (e) {}
+  }
+  hideBoardSelection();
   showApp();
+}
+
+function changeBoardFromSettings() {
+  hideModal();
+  E('app-shell').style.display = 'none';
+  showBoardSelection();
 }
 
 /* Translate common Supabase auth error messages to Chinese */
@@ -157,10 +211,19 @@ function showSettings() {
   }
   var nick = currentUser.nickname || '';
   var emailPrefix = currentUser.email.split('@')[0];
+  var boardOpt = getUserBoardOption();
+  var boardDisplay = boardOpt ? (boardOpt.emoji + ' ' + t(boardOpt.name, boardOpt.nameZh)) : t('Not selected', '\u672a\u9009\u62e9');
+
   var html = '<div class="settings-section">' +
     '<div class="section-title">' + t('\u2699 Account Settings', '\u2699 账号设置') + '</div>' +
     '<label class="settings-label">' + t('Nickname', '昵称') + '</label>' +
     '<input class="auth-input" id="settings-nick" type="text" value="' + nick.replace(/"/g, '&quot;') + '" placeholder="' + emailPrefix + '" maxlength="20">' +
+    '</div>' +
+    '<div class="settings-divider"></div>' +
+    '<div class="settings-section">' +
+    '<label class="settings-label">' + t('Course / Year', '\u8003\u8bd5\u5c40 / \u5e74\u7ea7') + '</label>' +
+    '<div class="settings-board-current">' + boardDisplay + '</div>' +
+    '<button class="btn btn-ghost btn-sm" onclick="changeBoardFromSettings()">' + t('Change', '\u66f4\u6362') + '</button>' +
     '</div>' +
     '<div class="settings-divider"></div>' +
     '<div class="settings-section">' +

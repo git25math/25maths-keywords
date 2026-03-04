@@ -20,6 +20,7 @@
           id: sess.data.session.user.id,
           nickname: sessMeta.nickname || ''
         };
+        if (sessMeta.board) userBoard = sessMeta.board;
         await syncFromCloud();
 
         /* Reload custom levels after cloud sync */
@@ -54,7 +55,9 @@
 /* ═══ LEADERBOARD ═══ */
 async function renderBoard() {
   var panel = E('panel-board');
-  panel.innerHTML = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + '</div>' +
+  var boardOpt = getUserBoardOption();
+  var boardTag = boardOpt ? ' <span style="font-size:12px;color:var(--c-primary);background:var(--c-primary-bg);padding:2px 8px;border-radius:10px;font-weight:700;vertical-align:middle">' + boardOpt.emoji + ' ' + t(boardOpt.name, boardOpt.nameZh) + '</span>' : '';
+  panel.innerHTML = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + boardTag + '</div>' +
     '<div style="text-align:center;color:var(--c-muted);padding:40px 0">' + t('Loading...', '\u52a0\u8f7d\u4e2d...') + '</div>';
 
   var rows = [];
@@ -63,9 +66,10 @@ async function renderBoard() {
   /* Fetch cloud leaderboard */
   if (sb && currentUser && currentUser.id !== 'local') {
     try {
-      var res = await sb.from('leaderboard')
-        .select('user_id,nickname,score,mastery_pct,rank_emoji,mastered_words,total_words')
-        .order('score', { ascending: false })
+      var qry = sb.from('leaderboard')
+        .select('user_id,nickname,score,mastery_pct,rank_emoji,mastered_words,total_words');
+      if (userBoard) qry = qry.eq('board', userBoard);
+      var res = await qry.order('score', { ascending: false })
         .limit(20);
       if (res.data && res.data.length > 0) {
         rows = res.data.map(function(r) {
@@ -103,7 +107,7 @@ async function renderBoard() {
     rows.sort(function(a, b) { return b.score - a.score; });
   }
 
-  var html = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + '</div>';
+  var html = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + boardTag + '</div>';
   html += '<div style="font-size:12px;color:var(--c-muted);margin-bottom:16px">' + t('Live ranking \xb7 Based on mastery score', '\u5b9e\u65f6\u6392\u540d \xb7 \u57fa\u4e8e\u5355\u8bcd\u638c\u63e1\u7387\u8ba1\u5206') + '</div>';
   html += '<div class="board-list">';
 

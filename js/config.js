@@ -49,6 +49,62 @@ var appView = 'home';        /* current panel id */
 var appSort = 'default';     /* 'default' | 'az' | 'random' | 'hard' */
 var appBP = 'desktop';       /* 'phone' | 'tablet' | 'desktop' */
 var currentLvl = 0;
+var userBoard = null;        /* selected board/year filter */
+
+/* Board selection options (7 choices) */
+var BOARD_OPTIONS = [
+  { value: 'cie',     emoji: '\ud83d\udcda', name: 'CIE IGCSE 0580',    nameZh: '\u5251\u6865 IGCSE 0580' },
+  { value: 'edx',     emoji: '\ud83d\udcd8', name: 'Edexcel IGCSE 4MA1', nameZh: '\u7231\u5fb7\u601d IGCSE 4MA1' },
+  { value: '25m-y7',  emoji: '7\ufe0f\u20e3',  name: '25Maths Year 7',  nameZh: '25Maths \u4e03\u5e74\u7ea7' },
+  { value: '25m-y8',  emoji: '8\ufe0f\u20e3',  name: '25Maths Year 8',  nameZh: '25Maths \u516b\u5e74\u7ea7' },
+  { value: '25m-y9',  emoji: '9\ufe0f\u20e3',  name: '25Maths Year 9',  nameZh: '25Maths \u4e5d\u5e74\u7ea7' },
+  { value: '25m-y10', emoji: '\ud83d\udd1f', name: '25Maths Year 10',   nameZh: '25Maths \u5341\u5e74\u7ea7' },
+  { value: '25m-y11', emoji: '1\ufe0f\u20e31\ufe0f\u20e3', name: '25Maths Year 11', nameZh: '25Maths \u5341\u4e00\u5e74\u7ea7' }
+];
+
+/* Check if a level should be visible under current board filter */
+function isLevelVisible(lv) {
+  if (!userBoard) return true;
+  /* Custom levels are always visible */
+  if (lv.custom) return true;
+  /* CIE / Edexcel: filter by board field */
+  if (userBoard === 'cie' || userBoard === 'edx') {
+    return lv.board === userBoard;
+  }
+  /* 25m-yN: filter by category field */
+  return lv.category === userBoard;
+}
+
+/* Get filtered BOARDS array based on userBoard */
+function getVisibleBoards() {
+  if (!userBoard) return BOARDS;
+  return BOARDS.filter(function(b) {
+    /* CIE/Edexcel: show entire board */
+    if (userBoard === 'cie' && b.id === 'cie') return true;
+    if (userBoard === 'edx' && b.id === 'edx') return true;
+    /* 25m-yN: show 25m board only */
+    if (userBoard.indexOf('25m-') === 0 && b.id === '25m') return true;
+    return false;
+  }).map(function(b) {
+    /* For 25m-yN, filter to only the selected year category */
+    if (userBoard.indexOf('25m-') === 0 && b.id === '25m') {
+      return {
+        id: b.id, name: b.name, nameZh: b.nameZh, code: b.code, emoji: b.emoji,
+        categories: b.categories.filter(function(c) { return c.id === userBoard; })
+      };
+    }
+    return b;
+  });
+}
+
+/* Get display info for current userBoard */
+function getUserBoardOption() {
+  if (!userBoard) return null;
+  for (var i = 0; i < BOARD_OPTIONS.length; i++) {
+    if (BOARD_OPTIONS[i].value === userBoard) return BOARD_OPTIONS[i];
+  }
+  return null;
+}
 
 /* Breakpoint detection */
 function detectBP() {
