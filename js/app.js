@@ -32,6 +32,7 @@
         if (sessMeta.board) userBoard = sessMeta.board;
         if (sessMeta.class_id) userClassId = sessMeta.class_id;
         if (sessMeta.school_id) userSchoolId = sessMeta.school_id;
+        try { localStorage.setItem('wmatch_login_ts', '' + Date.now()); } catch(e) {}
         await syncFromCloud();
 
         /* Reload custom levels after cloud sync */
@@ -59,6 +60,9 @@
   }
 
   /* No session — show auth screen */
+  try { localStorage.removeItem('wmatch_login_ts'); } catch(e) {}
+  var hideStyle = document.getElementById('auth-hide-style');
+  if (hideStyle) hideStyle.remove();
   E('ov-auth').style.display = 'flex';
   E('ov-auth').classList.add('vis');
 })();

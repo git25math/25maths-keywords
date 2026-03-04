@@ -163,6 +163,7 @@ E('auth-skip').addEventListener('click', function() {
 /* Logout — await signOut + final sync */
 async function doLogout() {
   invalidateGuestCache();
+  try { localStorage.removeItem('wmatch_login_ts'); } catch(e) {}
   if (sb && isLoggedIn()) {
     await syncToCloud();
     await sb.auth.signOut();
@@ -213,6 +214,7 @@ async function afterLogin() {
     } catch (e) { /* ignore */ }
   }
 
+  try { localStorage.setItem('wmatch_login_ts', '' + Date.now()); } catch(e) {}
   if (!userBoard) {
     showBoardSelection();
   } else {

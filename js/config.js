@@ -312,7 +312,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.1.5';
+var APP_VERSION = 'v1.1.6';
 
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };

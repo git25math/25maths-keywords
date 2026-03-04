@@ -185,6 +185,7 @@
 - [x] 可访问性增强（lang/ARIA role/aria-expanded/aria-label ×20）→ v1.1.4 完成
 - [x] 死代码清理 + APP_VERSION 版本常量统一 → v1.1.4 完成
 - [x] BOARDS 显示顺序调整：哈罗海口→CIE→Edexcel → v1.1.5 完成
+- [x] 刷新页面闪现登录页消除（localStorage 时间戳 + 内联 CSS 注入）→ v1.1.6 完成
 
 ## Phase 8.4 — 班级编辑 + 学生导入 [DONE]
 - [x] 编辑班级信息（名称/年级，年级变更级联更新）→ v1.0.9 完成

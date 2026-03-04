@@ -12,6 +12,7 @@
   <!-- App Styles -->
   <link rel="stylesheet" href="css/style.css">
   <script>(function(){try{if(localStorage.getItem('wmatch_dark')==='1'||(localStorage.getItem('wmatch_dark')===null&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})()</script>
+  <script>(function(){try{var ts=localStorage.getItem('wmatch_login_ts');if(ts&&(Date.now()-parseInt(ts,10))<1800000){var s=document.createElement('style');s.id='auth-hide-style';s.textContent='#ov-auth{display:none}';document.head.appendChild(s)}}catch(e){}})()</script>
 </head>
 <body>
 
