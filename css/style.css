@@ -369,6 +369,7 @@ input { font-family: inherit; }
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--c-border-light);
   padding: 0 16px;
+  padding-top: env(safe-area-inset-top, 0);
   align-items: center; justify-content: space-between;
   z-index: 100;
 }
@@ -419,7 +420,7 @@ input { font-family: inherit; }
 .bnav-item {
   display: flex; flex-direction: column;
   align-items: center; gap: 2px;
-  padding: 8px 16px; border-radius: var(--r-sm);
+  padding: 10px 16px; border-radius: var(--r-sm);
   font-size: 10px; font-weight: 600; color: var(--c-muted);
   transition: all 0.15s;
 }
@@ -1564,16 +1565,19 @@ input { font-family: inherit; }
 
   .main-pad {
     padding: 24px 28px;
-    padding-top: calc(var(--header-h) + 16px);
+    padding-top: calc(var(--header-h) + 16px + env(safe-area-inset-top, 0));
     padding-bottom: calc(var(--bnav-h) + 16px);
   }
+
+  .fc-box { width: min(320px, 85vw); }
+  .toast { bottom: calc(var(--bnav-h) + 26px + env(safe-area-inset-bottom, 0)); }
 }
 
 /* Phone: < 640px */
 @media (max-width: 639px) {
   .main-pad {
     padding: 16px 14px;
-    padding-top: calc(var(--header-h) + 10px);
+    padding-top: calc(var(--header-h) + 10px + env(safe-area-inset-top, 0));
     padding-bottom: calc(var(--bnav-h) + 10px);
   }
 
@@ -1583,7 +1587,7 @@ input { font-family: inherit; }
   .deck-grid { grid-template-columns: 1fr; }
   .mode-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .fc-box { width: 280px; height: 175px; }
+  .fc-box { width: min(300px, 90vw); height: 175px; }
   .fc-front-word, .fc-back-def { font-size: 22px; }
 
   .match-area { flex-direction: column; align-items: center; }
@@ -1593,9 +1597,27 @@ input { font-family: inherit; }
 
   .srs-chart { gap: 4px; padding: 12px 8px; }
 
-  .battle-grid { gap: 6px; }
+  .battle-grid { gap: 5px; }
   .ct-t { font-size: 11px; }
 
   .quiz-word { font-size: 22px; }
   .spell-def { font-size: 18px; }
+
+  /* Touch targets ≥ 44px */
+  .btn-icon { min-width: 44px; min-height: 44px; }
+  .btn { min-height: 44px; }
+  .btn-sm { min-height: 36px; }
+  .rate-btn { min-height: 44px; }
+
+  /* Font scaling */
+  .section-title { font-size: 16px; }
+  .auth-title { font-size: 20px; }
+  .result-title { font-size: 18px; }
+  .result-score { font-size: 40px; }
+
+  /* Toast above bottom nav */
+  .toast { bottom: calc(var(--bnav-h) + 20px + env(safe-area-inset-bottom, 0)); }
+
+  /* Combo popup */
+  .combo-pop { font-size: 22px; }
 }

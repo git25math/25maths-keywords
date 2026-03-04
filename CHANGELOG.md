@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.9.2] - 2026-03-04 — 响应式修补 + 移动体验
+
+### 新增
+- **iPhone 刘海适配**：viewport 加 `viewport-fit=cover`，`.header-bar` 加 `padding-top: env(safe-area-inset-top)`，Tablet/Phone `.main-pad` 顶部内边距加 safe-area 偏移
+- **触控热区 ≥ 44px**：Phone 断点下 `.btn-icon` / `.btn` / `.rate-btn` 最小高度 44px，`.btn-sm` 36px；`.bnav-item` padding 全局调大
+- **实战模式网格响应式**：`calcCols()` 接入 `detectBP()` 断点——Phone 2-3 列 / Tablet 3-4 列 / Desktop 4-5 列
+- **闪卡宽度自适应**：Tablet `min(320px, 85vw)`、Phone `min(300px, 90vw)`，窄屏不溢出
+- **排版字号缩放**：Phone 下 `.section-title` 16px、`.auth-title` 20px、`.result-title` 18px、`.result-score` 40px
+- **Toast 位置适配底部导航**：Tablet/Phone Toast 上移至底部导航上方，含 safe-area 偏移
+- **连击弹窗手机端缩小**：Phone `.combo-pop` 字号 22px
+
+### 文件变更
+- `index.html` — viewport 加 `viewport-fit=cover`（~1 行）
+- `css/style.css` — safe-area + 触控热区 + 字号缩放 + toast/combo 位置（~25 行）
+- `js/ui.js` — `calcCols()` 响应式断点逻辑（~5 行）
+
+---
+
 ## [0.9.1] - 2026-03-04 — 密码重置 / 同步时间戳 / 同步失败提示
 
 ### 新增

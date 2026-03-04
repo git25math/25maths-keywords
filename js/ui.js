@@ -303,6 +303,9 @@ function shuffle(a) {
 }
 
 function calcCols(n) {
+  var bp = detectBP();
+  if (bp === 'phone') return n <= 8 ? 2 : 3;
+  if (bp === 'tablet') return n <= 12 ? 3 : 4;
   return n <= 16 ? 4 : 5;
 }
 
