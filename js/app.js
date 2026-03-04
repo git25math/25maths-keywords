@@ -30,6 +30,8 @@
           nickname: sessMeta.nickname || ''
         };
         if (sessMeta.board) userBoard = sessMeta.board;
+        if (sessMeta.class_id) userClassId = sessMeta.class_id;
+        if (sessMeta.school_id) userSchoolId = sessMeta.school_id;
         await syncFromCloud();
 
         /* Reload custom levels after cloud sync */
@@ -62,6 +64,8 @@
 })();
 
 /* ═══ LEADERBOARD ═══ */
+var _boardScope = 'course'; /* 'course' | 'class' | 'grade' | 'school' */
+
 async function renderBoard() {
   var panel = E('panel-board');
   var boardOpt = getUserBoardOption();
@@ -77,9 +81,22 @@ async function renderBoard() {
     try {
       var qry = sb.from('leaderboard')
         .select('user_id,nickname,score,mastery_pct,rank_emoji,mastered_words,total_words');
-      if (userBoard) qry = qry.eq('board', userBoard);
+
+      /* Apply filter based on scope */
+      if (_boardScope === 'class' && userClassId) {
+        qry = qry.eq('class_id', userClassId);
+      } else if (_boardScope === 'grade' && userSchoolId) {
+        if (userBoard) qry = qry.eq('board', userBoard);
+        qry = qry.eq('school_id', userSchoolId);
+      } else if (_boardScope === 'school' && userSchoolId) {
+        qry = qry.eq('school_id', userSchoolId);
+      } else {
+        /* Default: course scope */
+        if (userBoard) qry = qry.eq('board', userBoard);
+      }
+
       var res = await qry.order('score', { ascending: false })
-        .limit(20);
+        .limit(50);
       if (res.data && res.data.length > 0) {
         rows = res.data.map(function(r) {
           return {
@@ -117,6 +134,25 @@ async function renderBoard() {
   }
 
   var html = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + boardTag + '</div>';
+
+  /* Scope tabs — only show when userSchoolId exists */
+  if (userSchoolId) {
+    var scopes = [
+      { key: 'course', label: t('Course', '\u8bfe\u7a0b') },
+    ];
+    if (userClassId) {
+      scopes.push({ key: 'class', label: t('Class', '\u73ed\u7ea7') });
+    }
+    scopes.push({ key: 'grade', label: t('Grade', '\u5e74\u7ea7') });
+    scopes.push({ key: 'school', label: t('School', '\u5168\u6821') });
+
+    html += '<div class="admin-tabs board-scope-tabs">';
+    scopes.forEach(function(s) {
+      html += '<button class="admin-tab' + (s.key === _boardScope ? ' active' : '') + '" onclick="switchBoardScope(\'' + s.key + '\')">' + s.label + '</button>';
+    });
+    html += '</div>';
+  }
+
   html += '<div style="font-size:12px;color:var(--c-muted);margin-bottom:16px">' + t('Live ranking \xb7 Based on mastery score', '\u5b9e\u65f6\u6392\u540d \xb7 \u57fa\u4e8e\u5355\u8bcd\u638c\u63e1\u7387\u8ba1\u5206') + '</div>';
   html += '<div class="board-list">';
 
@@ -133,4 +169,9 @@ async function renderBoard() {
 
   html += '</div>';
   panel.innerHTML = html;
+}
+
+function switchBoardScope(scope) {
+  _boardScope = scope;
+  renderBoard();
 }

@@ -149,11 +149,15 @@ async function afterLogin() {
     if (meta.role === 'student') {
       /* Student: auto-set board from metadata, skip board selection */
       if (meta.board) userBoard = meta.board;
+      if (meta.class_id) userClassId = meta.class_id;
+      if (meta.school_id) userSchoolId = meta.school_id;
       try { localStorage.setItem('userBoard', userBoard || ''); } catch (e) {}
     }
     if (meta.role === 'teacher') {
       /* Teacher: init admin panel after app shows */
       if (!userBoard) userBoard = 'all';
+      if (meta.class_id) userClassId = meta.class_id;
+      if (meta.school_id) userSchoolId = meta.school_id;
       try { localStorage.setItem('userBoard', userBoard); } catch (e) {}
     }
   }

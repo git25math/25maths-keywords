@@ -1397,6 +1397,9 @@ input { font-family: inherit; }
   font-size: 11px; color: var(--c-muted);
 }
 
+.board-scope-tabs {
+  margin-bottom: 12px;
+}
 
 /* ═══ EFFECTS ═══ */
 .bf {

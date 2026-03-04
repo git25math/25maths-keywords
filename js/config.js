@@ -50,6 +50,8 @@ var appSort = 'default';     /* 'default' | 'az' | 'random' | 'hard' */
 var appBP = 'desktop';       /* 'phone' | 'tablet' | 'desktop' */
 var currentLvl = 0;
 var userBoard = null;        /* selected board/year filter */
+var userClassId = null;      /* student's class_id from metadata */
+var userSchoolId = null;     /* student/teacher's school_id from metadata */
 var appSearch = '';           /* current search keyword (lowercase) */
 
 var appDark = (function() {

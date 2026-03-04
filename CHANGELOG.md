@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.0.1] - 2026-03-04 — 排行榜多维度：课程 / 班级 / 年级 / 全校
+
+### 新增
+- **排行榜 Scope Tabs**：有学校信息的用户可在 4 个维度切换排行（课程 / 班级 / 年级 / 全校）
+  - 课程：原有逻辑，按 `board` 过滤
+  - 班级：按 `class_id` 过滤（仅学生可见）
+  - 年级：按 `board` + `school_id` 过滤
+  - 全校：按 `school_id` 过滤
+- Tab 样式复用 `.admin-tabs` / `.admin-tab`，手机端可横滑
+- 无学校信息的用户/访客保持原有排行榜逻辑
+
+### 文件变更
+| 文件 | 类型 | 变更 |
+|------|------|------|
+| `js/config.js` | 修改 | +2 行（`userClassId` / `userSchoolId` 全局变量）|
+| `js/auth.js` | 修改 | +4 行（`afterLogin()` 提取 metadata）|
+| `js/app.js` | 修改 | ~45 行（session 恢复 + `renderBoard()` 重写 + `switchBoardScope()`）|
+| `css/style.css` | 修改 | +3 行（`.board-scope-tabs` 间距）|
+
 ## [1.0.0] - 2026-03-04 — 教师管理系统：班级 + 学生账户 + 活跃度仪表盘
 
 ### 新增
