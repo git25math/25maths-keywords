@@ -2359,8 +2359,8 @@ input { font-family: inherit; }
   transition: all 0.15s; color: var(--c-text);
 }
 .hw-option:hover { border-color: var(--c-primary-bg); background: var(--c-surface-alt); }
-.hw-option.correct { border-color: var(--c-success); background: #22C55E15; color: var(--c-success); }
-.hw-option.wrong { border-color: var(--c-danger); background: #EF444415; color: var(--c-danger); }
+.hw-option.correct { border-color: var(--c-success); background: rgba(34,197,94,0.08); color: var(--c-success); }
+.hw-option.wrong { border-color: var(--c-danger); background: rgba(239,68,68,0.08); color: var(--c-danger); }
 .hw-option.disabled { pointer-events: none; opacity: 0.6; }
 
 /* ═══ HOMEWORK LIST IN ADMIN ═══ */
@@ -2544,4 +2544,22 @@ input { font-family: inherit; }
   .hw-options {
     grid-template-columns: 1fr;
   }
+  .notif-item { padding: 8px 10px; }
+  .notif-title { font-size: 12px; }
+  .notif-body { font-size: 11px; }
+  .fb-list-item { flex-wrap: wrap; gap: 6px; }
+  .hw-banner-item { font-size: 12px; padding: 6px 10px; }
+  .va-card-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .hw-progress-summary { grid-template-columns: repeat(2, 1fr); }
+  .hw-student-row { flex-wrap: wrap; }
 }
+
+/* ═══ DARK MODE: HOMEWORK / NOTIFICATIONS / FEEDBACK ═══ */
+[data-theme="dark"] .notif-item.unread { background: rgba(108,99,255,0.1); }
+[data-theme="dark"] .notif-item.unread:hover { background: rgba(108,99,255,0.18); }
+[data-theme="dark"] .hw-option.correct { background: rgba(52,211,153,0.15); }
+[data-theme="dark"] .hw-option.wrong { background: rgba(248,113,113,0.15); }
+[data-theme="dark"] .hw-banner { background: linear-gradient(135deg, var(--c-primary-bg), var(--c-surface)); }
+[data-theme="dark"] .fb-list-item { border-color: var(--c-border); }
+[data-theme="dark"] .va-card-table input { background: var(--c-surface-alt); color: var(--c-text); }
+[data-theme="dark"] .hw-card { border-color: var(--c-border); }

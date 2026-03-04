@@ -84,8 +84,8 @@ function showNotifPanel() {
       html += '<div class="notif-item' + (unread ? ' unread' : '') + '" onclick="handleNotifClick(\'' + n.id + '\', \'' + (n.link_type || '') + '\', \'' + (n.link_id || '') + '\')">';
       html += '<div class="notif-dot' + (unread ? ' active' : '') + '"></div>';
       html += '<div class="notif-content">';
-      html += '<div class="notif-title">' + (n.title || '') + '</div>';
-      if (n.body) html += '<div class="notif-body">' + n.body + '</div>';
+      html += '<div class="notif-title">' + escapeHtml(n.title || '') + '</div>';
+      if (n.body) html += '<div class="notif-body">' + escapeHtml(n.body) + '</div>';
       html += '<div class="notif-time">' + time + '</div>';
       html += '</div></div>';
     });
@@ -183,7 +183,7 @@ async function doCreateHw(classId) {
     var csRes = await sb.from('class_students').select('user_id').eq('class_id', classId);
     var students = csRes.data || [];
     for (var i = 0; i < students.length; i++) {
-      sendNotification(students[i].user_id, 'homework',
+      await sendNotification(students[i].user_id, 'homework',
         t('New homework: ', '新作业：') + title,
         t('Deadline: ', '截止日期：') + new Date(deadline).toLocaleDateString(),
         'homework', '');
@@ -199,6 +199,13 @@ async function doCreateHw(classId) {
 }
 
 /* ═══ TEACHER: CREATE CUSTOM ERROR-WORD ASSIGNMENT ═══ */
+var _pendingCustomHwData = null;
+function showCreateCustomHwFromCache() {
+  if (!_pendingCustomHwData) return;
+  var d = _pendingCustomHwData;
+  showCreateCustomHwModal(d.classId, d.userId, d.name, d.words);
+}
+
 function showCreateCustomHwModal(classId, studentUserId, studentName, wrongWords) {
   /* wrongWords: [{word, def}] - max 10 */
   var wordsToUse = wrongWords.slice(0, 10);
@@ -212,8 +219,8 @@ function showCreateCustomHwModal(classId, studentUserId, studentName, wrongWords
   html += '<div style="max-height:200px;overflow-y:auto;border:1px solid var(--c-border);border-radius:8px;padding:8px 12px">';
   wordsToUse.forEach(function(w, i) {
     html += '<label style="display:flex;align-items:center;gap:6px;padding:3px 0;font-size:13px;cursor:pointer">';
-    html += '<input type="checkbox" class="chw-word-cb" data-word="' + (w.word || '').replace(/"/g, '&quot;') + '" data-def="' + (w.def || '').replace(/"/g, '&quot;') + '" checked>';
-    html += '<strong>' + w.word + '</strong> — ' + w.def;
+    html += '<input type="checkbox" class="chw-word-cb" data-word="' + escapeHtml(w.word || '').replace(/"/g, '&quot;') + '" data-def="' + escapeHtml(w.def || '').replace(/"/g, '&quot;') + '" checked>';
+    html += '<strong>' + escapeHtml(w.word || '') + '</strong> — ' + escapeHtml(w.def || '');
     html += '</label>';
   });
   html += '</div>';
@@ -249,6 +256,7 @@ async function doCreateCustomHw(classId, studentUserId) {
   });
 
   if (vocab.length < 4) { msg.textContent = t('Select at least 2 words', '至少选择2个词'); msg.className = 'settings-msg error'; return; }
+  if (id > 11) { msg.textContent = t('Max 10 words allowed', '最多选择10个词'); msg.className = 'settings-msg error'; return; }
 
   msg.textContent = t('Creating...', '创建中...');
   msg.className = 'settings-msg';
@@ -265,7 +273,7 @@ async function doCreateCustomHw(classId, studentUserId) {
     if (res.error) throw new Error(res.error.message);
 
     /* Notify student */
-    sendNotification(studentUserId, 'homework',
+    await sendNotification(studentUserId, 'homework',
       t('Custom assignment: ', '个性化作业：') + title,
       t('Your teacher created a targeted review for you', '老师为你创建了针对性复习作业'),
       'homework', '');
@@ -287,6 +295,7 @@ async function renderClassHwList(classId) {
     var res = await sb.from('assignments')
       .select('*')
       .eq('class_id', classId)
+      .eq('is_deleted', false)
       .order('created_at', { ascending: false });
     var hws = res.data || [];
 
@@ -437,7 +446,8 @@ async function showStudentHwDetail(hwId, studentUserId, studentName, classId) {
     });
     html += '</div>';
 
-    html += '<button class="btn btn-primary btn-sm" style="margin-bottom:12px" onclick="hideModal();showCreateCustomHwModal(\'' + classId + '\', \'' + studentUserId + '\', \'' + studentName.replace(/'/g, "\\'") + '\', ' + JSON.stringify(wrongWords).replace(/'/g, "\\'") + ')">';
+    _pendingCustomHwData = { classId: classId, userId: studentUserId, name: studentName, words: wrongWords };
+    html += '<button class="btn btn-primary btn-sm" style="margin-bottom:12px" onclick="hideModal();showCreateCustomHwFromCache()">';
     html += t('Create error-word assignment', '布置错词作业');
     html += '</button>';
   } else {
@@ -451,8 +461,7 @@ async function showStudentHwDetail(hwId, studentUserId, studentName, classId) {
 async function deleteHw(hwId, classId) {
   if (!confirm(t('Delete this homework?', '确定删除此作业？'))) return;
   try {
-    await sb.from('assignment_results').delete().eq('assignment_id', hwId);
-    await sb.from('assignments').delete().eq('id', hwId);
+    await sb.from('assignments').update({ is_deleted: true }).eq('id', hwId);
     showToast(t('Deleted!', '已删除！'));
     renderClassDetail(classId);
   } catch (e) {
@@ -467,6 +476,7 @@ async function loadMyHomework() {
     var res = await sb.from('assignments')
       .select('*')
       .eq('class_id', userClassId)
+      .eq('is_deleted', false)
       .order('deadline', { ascending: true });
     var hws = res.data || [];
 
@@ -741,12 +751,14 @@ async function finishHwTest() {
   try {
     var now = new Date().toISOString();
     var existing = await sb.from('assignment_results')
-      .select('id, attempts')
+      .select('attempts')
       .eq('assignment_id', t_.hwId)
       .eq('user_id', currentUser.id)
-      .single();
+      .maybeSingle();
 
     var resultData = {
+      assignment_id: t_.hwId,
+      user_id: currentUser.id,
       attempts: (existing.data ? (existing.data.attempts || 0) : 0) + 1,
       correct_count: t_.correct,
       total_count: t_.total,
@@ -755,20 +767,14 @@ async function finishHwTest() {
       last_attempt_at: now
     };
 
-    if (existing.data) {
-      await sb.from('assignment_results').update(resultData).eq('id', existing.data.id);
-    } else {
-      resultData.assignment_id = t_.hwId;
-      resultData.user_id = currentUser.id;
-      await sb.from('assignment_results').insert(resultData);
-    }
+    await sb.from('assignment_results').upsert(resultData, { onConflict: 'assignment_id,user_id' });
 
     /* Notify teacher about completion */
     var aRes = await sb.from('assignments').select('teacher_id').eq('id', t_.hwId).single();
     if (aRes.data) {
       var tRes = await sb.from('teachers').select('user_id').eq('id', aRes.data.teacher_id).single();
       if (tRes.data) {
-        sendNotification(tRes.data.user_id, 'hw_result',
+        await sendNotification(tRes.data.user_id, 'hw_result',
           getDisplayName() + ' ' + t('completed homework', '完成了作业'),
           t_.title + ' — ' + t_.correct + '/' + t_.total + ' (' + pct + '%)',
           'hw_result', t_.hwId);

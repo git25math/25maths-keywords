@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.1.1] - 2026-03-05 — 项目健康修复（XSS/竞态/深色模式/RLS/响应式）
+
+### 安全修复
+- **XSS 防护**：新增 `escapeHtml()` helper，通知标题/内容、反馈详情用户输入、错词作业 checkbox 数据全量转义
+- **inline JSON 注入**：showStudentHwDetail 错词作业按钮改用全局缓存 `_pendingCustomHwData`，避免 onclick 内嵌 JSON
+- **RLS 增强**：assignments INSERT 加班级归属检查，新增 UPDATE 策略
+
+### Bug 修复
+- **异步 sendNotification**：3 处漏掉的 `await` 补全（doCreateHw / doCreateCustomHw / finishHwTest）
+- **showFeedbackDetail 异步**：改为 `async/await` + try/catch 错误处理（原 `.then()` 无错误处理）
+- **finishHwTest 竞态**：`.single()` 改 `.maybeSingle()` + `upsert` on conflict，消除并发重复记录
+- **软删除作业**：deleteHw 改 `.update({ is_deleted: true })`，保留学生成绩记录
+- **自定义词汇校验**：添加最多 10 词上限校验
+
+### UI 增强
+- **学生作业导航**：侧栏 + 底栏新增📝作业入口（已登录非教师学生可见）
+- **深色模式补全**：通知未读、作业正错、横幅、反馈列表、词库编辑输入框、作业卡片 8 条规则
+- **硬编码颜色修复**：`.hw-option.correct/wrong` 改 rgba（原 `#22C55E15` 无效 8 位 hex）
+- **手机端响应式**：通知/反馈/横幅/词库表格/进度网格/学生行 8 条移动端适配规则
+
+### Supabase 迁移
+- `20260305200000_health_fixes.sql`：RLS 策略增强 + 6 个缺失索引 + `is_deleted` 软删除列
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/ui.js` | +`escapeHtml()` helper, navTo homework 路由, showApp 作业导航显示 |
+| `js/homework.js` | XSS 转义×3, +await×3, upsert 竞态修复, 软删除×3, 词汇校验, _pendingCustomHwData 缓存 |
+| `js/vocab-admin.js` | showFeedbackDetail 改 async/await + escapeHtml×5 |
+| `css/style.css` | 深色模式 8 条 + rgba 颜色修复 + 移动端 8 条 |
+| `index.html` | 侧栏 + 底栏📝作业导航按钮 |
+| `supabase/migrations/20260305200000_health_fixes.sql` | **新建** RLS + 索引 + is_deleted |
+
 ## [1.1.0] - 2026-03-05 — 树状词卡 + 超管词库 CRUD + 作业系统 + 站内信 + 反馈 DB
 
 ### 新功能

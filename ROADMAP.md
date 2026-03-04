@@ -153,6 +153,18 @@
 - [x] 反馈收集改 DB 存储（已登录用户直接存 Supabase feedback 表）→ v1.1.0 完成
 - [x] 超管反馈管理面板（Feedback tab + 状态管理 + 管理员备注）→ v1.1.0 完成
 
+## Phase 8.6 — 项目健康修复 [DONE]
+- [x] XSS 防护（escapeHtml + 全量转义通知/反馈/错词）→ v1.1.1 完成
+- [x] 异步修复（sendNotification await×3 + showFeedbackDetail async）→ v1.1.1 完成
+- [x] 竞态修复（finishHwTest upsert + maybeSingle）→ v1.1.1 完成
+- [x] RLS 增强（assignments INSERT 班级归属 + UPDATE 策略）→ v1.1.1 完成
+- [x] 缺失索引×6（assignments/results/students/levels/feedback）→ v1.1.1 完成
+- [x] 深色模式补全（通知/作业/反馈/词库 8 条规则）→ v1.1.1 完成
+- [x] 软删除作业（is_deleted 列 + 前端过滤）→ v1.1.1 完成
+- [x] 学生作业导航入口（侧栏+底栏📝按钮）→ v1.1.1 完成
+- [x] 手机端响应式补全（8 条移动端适配规则）→ v1.1.1 完成
+- [x] 自定义词汇校验（最多 10 词上限）→ v1.1.1 完成
+
 ## Phase 8.4 — 班级编辑 + 学生导入 [DONE]
 - [x] 编辑班级信息（名称/年级，年级变更级联更新）→ v1.0.9 完成
 - [x] 单个添加学生（默认 1 行 + 灵活加行）→ v1.0.9 完成

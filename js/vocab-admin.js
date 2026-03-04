@@ -298,34 +298,35 @@ async function renderFeedbackList() {
   }
 }
 
-function showFeedbackDetail(id) {
-  sb.from('feedback').select('*').eq('id', id).single().then(function(res) {
+async function showFeedbackDetail(id) {
+  try {
+    var res = await sb.from('feedback').select('*').eq('id', id).single();
     var fb = res.data;
-    if (!fb) return;
+    if (!fb) { showToast(t('Feedback not found', '未找到反馈')); return; }
 
     var html = '<div class="section-title">' + t('Feedback Detail', '反馈详情') + '</div>';
     html += '<div style="font-size:13px;color:var(--c-text2);margin-bottom:12px">';
-    html += '<strong>' + t('Type:', '类型：') + '</strong> ' + fb.type + '<br>';
-    html += '<strong>' + t('User:', '用户：') + '</strong> ' + (fb.user_email || '-') + '<br>';
+    html += '<strong>' + t('Type:', '类型：') + '</strong> ' + escapeHtml(fb.type || '') + '<br>';
+    html += '<strong>' + t('User:', '用户：') + '</strong> ' + escapeHtml(fb.user_email || '-') + '<br>';
     html += '<strong>' + t('Date:', '日期：') + '</strong> ' + new Date(fb.created_at).toLocaleString() + '<br>';
     html += '<strong>' + t('Status:', '状态：') + '</strong> <span class="fb-status ' + fb.status + '">' + fb.status + '</span>';
     html += '</div>';
 
     html += '<label class="settings-label">' + t('Description', '描述') + '</label>';
-    html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:13px;margin-bottom:8px;white-space:pre-wrap">' + (fb.description || '') + '</div>';
+    html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:13px;margin-bottom:8px;white-space:pre-wrap">' + escapeHtml(fb.description || '') + '</div>';
 
     if (fb.steps) {
       html += '<label class="settings-label">' + t('Steps', '步骤') + '</label>';
-      html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:13px;margin-bottom:8px;white-space:pre-wrap">' + fb.steps + '</div>';
+      html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:13px;margin-bottom:8px;white-space:pre-wrap">' + escapeHtml(fb.steps) + '</div>';
     }
 
     if (fb.auto_info && Object.keys(fb.auto_info).length > 0) {
       html += '<label class="settings-label">' + t('Auto Info', '自动信息') + '</label>';
-      html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:11px;font-family:monospace;margin-bottom:8px">' + JSON.stringify(fb.auto_info, null, 2) + '</div>';
+      html += '<div style="padding:10px;background:var(--c-surface-alt);border-radius:8px;font-size:11px;font-family:monospace;margin-bottom:8px">' + escapeHtml(JSON.stringify(fb.auto_info, null, 2)) + '</div>';
     }
 
     html += '<label class="settings-label">' + t('Admin Notes', '管理备注') + '</label>';
-    html += '<textarea class="bug-textarea" id="fb-notes" rows="3">' + (fb.admin_notes || '') + '</textarea>';
+    html += '<textarea class="bug-textarea" id="fb-notes" rows="3">' + escapeHtml(fb.admin_notes || '') + '</textarea>';
 
     html += '<label class="settings-label" style="margin-top:8px">' + t('Change Status', '更改状态') + '</label>';
     html += '<div style="display:flex;gap:6px;margin-bottom:12px">';
@@ -341,7 +342,9 @@ function showFeedbackDetail(id) {
     html += '</div>';
 
     showModal(html);
-  });
+  } catch (e) {
+    showToast(t('Failed to load feedback', '加载反馈失败'));
+  }
 }
 
 async function updateFeedbackStatus(id, status) {

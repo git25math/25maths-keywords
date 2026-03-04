@@ -4,6 +4,9 @@
 
 var _lastShareOpts = null;
 
+/* ═══ XSS ESCAPE HELPER ═══ */
+function escapeHtml(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
 /* ═══ PANEL NAVIGATION ═══ */
 function showPanel(id) {
   document.querySelectorAll('.panel').forEach(function(p) {
@@ -24,7 +27,7 @@ function navTo(id) {
   else if (id === 'board') renderBoard();
   else if (id === 'stats') renderStats();
   else if (id === 'admin') renderAdmin();
-  /* homework panel is rendered by startHwTest() directly */
+  else if (id === 'homework') { if (typeof showStudentHwPage === 'function') showStudentHwPage(); }
 }
 
 function updateNav() {
@@ -291,6 +294,12 @@ function showApp() {
     var sn = E('sidebar-notif'); if (sn) sn.style.display = '';
     var nb = E('notif-bell-hb'); if (nb) nb.style.display = '';
     if (typeof loadNotifications === 'function') loadNotifications();
+  }
+
+  /* Show homework nav for logged-in students with a class */
+  if (isLoggedIn() && !isGuest() && userClassId && !isTeacher()) {
+    var nh = E('nav-homework'); if (nh) nh.style.display = '';
+    var bh = E('bnav-homework'); if (bh) bh.style.display = '';
   }
 }
 
