@@ -3,8 +3,14 @@
 -- + leaderboard extensions + student_activity_view
 -- ══════════════════════════════════════════════════════════════
 
+-- Drop orphaned tables from partial previous run (no data, no FK deps)
+DROP TABLE IF EXISTS public.class_students CASCADE;
+DROP TABLE IF EXISTS public.classes CASCADE;
+DROP VIEW IF EXISTS public.student_activity_view;
+DROP FUNCTION IF EXISTS public.my_school_id();
+
 -- 1. schools
-CREATE TABLE public.schools (
+CREATE TABLE IF NOT EXISTS public.schools (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
   code TEXT NOT NULL UNIQUE,
@@ -12,7 +18,7 @@ CREATE TABLE public.schools (
 );
 
 -- 2. teachers
-CREATE TABLE public.teachers (
+CREATE TABLE IF NOT EXISTS public.teachers (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL UNIQUE REFERENCES auth.users(id) ON DELETE CASCADE,
   school_id UUID NOT NULL REFERENCES public.schools(id) ON DELETE CASCADE,
@@ -101,4 +107,5 @@ CREATE POLICY "students_read_own" ON public.class_students
 
 -- ═══ SEED DATA ═══
 INSERT INTO public.schools (name, code)
-VALUES ('HarrowHaikou International School', 'HARROW2026');
+VALUES ('HarrowHaikou International School', 'HARROW2026')
+ON CONFLICT (code) DO NOTHING;
