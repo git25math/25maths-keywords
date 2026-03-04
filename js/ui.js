@@ -79,6 +79,8 @@ function toggleLang() {
   var label = appLang === 'bilingual' ? 'EN' : '\u4e2d\u82f1';
   if (E('lang-toggle-sb')) E('lang-toggle-sb').textContent = label;
   if (E('lang-toggle-hb')) E('lang-toggle-hb').textContent = label;
+  /* Update nav labels immediately */
+  updateNav();
   /* Re-render current panel */
   if (appView === 'home') renderHome();
   else if (appView === 'deck') renderDeck(currentLvl);
@@ -87,7 +89,6 @@ function toggleLang() {
   else if (appView === 'import') renderImport();
   else if (appView === 'board') renderBoard();
   updateSidebar();
-  updateNav();
 }
 
 function setLang(mode) {
