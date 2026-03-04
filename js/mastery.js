@@ -116,6 +116,18 @@ function renderHome() {
   html += '<span class="home-rank-link">' + t('View path \u2192', '\u67e5\u770b\u8def\u7ebf \u2192') + '</span>';
   html += '</div>';
 
+  /* Daily Challenge banner */
+  var dcData = getDailyData();
+  html += '<div class="dc-home-banner" onclick="startDaily()">';
+  html += '<span class="dc-badge">\u26a1 ' + t('Daily Challenge', '每日挑战') + '</span>';
+  if (dcData) {
+    html += '<span class="dc-banner-info">' + dcData.score + '/10 \u2713</span>';
+  } else {
+    html += '<span class="dc-banner-info">' + t('10 words \u00b7 60s', '10 词 \u00b7 60 秒') + '</span>';
+    html += '<span class="dc-banner-go">GO \u2192</span>';
+  }
+  html += '</div>';
+
   /* Search bar */
   html += '<div class="search-bar">';
   html += '<input class="search-input" id="home-search" type="text" placeholder="' + t('Search groups or words...', '\u641c\u7d22\u8bcd\u7ec4\u6216\u5355\u8bcd...') + '" value="' + appSearch.replace(/"/g, '&quot;') + '" oninput="onHomeSearch(this.value)">';

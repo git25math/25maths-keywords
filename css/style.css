@@ -1541,6 +1541,42 @@ input { font-family: inherit; }
 .mt-16 { margin-top: 16px; }
 .gap-8 { gap: 8px; }
 
+/* ═══ DAILY CHALLENGE ═══ */
+.dc-home-banner {
+  display: flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--c-streak), #FF8C5A);
+  color: #fff; border-radius: var(--r); padding: 14px 18px;
+  margin-bottom: 20px; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(255,107,53,0.25);
+}
+.dc-home-banner:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,53,0.35); }
+.dc-badge {
+  font-size: 12px; font-weight: 700; background: rgba(255,255,255,0.25);
+  padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.dc-banner-info { font-weight: 700; font-size: 15px; }
+.dc-banner-go { margin-left: auto; font-weight: 800; font-size: 16px; }
+.dc-hud {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.dc-timebar-wrap {
+  flex: 1; height: 8px; background: var(--c-border); border-radius: 4px; overflow: hidden;
+}
+.dc-timebar {
+  height: 100%; background: linear-gradient(90deg, var(--c-streak), #FF8C5A);
+  border-radius: 4px; transition: width 0.25s linear;
+}
+.dc-time { font-weight: 700; font-size: 14px; color: var(--c-streak); min-width: 32px; text-align: right; }
+.dc-score { font-weight: 700; font-size: 14px; color: var(--c-text); min-width: 40px; text-align: right; }
+.dc-progress { display: flex; justify-content: center; gap: 6px; margin-bottom: 20px; }
+.dc-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--c-border); transition: background 0.3s;
+}
+.dc-dot.done { background: var(--c-success); }
+.dc-dot.cur { background: var(--c-streak); box-shadow: 0 0 6px var(--c-streak); }
+
 /* ═══ QUIZ DIRECTION BAR ═══ */
 .quiz-dir-bar { display:flex; justify-content:center; gap:6px; margin-bottom:16px; }
 .quiz-dir-btn { padding:5px 14px; border-radius:20px; font-size:12px; font-weight:600;

@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.9.4] - 2026-03-04 — 每日挑战模式 (Daily Challenge)
+
+### 新增
+- **每日挑战**：每天一组 10 词四选一限时挑战（60 秒），同日同用户同组题（日期种子伪随机）
+- **首页 Banner**：Rank 行下方新增橙色渐变入口，未完成显示 "GO →"，已完成显示得分 "8/10 ✓"
+- **混合方向**：每题随机 EN→ZH 或 ZH→EN（基于种子+题号，确定性）
+- **最佳记录**：每日可多次挑战，仅保留最高分和最佳用时
+- **进度圆点**：HUD 下方 10 个圆点实时指示答题进度
+- **自动结算**：倒计时归零或中途退出均自动结算当前进度
+- **SRS 联动**：答对/答错自动更新 SRS 状态，触发 streak 钩子
+
+### 设计决策
+- **纯前端实现**：挑战数据存在 `wmatch_v3.daily` 键内，通过 `vocab_progress` 自动云同步
+- **不新建 JS 文件**：逻辑追加到 `quiz.js` 底部，复用 quiz 基础设施（选项生成、样式、音效）
+- **LCG 伪随机**：`seededShuffle()` 使用线性同余生成器（乘数 1664525），确保同日同序
+
+### 文件变更
+- `js/quiz.js` — 新增 `DC` 状态 + 8 个函数：`getDailySeed` / `seededShuffle` / `getDailyData` / `saveDailyResult` / `startDaily` / `renderDailyCard` / `pickDailyOpt` / `endDailyEarly` / `finishDaily`（~160 行）
+- `js/mastery.js` — `renderHome()` Rank 行后插入每日挑战 banner（~10 行）
+- `index.html` — 新增 `panel-daily`（+1 行）
+- `css/style.css` — `.dc-home-banner` / `.dc-badge` / `.dc-hud` / `.dc-timebar` / `.dc-progress` / `.dc-dot` 样式（~30 行）
+
+---
+
 ## [0.9.3] - 2026-03-04 — 学习连续天数 (Streak)
 
 ### 新增
