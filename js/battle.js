@@ -217,11 +217,14 @@ function endBattle(won) {
     modalHtml += '<div style="font-size:11px;color:var(--c-text2);margin-bottom:12px">' + t('Best: ', '\u6700\u4f73: ') + getBest(G.lvlIdx).t + 's</div>';
   }
 
+  _lastShareOpts = { mode: 'battle', score: won ? G.matched : 0, total: G.total, emoji: emoji, time: won ? elapsed : null, combo: G.maxCombo };
+
   modalHtml += '<div class="result-actions">';
   if (won && G.lvlIdx < LEVELS.length - 1) {
     modalHtml += '<button class="btn btn-primary" onclick="hideModal();openDeck(' + (G.lvlIdx + 1) + ')">' + t('Next \u2192', '\u4e0b\u4e00\u5173 \u2192') + '</button>';
   }
   modalHtml += '<button class="btn btn-secondary" onclick="hideModal();startBattle(' + G.lvlIdx + ')">\ud83d\udd01 ' + t('Try again', '\u518d\u8bd5\u4e00\u6b21') + '</button>';
+  modalHtml += '<button class="btn btn-share" onclick="shareResult(_lastShareOpts)">\ud83d\udce4 ' + t('Share', '\u5206\u4eab') + '</button>';
   modalHtml += '<button class="btn btn-ghost" onclick="hideModal();openDeck(' + G.lvlIdx + ')">\u2190 ' + t('Back', '\u8fd4\u56de\u5361\u7ec4') + '</button>';
   modalHtml += '</div>';
 

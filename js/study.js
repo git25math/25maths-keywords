@@ -117,6 +117,9 @@ function finishStudy() {
   html += '<div style="padding:12px;border-radius:var(--r);background:var(--c-success-bg);text-align:center"><div style="font-size:22px;font-weight:800">' + e + '</div><div style="font-size:10px;font-weight:600">\u2705 ' + t('Easy', '\u638c\u63e1') + '</div></div>';
   html += '</div>';
 
+  var studyEmoji = (h === 0 && o === 0) ? '\ud83c\udfc6' : (h === 0 ? '\ud83c\udf89' : '\ud83d\udcaa');
+  _lastShareOpts = { mode: 'study', score: e, total: total, emoji: studyEmoji };
+
   html += '<div class="result-actions">';
   html += '<button class="btn btn-primary" onclick="startBattle(' + currentLvl + ')">\u2694\ufe0f ' + t('Battle', '\u8fdb\u5165\u5b9e\u6218') + '</button>';
 
@@ -125,6 +128,7 @@ function finishStudy() {
     html += '<button class="btn btn-secondary" onclick="restudyHard()">\ud83d\udcd6 ' + t('Restudy hard', '\u518d\u5b66\u4e0d\u719f\u7684') + '</button>';
   }
 
+  html += '<button class="btn btn-share" onclick="shareResult(_lastShareOpts)">\ud83d\udce4 ' + t('Share', '\u5206\u4eab') + '</button>';
   html += '<button class="btn btn-ghost" onclick="openDeck(' + currentLvl + ')">\u2190 ' + t('Back', '\u8fd4\u56de\u5361\u7ec4') + '</button>';
   html += '</div>';
 

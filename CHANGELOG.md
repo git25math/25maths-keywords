@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.6a] - 2026-03-04 — 补齐 Battle + Study 分享按钮
+
+### 新增
+- **实战模式分享**：Battle 结果 Modal 新增绿色"📤 分享"按钮，分享卡片包含配对数/用时/最大连击
+- **学习模式分享**：Study 结果页新增"📤 分享"按钮，分享卡片显示掌握数/总数
+
+### 文件变更
+- `js/battle.js` — `endBattle()` 设置 `_lastShareOpts` + 插入分享按钮（~3 行）
+- `js/study.js` — `finishStudy()` 设置 `_lastShareOpts` + 插入分享按钮（~3 行）
+
+---
+
 ## [0.9.6] - 2026-03-04 — 学习数据可视化 (Learning Analytics)
 
 ### 新增
