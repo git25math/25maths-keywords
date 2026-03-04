@@ -162,17 +162,17 @@ async function renderBoard() {
     } catch (e) { /* fallback below */ }
   }
 
-  /* If no cloud data or guest, show local user only */
-  if (rows.length === 0) {
+  /* If no cloud data or guest, show local user only (skip teachers) */
+  if (rows.length === 0 && !isTeacher()) {
     var userName = currentUser ? getDisplayName() : t('You', '\u4f60');
     var userRank = getRank();
     var pct = getMasteryPct();
     rows.push({ name: userName, emoji: userRank.emoji, score: pct * 20, pct: pct, isMe: true });
   }
 
-  /* Ensure current user is in the list */
+  /* Ensure current user is in the list (skip teachers) */
   var hasMe = rows.some(function(r) { return r.isMe; });
-  if (!hasMe && isLoggedIn()) {
+  if (!hasMe && isLoggedIn() && !isTeacher()) {
     var myRank = getRank();
     var myPct = getMasteryPct();
     rows.push({

@@ -39,6 +39,8 @@ async function initTeacher() {
     if (res.error || !res.data) { isTeacherUser = false; return; }
     _teacherData = res.data;
     isTeacherUser = true;
+    updateSidebar();
+    if (typeof appView !== 'undefined' && appView === 'home') renderHome();
 
     /* Load school info */
     var sRes = await sb.from('schools')

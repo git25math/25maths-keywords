@@ -281,6 +281,7 @@ function showApp() {
   E('ov-auth').style.display = 'none';
   E('app-shell').style.display = 'flex';
   updateSidebar();
+  if (appBP === 'desktop') expandSidebar();
   navTo('home');
 }
 
@@ -294,14 +295,19 @@ function updateSidebar() {
   var displayShort = isGuest() ? t('Guest', '\u8bbf\u5ba2') : getDisplayName();
 
   /* Sidebar trigger: avatar + name */
-  if (E('sb-rank')) E('sb-rank').textContent = r.emoji;
+  if (E('sb-rank')) E('sb-rank').textContent = isTeacher() ? '\ud83c\udfeb' : r.emoji;
   if (E('sb-name')) E('sb-name').textContent = displayName;
 
   /* Header user */
   if (E('hb-rank')) {
-    E('hb-rank').textContent = r.emoji;
-    E('hb-rank').style.cursor = 'pointer';
-    E('hb-rank').onclick = showRankGuide;
+    E('hb-rank').textContent = isTeacher() ? '\ud83c\udfeb' : r.emoji;
+    if (isTeacher()) {
+      E('hb-rank').style.cursor = 'default';
+      E('hb-rank').onclick = null;
+    } else {
+      E('hb-rank').style.cursor = 'pointer';
+      E('hb-rank').onclick = showRankGuide;
+    }
   }
   if (E('hb-name')) E('hb-name').textContent = displayShort;
 
@@ -312,7 +318,7 @@ function updateSidebar() {
     if (currentUser.email && currentUser.email !== 'guest') {
       lines.push(currentUser.email);
     }
-    lines.push(rankName(r) + ' \xb7 ' + pct + '%');
+    lines.push(isTeacher() ? t('Teacher Account', '\u6559\u5e08\u8d26\u53f7') : rankName(r) + ' \xb7 ' + pct + '%');
     var boardOpt = getUserBoardOption();
     if (boardOpt) {
       lines.push(boardOpt.emoji + ' ' + t(boardOpt.name, boardOpt.nameZh));

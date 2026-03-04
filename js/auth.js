@@ -488,6 +488,7 @@ async function doTeacherRegister() {
 
 /* ═══ RANK GUIDE MODAL ═══ */
 function showRankGuide() {
+  if (isTeacher()) return;
   var allW = getAllWords();
   var pct = getMasteryPct();
   var total = allW.length;

@@ -105,17 +105,24 @@ function renderHome() {
   /* Rank hint row */
   var homeRank = getRank();
   var homeNext = getNextRank();
-  html += '<div class="home-rank-hint" onclick="showRankGuide()">';
-  html += '<span class="home-rank-emoji">' + homeRank.emoji + '</span>';
-  html += '<span class="home-rank-name">' + rankName(homeRank) + '</span>';
-  if (homeNext) {
-    var nextNeeded = Math.ceil(homeNext.min / 100 * total);
-    var remaining = Math.max(nextNeeded - mastered, 0);
-    html += '<span class="home-rank-sep">\u00b7</span>';
-    html += '<span class="home-rank-next">' + t(remaining + ' to ' + rankName(homeNext), '\u8ddd ' + rankName(homeNext) + ' \u8fd8\u9700 ' + remaining + ' \u8bcd') + '</span>';
+  if (isTeacher()) {
+    html += '<div class="home-rank-hint" style="cursor:default">';
+    html += '<span class="home-rank-emoji">\ud83c\udfeb</span>';
+    html += '<span class="home-rank-name">' + t('Teacher Account', '\u6559\u5e08\u8d26\u53f7') + '</span>';
+    html += '</div>';
+  } else {
+    html += '<div class="home-rank-hint" onclick="showRankGuide()">';
+    html += '<span class="home-rank-emoji">' + homeRank.emoji + '</span>';
+    html += '<span class="home-rank-name">' + rankName(homeRank) + '</span>';
+    if (homeNext) {
+      var nextNeeded = Math.ceil(homeNext.min / 100 * total);
+      var remaining = Math.max(nextNeeded - mastered, 0);
+      html += '<span class="home-rank-sep">\u00b7</span>';
+      html += '<span class="home-rank-next">' + t(remaining + ' to ' + rankName(homeNext), '\u8ddd ' + rankName(homeNext) + ' \u8fd8\u9700 ' + remaining + ' \u8bcd') + '</span>';
+    }
+    html += '<span class="home-rank-link">' + t('View path \u2192', '\u67e5\u770b\u8def\u7ebf \u2192') + '</span>';
+    html += '</div>';
   }
-  html += '<span class="home-rank-link">' + t('View path \u2192', '\u67e5\u770b\u8def\u7ebf \u2192') + '</span>';
-  html += '</div>';
 
   /* Guest trial banner */
   if (isGuest()) {

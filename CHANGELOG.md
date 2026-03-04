@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.0.7] - 2026-03-04 — 教师账号隐藏段位 + 侧栏默认展开
+
+### 教师账号段位隐藏
+- **侧栏/顶栏**：教师显示 🏫 替代段位 emoji，顶栏移除 onclick 段位路线弹窗
+- **弹出菜单**：教师显示"教师账号"替代"段位名 · 掌握率%"
+- **首页 rank hint**：教师显示静态"🏫 教师账号"行（不可点击）
+- **段位路线弹窗**：教师调用 `showRankGuide()` 直接 return
+- **排行榜**：教师跳过 leaderboard upsert，不出现在排行榜中
+- **教师初始化**：`initTeacher()` 确认身份后立即刷新 sidebar + home
+
+### 侧栏默认展开
+- 桌面端 `showApp()` 自动调用 `expandSidebar()`，默认 260px 展开
+- 平板/手机端不受影响
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/ui.js` | updateSidebar() 教师条件分支 + showApp() 桌面端自动展开 |
+| `js/mastery.js` | renderHome() rank hint 教师静态行 |
+| `js/auth.js` | showRankGuide() 教师守卫 |
+| `js/storage.js` | _doSyncToCloud() 教师跳过排行榜 upsert |
+| `js/app.js` | renderBoard() 教师不加入本地 fallback / hasMe |
+| `js/admin.js` | initTeacher() 确认后刷新 UI |
+
 ## [1.0.6] - 2026-03-04 — 架构优化 + Bug Report 功能
 
 ### 架构优化（Part A — 0 功能变更）

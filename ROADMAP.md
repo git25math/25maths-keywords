@@ -143,6 +143,10 @@
 - [x] 学生操作下拉菜单（改名 / 重置密码 / 移动班级）→ v1.0.3 完成
 - [x] Edge Function `update-student`（更新学生 auth metadata）→ v1.0.3 完成
 
+## Phase 8.3 — 教师账号隐藏段位 + 侧栏默认展开 [DONE]
+- [x] 教师账号隐藏段位 emoji / rank hint / 排行榜 → v1.0.7 完成
+- [x] 侧栏桌面端默认展开 260px → v1.0.7 完成
+
 ## Phase 8.2 — 架构优化 + Bug Report [DONE]
 - [x] loadS() 内存缓存（消除 95% JSON.parse）→ v1.0.6 完成
 - [x] getAllWords() / getWordData() 缓存（_cacheDirty 标记）→ v1.0.6 完成

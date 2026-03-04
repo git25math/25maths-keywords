@@ -241,31 +241,33 @@ async function _doSyncToCloud() {
     { onConflict: 'user_id' }
   );
   try { localStorage.setItem('wmatch_last_sync', Date.now()); } catch (e) {}
-  /* Sync leaderboard score */
-  var allW = getAllWords();
-  var mastered = allW.filter(function(w) { return w.status === 'mastered'; }).length;
-  var pct = allW.length > 0 ? Math.round(mastered / allW.length * 100) : 0;
-  var r = getRank();
-  var nick = getDisplayName();
-  /* Include school_id/class_id from user metadata if available */
-  var lbRow = {
-    user_id: currentUser.id,
-    nickname: nick,
-    score: pct * 20,
-    mastery_pct: pct,
-    rank_emoji: r.emoji,
-    total_words: allW.length,
-    mastered_words: mastered,
-    board: userBoard || '',
-    updated_at: now
-  };
-  try {
-    var sess = await sb.auth.getSession();
-    var meta = sess.data.session ? sess.data.session.user.user_metadata : {};
-    if (meta.school_id) lbRow.school_id = meta.school_id;
-    if (meta.class_id) lbRow.class_id = meta.class_id;
-  } catch (e) {}
-  await sb.from('leaderboard').upsert(lbRow, { onConflict: 'user_id' });
+  /* Sync leaderboard score (skip for teachers) */
+  if (!isTeacher()) {
+    var allW = getAllWords();
+    var mastered = allW.filter(function(w) { return w.status === 'mastered'; }).length;
+    var pct = allW.length > 0 ? Math.round(mastered / allW.length * 100) : 0;
+    var r = getRank();
+    var nick = getDisplayName();
+    /* Include school_id/class_id from user metadata if available */
+    var lbRow = {
+      user_id: currentUser.id,
+      nickname: nick,
+      score: pct * 20,
+      mastery_pct: pct,
+      rank_emoji: r.emoji,
+      total_words: allW.length,
+      mastered_words: mastered,
+      board: userBoard || '',
+      updated_at: now
+    };
+    try {
+      var sess = await sb.auth.getSession();
+      var meta = sess.data.session ? sess.data.session.user.user_metadata : {};
+      if (meta.school_id) lbRow.school_id = meta.school_id;
+      if (meta.class_id) lbRow.class_id = meta.class_id;
+    } catch (e) {}
+    await sb.from('leaderboard').upsert(lbRow, { onConflict: 'user_id' });
+  }
 }
 
 async function syncToCloud() {
