@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.5.1] - 2026-03-04 — 侧栏手风琴导航 + 首页默认收起
+
+### 变更
+- 侧栏专题改为手风琴式：点击展开子词组列表（显示名称 + 掌握百分比）
+- 再次点击折叠；同时只展开一个专题
+- 点击侧栏专题同时展开右侧对应分区并滚动到位
+- 首页所有专题默认收起（空白），点击侧栏或标题展开
+- 新增 `selectCategory()` 联动侧栏 + 右侧面板
+
+### 文件变更
+- `js/mastery.js` — 默认全部 collapsed + `selectCategory()` + `sidebarExpanded` 状态
+- `js/ui.js` — 侧栏手风琴 HTML（子词组列表 + chevron）
+- `css/style.css` — `.sidebar-cat-group` / `.sidebar-sub-item` 手风琴样式
+
+---
+
 ## [0.5.0] - 2026-03-04 — EN/中英双语模式全面支持
 
 ### 新增

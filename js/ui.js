@@ -137,32 +137,39 @@ function updateSidebar() {
   }
   if (E('hb-name')) E('hb-name').textContent = displayShort;
 
-  /* Sidebar: show 8 category entries only */
+  /* Sidebar: accordion categories with expandable deck lists */
   var deckEl = E('sidebar-decks');
   if (deckEl) {
     var html = '<div class="sidebar-deck-label">' + t('Topics', '\u4e13\u9898') + '</div>';
     CATEGORIES.forEach(function(cat) {
-      var count = 0;
-      LEVELS.forEach(function(lv) { if (lv.category === cat.id) count++; });
-      if (count === 0) return;
-      html += '<button class="sidebar-deck-item" onclick="scrollToCategory(\'' + cat.id + '\')">' +
+      var catLevels = [];
+      LEVELS.forEach(function(lv, i) {
+        if (lv.category === cat.id) catLevels.push({ lv: lv, idx: i });
+      });
+      if (catLevels.length === 0) return;
+      var isOpen = sidebarExpanded[cat.id];
+      html += '<div class="sidebar-cat-group' + (isOpen ? ' open' : '') + '">';
+      html += '<button class="sidebar-deck-item sidebar-cat-toggle" onclick="selectCategory(\'' + cat.id + '\')">' +
         '<span class="deck-emoji">' + cat.emoji + '</span>' +
         '<span>' + catName(cat) + '</span>' +
-        '<span class="deck-count">' + count + '</span>' +
+        '<span class="sidebar-chevron">\u25b6</span>' +
         '</button>';
+      html += '<div class="sidebar-cat-decks">';
+      catLevels.forEach(function(cl) {
+        var stats = getDeckStats(cl.idx);
+        html += '<button class="sidebar-sub-item" onclick="openDeck(' + cl.idx + ')">' +
+          '<span class="sidebar-sub-name">' + cl.lv.title + '</span>' +
+          '<span class="sidebar-sub-pct">' + stats.pct + '%</span>' +
+          '</button>';
+      });
+      html += '</div></div>';
     });
     deckEl.innerHTML = html;
   }
 }
 
-/* ═══ SCROLL TO CATEGORY ═══ */
-function scrollToCategory(catId) {
-  if (appView !== 'home') navTo('home');
-  setTimeout(function() {
-    var el = document.getElementById('cat-' + catId);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, appView !== 'home' ? 100 : 0);
-}
+/* scrollToCategory kept for backwards compat */
+function scrollToCategory(catId) { selectCategory(catId); }
 
 /* ═══ UTILITY FUNCTIONS ═══ */
 function validate(lv, i) {
