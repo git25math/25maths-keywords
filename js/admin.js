@@ -85,6 +85,9 @@ function renderAdmin() {
   html += '<button class="admin-tab' + (_adminTab === 'classes' ? ' active' : '') + '" onclick="switchAdminTab(\'classes\')">' + t('Classes', '班级管理') + '</button>';
   html += '<button class="admin-tab' + (_adminTab === 'grade' ? ' active' : '') + '" onclick="switchAdminTab(\'grade\')">' + t('By Grade', '年级概览') + '</button>';
   html += '<button class="admin-tab' + (_adminTab === 'school' ? ' active' : '') + '" onclick="switchAdminTab(\'school\')">' + t('School', '全校概览') + '</button>';
+  if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+    html += '<button class="admin-tab' + (_adminTab === 'feedback' ? ' active' : '') + '" onclick="switchAdminTab(\'feedback\')">' + t('Feedback', '反馈') + '</button>';
+  }
   html += '</div>';
 
   html += '<div id="admin-content"></div>';
@@ -94,6 +97,7 @@ function renderAdmin() {
   if (_adminTab === 'classes') renderClassList();
   else if (_adminTab === 'grade') renderGradeOverview();
   else if (_adminTab === 'school') renderSchoolOverview();
+  else if (_adminTab === 'feedback' && typeof renderFeedbackList === 'function') renderFeedbackList();
 }
 
 function switchAdminTab(tab) {
@@ -485,7 +489,22 @@ async function renderClassDetail(classId) {
   });
 
   html += '</tbody></table></div>';
+
+  /* Homework section */
+  html += '<div class="hw-section">';
+  html += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">';
+  html += '<div class="hw-section-title">' + t('Homework', '作业') + '</div>';
+  html += '<button class="btn btn-primary btn-sm" onclick="showCreateHwModal(\'' + classId + '\')">' + t('+ Assign', '+ 布置作业') + '</button>';
+  html += '</div>';
+  html += '<div id="hw-list-area"><div class="admin-loading">' + t('Loading...', '加载中...') + '</div></div>';
+  html += '</div>';
+
   ct.innerHTML = html;
+
+  /* Async load homework list */
+  if (typeof renderClassHwList === 'function') {
+    renderClassHwList(classId);
+  }
 }
 
 /* ═══ RESET PASSWORD MODAL ═══ */

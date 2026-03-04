@@ -305,5 +305,11 @@ function getPublicBoardOptions() {
   return BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-') !== 0; });
 }
 
+/* Super admin */
+var SUPER_ADMIN_EMAIL = 'zhuxingda86@hotmail.com';
+function isSuperAdmin() {
+  return currentUser && currentUser.email === SUPER_ADMIN_EMAIL;
+}
+
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };

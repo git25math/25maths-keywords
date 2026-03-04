@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.1.0] - 2026-03-05 — 树状词卡 + 超管词库 CRUD + 作业系统 + 站内信 + 反馈 DB
+
+### 新功能
+- **树状条形词卡组**：首页词卡组从卡片网格改为条状行显示（`deck-row`），保持树状层级一致性
+- **超级管理员词库 CRUD**：超管（zhuxingda86@hotmail.com）可在线编辑/添加/删除词组，同步 Supabase `vocab_levels` 表
+- **作业系统（教师端）**：布置作业（选词组 + 截止日期）、查看作业完成率、学生逐人钻取（完成度/正确率/错词/尝试次数）
+- **作业系统（学生端）**：待完成/已完成作业分区展示，四选一测试界面，完成后显示正确率 + 学习建议
+- **自定义错词作业**：教师从学生错词中创建针对性词组作业（最多 10 词/组），实现个性化学习路径
+- **站内信通知**：小铃铛图标 + 红点徽章，教师布置作业/学生完成作业时自动推送通知
+- **反馈收集 DB 存储**：已登录用户反馈直接存 Supabase `feedback` 表（替代 mailto），超管面板可查看/管理反馈
+- **超管反馈面板**：管理面板新增 Feedback tab，支持状态管理（new/in_progress/done/dismissed）+ 管理员备注
+
+### Supabase 迁移
+- `20260305000000_vocab_hw_feedback.sql`：新建 `vocab_levels` / `feedback` 表，扩展 `assignments` / `assignment_results` 表
+- `20260305100000_notifications_and_extensions.sql`：新建 `notifications` 表，添加 `wrong_words` / `custom_vocabulary` 列
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/config.js` | +`SUPER_ADMIN_EMAIL` + `isSuperAdmin()` |
+| `js/storage.js` | +`loadDbVocabLevels()` + `mergeVocabLevels()` |
+| `js/auth.js` | afterLogin() 集成 DB 词库合并 |
+| `js/mastery.js` | renderHome() 改为 deck-row + 超管按钮 + 作业横幅 |
+| `js/ui.js` | showApp() 通知初始化 + submitBugReport() 改 DB + navTo homework |
+| `js/admin.js` | Feedback tab + 班级详情作业区 |
+| `js/vocab-admin.js` | **新建** ~300行，词库 CRUD UI + 反馈管理面板 |
+| `js/homework.js` | **新建** ~450行，作业全流程 + 通知系统 + 错词追踪 |
+| `css/style.css` | deck-row 样式 + 通知样式 + 作业样式 + 反馈样式 + vocab-admin 样式 |
+| `index.html` | +bell icon + homework panel + 2 script tags |
+
 ## [1.0.9] - 2026-03-05 — 编辑班级 + 单个/批量/导入学生
 
 ### 新功能

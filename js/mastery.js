@@ -147,6 +147,11 @@ function renderHome() {
   }
   html += '</div>';
 
+  /* Homework banner (students only) */
+  if (isLoggedIn() && !isGuest() && userClassId) {
+    html += '<div id="hw-banner"></div>';
+  }
+
   /* Search bar */
   html += '<div class="search-bar">';
   html += '<input class="search-input" id="home-search" type="text" placeholder="' + t('Search groups or words...', '\u641c\u7d22\u8bcd\u7ec4\u6216\u5355\u8bcd...') + '" value="' + appSearch.replace(/"/g, '&quot;') + '" oninput="onHomeSearch(this.value)">';
@@ -205,21 +210,29 @@ function renderHome() {
       boardHtml += '<span class="category-chevron">\u25bc</span>';
       boardHtml += '</div>';
 
-      boardHtml += '<div class="deck-grid category-body">';
+      boardHtml += '<div class="deck-list category-body">';
       catLevels.forEach(function(cl) {
         var locked = _levelLocked[cl.idx];
         var stats = locked ? { pct: 0 } : (_levelStats[cl.idx] || { pct: 0 });
-        boardHtml += '<div class="deck-card' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
-        boardHtml += '<div class="deck-card-head">';
-        boardHtml += '<div class="deck-card-emoji">' + cat.emoji + '</div>';
-        boardHtml += '<div><div class="deck-card-name">' + lvTitle(cl.lv) + '</div>';
-        boardHtml += '<div class="deck-card-count">' + (cl.lv.vocabulary.length / 2) + ' ' + t('words', '\u8bcd') + '</div></div>';
-        if (locked) boardHtml += '<div class="deck-lock-badge">\ud83d\udd12</div>';
-        boardHtml += '</div>';
-        boardHtml += '<div class="deck-progress"><div class="deck-progress-fill" style="width:' + stats.pct + '%"></div></div>';
-        boardHtml += '<div class="deck-card-pct">' + (locked ? '' : stats.pct + '%') + '</div>';
+        var wordCount = Math.floor(cl.lv.vocabulary.length / 2);
+        boardHtml += '<div class="deck-row' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
+        boardHtml += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
+        boardHtml += '<span class="deck-row-name">' + lvTitle(cl.lv) + '</span>';
+        boardHtml += '<span class="deck-row-count">' + wordCount + ' ' + t('words', '\u8bcd') + '</span>';
+        if (!locked) {
+          boardHtml += '<span class="deck-row-progress"><span class="deck-row-progress-fill" style="width:' + stats.pct + '%"></span></span>';
+          boardHtml += '<span class="deck-row-pct">' + stats.pct + '%</span>';
+        } else {
+          boardHtml += '<span class="deck-row-lock">\ud83d\udd12</span>';
+        }
+        if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+          boardHtml += vocabAdminBtns(cl.idx);
+        }
         boardHtml += '</div>';
       });
+      if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+        boardHtml += vocabAdminAddBtn(board.id, cat.id);
+      }
       boardHtml += '</div>';
       boardHtml += '</div>';
     });
@@ -244,6 +257,11 @@ function renderHome() {
 
   E('panel-home').innerHTML = html;
   updateSidebar();
+
+  /* Async fill homework banner */
+  if (isLoggedIn() && !isGuest() && userClassId && typeof renderHomeworkBanner === 'function') {
+    renderHomeworkBanner();
+  }
 }
 
 /* ═══ DECK DETAIL ═══ */

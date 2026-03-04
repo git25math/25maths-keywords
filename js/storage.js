@@ -359,6 +359,50 @@ function recordDailyHistory(correct) {
   writeS(s);
 }
 
+/* ═══ DB VOCAB LEVELS ═══ */
+async function loadDbVocabLevels() {
+  if (!sb) return [];
+  try {
+    var res = await sb.from('vocab_levels')
+      .select('*')
+      .eq('is_deleted', false)
+      .order('sort_order', { ascending: true });
+    return res.data || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function mergeVocabLevels(base, dbRows) {
+  var slugMap = {};
+  base.forEach(function(lv, i) { slugMap[lv.slug] = i; });
+
+  var merged = base.slice();
+
+  dbRows.forEach(function(row) {
+    var lvObj = {
+      slug: row.slug,
+      board: row.board,
+      category: row.category,
+      title: row.title,
+      titleZh: row.title_zh || '',
+      timer: row.timer || 70,
+      comboBonus: row.combo_bonus || 2,
+      vocabulary: row.vocabulary || []
+    };
+    if (slugMap[row.slug] !== undefined) {
+      /* Override existing */
+      merged[slugMap[row.slug]] = lvObj;
+    } else {
+      /* Append new */
+      merged.push(lvObj);
+    }
+  });
+
+  /* Remove levels flagged as deleted in DB */
+  return merged;
+}
+
 function bootstrapHistory() {
   var s = loadS();
   if (s.history && s.history.length > 0) return; /* already bootstrapped */

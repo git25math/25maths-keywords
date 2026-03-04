@@ -199,6 +199,20 @@ async function afterLogin() {
     }
   }
 
+  /* Load DB vocab overrides */
+  if (sb && isLoggedIn()) {
+    try {
+      var dbLvls = await loadDbVocabLevels();
+      if (dbLvls.length > 0) {
+        var custom = getCustomLevels();
+        var baseLen = LEVELS.length - custom.length;
+        var base = LEVELS.slice(0, baseLen);
+        LEVELS = mergeVocabLevels(base, dbLvls).concat(custom);
+        invalidateCache();
+      }
+    } catch (e) { /* ignore */ }
+  }
+
   if (!userBoard) {
     showBoardSelection();
   } else {

@@ -24,6 +24,7 @@ function navTo(id) {
   else if (id === 'board') renderBoard();
   else if (id === 'stats') renderStats();
   else if (id === 'admin') renderAdmin();
+  /* homework panel is rendered by startHwTest() directly */
 }
 
 function updateNav() {
@@ -284,6 +285,13 @@ function showApp() {
   updateSidebar();
   if (appBP === 'desktop') expandSidebar();
   navTo('home');
+
+  /* Show notification bell + load notifications for logged-in users */
+  if (isLoggedIn() && !isGuest()) {
+    var sn = E('sidebar-notif'); if (sn) sn.style.display = '';
+    var nb = E('notif-bell-hb'); if (nb) nb.style.display = '';
+    if (typeof loadNotifications === 'function') loadNotifications();
+  }
 }
 
 function updateSidebar() {
@@ -503,13 +511,14 @@ function showBugReport() {
   html += '<textarea class="bug-textarea bug-auto" rows="4" readonly>' + autoInfo + '</textarea>';
   html += '<div id="bug-msg" style="font-size:13px;margin:8px 0;min-height:20px;color:var(--c-danger)"></div>';
   html += '<div style="display:flex;gap:8px;margin-top:12px">';
-  html += '<button class="btn btn-primary" style="flex:1" onclick="submitBugReport()">' + t('Submit via Email', '通过邮件提交') + '</button>';
+  var submitLabel = (isLoggedIn() && !isGuest()) ? t('Submit', '提交') : t('Submit via Email', '通过邮件提交');
+  html += '<button class="btn btn-primary" style="flex:1" onclick="submitBugReport()">' + submitLabel + '</button>';
   html += '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>';
   html += '</div>';
   showModal(html);
 }
 
-function submitBugReport() {
+async function submitBugReport() {
   var desc = E('bug-desc').value.trim();
   if (!desc) {
     E('bug-msg').textContent = t('Please describe the issue', '请描述问题');
@@ -517,13 +526,35 @@ function submitBugReport() {
   }
   var type = E('bug-type').value;
   var steps = E('bug-steps').value.trim();
-  var userType = isGuest() ? 'Guest' : (isLoggedIn() ? 'Registered' : 'Unknown');
+
+  /* Logged-in users: save to DB */
+  if (sb && isLoggedIn() && !isGuest()) {
+    try {
+      var res = await sb.from('feedback').insert({
+        user_id: currentUser.id,
+        user_email: currentUser.email,
+        type: type,
+        description: desc,
+        steps: steps,
+        auto_info: { board: userBoard, lang: appLang, ua: navigator.userAgent }
+      });
+      if (res.error) throw new Error(res.error.message);
+      hideModal();
+      showToast(t('Feedback submitted!', '反馈已提交！'));
+    } catch (e) {
+      E('bug-msg').textContent = t('Submit failed: ', '提交失败：') + e.message;
+    }
+    return;
+  }
+
+  /* Guest: mailto fallback */
+  var userType = isGuest() ? 'Guest' : 'Unknown';
   var subject = '[Bug] ' + type + ' - 25Maths Keywords';
   var body = 'Bug Type: ' + type + '\n\n' +
     'Description:\n' + desc + '\n\n' +
     (steps ? 'Steps to Reproduce:\n' + steps + '\n\n' : '') +
     '--- Auto Info ---\n' +
-    'App: v1.0.5\n' +
+    'App: v1.1.0\n' +
     'Board: ' + (userBoard || 'none') + '\n' +
     'User: ' + userType + '\n' +
     'Lang: ' + appLang + '\n' +
