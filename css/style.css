@@ -1512,6 +1512,16 @@ input { font-family: inherit; }
 .settings-msg.error { color: var(--c-danger); }
 .settings-msg.success { color: var(--c-success); }
 
+/* Bug Report */
+.bug-select, .bug-textarea {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--c-border);
+  border-radius: var(--r); background: var(--c-surface); color: var(--c-text);
+  font-family: var(--f-body); font-size: 13px; margin-bottom: 12px;
+  box-sizing: border-box;
+}
+.bug-textarea { resize: vertical; line-height: 1.5; }
+.bug-auto { background: var(--c-surface-alt); color: var(--c-text2); font-size: 11px; }
+
 /* Board Selection Buttons */
 .board-sel-grid {
   display: flex; flex-direction: column; gap: 8px;

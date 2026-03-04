@@ -269,16 +269,40 @@ var EDGE_FN_URL = SUPABASE_URL + '/functions/v1';
 /* Grade options (25m-y* subset of BOARD_OPTIONS for admin panel) */
 var GRADE_OPTIONS = BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-y') === 0; });
 
-/* Check if a level index is locked for guest users */
-function isGuestLocked(li) {
-  if (!currentUser || currentUser.id !== 'local') return false;
-  /* Build visible level index list */
-  var visIdx = [];
+/* Check if a level index is locked for guest users — O(1) with cache */
+var _guestVisCache = null;
+
+function _buildGuestVisCache() {
+  var set = {};
+  var count = 0;
   for (var i = 0; i < LEVELS.length; i++) {
-    if (isLevelVisible(LEVELS[i])) visIdx.push(i);
+    if (isLevelVisible(LEVELS[i])) {
+      set[i] = count >= GUEST_FREE_LIMIT;
+      count++;
+    }
   }
-  var pos = visIdx.indexOf(li);
-  return pos >= GUEST_FREE_LIMIT;
+  _guestVisCache = set;
+}
+
+function invalidateGuestCache() {
+  _guestVisCache = null;
+}
+
+function isGuestLocked(li) {
+  if (!isGuest()) return false;
+  if (!_guestVisCache) _buildGuestVisCache();
+  return !!_guestVisCache[li];
+}
+
+/* ═══ COMMON HELPERS ═══ */
+function isGuest() { return currentUser && currentUser.id === 'local'; }
+function isLoggedIn() { return currentUser && currentUser.id !== 'local'; }
+function getDisplayName() {
+  if (!currentUser || currentUser.email === 'guest') return t('Guest', '\u8bbf\u5ba2');
+  return currentUser.nickname || currentUser.email.split('@')[0];
+}
+function getPublicBoardOptions() {
+  return BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-') !== 0; });
 }
 
 /* DOM helper */

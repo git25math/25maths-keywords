@@ -91,7 +91,7 @@ async function renderBoard() {
   var panel = E('panel-board');
 
   /* Guest users cannot access leaderboard */
-  if (currentUser && currentUser.id === 'local') {
+  if (isGuest()) {
     panel.innerHTML = '<div class="section-title">\ud83c\udfc6 ' + t('Leaderboard', '\u6392\u884c\u699c') + '</div>' +
       '<div class="board-locked-msg">' +
       '<div style="font-size:48px;margin-bottom:12px">\ud83d\udd12</div>' +
@@ -128,7 +128,7 @@ async function renderBoard() {
   var userId = currentUser ? currentUser.id : null;
 
   /* Fetch cloud leaderboard */
-  if (sb && currentUser && currentUser.id !== 'local') {
+  if (sb && isLoggedIn()) {
     try {
       var qry = sb.from('leaderboard')
         .select('user_id,nickname,score,mastery_pct,rank_emoji,mastered_words,total_words');
@@ -164,7 +164,7 @@ async function renderBoard() {
 
   /* If no cloud data or guest, show local user only */
   if (rows.length === 0) {
-    var userName = currentUser ? (currentUser.email === 'guest' ? t('Guest', '\u8bbf\u5ba2') : (currentUser.nickname || currentUser.email.split('@')[0])) : t('You', '\u4f60');
+    var userName = currentUser ? getDisplayName() : t('You', '\u4f60');
     var userRank = getRank();
     var pct = getMasteryPct();
     rows.push({ name: userName, emoji: userRank.emoji, score: pct * 20, pct: pct, isMe: true });
@@ -172,11 +172,11 @@ async function renderBoard() {
 
   /* Ensure current user is in the list */
   var hasMe = rows.some(function(r) { return r.isMe; });
-  if (!hasMe && currentUser && currentUser.id !== 'local') {
+  if (!hasMe && isLoggedIn()) {
     var myRank = getRank();
     var myPct = getMasteryPct();
     rows.push({
-      name: currentUser.nickname || currentUser.email.split('@')[0],
+      name: getDisplayName(),
       emoji: myRank.emoji, score: myPct * 20, pct: myPct, isMe: true
     });
     rows.sort(function(a, b) { return b.score - a.score; });
@@ -202,7 +202,7 @@ async function renderBoard() {
 
   /* Sub pills per scope */
   if (_boardScope === 'course') {
-    var boardOpts = userSchoolId ? BOARD_OPTIONS : BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-') !== 0; });
+    var boardOpts = userSchoolId ? BOARD_OPTIONS : getPublicBoardOptions();
     html += '<div class="board-sub-pills">';
     boardOpts.forEach(function(opt) {
       html += '<button class="board-sub-pill' + (opt.value === _boardSubKey ? ' active' : '') + '" onclick="switchBoardSub(\'' + opt.value + '\')">' + opt.emoji + ' ' + t(opt.name, opt.nameZh) + '</button>';

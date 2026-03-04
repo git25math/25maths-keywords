@@ -2,15 +2,33 @@
    storage.js — localStorage CRUD + cloud sync (extended with SRS)
    ══════════════════════════════════════════════════════════════ */
 
-/* Basic localStorage read/write */
+/* Basic localStorage read/write — with memory cache */
+var _sCache = null;
+var _cacheDirty = true;
+var _allWordsCache = null;
+var _wordDataCache = null;
+
 function loadS() {
-  try { return JSON.parse(localStorage.getItem(SK)) || {}; }
-  catch (e) { return {}; }
+  if (_sCache) return _sCache;
+  try { _sCache = JSON.parse(localStorage.getItem(SK)) || {}; }
+  catch (e) { _sCache = {}; }
+  return _sCache;
 }
 
 function writeS(d) {
+  _sCache = d;
+  _cacheDirty = true;
+  _allWordsCache = null;
+  _wordDataCache = null;
   try { localStorage.setItem(SK, JSON.stringify(d)); }
   catch (e) { /* quota exceeded */ }
+}
+
+function invalidateCache() {
+  _sCache = null;
+  _cacheDirty = true;
+  _allWordsCache = null;
+  _wordDataCache = null;
 }
 
 /* Level best scores */
@@ -53,7 +71,9 @@ function wordKey(li, wid) {
    - lv: SRS level 0-7 (Ebbinghaus)
 */
 function getWordData() {
-  return loadS().words || {};
+  if (_wordDataCache && !_cacheDirty) return _wordDataCache;
+  _wordDataCache = loadS().words || {};
+  return _wordDataCache;
 }
 
 function setWordStatus(key, status, interval, correct) {
@@ -76,15 +96,51 @@ function setWordStatus(key, status, interval, correct) {
   /* correct === undefined -> no change (backward compatible) */
 
   s.words[key] = { st: status, iv: interval || 1, nr: next, lr: now, ok: ok, fail: fail, lv: lv };
+
+  /* Inline recordDailyHistory */
+  if (!s.history) s.history = [];
+  var today = new Date().toLocaleDateString('en-CA');
+  var entry = null;
+  for (var i = s.history.length - 1; i >= 0; i--) {
+    if (s.history[i].d === today) { entry = s.history[i]; break; }
+  }
+  if (!entry) {
+    entry = { d: today, a: 0, ok: 0, fail: 0, m: 0 };
+    s.history.push(entry);
+  }
+  entry.a++;
+  if (correct === true) entry.ok++;
+  else if (correct === false) entry.fail++;
+  var wd = s.words || {};
+  var mc = 0;
+  for (var wk in wd) { if (wd[wk].st === 'mastered') mc++; }
+  entry.m = mc;
+  if (s.history.length > 365) {
+    s.history = s.history.slice(s.history.length - 365);
+  }
+
+  /* Inline recordActivity */
+  if (!s.streak) s.streak = { cur: 0, max: 0, last: '' };
+  var last = s.streak.last;
+  var newStreak = false;
+  if (today !== last) {
+    var td = new Date(today + 'T00:00:00');
+    var ld = last ? new Date(last + 'T00:00:00') : null;
+    var diff = ld ? Math.round((td - ld) / 86400000) : 999;
+    s.streak.cur = (diff === 1) ? (s.streak.cur || 0) + 1 : 1;
+    if (s.streak.cur > (s.streak.max || 0)) s.streak.max = s.streak.cur;
+    s.streak.last = today;
+    newStreak = true;
+  }
+
   writeS(s);
-  recordDailyHistory(correct);
-  var _si = recordActivity();
-  if (_si) showToast('🔥 ' + t(getStreakCount() + '-day streak!', '连续学习 ' + getStreakCount() + ' 天！'));
+  if (newStreak) showToast('🔥 ' + t(getStreakCount() + '-day streak!', '连续学习 ' + getStreakCount() + ' 天！'));
   syncToCloud();
 }
 
 /* Get all words across all levels with their mastery status */
 function getAllWords() {
+  if (_allWordsCache && !_cacheDirty) return _allWordsCache;
   var all = [];
   var wd = getWordData();
   LEVELS.forEach(function(lv, li) {
@@ -110,6 +166,8 @@ function getAllWords() {
       });
     }
   });
+  _allWordsCache = all;
+  _cacheDirty = false;
   return all;
 }
 
@@ -176,7 +234,7 @@ var _lastSyncOkAt = 0;
 var _syncRetryCount = 0;
 
 async function _doSyncToCloud() {
-  if (!sb || !currentUser || currentUser.id === 'local') return;
+  if (!sb || !isLoggedIn()) return;
   var now = new Date().toISOString();
   await sb.from('vocab_progress').upsert(
     { user_id: currentUser.id, data: JSON.stringify(loadS()), updated_at: now },
@@ -188,7 +246,7 @@ async function _doSyncToCloud() {
   var mastered = allW.filter(function(w) { return w.status === 'mastered'; }).length;
   var pct = allW.length > 0 ? Math.round(mastered / allW.length * 100) : 0;
   var r = getRank();
-  var nick = currentUser.nickname || currentUser.email.split('@')[0];
+  var nick = getDisplayName();
   /* Include school_id/class_id from user metadata if available */
   var lbRow = {
     user_id: currentUser.id,
@@ -211,7 +269,7 @@ async function _doSyncToCloud() {
 }
 
 async function syncToCloud() {
-  if (!sb || !currentUser || currentUser.id === 'local') return;
+  if (!sb || !isLoggedIn()) return;
   _syncStatus = 'syncing';
   try {
     await _doSyncToCloud();
@@ -235,7 +293,7 @@ async function syncToCloud() {
 }
 
 async function syncFromCloud() {
-  if (!sb || !currentUser || currentUser.id === 'local') return;
+  if (!sb || !isLoggedIn()) return;
   try {
     var res = await sb.from('vocab_progress').select('data, updated_at').eq('user_id', currentUser.id).single();
     if (res.data && res.data.data) {
@@ -245,6 +303,7 @@ async function syncFromCloud() {
       try { localTime = parseInt(localStorage.getItem('wmatch_last_sync')) || 0; } catch (e) {}
       if (cloudTime > localTime) {
         writeS(cloud);
+        invalidateCache();
         try { localStorage.setItem('wmatch_last_sync', cloudTime); } catch (e) {}
       }
     }

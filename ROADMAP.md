@@ -143,6 +143,16 @@
 - [x] 学生操作下拉菜单（改名 / 重置密码 / 移动班级）→ v1.0.3 完成
 - [x] Edge Function `update-student`（更新学生 auth metadata）→ v1.0.3 完成
 
+## Phase 8.2 — 架构优化 + Bug Report [DONE]
+- [x] loadS() 内存缓存（消除 95% JSON.parse）→ v1.0.6 完成
+- [x] getAllWords() / getWordData() 缓存（_cacheDirty 标记）→ v1.0.6 完成
+- [x] isGuestLocked() O(N²) → O(1)（_guestVisCache 缓存）→ v1.0.6 完成
+- [x] renderHome() 去重复计算（预计算 stats + 复用 wd）→ v1.0.6 完成
+- [x] 公共 helper 提取（isGuest / isLoggedIn / getDisplayName / getPublicBoardOptions）→ v1.0.6 完成
+- [x] setWordStatus() 合并读写（3+3 → 1+1）→ v1.0.6 完成
+- [x] 命名冲突修复（sb → sidebarEl, searchTimer → _rvSearchTimer）→ v1.0.6 完成
+- [x] Bug Report 功能（mailto 表单，侧栏入口，中英文支持）→ v1.0.6 完成
+
 ## Phase 4.1 — 25Maths 校本课程 Y7-Y11 词汇 [DONE]
 - [x] 25Maths Curriculum board（🏫 Y7-11，5 个年级分类）
 - [x] 55 个教学单元拆分为 173 个闪卡级别（≤10 词/级）

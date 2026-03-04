@@ -86,9 +86,10 @@ function toggleCIESidebar() { toggleBoardSidebar('cie'); }
 /* ═══ HOME DASHBOARD ═══ */
 function renderHome() {
   var all = getAllWords();
+  var wd = getWordData();
   var total = all.length;
   var mastered = all.filter(function(w) { return w.status === 'mastered'; }).length;
-  var due = getReviewCount();
+  var due = getDueWords().length;
 
   var html = '';
 
@@ -117,7 +118,7 @@ function renderHome() {
   html += '</div>';
 
   /* Guest trial banner */
-  if (currentUser && currentUser.id === 'local') {
+  if (isGuest()) {
     var totalVisible = 0;
     for (var gi = 0; gi < LEVELS.length; gi++) { if (isLevelVisible(LEVELS[gi])) totalVisible++; }
     html += '<div class="guest-trial-banner" onclick="showGuestLockPrompt()">';
@@ -150,17 +151,33 @@ function renderHome() {
   /* Deck grid grouped by BOARDS → categories → levels */
   var hasAnyResult = false;
   getVisibleBoards().forEach(function(board) {
-    /* Compute board-level stats */
-    var boardTotal = 0, boardMastered = 0;
+    /* Pre-compute per-level stats + lock state for this board */
+    var _levelStats = {};
+    var _levelLocked = {};
     board.categories.forEach(function(cat) {
       LEVELS.forEach(function(lv, i) {
-        if (lv.category === cat.id && isLevelVisible(lv) && !isGuestLocked(i)) {
-          var s = getDeckStats(i);
-          boardTotal += s.total;
-          boardMastered += s.mastered;
+        if (lv.category !== cat.id || !isLevelVisible(lv)) return;
+        var locked = isGuestLocked(i);
+        _levelLocked[i] = locked;
+        if (!locked) {
+          var pairs = getPairs(lv.vocabulary);
+          var m = 0;
+          pairs.forEach(function(p) {
+            var key = wordKey(i, p.lid);
+            var d = wd[key];
+            if (d && d.st === 'mastered') m++;
+          });
+          _levelStats[i] = { total: pairs.length, mastered: m, pct: pairs.length > 0 ? Math.round(m / pairs.length * 100) : 0 };
         }
       });
     });
+
+    /* Compute board-level stats from pre-computed */
+    var boardTotal = 0, boardMastered = 0;
+    for (var si in _levelStats) {
+      boardTotal += _levelStats[si].total;
+      boardMastered += _levelStats[si].mastered;
+    }
     var boardPct = boardTotal > 0 ? Math.round(boardMastered / boardTotal * 100) : 0;
 
     /* Build board HTML in temp var, only append if has matching content */
@@ -183,8 +200,8 @@ function renderHome() {
 
       boardHtml += '<div class="deck-grid category-body">';
       catLevels.forEach(function(cl) {
-        var locked = isGuestLocked(cl.idx);
-        var stats = locked ? { pct: 0 } : getDeckStats(cl.idx);
+        var locked = _levelLocked[cl.idx];
+        var stats = locked ? { pct: 0 } : (_levelStats[cl.idx] || { pct: 0 });
         boardHtml += '<div class="deck-card' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
         boardHtml += '<div class="deck-card-head">';
         boardHtml += '<div class="deck-card-emoji">' + cat.emoji + '</div>';

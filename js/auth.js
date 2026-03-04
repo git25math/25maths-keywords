@@ -162,7 +162,8 @@ E('auth-skip').addEventListener('click', function() {
 
 /* Logout — await signOut + final sync */
 async function doLogout() {
-  if (sb && currentUser && currentUser.id !== 'local') {
+  invalidateGuestCache();
+  if (sb && isLoggedIn()) {
     await syncToCloud();
     await sb.auth.signOut();
   }
@@ -177,8 +178,9 @@ E('btn-logout-hb').addEventListener('click', function() { doLogout(); });
 
 /* Post-login setup */
 async function afterLogin() {
+  invalidateGuestCache();
   /* Role detection from user_metadata */
-  if (sb && currentUser && currentUser.id !== 'local') {
+  if (sb && isLoggedIn()) {
     var sess = await sb.auth.getSession();
     var meta = sess.data.session ? sess.data.session.user.user_metadata : {};
     if (meta.role === 'student') {
@@ -202,7 +204,7 @@ async function afterLogin() {
   } else {
     showApp();
     /* Init teacher panel after app shell is visible */
-    if (sb && currentUser && currentUser.id !== 'local') {
+    if (sb && isLoggedIn()) {
       await initTeacher();
     }
   }
@@ -215,7 +217,7 @@ function showBoardSelection() {
   E('board-sel-title').textContent = t('Choose Your Course', '\u9009\u62e9\u4f60\u7684\u8bfe\u7a0b');
   E('board-sel-sub').textContent = t('You will only see vocabulary for your course. Change anytime in settings.', '\u9009\u8bfe\u540e\u53ea\u663e\u793a\u5bf9\u5e94\u6a21\u5757\u7684\u8bcd\u6c47\uff0c\u53ef\u5728\u8bbe\u7f6e\u4e2d\u66f4\u6362');
   var html = '<div class="board-sel-grid">';
-  var opts = userSchoolId ? BOARD_OPTIONS : BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-') !== 0; });
+  var opts = userSchoolId ? BOARD_OPTIONS : getPublicBoardOptions();
   opts.forEach(function(opt) {
     html += '<button class="board-sel-btn" onclick="selectBoard(\'' + opt.value + '\')">';
     html += '<span class="board-sel-emoji">' + opt.emoji + '</span>';
@@ -235,10 +237,11 @@ function hideBoardSelection() {
 
 async function selectBoard(value) {
   userBoard = value;
+  invalidateGuestCache();
   /* Persist to localStorage (guest support) */
   try { localStorage.setItem('userBoard', value); } catch (e) {}
   /* Save to user_metadata if logged in */
-  if (sb && currentUser && currentUser.id !== 'local') {
+  if (sb && isLoggedIn()) {
     try {
       await sb.auth.updateUser({ data: { board: value } });
     } catch (e) {}
@@ -246,7 +249,7 @@ async function selectBoard(value) {
   hideBoardSelection();
   showApp();
   /* Init teacher panel if applicable */
-  if (sb && currentUser && currentUser.id !== 'local') {
+  if (sb && isLoggedIn()) {
     await initTeacher();
   }
   syncToCloud();
@@ -312,7 +315,7 @@ async function sendPasswordReset() {
 
 /* ═══ SETTINGS MODAL ═══ */
 function showSettings() {
-  if (!currentUser || currentUser.id === 'local') {
+  if (!isLoggedIn()) {
     showToast(t('Please login first', '请先登录'));
     return;
   }
@@ -485,9 +488,10 @@ async function doTeacherRegister() {
 
 /* ═══ RANK GUIDE MODAL ═══ */
 function showRankGuide() {
+  var allW = getAllWords();
   var pct = getMasteryPct();
-  var total = getAllWords().length;
-  var mastered = getAllWords().filter(function(w) { return w.status === 'mastered'; }).length;
+  var total = allW.length;
+  var mastered = allW.filter(function(w) { return w.status === 'mastered'; }).length;
   var cur = getRank();
   var next = getNextRank();
 

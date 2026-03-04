@@ -30,7 +30,7 @@ async function callEdgeFunction(name, body) {
 
 /* ═══ INIT TEACHER ═══ */
 async function initTeacher() {
-  if (!sb || !currentUser || currentUser.id === 'local') return;
+  if (!sb || !isLoggedIn()) return;
   try {
     var res = await sb.from('teachers')
       .select('id, school_id, display_name')

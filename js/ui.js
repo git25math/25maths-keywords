@@ -227,37 +227,37 @@ onResize();
 
 /* ═══ SIDEBAR COLLAPSE / EXPAND ═══ */
 function expandSidebar() {
-  var sb = E('sidebar');
-  if (sb) sb.classList.add('expanded');
+  var sidebarEl = E('sidebar');
+  if (sidebarEl) sidebarEl.classList.add('expanded');
 }
 
 function collapseSidebar() {
-  var sb = E('sidebar');
-  if (sb) sb.classList.remove('expanded');
+  var sidebarEl = E('sidebar');
+  if (sidebarEl) sidebarEl.classList.remove('expanded');
   var menu = E('sf-menu');
   if (menu) menu.classList.remove('open');
 }
 
 /* Click inside sidebar (non-footer area) → expand */
 document.addEventListener('click', function(e) {
-  var sb = E('sidebar');
-  if (!sb) return;
+  var sidebarEl = E('sidebar');
+  if (!sidebarEl) return;
   var trigger = E('sf-trigger');
   var menu = E('sf-menu');
   /* If clicking footer trigger or menu, let toggleUserMenu handle it */
   if (trigger && trigger.contains(e.target)) return;
   if (menu && menu.contains(e.target)) return;
   /* If collapsed and click is inside sidebar → expand */
-  if (!sb.classList.contains('expanded') && sb.contains(e.target)) {
+  if (!sidebarEl.classList.contains('expanded') && sidebarEl.contains(e.target)) {
     expandSidebar();
   }
 });
 
 /* Click outside sidebar → collapse */
 document.addEventListener('click', function(e) {
-  var sb = E('sidebar');
-  if (!sb || !sb.classList.contains('expanded')) return;
-  if (!sb.contains(e.target)) {
+  var sidebarEl = E('sidebar');
+  if (!sidebarEl || !sidebarEl.classList.contains('expanded')) return;
+  if (!sidebarEl.contains(e.target)) {
     collapseSidebar();
   }
 });
@@ -290,8 +290,8 @@ function updateSidebar() {
   var pct = getMasteryPct();
 
   /* Display name: nickname > email prefix > Guest */
-  var displayName = currentUser.email === 'guest' ? t('Guest Mode', '\u8bbf\u5ba2\u6a21\u5f0f') : (currentUser.nickname || currentUser.email.split('@')[0]);
-  var displayShort = currentUser.email === 'guest' ? t('Guest', '\u8bbf\u5ba2') : (currentUser.nickname || currentUser.email.split('@')[0]);
+  var displayName = isGuest() ? t('Guest Mode', '\u8bbf\u5ba2\u6a21\u5f0f') : getDisplayName();
+  var displayShort = isGuest() ? t('Guest', '\u8bbf\u5ba2') : getDisplayName();
 
   /* Sidebar trigger: avatar + name */
   if (E('sb-rank')) E('sb-rank').textContent = r.emoji;
@@ -347,7 +347,7 @@ function updateSidebar() {
   /* Sync status inside popup menu */
   var syncEl = E('sb-sync-status');
   if (syncEl) {
-    if (currentUser && currentUser.id !== 'local') {
+    if (isLoggedIn()) {
       syncEl.className = 'sf-menu-sync';
       if (_syncStatus === 'ok') {
         syncEl.className += ' sync-ok';
@@ -465,6 +465,67 @@ document.addEventListener('touchend', function(e) {
   if (dx < 0 && idx < _navSeq.length - 1) navTo(_navSeq[idx + 1]);
   else if (dx > 0 && idx > 0) navTo(_navSeq[idx - 1]);
 });
+
+/* ═══ BUG REPORT ═══ */
+function showBugReport() {
+  var types = [
+    ['ui', t('UI Issue', '界面问题')],
+    ['data', t('Data Error', '数据错误')],
+    ['crash', t('Crash', '崩溃')],
+    ['feature', t('Feature Request', '功能建议')],
+    ['other', t('Other', '其他')]
+  ];
+  var typeOpts = types.map(function(tp) {
+    return '<option value="' + tp[0] + '">' + tp[1] + '</option>';
+  }).join('');
+
+  var userType = isGuest() ? 'Guest' : (isLoggedIn() ? 'Registered' : 'Unknown');
+  var autoInfo = 'App: v1.0.5\nBoard: ' + (userBoard || 'none') +
+    '\nUser: ' + userType +
+    '\nLang: ' + appLang +
+    '\nBrowser: ' + navigator.userAgent;
+
+  var html = '<div class="section-title">' + t('Report a Bug', '报告问题') + '</div>';
+  html += '<label class="settings-label">' + t('Bug Type', '问题类型') + '</label>';
+  html += '<select class="bug-select" id="bug-type">' + typeOpts + '</select>';
+  html += '<label class="settings-label">' + t('Description', '描述') + ' *</label>';
+  html += '<textarea class="bug-textarea" id="bug-desc" rows="4" placeholder="' + t('Describe the issue...', '请描述问题...') + '"></textarea>';
+  html += '<label class="settings-label">' + t('Steps to Reproduce', '复现步骤') + ' (' + t('optional', '选填') + ')</label>';
+  html += '<textarea class="bug-textarea" id="bug-steps" rows="3" placeholder="' + t('1. Go to...\n2. Click on...\n3. See error', '1. 打开...\n2. 点击...\n3. 出现错误') + '"></textarea>';
+  html += '<label class="settings-label">' + t('Auto-collected Info', '自动收集信息') + '</label>';
+  html += '<textarea class="bug-textarea bug-auto" rows="4" readonly>' + autoInfo + '</textarea>';
+  html += '<div id="bug-msg" style="font-size:13px;margin:8px 0;min-height:20px;color:var(--c-danger)"></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:12px">';
+  html += '<button class="btn btn-primary" style="flex:1" onclick="submitBugReport()">' + t('Submit via Email', '通过邮件提交') + '</button>';
+  html += '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>';
+  html += '</div>';
+  showModal(html);
+}
+
+function submitBugReport() {
+  var desc = E('bug-desc').value.trim();
+  if (!desc) {
+    E('bug-msg').textContent = t('Please describe the issue', '请描述问题');
+    return;
+  }
+  var type = E('bug-type').value;
+  var steps = E('bug-steps').value.trim();
+  var userType = isGuest() ? 'Guest' : (isLoggedIn() ? 'Registered' : 'Unknown');
+  var subject = '[Bug] ' + type + ' - 25Maths Keywords';
+  var body = 'Bug Type: ' + type + '\n\n' +
+    'Description:\n' + desc + '\n\n' +
+    (steps ? 'Steps to Reproduce:\n' + steps + '\n\n' : '') +
+    '--- Auto Info ---\n' +
+    'App: v1.0.5\n' +
+    'Board: ' + (userBoard || 'none') + '\n' +
+    'User: ' + userType + '\n' +
+    'Lang: ' + appLang + '\n' +
+    'Browser: ' + navigator.userAgent;
+  var mailto = 'mailto:support@25maths.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  window.open(mailto, '_blank');
+  hideModal();
+  showToast(t('Opening email client...', '正在打开邮件客户端...'));
+}
 
 /* Generic result screen HTML */
 function resultScreenHTML(ok, total, retryId, backId, mode) {

@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.0.6] - 2026-03-04 — 架构优化 + Bug Report 功能
+
+### 架构优化（Part A — 0 功能变更）
+- **loadS() 内存缓存**：`_sCache` 变量消除 95% JSON.parse 调用（renderHome 从 ~70 次降为 0-1 次）
+- **getAllWords() / getWordData() 缓存**：`_cacheDirty` 标记，writeS() 时自动失效
+- **isGuestLocked() O(1)**：`_guestVisCache` 缓存可见索引，仅在 board/user 变化时重建
+- **renderHome() 去重**：顶部一次 getAllWords + getWordData，board 循环内预计算 stats，消除重复 isGuestLocked/getDeckStats 调用
+- **公共 helper 提取**：`isGuest()` / `isLoggedIn()` / `getDisplayName()` / `getPublicBoardOptions()` 替代散落 11+ 处的重复模式
+- **showRankGuide() 去重**：getAllWords() 2 次 → 1 次
+- **setWordStatus() 合并读写**：recordDailyHistory + recordActivity 内联，3 次 loadS+writeS → 1+1
+- **命名冲突修复**：`ui.js` 的 `sb` → `sidebarEl`（避免与 Supabase client 冲突），`review.js` 的 `searchTimer` → `_rvSearchTimer`
+
+### 新增（Part B）
+- **Bug Report 功能**：侧栏菜单新增 🐛 Report Bug 入口，点击弹出 Modal 表单
+  - 选择问题类型（UI / Data / Crash / Feature / Other）
+  - 填写描述 + 复现步骤（选填）
+  - 自动收集 App 版本、Board、用户类型、浏览器、语言
+  - 提交时构造 mailto:support@25maths.com 链接，无需后端
+  - 中英文支持，跟随全局 appLang
+
+### 文件变更
+| 文件 | 类型 | 变更 |
+|------|------|------|
+| `js/config.js` | 修改 | +isGuestLocked O(1) 缓存 + 4 个公共 helper |
+| `js/storage.js` | 修改 | +loadS 内存缓存 + getAllWords/getWordData 缓存 + setWordStatus 合并读写 |
+| `js/mastery.js` | 修改 | renderHome 去重（预计算 stats + 复用 wd）|
+| `js/auth.js` | 修改 | helper 替换 + showRankGuide 去重 + cache invalidation 调用 |
+| `js/app.js` | 修改 | helper 替换（isGuest/isLoggedIn/getDisplayName/getPublicBoardOptions）|
+| `js/ui.js` | 修改 | sb→sidebarEl 重命名 + helper 替换 + showBugReport() + submitBugReport() |
+| `js/review.js` | 修改 | searchTimer → _rvSearchTimer |
+| `js/admin.js` | 修改 | isLoggedIn() 替换 |
+| `index.html` | 修改 | sf-menu 加 Bug Report 菜单项 |
+| `css/style.css` | 修改 | +bug-select / bug-textarea / bug-auto 样式 |
+
 ## [1.0.5] - 2026-03-04 — 访客模式限制 + 25m 内容权限控制 + 年级图标统一
 
 ### 新增

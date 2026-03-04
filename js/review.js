@@ -95,9 +95,10 @@ function renderReviewDash() {
 }
 
 /* ═══ REVIEW SEARCH ═══ */
+var _rvSearchTimer = null;
 function onReviewSearch(val) {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(function() {
+  clearTimeout(_rvSearchTimer);
+  _rvSearchTimer = setTimeout(function() {
     appSearch = val.toLowerCase().trim();
     renderReviewDash();
     var el = E('review-search');
