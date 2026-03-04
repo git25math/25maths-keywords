@@ -107,14 +107,18 @@ function updateSidebar() {
   var r = getRank();
   var pct = getMasteryPct();
 
+  /* Display name: nickname > email prefix > 访客模式 */
+  var displayName = currentUser.email === 'guest' ? '\u8bbf\u5ba2\u6a21\u5f0f' : (currentUser.nickname || currentUser.email.split('@')[0]);
+  var displayShort = currentUser.email === 'guest' ? '\u8bbf\u5ba2' : (currentUser.nickname || currentUser.email.split('@')[0]);
+
   /* Sidebar user */
   if (E('sb-rank')) E('sb-rank').textContent = r.emoji;
-  if (E('sb-name')) E('sb-name').textContent = currentUser.email === 'guest' ? '\u8bbf\u5ba2\u6a21\u5f0f' : currentUser.email.split('@')[0];
+  if (E('sb-name')) E('sb-name').textContent = displayName;
   if (E('sb-meta')) E('sb-meta').textContent = r.name + ' \xb7 ' + pct + '%';
 
   /* Header user */
   if (E('hb-rank')) E('hb-rank').textContent = r.emoji;
-  if (E('hb-name')) E('hb-name').textContent = currentUser.email === 'guest' ? '\u8bbf\u5ba2' : currentUser.email.split('@')[0];
+  if (E('hb-name')) E('hb-name').textContent = displayShort;
 
   /* Sidebar deck list */
   var deckEl = E('sidebar-decks');

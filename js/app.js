@@ -16,9 +16,11 @@
       if (recovered) {
         var rs = await sb.auth.getSession();
         if (rs.data.session) {
+          var rsMeta = rs.data.session.user.user_metadata || {};
           currentUser = {
             email: rs.data.session.user.email,
-            id: rs.data.session.user.id
+            id: rs.data.session.user.id,
+            nickname: rsMeta.nickname || ''
           };
           await syncFromCloud();
           afterLogin();
@@ -36,9 +38,11 @@
     try {
       var sess = await sb.auth.getSession();
       if (sess.data.session) {
+        var sessMeta = sess.data.session.user.user_metadata || {};
         currentUser = {
           email: sess.data.session.user.email,
-          id: sess.data.session.user.id
+          id: sess.data.session.user.id,
+          nickname: sessMeta.nickname || ''
         };
         await syncFromCloud();
 
@@ -82,7 +86,7 @@ function renderBoard() {
   ];
 
   /* Insert current user */
-  var userName = currentUser ? (currentUser.email === 'guest' ? '\u8bbf\u5ba2' : currentUser.email.split('@')[0]) : '\u4f60';
+  var userName = currentUser ? (currentUser.email === 'guest' ? '\u8bbf\u5ba2' : (currentUser.nickname || currentUser.email.split('@')[0])) : '\u4f60';
   var userRank = getRank();
   var userScore = getMasteryPct() * 20;
 

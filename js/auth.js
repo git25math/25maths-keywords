@@ -46,7 +46,7 @@ E('auth-login').addEventListener('click', async function() {
         return;
       }
 
-      currentUser = { email: email, id: res2.data.user.id };
+      currentUser = { email: email, id: res2.data.user.id, nickname: '' };
     } else if (res.error && res.error.message.indexOf('Email not confirmed') >= 0) {
       /* Already registered but not verified — resend confirmation with correct redirect */
       btn.textContent = '\u53d1\u9001\u4e2d...';
@@ -74,7 +74,8 @@ E('auth-login').addEventListener('click', async function() {
       btn.textContent = '\u767b\u5f55 / \u6ce8\u518c';
       return;
     } else {
-      currentUser = { email: email, id: res.data.user.id };
+      var meta = res.data.user.user_metadata || {};
+      currentUser = { email: email, id: res.data.user.id, nickname: meta.nickname || '' };
     }
 
     btn.disabled = false;
@@ -185,6 +186,102 @@ async function recoverSessionFromUrl() {
   }
 
   return false;
+}
+
+/* ═══ SETTINGS MODAL ═══ */
+function showSettings() {
+  if (!currentUser || currentUser.id === 'local') {
+    showToast('请先登录');
+    return;
+  }
+  var nick = currentUser.nickname || '';
+  var emailPrefix = currentUser.email.split('@')[0];
+  var html = '<div class="settings-section">' +
+    '<div class="section-title">⚙ 账号设置</div>' +
+    '<label class="settings-label">昵称</label>' +
+    '<input class="auth-input" id="settings-nick" type="text" value="' + nick.replace(/"/g, '&quot;') + '" placeholder="' + emailPrefix + '" maxlength="20">' +
+    '</div>' +
+    '<div class="settings-divider"></div>' +
+    '<div class="settings-section">' +
+    '<label class="settings-label">修改密码</label>' +
+    '<input class="auth-input" id="settings-pw1" type="password" placeholder="新密码 (至少6位，留空不改)">' +
+    '<input class="auth-input" id="settings-pw2" type="password" placeholder="确认新密码">' +
+    '</div>' +
+    '<div class="settings-msg" id="settings-msg"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:16px">' +
+    '<button class="btn btn-primary" style="flex:1" onclick="saveSettings()">保存</button>' +
+    '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">取消</button>' +
+    '</div>' +
+    '<div class="settings-divider"></div>' +
+    '<button class="btn btn-ghost btn-block" onclick="showMembershipInfo()" style="margin-top:4px">⭐ 会员升级</button>';
+  showModal(html);
+}
+
+async function saveSettings() {
+  var msgEl = E('settings-msg');
+  var nick = E('settings-nick').value.trim();
+  var pw1 = E('settings-pw1').value;
+  var pw2 = E('settings-pw2').value;
+  msgEl.textContent = '';
+  msgEl.className = 'settings-msg';
+
+  var updated = false;
+
+  /* Nickname update */
+  if (nick !== (currentUser.nickname || '')) {
+    var res = await sb.auth.updateUser({ data: { nickname: nick } });
+    if (res.error) {
+      msgEl.textContent = '昵称保存失败: ' + res.error.message;
+      msgEl.className = 'settings-msg error';
+      return;
+    }
+    currentUser.nickname = nick;
+    updateSidebar();
+    updated = true;
+  }
+
+  /* Password update */
+  if (pw1 || pw2) {
+    if (pw1.length < 6) {
+      msgEl.textContent = '密码至少6位';
+      msgEl.className = 'settings-msg error';
+      return;
+    }
+    if (pw1 !== pw2) {
+      msgEl.textContent = '两次密码不一致';
+      msgEl.className = 'settings-msg error';
+      return;
+    }
+    var res2 = await sb.auth.updateUser({ password: pw1 });
+    if (res2.error) {
+      msgEl.textContent = '密码修改失败: ' + translateAuthError(res2.error.message);
+      msgEl.className = 'settings-msg error';
+      return;
+    }
+    updated = true;
+  }
+
+  if (updated) {
+    showToast('保存成功');
+    hideModal();
+  } else {
+    hideModal();
+  }
+}
+
+/* ═══ MEMBERSHIP INFO ═══ */
+function showMembershipInfo() {
+  var html = '<div class="section-title">⭐ 会员路线</div>' +
+    '<table class="membership-table">' +
+    '<thead><tr><th>等级</th><th>功能</th><th>状态</th></tr></thead>' +
+    '<tbody>' +
+    '<tr class="current"><td>免费版</td><td>3 个代数词组 · 7 种学习模式<br>云端同步 · 艾宾浩斯复习</td><td><span class="membership-badge current">当前</span></td></tr>' +
+    '<tr><td>Pro</td><td>全部 CIE 0580 词组 (~40 组 317 词)<br>每日挑战 · 学习数据统计</td><td><span class="membership-badge soon">即将推出</span></td></tr>' +
+    '<tr><td>Premium</td><td>Edexcel 4MA1 + IB 词组<br>自定义词库分享 · 离线模式</td><td><span class="membership-badge plan">规划中</span></td></tr>' +
+    '</tbody></table>' +
+    '<div style="font-size:12px;color:var(--c-muted);margin-top:16px">敬请期待 · 更多功能持续开发中</div>' +
+    '<button class="btn btn-ghost btn-block" onclick="showSettings()" style="margin-top:12px">← 返回设置</button>';
+  showModal(html);
 }
 
 /* Clean auth callback parameters from URL */

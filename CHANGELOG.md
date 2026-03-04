@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.3.0] - 2026-03-04 — 会员设置 + 昵称 + 密码修改
+
+### 会员自助功能
+- 新增设置 Modal（⚙ 按钮）：修改昵称 + 修改密码，侧栏和顶栏均可进入
+- 昵称存储于 Supabase `user_metadata`，无需额外建表
+- 密码修改：校验长度≥6位 + 两次一致，调用 `sb.auth.updateUser({ password })`
+- Guest 模式点击设置按钮 → Toast "请先登录"
+
+### 会员升级路线说明
+- 设置 Modal 底部可点击"⭐ 会员升级"查看三级会员路线表
+- 免费版（当前）→ Pro（即将推出）→ Premium（规划中）
+- 纯展示页面，为后续付费功能预留入口
+
+### 昵称显示
+- 侧栏 / 顶栏 / 排行榜统一使用昵称优先逻辑：`nickname > email前缀 > 访客模式`
+- 登录、注册、session 恢复（回调 + 已有 session）四处均读取 `user_metadata.nickname`
+
+### 文件变更
+- `index.html` — 侧栏 + 顶栏各添加 ⚙ 设置按钮（+2 行）
+- `js/auth.js` — 新增 `showSettings()` / `saveSettings()` / `showMembershipInfo()`，登录时读取 nickname（+101 行）
+- `js/ui.js` — `updateSidebar()` 昵称优先显示（+5 行）
+- `js/app.js` — session 恢复读取 nickname + 排行榜使用昵称（+6 行）
+- `css/style.css` — 设置表单样式 + 会员路线表样式（+49 行）
+
+---
+
 ## [0.2.1] - 2026-03-04 — 跨站认证修复
 
 ### 认证系统

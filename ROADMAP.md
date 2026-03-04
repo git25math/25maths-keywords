@@ -25,6 +25,14 @@
 - [x] 登录按钮加载状态 + 中文错误翻译
 - [ ] **待手动配置**：Supabase Dashboard 添加 `https://keywords.25maths.com/` 到 Redirect URLs
 
+## Phase 2.2 — 会员设置 + 昵称 + 密码 [DONE]
+- [x] 设置 Modal（⚙ 按钮），侧栏 + 顶栏双入口
+- [x] 修改昵称（Supabase user_metadata，无需建表）
+- [x] 修改密码（校验≥6位 + 两次一致）
+- [x] 昵称优先显示（侧栏/顶栏/排行榜统一逻辑）
+- [x] 会员升级路线说明页（免费/Pro/Premium 三级展示）
+- [x] Guest 模式设置入口拦截（Toast 提示）
+
 ## Phase 3 — 词汇扩容 (Next)
 - [ ] Fix `extract-vocab.py` regex (Python 3.13 backslash escaping)
 - [ ] Auto-generate levels.js from 8 .tex files (~317 words, ~40 levels)
