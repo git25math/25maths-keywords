@@ -24,6 +24,7 @@ function saveBest(i, tm, m, c) {
   if (!p || tm < p.t) s['l' + i] = { t: tm, m: m, c: c };
   if (!s.mc || i > s.mc) s.mc = i;
   writeS(s);
+  recordDailyHistory(undefined);
   var _si = recordActivity();
   if (_si) showToast('🔥 ' + t(getStreakCount() + '-day streak!', '连续学习 ' + getStreakCount() + ' 天！'));
   syncToCloud();
@@ -76,6 +77,7 @@ function setWordStatus(key, status, interval, correct) {
 
   s.words[key] = { st: status, iv: interval || 1, nr: next, lr: now, ok: ok, fail: fail, lv: lv };
   writeS(s);
+  recordDailyHistory(correct);
   var _si = recordActivity();
   if (_si) showToast('🔥 ' + t(getStreakCount() + '-day streak!', '连续学习 ' + getStreakCount() + ' 天！'));
   syncToCloud();
@@ -232,5 +234,83 @@ async function syncFromCloud() {
       _lastSyncErrAt = errNow;
       showToast(t('Sync failed, check network', '同步失败，请检查网络'));
     }
+  }
+}
+
+/* ═══ LEARNING HISTORY ═══ */
+/* Each entry: { d: "2026-03-04", a: 12, ok: 9, fail: 3, m: 47 }
+   d = date, a = activities, ok = correct, fail = incorrect, m = mastered total */
+
+function getHistory() {
+  return loadS().history || [];
+}
+
+function recordDailyHistory(correct) {
+  var s = loadS();
+  if (!s.history) s.history = [];
+  var today = new Date().toLocaleDateString('en-CA');
+
+  /* Find or create today's entry */
+  var entry = null;
+  for (var i = s.history.length - 1; i >= 0; i--) {
+    if (s.history[i].d === today) { entry = s.history[i]; break; }
+  }
+  if (!entry) {
+    entry = { d: today, a: 0, ok: 0, fail: 0, m: 0 };
+    s.history.push(entry);
+  }
+
+  entry.a++;
+  if (correct === true) entry.ok++;
+  else if (correct === false) entry.fail++;
+
+  /* Count current mastered words */
+  var wd = s.words || {};
+  var mc = 0;
+  for (var k in wd) { if (wd[k].st === 'mastered') mc++; }
+  entry.m = mc;
+
+  /* Trim to 365 entries */
+  if (s.history.length > 365) {
+    s.history = s.history.slice(s.history.length - 365);
+  }
+
+  writeS(s);
+}
+
+function bootstrapHistory() {
+  var s = loadS();
+  if (s.history && s.history.length > 0) return; /* already bootstrapped */
+  var wd = s.words || {};
+  var dayMap = {};
+
+  /* Reconstruct from lr timestamps */
+  for (var k in wd) {
+    var w = wd[k];
+    if (!w.lr) continue;
+    var d = new Date(w.lr).toLocaleDateString('en-CA');
+    if (!dayMap[d]) dayMap[d] = { d: d, a: 0, ok: 0, fail: 0, m: 0 };
+    dayMap[d].a += (w.ok || 0) + (w.fail || 0);
+    dayMap[d].ok += (w.ok || 0);
+    dayMap[d].fail += (w.fail || 0);
+  }
+
+  /* Sort by date and calculate running mastered count */
+  var dates = Object.keys(dayMap).sort();
+  var history = [];
+  for (var i = 0; i < dates.length; i++) {
+    var entry = dayMap[dates[i]];
+    /* Count mastered up to this date */
+    var mc = 0;
+    for (var wk in wd) {
+      if (wd[wk].st === 'mastered' && wd[wk].lr && new Date(wd[wk].lr).toLocaleDateString('en-CA') <= dates[i]) mc++;
+    }
+    entry.m = mc;
+    history.push(entry);
+  }
+
+  if (history.length > 0) {
+    s.history = history;
+    writeS(s);
   }
 }

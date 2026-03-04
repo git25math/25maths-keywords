@@ -71,6 +71,9 @@
       <button class="nav-item" data-panel="board" onclick="navTo('board')">
         <span class="nav-icon">🏆</span><span class="nav-label" data-en="Leaderboard" data-zh="排行榜">排行榜</span>
       </button>
+      <button class="nav-item" data-panel="stats" onclick="navTo('stats')">
+        <span class="nav-icon">📊</span><span class="nav-label" data-en="Stats" data-zh="统计">统计</span>
+      </button>
     </nav>
 
     <div class="sidebar-decks" id="sidebar-decks"></div>
@@ -129,6 +132,7 @@
       <div class="panel" id="panel-match"></div>
       <div class="panel" id="panel-preview"></div>
       <div class="panel" id="panel-daily"></div>
+      <div class="panel" id="panel-stats"></div>
     </div>
   </div>
 
@@ -145,6 +149,9 @@
     </button>
     <button class="bnav-item" data-panel="board" onclick="navTo('board')">
       <span class="bnav-icon">🏆</span><span class="bnav-label" data-en="Board" data-zh="排行">排行</span>
+    </button>
+    <button class="bnav-item" data-panel="stats" onclick="navTo('stats')">
+      <span class="bnav-icon">📊</span><span class="bnav-label" data-en="Stats" data-zh="统计">统计</span>
     </button>
   </nav>
 
@@ -176,6 +183,7 @@
 <script src="js/spell.js"></script>
 <script src="js/match.js"></script>
 <script src="js/export.js"></script>
+<script src="js/stats.js"></script>
 <script src="js/app.js"></script>
 
 </body>

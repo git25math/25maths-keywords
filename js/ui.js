@@ -22,6 +22,7 @@ function navTo(id) {
   else if (id === 'review-dash') renderReviewDash();
   else if (id === 'import') renderImport();
   else if (id === 'board') renderBoard();
+  else if (id === 'stats') renderStats();
 }
 
 function updateNav() {
@@ -90,6 +91,7 @@ function toggleLang() {
   else if (appView === 'review-dash') renderReviewDash();
   else if (appView === 'import') renderImport();
   else if (appView === 'board') renderBoard();
+  else if (appView === 'stats') renderStats();
   updateSidebar();
 }
 

@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.9.6] - 2026-03-04 — 学习数据可视化 (Learning Analytics)
+
+### 新增
+- **学习数据面板**：新增 📊 Stats 导航入口（侧栏 + 底部导航），独立统计面板
+- **汇总统计卡片**：总练习次数、正确率、活跃天数、连续天数（Streak）四项核心指标
+- **GitHub 风格日历热力图**：近 90 天活动记录，紫色深浅四分位分级（0-4 级），显示每日练习量
+- **每日活动趋势柱状图**：近 30 天柱状图，紫色渐变，每 7 天标注日期刻度
+- **历史数据层**：`s.history[]` 每日汇总数组（date/activities/correct/fail/mastered），自动增量记录
+- **Bootstrap 历史数据**：首次打开统计页自动从 `lr` 时间戳重建历史记录
+- **深色模式适配**：热力图在深色模式下使用半透明紫色渐变
+- **手机端适配**：汇总卡片 2×2 堆叠，热力格 10px，趋势图高度缩小
+
+### 设计决策
+- **历史数据放 storage.js**：避免 script 加载顺序问题，`s.history` 随 `syncToCloud()` 自动同步
+- **Bootstrap 一次性**：仅首次无历史时从 `lr` 时间戳重建，之后增量记录
+- **上限 365 条**：每条约 50 bytes，365 条 ≈ 18KB，远低于 5MB localStorage 限制
+- **纯 CSS 图表**：零外部依赖，复用 SRS 柱状图模式
+- **5 个底部导航**：标准移动端导航模式（首页/复习/导入/排行/统计）
+
+### 文件变更
+- `js/storage.js` — 新增 `getHistory()` / `recordDailyHistory()` / `bootstrapHistory()` 三个函数 + `setWordStatus()` / `saveBest()` 插入历史钩子（~57 行）
+- `js/stats.js` — **新建**：`calcSummaryStats()` / `getHeatmapData()` / `getTrendData()` / `renderStats()` / `renderCalendarHeatmap()` / `renderTrendChart()` 六个函数（~160 行）
+- `index.html` — 新增 `panel-stats` + 侧栏/底部导航 📊 Stats 按钮 + `<script src="js/stats.js">`（~6 行）
+- `js/ui.js` — `navTo()` + `toggleLang()` 新增 stats 分支（~2 行）
+- `css/style.css` — 热力图网格 + 紫色强度等级 + 深色模式覆盖 + 趋势柱状图 + 手机断点（~100 行）
+
+---
+
 ## [0.9.5] - 2026-03-04 — 分享结果卡片 (Share Result Card)
 
 ### 新增
