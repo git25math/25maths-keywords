@@ -98,7 +98,12 @@ E('auth-login').addEventListener('click', async function() {
       var res2 = await sb.auth.signUp({ email: email, password: pass });
       if (res2.error) {
         authFail();
-        E('auth-err').textContent = translateAuthError(res2.error.message);
+        /* "User already registered" means signIn password was wrong */
+        if (res2.error.message.indexOf('already') >= 0) {
+          E('auth-err').textContent = t('Incorrect email or password', '邮箱或密码错误');
+        } else {
+          E('auth-err').textContent = translateAuthError(res2.error.message);
+        }
         btn.disabled = false;
         btn.textContent = t('Login / Register', '登录 / 注册');
         return;
