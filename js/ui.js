@@ -69,8 +69,14 @@ function showToast(msg) {
 
 /* ═══ MODAL ═══ */
 function showModal(html) {
-  E('modal-card').innerHTML = html;
+  var card = E('modal-card');
+  card.innerHTML = html;
   E('modal-overlay').style.display = 'flex';
+  /* ARIA: set aria-labelledby to first .section-title if present */
+  var title = card.querySelector('.section-title');
+  if (title && !title.id) title.id = 'modal-title-auto';
+  if (title) E('modal-overlay').setAttribute('aria-labelledby', title.id);
+  else E('modal-overlay').removeAttribute('aria-labelledby');
 }
 
 function hideModal() {
@@ -341,7 +347,7 @@ function updateSidebar() {
     if (boardOpt) {
       lines.push(boardOpt.emoji + ' ' + t(boardOpt.name, boardOpt.nameZh));
     }
-    menuHeader.innerHTML = lines.join('<br>');
+    menuHeader.innerHTML = lines.map(function(l) { return escapeHtml(l); }).join('<br>');
   }
 
   /* Sidebar: multi-board accordions with category sub-items */

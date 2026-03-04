@@ -169,6 +169,15 @@
 - [x] 串行→并行（cascadeGradeUpdate Promise.all）→ v1.1.2 完成
 - [x] markNotifRead/markAllNotifsRead try/catch 健壮性 → v1.1.2 完成
 - [x] 键盘 focus-visible 焦点指示器 → v1.1.2 完成
+- [x] 学习模式 XSS 清除（quiz/spell/battle/homework 14 处词汇数据转义）→ v1.1.3 完成
+- [x] 教师面板+侧栏 XSS 清除（班级名/学生名/用户邮箱 5 处转义）→ v1.1.3 完成
+- [x] callEdgeFunction try/catch 网络异常捕获 → v1.1.3 完成
+- [x] 通知批量 INSERT（doCreateHw 串行→单次批量）→ v1.1.3 完成
+- [x] focus-visible 补全（quiz-opt/match-item/sort-btn 等 9 类元素）→ v1.1.3 完成
+- [x] prefers-reduced-motion 全局规则 → v1.1.3 完成
+- [x] Modal ARIA（role=dialog / aria-modal / aria-labelledby）→ v1.1.3 完成
+- [x] Canvas aria-hidden → v1.1.3 完成
+- [x] 品牌更名 AISL Harrow Haikou → Harrow Haikou Upper School Mathematics Curriculum → v1.1.3 完成
 
 ## Phase 8.4 — 班级编辑 + 学生导入 [DONE]
 - [x] 编辑班级信息（名称/年级，年级变更级联更新）→ v1.0.9 完成

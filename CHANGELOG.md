@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.1.3] - 2026-03-05 — 深度加固：残余 XSS + 错误处理 + 批量通知 + 可访问性 + 品牌更名
+
+### 安全修复
+- **学习模式 XSS 清除**：quiz/spell/battle/homework 测试界面中 14 处词汇数据（questionText / opt / prompt / p.def / item.content / t_.title）统一 `escapeHtml()` 转义
+  - homework.js ×3, quiz.js ×4, spell.js ×1, battle.js ×1
+- **教师面板 XSS 清除**：renderClassList / expandGrade 班级名称、renderSchoolOverview Top10 学生名+班级名 `escapeHtml()` 转义
+  - admin.js ×4
+- **侧栏用户菜单 XSS**：updateSidebar `menuHeader.innerHTML` 中 currentUser.email 逐行 `escapeHtml()` 转义
+  - ui.js ×1
+
+### 健壮性
+- **callEdgeFunction try/catch**：包装整个函数体，网络异常/JSON 解析异常返回 `{ error: message }`，避免未捕获异常冒泡
+- **通知批量 INSERT**：`doCreateHw()` 从 for 循环逐个 `await sendNotification` 改为 `sb.from('notifications').insert([...])` 单次批量插入
+
+### 可访问性
+- **focus-visible 补全**：新增 quiz-opt / match-item / sort-btn / mode-btn / search-input / admin-tab / board-sub-pill / sf-trigger / sf-menu-item 焦点轮廓
+- **prefers-reduced-motion**：全局 `@media (prefers-reduced-motion: reduce)` 规则，禁用动画/过渡
+- **Modal ARIA**：`#modal-overlay` 添加 `role="dialog" aria-modal="true"`，`showModal()` 自动设置 `aria-labelledby` 指向首个 `.section-title`
+- **Canvas aria-hidden**：`<canvas id="fx">` 添加 `aria-hidden="true"`
+
+### 品牌更名
+- **BOARD_OPTIONS**：`'AISL Harrow Haikou Year N'` → `'Harrow Haikou Year N'`（简洁形式）
+- **BOARDS**：`name: 'AISL Harrow Haikou'` → `name: 'Harrow Haikou Upper School Mathematics Curriculum'`，`nameZh: '哈罗海口'` → `nameZh: '哈罗海口高年级数学课程'`
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/homework.js` | escapeHtml×3, 通知批量 INSERT |
+| `js/admin.js` | escapeHtml×4, callEdgeFunction try/catch |
+| `js/ui.js` | escapeHtml×1, showModal ARIA labelledby |
+| `js/spell.js` | escapeHtml×1 |
+| `js/quiz.js` | escapeHtml×4 |
+| `js/battle.js` | escapeHtml×1 |
+| `css/style.css` | focus-visible×3 规则, prefers-reduced-motion |
+| `index.html` | Modal role/aria-modal, canvas aria-hidden |
+| `js/config.js` | 品牌更名 AISL → Harrow Haikou Upper School |
+
 ## [1.1.2] - 2026-03-05 — 残余 XSS + N+1 查询 + 健壮性 + 可访问性
 
 ### 安全修复

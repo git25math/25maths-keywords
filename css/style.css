@@ -2566,6 +2566,18 @@ input { font-family: inherit; }
 
 /* ═══ KEYBOARD FOCUS INDICATORS ═══ */
 .btn:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
-.auth-input:focus-visible, .bug-textarea:focus-visible, .spell-input:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 1px; }
+.auth-input:focus-visible, .bug-textarea:focus-visible, .spell-input:focus-visible, .search-input:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 1px; }
 .nav-item:focus-visible, .bnav-item:focus-visible { outline: 2px solid var(--c-primary); outline-offset: -2px; }
-.hw-option:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.hw-option:focus-visible, .quiz-opt:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.match-item:focus-visible, .sort-btn:focus-visible, .mode-btn:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.admin-tab:focus-visible, .board-sub-pill:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.sf-trigger:focus-visible, .sf-menu-item:focus-visible { outline: 2px solid var(--c-primary); outline-offset: -2px; }
+
+/* ═══ REDUCED MOTION ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

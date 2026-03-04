@@ -183,14 +183,21 @@ async function doCreateHw(classId) {
     });
     if (res.error) throw new Error(res.error.message);
 
-    /* Send notifications to all students in this class */
+    /* Send notifications to all students in this class (batch INSERT) */
     var csRes = await sb.from('class_students').select('user_id').eq('class_id', classId);
     var students = csRes.data || [];
-    for (var i = 0; i < students.length; i++) {
-      await sendNotification(students[i].user_id, 'homework',
-        t('New homework: ', '新作业：') + title,
-        t('Deadline: ', '截止日期：') + new Date(deadline).toLocaleDateString(),
-        'homework', '');
+    if (students.length > 0) {
+      var notifRows = students.map(function(s) {
+        return {
+          user_id: s.user_id,
+          type: 'homework',
+          title: t('New homework: ', '新作业：') + title,
+          body: t('Deadline: ', '截止日期：') + new Date(deadline).toLocaleDateString(),
+          link_type: 'homework',
+          link_id: ''
+        };
+      });
+      try { await sb.from('notifications').insert(notifRows); } catch (e) { /* ignore */ }
     }
 
     hideModal();
@@ -707,16 +714,16 @@ function renderHwQuestion() {
 
   var html = '<div class="hw-header">';
   html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
-  html += '<div class="deck-title">' + t_.title + '</div>';
+  html += '<div class="deck-title">' + escapeHtml(t_.title) + '</div>';
   html += '<div style="font-size:13px;color:var(--c-text2);margin-left:auto">' + (t_.idx + 1) + '/' + t_.total + '</div>';
   html += '</div>';
 
   html += '<div class="hw-progress-bar"><div class="hw-progress-fill" style="width:' + progressPct + '%"></div></div>';
-  html += '<div class="hw-question-word">' + prompt + '</div>';
+  html += '<div class="hw-question-word">' + escapeHtml(prompt) + '</div>';
 
   html += '<div class="hw-options">';
   options.forEach(function(opt) {
-    html += '<button class="hw-option" onclick="pickHwAnswer(this, ' + JSON.stringify(opt === answer) + ', ' + JSON.stringify(answer).replace(/"/g, '&quot;') + ')">' + opt + '</button>';
+    html += '<button class="hw-option" onclick="pickHwAnswer(this, ' + JSON.stringify(opt === answer) + ', ' + JSON.stringify(answer).replace(/"/g, '&quot;') + ')">' + escapeHtml(opt) + '</button>';
   });
   html += '</div>';
 

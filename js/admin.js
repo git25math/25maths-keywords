@@ -14,18 +14,22 @@ function isTeacher() { return isTeacherUser; }
 
 /* ═══ EDGE FUNCTION CALLER ═══ */
 async function callEdgeFunction(name, body) {
-  var session = await sb.auth.getSession();
-  var token = session.data.session ? session.data.session.access_token : '';
-  var res = await fetch(EDGE_FN_URL + '/' + name, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-      'apikey': SUPABASE_KEY
-    },
-    body: JSON.stringify(body)
-  });
-  return await res.json();
+  try {
+    var session = await sb.auth.getSession();
+    var token = session.data.session ? session.data.session.access_token : '';
+    var res = await fetch(EDGE_FN_URL + '/' + name, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        'apikey': SUPABASE_KEY
+      },
+      body: JSON.stringify(body)
+    });
+    return await res.json();
+  } catch (e) {
+    return { error: e.message || 'Network error' };
+  }
 }
 
 /* ═══ INIT TEACHER ═══ */
@@ -138,7 +142,7 @@ async function renderClassList() {
     var gradeLabel = gradeOpt ? t(gradeOpt.name, gradeOpt.nameZh) : c.grade;
 
     html += '<div class="admin-class-card" onclick="renderClassDetail(\'' + c.id + '\')">';
-    html += '<div class="admin-class-name">' + c.name + '</div>';
+    html += '<div class="admin-class-name">' + escapeHtml(c.name) + '</div>';
     html += '<div class="admin-class-grade">' + gradeLabel + '</div>';
     html += '<div class="admin-class-stats">';
     html += '<span>' + count + ' ' + t('students', '学生') + '</span>';
@@ -622,7 +626,7 @@ async function expandGrade(grade) {
     var avgPct = count > 0 ? Math.round(c.students.reduce(function(sum, s) { return sum + (s.mastery_pct || 0); }, 0) / count) : 0;
     html += '<div class="admin-grade-class">';
     html += '<div class="admin-grade-class-header" onclick="renderClassDetail(\'' + cid + '\')">';
-    html += '<span class="admin-grade-class-name">' + c.name + '</span>';
+    html += '<span class="admin-grade-class-name">' + escapeHtml(c.name) + '</span>';
     html += '<span>' + count + ' ' + t('students', '学生') + ' · ' + t('Avg', '平均') + ' ' + avgPct + '%</span>';
     html += '</div></div>';
   });
@@ -698,8 +702,8 @@ async function renderSchoolOverview() {
     html += '<th>' + t('Mastery', '掌握率') + '</th><th>' + t('Rank', '段位') + '</th>';
     html += '</tr></thead><tbody>';
     top10.forEach(function(s, i) {
-      html += '<tr><td>' + (i + 1) + '</td><td>' + (s.student_name || '-') + '</td>';
-      html += '<td>' + (s.class_name || '-') + '</td>';
+      html += '<tr><td>' + (i + 1) + '</td><td>' + escapeHtml(s.student_name || '-') + '</td>';
+      html += '<td>' + escapeHtml(s.class_name || '-') + '</td>';
       html += '<td>' + (s.mastery_pct || 0) + '%</td>';
       html += '<td>' + (s.rank_emoji || '\ud83e\udd49') + '</td></tr>';
     });

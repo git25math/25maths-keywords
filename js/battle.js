@@ -60,7 +60,7 @@ function renderBattle(lv) {
     s.dataset.tp = item.type;
     s.style.animationDelay = i * 0.04 + 's';
     s.innerHTML = '<div class="ci"><div class="cf cf-b"></div><div class="cf cf-f"><div class="ct-l">' +
-      (item.type === 'word' ? 'EN' : t('CN', '\u4e2d')) + '</div><div class="ct-t">' + item.content + '</div></div></div>';
+      (item.type === 'word' ? 'EN' : t('CN', '\u4e2d')) + '</div><div class="ct-t">' + escapeHtml(item.content) + '</div></div></div>';
     s.addEventListener('click', function() { onFlip(s); });
     gridEl.appendChild(s);
   });

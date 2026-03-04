@@ -16,7 +16,7 @@
 <body>
 
 <!-- Particle Canvas -->
-<canvas id="fx"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
 
 <!-- Auth Overlay -->
 <div class="ov vis" id="ov-auth">
@@ -208,7 +208,7 @@
 <div id="toast-el" class="toast"></div>
 
 <!-- Modal Overlay -->
-<div id="modal-overlay" class="modal-overlay" style="display:none">
+<div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" style="display:none">
   <div class="modal-card" id="modal-card"></div>
 </div>
 

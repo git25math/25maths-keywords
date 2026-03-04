@@ -83,14 +83,14 @@ function renderQuizCard() {
 
   /* Question */
   html += '<div class="quiz-question">';
-  html += '<div class="quiz-word">' + questionText + '</div>';
+  html += '<div class="quiz-word">' + escapeHtml(questionText) + '</div>';
   html += '<div class="quiz-hint">' + hintText + '</div>';
   html += '</div>';
 
   /* Options */
   html += '<div class="quiz-options" id="quiz-options">';
   options.forEach(function(opt, i) {
-    html += '<button class="quiz-opt" data-idx="' + i + '" data-correct="' + (opt === correctAnswer ? '1' : '0') + '" onclick="pickQuizOpt(this)">' + opt + '</button>';
+    html += '<button class="quiz-opt" data-idx="' + i + '" data-correct="' + (opt === correctAnswer ? '1' : '0') + '" onclick="pickQuizOpt(this)">' + escapeHtml(opt) + '</button>';
   });
   html += '</div>';
 
@@ -263,14 +263,14 @@ function renderDailyCard() {
 
   /* Question */
   html += '<div class="quiz-question">';
-  html += '<div class="quiz-word">' + questionText + '</div>';
+  html += '<div class="quiz-word">' + escapeHtml(questionText) + '</div>';
   html += '<div class="quiz-hint">' + hintText + '</div>';
   html += '</div>';
 
   /* Options */
   html += '<div class="quiz-options" id="dc-options">';
   options.forEach(function(opt, i) {
-    html += '<button class="quiz-opt" data-correct="' + (opt === correctAnswer ? '1' : '0') + '" onclick="pickDailyOpt(this)">' + opt + '</button>';
+    html += '<button class="quiz-opt" data-correct="' + (opt === correctAnswer ? '1' : '0') + '" onclick="pickDailyOpt(this)">' + escapeHtml(opt) + '</button>';
   });
   html += '</div>';
 
