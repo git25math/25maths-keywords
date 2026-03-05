@@ -44,7 +44,13 @@ var THEME = {
 };
 
 /* Global app state */
-var appLang = 'en';          /* 'en' | 'bilingual' */
+var appLang = (function() {
+  try {
+    var stored = localStorage.getItem('wmatch_lang');
+    if (stored === 'bilingual') return 'bilingual';
+  } catch (e) {}
+  return 'en';
+})();          /* 'en' | 'bilingual' */
 var appView = 'home';        /* current panel id */
 var appSort = 'default';     /* 'default' | 'az' | 'random' | 'hard' */
 var appBP = 'desktop';       /* 'phone' | 'tablet' | 'desktop' */
@@ -312,7 +318,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.1.6';
+var APP_VERSION = 'v1.1.7';
 
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };

@@ -3,6 +3,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 (async function initApp() {
+  updateAuthLang();
   /* Load custom levels from storage */
   var custom = getCustomLevels();
   if (custom.length > 0) {

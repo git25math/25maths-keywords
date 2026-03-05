@@ -90,6 +90,7 @@ E('modal-overlay').addEventListener('click', function(e) {
 /* ═══ LANGUAGE TOGGLE ═══ */
 function toggleLang() {
   appLang = appLang === 'bilingual' ? 'en' : 'bilingual';
+  try { localStorage.setItem('wmatch_lang', appLang); } catch(e) {}
   var label = appLang === 'en' ? '中文' : 'EN';
   /* Sidebar menu item label handled by updateNav() via data-en/data-zh */
   if (E('lang-toggle-hb')) E('lang-toggle-hb').textContent = label;

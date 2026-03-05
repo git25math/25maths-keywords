@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.7] - 2026-03-05 — 记住用户语言偏好
+
+### UX 增强
+- **语言偏好持久化**：用户切换语言后刷新页面不再重置为英文，偏好保存在 localStorage（`wmatch_lang`）
+  - `appLang` 初始化从 localStorage 读取，仅接受 `'bilingual'`，其他值回退 `'en'`
+  - `toggleLang()`（应用内）和 `toggleAuthLang()`（登录页）切换后写入 localStorage
+  - `initApp()` 开头调用 `updateAuthLang()` 确保登录页 DOM 立即应用已保存的语言
+- **APP_VERSION**：`v1.1.6` → `v1.1.7`
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/config.js` | `appLang` 从 localStorage 初始化 + 版本号 |
+| `js/ui.js` | `toggleLang()` 写 localStorage |
+| `js/auth.js` | `toggleAuthLang()` 写 localStorage |
+| `js/app.js` | `initApp()` 调用 `updateAuthLang()` 应用已保存语言 |
+
 ## [1.1.6] - 2026-03-05 — 修复刷新页面闪现登录页
 
 ### UX 修复

@@ -6,6 +6,7 @@
 /* ═══ AUTH LANGUAGE TOGGLE ═══ */
 function toggleAuthLang() {
   appLang = appLang === 'en' ? 'bilingual' : 'en';
+  try { localStorage.setItem('wmatch_lang', appLang); } catch(e) {}
   updateAuthLang();
 }
 
