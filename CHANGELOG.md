@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.10] - 2026-03-05 — 25m 卡组前缀改为 Y{n}.{unitNum} 编号
+
+### UX 增强
+- **卡组前缀**：25m 板块 deck-row 前缀从年级 emoji（⓻⓼⓽⓾⓫）改为 `Y7.1` 格式编号标签，同时标识年级和单元编号
+  - 例：`⓻ Multiplication of Fractions (1)` → `Y7.1 · Multiplication of Fractions (1)`
+  - 详情页标题同步更新为 `Y7.1 · lvTitle(lv)` 格式
+  - CIE / Edexcel 板块不受影响，保持原有 emoji 前缀
+- **APP_VERSION**：`v1.1.9` → `v1.1.10`
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/mastery.js` | `renderDeckRow()` 25m 前缀改为 `deck-row-tag`；`renderDeck()` 详情页标题同步 |
+| `css/style.css` | 新增 `.deck-row-tag` 样式（mono 字体、primary 色、固定宽度） |
+| `js/config.js` | 版本号 v1.1.10 |
+
 ## [1.1.9] - 2026-03-05 — Y7-Y11 词卡按单元分组（二级折叠）
 
 ### UX 增强

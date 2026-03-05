@@ -95,7 +95,12 @@ function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
   var wordCount = Math.floor(cl.lv.vocabulary.length / 2);
   var h = '';
   h += '<div class="deck-row' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
-  h += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
+  if (cl.lv.board === '25m' && cl.lv.unitNum) {
+    var yn = cl.lv.category.replace('25m-y', '');
+    h += '<span class="deck-row-tag">Y' + yn + '.' + cl.lv.unitNum + '</span>';
+  } else {
+    h += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
+  }
   h += '<span class="deck-row-name">' + lvTitle(cl.lv) + '</span>';
   h += '<span class="deck-row-count">' + wordCount + ' ' + t('words', '\u8bcd') + '</span>';
   if (!locked) {
@@ -360,7 +365,12 @@ function renderDeck(idx) {
   html += '<div class="deck-header">';
   html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
   var catInfo = getCategoryInfo(lv.category);
-  html += '<div class="deck-title">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
+  if (lv.board === '25m' && lv.unitNum) {
+    var yn = lv.category.replace('25m-y', '');
+    html += '<div class="deck-title">Y' + yn + '.' + lv.unitNum + ' \u00b7 ' + lvTitle(lv) + '</div>';
+  } else {
+    html += '<div class="deck-title">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
+  }
   html += '</div>';
 
   /* Mode grid */
