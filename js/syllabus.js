@@ -341,7 +341,9 @@ function renderSectionDetail(ch, sec, secIdx) {
   html += '<div class="sec-module-info">';
   html += '<div class="sec-module-title">' + t('Knowledge Card', '知识卡片') + '</div>';
   html += '<div class="sec-module-sub">' + t('Coming soon', '即将推出') + '</div>';
-  html += '</div></div>';
+  html += '</div>';
+  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '</div>';
 
   /* Examples placeholder (Phase B) */
   html += '<div class="sec-module sec-module-coming">';
@@ -349,13 +351,18 @@ function renderSectionDetail(ch, sec, secIdx) {
   html += '<div class="sec-module-info">';
   html += '<div class="sec-module-title">' + t('Worked Examples', '经典例题') + '</div>';
   html += '<div class="sec-module-sub">' + t('Coming soon', '即将推出') + '</div>';
-  html += '</div></div>';
+  html += '</div>';
+  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '</div>';
 
   html += '</div>'; /* close sec-modules */
 
   /* Syllabus requirements */
   html += '<div class="sec-syllabus">';
+  html += '<div class="sec-syllabus-header">';
   html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '考纲要求') + '</div>';
+  html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '</div>';
   if (sec.core_content) {
     html += '<div class="sec-syllabus-block">';
     html += '<span class="sec-syllabus-label">Core:</span> ' + escapeHtml(sec.core_content);
@@ -409,7 +416,33 @@ var _sectionReportTypes = {
     ['question', 'Question error / 题目有误'],
     ['formula',  'Formula issue / 公式渲染问题'],
     ['other',    'Other / 其他']
+  ],
+  knowledge: [
+    ['wrong-info', 'Wrong information / 信息错误'],
+    ['incomplete', 'Incomplete content / 内容不完整'],
+    ['formula',    'Formula issue / 公式渲染问题'],
+    ['other',      'Other / 其他']
+  ],
+  examples: [
+    ['wrong-step', 'Wrong step / 步骤错误'],
+    ['wrong-ans',  'Wrong answer / 答案错误'],
+    ['unclear',    'Unclear explanation / 解释不清'],
+    ['other',      'Other / 其他']
+  ],
+  syllabus: [
+    ['wrong-req',  'Wrong requirement / 考纲要求有误'],
+    ['incomplete', 'Incomplete / 不完整'],
+    ['mismatch',   'Tier mismatch / 层级不匹配'],
+    ['other',      'Other / 其他']
   ]
+};
+
+var _sectionModuleLabels = {
+  vocabulary: ['Vocabulary', '核心词汇'],
+  practice:   ['Practice', '练习'],
+  knowledge:  ['Knowledge Card', '知识卡片'],
+  examples:   ['Worked Examples', '经典例题'],
+  syllabus:   ['Syllabus Requirements', '考纲要求']
 };
 
 function reportSectionModule(sectionId, moduleType) {
@@ -420,7 +453,8 @@ function reportSectionModule(sectionId, moduleType) {
   var typeOpts = types.map(function(tp) {
     return '<option value="' + tp[0] + '">' + tp[1] + '</option>';
   }).join('');
-  var modLabel = moduleType === 'practice' ? t('Practice', '练习') : t('Vocabulary', '核心词汇');
+  var lbl = _sectionModuleLabels[moduleType] || _sectionModuleLabels.vocabulary;
+  var modLabel = t(lbl[0], lbl[1]);
 
   var html = '<div class="section-title">\ud83d\udea9 ' + t('Report Error', '报告错误') + ' — ' + sec.id + ' ' + modLabel + '</div>';
   html += '<div style="text-align:left;margin-bottom:12px;padding:10px;background:var(--c-surface-alt);border-radius:var(--r);font-size:12px">';

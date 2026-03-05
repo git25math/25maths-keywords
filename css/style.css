@@ -2937,7 +2937,8 @@ input { font-family: inherit; }
   cursor: pointer; transition: background 0.15s, box-shadow 0.15s;
 }
 .sec-module:hover { background: var(--c-surface-alt); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.sec-module-empty, .sec-module-coming { opacity: 0.5; cursor: default; pointer-events: none; }
+.sec-module-empty { opacity: 0.5; cursor: default; pointer-events: none; }
+.sec-module-coming { opacity: 0.5; cursor: default; }
 .sec-module-icon { font-size: 24px; flex-shrink: 0; }
 .sec-module-info { flex: 1; min-width: 0; }
 .sec-module-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--c-text); }
@@ -2952,7 +2953,8 @@ input { font-family: inherit; }
 
 /* Syllabus requirements block */
 .sec-syllabus { background: var(--c-surface-alt); border-radius: var(--r); padding: 16px; margin-bottom: 20px; }
-.sec-syllabus-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--c-text); margin-bottom: 10px; }
+.sec-syllabus-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.sec-syllabus-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--c-text); }
 .sec-syllabus-block { font-size: 13px; line-height: 1.6; color: var(--c-text2); margin-bottom: 8px; }
 .sec-syllabus-label { font-weight: 700; color: var(--c-primary); }
 
