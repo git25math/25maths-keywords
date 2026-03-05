@@ -457,6 +457,12 @@ function drawShareCard(opts) {
   ctx.fillStyle = 'rgba(255,255,255,0.5)';
   ctx.fillText('keywords.25maths.com', W / 2, div2Y + 56);
 
+  /* Username */
+  var displayName = getDisplayName();
+  ctx.font = '700 22px "Bricolage Grotesque", "DM Sans", "Noto Sans SC", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.fillText(displayName, W / 2, div2Y + 96);
+
   return c;
 }
 
