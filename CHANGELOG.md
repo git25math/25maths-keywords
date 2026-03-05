@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.3.3] - 2026-03-05 — 按 board 懒加载 JSON
+
+### 性能优化
+- **按 board 懒加载 JSON**：启动时仅加载当前 board 的 JSON（CIE ~8KB / EDX ~6KB / 25m ~26KB），首次访问或教师加载全部 3 个（~40KB gzip）
+- 首屏 gzip 从 ~98KB 降至 ~66-72KB（CIE 学生仅 ~58KB）
+
+### 功能改进
+- **深链支持 slug**：`?level=num-types` 按 slug 匹配，向后兼容 `?level=0` 索引
+- **iOS share 恢复改 slug**：sessionStorage 保存 slug 替代 index，跨 board 加载后仍可恢复
+- **跨 board 作业守卫**：学生查看/开始作业时自动加载全部 board 数据
+- **导出全量守卫**：exportProgress 改 async，确保包含全部 board 数据
+
+### 架构变更
+- `levels-loader.js` 重写：board 感知加载 + `ensureBoardLoaded()` / `ensureAllBoardsLoaded()` 公共 API
+- `_loadedData` / `_fetchPromises` 去重机制，`_rebuildLevels()` 始终按 CIE→EDX→25m 顺序拼接
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/levels-loader.js` | **重写** — board 感知懒加载 + ensureBoardLoaded/ensureAllBoardsLoaded API |
+| `js/auth.js` | 3 处插入 ensureBoardLoaded/ensureAllBoardsLoaded 调用 |
+| `js/homework.js` | 2 处加 ensureAllBoardsLoaded 守卫 |
+| `js/export.js` | exportProgress 改 async + ensureAllBoardsLoaded |
+| `js/app.js` | 深链改 slug 匹配 + iOS recovery 改 slug |
+| `js/quiz.js` | share 保存 slug 替代 index |
+| `js/config.js` | APP_VERSION → v1.3.3 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.3.2] - 2026-03-05 — esbuild Minify + 首屏优化
 
 ### 性能优化

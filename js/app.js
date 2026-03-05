@@ -45,25 +45,35 @@ onLevelsReady(function() {
 
         await afterLogin();
 
-        /* Handle ?level=N URL parameter for deep linking */
+        /* Handle ?level= URL parameter for deep linking (slug first, index fallback) */
         var params = new URLSearchParams(window.location.search);
         var lvlParam = params.get('level');
         if (lvlParam !== null) {
-          var lvlIdx = parseInt(lvlParam, 10);
-          if (!isNaN(lvlIdx) && lvlIdx >= 0 && lvlIdx < LEVELS.length) {
-            openDeck(lvlIdx);
+          var found = -1;
+          for (var _dl = 0; _dl < LEVELS.length; _dl++) {
+            if (LEVELS[_dl].slug === lvlParam) { found = _dl; break; }
           }
+          if (found === -1) {
+            var lvlIdx = parseInt(lvlParam, 10);
+            if (!isNaN(lvlIdx) && lvlIdx >= 0 && lvlIdx < LEVELS.length) found = lvlIdx;
+          }
+          if (found >= 0) openDeck(found);
         }
 
-        /* Recover from iOS page eviction after share */
+        /* Recover from iOS page eviction after share (slug-based) */
         try {
           var shareLvl = sessionStorage.getItem('wmatch_share_lvl');
           if (shareLvl !== null) {
             sessionStorage.removeItem('wmatch_share_lvl');
-            var sIdx = parseInt(shareLvl, 10);
-            if (!isNaN(sIdx) && sIdx >= 0 && sIdx < LEVELS.length) {
-              openDeck(sIdx);
+            var sFound = -1;
+            for (var _sl = 0; _sl < LEVELS.length; _sl++) {
+              if (LEVELS[_sl].slug === shareLvl) { sFound = _sl; break; }
             }
+            if (sFound === -1) {
+              var sIdx = parseInt(shareLvl, 10);
+              if (!isNaN(sIdx) && sIdx >= 0 && sIdx < LEVELS.length) sFound = sIdx;
+            }
+            if (sFound >= 0) openDeck(sFound);
           }
         } catch(e) {}
 

@@ -201,6 +201,11 @@ async function afterLogin() {
     }
   }
 
+  /* Ensure board JSON is loaded (may differ from localStorage if user changed board on another device) */
+  if (userBoard) {
+    try { await ensureBoardLoaded(userBoard); } catch(e) {}
+  }
+
   /* Load DB vocab overrides */
   if (sb && isLoggedIn()) {
     try {
@@ -236,6 +241,8 @@ async function loadAndInitTeacher() {
       .select('id').eq('user_id', currentUser.id).maybeSingle();
     if (!res.data) return;
   } catch(e) { return; }
+  /* Teacher needs all boards (cross-board homework) */
+  try { await ensureAllBoardsLoaded(); } catch(e) {}
   /* Dynamically load admin.js + vocab-admin.js */
   await new Promise(function(resolve) {
     var s1 = document.createElement('script');
@@ -288,6 +295,10 @@ async function selectBoard(value) {
     try {
       await sb.auth.updateUser({ data: { board: value } });
     } catch (e) {}
+  }
+  /* Load JSON for newly selected board */
+  try { await ensureBoardLoaded(value); } catch(e) {
+    showToast(t('Failed to load vocabulary data', '词汇数据加载失败'));
   }
   hideBoardSelection();
   showApp();

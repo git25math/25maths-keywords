@@ -502,7 +502,7 @@ function shareResult(opts) {
 
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         /* Save state for iOS page eviction recovery */
-        try { sessionStorage.setItem('wmatch_share_lvl', '' + currentLvl); } catch(e) {}
+        try { sessionStorage.setItem('wmatch_share_lvl', LEVELS[currentLvl] ? LEVELS[currentLvl].slug : '' + currentLvl); } catch(e) {}
         navigator.share({
           files: [file],
           title: '25Maths Keywords',

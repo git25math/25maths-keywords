@@ -1,7 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
-   levels-loader.js — Async parallel loader for split level data
-   Loads 3 JSON files (CIE + EDX + 25m) and concatenates into LEVELS.
-   Falls back to monolithic levels.js on failure.
+   levels-loader.js — Board-aware lazy loader for split level data
+   Loads JSON per board on demand; falls back to monolithic levels.js.
    ══════════════════════════════════════════════════════════════ */
 
 var LEVELS = [];
@@ -13,12 +12,101 @@ function onLevelsReady(fn) {
   _levelsCallbacks.push(fn);
 }
 
+/* ─── internal state ─── */
+var _boardJsonMap = {
+  cie: 'data/levels-cie.json',
+  edx: 'data/levels-edx.json',
+  '25m': 'data/levels-25m.json'
+};
+var _canonOrder = ['cie', 'edx', '25m'];  /* rebuild always in this order */
+var _loadedData = {};      /* boardKey → array of levels */
+var _fetchPromises = {};   /* url → Promise (dedup in-flight) */
+
+function _urlForBoard(bk) { return _boardJsonMap[bk] || null; }
+
+/* Fetch one JSON, dedup concurrent calls to same URL */
+function _fetchJson(url) {
+  if (_fetchPromises[url]) return _fetchPromises[url];
+  _fetchPromises[url] = fetch(url).then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(function(data) {
+    delete _fetchPromises[url];
+    return data;
+  }).catch(function(err) {
+    delete _fetchPromises[url];
+    throw err;
+  });
+  return _fetchPromises[url];
+}
+
+/* Rebuild LEVELS from _loadedData in canonical order (CIE → EDX → 25m).
+   Preserves custom levels appended by other modules. */
+function _rebuildLevels() {
+  var custom = (typeof getCustomLevels === 'function') ? getCustomLevels() : [];
+  var baseLen = LEVELS.length - custom.length;
+  var base = [];
+  _canonOrder.forEach(function(bk) {
+    if (_loadedData[bk]) base = base.concat(_loadedData[bk]);
+  });
+  LEVELS = base.concat(custom);
+  if (typeof invalidateCache === 'function') invalidateCache();
+  if (typeof invalidateGuestCache === 'function') invalidateGuestCache();
+  _quizCache = null;  /* quiz distractor cache */
+}
+
+/* Map userBoard value → list of board keys needed */
+function _boardKeysFor(board) {
+  if (!board || board === 'all') return _canonOrder.slice();
+  if (board === 'cie') return ['cie'];
+  if (board === 'edx') return ['edx'];
+  if (board.indexOf('25m') === 0) return ['25m'];
+  return _canonOrder.slice();
+}
+
+/* ─── public API ─── */
+
+/* Ensure the JSON for a specific userBoard value is loaded.
+   Returns a Promise that resolves when data is ready. */
+function ensureBoardLoaded(board) {
+  var keys = _boardKeysFor(board);
+  var needed = keys.filter(function(k) { return !_loadedData[k]; });
+  if (needed.length === 0) return Promise.resolve();
+
+  var tasks = needed.map(function(bk) {
+    var url = _urlForBoard(bk);
+    if (!url) return Promise.resolve();
+    return _fetchJson(url).then(function(data) {
+      _loadedData[bk] = data;
+    });
+  });
+
+  return Promise.all(tasks).then(function() {
+    _rebuildLevels();
+  });
+}
+
+/* Ensure all 3 board JSONs are loaded.
+   Used by teacher panel, homework, export. */
+function ensureAllBoardsLoaded() {
+  return ensureBoardLoaded('all');
+}
+
+/* ─── initial boot ─── */
 (function() {
-  var urls = ['data/levels-cie.json', 'data/levels-edx.json', 'data/levels-25m.json'];
-  Promise.all(urls.map(function(u) {
-    return fetch(u).then(function(r) { return r.json(); });
-  })).then(function(res) {
-    LEVELS = res[0].concat(res[1]).concat(res[2]);
+  /* Determine which board(s) to load at startup */
+  var startBoard = null;
+  try { startBoard = localStorage.getItem('userBoard'); } catch(e) {}
+  var keys = _boardKeysFor(startBoard);
+
+  var urls = keys.map(function(bk) { return { bk: bk, url: _urlForBoard(bk) }; });
+
+  Promise.all(urls.map(function(item) {
+    return _fetchJson(item.url).then(function(data) {
+      _loadedData[item.bk] = data;
+    });
+  })).then(function() {
+    _rebuildLevels();
     _levelsReady = true;
     _levelsCallbacks.forEach(function(fn) { try { fn(); } catch(e) { console.error(e); } });
     _levelsCallbacks = [];

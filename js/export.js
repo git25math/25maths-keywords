@@ -265,7 +265,9 @@ function exportUnfamiliar() {
   showToast('\u5df2\u5bfc\u51fa CSV');
 }
 
-function exportProgress() {
+async function exportProgress() {
+  /* Ensure all board data is included in export */
+  try { await ensureAllBoardsLoaded(); } catch(e) {}
   var data = {
     exportDate: new Date().toISOString(),
     levels: LEVELS.map(function(lv, i) {

@@ -713,6 +713,9 @@ async function showStudentHwPage() {
   if (!el) return;
   el.innerHTML = '<div class="admin-loading">' + t('Loading...', '加载中...') + '</div>';
 
+  /* Cross-board homework may reference slugs from any board */
+  try { await ensureAllBoardsLoaded(); } catch(e) {}
+
   var hws = await loadMyHomework();
 
   var pending = hws.filter(function(hw) {
@@ -825,6 +828,9 @@ async function startHwTest(hwId) {
   var el = E('panel-homework');
   if (!el) return;
   el.innerHTML = '<div class="admin-loading">' + t('Loading homework...', '加载作业中...') + '</div>';
+
+  /* Ensure all boards loaded for cross-board homework */
+  try { await ensureAllBoardsLoaded(); } catch(e) {}
 
   try {
     var aRes = await sb.rpc('get_assignment', { p_id: hwId });
