@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.7] - 2026-03-05 — 访客开放哈罗海口全部词汇
+
+### 功能变更 (config.js / auth.js)
+- **GUEST_FULL_ACCESS 开关**：新增全局开关（`true`），Guest 访客可访问 25m board 全部词汇
+- **GUEST_FREE_LIMIT 动态化**：开关开启时 `Infinity`，关闭时恢复 `3`
+- **isLevelVisible() 放行**：Guest + 开关开启时不再隐藏 25m 级别
+- **getVisibleBoards() 放行**：Guest + 开关开启时包含 25m board
+- **getPublicBoardOptions() 放行**：开关开启时返回全部选课选项（含 25m-y7~y11）
+- **Guest skip handler 放行**：开关开启时允许恢复 `25m-*` userBoard
+- **回滚方式**：`GUEST_FULL_ACCESS = true` → `false`，5 处逻辑自动恢复
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/config.js` | +`GUEST_FULL_ACCESS` 开关；`GUEST_FREE_LIMIT` 动态化；`isLevelVisible` / `getVisibleBoards` / `getPublicBoardOptions` 放行 Guest 25m |
+| `js/auth.js` | Guest skip handler 允许恢复 25m board |
+
 ## [1.2.6] - 2026-03-05 — 排行榜积分与排名说明 Modal
 
 ### 新功能 (app.js)

@@ -76,8 +76,10 @@ var appSound = (function() {
   return true;
 })();
 
+/* Guest full access toggle — set to false to restore original limits */
+var GUEST_FULL_ACCESS = true;
 /* Guest free trial limit */
-var GUEST_FREE_LIMIT = 3;
+var GUEST_FREE_LIMIT = GUEST_FULL_ACCESS ? Infinity : 3;
 
 /* Search matching: level title/vocab against query */
 function matchLevel(lv, q) {
@@ -111,8 +113,8 @@ var BOARD_OPTIONS = [
 
 /* Check if a level should be visible under current board filter */
 function isLevelVisible(lv) {
-  /* 25m content requires school_id (Harrow users only) */
-  if (!userSchoolId && lv.board === '25m') return false;
+  /* 25m content requires school_id (Harrow users only), unless guest full access is on */
+  if (!userSchoolId && !(GUEST_FULL_ACCESS && isGuest()) && lv.board === '25m') return false;
   if (!userBoard) return true;
   if (userBoard === 'all') return true;
   /* Custom levels are always visible */
@@ -127,7 +129,7 @@ function isLevelVisible(lv) {
 
 /* Get filtered BOARDS array based on userBoard */
 function getVisibleBoards() {
-  var base = BOARDS.filter(function(b) { return userSchoolId || b.id !== '25m'; });
+  var base = BOARDS.filter(function(b) { return userSchoolId || (GUEST_FULL_ACCESS && isGuest()) || b.id !== '25m'; });
   if (!userBoard) return base;
   if (userBoard === 'all') return base;
   return base.filter(function(b) {
@@ -308,6 +310,7 @@ function getDisplayName() {
   return currentUser.nickname || currentUser.email.split('@')[0];
 }
 function getPublicBoardOptions() {
+  if (GUEST_FULL_ACCESS) return BOARD_OPTIONS.slice();
   return BOARD_OPTIONS.filter(function(o) { return o.value.indexOf('25m-') !== 0; });
 }
 
@@ -318,7 +321,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.2.5';
+var APP_VERSION = 'v1.2.7';
 
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };

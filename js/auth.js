@@ -157,7 +157,7 @@ E('auth-skip').addEventListener('click', function() {
   /* Restore board from localStorage for guest (skip 25m-* boards) */
   var guestBoard = null;
   try { guestBoard = localStorage.getItem('userBoard'); } catch (e) {}
-  if (guestBoard && guestBoard.indexOf('25m-') !== 0) userBoard = guestBoard;
+  if (guestBoard && (GUEST_FULL_ACCESS || guestBoard.indexOf('25m-') !== 0)) userBoard = guestBoard;
   afterLogin();
 });
 
