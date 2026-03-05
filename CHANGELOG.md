@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.5.1] - 2026-03-05 — 超管整套题总览模式
+
+### 新功能
+- **Review All 总览全部**：超管在 deck 详情页 Exam Practice 区看到 "📋 总览全部" 按钮，点击后加载该分类全部题目（不限 10 题、不 shuffle），以可滚动列表展示
+- **逐题信息**：每张卡片显示 qid、topic 标签、difficulty 标签、题干（富文本 + KaTeX）、4 个选项（正确答案绿色加粗 ✓）、解析
+- **一键编辑**：每题旁边保留 ✏️ 编辑按钮，点击打开编辑器 modal，保存后自动刷新列表
+- **编辑器重构**：提取 `_openEditor(q, board, onSaveCb)` 公共函数，练习页编辑 + 总览页编辑两入口复用
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/mastery.js` | Exam Practice 区追加超管 "Review All" 按钮（+6 行） |
+| `js/practice.js` | 新增 `startPracticeReview()` + `renderPracticeReview()` + `_pqFindQ()` + 重构 `_openEditor()`（+85 行） |
+| `css/style.css` | +12 行：`.pq-review-list/card/opts/opt/exp` 总览列表样式 |
+| `css/style.min.css` | 重新生成 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.5.0] - 2026-03-05 — 题目纠错 + 管理员富文本编辑器
 
 ### 新功能

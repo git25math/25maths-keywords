@@ -475,6 +475,12 @@ function renderDeck(idx) {
     html += '<div class="mode-emoji">\ud83d\udcdd</div>';
     html += '<div class="mode-name">' + t('Practice', '练习') + '</div>';
     html += '</button>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="mode-btn mode-btn-extra" onclick="startPracticeReview(' + idx + ')">';
+      html += '<div class="mode-emoji">\ud83d\udccb</div>';
+      html += '<div class="mode-name">' + t('Review All', '总览全部') + '</div>';
+      html += '</button>';
+    }
     html += '</div></div>';
   }
 

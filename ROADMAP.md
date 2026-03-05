@@ -285,6 +285,12 @@
 - [x] 富文本渲染（题干/选项/解析支持 HTML + KaTeX + 图片）→ v1.5.0
 - [x] question_edits 覆盖表 + Supabase Storage 图片桶 → v1.5.0
 
+### Phase 10B++ — 超管整套题总览 [DONE]
+- [x] 超管 "Review All" 按钮（deck 详情页 Exam Practice 区）→ v1.5.1
+- [x] 可滚动列表展示全部题目（qid / topic / difficulty / 题干 / 选项 / 解析）→ v1.5.1
+- [x] 每题编辑按钮直接打开编辑器 modal → v1.5.1
+- [x] `_openEditor()` 公共函数重构，两入口复用 → v1.5.1
+
 ### Phase 10C — 概念卡 + KaTeX（Layer 2）
 - [ ] getPairs() 扩展支持 formula/example 字段
 - [ ] KaTeX 按需加载（<50KB gzip，仅概念页触发）

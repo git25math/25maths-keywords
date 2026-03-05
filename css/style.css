@@ -1489,6 +1489,21 @@ input { font-family: inherit; }
 .pq-edit-btn { color: var(--c-primary); }
 .pq-edit-btn:hover { background: var(--c-primary-bg); }
 
+/* Practice: review all list (superadmin) */
+.pq-review-list { max-width: 700px; margin: 0 auto; padding-bottom: 32px; }
+.pq-review-card {
+  background: var(--c-surface); border: 1px solid var(--c-border-light);
+  border-radius: var(--r); padding: 16px; margin-bottom: 12px;
+}
+.pq-review-opts { margin: 8px 0; }
+.pq-review-opt { padding: 3px 0; font-size: 14px; }
+.pq-review-opt.is-correct { color: var(--c-success); font-weight: 600; }
+.pq-review-exp {
+  margin-top: 8px; padding: 8px 12px;
+  background: var(--c-surface-alt); border-radius: var(--r-sm);
+  font-size: 13px; color: var(--c-text2); line-height: 1.5;
+}
+
 /* Practice: rich text images in questions */
 .pq-question img, .quiz-opt img, .pq-explanation img {
   max-width: 100%; height: auto; border-radius: 4px; margin: 4px 0;

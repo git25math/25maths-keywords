@@ -8,6 +8,8 @@ var _pqSession = null;  /* { questions, current, correct, answers, lvl } */
 var _katexReady = false; /* KaTeX loaded flag */
 var _pqEditsCache = {};  /* { cie: {qid: data}, edx: {qid: data} } */
 var _pqFocusedTextarea = null; /* last focused textarea in editor */
+var _pqEditorSaveCb = null;   /* optional callback after editor save */
+var _pqEditorQid = null;      /* qid of question currently in editor */
 
 /* ═══ KATEX LAZY LOADING ═══ */
 
@@ -449,6 +451,13 @@ function editPracticeQ() {
   var q = _pqSession.questions[_pqSession.current];
   if (!q) return;
   var board = LEVELS[_pqSession.lvl] ? LEVELS[_pqSession.lvl].board : '';
+  _openEditor(q, board);
+}
+
+function _openEditor(q, board, onSaveCb) {
+  if (!q || !isSuperAdmin()) return;
+  _pqEditorSaveCb = onSaveCb || null;
+  _pqEditorQid = q.id;
 
   var html = '<div class="modal-card pq-editor-modal" onclick="event.stopPropagation()">';
   /* Header */
@@ -685,8 +694,7 @@ function pqUploadImage(input) {
   var file = input.files[0];
   if (!sb || !isSuperAdmin()) { showToast('Not authorized'); return; }
 
-  var q = _pqSession ? _pqSession.questions[_pqSession.current] : null;
-  var qid = q ? q.id : 'unknown';
+  var qid = _pqEditorQid || 'unknown';
   var ext = file.name.split('.').pop() || 'png';
   var path = qid + '/' + Date.now() + '.' + ext;
 
@@ -741,5 +749,91 @@ function savePracticeEdit(qid, board) {
     hideModal();
     E('modal-card').className = 'modal-card';
     showToast(t('Saved!', '已保存！'));
+    if (_pqEditorSaveCb) _pqEditorSaveCb();
   });
+}
+
+/* ═══ SUPERADMIN REVIEW ALL ═══ */
+
+function startPracticeReview(li) {
+  var lv = LEVELS[li];
+  if (!lv) return;
+  var board = lv.board;
+  if (board !== 'cie' && board !== 'edx') return;
+
+  currentLvl = li;
+  showToast(t('Loading questions...', '加载题目中...'));
+
+  Promise.all([loadPracticeData(board), loadKaTeX()]).then(function() {
+    var questions = (_pqData[board] || []).filter(function(q) { return q.cat === lv.category; });
+    if (questions.length === 0) {
+      showToast(t('No practice questions available for this topic', '该主题暂无练习题'));
+      return;
+    }
+    showPanel('practice');
+    renderPracticeReview(li, questions, board);
+  }).catch(function() {
+    showToast(t('Failed to load questions', '加载题目失败'));
+  });
+}
+
+function renderPracticeReview(li, questions, board) {
+  var lv = LEVELS[li];
+  var catInfo = getCategoryInfo(lv.category);
+  var labels = ['A', 'B', 'C', 'D'];
+
+  var html = '';
+
+  /* Top bar */
+  html += '<div class="study-topbar">';
+  html += '<button class="back-btn" onclick="openDeck(' + li + ')">←</button>';
+  html += '<div class="deck-title" style="flex:1;font-size:16px;margin:0 12px">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
+  html += '<div class="pq-qid" style="font-size:13px;color:var(--c-muted);white-space:nowrap">' + t('Total', '共') + ' ' + questions.length + ' ' + t('questions', '题') + '</div>';
+  html += '</div>';
+
+  /* Review list */
+  html += '<div class="pq-review-list">';
+  questions.forEach(function(q, i) {
+    html += '<div class="pq-review-card">';
+
+    /* Header: qid + topic + difficulty + edit btn */
+    html += '<div class="pq-meta" style="margin-bottom:8px">';
+    html += '<span class="pq-qid" style="font-size:11px;color:var(--c-muted)">#' + escapeHtml(q.id) + '</span>';
+    if (q.topic) html += '<span class="pq-topic">' + escapeHtml(q.topic) + '</span>';
+    html += '<span class="pq-difficulty pq-d' + q.d + '">' + (q.d === 1 ? t('Core', '基础') : t('Extended', '拓展')) + '</span>';
+    html += '<button class="pq-edit-btn" style="margin-left:auto" onclick="_openEditor(_pqFindQ(\'' + escapeHtml(q.id) + '\',\'' + escapeHtml(board) + '\'),\'' + escapeHtml(board) + '\',function(){startPracticeReview(' + li + ')})">✏️</button>';
+    html += '</div>';
+
+    /* Question */
+    html += '<div class="pq-question" style="margin-bottom:8px">' + pqRender(q.q) + '</div>';
+
+    /* Options */
+    html += '<div class="pq-review-opts">';
+    q.o.forEach(function(opt, oi) {
+      var cls = oi === q.a ? ' is-correct' : '';
+      html += '<div class="pq-review-opt' + cls + '">' + labels[oi] + ') ' + pqRender(opt) + (oi === q.a ? ' ✓' : '') + '</div>';
+    });
+    html += '</div>';
+
+    /* Explanation */
+    if (q.e) {
+      html += '<div class="pq-review-exp">' + pqRender(q.e) + '</div>';
+    }
+
+    html += '</div>'; /* end card */
+  });
+  html += '</div>'; /* end list */
+
+  E('panel-practice').innerHTML = html;
+  renderMath(E('panel-practice'));
+}
+
+/* Helper: find question by qid from cache */
+function _pqFindQ(qid, board) {
+  var data = _pqData[board];
+  if (!data) return null;
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].id === qid) return data[i];
+  }
+  return null;
 }
