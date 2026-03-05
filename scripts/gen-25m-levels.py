@@ -94,12 +94,15 @@ def format_level(level):
 
     title = escape_js_string(level['title'])
     title_zh = escape_js_string(level['titleZh'])
+    unit_title = escape_js_string(level['unitTitle'])
+    unit_title_zh = escape_js_string(level['unitTitleZh'])
 
     return (
         f"{{\n"
         f"  board: '25m', slug: '{level['slug']}', category: '{level['category']}', "
         f"title: '{title}', titleZh: '{title_zh}', "
-        f"timer: {level['timer']}, comboBonus: {level['comboBonus']},\n"
+        f"unitNum: {level['unitNum']}, unitTitle: '{unit_title}', unitTitleZh: '{unit_title_zh}',\n"
+        f"  timer: {level['timer']}, comboBonus: {level['comboBonus']},\n"
         f"  vocabulary: [\n{vocab_str}\n  ]\n"
         f"}}"
     )
@@ -145,6 +148,9 @@ def main():
                 'category': category,
                 'title': title,
                 'titleZh': title_zh,
+                'unitNum': unit_index + 1,
+                'unitTitle': en_title,
+                'unitTitleZh': zh_title,
                 'timer': timer,
                 'comboBonus': combo,
                 'vocabulary': chunk,

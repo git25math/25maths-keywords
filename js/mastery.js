@@ -50,6 +50,9 @@ var catCollapsed = {};
   });
 })();
 
+/* Unit collapse state (25m only, default all collapsed) */
+var unitCollapsed = {};
+
 /* Sidebar board accordion state (per board) */
 var sidebarBoardOpen = {};
 
@@ -62,6 +65,12 @@ function toggleCategory(catId) {
   catCollapsed[catId] = !catCollapsed[catId];
   var el = document.getElementById('cat-' + catId);
   if (el) el.classList.toggle('collapsed', catCollapsed[catId]);
+}
+
+function toggleUnit(unitKey) {
+  unitCollapsed[unitKey] = !unitCollapsed[unitKey];
+  var el = document.getElementById('unit-' + unitKey);
+  if (el) el.classList.toggle('collapsed', unitCollapsed[unitKey]);
 }
 
 /* Called from sidebar: expand right-side category + scroll to it */
@@ -77,6 +86,29 @@ function selectCategory(catId) {
     var el2 = document.getElementById('cat-' + catId);
     if (el2) el2.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, appView !== 'home' ? 100 : 0);
+}
+
+/* ═══ DECK ROW HELPER ═══ */
+function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
+  var locked = _levelLocked[cl.idx];
+  var stats = locked ? { pct: 0 } : (_levelStats[cl.idx] || { pct: 0 });
+  var wordCount = Math.floor(cl.lv.vocabulary.length / 2);
+  var h = '';
+  h += '<div class="deck-row' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
+  h += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
+  h += '<span class="deck-row-name">' + lvTitle(cl.lv) + '</span>';
+  h += '<span class="deck-row-count">' + wordCount + ' ' + t('words', '\u8bcd') + '</span>';
+  if (!locked) {
+    h += '<span class="deck-row-progress"><span class="deck-row-progress-fill" style="width:' + stats.pct + '%"></span></span>';
+    h += '<span class="deck-row-pct">' + stats.pct + '%</span>';
+  } else {
+    h += '<span class="deck-row-lock">\ud83d\udd12</span>';
+  }
+  if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+    h += vocabAdminBtns(cl.idx);
+  }
+  h += '</div>';
+  return h;
 }
 
 /* ═══ HOME DASHBOARD ═══ */
@@ -190,6 +222,7 @@ function renderHome() {
 
     /* Build board HTML in temp var, only append if has matching content */
     var boardHtml = '';
+    var is25m = board.id === '25m';
     board.categories.forEach(function(cat) {
       var catLevels = [];
       LEVELS.forEach(function(lv, i) {
@@ -202,30 +235,64 @@ function renderHome() {
       boardHtml += '<div class="category-header" onclick="toggleCategory(\'' + cat.id + '\')">';
       boardHtml += '<span class="category-emoji">' + cat.emoji + '</span>';
       boardHtml += '<span class="category-name">' + catName(cat) + '</span>';
-      boardHtml += '<span class="category-count">' + catLevels.length + ' ' + t('groups', '\u7ec4') + '</span>';
+
+      /* 25m: show unit count; others: show group count */
+      if (is25m) {
+        var unitSet = {};
+        catLevels.forEach(function(cl) { if (cl.lv.unitNum) unitSet[cl.lv.unitNum] = true; });
+        var unitCount = Object.keys(unitSet).length;
+        boardHtml += '<span class="category-count">' + unitCount + ' ' + t('units', '\u5355\u5143') + '</span>';
+      } else {
+        boardHtml += '<span class="category-count">' + catLevels.length + ' ' + t('groups', '\u7ec4') + '</span>';
+      }
       boardHtml += '<span class="category-chevron">\u25bc</span>';
       boardHtml += '</div>';
 
       boardHtml += '<div class="deck-list category-body">';
-      catLevels.forEach(function(cl) {
-        var locked = _levelLocked[cl.idx];
-        var stats = locked ? { pct: 0 } : (_levelStats[cl.idx] || { pct: 0 });
-        var wordCount = Math.floor(cl.lv.vocabulary.length / 2);
-        boardHtml += '<div class="deck-row' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
-        boardHtml += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
-        boardHtml += '<span class="deck-row-name">' + lvTitle(cl.lv) + '</span>';
-        boardHtml += '<span class="deck-row-count">' + wordCount + ' ' + t('words', '\u8bcd') + '</span>';
-        if (!locked) {
-          boardHtml += '<span class="deck-row-progress"><span class="deck-row-progress-fill" style="width:' + stats.pct + '%"></span></span>';
-          boardHtml += '<span class="deck-row-pct">' + stats.pct + '%</span>';
-        } else {
-          boardHtml += '<span class="deck-row-lock">\ud83d\udd12</span>';
-        }
-        if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
-          boardHtml += vocabAdminBtns(cl.idx);
-        }
-        boardHtml += '</div>';
-      });
+
+      if (is25m) {
+        /* Group levels by unitNum, preserving order */
+        var unitGroups = [];
+        var unitMap = {};
+        catLevels.forEach(function(cl) {
+          var uNum = cl.lv.unitNum || 0;
+          if (!unitMap[uNum]) {
+            unitMap[uNum] = { unitNum: uNum, unitTitle: cl.lv.unitTitle || '', unitTitleZh: cl.lv.unitTitleZh || '', levels: [] };
+            unitGroups.push(unitMap[uNum]);
+          }
+          unitMap[uNum].levels.push(cl);
+        });
+
+        unitGroups.forEach(function(ug) {
+          var unitKey = cat.id + '-u' + ug.unitNum;
+          /* Default collapsed unless searching */
+          if (!(unitKey in unitCollapsed)) unitCollapsed[unitKey] = true;
+          var uCollapsed = appSearch ? false : unitCollapsed[unitKey];
+
+          var unitLabel = 'Unit ' + ug.unitNum + ' \u00b7 ' + ug.unitTitle;
+          if (appLang !== 'en' && ug.unitTitleZh) unitLabel += ' ' + ug.unitTitleZh;
+
+          boardHtml += '<div class="unit-section' + (uCollapsed ? ' collapsed' : '') + '" id="unit-' + unitKey + '">';
+          boardHtml += '<div class="unit-header" onclick="toggleUnit(\'' + unitKey + '\')">';
+          boardHtml += '<span class="unit-name">' + unitLabel + '</span>';
+          boardHtml += '<span class="unit-count">' + ug.levels.length + ' ' + t('groups', '\u7ec4') + '</span>';
+          boardHtml += '<span class="unit-chevron">\u25bc</span>';
+          boardHtml += '</div>';
+
+          boardHtml += '<div class="unit-body">';
+          ug.levels.forEach(function(cl) {
+            boardHtml += renderDeckRow(cl, cat, _levelLocked, _levelStats);
+          });
+          boardHtml += '</div>';
+          boardHtml += '</div>';
+        });
+      } else {
+        /* Non-25m: flat rendering */
+        catLevels.forEach(function(cl) {
+          boardHtml += renderDeckRow(cl, cat, _levelLocked, _levelStats);
+        });
+      }
+
       if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
         boardHtml += vocabAdminAddBtn(board.id, cat.id);
       }

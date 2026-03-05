@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.1.9] - 2026-03-05 — Y7-Y11 词卡按单元分组（二级折叠）
+
+### UX 增强
+- **单元分组**：25m 板块（Y7-Y11）在年级和卡组之间新增"单元"分组层，默认折叠，点击展开显示该单元下的卡组
+  - 结构：Board → Year Category → Unit（折叠）→ deck-row
+  - 年级标题显示单元数（如 "11 units"）而非组数
+  - 搜索时 Unit 自动展开（与 Category 展开逻辑一致）
+  - CIE / Edexcel 板块不受影响，保持原有扁平渲染
+- **数据层**：每个 25m level 新增 `unitNum` / `unitTitle` / `unitTitleZh` 字段
+- **APP_VERSION**：`v1.1.8` → `v1.1.9`
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/gen-25m-levels.py` | `format_level()` 输出 unitNum / unitTitle / unitTitleZh |
+| `js/levels.js` | 重新生成，173 个 25m level 含新字段 |
+| `js/mastery.js` | `unitCollapsed` 状态 + `toggleUnit()` + `renderDeckRow()` 提取 + 分组渲染 |
+| `css/style.css` | `.unit-section` / `.unit-header` / `.unit-body` 样式 + 折叠动画 |
+| `js/config.js` | 版本号 v1.1.9 |
+
 ## [1.1.8] - 2026-03-05 — Y7-Y11 词卡按课纲教学顺序重排
 
 ### 内容修正

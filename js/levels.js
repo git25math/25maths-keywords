@@ -1399,7 +1399,8 @@ var LEVELS = [
 /* ═══ Year 7 (31 levels, 257 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-1', category: '25m-y7', title: 'Multiplication of Fractions (1)', titleZh: '分数的乘法 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-1', category: '25m-y7', title: 'Multiplication of Fractions (1)', titleZh: '分数的乘法 (1)', unitNum: 1, unitTitle: 'Multiplication of Fractions', unitTitleZh: '分数的乘法',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Addition"},{id:"0",type:"def",content:"加法"},
     {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
@@ -1415,7 +1416,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-2', category: '25m-y7', title: 'Multiplication of Fractions (2)', titleZh: '分数的乘法 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-2', category: '25m-y7', title: 'Multiplication of Fractions (2)', titleZh: '分数的乘法 (2)', unitNum: 1, unitTitle: 'Multiplication of Fractions', unitTitleZh: '分数的乘法',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Expression"},{id:"0",type:"def",content:"表达式"},
     {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
@@ -1431,7 +1433,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-3', category: '25m-y7', title: 'Multiplication of Fractions (3)', titleZh: '分数的乘法 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-3', category: '25m-y7', title: 'Multiplication of Fractions (3)', titleZh: '分数的乘法 (3)', unitNum: 1, unitTitle: 'Multiplication of Fractions', unitTitleZh: '分数的乘法',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Product"},{id:"0",type:"def",content:"乘积"},
     {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
@@ -1445,7 +1448,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-division-of-fraction-1', category: '25m-y7', title: 'Division of Fraction (1)', titleZh: '分数的除法 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-division-of-fraction-1', category: '25m-y7', title: 'Division of Fraction (1)', titleZh: '分数的除法 (1)', unitNum: 2, unitTitle: 'Division of Fraction', unitTitleZh: '分数的除法',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Brackets"},{id:"0",type:"def",content:"括号"},
     {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
@@ -1461,7 +1465,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-division-of-fraction-2', category: '25m-y7', title: 'Division of Fraction (2)', titleZh: '分数的除法 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-division-of-fraction-2', category: '25m-y7', title: 'Division of Fraction (2)', titleZh: '分数的除法 (2)', unitNum: 2, unitTitle: 'Division of Fraction', unitTitleZh: '分数的除法',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Reciprocal"},{id:"0",type:"def",content:"倒数"},
     {id:"1",type:"word",content:"Simplify"},{id:"1",type:"def",content:"化简"},
@@ -1470,7 +1475,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-negative-number-1', category: '25m-y7', title: 'Negative Number (1)', titleZh: '负数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-negative-number-1', category: '25m-y7', title: 'Negative Number (1)', titleZh: '负数 (1)', unitNum: 3, unitTitle: 'Negative Number', unitTitleZh: '负数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
     {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
@@ -1486,7 +1492,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-negative-number-2', category: '25m-y7', title: 'Negative Number (2)', titleZh: '负数 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-negative-number-2', category: '25m-y7', title: 'Negative Number (2)', titleZh: '负数 (2)', unitNum: 3, unitTitle: 'Negative Number', unitTitleZh: '负数',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Positive number"},{id:"0",type:"def",content:"正数"},
     {id:"1",type:"word",content:"Sea level"},{id:"1",type:"def",content:"海平面"},
@@ -1497,7 +1504,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-position-and-direction-1', category: '25m-y7', title: 'Position and Direction (1)', titleZh: '位置和方向 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-position-and-direction-1', category: '25m-y7', title: 'Position and Direction (1)', titleZh: '位置和方向 (1)', unitNum: 4, unitTitle: 'Position and Direction', unitTitleZh: '位置和方向',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Bearing"},{id:"0",type:"def",content:"方位角"},
     {id:"1",type:"word",content:"Clockwise"},{id:"1",type:"def",content:"顺时针"},
@@ -1513,7 +1521,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-position-and-direction-2', category: '25m-y7', title: 'Position and Direction (2)', titleZh: '位置和方向 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-position-and-direction-2', category: '25m-y7', title: 'Position and Direction (2)', titleZh: '位置和方向 (2)', unitNum: 4, unitTitle: 'Position and Direction', unitTitleZh: '位置和方向',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Plot"},{id:"0",type:"def",content:"描点/绘制"},
     {id:"1",type:"word",content:"Quadrant"},{id:"1",type:"def",content:"象限"},
@@ -1524,7 +1533,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-ratio-and-proportion-1', category: '25m-y7', title: 'Ratio and Proportion (1)', titleZh: '比率和比例 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-ratio-and-proportion-1', category: '25m-y7', title: 'Ratio and Proportion (1)', titleZh: '比率和比例 (1)', unitNum: 5, unitTitle: 'Ratio and Proportion', unitTitleZh: '比率和比例',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Colon"},{id:"0",type:"def",content:"冒号"},
     {id:"1",type:"word",content:"Constant of proportionality"},{id:"1",type:"def",content:"比例常数"},
@@ -1540,7 +1550,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-ratio-and-proportion-2', category: '25m-y7', title: 'Ratio and Proportion (2)', titleZh: '比率和比例 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-ratio-and-proportion-2', category: '25m-y7', title: 'Ratio and Proportion (2)', titleZh: '比率和比例 (2)', unitNum: 5, unitTitle: 'Ratio and Proportion', unitTitleZh: '比率和比例',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Map"},{id:"0",type:"def",content:"地图"},
     {id:"1",type:"word",content:"Part"},{id:"1",type:"def",content:"部分"},
@@ -1556,7 +1567,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-ratio-and-proportion-3', category: '25m-y7', title: 'Ratio and Proportion (3)', titleZh: '比率和比例 (3)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-ratio-and-proportion-3', category: '25m-y7', title: 'Ratio and Proportion (3)', titleZh: '比率和比例 (3)', unitNum: 5, unitTitle: 'Ratio and Proportion', unitTitleZh: '比率和比例',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Simplify"},{id:"0",type:"def",content:"简化"},
     {id:"1",type:"word",content:"Term"},{id:"1",type:"def",content:"项"},
@@ -1568,7 +1580,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-percentage-1', category: '25m-y7', title: 'Percentage (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-percentage-1', category: '25m-y7', title: 'Percentage (1)', titleZh: '百分比 (1)', unitNum: 6, unitTitle: 'Percentage', unitTitleZh: '百分比',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Convert"},{id:"0",type:"def",content:"转换"},
     {id:"1",type:"word",content:"Decimal"},{id:"1",type:"def",content:"小数"},
@@ -1584,7 +1597,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-percentage-2', category: '25m-y7', title: 'Percentage (2)', titleZh: '百分比 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-percentage-2', category: '25m-y7', title: 'Percentage (2)', titleZh: '百分比 (2)', unitNum: 6, unitTitle: 'Percentage', unitTitleZh: '百分比',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Percentage"},{id:"0",type:"def",content:"百分比"},
     {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
@@ -1595,7 +1609,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-circle-1', category: '25m-y7', title: 'Circle (1)', titleZh: '圆 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-circle-1', category: '25m-y7', title: 'Circle (1)', titleZh: '圆 (1)', unitNum: 7, unitTitle: 'Circle', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角度"},
     {id:"1",type:"word",content:"Arc"},{id:"1",type:"def",content:"弧"},
@@ -1611,7 +1626,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-circle-2', category: '25m-y7', title: 'Circle (2)', titleZh: '圆 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-circle-2', category: '25m-y7', title: 'Circle (2)', titleZh: '圆 (2)', unitNum: 7, unitTitle: 'Circle', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Circle"},{id:"0",type:"def",content:"圆"},
     {id:"1",type:"word",content:"Circumference"},{id:"1",type:"def",content:"周长"},
@@ -1627,7 +1643,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-circle-3', category: '25m-y7', title: 'Circle (3)', titleZh: '圆 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-circle-3', category: '25m-y7', title: 'Circle (3)', titleZh: '圆 (3)', unitNum: 7, unitTitle: 'Circle', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Discrete Data"},{id:"0",type:"def",content:"离散数据"},
     {id:"1",type:"word",content:"Formula"},{id:"1",type:"def",content:"公式"},
@@ -1643,7 +1660,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-circle-4', category: '25m-y7', title: 'Circle (4)', titleZh: '圆 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-circle-4', category: '25m-y7', title: 'Circle (4)', titleZh: '圆 (4)', unitNum: 7, unitTitle: 'Circle', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Percentage"},{id:"0",type:"def",content:"百分比"},
     {id:"1",type:"word",content:"Pi (π)"},{id:"1",type:"def",content:"圆周率"},
@@ -1659,7 +1677,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-circle-5', category: '25m-y7', title: 'Circle (5)', titleZh: '圆 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-circle-5', category: '25m-y7', title: 'Circle (5)', titleZh: '圆 (5)', unitNum: 7, unitTitle: 'Circle', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Represent"},{id:"0",type:"def",content:"表示"},
     {id:"1",type:"word",content:"Scale"},{id:"1",type:"def",content:"刻度"},
@@ -1674,7 +1693,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-cylinders-and-cones-1', category: '25m-y7', title: 'Cylinders and Cones (1)', titleZh: '圆柱和圆锥 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-cylinders-and-cones-1', category: '25m-y7', title: 'Cylinders and Cones (1)', titleZh: '圆柱和圆锥 (1)', unitNum: 8, unitTitle: 'Cylinders and Cones', unitTitleZh: '圆柱和圆锥',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Apex"},{id:"0",type:"def",content:"顶点"},
     {id:"1",type:"word",content:"Arc"},{id:"1",type:"def",content:"弧"},
@@ -1690,7 +1710,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-cylinders-and-cones-2', category: '25m-y7', title: 'Cylinders and Cones (2)', titleZh: '圆柱和圆锥 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-cylinders-and-cones-2', category: '25m-y7', title: 'Cylinders and Cones (2)', titleZh: '圆柱和圆锥 (2)', unitNum: 8, unitTitle: 'Cylinders and Cones', unitTitleZh: '圆柱和圆锥',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Cone"},{id:"0",type:"def",content:"圆锥"},
     {id:"1",type:"word",content:"Convert"},{id:"1",type:"def",content:"转换"},
@@ -1706,7 +1727,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-cylinders-and-cones-3', category: '25m-y7', title: 'Cylinders and Cones (3)', titleZh: '圆柱和圆锥 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-cylinders-and-cones-3', category: '25m-y7', title: 'Cylinders and Cones (3)', titleZh: '圆柱和圆锥 (3)', unitNum: 8, unitTitle: 'Cylinders and Cones', unitTitleZh: '圆柱和圆锥',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Flat surface"},{id:"0",type:"def",content:"平面"},
     {id:"1",type:"word",content:"Formula"},{id:"1",type:"def",content:"公式"},
@@ -1722,7 +1744,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-cylinders-and-cones-4', category: '25m-y7', title: 'Cylinders and Cones (4)', titleZh: '圆柱和圆锥 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-cylinders-and-cones-4', category: '25m-y7', title: 'Cylinders and Cones (4)', titleZh: '圆柱和圆锥 (4)', unitNum: 8, unitTitle: 'Cylinders and Cones', unitTitleZh: '圆柱和圆锥',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Pi (π)"},{id:"0",type:"def",content:"圆周率"},
     {id:"1",type:"word",content:"Problem-solving"},{id:"1",type:"def",content:"解决问题"},
@@ -1738,7 +1761,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-cylinders-and-cones-5', category: '25m-y7', title: 'Cylinders and Cones (5)', titleZh: '圆柱和圆锥 (5)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-cylinders-and-cones-5', category: '25m-y7', title: 'Cylinders and Cones (5)', titleZh: '圆柱和圆锥 (5)', unitNum: 8, unitTitle: 'Cylinders and Cones', unitTitleZh: '圆柱和圆锥',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Two-dimensional (2D)"},{id:"0",type:"def",content:"二维"},
     {id:"1",type:"word",content:"Volume"},{id:"1",type:"def",content:"体积"}
@@ -1746,7 +1770,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-linear-sequences-1', category: '25m-y7', title: 'Linear Sequences (1)', titleZh: '等差序列 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-linear-sequences-1', category: '25m-y7', title: 'Linear Sequences (1)', titleZh: '等差序列 (1)', unitNum: 9, unitTitle: 'Linear Sequences', unitTitleZh: '等差序列',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Arithmetic sequence"},{id:"0",type:"def",content:"算术序列"},
     {id:"1",type:"word",content:"Common difference"},{id:"1",type:"def",content:"公差"},
@@ -1762,7 +1787,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-linear-sequences-2', category: '25m-y7', title: 'Linear Sequences (2)', titleZh: '等差序列 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-linear-sequences-2', category: '25m-y7', title: 'Linear Sequences (2)', titleZh: '等差序列 (2)', unitNum: 9, unitTitle: 'Linear Sequences', unitTitleZh: '等差序列',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Linear sequence"},{id:"0",type:"def",content:"等差序列"},
     {id:"1",type:"word",content:"nth term"},{id:"1",type:"def",content:"第n项"},
@@ -1778,7 +1804,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-linear-sequences-3', category: '25m-y7', title: 'Linear Sequences (3)', titleZh: '等差序列 (3)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-linear-sequences-3', category: '25m-y7', title: 'Linear Sequences (3)', titleZh: '等差序列 (3)', unitNum: 9, unitTitle: 'Linear Sequences', unitTitleZh: '等差序列',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Term"},{id:"0",type:"def",content:"项"},
     {id:"1",type:"word",content:"Term number"},{id:"1",type:"def",content:"项数"},
@@ -1788,7 +1815,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-probability-1', category: '25m-y7', title: 'Probability (1)', titleZh: '概率 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-probability-1', category: '25m-y7', title: 'Probability (1)', titleZh: '概率 (1)', unitNum: 10, unitTitle: 'Probability', unitTitleZh: '概率',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Certain Event"},{id:"0",type:"def",content:"必然事件"},
     {id:"1",type:"word",content:"Event"},{id:"1",type:"def",content:"事件"},
@@ -1804,7 +1832,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-probability-2', category: '25m-y7', title: 'Probability (2)', titleZh: '概率 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-probability-2', category: '25m-y7', title: 'Probability (2)', titleZh: '概率 (2)', unitNum: 10, unitTitle: 'Probability', unitTitleZh: '概率',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Random"},{id:"0",type:"def",content:"随机的"},
     {id:"1",type:"word",content:"Sample Space"},{id:"1",type:"def",content:"样本空间"},
@@ -1815,7 +1844,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-constructions-1', category: '25m-y7', title: 'Constructions (1)', titleZh: '作图 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-constructions-1', category: '25m-y7', title: 'Constructions (1)', titleZh: '作图 (1)', unitNum: 11, unitTitle: 'Constructions', unitTitleZh: '作图',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
     {id:"1",type:"word",content:"Angle bisector"},{id:"1",type:"def",content:"角平分线"},
@@ -1831,7 +1861,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-constructions-2', category: '25m-y7', title: 'Constructions (2)', titleZh: '作图 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y7-constructions-2', category: '25m-y7', title: 'Constructions (2)', titleZh: '作图 (2)', unitNum: 11, unitTitle: 'Constructions', unitTitleZh: '作图',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Midpoint"},{id:"0",type:"def",content:"中点"},
     {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂线/垂直的"},
@@ -1845,7 +1876,8 @@ var LEVELS = [
 /* ═══ Year 8 (31 levels, 278 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-1', category: '25m-y8', title: 'Review of Numbers (1)', titleZh: '数的复习 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-review-of-numbers-1', category: '25m-y8', title: 'Review of Numbers (1)', titleZh: '数的复习 (1)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Absolute Value"},{id:"0",type:"def",content:"绝对值"},
     {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
@@ -1861,7 +1893,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-2', category: '25m-y8', title: 'Review of Numbers (2)', titleZh: '数的复习 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-review-of-numbers-2', category: '25m-y8', title: 'Review of Numbers (2)', titleZh: '数的复习 (2)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Decimal Point"},{id:"0",type:"def",content:"小数点"},
     {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
@@ -1877,7 +1910,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-3', category: '25m-y8', title: 'Review of Numbers (3)', titleZh: '数的复习 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-review-of-numbers-3', category: '25m-y8', title: 'Review of Numbers (3)', titleZh: '数的复习 (3)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Hundred"},{id:"0",type:"def",content:"百"},
     {id:"1",type:"word",content:"Hundredth"},{id:"1",type:"def",content:"百分位"},
@@ -1893,7 +1927,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-4', category: '25m-y8', title: 'Review of Numbers (4)', titleZh: '数的复习 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-review-of-numbers-4', category: '25m-y8', title: 'Review of Numbers (4)', titleZh: '数的复习 (4)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Nearest"},{id:"0",type:"def",content:"最接近的"},
     {id:"1",type:"word",content:"Negative Number"},{id:"1",type:"def",content:"负数"},
@@ -1909,7 +1944,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-5', category: '25m-y8', title: 'Review of Numbers (5)', titleZh: '数的复习 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-review-of-numbers-5', category: '25m-y8', title: 'Review of Numbers (5)', titleZh: '数的复习 (5)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Quotient"},{id:"0",type:"def",content:"商"},
     {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
@@ -1925,7 +1961,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-review-of-numbers-6', category: '25m-y8', title: 'Review of Numbers (6)', titleZh: '数的复习 (6)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y8-review-of-numbers-6', category: '25m-y8', title: 'Review of Numbers (6)', titleZh: '数的复习 (6)', unitNum: 1, unitTitle: 'Review of Numbers', unitTitleZh: '数的复习',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Truncation"},{id:"0",type:"def",content:"截断法"},
     {id:"1",type:"word",content:"Whole Number"},{id:"1",type:"def",content:"整数"}
@@ -1933,7 +1970,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-1', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (1)', titleZh: '有理数、因数和质数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-1', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (1)', titleZh: '有理数、因数和质数 (1)', unitNum: 2, unitTitle: 'Rational Numbers, Factors and Primes', unitTitleZh: '有理数、因数和质数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Associative law"},{id:"0",type:"def",content:"结合律"},
     {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
@@ -1949,7 +1987,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-2', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (2)', titleZh: '有理数、因数和质数 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-2', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (2)', titleZh: '有理数、因数和质数 (2)', unitNum: 2, unitTitle: 'Rational Numbers, Factors and Primes', unitTitleZh: '有理数、因数和质数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Factor"},{id:"0",type:"def",content:"因数"},
     {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
@@ -1965,7 +2004,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-3', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (3)', titleZh: '有理数、因数和质数 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-3', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (3)', titleZh: '有理数、因数和质数 (3)', unitNum: 2, unitTitle: 'Rational Numbers, Factors and Primes', unitTitleZh: '有理数、因数和质数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Number line"},{id:"0",type:"def",content:"数轴"},
     {id:"1",type:"word",content:"Numerator"},{id:"1",type:"def",content:"分子"},
@@ -1980,7 +2020,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-1', category: '25m-y8', title: 'Algebraic Formula (1)', titleZh: '代数公式 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-algebraic-formula-1', category: '25m-y8', title: 'Algebraic Formula (1)', titleZh: '代数公式 (1)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Algebraic"},{id:"0",type:"def",content:"代数的"},
     {id:"1",type:"word",content:"Algebraic factor"},{id:"1",type:"def",content:"代数因数"},
@@ -1996,7 +2037,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-2', category: '25m-y8', title: 'Algebraic Formula (2)', titleZh: '代数公式 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-algebraic-formula-2', category: '25m-y8', title: 'Algebraic Formula (2)', titleZh: '代数公式 (2)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Conversion"},{id:"0",type:"def",content:"转换"},
     {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
@@ -2012,7 +2054,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-3', category: '25m-y8', title: 'Algebraic Formula (3)', titleZh: '代数公式 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-algebraic-formula-3', category: '25m-y8', title: 'Algebraic Formula (3)', titleZh: '代数公式 (3)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Formulate"},{id:"0",type:"def",content:"建立/制定"},
     {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
@@ -2028,7 +2071,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-4', category: '25m-y8', title: 'Algebraic Formula (4)', titleZh: '代数公式 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-algebraic-formula-4', category: '25m-y8', title: 'Algebraic Formula (4)', titleZh: '代数公式 (4)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Linear expression"},{id:"0",type:"def",content:"线性表达式"},
     {id:"1",type:"word",content:"Mathematical model"},{id:"1",type:"def",content:"数学模型"},
@@ -2044,7 +2088,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-5', category: '25m-y8', title: 'Algebraic Formula (5)', titleZh: '代数公式 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-algebraic-formula-5', category: '25m-y8', title: 'Algebraic Formula (5)', titleZh: '代数公式 (5)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Real-life situation"},{id:"0",type:"def",content:"现实生活情境"},
     {id:"1",type:"word",content:"Relationship"},{id:"1",type:"def",content:"关系"},
@@ -2060,7 +2105,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-algebraic-formula-6', category: '25m-y8', title: 'Algebraic Formula (6)', titleZh: '代数公式 (6)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y8-algebraic-formula-6', category: '25m-y8', title: 'Algebraic Formula (6)', titleZh: '代数公式 (6)', unitNum: 3, unitTitle: 'Algebraic Formula', unitTitleZh: '代数公式',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Time"},{id:"0",type:"def",content:"时间"},
     {id:"1",type:"word",content:"Unknown"},{id:"1",type:"def",content:"未知数"},
@@ -2071,7 +2117,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-inequalities-and-inequations-1', category: '25m-y8', title: 'Inequalities and Inequations (1)', titleZh: '不等式和不等式方程 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-inequalities-and-inequations-1', category: '25m-y8', title: 'Inequalities and Inequations (1)', titleZh: '不等式和不等式方程 (1)', unitNum: 4, unitTitle: 'Inequalities and Inequations', unitTitleZh: '不等式和不等式方程',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Greater than"},{id:"0",type:"def",content:"大于"},
     {id:"1",type:"word",content:"Greater than or equal to"},{id:"1",type:"def",content:"大于或等于"},
@@ -2087,7 +2134,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-inequalities-and-inequations-2', category: '25m-y8', title: 'Inequalities and Inequations (2)', titleZh: '不等式和不等式方程 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y8-inequalities-and-inequations-2', category: '25m-y8', title: 'Inequalities and Inequations (2)', titleZh: '不等式和不等式方程 (2)', unitNum: 4, unitTitle: 'Inequalities and Inequations', unitTitleZh: '不等式和不等式方程',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"范围"},
     {id:"1",type:"word",content:"Solution set"},{id:"1",type:"def",content:"解集"},
@@ -2098,7 +2146,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-1', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (1)', titleZh: '勾股定理简介 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-1', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (1)', titleZh: '勾股定理简介 (1)', unitNum: 5, unitTitle: 'Introduction to Pythagoras\' Theorem', unitTitleZh: '勾股定理简介',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Ancient China"},{id:"0",type:"def",content:"中国古代"},
     {id:"1",type:"word",content:"Ancient Greece"},{id:"1",type:"def",content:"古希腊"},
@@ -2114,7 +2163,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-2', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (2)', titleZh: '勾股定理简介 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-2', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (2)', titleZh: '勾股定理简介 (2)', unitNum: 5, unitTitle: 'Introduction to Pythagoras\' Theorem', unitTitleZh: '勾股定理简介',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
     {id:"1",type:"word",content:"Square"},{id:"1",type:"def",content:"平方"},
@@ -2125,7 +2175,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-1', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (1)', titleZh: '相交线和平行线 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-1', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (1)', titleZh: '相交线和平行线 (1)', unitNum: 6, unitTitle: 'Intersecting Lines and Parallel Lines', unitTitleZh: '相交线和平行线',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Adjacent angles"},{id:"0",type:"def",content:"邻角"},
     {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
@@ -2141,7 +2192,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-2', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (2)', titleZh: '相交线和平行线 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-2', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (2)', titleZh: '相交线和平行线 (2)', unitNum: 6, unitTitle: 'Intersecting Lines and Parallel Lines', unitTitleZh: '相交线和平行线',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Interior angles"},{id:"0",type:"def",content:"内角"},
     {id:"1",type:"word",content:"Intersecting lines"},{id:"1",type:"def",content:"相交线"},
@@ -2157,7 +2209,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-3', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (3)', titleZh: '相交线和平行线 (3)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-3', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (3)', titleZh: '相交线和平行线 (3)', unitNum: 6, unitTitle: 'Intersecting Lines and Parallel Lines', unitTitleZh: '相交线和平行线',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Supplementary"},{id:"0",type:"def",content:"互补的"},
     {id:"1",type:"word",content:"Supplementary angles"},{id:"1",type:"def",content:"补角"},
@@ -2169,7 +2222,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-algebra-1', category: '25m-y8', title: 'Further Algebra (1)', titleZh: '进一步的代数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-further-algebra-1', category: '25m-y8', title: 'Further Algebra (1)', titleZh: '进一步的代数 (1)', unitNum: 7, unitTitle: 'Further Algebra', unitTitleZh: '进一步的代数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Coefficient"},{id:"0",type:"def",content:"系数"},
     {id:"1",type:"word",content:"Constant"},{id:"1",type:"def",content:"常数"},
@@ -2185,7 +2239,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-algebra-2', category: '25m-y8', title: 'Further Algebra (2)', titleZh: '进一步的代数 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-further-algebra-2', category: '25m-y8', title: 'Further Algebra (2)', titleZh: '进一步的代数 (2)', unitNum: 7, unitTitle: 'Further Algebra', unitTitleZh: '进一步的代数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Like terms"},{id:"0",type:"def",content:"同类项"},
     {id:"1",type:"word",content:"Linear equation"},{id:"1",type:"def",content:"线性方程"},
@@ -2201,7 +2256,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-algebra-3', category: '25m-y8', title: 'Further Algebra (3)', titleZh: '进一步的代数 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y8-further-algebra-3', category: '25m-y8', title: 'Further Algebra (3)', titleZh: '进一步的代数 (3)', unitNum: 7, unitTitle: 'Further Algebra', unitTitleZh: '进一步的代数',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Subject of a formula"},{id:"0",type:"def",content:"公式的主体"},
     {id:"1",type:"word",content:"Substitute"},{id:"1",type:"def",content:"代入"},
@@ -2214,7 +2270,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-1', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (1)', titleZh: '坐标和绘制线性图表 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-1', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (1)', titleZh: '坐标和绘制线性图表 (1)', unitNum: 8, unitTitle: 'Co-ordinates and Plotting Linear Graphs', unitTitleZh: '坐标和绘制线性图表',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Cartesian coordinates"},{id:"0",type:"def",content:"笛卡尔坐标"},
     {id:"1",type:"word",content:"Coordinate pair"},{id:"1",type:"def",content:"坐标对"},
@@ -2230,7 +2287,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-2', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (2)', titleZh: '坐标和绘制线性图表 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-2', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (2)', titleZh: '坐标和绘制线性图表 (2)', unitNum: 8, unitTitle: 'Co-ordinates and Plotting Linear Graphs', unitTitleZh: '坐标和绘制线性图表',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Linear equation"},{id:"0",type:"def",content:"线性方程"},
     {id:"1",type:"word",content:"Linear graph"},{id:"1",type:"def",content:"线性图表"},
@@ -2246,7 +2304,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-3', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (3)', titleZh: '坐标和绘制线性图表 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-3', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (3)', titleZh: '坐标和绘制线性图表 (3)', unitNum: 8, unitTitle: 'Co-ordinates and Plotting Linear Graphs', unitTitleZh: '坐标和绘制线性图表',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Solution"},{id:"0",type:"def",content:"解"},
     {id:"1",type:"word",content:"Straight line"},{id:"1",type:"def",content:"直线"},
@@ -2261,7 +2320,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-statistics-1', category: '25m-y8', title: 'Further Statistics (1)', titleZh: '更多的统计 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-further-statistics-1', category: '25m-y8', title: 'Further Statistics (1)', titleZh: '更多的统计 (1)', unitNum: 9, unitTitle: 'Further Statistics', unitTitleZh: '更多的统计',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Back-to-back stem-and-leaf diagram"},{id:"0",type:"def",content:"背对背茎叶图"},
     {id:"1",type:"word",content:"Class interval"},{id:"1",type:"def",content:"类间隔"},
@@ -2277,7 +2337,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-statistics-2', category: '25m-y8', title: 'Further Statistics (2)', titleZh: '更多的统计 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-further-statistics-2', category: '25m-y8', title: 'Further Statistics (2)', titleZh: '更多的统计 (2)', unitNum: 9, unitTitle: 'Further Statistics', unitTitleZh: '更多的统计',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Frequency polygon"},{id:"0",type:"def",content:"频率多边形"},
     {id:"1",type:"word",content:"Frequency tree diagram"},{id:"1",type:"def",content:"频率树图"},
@@ -2293,7 +2354,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-further-statistics-3', category: '25m-y8', title: 'Further Statistics (3)', titleZh: '更多的统计 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-further-statistics-3', category: '25m-y8', title: 'Further Statistics (3)', titleZh: '更多的统计 (3)', unitNum: 9, unitTitle: 'Further Statistics', unitTitleZh: '更多的统计',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"极差"},
     {id:"1",type:"word",content:"Raw data"},{id:"1",type:"def",content:"原始数据"},
@@ -2312,7 +2374,8 @@ var LEVELS = [
 /* ═══ Year 9 (49 levels, 424 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-1', category: '25m-y9', title: 'Working with Irrational Numbers (1)', titleZh: '理数的运算 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-1', category: '25m-y9', title: 'Working with Irrational Numbers (1)', titleZh: '理数的运算 (1)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
     {id:"1",type:"word",content:"Approximation"},{id:"1",type:"def",content:"近似值"},
@@ -2328,7 +2391,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-2', category: '25m-y9', title: 'Working with Irrational Numbers (2)', titleZh: '理数的运算 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-2', category: '25m-y9', title: 'Working with Irrational Numbers (2)', titleZh: '理数的运算 (2)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Estimation"},{id:"0",type:"def",content:"估算"},
     {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
@@ -2344,7 +2408,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-3', category: '25m-y9', title: 'Working with Irrational Numbers (3)', titleZh: '理数的运算 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-3', category: '25m-y9', title: 'Working with Irrational Numbers (3)', titleZh: '理数的运算 (3)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Negative numbers"},{id:"0",type:"def",content:"负数"},
     {id:"1",type:"word",content:"Negative square root"},{id:"1",type:"def",content:"负平方根"},
@@ -2360,7 +2425,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-4', category: '25m-y9', title: 'Working with Irrational Numbers (4)', titleZh: '理数的运算 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-4', category: '25m-y9', title: 'Working with Irrational Numbers (4)', titleZh: '理数的运算 (4)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Positive square root"},{id:"0",type:"def",content:"正平方根"},
     {id:"1",type:"word",content:"Power"},{id:"1",type:"def",content:"幂"},
@@ -2376,7 +2442,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-5', category: '25m-y9', title: 'Working with Irrational Numbers (5)', titleZh: '理数的运算 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-5', category: '25m-y9', title: 'Working with Irrational Numbers (5)', titleZh: '理数的运算 (5)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Rational numbers"},{id:"0",type:"def",content:"有理数"},
     {id:"1",type:"word",content:"Rationalize the denominator"},{id:"1",type:"def",content:"分母有理化"},
@@ -2392,7 +2459,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-irrational-number-6', category: '25m-y9', title: 'Working with Irrational Numbers (6)', titleZh: '理数的运算 (6)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-6', category: '25m-y9', title: 'Working with Irrational Numbers (6)', titleZh: '理数的运算 (6)', unitNum: 1, unitTitle: 'Working with Irrational Numbers', unitTitleZh: '理数的运算',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Terminating decimal"},{id:"0",type:"def",content:"有限小数"},
     {id:"1",type:"word",content:"Unlike surds"},{id:"1",type:"def",content:"非同类二次根式"},
@@ -2403,7 +2471,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-1', category: '25m-y9', title: 'Working with Expressions (1)', titleZh: '表达式的运算 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-expressions-1', category: '25m-y9', title: 'Working with Expressions (1)', titleZh: '表达式的运算 (1)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Algebraic expression"},{id:"0",type:"def",content:"代数表达式"},
     {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
@@ -2419,7 +2488,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-2', category: '25m-y9', title: 'Working with Expressions (2)', titleZh: '表达式的运算 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-expressions-2', category: '25m-y9', title: 'Working with Expressions (2)', titleZh: '表达式的运算 (2)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Difference of squares"},{id:"0",type:"def",content:"平方差"},
     {id:"1",type:"word",content:"Distributive law"},{id:"1",type:"def",content:"分配律"},
@@ -2435,7 +2505,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-3', category: '25m-y9', title: 'Working with Expressions (3)', titleZh: '表达式的运算 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-expressions-3', category: '25m-y9', title: 'Working with Expressions (3)', titleZh: '表达式的运算 (3)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Highest common factor (HCF)"},{id:"0",type:"def",content:"最大公因数"},
     {id:"1",type:"word",content:"Identity"},{id:"1",type:"def",content:"恒等式"},
@@ -2451,7 +2522,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-4', category: '25m-y9', title: 'Working with Expressions (4)', titleZh: '表达式的运算 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-expressions-4', category: '25m-y9', title: 'Working with Expressions (4)', titleZh: '表达式的运算 (4)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Order of magnitude"},{id:"0",type:"def",content:"数量级"},
     {id:"1",type:"word",content:"Perfect square"},{id:"1",type:"def",content:"完全平方"},
@@ -2467,7 +2539,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-5', category: '25m-y9', title: 'Working with Expressions (5)', titleZh: '表达式的运算 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-expressions-5', category: '25m-y9', title: 'Working with Expressions (5)', titleZh: '表达式的运算 (5)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Scientific notation"},{id:"0",type:"def",content:"科学记数法"},
     {id:"1",type:"word",content:"Significant figures"},{id:"1",type:"def",content:"有效数字"},
@@ -2483,14 +2556,16 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-working-with-expressions-6', category: '25m-y9', title: 'Working with Expressions (6)', titleZh: '表达式的运算 (6)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-working-with-expressions-6', category: '25m-y9', title: 'Working with Expressions (6)', titleZh: '表达式的运算 (6)', unitNum: 2, unitTitle: 'Working with Expressions', unitTitleZh: '表达式的运算',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Zero index"},{id:"0",type:"def",content:"零指数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-1', category: '25m-y9', title: 'Algebraic Functions (1)', titleZh: '代数函数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-1', category: '25m-y9', title: 'Algebraic Functions (1)', titleZh: '代数函数 (1)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"$f(x)$"},{id:"0",type:"def",content:"f(x)"},
     {id:"1",type:"word",content:"Acceleration"},{id:"1",type:"def",content:"加速度"},
@@ -2506,7 +2581,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-2', category: '25m-y9', title: 'Algebraic Functions (2)', titleZh: '代数函数 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-2', category: '25m-y9', title: 'Algebraic Functions (2)', titleZh: '代数函数 (2)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Cross-curricular"},{id:"0",type:"def",content:"跨学科"},
     {id:"1",type:"word",content:"Cubic function"},{id:"1",type:"def",content:"三次函数"},
@@ -2522,7 +2598,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-3', category: '25m-y9', title: 'Algebraic Functions (3)', titleZh: '代数函数 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-3', category: '25m-y9', title: 'Algebraic Functions (3)', titleZh: '代数函数 (3)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Domain"},{id:"0",type:"def",content:"定义域"},
     {id:"1",type:"word",content:"Endpoint"},{id:"1",type:"def",content:"端点"},
@@ -2538,7 +2615,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-4', category: '25m-y9', title: 'Algebraic Functions (4)', titleZh: '代数函数 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-4', category: '25m-y9', title: 'Algebraic Functions (4)', titleZh: '代数函数 (4)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Input"},{id:"0",type:"def",content:"输入"},
     {id:"1",type:"word",content:"Intercept"},{id:"1",type:"def",content:"截距"},
@@ -2554,7 +2632,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-5', category: '25m-y9', title: 'Algebraic Functions (5)', titleZh: '代数函数 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-5', category: '25m-y9', title: 'Algebraic Functions (5)', titleZh: '代数函数 (5)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Negative reciprocal"},{id:"0",type:"def",content:"负倒数"},
     {id:"1",type:"word",content:"Numerical representation"},{id:"1",type:"def",content:"数值表示"},
@@ -2570,7 +2649,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-6', category: '25m-y9', title: 'Algebraic Functions (6)', titleZh: '代数函数 (6)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-functions-6', category: '25m-y9', title: 'Algebraic Functions (6)', titleZh: '代数函数 (6)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"值域"},
     {id:"1",type:"word",content:"Rate of change"},{id:"1",type:"def",content:"变化率"},
@@ -2586,7 +2666,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-functions-7', category: '25m-y9', title: 'Algebraic Functions (7)', titleZh: '代数函数 (7)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-algebraic-functions-7', category: '25m-y9', title: 'Algebraic Functions (7)', titleZh: '代数函数 (7)', unitNum: 3, unitTitle: 'Algebraic Functions', unitTitleZh: '代数函数',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Uniform motion"},{id:"0",type:"def",content:"匀速运动"},
     {id:"1",type:"word",content:"Variable"},{id:"1",type:"def",content:"变量"},
@@ -2597,7 +2678,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-1', category: '25m-y9', title: 'Mastery of Angles (1)', titleZh: '掌握角度 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-mastery-of-angles-1', category: '25m-y9', title: 'Mastery of Angles (1)', titleZh: '掌握角度 (1)', unitNum: 4, unitTitle: 'Mastery of Angles', unitTitleZh: '掌握角度',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
     {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
@@ -2613,7 +2695,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-2', category: '25m-y9', title: 'Mastery of Angles (2)', titleZh: '掌握角度 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-mastery-of-angles-2', category: '25m-y9', title: 'Mastery of Angles (2)', titleZh: '掌握角度 (2)', unitNum: 4, unitTitle: 'Mastery of Angles', unitTitleZh: '掌握角度',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Heptagon"},{id:"0",type:"def",content:"七边形"},
     {id:"1",type:"word",content:"Hexagon"},{id:"1",type:"def",content:"六边形"},
@@ -2629,7 +2712,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-3', category: '25m-y9', title: 'Mastery of Angles (3)', titleZh: '掌握角度 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-mastery-of-angles-3', category: '25m-y9', title: 'Mastery of Angles (3)', titleZh: '掌握角度 (3)', unitNum: 4, unitTitle: 'Mastery of Angles', unitTitleZh: '掌握角度',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Opposite interior angles"},{id:"0",type:"def",content:"相对内角"},
     {id:"1",type:"word",content:"Parallel lines"},{id:"1",type:"def",content:"平行线"},
@@ -2645,7 +2729,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-4', category: '25m-y9', title: 'Mastery of Angles (4)', titleZh: '掌握角度 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-mastery-of-angles-4', category: '25m-y9', title: 'Mastery of Angles (4)', titleZh: '掌握角度 (4)', unitNum: 4, unitTitle: 'Mastery of Angles', unitTitleZh: '掌握角度',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Scalene triangle"},{id:"0",type:"def",content:"不等边三角形"},
     {id:"1",type:"word",content:"Statement"},{id:"1",type:"def",content:"陈述"},
@@ -2661,7 +2746,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-5', category: '25m-y9', title: 'Mastery of Angles (5)', titleZh: '掌握角度 (5)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-mastery-of-angles-5', category: '25m-y9', title: 'Mastery of Angles (5)', titleZh: '掌握角度 (5)', unitNum: 4, unitTitle: 'Mastery of Angles', unitTitleZh: '掌握角度',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Vertex"},{id:"0",type:"def",content:"顶点"},
     {id:"1",type:"word",content:"Vertically opposite angles"},{id:"1",type:"def",content:"对顶角"}
@@ -2669,7 +2755,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-pythagoras-theorem-1', category: '25m-y9', title: 'Pythagoras Theorem (1)', titleZh: '勾股定理 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-pythagoras-theorem-1', category: '25m-y9', title: 'Pythagoras Theorem (1)', titleZh: '勾股定理 (1)', unitNum: 5, unitTitle: 'Pythagoras Theorem', unitTitleZh: '勾股定理',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Area"},{id:"0",type:"def",content:"面积"},
     {id:"1",type:"word",content:"Converse proposition"},{id:"1",type:"def",content:"逆命题"},
@@ -2685,7 +2772,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-pythagoras-theorem-2', category: '25m-y9', title: 'Pythagoras Theorem (2)', titleZh: '勾股定理 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-pythagoras-theorem-2', category: '25m-y9', title: 'Pythagoras Theorem (2)', titleZh: '勾股定理 (2)', unitNum: 5, unitTitle: 'Pythagoras Theorem', unitTitleZh: '勾股定理',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
     {id:"1",type:"word",content:"Solve"},{id:"1",type:"def",content:"求解"},
@@ -2696,7 +2784,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-1', category: '25m-y9', title: '2D Shape (1)', titleZh: '二维图形 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-2d-shape-1', category: '25m-y9', title: '2D Shape (1)', titleZh: '二维图形 (1)', unitNum: 6, unitTitle: '2D Shape', unitTitleZh: '二维图形',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
     {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
@@ -2712,7 +2801,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-2', category: '25m-y9', title: '2D Shape (2)', titleZh: '二维图形 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-2d-shape-2', category: '25m-y9', title: '2D Shape (2)', titleZh: '二维图形 (2)', unitNum: 6, unitTitle: '2D Shape', unitTitleZh: '二维图形',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Kite"},{id:"0",type:"def",content:"风筝形"},
     {id:"1",type:"word",content:"Line of Symmetry"},{id:"1",type:"def",content:"对称轴"},
@@ -2728,7 +2818,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-3', category: '25m-y9', title: '2D Shape (3)', titleZh: '二维图形 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-2d-shape-3', category: '25m-y9', title: '2D Shape (3)', titleZh: '二维图形 (3)', unitNum: 6, unitTitle: '2D Shape', unitTitleZh: '二维图形',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Perimeter"},{id:"0",type:"def",content:"周长"},
     {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂直"},
@@ -2744,7 +2835,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-4', category: '25m-y9', title: '2D Shape (4)', titleZh: '二维图形 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-2d-shape-4', category: '25m-y9', title: '2D Shape (4)', titleZh: '二维图形 (4)', unitNum: 6, unitTitle: '2D Shape', unitTitleZh: '二维图形',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Rotation"},{id:"0",type:"def",content:"旋转"},
     {id:"1",type:"word",content:"Rotational Symmetry"},{id:"1",type:"def",content:"旋转对称"},
@@ -2760,7 +2852,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-5', category: '25m-y9', title: '2D Shape (5)', titleZh: '二维图形 (5)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-2d-shape-5', category: '25m-y9', title: '2D Shape (5)', titleZh: '二维图形 (5)', unitNum: 6, unitTitle: '2D Shape', unitTitleZh: '二维图形',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Trapezium"},{id:"0",type:"def",content:"梯形"},
     {id:"1",type:"word",content:"Vertex"},{id:"1",type:"def",content:"顶点"}
@@ -2768,7 +2861,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-percentages-1', category: '25m-y9', title: 'Percentages (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-percentages-1', category: '25m-y9', title: 'Percentages (1)', titleZh: '百分比 (1)', unitNum: 7, unitTitle: 'Percentages', unitTitleZh: '百分比',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Compound interest"},{id:"0",type:"def",content:"复利"},
     {id:"1",type:"word",content:"Convert"},{id:"1",type:"def",content:"转换"},
@@ -2784,7 +2878,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-percentages-2', category: '25m-y9', title: 'Percentages (2)', titleZh: '百分比 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-percentages-2', category: '25m-y9', title: 'Percentages (2)', titleZh: '百分比 (2)', unitNum: 7, unitTitle: 'Percentages', unitTitleZh: '百分比',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Exponential growth"},{id:"0",type:"def",content:"指数增长"},
     {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
@@ -2800,7 +2895,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-percentages-3', category: '25m-y9', title: 'Percentages (3)', titleZh: '百分比 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-percentages-3', category: '25m-y9', title: 'Percentages (3)', titleZh: '百分比 (3)', unitNum: 7, unitTitle: 'Percentages', unitTitleZh: '百分比',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Principal"},{id:"0",type:"def",content:"本金"},
     {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
@@ -2815,7 +2911,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-statistical-sampling-1', category: '25m-y9', title: 'Statistical Sampling (1)', titleZh: '统计抽样 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-statistical-sampling-1', category: '25m-y9', title: 'Statistical Sampling (1)', titleZh: '统计抽样 (1)', unitNum: 8, unitTitle: 'Statistical Sampling', unitTitleZh: '统计抽样',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Bias"},{id:"0",type:"def",content:"偏差/偏倚"},
     {id:"1",type:"word",content:"Census"},{id:"1",type:"def",content:"普查"},
@@ -2831,7 +2928,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-statistical-sampling-2', category: '25m-y9', title: 'Statistical Sampling (2)', titleZh: '统计抽样 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-statistical-sampling-2', category: '25m-y9', title: 'Statistical Sampling (2)', titleZh: '统计抽样 (2)', unitNum: 8, unitTitle: 'Statistical Sampling', unitTitleZh: '统计抽样',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"极差"},
     {id:"1",type:"word",content:"Representative Sample"},{id:"1",type:"def",content:"代表性样本"},
@@ -2842,7 +2940,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-1', category: '25m-y9', title: 'Graphical Representation of Statistical Data (1)', titleZh: '统计数据的图形表示 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-1', category: '25m-y9', title: 'Graphical Representation of Statistical Data (1)', titleZh: '统计数据的图形表示 (1)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Area (of bar)"},{id:"0",type:"def",content:"面积 (条形)"},
     {id:"1",type:"word",content:"Bar chart"},{id:"1",type:"def",content:"条形图"},
@@ -2858,7 +2957,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-2', category: '25m-y9', title: 'Graphical Representation of Statistical Data (2)', titleZh: '统计数据的图形表示 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-2', category: '25m-y9', title: 'Graphical Representation of Statistical Data (2)', titleZh: '统计数据的图形表示 (2)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Data"},{id:"0",type:"def",content:"数据"},
     {id:"1",type:"word",content:"Data dispersion"},{id:"1",type:"def",content:"数据离散度"},
@@ -2874,7 +2974,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-3', category: '25m-y9', title: 'Graphical Representation of Statistical Data (3)', titleZh: '统计数据的图形表示 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-3', category: '25m-y9', title: 'Graphical Representation of Statistical Data (3)', titleZh: '统计数据的图形表示 (3)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Frequency table"},{id:"0",type:"def",content:"频率表"},
     {id:"1",type:"word",content:"Group frequency table"},{id:"1",type:"def",content:"分组频率表"},
@@ -2890,7 +2991,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-4', category: '25m-y9', title: 'Graphical Representation of Statistical Data (4)', titleZh: '统计数据的图形表示 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-4', category: '25m-y9', title: 'Graphical Representation of Statistical Data (4)', titleZh: '统计数据的图形表示 (4)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Lower quartile (Q1)"},{id:"0",type:"def",content:"下四分位数 (Q1)"},
     {id:"1",type:"word",content:"Mean"},{id:"1",type:"def",content:"平均数"},
@@ -2906,7 +3008,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-5', category: '25m-y9', title: 'Graphical Representation of Statistical Data (5)', titleZh: '统计数据的图形表示 (5)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-5', category: '25m-y9', title: 'Graphical Representation of Statistical Data (5)', titleZh: '统计数据的图形表示 (5)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Pictogram"},{id:"0",type:"def",content:"象形图"},
     {id:"1",type:"word",content:"Pie chart"},{id:"1",type:"def",content:"饼图"},
@@ -2922,7 +3025,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-graphical-representation-of-st-6', category: '25m-y9', title: 'Graphical Representation of Statistical Data (6)', titleZh: '统计数据的图形表示 (6)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-graphical-representation-of-st-6', category: '25m-y9', title: 'Graphical Representation of Statistical Data (6)', titleZh: '统计数据的图形表示 (6)', unitNum: 9, unitTitle: 'Graphical Representation of Statistical Data', unitTitleZh: '统计数据的图形表示',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Unequal intervals"},{id:"0",type:"def",content:"不等距间隔"},
     {id:"1",type:"word",content:"Upper quartile (Q3)"},{id:"1",type:"def",content:"上四分位数 (Q3)"}
@@ -2930,7 +3034,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-fractions-1', category: '25m-y9', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-fractions-1', category: '25m-y9', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', unitNum: 10, unitTitle: 'Algebraic Fractions', unitTitleZh: '代数分数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Algebraic Fraction"},{id:"0",type:"def",content:"代数分数"},
     {id:"1",type:"word",content:"Common Factor"},{id:"1",type:"def",content:"公因数"},
@@ -2946,7 +3051,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-fractions-2', category: '25m-y9', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-algebraic-fractions-2', category: '25m-y9', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', unitNum: 10, unitTitle: 'Algebraic Fractions', unitTitleZh: '代数分数',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Rational Expression"},{id:"0",type:"def",content:"有理表达式"},
     {id:"1",type:"word",content:"Rearrange"},{id:"1",type:"def",content:"重排"},
@@ -2957,7 +3063,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-practice-with-constructions-1', category: '25m-y9', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-practice-with-constructions-1', category: '25m-y9', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', unitNum: 11, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
     {id:"1",type:"word",content:"Angle bisector"},{id:"1",type:"def",content:"角平分线"},
@@ -2973,7 +3080,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-practice-with-constructions-2', category: '25m-y9', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-practice-with-constructions-2', category: '25m-y9', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', unitNum: 11, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Equilateral triangle"},{id:"0",type:"def",content:"等边三角形"},
     {id:"1",type:"word",content:"Inscribed circle"},{id:"1",type:"def",content:"内切圆"},
@@ -2989,7 +3097,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-practice-with-constructions-3', category: '25m-y9', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-practice-with-constructions-3', category: '25m-y9', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', unitNum: 11, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Point"},{id:"0",type:"def",content:"点"},
     {id:"1",type:"word",content:"Quadrilateral"},{id:"1",type:"def",content:"四边形"},
@@ -3004,7 +3113,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-congruence-and-similarity-1', category: '25m-y9', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-congruence-and-similarity-1', category: '25m-y9', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', unitNum: 12, unitTitle: 'Congruence and Similarity', unitTitleZh: '全等和相似',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
     {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
@@ -3020,7 +3130,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-congruence-and-similarity-2', category: '25m-y9', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-congruence-and-similarity-2', category: '25m-y9', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', unitNum: 12, unitTitle: 'Congruence and Similarity', unitTitleZh: '全等和相似',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
     {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
@@ -3033,7 +3144,8 @@ var LEVELS = [
 /* ═══ Year 10 (36 levels, 327 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y10-real-numbers-1', category: '25m-y10', title: 'Real Numbers (1)', titleZh: '实数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-real-numbers-1', category: '25m-y10', title: 'Real Numbers (1)', titleZh: '实数 (1)', unitNum: 1, unitTitle: 'Real Numbers', unitTitleZh: '实数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Approximate"},{id:"0",type:"def",content:"近似"},
     {id:"1",type:"word",content:"Conjugate Surds"},{id:"1",type:"def",content:"共轭根式"},
@@ -3049,7 +3161,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-real-numbers-2', category: '25m-y10', title: 'Real Numbers (2)', titleZh: '实数 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-real-numbers-2', category: '25m-y10', title: 'Real Numbers (2)', titleZh: '实数 (2)', unitNum: 1, unitTitle: 'Real Numbers', unitTitleZh: '实数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Integer"},{id:"0",type:"def",content:"整数"},
     {id:"1",type:"word",content:"Irrational Numbers"},{id:"1",type:"def",content:"无理数"},
@@ -3065,7 +3178,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-real-numbers-3', category: '25m-y10', title: 'Real Numbers (3)', titleZh: '实数 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-real-numbers-3', category: '25m-y10', title: 'Real Numbers (3)', titleZh: '实数 (3)', unitNum: 1, unitTitle: 'Real Numbers', unitTitleZh: '实数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Rationalize the Denominator"},{id:"0",type:"def",content:"有理化分母"},
     {id:"1",type:"word",content:"Real Numbers"},{id:"1",type:"def",content:"实数"},
@@ -3080,7 +3194,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-algebraic-fractions-1', category: '25m-y10', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-algebraic-fractions-1', category: '25m-y10', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', unitNum: 2, unitTitle: 'Algebraic Fractions', unitTitleZh: '代数分数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Algebraic Fraction"},{id:"0",type:"def",content:"代数分数"},
     {id:"1",type:"word",content:"Common Denominator"},{id:"1",type:"def",content:"公分母"},
@@ -3096,7 +3211,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-algebraic-fractions-2', category: '25m-y10', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y10-algebraic-fractions-2', category: '25m-y10', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', unitNum: 2, unitTitle: 'Algebraic Fractions', unitTitleZh: '代数分数',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Rational Expression"},{id:"0",type:"def",content:"有理表达式"},
     {id:"1",type:"word",content:"Rearrange"},{id:"1",type:"def",content:"重排"},
@@ -3107,7 +3223,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-quadratic-equations-1', category: '25m-y10', title: 'Quadratic Equations (1)', titleZh: '二次方程 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-quadratic-equations-1', category: '25m-y10', title: 'Quadratic Equations (1)', titleZh: '二次方程 (1)', unitNum: 3, unitTitle: 'Quadratic Equations', unitTitleZh: '二次方程',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Axis of symmetry"},{id:"0",type:"def",content:"对称轴"},
     {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
@@ -3123,7 +3240,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-quadratic-equations-2', category: '25m-y10', title: 'Quadratic Equations (2)', titleZh: '二次方程 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-quadratic-equations-2', category: '25m-y10', title: 'Quadratic Equations (2)', titleZh: '二次方程 (2)', unitNum: 3, unitTitle: 'Quadratic Equations', unitTitleZh: '二次方程',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Factorisation"},{id:"0",type:"def",content:"因式分解"},
     {id:"1",type:"word",content:"Graph"},{id:"1",type:"def",content:"图 / 图形"},
@@ -3139,7 +3257,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-quadratic-equations-3', category: '25m-y10', title: 'Quadratic Equations (3)', titleZh: '二次方程 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-quadratic-equations-3', category: '25m-y10', title: 'Quadratic Equations (3)', titleZh: '二次方程 (3)', unitNum: 3, unitTitle: 'Quadratic Equations', unitTitleZh: '二次方程',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Root / Solution"},{id:"0",type:"def",content:"根 / 解"},
     {id:"1",type:"word",content:"Roots"},{id:"1",type:"def",content:"根"},
@@ -3154,7 +3273,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-simultaneous-equations-1', category: '25m-y10', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-simultaneous-equations-1', category: '25m-y10', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', unitNum: 4, unitTitle: 'Simultaneous Equations', unitTitleZh: '联立方程组',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Coefficient"},{id:"0",type:"def",content:"系数"},
     {id:"1",type:"word",content:"Constant"},{id:"1",type:"def",content:"常数"},
@@ -3170,7 +3290,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-simultaneous-equations-2', category: '25m-y10', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y10-simultaneous-equations-2', category: '25m-y10', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', unitNum: 4, unitTitle: 'Simultaneous Equations', unitTitleZh: '联立方程组',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"System of Equations"},{id:"0",type:"def",content:"方程组"},
     {id:"1",type:"word",content:"Three Unknowns"},{id:"1",type:"def",content:"三个未知数"},
@@ -3181,7 +3302,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-functions-1', category: '25m-y10', title: 'Functions (1)', titleZh: '函数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-functions-1', category: '25m-y10', title: 'Functions (1)', titleZh: '函数 (1)', unitNum: 5, unitTitle: 'Functions', unitTitleZh: '函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Asymptote"},{id:"0",type:"def",content:"渐近线"},
     {id:"1",type:"word",content:"Axis of symmetry"},{id:"1",type:"def",content:"对称轴"},
@@ -3197,7 +3319,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-functions-2', category: '25m-y10', title: 'Functions (2)', titleZh: '函数 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-functions-2', category: '25m-y10', title: 'Functions (2)', titleZh: '函数 (2)', unitNum: 5, unitTitle: 'Functions', unitTitleZh: '函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Hyperbola"},{id:"0",type:"def",content:"双曲线"},
     {id:"1",type:"word",content:"Intercept"},{id:"1",type:"def",content:"截距"},
@@ -3213,7 +3336,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-functions-3', category: '25m-y10', title: 'Functions (3)', titleZh: '函数 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y10-functions-3', category: '25m-y10', title: 'Functions (3)', titleZh: '函数 (3)', unitNum: 5, unitTitle: 'Functions', unitTitleZh: '函数',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Quadratic function"},{id:"0",type:"def",content:"二次函数"},
     {id:"1",type:"word",content:"Range"},{id:"1",type:"def",content:"值域"},
@@ -3227,7 +3351,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-further-trigonometry-1', category: '25m-y10', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-further-trigonometry-1', category: '25m-y10', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', unitNum: 6, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Adjacent side"},{id:"0",type:"def",content:"邻边"},
     {id:"1",type:"word",content:"Alternate angles"},{id:"1",type:"def",content:"内错角"},
@@ -3243,7 +3368,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-further-trigonometry-2', category: '25m-y10', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-further-trigonometry-2', category: '25m-y10', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', unitNum: 6, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Corresponding angles"},{id:"0",type:"def",content:"同位角"},
     {id:"1",type:"word",content:"Corresponding sides"},{id:"1",type:"def",content:"对应边"},
@@ -3259,7 +3385,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-further-trigonometry-3', category: '25m-y10', title: 'Further Trigonometry (3)', titleZh: '进阶三角学 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-further-trigonometry-3', category: '25m-y10', title: 'Further Trigonometry (3)', titleZh: '进阶三角学 (3)', unitNum: 6, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Line and plane angle"},{id:"0",type:"def",content:"线与平面夹角"},
     {id:"1",type:"word",content:"Navigation"},{id:"1",type:"def",content:"导航"},
@@ -3275,7 +3402,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-further-trigonometry-4', category: '25m-y10', title: 'Further Trigonometry (4)', titleZh: '进阶三角学 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-further-trigonometry-4', category: '25m-y10', title: 'Further Trigonometry (4)', titleZh: '进阶三角学 (4)', unitNum: 6, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Ratio"},{id:"0",type:"def",content:"比例"},
     {id:"1",type:"word",content:"Right-angled triangle"},{id:"1",type:"def",content:"直角三角形"},
@@ -3291,7 +3419,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-further-trigonometry-5', category: '25m-y10', title: 'Further Trigonometry (5)', titleZh: '进阶三角学 (5)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y10-further-trigonometry-5', category: '25m-y10', title: 'Further Trigonometry (5)', titleZh: '进阶三角学 (5)', unitNum: 6, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Three-figure bearing"},{id:"0",type:"def",content:"三位数方位角"},
     {id:"1",type:"word",content:"Trigonometric ratio"},{id:"1",type:"def",content:"三角函数比率"},
@@ -3300,7 +3429,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-unit-6-circles-1', category: '25m-y10', title: 'Unit 6 Circles (1)', titleZh: '圆 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-unit-6-circles-1', category: '25m-y10', title: 'Unit 6 Circles (1)', titleZh: '圆 (1)', unitNum: 7, unitTitle: 'Unit 6 Circles', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Alternate segment theorem"},{id:"0",type:"def",content:"弦切角定理"},
     {id:"1",type:"word",content:"Angle at centre"},{id:"1",type:"def",content:"圆心角"},
@@ -3316,7 +3446,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-unit-6-circles-2', category: '25m-y10', title: 'Unit 6 Circles (2)', titleZh: '圆 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-unit-6-circles-2', category: '25m-y10', title: 'Unit 6 Circles (2)', titleZh: '圆 (2)', unitNum: 7, unitTitle: 'Unit 6 Circles', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Circle theorem"},{id:"0",type:"def",content:"圆定理"},
     {id:"1",type:"word",content:"Circumference"},{id:"1",type:"def",content:"周长"},
@@ -3332,7 +3463,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-unit-6-circles-3', category: '25m-y10', title: 'Unit 6 Circles (3)', titleZh: '圆 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-unit-6-circles-3', category: '25m-y10', title: 'Unit 6 Circles (3)', titleZh: '圆 (3)', unitNum: 7, unitTitle: 'Unit 6 Circles', unitTitleZh: '圆',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Isosceles triangle"},{id:"0",type:"def",content:"等腰三角形"},
     {id:"1",type:"word",content:"Major arc"},{id:"1",type:"def",content:"优弧"},
@@ -3348,7 +3480,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-unit-6-circles-4', category: '25m-y10', title: 'Unit 6 Circles (4)', titleZh: '圆 (4)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y10-unit-6-circles-4', category: '25m-y10', title: 'Unit 6 Circles (4)', titleZh: '圆 (4)', unitNum: 7, unitTitle: 'Unit 6 Circles', unitTitleZh: '圆',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Radius"},{id:"0",type:"def",content:"半径"},
     {id:"1",type:"word",content:"Regular polygon"},{id:"1",type:"def",content:"正多边形"},
@@ -3362,7 +3495,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-practice-with-constructions-1', category: '25m-y10', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-practice-with-constructions-1', category: '25m-y10', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', unitNum: 8, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle bisector"},{id:"0",type:"def",content:"角平分线"},
     {id:"1",type:"word",content:"Arc"},{id:"1",type:"def",content:"弧"},
@@ -3378,7 +3512,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-practice-with-constructions-2', category: '25m-y10', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-practice-with-constructions-2', category: '25m-y10', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', unitNum: 8, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Equidistant"},{id:"0",type:"def",content:"等距的"},
     {id:"1",type:"word",content:"Equilateral triangle"},{id:"1",type:"def",content:"等边三角形"},
@@ -3394,7 +3529,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-practice-with-constructions-3', category: '25m-y10', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-practice-with-constructions-3', category: '25m-y10', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', unitNum: 8, unitTitle: 'Practice with Constructions', unitTitleZh: '构造练习',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Perpendicular"},{id:"0",type:"def",content:"垂直的"},
     {id:"1",type:"word",content:"Perpendicular bisector"},{id:"1",type:"def",content:"垂直平分线"},
@@ -3409,7 +3545,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-congruence-and-similarity-1', category: '25m-y10', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-congruence-and-similarity-1', category: '25m-y10', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', unitNum: 9, unitTitle: 'Congruence and Similarity', unitTitleZh: '全等和相似',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
     {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
@@ -3425,7 +3562,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-congruence-and-similarity-2', category: '25m-y10', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y10-congruence-and-similarity-2', category: '25m-y10', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', unitNum: 9, unitTitle: 'Congruence and Similarity', unitTitleZh: '全等和相似',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
     {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
@@ -3436,7 +3574,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-transformations-1', category: '25m-y10', title: 'Transformations (1)', titleZh: '图形变换 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-transformations-1', category: '25m-y10', title: 'Transformations (1)', titleZh: '图形变换 (1)', unitNum: 10, unitTitle: 'Transformations', unitTitleZh: '图形变换',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Angle of rotation"},{id:"0",type:"def",content:"旋转角度"},
     {id:"1",type:"word",content:"Centre of enlargement"},{id:"1",type:"def",content:"放缩中心"},
@@ -3452,7 +3591,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-transformations-2', category: '25m-y10', title: 'Transformations (2)', titleZh: '图形变换 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-transformations-2', category: '25m-y10', title: 'Transformations (2)', titleZh: '图形变换 (2)', unitNum: 10, unitTitle: 'Transformations', unitTitleZh: '图形变换',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Image"},{id:"0",type:"def",content:"像"},
     {id:"1",type:"word",content:"Intercept"},{id:"1",type:"def",content:"截距"},
@@ -3468,7 +3608,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-transformations-3', category: '25m-y10', title: 'Transformations (3)', titleZh: '图形变换 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-transformations-3', category: '25m-y10', title: 'Transformations (3)', titleZh: '图形变换 (3)', unitNum: 10, unitTitle: 'Transformations', unitTitleZh: '图形变换',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Scale factor"},{id:"0",type:"def",content:"比例因子"},
     {id:"1",type:"word",content:"Similar figures"},{id:"1",type:"def",content:"相似图形"},
@@ -3483,7 +3624,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-probability-1', category: '25m-y10', title: 'Probability (1)', titleZh: '概率 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-probability-1', category: '25m-y10', title: 'Probability (1)', titleZh: '概率 (1)', unitNum: 11, unitTitle: 'Probability', unitTitleZh: '概率',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"At Least"},{id:"0",type:"def",content:"至少"},
     {id:"1",type:"word",content:"Certain"},{id:"1",type:"def",content:"必然"},
@@ -3499,7 +3641,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-probability-2', category: '25m-y10', title: 'Probability (2)', titleZh: '概率 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-probability-2', category: '25m-y10', title: 'Probability (2)', titleZh: '概率 (2)', unitNum: 11, unitTitle: 'Probability', unitTitleZh: '概率',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Frequency"},{id:"0",type:"def",content:"频率"},
     {id:"1",type:"word",content:"Impossible"},{id:"1",type:"def",content:"不可能"},
@@ -3515,7 +3658,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-probability-3', category: '25m-y10', title: 'Probability (3)', titleZh: '概率 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-probability-3', category: '25m-y10', title: 'Probability (3)', titleZh: '概率 (3)', unitNum: 11, unitTitle: 'Probability', unitTitleZh: '概率',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Random Event"},{id:"0",type:"def",content:"随机事件"},
     {id:"1",type:"word",content:"Relative Frequency"},{id:"1",type:"def",content:"相对频率"},
@@ -3531,7 +3675,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-1', category: '25m-y10', title: '3D Geometry (1)', titleZh: '立体几何 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-3d-geometry-1', category: '25m-y10', title: '3D Geometry (1)', titleZh: '立体几何 (1)', unitNum: 12, unitTitle: '3D Geometry', unitTitleZh: '立体几何',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"3D solid"},{id:"0",type:"def",content:"三维立体"},
     {id:"1",type:"word",content:"Apex"},{id:"1",type:"def",content:"顶点"},
@@ -3547,7 +3692,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-2', category: '25m-y10', title: '3D Geometry (2)', titleZh: '立体几何 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-3d-geometry-2', category: '25m-y10', title: '3D Geometry (2)', titleZh: '立体几何 (2)', unitNum: 12, unitTitle: '3D Geometry', unitTitleZh: '立体几何',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Dimension"},{id:"0",type:"def",content:"尺寸"},
     {id:"1",type:"word",content:"Elevation"},{id:"1",type:"def",content:"立面图"},
@@ -3563,7 +3709,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-3', category: '25m-y10', title: '3D Geometry (3)', titleZh: '立体几何 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y10-3d-geometry-3', category: '25m-y10', title: '3D Geometry (3)', titleZh: '立体几何 (3)', unitNum: 12, unitTitle: '3D Geometry', unitTitleZh: '立体几何',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Side elevation"},{id:"0",type:"def",content:"侧立面图"},
     {id:"1",type:"word",content:"Sphere"},{id:"1",type:"def",content:"球体"},
@@ -3579,7 +3726,8 @@ var LEVELS = [
 /* ═══ Year 11 (26 levels, 216 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y11-estimation-bounds-1', category: '25m-y11', title: 'Estimation & Bounds (1)', titleZh: '估算与界限 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-estimation-bounds-1', category: '25m-y11', title: 'Estimation & Bounds (1)', titleZh: '估算与界限 (1)', unitNum: 1, unitTitle: 'Estimation & Bounds', unitTitleZh: '估算与界限',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Approximate"},{id:"0",type:"def",content:"近似"},
     {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
@@ -3595,7 +3743,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-estimation-bounds-2', category: '25m-y11', title: 'Estimation & Bounds (2)', titleZh: '估算与界限 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-estimation-bounds-2', category: '25m-y11', title: 'Estimation & Bounds (2)', titleZh: '估算与界限 (2)', unitNum: 1, unitTitle: 'Estimation & Bounds', unitTitleZh: '估算与界限',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Integer"},{id:"0",type:"def",content:"整数"},
     {id:"1",type:"word",content:"Interval"},{id:"1",type:"def",content:"区间"},
@@ -3611,7 +3760,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-estimation-bounds-3', category: '25m-y11', title: 'Estimation & Bounds (3)', titleZh: '估算与界限 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y11-estimation-bounds-3', category: '25m-y11', title: 'Estimation & Bounds (3)', titleZh: '估算与界限 (3)', unitNum: 1, unitTitle: 'Estimation & Bounds', unitTitleZh: '估算与界限',
+  timer: 80, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"范围"},
     {id:"1",type:"word",content:"Rounding"},{id:"1",type:"def",content:"四舍五入"},
@@ -3624,7 +3774,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-1', category: '25m-y11', title: 'Set Notation & Venn Diagrams (1)', titleZh: '集合符号与韦恩图 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-1', category: '25m-y11', title: 'Set Notation & Venn Diagrams (1)', titleZh: '集合符号与韦恩图 (1)', unitNum: 2, unitTitle: 'Set Notation & Venn Diagrams', unitTitleZh: '集合符号与韦恩图',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Belongs to"},{id:"0",type:"def",content:"属于"},
     {id:"1",type:"word",content:"Cardinality"},{id:"1",type:"def",content:"基数 / 集合的元素个数"},
@@ -3640,7 +3791,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-2', category: '25m-y11', title: 'Set Notation & Venn Diagrams (2)', titleZh: '集合符号与韦恩图 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-2', category: '25m-y11', title: 'Set Notation & Venn Diagrams (2)', titleZh: '集合符号与韦恩图 (2)', unitNum: 2, unitTitle: 'Set Notation & Venn Diagrams', unitTitleZh: '集合符号与韦恩图',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Event"},{id:"0",type:"def",content:"事件"},
     {id:"1",type:"word",content:"Fair"},{id:"1",type:"def",content:"公平的"},
@@ -3656,7 +3808,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-3', category: '25m-y11', title: 'Set Notation & Venn Diagrams (3)', titleZh: '集合符号与韦恩图 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-set-notation-venn-diagrams-3', category: '25m-y11', title: 'Set Notation & Venn Diagrams (3)', titleZh: '集合符号与韦恩图 (3)', unitNum: 2, unitTitle: 'Set Notation & Venn Diagrams', unitTitleZh: '集合符号与韦恩图',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Proper Subset"},{id:"0",type:"def",content:"真子集"},
     {id:"1",type:"word",content:"Random"},{id:"1",type:"def",content:"随机"},
@@ -3672,7 +3825,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-simultaneous-equations-1', category: '25m-y11', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-simultaneous-equations-1', category: '25m-y11', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', unitNum: 3, unitTitle: 'Simultaneous Equations', unitTitleZh: '联立方程组',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Coefficient"},{id:"0",type:"def",content:"系数"},
     {id:"1",type:"word",content:"Consistent system"},{id:"1",type:"def",content:"相容系统"},
@@ -3688,7 +3842,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-simultaneous-equations-2', category: '25m-y11', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-simultaneous-equations-2', category: '25m-y11', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', unitNum: 3, unitTitle: 'Simultaneous Equations', unitTitleZh: '联立方程组',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Intersection point"},{id:"0",type:"def",content:"交点"},
     {id:"1",type:"word",content:"Isolate"},{id:"1",type:"def",content:"分离"},
@@ -3704,7 +3859,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-simultaneous-equations-3', category: '25m-y11', title: 'Simultaneous Equations (3)', titleZh: '联立方程组 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-simultaneous-equations-3', category: '25m-y11', title: 'Simultaneous Equations (3)', titleZh: '联立方程组 (3)', unitNum: 3, unitTitle: 'Simultaneous Equations', unitTitleZh: '联立方程组',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Solution"},{id:"0",type:"def",content:"解"},
     {id:"1",type:"word",content:"Solve"},{id:"1",type:"def",content:"求解"},
@@ -3719,7 +3875,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-quadratic-sequences-1', category: '25m-y11', title: 'Quadratic Sequences (1)', titleZh: '二次数列 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-quadratic-sequences-1', category: '25m-y11', title: 'Quadratic Sequences (1)', titleZh: '二次数列 (1)', unitNum: 4, unitTitle: 'Quadratic Sequences', unitTitleZh: '二次数列',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Arithmetic progression"},{id:"0",type:"def",content:"等差数列"},
     {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
@@ -3735,7 +3892,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-quadratic-sequences-2', category: '25m-y11', title: 'Quadratic Sequences (2)', titleZh: '二次数列 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-quadratic-sequences-2', category: '25m-y11', title: 'Quadratic Sequences (2)', titleZh: '二次数列 (2)', unitNum: 4, unitTitle: 'Quadratic Sequences', unitTitleZh: '二次数列',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"General form"},{id:"0",type:"def",content:"一般形式"},
     {id:"1",type:"word",content:"Geometric sequence"},{id:"1",type:"def",content:"几何数列 / 等比数列"},
@@ -3751,7 +3909,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-quadratic-sequences-3', category: '25m-y11', title: 'Quadratic Sequences (3)', titleZh: '二次数列 (3)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-quadratic-sequences-3', category: '25m-y11', title: 'Quadratic Sequences (3)', titleZh: '二次数列 (3)', unitNum: 4, unitTitle: 'Quadratic Sequences', unitTitleZh: '二次数列',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Second difference"},{id:"0",type:"def",content:"二阶差分"},
     {id:"1",type:"word",content:"Sequence"},{id:"1",type:"def",content:"数列"},
@@ -3763,7 +3922,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-functions-1', category: '25m-y11', title: 'Functions (1)', titleZh: '函数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-functions-1', category: '25m-y11', title: 'Functions (1)', titleZh: '函数 (1)', unitNum: 5, unitTitle: 'Functions', unitTitleZh: '函数',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Composite Function"},{id:"0",type:"def",content:"复合函数"},
     {id:"1",type:"word",content:"Cubic Function"},{id:"1",type:"def",content:"三次函数"},
@@ -3779,7 +3939,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-functions-2', category: '25m-y11', title: 'Functions (2)', titleZh: '函数 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-functions-2', category: '25m-y11', title: 'Functions (2)', titleZh: '函数 (2)', unitNum: 5, unitTitle: 'Functions', unitTitleZh: '函数',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Linear Function"},{id:"0",type:"def",content:"线性函数"},
     {id:"1",type:"word",content:"Quadratic Function"},{id:"1",type:"def",content:"二次函数"},
@@ -3790,7 +3951,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-differentiation-1', category: '25m-y11', title: 'Differentiation (1)', titleZh: '微分 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-differentiation-1', category: '25m-y11', title: 'Differentiation (1)', titleZh: '微分 (1)', unitNum: 6, unitTitle: 'Differentiation', unitTitleZh: '微分',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Curve"},{id:"0",type:"def",content:"曲线"},
     {id:"1",type:"word",content:"Derivative"},{id:"1",type:"def",content:"导数"},
@@ -3806,7 +3968,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-differentiation-2', category: '25m-y11', title: 'Differentiation (2)', titleZh: '微分 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-differentiation-2', category: '25m-y11', title: 'Differentiation (2)', titleZh: '微分 (2)', unitNum: 6, unitTitle: 'Differentiation', unitTitleZh: '微分',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Second derivative"},{id:"0",type:"def",content:"二阶导数"},
     {id:"1",type:"word",content:"Stationary point"},{id:"1",type:"def",content:"驻点"},
@@ -3816,7 +3979,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-further-trigonometry-1', category: '25m-y11', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-further-trigonometry-1', category: '25m-y11', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', unitNum: 7, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
     {id:"1",type:"word",content:"Altitude"},{id:"1",type:"def",content:"高"},
@@ -3832,7 +3996,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-further-trigonometry-2', category: '25m-y11', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-further-trigonometry-2', category: '25m-y11', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', unitNum: 7, unitTitle: 'Further Trigonometry', unitTitleZh: '进阶三角学',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Projection"},{id:"0",type:"def",content:"投影"},
     {id:"1",type:"word",content:"Side length"},{id:"1",type:"def",content:"边长"},
@@ -3843,7 +4008,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-1', category: '25m-y11', title: 'Graphs of Trigonometric Functions (1)', titleZh: '三角函数图像 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-1', category: '25m-y11', title: 'Graphs of Trigonometric Functions (1)', titleZh: '三角函数图像 (1)', unitNum: 8, unitTitle: 'Graphs of Trigonometric Functions', unitTitleZh: '三角函数图像',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Amplitude"},{id:"0",type:"def",content:"振幅"},
     {id:"1",type:"word",content:"Asymptote"},{id:"1",type:"def",content:"渐近线"},
@@ -3859,7 +4025,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-2', category: '25m-y11', title: 'Graphs of Trigonometric Functions (2)', titleZh: '三角函数图像 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-2', category: '25m-y11', title: 'Graphs of Trigonometric Functions (2)', titleZh: '三角函数图像 (2)', unitNum: 8, unitTitle: 'Graphs of Trigonometric Functions', unitTitleZh: '三角函数图像',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"值域"},
     {id:"1",type:"word",content:"Sine function"},{id:"1",type:"def",content:"正弦函数"},
@@ -3870,7 +4037,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-regions-inequalities-1', category: '25m-y11', title: 'Regions & Inequalities (1)', titleZh: '区域与不等式 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-regions-inequalities-1', category: '25m-y11', title: 'Regions & Inequalities (1)', titleZh: '区域与不等式 (1)', unitNum: 9, unitTitle: 'Regions & Inequalities', unitTitleZh: '区域与不等式',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Boundary Line"},{id:"0",type:"def",content:"边界线"},
     {id:"1",type:"word",content:"Bounded Region"},{id:"1",type:"def",content:"有界区域"},
@@ -3886,7 +4054,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-regions-inequalities-2', category: '25m-y11', title: 'Regions & Inequalities (2)', titleZh: '区域与不等式 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-regions-inequalities-2', category: '25m-y11', title: 'Regions & Inequalities (2)', titleZh: '区域与不等式 (2)', unitNum: 9, unitTitle: 'Regions & Inequalities', unitTitleZh: '区域与不等式',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Region"},{id:"0",type:"def",content:"区域"},
     {id:"1",type:"word",content:"Shaded Region"},{id:"1",type:"def",content:"阴影区域"},
@@ -3897,7 +4066,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-vectors-1', category: '25m-y11', title: 'Vectors (1)', titleZh: '向量 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-vectors-1', category: '25m-y11', title: 'Vectors (1)', titleZh: '向量 (1)', unitNum: 10, unitTitle: 'Vectors', unitTitleZh: '向量',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Column vector"},{id:"0",type:"def",content:"列向量"},
     {id:"1",type:"word",content:"Components"},{id:"1",type:"def",content:"分量"},
@@ -3913,7 +4083,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-vectors-2', category: '25m-y11', title: 'Vectors (2)', titleZh: '向量 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-vectors-2', category: '25m-y11', title: 'Vectors (2)', titleZh: '向量 (2)', unitNum: 10, unitTitle: 'Vectors', unitTitleZh: '向量',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Scalar"},{id:"0",type:"def",content:"标量"},
     {id:"1",type:"word",content:"Translation"},{id:"1",type:"def",content:"平移"},
@@ -3924,7 +4095,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-statistics-and-probability-1', category: '25m-y11', title: 'Statistics and Probability (1)', titleZh: '统计与概率 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-statistics-and-probability-1', category: '25m-y11', title: 'Statistics and Probability (1)', titleZh: '统计与概率 (1)', unitNum: 11, unitTitle: 'Statistics and Probability', unitTitleZh: '统计与概率',
+  timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Bivariate data"},{id:"0",type:"def",content:"双变量数据"},
     {id:"1",type:"word",content:"Correlation"},{id:"1",type:"def",content:"相关性"},
@@ -3940,7 +4112,8 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-statistics-and-probability-2', category: '25m-y11', title: 'Statistics and Probability (2)', titleZh: '统计与概率 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-statistics-and-probability-2', category: '25m-y11', title: 'Statistics and Probability (2)', titleZh: '统计与概率 (2)', unitNum: 11, unitTitle: 'Statistics and Probability', unitTitleZh: '统计与概率',
+  timer: 90, comboBonus: 3,
   vocabulary: [
     {id:"0",type:"word",content:"Outlier"},{id:"0",type:"def",content:"异常值"},
     {id:"1",type:"word",content:"Percentile"},{id:"1",type:"def",content:"百分位数"},
@@ -3949,6 +4122,7 @@ var LEVELS = [
     {id:"4",type:"word",content:"Upper quartile"},{id:"4",type:"def",content:"上四分位数"}
   ]
 }
+
 
 
 ];
