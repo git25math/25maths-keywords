@@ -268,8 +268,8 @@
 ### Phase 10A — 数据层优化（前置）[DONE]
 - [x] levels.js 按 board 拆分为 3 个 JSON（异步按需加载）→ v1.3.1
 - [x] 角色按需加载（学生不加载 admin/vocab-admin）→ v1.3.1
-- [ ] 简单 minify 脚本（esbuild 一行命令）
-- [ ] 首屏从 ~114KB gzip → ~75KB gzip
+- [x] esbuild minify 脚本（17 JS → 单文件 bundle + CSS minify）→ v1.3.2
+- [ ] 首屏从 ~114KB gzip → ~75KB gzip（需按 board 懒加载 JSON，拆到 10A.2）
 
 ### Phase 10B — 选择题练习（Layer 3 快速突破）
 - [ ] 导入 25maths-website 纯文本选择题（~800 题无 LaTeX 依赖）

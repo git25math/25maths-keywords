@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.3.2] - 2026-03-05 — esbuild Minify + 首屏优化
+
+### 性能优化
+- **JS 单文件 bundle**：17 个核心 JS 合并为 `app.bundle.min.js`（esbuild minify），gzip 字典效率大幅提升
+- **CSS minify**：`style.css` → `style.min.css`（esbuild minify）
+- 单文件 bundle 减少 HTTP 请求数（17 → 1），提升首屏加载速度
+
+### 构建系统
+- `package.json` 新建，esbuild devDependency
+- `scripts/minify.sh` 一键构建脚本（拼接 → minify → 输出 gzip 大小）
+- `npm run build` 标准构建命令，`npm run dev` 本地开发服务器
+
+### 架构变更
+- `index.html`：17 个 `<script>` → 单个 `app.bundle.min.js`；`style.css` → `style.min.css`
+- `build-single.py`：遇到 `app.bundle.min.js` 自动展开为 17 个源文件内联（保持离线版可调试 + levels.js sync shim）
+- admin.js / vocab-admin.js 动态加载路径不变（教师专用，不影响首屏）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `package.json` | **新建** — esbuild devDependency + build/dev scripts |
+| `scripts/minify.sh` | **新建** — 一键 minify 脚本 |
+| `js/app.bundle.min.js` | **新建** — 17 JS 合并 minified |
+| `css/style.min.css` | **新建** — CSS minified |
+| `index.html` | 17 script → 1 bundle; style.css → style.min.css |
+| `scripts/build-single.py` | 适配 bundle 展开逻辑 |
+| `js/config.js` | APP_VERSION → v1.3.2 |
+| `CLAUDE.md` | 工作流新增 build 步骤 + Conventions 更新 |
+
 ## [1.3.1] - 2026-03-05 — 数据层优化（levels 拆分 + 角色按需加载）
 
 ### 性能优化

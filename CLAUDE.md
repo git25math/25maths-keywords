@@ -4,7 +4,7 @@ Bilingual math vocabulary learning platform (双语数学词汇学习平台) for
 
 - **Live**: https://git25math.github.io/25maths-keywords/
 - **Repo**: https://github.com/git25math/25maths-keywords
-- **Version**: v1.3.1 (2026-03-05)
+- **Version**: v1.3.2 (2026-03-05)
 - **Scale**: 3 boards, 264 levels, 2,200 words
 - **Supabase**: shared with 25maths-website (ref: `jjjigohjvmyewasmmmyf`)
 - **See also**: [CHANGELOG.md](CHANGELOG.md) | [ROADMAP.md](ROADMAP.md)
@@ -88,16 +88,17 @@ Panel system: `showPanel(id)` switches between 16 panels:
 ### 3. Ship — 记录 + 推送 + 部署
 任务代码完成后，**自动触发以下收尾步骤**（无需用户再次指示）：
 
-1. **CHANGELOG.md** — 在文件顶部新增版本条目，格式沿用现有风格（标题 / 功能分类 / 文件变更）
-2. **ROADMAP.md** — 将已完成项标记 `[x]`，如有新 Phase 则插入对应位置
-3. **git commit** — 提交所有变更（含 CHANGELOG + ROADMAP），commit message 用中文概要
-4. **git push origin main** — 推送到远程
-5. **验证部署** — 查询 GitHub Pages build 状态，确认 `status: "built"`
-6. **汇报** — 向用户输出：版本号、上线 URL、变更摘要表格、ROADMAP 更新点
+1. **JS/CSS 变更后**先执行 `npm run build` 重新生成 minified 文件（`js/app.bundle.min.js` + `css/style.min.css`）
+2. **CHANGELOG.md** — 在文件顶部新增版本条目，格式沿用现有风格（标题 / 功能分类 / 文件变更）
+3. **ROADMAP.md** — 将已完成项标记 `[x]`，如有新 Phase 则插入对应位置
+4. **git commit** — 提交所有变更（含 CHANGELOG + ROADMAP），commit message 用中文概要
+5. **git push origin main** — 推送到远程
+6. **验证部署** — 查询 GitHub Pages build 状态，确认 `status: "built"`
+7. **汇报** — 向用户输出：版本号、上线 URL、变更摘要表格、ROADMAP 更新点
 
 ## Conventions
 
-- No build tools / bundler — plain `<script>` tags with global variables
+- esbuild minify: 17 core JS → `js/app.bundle.min.js`, CSS → `css/style.min.css`; run `npm run build` after any JS/CSS change
 - All JS files use `var` declarations for browser compatibility
 - CSS uses custom properties (purple theme: `--c-primary: #5248C9`)
 - Fonts: Bricolage Grotesque (display) + DM Sans (body) + JetBrains Mono (code) + Noto Sans SC (Chinese)

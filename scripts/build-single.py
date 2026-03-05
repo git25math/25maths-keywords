@@ -56,9 +56,35 @@ def inline_css(html, base_dir):
 def inline_js(html, base_dir):
     """Replace local <script src="..."> with inline <script> blocks.
 
-    Special case: levels-loader.js is replaced with a synchronous inline version
-    that embeds the full LEVELS data from levels.js.
+    Special cases:
+      - app.bundle.min.js → expand back to 17 source files (unminified, debuggable)
+        with levels-loader.js replaced by levels.js + sync shim
+      - levels-loader.js → inline synchronous version with levels.js data
     """
+
+    # The 17 core source files in load order (matching minify.sh)
+    CORE_JS_FILES = [
+        "js/config.js", "js/levels-loader.js", "js/storage.js", "js/particles.js",
+        "js/auth.js", "js/ui.js", "js/mastery.js", "js/study.js", "js/battle.js",
+        "js/review.js", "js/quiz.js", "js/spell.js", "js/match.js", "js/export.js",
+        "js/stats.js", "js/homework.js", "js/app.js",
+    ]
+
+    def _inline_levels_sync(base_dir):
+        """Return inline <script> with levels.js data + sync shim."""
+        levels_path = os.path.join(base_dir, "js", "levels.js")
+        if os.path.exists(levels_path):
+            levels_js = read_file(levels_path)
+            print("  -> levels-loader.js replaced with inline levels.js + sync shim")
+            return (
+                f"<script>\n{levels_js}\n"
+                "var _levelsReady = true;\n"
+                "var _levelsCallbacks = [];\n"
+                "function onLevelsReady(fn) { fn(); }\n"
+                "</script>"
+            )
+        print(f"  WARNING: levels.js not found: {levels_path}")
+        return ""
 
     def replace_script(match):
         src = match.group(1)
@@ -66,24 +92,25 @@ def inline_js(html, base_dir):
         if src.startswith("http://") or src.startswith("https://"):
             return match.group(0)
 
+        # Special: app.bundle.min.js → expand to 17 source files
+        if src == "js/app.bundle.min.js":
+            print("  -> Expanding app.bundle.min.js to 17 source files for offline build")
+            parts = []
+            for js_file in CORE_JS_FILES:
+                if js_file == "js/levels-loader.js":
+                    parts.append(_inline_levels_sync(base_dir))
+                    continue
+                filepath = os.path.join(base_dir, js_file)
+                if os.path.exists(filepath):
+                    js = read_file(filepath)
+                    parts.append(f"<script>\n{js}\n</script>")
+                else:
+                    print(f"  WARNING: JS file not found: {filepath}")
+            return "\n".join(parts)
+
         # Special: levels-loader.js → inline synchronous version with levels.js data
         if src == "js/levels-loader.js":
-            levels_path = os.path.join(base_dir, "js", "levels.js")
-            if os.path.exists(levels_path):
-                levels_js = read_file(levels_path)
-                # Inline levels.js data + synchronous onLevelsReady shim
-                inline = (
-                    f"<script>\n{levels_js}\n"
-                    "var _levelsReady = true;\n"
-                    "var _levelsCallbacks = [];\n"
-                    "function onLevelsReady(fn) { fn(); }\n"
-                    "</script>"
-                )
-                print("  -> levels-loader.js replaced with inline levels.js + sync shim")
-                return inline
-            else:
-                print(f"  WARNING: levels.js not found for inline build: {levels_path}")
-                return match.group(0)
+            return _inline_levels_sync(base_dir)
 
         filepath = os.path.join(base_dir, src)
         if os.path.exists(filepath):
