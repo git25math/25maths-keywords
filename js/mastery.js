@@ -234,6 +234,25 @@ function renderHome() {
   /* Deck grid grouped by BOARDS → categories → levels */
   var hasAnyResult = false;
   getVisibleBoards().forEach(function(board) {
+
+    /* ── CIE board: syllabus-driven rendering ── */
+    if (board.id === 'cie' && typeof renderCIEHome === 'function' && _cieDataReady) {
+      var cieHtml = renderCIEHome();
+      if (cieHtml) {
+        hasAnyResult = true;
+        html += '<div class="board-section" id="board-cie">';
+        html += '<div class="board-header">';
+        html += '<span class="board-emoji">' + board.emoji + '</span>';
+        html += '<span class="board-name">' + boardName(board) + '</span>';
+        html += '<span class="board-code">' + board.code + '</span>';
+        html += '</div>';
+        html += cieHtml;
+        html += '</div>';
+      }
+      return;
+    }
+
+    /* ── Non-CIE boards: original rendering ── */
     /* Pre-compute per-level stats + lock state for this board */
     var _levelStats = {};
     var _levelLocked = {};
@@ -275,7 +294,7 @@ function renderHome() {
       boardHtml += '<span class="category-emoji">' + cat.emoji + '</span>';
       boardHtml += '<span class="category-name">' + catName(cat) + '</span>';
 
-      /* 25m: show unit count; others: show group count */
+      /* 25m: show unit count; Edexcel: show group count */
       if (is25m) {
         var unitSet = {};
         catLevels.forEach(function(cl) { if (cl.lv.unitNum) unitSet[cl.lv.unitNum] = true; });
@@ -289,7 +308,7 @@ function renderHome() {
 
       boardHtml += '<div class="deck-list category-body">';
 
-      /* Practice actions for CIE / Edexcel categories */
+      /* Practice actions for Edexcel categories */
       if (!is25m && catLevels.length > 0) {
         var firstIdx = catLevels[0].idx;
         boardHtml += '<div class="pq-cat-actions">';
@@ -425,12 +444,16 @@ function renderDeck(idx) {
 
   /* Header */
   html += '<div class="deck-header">';
-  html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
-  var catInfo = getCategoryInfo(lv.category);
-  if (lv.board === '25m' && lv.unitNum) {
+  if (lv._isSection && lv._section) {
+    html += '<button class="back-btn" onclick="openSection(\'' + lv._section + '\')">\u2190</button>';
+    html += '<div class="deck-title">\ud83d\udcdd ' + lvTitle(lv) + '</div>';
+  } else if (lv.board === '25m' && lv.unitNum) {
+    html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
     var yn = lv.category.replace('25m-y', '');
     html += '<div class="deck-title">Y' + yn + '.' + lv.unitNum + ' \u00b7 ' + lvTitle(lv) + '</div>';
   } else {
+    html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';
+    var catInfo = getCategoryInfo(lv.category);
     html += '<div class="deck-title">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
   }
   html += '</div>';

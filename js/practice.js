@@ -166,6 +166,25 @@ function getPracticeQuestions(board, category, count) {
   return shuffle(filtered).slice(0, count);
 }
 
+/* Get questions filtered by syllabus section */
+function getPracticeBySection(board, sectionId, count) {
+  count = count || 10;
+  var data = _pqData[board];
+  if (!data) return [];
+  var filtered = data.filter(function(q) { return q.s === sectionId; });
+  return shuffle(filtered).slice(0, count);
+}
+
+/* Get questions filtered by syllabus chapter */
+function getPracticeByChapter(board, chNum, count) {
+  count = count || 10;
+  var data = _pqData[board];
+  if (!data) return [];
+  var prefix = chNum + '.';
+  var filtered = data.filter(function(q) { return q.s && q.s.indexOf(prefix) === 0; });
+  return shuffle(filtered).slice(0, count);
+}
+
 /* ═══ START PRACTICE ═══ */
 
 function startPractice(li) {
@@ -178,7 +197,19 @@ function startPractice(li) {
   showToast(t('Loading questions...', '加载题目中...'));
 
   Promise.all([loadPracticeData(board), loadKaTeX()]).then(function() {
-    var questions = getPracticeQuestions(board, lv.category, 10);
+    var questions;
+    /* Section/chapter filtering for CIE syllabus mode */
+    if (board === 'cie' && window._practiceSection) {
+      questions = getPracticeBySection(board, window._practiceSection, 10);
+      window._practiceSection = null;
+    } else if (board === 'cie' && window._practiceChapter) {
+      questions = getPracticeByChapter(board, window._practiceChapter, 10);
+      window._practiceChapter = null;
+    } else if (lv._isSection && lv._section) {
+      questions = getPracticeBySection(board, lv._section, 10);
+    } else {
+      questions = getPracticeQuestions(board, lv.category, 10);
+    }
     if (questions.length === 0) {
       showToast(t('No practice questions available for this topic', '该主题暂无练习题'));
       return;

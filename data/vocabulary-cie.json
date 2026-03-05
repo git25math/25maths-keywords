@@ -1,0 +1,2731 @@
+{
+  "1.1": [
+    {
+      "word": "Natural number",
+      "def": "自然数",
+      "id": "0"
+    },
+    {
+      "word": "Integer",
+      "def": "整数",
+      "id": "1"
+    },
+    {
+      "word": "Prime number",
+      "def": "质数",
+      "id": "2"
+    },
+    {
+      "word": "Square number",
+      "def": "平方数",
+      "id": "3"
+    },
+    {
+      "word": "Cube number",
+      "def": "立方数",
+      "id": "4"
+    },
+    {
+      "word": "Rational number",
+      "def": "有理数",
+      "id": "5"
+    },
+    {
+      "word": "Irrational number",
+      "def": "无理数",
+      "id": "6"
+    },
+    {
+      "word": "Real number",
+      "def": "实数",
+      "id": "7"
+    },
+    {
+      "word": "Reciprocal",
+      "def": "倒数",
+      "id": "8"
+    },
+    {
+      "word": "Factor",
+      "def": "因数",
+      "id": "9"
+    },
+    {
+      "word": "Multiple",
+      "def": "倍数",
+      "id": "10"
+    },
+    {
+      "word": "HCF",
+      "def": "最大公因数",
+      "id": "11"
+    },
+    {
+      "word": "LCM",
+      "def": "最小公倍数",
+      "id": "12"
+    },
+    {
+      "word": "Common factor",
+      "def": "公因数",
+      "id": "13"
+    },
+    {
+      "word": "Common multiple",
+      "def": "公倍数",
+      "id": "14"
+    },
+    {
+      "word": "Prime factor",
+      "def": "质因数",
+      "id": "15"
+    },
+    {
+      "word": "Prime factorisation",
+      "def": "质因数分解",
+      "id": "16"
+    },
+    {
+      "word": "Divisible",
+      "def": "可整除",
+      "id": "17"
+    },
+    {
+      "word": "Triangular number",
+      "def": "三角数",
+      "id": "18"
+    }
+  ],
+  "1.2": [
+    {
+      "word": "Set",
+      "def": "集合",
+      "id": "0"
+    },
+    {
+      "word": "Universal set",
+      "def": "全集",
+      "id": "1"
+    },
+    {
+      "word": "Intersection",
+      "def": "交集",
+      "id": "2"
+    },
+    {
+      "word": "Union",
+      "def": "并集",
+      "id": "3"
+    },
+    {
+      "word": "Complement",
+      "def": "补集",
+      "id": "4"
+    },
+    {
+      "word": "Subset",
+      "def": "子集",
+      "id": "5"
+    },
+    {
+      "word": "Venn diagram",
+      "def": "韦恩图",
+      "id": "6"
+    },
+    {
+      "word": "Element",
+      "def": "元素",
+      "id": "7"
+    },
+    {
+      "word": "Empty set",
+      "def": "空集",
+      "id": "8"
+    },
+    {
+      "word": "Notation",
+      "def": "符号表示",
+      "id": "9"
+    }
+  ],
+  "1.3": [
+    {
+      "word": "Square root",
+      "def": "平方根",
+      "id": "0"
+    },
+    {
+      "word": "Cube root",
+      "def": "立方根",
+      "id": "1"
+    },
+    {
+      "word": "Index (Power)",
+      "def": "幂",
+      "id": "2"
+    },
+    {
+      "word": "Base",
+      "def": "底数",
+      "id": "3"
+    },
+    {
+      "word": "Exponent",
+      "def": "指数",
+      "id": "4"
+    },
+    {
+      "word": "Negative index",
+      "def": "负指数",
+      "id": "5"
+    },
+    {
+      "word": "Fractional index",
+      "def": "分数指数",
+      "id": "6"
+    },
+    {
+      "word": "Index law",
+      "def": "指数定律",
+      "id": "7"
+    }
+  ],
+  "1.4": [
+    {
+      "word": "Directed number",
+      "def": "有向数",
+      "id": "0"
+    },
+    {
+      "word": "Negative number",
+      "def": "负数",
+      "id": "1"
+    },
+    {
+      "word": "Positive number",
+      "def": "正数",
+      "id": "2"
+    },
+    {
+      "word": "Absolute value",
+      "def": "绝对值",
+      "id": "3"
+    },
+    {
+      "word": "Ordering",
+      "def": "排序",
+      "id": "4"
+    },
+    {
+      "word": "Greater than",
+      "def": "大于",
+      "id": "5"
+    },
+    {
+      "word": "Less than",
+      "def": "小于",
+      "id": "6"
+    },
+    {
+      "word": "Number line",
+      "def": "数轴",
+      "id": "7"
+    }
+  ],
+  "1.5": [
+    {
+      "word": "Numerator",
+      "def": "分子",
+      "id": "0"
+    },
+    {
+      "word": "Denominator",
+      "def": "分母",
+      "id": "1"
+    },
+    {
+      "word": "Proper fraction",
+      "def": "真分数",
+      "id": "2"
+    },
+    {
+      "word": "Improper fraction",
+      "def": "假分数",
+      "id": "3"
+    },
+    {
+      "word": "Mixed number",
+      "def": "带分数",
+      "id": "4"
+    },
+    {
+      "word": "Recurring decimal",
+      "def": "循环小数",
+      "id": "5"
+    },
+    {
+      "word": "Percentage",
+      "def": "百分数",
+      "id": "6"
+    },
+    {
+      "word": "Equivalent fraction",
+      "def": "等值分数",
+      "id": "7"
+    },
+    {
+      "word": "Decimal place",
+      "def": "小数位",
+      "id": "8"
+    }
+  ],
+  "1.6": [
+    {
+      "word": "BIDMAS",
+      "def": "运算顺序",
+      "id": "0"
+    },
+    {
+      "word": "Brackets",
+      "def": "括号",
+      "id": "1"
+    },
+    {
+      "word": "Operation",
+      "def": "运算",
+      "id": "2"
+    },
+    {
+      "word": "Order of operations",
+      "def": "运算顺序规则",
+      "id": "3"
+    },
+    {
+      "word": "Priority",
+      "def": "优先级",
+      "id": "4"
+    }
+  ],
+  "1.7": [
+    {
+      "word": "Rounding",
+      "def": "四舍五入",
+      "id": "0"
+    },
+    {
+      "word": "Significant figure",
+      "def": "有效数字",
+      "id": "1"
+    },
+    {
+      "word": "Decimal place",
+      "def": "小数位",
+      "id": "2"
+    },
+    {
+      "word": "Accuracy",
+      "def": "精确度",
+      "id": "3"
+    },
+    {
+      "word": "Truncation",
+      "def": "截断",
+      "id": "4"
+    },
+    {
+      "word": "Approximation",
+      "def": "近似值",
+      "id": "5"
+    }
+  ],
+  "1.8": [
+    {
+      "word": "Standard form",
+      "def": "标准式",
+      "id": "0"
+    },
+    {
+      "word": "Power of 10",
+      "def": "10的幂",
+      "id": "1"
+    },
+    {
+      "word": "Scientific notation",
+      "def": "科学计数法",
+      "id": "2"
+    },
+    {
+      "word": "Order of magnitude",
+      "def": "数量级",
+      "id": "3"
+    }
+  ],
+  "1.9": [
+    {
+      "word": "Sum",
+      "def": "和",
+      "id": "0"
+    },
+    {
+      "word": "Difference",
+      "def": "差",
+      "id": "1"
+    },
+    {
+      "word": "Product",
+      "def": "积",
+      "id": "2"
+    },
+    {
+      "word": "Quotient",
+      "def": "商",
+      "id": "3"
+    },
+    {
+      "word": "Remainder",
+      "def": "余数",
+      "id": "4"
+    },
+    {
+      "word": "Divisor",
+      "def": "除数",
+      "id": "5"
+    }
+  ],
+  "1.10": [
+    {
+      "word": "Estimation",
+      "def": "估算",
+      "id": "0"
+    },
+    {
+      "word": "Approximate",
+      "def": "近似",
+      "id": "1"
+    },
+    {
+      "word": "Round",
+      "def": "取整",
+      "id": "2"
+    },
+    {
+      "word": "Reasonable answer",
+      "def": "合理答案",
+      "id": "3"
+    },
+    {
+      "word": "Check",
+      "def": "验算",
+      "id": "4"
+    }
+  ],
+  "1.11": [
+    {
+      "word": "Upper bound",
+      "def": "上界",
+      "id": "0"
+    },
+    {
+      "word": "Lower bound",
+      "def": "下界",
+      "id": "1"
+    },
+    {
+      "word": "Error interval",
+      "def": "误差区间",
+      "id": "2"
+    },
+    {
+      "word": "Maximum error",
+      "def": "最大误差",
+      "id": "3"
+    },
+    {
+      "word": "Degree of accuracy",
+      "def": "精确度",
+      "id": "4"
+    }
+  ],
+  "1.12": [
+    {
+      "word": "Ratio",
+      "def": "比",
+      "id": "0"
+    },
+    {
+      "word": "Proportion",
+      "def": "比例",
+      "id": "1"
+    },
+    {
+      "word": "Simplest form",
+      "def": "最简形式",
+      "id": "2"
+    },
+    {
+      "word": "Unitary method",
+      "def": "单一法",
+      "id": "3"
+    },
+    {
+      "word": "Scale",
+      "def": "比例尺",
+      "id": "4"
+    },
+    {
+      "word": "Share",
+      "def": "分配",
+      "id": "5"
+    }
+  ],
+  "1.13": [
+    {
+      "word": "Percentage change",
+      "def": "百分比变化",
+      "id": "0"
+    },
+    {
+      "word": "Percentage increase",
+      "def": "百分比增加",
+      "id": "1"
+    },
+    {
+      "word": "Percentage decrease",
+      "def": "百分比减少",
+      "id": "2"
+    },
+    {
+      "word": "Reverse percentage",
+      "def": "逆向百分比",
+      "id": "3"
+    },
+    {
+      "word": "Original value",
+      "def": "原值",
+      "id": "4"
+    },
+    {
+      "word": "Multiplier",
+      "def": "乘数",
+      "id": "5"
+    }
+  ],
+  "1.14": [
+    {
+      "word": "Calculator",
+      "def": "计算器",
+      "id": "0"
+    },
+    {
+      "word": "Display",
+      "def": "显示屏",
+      "id": "1"
+    },
+    {
+      "word": "Memory",
+      "def": "存储",
+      "id": "2"
+    },
+    {
+      "word": "Square root key",
+      "def": "平方根键",
+      "id": "3"
+    },
+    {
+      "word": "Brackets key",
+      "def": "括号键",
+      "id": "4"
+    }
+  ],
+  "1.15": [
+    {
+      "word": "Speed",
+      "def": "速度",
+      "id": "0"
+    },
+    {
+      "word": "Distance",
+      "def": "距离",
+      "id": "1"
+    },
+    {
+      "word": "Time",
+      "def": "时间",
+      "id": "2"
+    },
+    {
+      "word": "Rate",
+      "def": "比率",
+      "id": "3"
+    },
+    {
+      "word": "Density",
+      "def": "密度",
+      "id": "4"
+    },
+    {
+      "word": "Average speed",
+      "def": "平均速度",
+      "id": "5"
+    },
+    {
+      "word": "Compound measure",
+      "def": "复合度量",
+      "id": "6"
+    }
+  ],
+  "1.16": [
+    {
+      "word": "Simple interest",
+      "def": "单利",
+      "id": "0"
+    },
+    {
+      "word": "Compound interest",
+      "def": "复利",
+      "id": "1"
+    },
+    {
+      "word": "Profit",
+      "def": "利润",
+      "id": "2"
+    },
+    {
+      "word": "Loss",
+      "def": "亏损",
+      "id": "3"
+    },
+    {
+      "word": "Discount",
+      "def": "折扣",
+      "id": "4"
+    },
+    {
+      "word": "Exchange rate",
+      "def": "汇率",
+      "id": "5"
+    },
+    {
+      "word": "Depreciation",
+      "def": "折旧",
+      "id": "6"
+    },
+    {
+      "word": "Tax",
+      "def": "税",
+      "id": "7"
+    }
+  ],
+  "1.17": [
+    {
+      "word": "Exponential growth",
+      "def": "指数增长",
+      "id": "0"
+    },
+    {
+      "word": "Exponential decay",
+      "def": "指数衰减",
+      "id": "1"
+    },
+    {
+      "word": "Growth rate",
+      "def": "增长率",
+      "id": "2"
+    },
+    {
+      "word": "Decay rate",
+      "def": "衰减率",
+      "id": "3"
+    },
+    {
+      "word": "Half-life",
+      "def": "半衰期",
+      "id": "4"
+    }
+  ],
+  "1.18": [
+    {
+      "word": "Surd",
+      "def": "根式",
+      "id": "0"
+    },
+    {
+      "word": "Simplify surds",
+      "def": "化简根式",
+      "id": "1"
+    },
+    {
+      "word": "Rationalise",
+      "def": "有理化",
+      "id": "2"
+    },
+    {
+      "word": "Conjugate",
+      "def": "共轭",
+      "id": "3"
+    },
+    {
+      "word": "Irrational",
+      "def": "无理的",
+      "id": "4"
+    }
+  ],
+  "2.1": [
+    {
+      "word": "Variable",
+      "def": "变量",
+      "id": "0"
+    },
+    {
+      "word": "Constant",
+      "def": "常量",
+      "id": "1"
+    },
+    {
+      "word": "Coefficient",
+      "def": "系数",
+      "id": "2"
+    },
+    {
+      "word": "Expression",
+      "def": "表达式",
+      "id": "3"
+    },
+    {
+      "word": "Term",
+      "def": "项",
+      "id": "4"
+    },
+    {
+      "word": "Like terms",
+      "def": "同类项",
+      "id": "5"
+    },
+    {
+      "word": "Formula",
+      "def": "公式",
+      "id": "6"
+    },
+    {
+      "word": "Substitution",
+      "def": "代入",
+      "id": "7"
+    },
+    {
+      "word": "Polynomial",
+      "def": "多项式",
+      "id": "8"
+    },
+    {
+      "word": "Binomial",
+      "def": "二项式",
+      "id": "9"
+    }
+  ],
+  "2.2": [
+    {
+      "word": "Rearrange",
+      "def": "移项",
+      "id": "0"
+    },
+    {
+      "word": "Subject",
+      "def": "主项",
+      "id": "1"
+    },
+    {
+      "word": "Cross-multiply",
+      "def": "交叉相乘",
+      "id": "2"
+    },
+    {
+      "word": "Isolate",
+      "def": "分离",
+      "id": "3"
+    },
+    {
+      "word": "Transpose",
+      "def": "转置",
+      "id": "4"
+    }
+  ],
+  "2.3": [
+    {
+      "word": "Simplify",
+      "def": "化简",
+      "id": "0"
+    },
+    {
+      "word": "Expand",
+      "def": "展开",
+      "id": "1"
+    },
+    {
+      "word": "Factorise",
+      "def": "因式分解",
+      "id": "2"
+    },
+    {
+      "word": "Common factor (algebra)",
+      "def": "公因式",
+      "id": "3"
+    },
+    {
+      "word": "Difference of squares",
+      "def": "平方差",
+      "id": "4"
+    },
+    {
+      "word": "Complete the square",
+      "def": "配方",
+      "id": "5"
+    },
+    {
+      "word": "Collect like terms",
+      "def": "合并同类项",
+      "id": "6"
+    }
+  ],
+  "2.4": [
+    {
+      "word": "Algebraic fraction",
+      "def": "代数分式",
+      "id": "0"
+    },
+    {
+      "word": "Simplify fractions",
+      "def": "化简分式",
+      "id": "1"
+    },
+    {
+      "word": "Cancel",
+      "def": "约分",
+      "id": "2"
+    },
+    {
+      "word": "Common denominator",
+      "def": "公分母",
+      "id": "3"
+    },
+    {
+      "word": "Rational expression",
+      "def": "有理表达式",
+      "id": "4"
+    }
+  ],
+  "2.5": [
+    {
+      "word": "Linear equation",
+      "def": "一次方程",
+      "id": "0"
+    },
+    {
+      "word": "Quadratic equation",
+      "def": "二次方程",
+      "id": "1"
+    },
+    {
+      "word": "Simultaneous equations",
+      "def": "联立方程",
+      "id": "2"
+    },
+    {
+      "word": "Subject of a formula",
+      "def": "公式主项",
+      "id": "3"
+    },
+    {
+      "word": "Quadratic formula",
+      "def": "求根公式",
+      "id": "4"
+    },
+    {
+      "word": "Root (Solution)",
+      "def": "根",
+      "id": "5"
+    },
+    {
+      "word": "Fractional equation",
+      "def": "分式方程",
+      "id": "6"
+    },
+    {
+      "word": "Identity",
+      "def": "恒等式",
+      "id": "7"
+    },
+    {
+      "word": "Solve",
+      "def": "求解",
+      "id": "8"
+    }
+  ],
+  "2.6": [
+    {
+      "word": "Inequality",
+      "def": "不等式",
+      "id": "0"
+    },
+    {
+      "word": "Number line",
+      "def": "数轴",
+      "id": "1"
+    },
+    {
+      "word": "Region",
+      "def": "区域",
+      "id": "2"
+    },
+    {
+      "word": "Integer values",
+      "def": "整数解",
+      "id": "3"
+    },
+    {
+      "word": "Solution set",
+      "def": "解集",
+      "id": "4"
+    },
+    {
+      "word": "Satisfy",
+      "def": "满足",
+      "id": "5"
+    }
+  ],
+  "2.7": [
+    {
+      "word": "Sequence",
+      "def": "数列",
+      "id": "0"
+    },
+    {
+      "word": "nth term",
+      "def": "通项公式",
+      "id": "1"
+    },
+    {
+      "word": "Linear sequence",
+      "def": "等差数列",
+      "id": "2"
+    },
+    {
+      "word": "Quadratic sequence",
+      "def": "二次数列",
+      "id": "3"
+    },
+    {
+      "word": "Term-to-term rule",
+      "def": "递推规则",
+      "id": "4"
+    },
+    {
+      "word": "Position-to-term rule",
+      "def": "通项规则",
+      "id": "5"
+    },
+    {
+      "word": "Common difference",
+      "def": "公差",
+      "id": "6"
+    }
+  ],
+  "2.8": [
+    {
+      "word": "Direct proportion",
+      "def": "正比例",
+      "id": "0"
+    },
+    {
+      "word": "Inverse proportion",
+      "def": "反比例",
+      "id": "1"
+    },
+    {
+      "word": "Proportionality constant",
+      "def": "比例常数",
+      "id": "2"
+    },
+    {
+      "word": "Vary",
+      "def": "变化",
+      "id": "3"
+    }
+  ],
+  "2.9": [
+    {
+      "word": "Travel graph",
+      "def": "行程图",
+      "id": "0"
+    },
+    {
+      "word": "Distance-time graph",
+      "def": "距离-时间图",
+      "id": "1"
+    },
+    {
+      "word": "Speed-time graph",
+      "def": "速度-时间图",
+      "id": "2"
+    },
+    {
+      "word": "Conversion graph",
+      "def": "换算图",
+      "id": "3"
+    },
+    {
+      "word": "Intercept",
+      "def": "截距",
+      "id": "4"
+    },
+    {
+      "word": "Rate of change",
+      "def": "变化率",
+      "id": "5"
+    }
+  ],
+  "2.10": [
+    {
+      "word": "Gradient (Slope)",
+      "def": "斜率",
+      "id": "0"
+    },
+    {
+      "word": "y-intercept",
+      "def": "y轴截距",
+      "id": "1"
+    },
+    {
+      "word": "Tangent (to curve)",
+      "def": "曲线切线",
+      "id": "2"
+    },
+    {
+      "word": "Asymptote",
+      "def": "渐近线",
+      "id": "3"
+    },
+    {
+      "word": "Turning point",
+      "def": "极值点",
+      "id": "4"
+    },
+    {
+      "word": "Parabola",
+      "def": "抛物线",
+      "id": "5"
+    },
+    {
+      "word": "Reciprocal graph",
+      "def": "反比例图像",
+      "id": "6"
+    },
+    {
+      "word": "Exponential graph",
+      "def": "指数图像",
+      "id": "7"
+    }
+  ],
+  "2.11": [
+    {
+      "word": "Sketch",
+      "def": "草图",
+      "id": "0"
+    },
+    {
+      "word": "Curve",
+      "def": "曲线",
+      "id": "1"
+    },
+    {
+      "word": "Shape of graph",
+      "def": "图像形状",
+      "id": "2"
+    },
+    {
+      "word": "Intercepts",
+      "def": "截距",
+      "id": "3"
+    },
+    {
+      "word": "Key features",
+      "def": "关键特征",
+      "id": "4"
+    }
+  ],
+  "2.12": [
+    {
+      "word": "Derivative",
+      "def": "导数",
+      "id": "0"
+    },
+    {
+      "word": "Differentiate",
+      "def": "求导",
+      "id": "1"
+    },
+    {
+      "word": "Stationary point",
+      "def": "驻点",
+      "id": "2"
+    },
+    {
+      "word": "Maximum",
+      "def": "最大值",
+      "id": "3"
+    },
+    {
+      "word": "Minimum",
+      "def": "最小值",
+      "id": "4"
+    },
+    {
+      "word": "Gradient function",
+      "def": "梯度函数",
+      "id": "5"
+    },
+    {
+      "word": "Rate of change",
+      "def": "变化率",
+      "id": "6"
+    }
+  ],
+  "2.13": [
+    {
+      "word": "Function",
+      "def": "函数",
+      "id": "0"
+    },
+    {
+      "word": "Domain",
+      "def": "定义域",
+      "id": "1"
+    },
+    {
+      "word": "Range",
+      "def": "值域",
+      "id": "2"
+    },
+    {
+      "word": "Inverse function",
+      "def": "反函数",
+      "id": "3"
+    },
+    {
+      "word": "Composite function",
+      "def": "复合函数",
+      "id": "4"
+    },
+    {
+      "word": "f(x) notation",
+      "def": "f(x)记号",
+      "id": "5"
+    },
+    {
+      "word": "Mapping",
+      "def": "映射",
+      "id": "6"
+    }
+  ],
+  "3.1": [
+    {
+      "word": "Cartesian coordinates",
+      "def": "笛卡尔坐标",
+      "id": "0"
+    },
+    {
+      "word": "x-axis",
+      "def": "x轴",
+      "id": "1"
+    },
+    {
+      "word": "y-axis",
+      "def": "y轴",
+      "id": "2"
+    },
+    {
+      "word": "Origin",
+      "def": "原点",
+      "id": "3"
+    },
+    {
+      "word": "Quadrant",
+      "def": "象限",
+      "id": "4"
+    },
+    {
+      "word": "Ordered pair",
+      "def": "有序对",
+      "id": "5"
+    },
+    {
+      "word": "Coordinate plane",
+      "def": "坐标平面",
+      "id": "6"
+    },
+    {
+      "word": "Plot",
+      "def": "描点",
+      "id": "7"
+    }
+  ],
+  "3.2": [
+    {
+      "word": "Linear function",
+      "def": "一次函数",
+      "id": "0"
+    },
+    {
+      "word": "Straight-line graph",
+      "def": "直线图",
+      "id": "1"
+    },
+    {
+      "word": "Table of values",
+      "def": "数值表",
+      "id": "2"
+    },
+    {
+      "word": "Graph",
+      "def": "图像",
+      "id": "3"
+    },
+    {
+      "word": "y = mx + c",
+      "def": "直线方程",
+      "id": "4"
+    }
+  ],
+  "3.3": [
+    {
+      "word": "Positive gradient",
+      "def": "正斜率",
+      "id": "0"
+    },
+    {
+      "word": "Negative gradient",
+      "def": "负斜率",
+      "id": "1"
+    },
+    {
+      "word": "Zero gradient",
+      "def": "零斜率",
+      "id": "2"
+    },
+    {
+      "word": "Gradient formula",
+      "def": "斜率公式",
+      "id": "3"
+    },
+    {
+      "word": "Steepness",
+      "def": "陡峭度",
+      "id": "4"
+    }
+  ],
+  "3.4": [
+    {
+      "word": "Distance formula",
+      "def": "距离公式",
+      "id": "0"
+    },
+    {
+      "word": "Length of line segment",
+      "def": "线段长度",
+      "id": "1"
+    },
+    {
+      "word": "Midpoint",
+      "def": "中点",
+      "id": "2"
+    },
+    {
+      "word": "Midpoint formula",
+      "def": "中点公式",
+      "id": "3"
+    },
+    {
+      "word": "Perpendicular bisector",
+      "def": "垂直平分线",
+      "id": "4"
+    },
+    {
+      "word": "Line segment",
+      "def": "线段",
+      "id": "5"
+    }
+  ],
+  "3.5": [
+    {
+      "word": "x-intercept",
+      "def": "x轴截距",
+      "id": "0"
+    },
+    {
+      "word": "Slope-intercept form",
+      "def": "斜截式",
+      "id": "1"
+    },
+    {
+      "word": "General form",
+      "def": "一般式",
+      "id": "2"
+    },
+    {
+      "word": "Equation of a line",
+      "def": "直线方程",
+      "id": "3"
+    },
+    {
+      "word": "Intersection point",
+      "def": "交点",
+      "id": "4"
+    },
+    {
+      "word": "Point-slope form",
+      "def": "点斜式",
+      "id": "5"
+    },
+    {
+      "word": "Graphical solution",
+      "def": "图解法",
+      "id": "6"
+    }
+  ],
+  "3.6": [
+    {
+      "word": "Parallel lines",
+      "def": "平行线",
+      "id": "0"
+    },
+    {
+      "word": "Same gradient",
+      "def": "相同斜率",
+      "id": "1"
+    },
+    {
+      "word": "Horizontal line",
+      "def": "水平线",
+      "id": "2"
+    },
+    {
+      "word": "Vertical line",
+      "def": "竖直线",
+      "id": "3"
+    }
+  ],
+  "3.7": [
+    {
+      "word": "Perpendicular lines",
+      "def": "垂直线",
+      "id": "0"
+    },
+    {
+      "word": "Negative reciprocal",
+      "def": "负倒数",
+      "id": "1"
+    },
+    {
+      "word": "Normal",
+      "def": "法线",
+      "id": "2"
+    },
+    {
+      "word": "Collinear",
+      "def": "共线",
+      "id": "3"
+    }
+  ],
+  "4.1": [
+    {
+      "word": "Point",
+      "def": "点",
+      "id": "0"
+    },
+    {
+      "word": "Angle",
+      "def": "角",
+      "id": "1"
+    },
+    {
+      "word": "Parallel",
+      "def": "平行",
+      "id": "2"
+    },
+    {
+      "word": "Perpendicular",
+      "def": "垂直",
+      "id": "3"
+    },
+    {
+      "word": "Triangle",
+      "def": "三角形",
+      "id": "4"
+    },
+    {
+      "word": "Equilateral triangle",
+      "def": "等边三角形",
+      "id": "5"
+    },
+    {
+      "word": "Isosceles triangle",
+      "def": "等腰三角形",
+      "id": "6"
+    },
+    {
+      "word": "Right-angled triangle",
+      "def": "直角三角形",
+      "id": "7"
+    },
+    {
+      "word": "Scalene triangle",
+      "def": "不等边三角形",
+      "id": "8"
+    },
+    {
+      "word": "Quadrilateral",
+      "def": "四边形",
+      "id": "9"
+    },
+    {
+      "word": "Parallelogram",
+      "def": "平行四边形",
+      "id": "10"
+    },
+    {
+      "word": "Trapezium",
+      "def": "梯形",
+      "id": "11"
+    },
+    {
+      "word": "Rhombus",
+      "def": "菱形",
+      "id": "12"
+    },
+    {
+      "word": "Kite",
+      "def": "鸢形",
+      "id": "13"
+    },
+    {
+      "word": "Polygon",
+      "def": "多边形",
+      "id": "14"
+    },
+    {
+      "word": "Regular polygon",
+      "def": "正多边形",
+      "id": "15"
+    },
+    {
+      "word": "Vertex (vertices)",
+      "def": "顶点",
+      "id": "16"
+    },
+    {
+      "word": "Diagonal",
+      "def": "对角线",
+      "id": "17"
+    },
+    {
+      "word": "Circle",
+      "def": "圆",
+      "id": "18"
+    },
+    {
+      "word": "Radius",
+      "def": "半径",
+      "id": "19"
+    },
+    {
+      "word": "Diameter",
+      "def": "直径",
+      "id": "20"
+    },
+    {
+      "word": "Circumference",
+      "def": "圆周",
+      "id": "21"
+    },
+    {
+      "word": "Chord",
+      "def": "弦",
+      "id": "22"
+    },
+    {
+      "word": "Arc",
+      "def": "弧",
+      "id": "23"
+    },
+    {
+      "word": "Sector",
+      "def": "扇形",
+      "id": "24"
+    },
+    {
+      "word": "Tangent (to circle)",
+      "def": "圆的切线",
+      "id": "25"
+    },
+    {
+      "word": "Net",
+      "def": "展开图",
+      "id": "26"
+    },
+    {
+      "word": "Prism",
+      "def": "棱柱",
+      "id": "27"
+    },
+    {
+      "word": "Pyramid",
+      "def": "棱锥",
+      "id": "28"
+    },
+    {
+      "word": "Cylinder",
+      "def": "圆柱",
+      "id": "29"
+    },
+    {
+      "word": "Cone",
+      "def": "圆锥",
+      "id": "30"
+    },
+    {
+      "word": "Sphere",
+      "def": "球",
+      "id": "31"
+    },
+    {
+      "word": "Cross-section",
+      "def": "截面",
+      "id": "32"
+    }
+  ],
+  "4.2": [
+    {
+      "word": "Construct",
+      "def": "作图",
+      "id": "0"
+    },
+    {
+      "word": "Compass",
+      "def": "圆规",
+      "id": "1"
+    },
+    {
+      "word": "Protractor",
+      "def": "量角器",
+      "id": "2"
+    },
+    {
+      "word": "Ruler",
+      "def": "直尺",
+      "id": "3"
+    },
+    {
+      "word": "Bisect",
+      "def": "平分",
+      "id": "4"
+    },
+    {
+      "word": "Angle bisector",
+      "def": "角平分线",
+      "id": "5"
+    },
+    {
+      "word": "Perpendicular bisector",
+      "def": "垂直平分线",
+      "id": "6"
+    }
+  ],
+  "4.3": [
+    {
+      "word": "Bearing",
+      "def": "方位角",
+      "id": "0"
+    },
+    {
+      "word": "Scale drawing",
+      "def": "比例尺图",
+      "id": "1"
+    },
+    {
+      "word": "Scale",
+      "def": "比例尺",
+      "id": "2"
+    },
+    {
+      "word": "Three-figure bearing",
+      "def": "三位方位角",
+      "id": "3"
+    },
+    {
+      "word": "North",
+      "def": "北",
+      "id": "4"
+    },
+    {
+      "word": "Clockwise",
+      "def": "顺时针",
+      "id": "5"
+    }
+  ],
+  "4.4": [
+    {
+      "word": "Similar",
+      "def": "相似",
+      "id": "0"
+    },
+    {
+      "word": "Congruent",
+      "def": "全等",
+      "id": "1"
+    },
+    {
+      "word": "Scale factor",
+      "def": "比例因数",
+      "id": "2"
+    },
+    {
+      "word": "Corresponding sides",
+      "def": "对应边",
+      "id": "3"
+    },
+    {
+      "word": "Corresponding angles",
+      "def": "对应角",
+      "id": "4"
+    },
+    {
+      "word": "Enlargement",
+      "def": "放大",
+      "id": "5"
+    }
+  ],
+  "4.5": [
+    {
+      "word": "Line symmetry",
+      "def": "线对称",
+      "id": "0"
+    },
+    {
+      "word": "Rotational symmetry",
+      "def": "旋转对称",
+      "id": "1"
+    },
+    {
+      "word": "Order of symmetry",
+      "def": "对称阶数",
+      "id": "2"
+    },
+    {
+      "word": "Line of symmetry",
+      "def": "对称轴",
+      "id": "3"
+    },
+    {
+      "word": "Plane of symmetry",
+      "def": "对称面",
+      "id": "4"
+    }
+  ],
+  "4.6": [
+    {
+      "word": "Acute angle",
+      "def": "锐角",
+      "id": "0"
+    },
+    {
+      "word": "Right angle",
+      "def": "直角",
+      "id": "1"
+    },
+    {
+      "word": "Obtuse angle",
+      "def": "钝角",
+      "id": "2"
+    },
+    {
+      "word": "Reflex angle",
+      "def": "优角",
+      "id": "3"
+    },
+    {
+      "word": "Straight angle",
+      "def": "平角",
+      "id": "4"
+    },
+    {
+      "word": "Vertically opposite angles",
+      "def": "对顶角",
+      "id": "5"
+    },
+    {
+      "word": "Supplementary angles",
+      "def": "互补角",
+      "id": "6"
+    },
+    {
+      "word": "Complementary angles",
+      "def": "互余角",
+      "id": "7"
+    },
+    {
+      "word": "Interior angle",
+      "def": "内角",
+      "id": "8"
+    },
+    {
+      "word": "Exterior angle",
+      "def": "外角",
+      "id": "9"
+    },
+    {
+      "word": "Corresponding angles",
+      "def": "同位角",
+      "id": "10"
+    },
+    {
+      "word": "Alternate angles",
+      "def": "内错角",
+      "id": "11"
+    },
+    {
+      "word": "Co-interior angles",
+      "def": "同旁内角",
+      "id": "12"
+    }
+  ],
+  "4.7": [
+    {
+      "word": "Cyclic quadrilateral",
+      "def": "圆内接四边形",
+      "id": "0"
+    },
+    {
+      "word": "Alternate segment theorem",
+      "def": "弧切角定理",
+      "id": "1"
+    },
+    {
+      "word": "Angle at centre",
+      "def": "圆心角",
+      "id": "2"
+    },
+    {
+      "word": "Angle at circumference",
+      "def": "圆周角",
+      "id": "3"
+    },
+    {
+      "word": "Semicircle",
+      "def": "半圆",
+      "id": "4"
+    },
+    {
+      "word": "Tangent",
+      "def": "切线",
+      "id": "5"
+    },
+    {
+      "word": "Subtended angle",
+      "def": "所对角",
+      "id": "6"
+    }
+  ],
+  "4.8": [
+    {
+      "word": "Locus (Loci)",
+      "def": "轨迹",
+      "id": "0"
+    },
+    {
+      "word": "Equidistant",
+      "def": "等距的",
+      "id": "1"
+    },
+    {
+      "word": "Region",
+      "def": "区域",
+      "id": "2"
+    },
+    {
+      "word": "Perpendicular bisector",
+      "def": "垂直平分线",
+      "id": "3"
+    },
+    {
+      "word": "Arc",
+      "def": "弧",
+      "id": "4"
+    }
+  ],
+  "5.1": [
+    {
+      "word": "Metric unit",
+      "def": "公制单位",
+      "id": "0"
+    },
+    {
+      "word": "Convert",
+      "def": "换算",
+      "id": "1"
+    },
+    {
+      "word": "Length",
+      "def": "长度",
+      "id": "2"
+    },
+    {
+      "word": "Mass",
+      "def": "质量",
+      "id": "3"
+    },
+    {
+      "word": "Capacity",
+      "def": "容量",
+      "id": "4"
+    },
+    {
+      "word": "Area (unit)",
+      "def": "面积单位",
+      "id": "5"
+    },
+    {
+      "word": "Volume (unit)",
+      "def": "体积单位",
+      "id": "6"
+    }
+  ],
+  "5.2": [
+    {
+      "word": "Perimeter",
+      "def": "周长",
+      "id": "0"
+    },
+    {
+      "word": "Area",
+      "def": "面积",
+      "id": "1"
+    },
+    {
+      "word": "Base (of shape)",
+      "def": "底",
+      "id": "2"
+    },
+    {
+      "word": "Height",
+      "def": "高",
+      "id": "3"
+    },
+    {
+      "word": "Rectangle",
+      "def": "长方形",
+      "id": "4"
+    },
+    {
+      "word": "Square",
+      "def": "正方形",
+      "id": "5"
+    },
+    {
+      "word": "Width",
+      "def": "宽度",
+      "id": "6"
+    },
+    {
+      "word": "Composite area",
+      "def": "组合面积",
+      "id": "7"
+    }
+  ],
+  "5.3": [
+    {
+      "word": "Circumference (formula)",
+      "def": "圆周长公式",
+      "id": "0"
+    },
+    {
+      "word": "Pi (π)",
+      "def": "圆周率",
+      "id": "1"
+    },
+    {
+      "word": "Area of circle",
+      "def": "圆面积",
+      "id": "2"
+    },
+    {
+      "word": "Arc length",
+      "def": "弧长",
+      "id": "3"
+    },
+    {
+      "word": "Sector area",
+      "def": "扇形面积",
+      "id": "4"
+    },
+    {
+      "word": "Semicircle",
+      "def": "半圆",
+      "id": "5"
+    },
+    {
+      "word": "Segment",
+      "def": "弓形",
+      "id": "6"
+    }
+  ],
+  "5.4": [
+    {
+      "word": "Surface area",
+      "def": "表面积",
+      "id": "0"
+    },
+    {
+      "word": "Volume",
+      "def": "体积",
+      "id": "1"
+    },
+    {
+      "word": "Cuboid",
+      "def": "长方体",
+      "id": "2"
+    },
+    {
+      "word": "Curved surface area",
+      "def": "曲面面积",
+      "id": "3"
+    },
+    {
+      "word": "Slant height",
+      "def": "斜高",
+      "id": "4"
+    },
+    {
+      "word": "Lateral face",
+      "def": "侧面",
+      "id": "5"
+    },
+    {
+      "word": "Perpendicular height",
+      "def": "垂直高度",
+      "id": "6"
+    },
+    {
+      "word": "Total surface area",
+      "def": "总表面积",
+      "id": "7"
+    }
+  ],
+  "5.5": [
+    {
+      "word": "Hemisphere",
+      "def": "半球",
+      "id": "0"
+    },
+    {
+      "word": "Frustum",
+      "def": "棱台",
+      "id": "1"
+    },
+    {
+      "word": "Compound shape",
+      "def": "组合图形",
+      "id": "2"
+    },
+    {
+      "word": "Compound solid",
+      "def": "组合体",
+      "id": "3"
+    },
+    {
+      "word": "Dimension",
+      "def": "维度",
+      "id": "4"
+    },
+    {
+      "word": "Similar solids",
+      "def": "相似体",
+      "id": "5"
+    },
+    {
+      "word": "Volume scale factor",
+      "def": "体积比例因子",
+      "id": "6"
+    },
+    {
+      "word": "Area scale factor",
+      "def": "面积比例因子",
+      "id": "7"
+    }
+  ],
+  "6.1": [
+    {
+      "word": "Pythagoras' theorem",
+      "def": "勾股定理",
+      "id": "0"
+    },
+    {
+      "word": "Hypotenuse",
+      "def": "斜边",
+      "id": "1"
+    },
+    {
+      "word": "Opposite (side)",
+      "def": "对边",
+      "id": "2"
+    },
+    {
+      "word": "Adjacent (side)",
+      "def": "邻边",
+      "id": "3"
+    },
+    {
+      "word": "Pythagorean triple",
+      "def": "勾股数",
+      "id": "4"
+    },
+    {
+      "word": "Perpendicular sides",
+      "def": "直角边",
+      "id": "5"
+    },
+    {
+      "word": "Exact length",
+      "def": "精确长度",
+      "id": "6"
+    }
+  ],
+  "6.2": [
+    {
+      "word": "Sine (sin)",
+      "def": "正弦",
+      "id": "0"
+    },
+    {
+      "word": "Cosine (cos)",
+      "def": "余弦",
+      "id": "1"
+    },
+    {
+      "word": "Tangent (tan)",
+      "def": "正切",
+      "id": "2"
+    },
+    {
+      "word": "SOHCAHTOA",
+      "def": "三角比口诀",
+      "id": "3"
+    },
+    {
+      "word": "Inverse trig function",
+      "def": "反三角函数",
+      "id": "4"
+    },
+    {
+      "word": "Angle of elevation",
+      "def": "仰角",
+      "id": "5"
+    },
+    {
+      "word": "Angle of depression",
+      "def": "俯角",
+      "id": "6"
+    }
+  ],
+  "6.3": [
+    {
+      "word": "Exact value",
+      "def": "精确值",
+      "id": "0"
+    },
+    {
+      "word": "Special angle",
+      "def": "特殊角",
+      "id": "1"
+    },
+    {
+      "word": "sin 30°",
+      "def": "sin 30°",
+      "id": "2"
+    },
+    {
+      "word": "cos 60°",
+      "def": "cos 60°",
+      "id": "3"
+    },
+    {
+      "word": "tan 45°",
+      "def": "tan 45°",
+      "id": "4"
+    }
+  ],
+  "6.4": [
+    {
+      "word": "Trigonometric graph",
+      "def": "三角函数图像",
+      "id": "0"
+    },
+    {
+      "word": "Period",
+      "def": "周期",
+      "id": "1"
+    },
+    {
+      "word": "Amplitude",
+      "def": "振幅",
+      "id": "2"
+    },
+    {
+      "word": "Symmetry (of graph)",
+      "def": "图形对称性",
+      "id": "3"
+    },
+    {
+      "word": "Trigonometric equation",
+      "def": "三角方程",
+      "id": "4"
+    },
+    {
+      "word": "Horizontal",
+      "def": "水平的",
+      "id": "5"
+    }
+  ],
+  "6.5": [
+    {
+      "word": "Sine rule",
+      "def": "正弦定理",
+      "id": "0"
+    },
+    {
+      "word": "Cosine rule",
+      "def": "余弦定理",
+      "id": "1"
+    },
+    {
+      "word": "Included angle",
+      "def": "夹角",
+      "id": "2"
+    },
+    {
+      "word": "Area formula (½ab sin C)",
+      "def": "面积公式",
+      "id": "3"
+    },
+    {
+      "word": "Ambiguous case",
+      "def": "二解情况",
+      "id": "4"
+    },
+    {
+      "word": "Obtuse triangle",
+      "def": "钝角三角形",
+      "id": "5"
+    },
+    {
+      "word": "Acute triangle",
+      "def": "锐角三角形",
+      "id": "6"
+    }
+  ],
+  "6.6": [
+    {
+      "word": "3D problem",
+      "def": "三维问题",
+      "id": "0"
+    },
+    {
+      "word": "Angle between line and plane",
+      "def": "线面角",
+      "id": "1"
+    },
+    {
+      "word": "Plane",
+      "def": "平面",
+      "id": "2"
+    },
+    {
+      "word": "Space diagonal",
+      "def": "体对角线",
+      "id": "3"
+    },
+    {
+      "word": "Perpendicular distance",
+      "def": "垂直距离",
+      "id": "4"
+    },
+    {
+      "word": "Vertical height",
+      "def": "垂直高",
+      "id": "5"
+    }
+  ],
+  "7.1": [
+    {
+      "word": "Transformation",
+      "def": "变换",
+      "id": "0"
+    },
+    {
+      "word": "Image",
+      "def": "像",
+      "id": "1"
+    },
+    {
+      "word": "Object",
+      "def": "原像",
+      "id": "2"
+    },
+    {
+      "word": "Reflection",
+      "def": "反射",
+      "id": "3"
+    },
+    {
+      "word": "Mirror line",
+      "def": "对称轴",
+      "id": "4"
+    },
+    {
+      "word": "Translation",
+      "def": "平移",
+      "id": "5"
+    },
+    {
+      "word": "Translation vector",
+      "def": "平移向量",
+      "id": "6"
+    },
+    {
+      "word": "Rotation",
+      "def": "旋转",
+      "id": "7"
+    },
+    {
+      "word": "Centre of rotation",
+      "def": "旋转中心",
+      "id": "8"
+    },
+    {
+      "word": "Angle of rotation",
+      "def": "旋转角",
+      "id": "9"
+    },
+    {
+      "word": "Enlargement",
+      "def": "放大",
+      "id": "10"
+    },
+    {
+      "word": "Centre of enlargement",
+      "def": "放大中心",
+      "id": "11"
+    },
+    {
+      "word": "Fractional scale factor",
+      "def": "分数比例因子",
+      "id": "12"
+    },
+    {
+      "word": "Negative scale factor",
+      "def": "负比例因子",
+      "id": "13"
+    },
+    {
+      "word": "Invariant point",
+      "def": "不变点",
+      "id": "14"
+    },
+    {
+      "word": "Combined transformation",
+      "def": "复合变换",
+      "id": "15"
+    },
+    {
+      "word": "Clockwise",
+      "def": "顺时针",
+      "id": "16"
+    }
+  ],
+  "7.2": [
+    {
+      "word": "Vector",
+      "def": "向量",
+      "id": "0"
+    },
+    {
+      "word": "Column vector",
+      "def": "列向量",
+      "id": "1"
+    },
+    {
+      "word": "Displacement",
+      "def": "位移",
+      "id": "2"
+    },
+    {
+      "word": "Scalar",
+      "def": "标量",
+      "id": "3"
+    },
+    {
+      "word": "Scalar multiplication",
+      "def": "标量乘法",
+      "id": "4"
+    },
+    {
+      "word": "Vector addition",
+      "def": "向量加法",
+      "id": "5"
+    },
+    {
+      "word": "Vector subtraction",
+      "def": "向量减法",
+      "id": "6"
+    }
+  ],
+  "7.3": [
+    {
+      "word": "Magnitude",
+      "def": "模",
+      "id": "0"
+    },
+    {
+      "word": "Unit vector",
+      "def": "单位向量",
+      "id": "1"
+    },
+    {
+      "word": "Position vector",
+      "def": "位置向量",
+      "id": "2"
+    },
+    {
+      "word": "Directed line segment",
+      "def": "有向线段",
+      "id": "3"
+    },
+    {
+      "word": "Zero vector",
+      "def": "零向量",
+      "id": "4"
+    }
+  ],
+  "7.4": [
+    {
+      "word": "Parallel vectors",
+      "def": "平行向量",
+      "id": "0"
+    },
+    {
+      "word": "Equal vectors",
+      "def": "相等向量",
+      "id": "1"
+    },
+    {
+      "word": "Resultant vector",
+      "def": "合向量",
+      "id": "2"
+    },
+    {
+      "word": "Midpoint vector",
+      "def": "中点向量",
+      "id": "3"
+    },
+    {
+      "word": "Ratio (vectors)",
+      "def": "向量比",
+      "id": "4"
+    },
+    {
+      "word": "Proof (vectors)",
+      "def": "向量证明",
+      "id": "5"
+    }
+  ],
+  "8.1": [
+    {
+      "word": "Probability",
+      "def": "概率",
+      "id": "0"
+    },
+    {
+      "word": "Event",
+      "def": "事件",
+      "id": "1"
+    },
+    {
+      "word": "Outcome",
+      "def": "结果",
+      "id": "2"
+    },
+    {
+      "word": "Sample space",
+      "def": "样本空间",
+      "id": "3"
+    },
+    {
+      "word": "Fair (Biased)",
+      "def": "公平（有偏）",
+      "id": "4"
+    },
+    {
+      "word": "Theoretical probability",
+      "def": "理论概率",
+      "id": "5"
+    },
+    {
+      "word": "Equally likely",
+      "def": "等可能的",
+      "id": "6"
+    },
+    {
+      "word": "Probability scale",
+      "def": "概率标尺",
+      "id": "7"
+    }
+  ],
+  "8.2": [
+    {
+      "word": "Relative frequency",
+      "def": "相对频率",
+      "id": "0"
+    },
+    {
+      "word": "Expected frequency",
+      "def": "期望频数",
+      "id": "1"
+    },
+    {
+      "word": "Experimental probability",
+      "def": "实验概率",
+      "id": "2"
+    },
+    {
+      "word": "Trial",
+      "def": "试验",
+      "id": "3"
+    },
+    {
+      "word": "Long-run frequency",
+      "def": "长期频率",
+      "id": "4"
+    }
+  ],
+  "8.3": [
+    {
+      "word": "Independent events",
+      "def": "独立事件",
+      "id": "0"
+    },
+    {
+      "word": "Dependent events",
+      "def": "相依事件",
+      "id": "1"
+    },
+    {
+      "word": "Tree diagram",
+      "def": "树形图",
+      "id": "2"
+    },
+    {
+      "word": "With replacement",
+      "def": "有放回",
+      "id": "3"
+    },
+    {
+      "word": "Without replacement",
+      "def": "无放回",
+      "id": "4"
+    },
+    {
+      "word": "Mutually exclusive",
+      "def": "互斥事件",
+      "id": "5"
+    }
+  ],
+  "8.4": [
+    {
+      "word": "Conditional probability",
+      "def": "条件概率",
+      "id": "0"
+    },
+    {
+      "word": "Sample space diagram",
+      "def": "样本空间图",
+      "id": "1"
+    },
+    {
+      "word": "Certain",
+      "def": "必然",
+      "id": "2"
+    },
+    {
+      "word": "Impossible",
+      "def": "不可能",
+      "id": "3"
+    },
+    {
+      "word": "Exhaustive events",
+      "def": "穷举事件",
+      "id": "4"
+    },
+    {
+      "word": "Complement (probability)",
+      "def": "补事件",
+      "id": "5"
+    }
+  ],
+  "9.1": [
+    {
+      "word": "Data",
+      "def": "数据",
+      "id": "0"
+    },
+    {
+      "word": "Discrete data",
+      "def": "离散数据",
+      "id": "1"
+    },
+    {
+      "word": "Continuous data",
+      "def": "连续数据",
+      "id": "2"
+    },
+    {
+      "word": "Frequency",
+      "def": "频数",
+      "id": "3"
+    },
+    {
+      "word": "Tally",
+      "def": "计数符号",
+      "id": "4"
+    },
+    {
+      "word": "Class interval",
+      "def": "组距",
+      "id": "5"
+    },
+    {
+      "word": "Grouped data",
+      "def": "分组数据",
+      "id": "6"
+    },
+    {
+      "word": "Frequency table",
+      "def": "频数表",
+      "id": "7"
+    }
+  ],
+  "9.2": [
+    {
+      "word": "Two-way table",
+      "def": "双向表",
+      "id": "0"
+    },
+    {
+      "word": "Interpret",
+      "def": "解读",
+      "id": "1"
+    },
+    {
+      "word": "Compare",
+      "def": "比较",
+      "id": "2"
+    },
+    {
+      "word": "Inference",
+      "def": "推断",
+      "id": "3"
+    },
+    {
+      "word": "Trend",
+      "def": "趋势",
+      "id": "4"
+    },
+    {
+      "word": "Distribution",
+      "def": "分布",
+      "id": "5"
+    }
+  ],
+  "9.3": [
+    {
+      "word": "Mean",
+      "def": "平均数",
+      "id": "0"
+    },
+    {
+      "word": "Median",
+      "def": "中位数",
+      "id": "1"
+    },
+    {
+      "word": "Mode",
+      "def": "众数",
+      "id": "2"
+    },
+    {
+      "word": "Range (statistics)",
+      "def": "全距",
+      "id": "3"
+    },
+    {
+      "word": "Quartile",
+      "def": "四分位数",
+      "id": "4"
+    },
+    {
+      "word": "Interquartile range",
+      "def": "四分位距",
+      "id": "5"
+    },
+    {
+      "word": "Modal class",
+      "def": "众数组",
+      "id": "6"
+    },
+    {
+      "word": "Estimated mean",
+      "def": "估计平均数",
+      "id": "7"
+    },
+    {
+      "word": "Lower quartile",
+      "def": "下四分位数",
+      "id": "8"
+    },
+    {
+      "word": "Upper quartile",
+      "def": "上四分位数",
+      "id": "9"
+    }
+  ],
+  "9.4": [
+    {
+      "word": "Bar chart",
+      "def": "条形图",
+      "id": "0"
+    },
+    {
+      "word": "Pie chart",
+      "def": "饼图",
+      "id": "1"
+    },
+    {
+      "word": "Pictogram",
+      "def": "象形图",
+      "id": "2"
+    },
+    {
+      "word": "Stem-and-leaf diagram",
+      "def": "茎叶图",
+      "id": "3"
+    },
+    {
+      "word": "Frequency polygon",
+      "def": "频率折线图",
+      "id": "4"
+    },
+    {
+      "word": "Dual bar chart",
+      "def": "双条形图",
+      "id": "5"
+    }
+  ],
+  "9.5": [
+    {
+      "word": "Scatter diagram",
+      "def": "散点图",
+      "id": "0"
+    },
+    {
+      "word": "Correlation",
+      "def": "相关性",
+      "id": "1"
+    },
+    {
+      "word": "Line of best fit",
+      "def": "最佳拟合线",
+      "id": "2"
+    },
+    {
+      "word": "Positive correlation",
+      "def": "正相关",
+      "id": "3"
+    },
+    {
+      "word": "Negative correlation",
+      "def": "负相关",
+      "id": "4"
+    },
+    {
+      "word": "No correlation",
+      "def": "无相关",
+      "id": "5"
+    },
+    {
+      "word": "Outlier",
+      "def": "离群值",
+      "id": "6"
+    }
+  ],
+  "9.6": [
+    {
+      "word": "Cumulative frequency",
+      "def": "累积频率",
+      "id": "0"
+    },
+    {
+      "word": "Cumulative frequency diagram",
+      "def": "累积频率图",
+      "id": "1"
+    },
+    {
+      "word": "Percentile",
+      "def": "百分位数",
+      "id": "2"
+    },
+    {
+      "word": "Box-and-whisker plot",
+      "def": "箱线图",
+      "id": "3"
+    },
+    {
+      "word": "Interpercentile range",
+      "def": "百分位距",
+      "id": "4"
+    }
+  ],
+  "9.7": [
+    {
+      "word": "Histogram",
+      "def": "直方图",
+      "id": "0"
+    },
+    {
+      "word": "Frequency density",
+      "def": "频率密度",
+      "id": "1"
+    },
+    {
+      "word": "Class width",
+      "def": "组宽",
+      "id": "2"
+    },
+    {
+      "word": "Unequal class intervals",
+      "def": "不等组距",
+      "id": "3"
+    },
+    {
+      "word": "Area under histogram",
+      "def": "直方图下面积",
+      "id": "4"
+    }
+  ]
+}

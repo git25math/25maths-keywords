@@ -1,0 +1,870 @@
+{
+  "version": "1.0.0",
+  "syllabus": "CIE 0580 Mathematics (2025-2027)",
+  "chapters": [
+    {
+      "id": "ch1",
+      "num": 1,
+      "title": "Number",
+      "title_zh": "数论",
+      "sections": [
+        {
+          "id": "1.1",
+          "title": "Types of number",
+          "title_zh": "数的类型",
+          "slug": "cie-1-1",
+          "tier": "both",
+          "core_content": "Identify and use: natural numbers, integers, primes, squares, cubes, triangular numbers, rational and irrational numbers, real numbers, reciprocals. Identify common factors, common multiples, HCF and LCM. Write a number as a product of its prime factors.",
+          "extended_content": "Also use relevant notation and vocabulary for sets of numbers.",
+          "vocabSlugs": ["num-types", "num-factors"],
+          "questionTopics": ["Types Of Number"]
+        },
+        {
+          "id": "1.2",
+          "title": "Sets and Venn diagrams",
+          "title_zh": "集合与韦恩图",
+          "slug": "cie-1-2",
+          "tier": "both",
+          "core_content": "Use set language, notation and Venn diagrams to describe sets and represent relationships between sets. Definition of sets: e.g. A = {x : x is a natural number}, B = {(x, y) : y = mx + c}. Notation: n(A), ∈, ∉, complement, empty set, universal set, A ⊂ B, A ⊄ B, union, intersection.",
+          "extended_content": "Use Venn diagrams with up to three sets to solve problems.",
+          "vocabSlugs": ["num-sets"],
+          "questionTopics": ["Sets"]
+        },
+        {
+          "id": "1.3",
+          "title": "Powers and roots",
+          "title_zh": "幂与根",
+          "slug": "cie-1-3",
+          "tier": "both",
+          "core_content": "Calculate with squares, square roots, cubes, cube roots and other powers and roots of numbers. Use index notation and index laws for multiplication and division of positive integer powers.",
+          "extended_content": "Use and interpret fractional indices (e.g. a^(1/2) = √a) and negative indices (e.g. a^(-n) = 1/a^n). Apply the rules of indices.",
+          "vocabSlugs": ["num-powers"],
+          "questionTopics": ["Powers And Roots", "Indices I"]
+        },
+        {
+          "id": "1.4",
+          "title": "Directed numbers",
+          "title_zh": "有向数",
+          "slug": "cie-1-4",
+          "tier": "both",
+          "core_content": "Use directed numbers in practical situations. Order directed numbers. Apply the four operations to directed numbers.",
+          "extended_content": "",
+          "vocabSlugs": ["num-ops"],
+          "questionTopics": ["Ordering"]
+        },
+        {
+          "id": "1.5",
+          "title": "Fractions, decimals and percentages",
+          "title_zh": "分数、小数与百分数",
+          "slug": "cie-1-5",
+          "tier": "both",
+          "core_content": "Use the language and notation of fractions, decimals and percentages including proper fractions, improper fractions, mixed numbers, decimals, percentages. Recognise equivalences and convert between these forms. Order fractions and decimals.",
+          "extended_content": "Convert recurring decimals to fractions and vice versa.",
+          "vocabSlugs": ["num-fractions"],
+          "questionTopics": ["Fractions Decimals And Percentages"]
+        },
+        {
+          "id": "1.6",
+          "title": "Order of operations",
+          "title_zh": "运算顺序",
+          "slug": "cie-1-6",
+          "tier": "both",
+          "core_content": "Use the standard order of operations (BIDMAS/BODMAS) including correct use of brackets. Understand that multiplication and division have equal priority and are performed left to right, as do addition and subtraction.",
+          "extended_content": "",
+          "vocabSlugs": ["num-ops"],
+          "questionTopics": ["Four Operations"]
+        },
+        {
+          "id": "1.7",
+          "title": "Bounds and rounding",
+          "title_zh": "取整与近似",
+          "slug": "cie-1-7",
+          "tier": "both",
+          "core_content": "Round values to a specified degree of accuracy including decimal places and significant figures. Round answers to a reasonable degree of accuracy in the context of a given problem.",
+          "extended_content": "Give upper and lower bounds for data given to a specified accuracy.",
+          "vocabSlugs": ["num-accuracy"],
+          "questionTopics": []
+        },
+        {
+          "id": "1.8",
+          "title": "Standard form",
+          "title_zh": "标准式",
+          "slug": "cie-1-8",
+          "tier": "both",
+          "core_content": "Understand and use standard form to express very large and very small numbers in the form A × 10^n where 1 ≤ A < 10 and n is an integer. Convert numbers to and from standard form. Calculate with values in standard form.",
+          "extended_content": "",
+          "vocabSlugs": ["num-powers"],
+          "questionTopics": ["Standard Form"]
+        },
+        {
+          "id": "1.9",
+          "title": "Four operations",
+          "title_zh": "四则运算",
+          "slug": "cie-1-9",
+          "tier": "both",
+          "core_content": "Use the four operations for calculations with integers, fractions and decimals, including correct ordering of operations and use of brackets.",
+          "extended_content": "",
+          "vocabSlugs": ["num-ops"],
+          "questionTopics": ["Four Operations"]
+        },
+        {
+          "id": "1.10",
+          "title": "Estimation",
+          "title_zh": "估算",
+          "slug": "cie-1-10",
+          "tier": "both",
+          "core_content": "Make estimates of numbers, quantities and lengths. Estimate the results of calculations. Round answers to a reasonable degree of accuracy in the context of a given problem.",
+          "extended_content": "",
+          "vocabSlugs": ["num-accuracy"],
+          "questionTopics": ["Estimation And Approximation"]
+        },
+        {
+          "id": "1.11",
+          "title": "Limits of accuracy",
+          "title_zh": "精确度极限",
+          "slug": "cie-1-11",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Give upper and lower bounds for data given to a specified accuracy. Find upper and lower bounds of the results of calculations involving quantities given to specified accuracies.",
+          "vocabSlugs": ["num-accuracy"],
+          "questionTopics": ["Limits Of Accuracy"]
+        },
+        {
+          "id": "1.12",
+          "title": "Ratio and proportion",
+          "title_zh": "比与比例",
+          "slug": "cie-1-12",
+          "tier": "both",
+          "core_content": "Use ratio notation, including reduction to simplest form. Divide a quantity in a given ratio. Use proportion to solve problems. Calculate average speed, distance, time. Use common measures of rate.",
+          "extended_content": "Increase and decrease a quantity by a given ratio.",
+          "vocabSlugs": ["num-ratio"],
+          "questionTopics": ["Ratio And Proportion"]
+        },
+        {
+          "id": "1.13",
+          "title": "Percentages",
+          "title_zh": "百分数应用",
+          "slug": "cie-1-13",
+          "tier": "both",
+          "core_content": "Calculate a given percentage of a quantity. Express one quantity as a percentage of another. Calculate percentage increase or decrease. Calculate simple and compound interest.",
+          "extended_content": "Carry out reverse percentage calculations. Calculate repeated percentage change.",
+          "vocabSlugs": ["num-ratio"],
+          "questionTopics": ["Percentages"]
+        },
+        {
+          "id": "1.14",
+          "title": "Using a calculator",
+          "title_zh": "计算器使用",
+          "slug": "cie-1-14",
+          "tier": "core",
+          "core_content": "Use a scientific calculator efficiently. Apply appropriate checks of accuracy. Interpret the calculator display appropriately.",
+          "extended_content": "",
+          "vocabSlugs": [],
+          "questionTopics": []
+        },
+        {
+          "id": "1.15",
+          "title": "Time, speed and rates",
+          "title_zh": "时间、速度与率",
+          "slug": "cie-1-15",
+          "tier": "both",
+          "core_content": "Calculate times in terms of the 24-hour and 12-hour clock. Read clocks, dials and timetables. Calculate average speed, distance and time. Use common measures of rate including cost per unit.",
+          "extended_content": "Use compound measures such as speed, density, pressure and population density in solving problems.",
+          "vocabSlugs": ["num-rates"],
+          "questionTopics": ["Time", "Rates"]
+        },
+        {
+          "id": "1.16",
+          "title": "Money and finance",
+          "title_zh": "货币与金融",
+          "slug": "cie-1-16",
+          "tier": "both",
+          "core_content": "Solve problems involving money and convert from one currency to another. Use given data to solve problems on personal and household finance involving earnings, simple and compound interest, discount, profit and loss.",
+          "extended_content": "",
+          "vocabSlugs": ["num-rates"],
+          "questionTopics": ["Money"]
+        },
+        {
+          "id": "1.17",
+          "title": "Exponential growth and decay",
+          "title_zh": "指数增长与衰减",
+          "slug": "cie-1-17",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Recognise and use exponential growth and decay. Set up and solve growth and decay problems.",
+          "vocabSlugs": [],
+          "questionTopics": ["Exponential Growth And Decay"]
+        },
+        {
+          "id": "1.18",
+          "title": "Surds",
+          "title_zh": "根式",
+          "slug": "cie-1-18",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Understand and use surds, including simplifying expressions. Rationalise the denominator of a fraction.",
+          "vocabSlugs": [],
+          "questionTopics": ["Surds"]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "num": 2,
+      "title": "Algebra and graphs",
+      "title_zh": "代数与图像",
+      "sections": [
+        {
+          "id": "2.1",
+          "title": "Algebraic notation and substitution",
+          "title_zh": "代数表示与代入",
+          "slug": "cie-2-1",
+          "tier": "both",
+          "core_content": "Use letters to express generalised numbers and express basic arithmetic processes algebraically. Substitute numbers for words and letters in formulae and expressions. Understand and use the concepts of expression, equation, formula, identity, term, variable, constant, coefficient.",
+          "extended_content": "Construct and transform more complex formulae and expressions.",
+          "vocabSlugs": ["alg-expr"],
+          "questionTopics": ["Introduction To Algebra"]
+        },
+        {
+          "id": "2.2",
+          "title": "Rearranging formulae",
+          "title_zh": "公式变换",
+          "slug": "cie-2-2",
+          "tier": "both",
+          "core_content": "Rearrange simple formulae. Change the subject of a formula.",
+          "extended_content": "Rearrange formulae where the subject appears in more than one term, or where a power of the subject appears.",
+          "vocabSlugs": ["alg-manip"],
+          "questionTopics": []
+        },
+        {
+          "id": "2.3",
+          "title": "Algebraic manipulation",
+          "title_zh": "代数运算",
+          "slug": "cie-2-3",
+          "tier": "both",
+          "core_content": "Collect like terms. Expand products of algebraic expressions. Factorise by extracting common factors. Factorise expressions of the form ax + bx + kay + kby. Expand the product of two linear expressions.",
+          "extended_content": "Factorise expressions of the form a²x² − b²y² (difference of squares). Complete the square for expressions in the form x² + bx + c. Factorise quadratic expressions of the form ax² + bx + c.",
+          "vocabSlugs": ["alg-manip"],
+          "questionTopics": ["Algebraic Manipulation"]
+        },
+        {
+          "id": "2.4",
+          "title": "Algebraic fractions",
+          "title_zh": "代数分式",
+          "slug": "cie-2-4",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Manipulate algebraic fractions: add, subtract, multiply and divide algebraic fractions. Simplify algebraic fractions. Factorise and simplify rational expressions.",
+          "vocabSlugs": ["alg-prop"],
+          "questionTopics": ["Algebraic Fractions"]
+        },
+        {
+          "id": "2.5",
+          "title": "Equations",
+          "title_zh": "方程",
+          "slug": "cie-2-5",
+          "tier": "both",
+          "core_content": "Solve linear equations in one unknown. Solve simultaneous linear equations in two unknowns algebraically and graphically.",
+          "extended_content": "Solve quadratic equations by factorising, using the quadratic formula and completing the square. Solve simultaneous equations where one is linear and one is non-linear.",
+          "vocabSlugs": ["alg-eq"],
+          "questionTopics": ["Equations"]
+        },
+        {
+          "id": "2.6",
+          "title": "Inequalities",
+          "title_zh": "不等式",
+          "slug": "cie-2-6",
+          "tier": "both",
+          "core_content": "Represent and interpret inequalities on a number line. Solve simple linear inequalities.",
+          "extended_content": "Solve quadratic inequalities in one unknown and represent the solution set on a number line. Represent inequalities graphically.",
+          "vocabSlugs": ["alg-ineq"],
+          "questionTopics": ["Inequalities"]
+        },
+        {
+          "id": "2.7",
+          "title": "Sequences",
+          "title_zh": "数列",
+          "slug": "cie-2-7",
+          "tier": "both",
+          "core_content": "Continue a given number sequence. Recognise patterns in sequences including the term-to-term rule and the position-to-term rule. Find the nth term of a linear sequence.",
+          "extended_content": "Find the nth term of simple quadratic sequences. Recognise and use sequences of triangular, square, cube numbers, Fibonacci type and simple geometric progressions.",
+          "vocabSlugs": ["alg-ineq"],
+          "questionTopics": ["Sequences"]
+        },
+        {
+          "id": "2.8",
+          "title": "Direct and inverse proportion",
+          "title_zh": "正反比例",
+          "slug": "cie-2-8",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Express direct and inverse proportion in algebraic terms and use this form of expression to find unknown quantities. Set up and use equations to solve problems involving direct and inverse proportion.",
+          "vocabSlugs": ["alg-prop"],
+          "questionTopics": ["Proportion"]
+        },
+        {
+          "id": "2.9",
+          "title": "Graphs in practical situations",
+          "title_zh": "实际问题图像",
+          "slug": "cie-2-9",
+          "tier": "both",
+          "core_content": "Interpret and use graphs in practical situations including travel graphs and conversion graphs. Draw graphs from given data. Apply the idea of rate of change to simple kinematics involving distance–time and speed–time graphs.",
+          "extended_content": "Calculate distance travelled as area under a speed–time graph. Interpret the gradient of a tangent at a point on a curve as the instantaneous rate of change.",
+          "vocabSlugs": ["alg-graphs"],
+          "questionTopics": ["Graphs In Practical Situations"]
+        },
+        {
+          "id": "2.10",
+          "title": "Graphs of functions",
+          "title_zh": "函数图像",
+          "slug": "cie-2-10",
+          "tier": "both",
+          "core_content": "Construct tables of values and draw graphs of functions of the form y = ax^n where n = −2, −1, 0, 1, 2, 3. Interpret graphs of linear, quadratic, cubic and reciprocal functions. Solve associated equations approximately by graphical methods.",
+          "extended_content": "Draw and interpret graphs of exponential functions y = a^x. Estimate gradients of curves by drawing tangents. Solve equations approximately using graphical methods.",
+          "vocabSlugs": ["alg-graphs"],
+          "questionTopics": ["Graphs Of Functions"]
+        },
+        {
+          "id": "2.11",
+          "title": "Sketching curves",
+          "title_zh": "曲线草图",
+          "slug": "cie-2-11",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Recognise, sketch and interpret graphs of: linear, quadratic, cubic, reciprocal, exponential and trigonometric functions. Know the shapes of these graphs and use them to sketch curves.",
+          "vocabSlugs": [],
+          "questionTopics": ["Sketching Curves"]
+        },
+        {
+          "id": "2.12",
+          "title": "Differentiation",
+          "title_zh": "微分",
+          "slug": "cie-2-12",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Estimate gradients of curves by drawing tangents. Differentiate integer powers of x. Determine gradients, rates of change, turning points (maxima and minima) and stationary points. Apply differentiation to gradients, tangents and normals, and stationary points.",
+          "vocabSlugs": ["alg-prop"],
+          "questionTopics": ["Differentiation"]
+        },
+        {
+          "id": "2.13",
+          "title": "Functions",
+          "title_zh": "函数",
+          "slug": "cie-2-13",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Understand function notation, e.g. f(x) = 3x − 5, f : x ↦ 3x − 5. Understand and find inverse functions f⁻¹(x). Form composite functions fg(x). Use the relationships between a function and its inverse.",
+          "vocabSlugs": ["alg-func"],
+          "questionTopics": ["Functions"]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "num": 3,
+      "title": "Coordinate geometry",
+      "title_zh": "坐标几何",
+      "sections": [
+        {
+          "id": "3.1",
+          "title": "Coordinates",
+          "title_zh": "坐标",
+          "slug": "cie-3-1",
+          "tier": "both",
+          "core_content": "Use and interpret Cartesian coordinates in two dimensions. Plot points and read coordinates from graphs.",
+          "extended_content": "",
+          "vocabSlugs": ["coord-system"],
+          "questionTopics": ["Coordinates"]
+        },
+        {
+          "id": "3.2",
+          "title": "Drawing linear graphs",
+          "title_zh": "画线性图像",
+          "slug": "cie-3-2",
+          "tier": "both",
+          "core_content": "Draw straight-line graphs from their equations using a table of values. Recognise that equations of the form y = mx + c correspond to straight-line graphs.",
+          "extended_content": "",
+          "vocabSlugs": ["coord-linear"],
+          "questionTopics": ["Drawing Linear Graphs"]
+        },
+        {
+          "id": "3.3",
+          "title": "Gradient of linear graphs",
+          "title_zh": "线性图像斜率",
+          "slug": "cie-3-3",
+          "tier": "both",
+          "core_content": "Find the gradient of a straight line from coordinates of two points on it. Calculate the gradient of a straight line from its equation. Understand that parallel lines have the same gradient.",
+          "extended_content": "",
+          "vocabSlugs": ["coord-linear"],
+          "questionTopics": ["Gradient Of Linear Graphs"]
+        },
+        {
+          "id": "3.4",
+          "title": "Length and midpoint",
+          "title_zh": "长度与中点",
+          "slug": "cie-3-4",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Calculate the length of a line segment from the coordinates of its end points. Find the midpoint of a line segment from the coordinates of its end points.",
+          "vocabSlugs": ["coord-distance"],
+          "questionTopics": ["Length And Midpoint Of A Line Segment"]
+        },
+        {
+          "id": "3.5",
+          "title": "Equations of linear graphs",
+          "title_zh": "直线方程",
+          "slug": "cie-3-5",
+          "tier": "both",
+          "core_content": "Interpret and obtain the equation of a straight-line graph in the form y = mx + c. Determine the equation of a straight line parallel to a given line.",
+          "extended_content": "Find the equation of a straight line given the gradient and one point, or given two points.",
+          "vocabSlugs": ["coord-line-eq"],
+          "questionTopics": ["Equations Of Linear Graphs"]
+        },
+        {
+          "id": "3.6",
+          "title": "Parallel lines",
+          "title_zh": "平行线",
+          "slug": "cie-3-6",
+          "tier": "both",
+          "core_content": "Find the gradient and equation of a straight line parallel to a given line.",
+          "extended_content": "",
+          "vocabSlugs": ["coord-parallel"],
+          "questionTopics": ["Parallel Lines"]
+        },
+        {
+          "id": "3.7",
+          "title": "Perpendicular lines",
+          "title_zh": "垂直线",
+          "slug": "cie-3-7",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Find the gradient and equation of a straight line perpendicular to a given line. Know that perpendicular lines have gradients whose product is −1.",
+          "vocabSlugs": ["coord-parallel"],
+          "questionTopics": ["Perpendicular Lines"]
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "num": 4,
+      "title": "Geometry",
+      "title_zh": "几何",
+      "sections": [
+        {
+          "id": "4.1",
+          "title": "Geometrical terms",
+          "title_zh": "几何术语",
+          "slug": "cie-4-1",
+          "tier": "both",
+          "core_content": "Use and interpret the geometrical terms: point, line, plane, parallel, perpendicular, bearing, right angle, acute, obtuse and reflex angles. Use and interpret vocabulary of triangles, special quadrilaterals, polygons and simple solid figures including nets.",
+          "extended_content": "",
+          "vocabSlugs": ["geom-triangles", "geom-polygons", "geom-circles", "geom-solids"],
+          "questionTopics": ["Geometrical Terms"]
+        },
+        {
+          "id": "4.2",
+          "title": "Geometrical constructions",
+          "title_zh": "几何作图",
+          "slug": "cie-4-2",
+          "tier": "both",
+          "core_content": "Measure and draw lines and angles. Construct a triangle given the three sides using a ruler and compasses only. Construct other simple geometrical figures from given data using ruler, protractor and compasses. Construct angle bisectors and perpendicular bisectors using compasses.",
+          "extended_content": "Construct loci (sets of points equidistant from a point, a line, or satisfying other given criteria).",
+          "vocabSlugs": ["geom-solids"],
+          "questionTopics": ["Geometrical Constructions"]
+        },
+        {
+          "id": "4.3",
+          "title": "Scale drawings and bearings",
+          "title_zh": "比例图与方位角",
+          "slug": "cie-4-3",
+          "tier": "both",
+          "core_content": "Draw and interpret scale drawings. Use and interpret three-figure bearings measured clockwise from the North. Understand and use the relationship between scales and distances.",
+          "extended_content": "",
+          "vocabSlugs": ["geom-solids"],
+          "questionTopics": ["Scale Drawings"]
+        },
+        {
+          "id": "4.4",
+          "title": "Similarity and congruence",
+          "title_zh": "相似与全等",
+          "slug": "cie-4-4",
+          "tier": "both",
+          "core_content": "Recognise congruent shapes and similar shapes. Calculate lengths of similar figures. Use the relationships between areas and volumes of similar figures.",
+          "extended_content": "Use the relationships between areas of similar triangles, and between volumes and surface areas of similar solids.",
+          "vocabSlugs": ["geom-similarity"],
+          "questionTopics": ["Similarity"]
+        },
+        {
+          "id": "4.5",
+          "title": "Symmetry",
+          "title_zh": "对称",
+          "slug": "cie-4-5",
+          "tier": "both",
+          "core_content": "Recognise line symmetry and rotational symmetry in two dimensions. Identify lines of symmetry and order of rotational symmetry.",
+          "extended_content": "Recognise symmetry properties of prisms, cylinders, cones and pyramids.",
+          "vocabSlugs": ["geom-similarity"],
+          "questionTopics": ["Symmetry"]
+        },
+        {
+          "id": "4.6",
+          "title": "Angles",
+          "title_zh": "角",
+          "slug": "cie-4-6",
+          "tier": "both",
+          "core_content": "Calculate unknown angles using the following geometrical properties: angles at a point, angles at a point on a straight line, vertically opposite angles. Angles formed within parallel lines (corresponding, alternate, co-interior). Angle properties of triangles and quadrilaterals. Angle sum of a polygon. Interior and exterior angles of a polygon.",
+          "extended_content": "",
+          "vocabSlugs": ["geom-angles-basic", "geom-circle-thm"],
+          "questionTopics": ["Angles"]
+        },
+        {
+          "id": "4.7",
+          "title": "Circle theorems",
+          "title_zh": "圆定理",
+          "slug": "cie-4-7",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Calculate unknown angles using circle theorems: angle in a semicircle = 90°, angle at centre = 2× angle at circumference, angles in same segment are equal, opposite angles of cyclic quadrilateral sum to 180°, tangent perpendicular to radius, two tangents from an external point are equal, alternate segment theorem.",
+          "vocabSlugs": ["geom-circle-thm"],
+          "questionTopics": ["Circle Theorems I", "Circle Theorems Ii"]
+        },
+        {
+          "id": "4.8",
+          "title": "Constructions and loci",
+          "title_zh": "作图与轨迹",
+          "slug": "cie-4-8",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Use the following loci and the method of intersecting loci for sets of points in two dimensions: distance from a point, distance from a straight line, equidistant from two points, equidistant from two straight lines.",
+          "vocabSlugs": [],
+          "questionTopics": []
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "num": 5,
+      "title": "Mensuration",
+      "title_zh": "度量",
+      "sections": [
+        {
+          "id": "5.1",
+          "title": "Units of measure",
+          "title_zh": "计量单位",
+          "slug": "cie-5-1",
+          "tier": "both",
+          "core_content": "Use current units of mass, length, area, volume and capacity in practical situations. Express quantities in terms of larger or smaller units. Convert between units including units of area and volume.",
+          "extended_content": "",
+          "vocabSlugs": ["mens-units"],
+          "questionTopics": ["Units Of Measure"]
+        },
+        {
+          "id": "5.2",
+          "title": "Area and perimeter",
+          "title_zh": "面积与周长",
+          "slug": "cie-5-2",
+          "tier": "both",
+          "core_content": "Carry out calculations involving the perimeter and area of a rectangle, triangle, parallelogram and trapezium. Find the area of compound shapes.",
+          "extended_content": "",
+          "vocabSlugs": ["mens-area"],
+          "questionTopics": ["Area And Perimeter"]
+        },
+        {
+          "id": "5.3",
+          "title": "Circles, arcs and sectors",
+          "title_zh": "圆、弧与扇形",
+          "slug": "cie-5-3",
+          "tier": "both",
+          "core_content": "Carry out calculations involving the circumference and area of a circle. Solve problems involving arc length and sector area as fractions of the circumference and area of a circle.",
+          "extended_content": "",
+          "vocabSlugs": ["mens-circles"],
+          "questionTopics": ["Circles Arcs And Sectors"]
+        },
+        {
+          "id": "5.4",
+          "title": "Surface area and volume",
+          "title_zh": "表面积与体积",
+          "slug": "cie-5-4",
+          "tier": "both",
+          "core_content": "Carry out calculations involving the surface area and volume of a cuboid, prism, cylinder, sphere, pyramid and cone.",
+          "extended_content": "Carry out calculations involving the surface area and volume of a sphere, pyramid and cone. Find the surface area and volume of compound solids.",
+          "vocabSlugs": ["mens-surface"],
+          "questionTopics": ["Surface Area And Volume"]
+        },
+        {
+          "id": "5.5",
+          "title": "Compound shapes",
+          "title_zh": "组合图形",
+          "slug": "cie-5-5",
+          "tier": "both",
+          "core_content": "Carry out calculations involving compound shapes made from two or more rectangles, triangles, circles or parts of circles.",
+          "extended_content": "Carry out calculations involving the frustum of a cone or pyramid. Find the volume and surface area of compound solids.",
+          "vocabSlugs": ["mens-3d"],
+          "questionTopics": ["Compound Shapes"]
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "num": 6,
+      "title": "Trigonometry",
+      "title_zh": "三角学",
+      "sections": [
+        {
+          "id": "6.1",
+          "title": "Pythagoras' theorem",
+          "title_zh": "勾股定理",
+          "slug": "cie-6-1",
+          "tier": "both",
+          "core_content": "Know and use Pythagoras' theorem to calculate the length of a side of a right-angled triangle.",
+          "extended_content": "",
+          "vocabSlugs": ["trig-pythag"],
+          "questionTopics": ["Pythagoras Theorem"]
+        },
+        {
+          "id": "6.2",
+          "title": "Right-angled triangles",
+          "title_zh": "直角三角形",
+          "slug": "cie-6-2",
+          "tier": "both",
+          "core_content": "Know and use the sine, cosine and tangent ratios for acute angles in calculations involving sides and angles of a right-angled triangle. Solve problems in two dimensions using Pythagoras' theorem and trigonometry.",
+          "extended_content": "Solve trigonometric problems in two dimensions including those involving angles of elevation and depression.",
+          "vocabSlugs": ["trig-ratios"],
+          "questionTopics": ["Right Angled Triangles"]
+        },
+        {
+          "id": "6.3",
+          "title": "Exact trigonometric values",
+          "title_zh": "三角精确值",
+          "slug": "cie-6-3",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Know the exact values of sin, cos and tan for 0°, 30°, 45°, 60° and 90°. Use these exact values in calculations.",
+          "vocabSlugs": ["trig-graphs"],
+          "questionTopics": ["Exact Trigonometric Values"]
+        },
+        {
+          "id": "6.4",
+          "title": "Trigonometric functions",
+          "title_zh": "三角函数",
+          "slug": "cie-6-4",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Recognise, sketch and interpret graphs of y = sin x, y = cos x, y = tan x for 0° ≤ x ≤ 360°. Solve simple trigonometric equations for values in this range.",
+          "vocabSlugs": ["trig-graphs"],
+          "questionTopics": ["Trigonometry"]
+        },
+        {
+          "id": "6.5",
+          "title": "Non-right-angled triangles",
+          "title_zh": "非直角三角形",
+          "slug": "cie-6-5",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Use the sine rule and the cosine rule to solve problems involving triangles. Use the formula Area = ½ab sin C for the area of a triangle.",
+          "vocabSlugs": ["trig-non-right"],
+          "questionTopics": ["Non Right Angled Triangles"]
+        },
+        {
+          "id": "6.6",
+          "title": "3D trigonometry",
+          "title_zh": "三维三角",
+          "slug": "cie-6-6",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Solve problems in three dimensions using Pythagoras' theorem and trigonometry, including finding the angle between a line and a plane.",
+          "vocabSlugs": ["trig-3d"],
+          "questionTopics": ["Pythagoras And Trigonometry In 3D"]
+        }
+      ]
+    },
+    {
+      "id": "ch7",
+      "num": 7,
+      "title": "Transformations and vectors",
+      "title_zh": "变换与向量",
+      "sections": [
+        {
+          "id": "7.1",
+          "title": "Transformations",
+          "title_zh": "变换",
+          "slug": "cie-7-1",
+          "tier": "both",
+          "core_content": "Describe and perform reflections, rotations, translations and enlargements. Recognise and describe transformations. Describe combined transformations.",
+          "extended_content": "Use the following transformations: reflection (including y = x, y = −x), rotation, translation, enlargement (including fractional and negative scale factors). Describe fully a single transformation that is equivalent to a combination of transformations.",
+          "vocabSlugs": ["vec-transform", "vec-rotation"],
+          "questionTopics": ["Transformations", "Transformations And Vectors"]
+        },
+        {
+          "id": "7.2",
+          "title": "Vectors in 2D",
+          "title_zh": "二维向量",
+          "slug": "cie-7-2",
+          "tier": "both",
+          "core_content": "Describe a translation by using a vector. Add and subtract vectors. Multiply a vector by a scalar.",
+          "extended_content": "",
+          "vocabSlugs": ["vec-basics"],
+          "questionTopics": ["Vectors In Two Dimensions"]
+        },
+        {
+          "id": "7.3",
+          "title": "Magnitude of a vector",
+          "title_zh": "向量的模",
+          "slug": "cie-7-3",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Calculate the magnitude of a vector. Use unit vectors and position vectors.",
+          "vocabSlugs": ["vec-magnitude"],
+          "questionTopics": ["Magnitude Of A Vector"]
+        },
+        {
+          "id": "7.4",
+          "title": "Vector geometry",
+          "title_zh": "向量几何",
+          "slug": "cie-7-4",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Use vectors to solve geometric problems. Apply vector methods to establish simple proofs. Use vectors to find midpoints, to show collinearity, and to solve other geometric problems.",
+          "vocabSlugs": ["vec-relations"],
+          "questionTopics": ["Vector Geometry"]
+        }
+      ]
+    },
+    {
+      "id": "ch8",
+      "num": 8,
+      "title": "Probability",
+      "title_zh": "概率",
+      "sections": [
+        {
+          "id": "8.1",
+          "title": "Introduction to probability",
+          "title_zh": "概率入门",
+          "slug": "cie-8-1",
+          "tier": "both",
+          "core_content": "Understand and use the probability scale from 0 to 1. Find and justify probabilities based on equally likely outcomes. Understand that the probability of an event occurring = 1 − the probability of the event not occurring.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-prob"],
+          "questionTopics": ["Introduction To Probability"]
+        },
+        {
+          "id": "8.2",
+          "title": "Relative and expected frequencies",
+          "title_zh": "相对频率与期望频率",
+          "slug": "cie-8-2",
+          "tier": "both",
+          "core_content": "Understand relative frequency as an estimate of probability. Calculate expected frequencies.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-prob"],
+          "questionTopics": ["Relative And Expected Frequencies"]
+        },
+        {
+          "id": "8.3",
+          "title": "Combined events",
+          "title_zh": "组合事件",
+          "slug": "cie-8-3",
+          "tier": "both",
+          "core_content": "Calculate the probability of combined events using tree diagrams, Venn diagrams, sample space diagrams, or other diagrammatic representations. Apply the addition and multiplication rules.",
+          "extended_content": "Understand when to add and when to multiply probabilities. Apply these rules to more complex problems.",
+          "vocabSlugs": ["stat-prob-comb"],
+          "questionTopics": ["Probability Of Combined Events"]
+        },
+        {
+          "id": "8.4",
+          "title": "Conditional probability",
+          "title_zh": "条件概率",
+          "slug": "cie-8-4",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Calculate conditional probabilities using tree diagrams, Venn diagrams, two-way tables and other methods.",
+          "vocabSlugs": ["stat-prob-cond"],
+          "questionTopics": ["Conditional Probability"]
+        }
+      ]
+    },
+    {
+      "id": "ch9",
+      "num": 9,
+      "title": "Statistics",
+      "title_zh": "统计",
+      "sections": [
+        {
+          "id": "9.1",
+          "title": "Classifying and tabulating data",
+          "title_zh": "数据分类与列表",
+          "slug": "cie-9-1",
+          "tier": "both",
+          "core_content": "Classify and tabulate statistical data. Read, interpret and draw simple inferences from tables and statistical diagrams. Understand the difference between discrete and continuous data.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-data"],
+          "questionTopics": ["Classifying Data"]
+        },
+        {
+          "id": "9.2",
+          "title": "Interpreting statistical data",
+          "title_zh": "数据解读",
+          "slug": "cie-9-2",
+          "tier": "both",
+          "core_content": "Read and interpret information from tables, charts and graphs. Draw simple inferences from data. Compare sets of data using tables, graphs and statistical measures.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-data"],
+          "questionTopics": ["Interpreting Statistical Data"]
+        },
+        {
+          "id": "9.3",
+          "title": "Averages and measures of spread",
+          "title_zh": "平均数与离散度",
+          "slug": "cie-9-3",
+          "tier": "both",
+          "core_content": "Calculate the mean, median, mode and range for individual and discrete frequency distributions. Calculate an estimate of the mean for grouped and continuous data. Identify the modal class from grouped data.",
+          "extended_content": "Calculate quartiles and the interquartile range. Construct and interpret box-and-whisker plots.",
+          "vocabSlugs": ["stat-averages"],
+          "questionTopics": ["Averages And Range"]
+        },
+        {
+          "id": "9.4",
+          "title": "Statistical charts and diagrams",
+          "title_zh": "统计图表",
+          "slug": "cie-9-4",
+          "tier": "both",
+          "core_content": "Draw and interpret bar charts, pie charts, pictograms, stem-and-leaf diagrams, and simple frequency distributions. Construct and use frequency tables, bar charts, pie charts.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-charts"],
+          "questionTopics": ["Statistical Charts And Diagrams"]
+        },
+        {
+          "id": "9.5",
+          "title": "Scatter diagrams and correlation",
+          "title_zh": "散点图与相关性",
+          "slug": "cie-9-5",
+          "tier": "both",
+          "core_content": "Draw and interpret scatter diagrams. Understand positive, negative and zero correlation. Draw a line of best fit by eye and use it to make predictions.",
+          "extended_content": "",
+          "vocabSlugs": ["stat-advanced"],
+          "questionTopics": ["Scatter Diagrams"]
+        },
+        {
+          "id": "9.6",
+          "title": "Cumulative frequency",
+          "title_zh": "累积频率",
+          "slug": "cie-9-6",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Construct and interpret cumulative frequency tables and diagrams. Estimate and interpret the median, quartiles, percentiles and interquartile range from cumulative frequency diagrams.",
+          "vocabSlugs": ["stat-advanced"],
+          "questionTopics": ["Cumulative Frequency Diagrams"]
+        },
+        {
+          "id": "9.7",
+          "title": "Histograms",
+          "title_zh": "频率直方图",
+          "slug": "cie-9-7",
+          "tier": "extended",
+          "core_content": "",
+          "extended_content": "Construct and interpret histograms with equal and unequal class intervals. Calculate frequency density.",
+          "vocabSlugs": ["stat-advanced"],
+          "questionTopics": ["Histograms"]
+        }
+      ]
+    }
+  ]
+}

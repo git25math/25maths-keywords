@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.6.0] - 2026-03-06 — CIE 考纲驱动重构（Phase A）
+
+### 新功能
+- **考纲驱动结构**：CIE 板块从"8 分类 × 50 词组"重构为"9 章 × 72 知识点"，严格对齐 CIE 0580 (2025-2027) 考纲
+- **知识点详情页**：每个知识点独立详情页，显示 4 个学习模块入口（Knowledge / Vocabulary / Examples / Practice）+ 考纲原文（Core + Extended）
+- **章节折叠首页**：CIE 首页显示 9 个章节手风琴，每章展开显示知识点列表 + 词汇/练习统计
+- **词汇扩容**：CIE 词汇从 390 词扩展到 517 词（72 节全覆盖，新增 ~127 词）
+- **按知识点练习**：Practice 支持按单个知识点或整章筛选（新增 `getPracticeBySection` / `getPracticeByChapter`）
+- **考纲层级标签**：知识点显示 Core / Extended / Core+Ext 层级标签
+
+### 数据文件
+| 文件 | 说明 |
+|------|------|
+| `data/syllabus-cie.json` | **新增** 考纲骨架（9 章 72 节，含考纲原文 + vocabSlugs + questionTopics） |
+| `data/vocabulary-cie.json` | **新增** 72 节词汇数据（从 levels.js 迁移 390 词 + 新增 ~127 词 = 517 词） |
+| `data/questions-cie.json` | **修改** 1,488 题添加 `s` 字段映射到 72 个知识点 |
+
+### JS 变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | **新增** ~300 行：考纲加载 + 虚拟 LEVELS 生成 + CIE 首页渲染 + 知识点详情页 |
+| `js/config.js` | `isLevelVisible()` 隐藏旧 CIE levels；APP_VERSION → v1.6.0 |
+| `js/mastery.js` | `renderHome()` CIE 委托给 `renderCIEHome()`；`renderDeck()` section 返回键适配 |
+| `js/practice.js` | 新增 `getPracticeBySection()` / `getPracticeByChapter()`；`startPractice()` 支持 section/chapter 模式 |
+| `js/levels-loader.js` | `_rebuildLevels()` 触发 CIE 虚拟 levels 重建 |
+| `js/ui.js` | section panel 路由注释 |
+| `index.html` | 新增 `panel-section` div |
+| `scripts/minify.sh` | 添加 syllabus.js 到 bundle |
+| `css/style.css` | ~60 行新样式（tier-badge / sec-hero / sec-modules / sec-syllabus 等） |
+
+### 架构说明
+- **虚拟 LEVELS 模式**：syllabus.js 从 JSON 数据动态创建 LEVELS 条目（`_isSection: true`），复用全部 7 种学习模式
+- **`_cieOld` 标记**：旧 CIE 50 级 levels 标记为隐藏，不影响数据、仅从首页隐藏
+- **幂等初始化**：`_initCIELevels()` 每次清理再重建，支持 `_rebuildLevels()` 反复调用
+- **向后兼容**：Edexcel / 25m 板块完全不受影响
+
 ## [1.5.4] - 2026-03-06 — Practice 入口从词卡组移到专题分类
 
 ### 改进

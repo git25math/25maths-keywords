@@ -113,14 +113,20 @@ var BOARD_OPTIONS = [
 
 /* Check if a level should be visible under current board filter */
 function isLevelVisible(lv) {
+  /* Hide old CIE levels when syllabus mode is active */
+  if (lv._cieOld) return false;
   /* 25m content requires school_id (Harrow users only), unless guest full access is on */
   if (!userSchoolId && !(GUEST_FULL_ACCESS && isGuest()) && lv.board === '25m') return false;
   if (!userBoard) return true;
   if (userBoard === 'all') return true;
   /* Custom levels are always visible */
   if (lv.custom) return true;
-  /* CIE / Edexcel: filter by board field */
-  if (userBoard === 'cie' || userBoard === 'edx') {
+  /* CIE: syllabus sections are visible */
+  if (userBoard === 'cie') {
+    return lv.board === 'cie';
+  }
+  /* Edexcel: filter by board field */
+  if (userBoard === 'edx') {
     return lv.board === userBoard;
   }
   /* 25m-yN: filter by category field */
@@ -321,7 +327,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.5.4';
+var APP_VERSION = 'v1.6.0';
 
 /* ═══ TEACHER ROLE (shared across modules) ═══ */
 var isTeacherUser = false;

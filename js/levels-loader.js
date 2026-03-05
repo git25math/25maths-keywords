@@ -44,12 +44,15 @@ function _fetchJson(url) {
    Preserves custom levels appended by other modules. */
 function _rebuildLevels() {
   var custom = (typeof getCustomLevels === 'function') ? getCustomLevels() : [];
-  var baseLen = LEVELS.length - custom.length;
   var base = [];
   _canonOrder.forEach(function(bk) {
     if (_loadedData[bk]) base = base.concat(_loadedData[bk]);
   });
   LEVELS = base.concat(custom);
+  /* Re-init CIE virtual levels if syllabus was already loaded */
+  if (typeof _cieDataReady !== 'undefined' && _cieDataReady && typeof _initCIELevels === 'function') {
+    _initCIELevels();
+  }
   if (typeof invalidateCache === 'function') invalidateCache();
   if (typeof invalidateGuestCache === 'function') invalidateGuestCache();
   _quizCache = null;  /* quiz distractor cache */

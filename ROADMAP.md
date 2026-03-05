@@ -292,11 +292,11 @@
 - [x] `_openEditor()` 公共函数重构，两入口复用 → v1.5.1
 - [x] Practice/Review All 入口从 deck 详情页移到首页分类层级 → v1.5.4
 
-### Phase 10C — 概念卡 + KaTeX（Layer 2）
-- [ ] getPairs() 扩展支持 formula/example 字段
-- [ ] KaTeX 按需加载（<50KB gzip，仅概念页触发）
-- [ ] 独立 panel-concept（概念卡翻转学习）
-- [ ] 剩余 ~400 含 LaTeX 练习题接入
+### Phase 10C — CIE 考纲驱动重构 [Phase A DONE]
+- [x] **Phase A 考纲骨架 + 数据迁移**：9 章 72 知识点 + 517 词 + 1,488 题映射 → v1.6.0
+- [ ] **Phase B 经典例题**：AI 生成 ~300 道 worked examples + examples.js 渲染
+- [ ] **Phase C 知识卡片**：72 张双语富文本知识卡 + knowledge.js + KaTeX
+- [ ] **Phase D 掌握度系统**：4 维掌握度追踪 + 复习计划 + Ebbinghaus 曲线
 
 ### Phase 10D — 智能学习路径（跨层整合）
 - [ ] 词汇→概念→练习 三层关联（subtopicId 映射）

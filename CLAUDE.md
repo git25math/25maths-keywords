@@ -4,16 +4,16 @@ Bilingual math vocabulary learning platform (双语数学词汇学习平台) for
 
 - **Live**: https://git25math.github.io/25maths-keywords/
 - **Repo**: https://github.com/git25math/25maths-keywords
-- **Version**: v1.5.3 (2026-03-05)
-- **Scale**: 3 boards, 264 levels, 2,200 words
+- **Version**: v1.6.0 (2026-03-06)
+- **Scale**: 3 boards, 264 levels + 72 CIE sections, 2,517 words
 - **Supabase**: shared with 25maths-website (ref: `jjjigohjvmyewasmmmyf`)
 - **See also**: [CHANGELOG.md](CHANGELOG.md) | [ROADMAP.md](ROADMAP.md)
 
 ## Project Structure
 
-- `index.html` — Main entry (sidebar + 17 panels + bottom-nav shell)
+- `index.html` — Main entry (sidebar + 18 panels + bottom-nav shell)
 - `css/style.css` — All styles (design tokens, 3 breakpoints, dark mode, components)
-- `js/` — 20 modular JS files loaded via `<script>` tags (no bundler)
+- `js/` — 21 modular JS files loaded via `<script>` tags (no bundler)
 - `supabase/migrations/` — 17 SQL migration files (tables, RLS, RPC, Edge Functions)
 - `scripts/` — Python build/extract scripts
 - `data/sources.json` — .tex file path mapping for vocab extraction
@@ -61,7 +61,7 @@ Scripts are loaded via `<script>` tags in this order (each depends on previous):
 - **Tablet (640-1079px)**: Top header bar + bottom nav + content
 - **Phone (<640px)**: Compact mode, narrower padding
 
-Panel system: `showPanel(id)` switches between 17 panels:
+Panel system: `showPanel(id)` switches between 18 panels:
 `panel-home`, `panel-deck`, `panel-study`, `panel-battle`, `panel-review-dash`, `panel-review`, `panel-quiz`, `panel-spell`, `panel-match`, `panel-preview`, `panel-daily`, `panel-practice`, `panel-import`, `panel-board`, `panel-stats`, `panel-admin`, `panel-homework`.
 
 ## User Roles

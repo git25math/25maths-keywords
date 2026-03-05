@@ -2906,6 +2906,54 @@ input { font-family: inherit; }
 .tour-next { font-size:13px; font-weight:600; color:#fff; background:var(--c-primary); border:none; border-radius:var(--r-sm); padding:6px 14px; cursor:pointer; }
 .tour-next:hover { background:var(--c-primary-light); }
 
+/* ═══ CIE SYLLABUS SECTION STYLES ═══ */
+
+/* Tier badges */
+.tier-badge { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 4px; vertical-align: middle; }
+.tier-ext { background: #DBEAFE; color: #1D4ED8; }
+.tier-core { background: #D1FAE5; color: #047857; }
+[data-theme="dark"] .tier-ext { background: #1E3A5F; color: #93C5FD; }
+[data-theme="dark"] .tier-core { background: #064E3B; color: #6EE7B7; }
+
+/* Section tag in deck row */
+.sec-tag { min-width: 32px; font-size: 10px; }
+
+/* Section detail hero */
+.sec-hero { text-align: center; padding: 24px 0 20px; }
+.sec-id { font-family: var(--font-mono); font-size: 13px; color: var(--c-primary); font-weight: 700; margin-bottom: 4px; }
+.sec-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--c-text); }
+.sec-title-zh { font-size: 16px; color: var(--c-text2); margin-top: 2px; }
+.sec-progress-bar { height: 6px; background: var(--c-border-light); border-radius: 3px; margin: 16px auto 6px; max-width: 280px; overflow: hidden; }
+.sec-progress-fill { height: 100%; background: var(--c-primary); border-radius: 3px; transition: width 0.3s; }
+.sec-progress-label { font-size: 12px; color: var(--c-text2); }
+.sec-position { font-size: 12px; color: var(--c-muted); }
+
+/* Section modules grid */
+.sec-modules { display: flex; flex-direction: column; gap: 8px; margin: 8px 0 20px; }
+.sec-module {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; border-radius: var(--r);
+  background: var(--c-surface); border: 1px solid var(--c-border-light);
+  cursor: pointer; transition: background 0.15s, box-shadow 0.15s;
+}
+.sec-module:hover { background: var(--c-surface-alt); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.sec-module-empty, .sec-module-coming { opacity: 0.5; cursor: default; pointer-events: none; }
+.sec-module-icon { font-size: 24px; flex-shrink: 0; }
+.sec-module-info { flex: 1; min-width: 0; }
+.sec-module-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--c-text); }
+.sec-module-sub { font-size: 12px; color: var(--c-text2); margin-top: 2px; }
+.sec-module-arrow { font-size: 16px; color: var(--c-muted); flex-shrink: 0; }
+
+/* Syllabus requirements block */
+.sec-syllabus { background: var(--c-surface-alt); border-radius: var(--r); padding: 16px; margin-bottom: 20px; }
+.sec-syllabus-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--c-text); margin-bottom: 10px; }
+.sec-syllabus-block { font-size: 13px; line-height: 1.6; color: var(--c-text2); margin-bottom: 8px; }
+.sec-syllabus-label { font-weight: 700; color: var(--c-primary); }
+
+/* Section prev/next nav */
+.sec-nav { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.sec-nav .btn { font-size: 12px; max-width: 48%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* ═══ REDUCED MOTION ═══ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

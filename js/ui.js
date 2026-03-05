@@ -28,6 +28,7 @@ function navTo(id) {
   else if (id === 'stats') renderStats();
   else if (id === 'admin' && typeof renderAdmin === 'function') renderAdmin();
   else if (id === 'homework') { if (typeof showStudentHwPage === 'function') showStudentHwPage(); }
+  /* section panel is rendered by openSection() directly */
 }
 
 function updateNav() {
