@@ -1489,6 +1489,9 @@ input { font-family: inherit; }
 .pq-edit-btn { color: var(--c-primary); }
 .pq-edit-btn:hover { background: var(--c-primary-bg); }
 
+/* Practice: review filter bar */
+.pq-review-filter { display: flex; gap: 6px; justify-content: center; margin: 12px auto; max-width: 700px; }
+
 /* Practice: review all list (superadmin) */
 .pq-review-list { max-width: 700px; margin: 0 auto; padding-bottom: 32px; }
 .pq-review-card {

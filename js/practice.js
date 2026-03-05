@@ -10,6 +10,9 @@ var _pqEditsCache = {};  /* { cie: {qid: data}, edx: {qid: data} } */
 var _pqFocusedTextarea = null; /* last focused textarea in editor */
 var _pqEditorSaveCb = null;   /* optional callback after editor save */
 var _pqEditorQid = null;      /* qid of question currently in editor */
+var _pqReviewState = null;    /* { li, questions, board } — current review context */
+var _pqReviewFilter = 'all';  /* 'all' | 1 (Core) | 2 (Extended) */
+var _pqReviewDelegated = false; /* event delegation bound flag */
 
 /* ═══ KATEX LAZY LOADING ═══ */
 
@@ -757,30 +760,62 @@ function savePracticeEdit(qid, board) {
 
 function startPracticeReview(li) {
   var lv = LEVELS[li];
-  if (!lv) return;
+  if (!lv) return Promise.resolve();
   var board = lv.board;
-  if (board !== 'cie' && board !== 'edx') return;
+  if (board !== 'cie' && board !== 'edx') return Promise.resolve();
 
   currentLvl = li;
   showToast(t('Loading questions...', '加载题目中...'));
 
-  Promise.all([loadPracticeData(board), loadKaTeX()]).then(function() {
+  return Promise.all([loadPracticeData(board), loadKaTeX()]).then(function() {
     var questions = (_pqData[board] || []).filter(function(q) { return q.cat === lv.category; });
     if (questions.length === 0) {
       showToast(t('No practice questions available for this topic', '该主题暂无练习题'));
       return;
     }
+    _pqReviewState = { li: li, questions: questions, board: board };
+    _pqReviewFilter = 'all';
     showPanel('practice');
-    renderPracticeReview(li, questions, board);
+    renderPracticeReview();
+
+    /* Event delegation: bind once on panel-practice */
+    if (!_pqReviewDelegated) {
+      _pqReviewDelegated = true;
+      E('panel-practice').addEventListener('click', function(e) {
+        var btn = e.target.closest('.pq-review-edit');
+        if (!btn || !_pqReviewState) return;
+        var qid = btn.dataset.qid;
+        var st = _pqReviewState;
+        var q = _pqFindQ(qid, st.board);
+        if (!q) return;
+        var scrollY = window.scrollY;
+        _openEditor(q, st.board, function() {
+          startPracticeReview(st.li).then(function() {
+            window.scrollTo(0, scrollY);
+          });
+        });
+      });
+    }
   }).catch(function() {
     showToast(t('Failed to load questions', '加载题目失败'));
   });
 }
 
-function renderPracticeReview(li, questions, board) {
+function renderPracticeReview() {
+  if (!_pqReviewState) return;
+  var st = _pqReviewState;
+  var li = st.li;
+  var questions = st.questions;
   var lv = LEVELS[li];
   var catInfo = getCategoryInfo(lv.category);
   var labels = ['A', 'B', 'C', 'D'];
+
+  /* Apply filter */
+  var filtered = _pqReviewFilter === 'all' ? questions : questions.filter(function(q) {
+    return q.d === _pqReviewFilter;
+  });
+  var coreCount = questions.filter(function(q) { return q.d === 1; }).length;
+  var extCount = questions.filter(function(q) { return q.d === 2; }).length;
 
   var html = '';
 
@@ -788,20 +823,28 @@ function renderPracticeReview(li, questions, board) {
   html += '<div class="study-topbar">';
   html += '<button class="back-btn" onclick="openDeck(' + li + ')">←</button>';
   html += '<div class="deck-title" style="flex:1;font-size:16px;margin:0 12px">' + catInfo.emoji + ' ' + lvTitle(lv) + '</div>';
-  html += '<div class="pq-qid" style="font-size:13px;color:var(--c-muted);white-space:nowrap">' + t('Total', '共') + ' ' + questions.length + ' ' + t('questions', '题') + '</div>';
+  html += '<div class="pq-qid" style="font-size:13px;color:var(--c-muted);white-space:nowrap">' + t('Total', '共') + ' ' + filtered.length + ' ' + t('questions', '题') + '</div>';
+  html += '</div>';
+
+  /* Filter bar */
+  html += '<div class="pq-review-filter">';
+  html += '<button class="sort-btn' + (_pqReviewFilter === 'all' ? ' active' : '') + '" onclick="setPqReviewFilter(\'all\')">All (' + questions.length + ')</button>';
+  html += '<button class="sort-btn' + (_pqReviewFilter === 1 ? ' active' : '') + '" onclick="setPqReviewFilter(1)">Core (' + coreCount + ')</button>';
+  html += '<button class="sort-btn' + (_pqReviewFilter === 2 ? ' active' : '') + '" onclick="setPqReviewFilter(2)">Extended (' + extCount + ')</button>';
   html += '</div>';
 
   /* Review list */
   html += '<div class="pq-review-list">';
-  questions.forEach(function(q, i) {
+  filtered.forEach(function(q, i) {
     html += '<div class="pq-review-card">';
 
-    /* Header: qid + topic + difficulty + edit btn */
+    /* Header: num + qid + topic + difficulty + edit btn */
     html += '<div class="pq-meta" style="margin-bottom:8px">';
+    html += '<span style="font-weight:700;color:var(--c-text);min-width:28px">' + (i + 1) + '.</span>';
     html += '<span class="pq-qid" style="font-size:11px;color:var(--c-muted)">#' + escapeHtml(q.id) + '</span>';
     if (q.topic) html += '<span class="pq-topic">' + escapeHtml(q.topic) + '</span>';
     html += '<span class="pq-difficulty pq-d' + q.d + '">' + (q.d === 1 ? t('Core', '基础') : t('Extended', '拓展')) + '</span>';
-    html += '<button class="pq-edit-btn" style="margin-left:auto" onclick="_openEditor(_pqFindQ(\'' + escapeHtml(q.id) + '\',\'' + escapeHtml(board) + '\'),\'' + escapeHtml(board) + '\',function(){startPracticeReview(' + li + ')})">✏️</button>';
+    html += '<button class="pq-review-edit pq-edit-btn" style="margin-left:auto" data-qid="' + escapeHtml(q.id) + '">✏️</button>';
     html += '</div>';
 
     /* Question */
@@ -826,6 +869,11 @@ function renderPracticeReview(li, questions, board) {
 
   E('panel-practice').innerHTML = html;
   renderMath(E('panel-practice'));
+}
+
+function setPqReviewFilter(f) {
+  _pqReviewFilter = f;
+  renderPracticeReview();
 }
 
 /* Helper: find question by qid from cache */

@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.5.2] - 2026-03-05 — Review All 四项优化
+
+### 改进
+- **事件委托**：编辑按钮改用 `data-qid` + `panel-practice` 上单次事件委托，消除 `onclick` 内联字符串拼接（XSS 隐患）
+- **滚动恢复**：编辑保存后重新渲染列表时恢复原滚动位置，不再跳回顶部
+- **Core/Extended 过滤**：顶栏下方新增 `All · Core · Extended` 过滤 pill，复用 `.sort-btn` 样式，切换后序号重新编号、题数实时更新
+- **题号序号**：每张卡片 `pq-meta` 最前面显示过滤后序号（`1.` `2.` ...）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | 新增 `_pqReviewState` / `_pqReviewFilter` / `_pqReviewDelegated` 模块变量；重写 `startPracticeReview()`（返回 Promise + 事件委托）+ `renderPracticeReview()`（无参数 + 过滤 + 序号）+ 新增 `setPqReviewFilter()` |
+| `css/style.css` | +2 行：`.pq-review-filter` 过滤栏样式 |
+| `js/config.js` | APP_VERSION → v1.5.2 |
+| `css/style.min.css` | 重新生成 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.5.1] - 2026-03-05 — 超管整套题总览模式
 
 ### 新功能
