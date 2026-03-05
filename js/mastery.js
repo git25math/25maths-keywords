@@ -464,6 +464,20 @@ function renderDeck(idx) {
   });
   html += '</div></div>';
 
+  /* Exam Practice section (CIE / Edexcel only) */
+  if (lv.board === 'cie' || lv.board === 'edx') {
+    html += '<div class="mode-extra">';
+    html += '<div class="mode-extra-label">' + t('Exam Practice', '真题练习') + '</div>';
+    html += '<div class="mode-extra-row">';
+    var pDone = isModeDone(idx, 'practice');
+    html += '<button class="mode-btn mode-btn-extra" onclick="startPractice(' + idx + ')">';
+    if (pDone) html += '<span class="mode-done">\u2713</span>';
+    html += '<div class="mode-emoji">\ud83d\udcdd</div>';
+    html += '<div class="mode-name">' + t('Practice', '练习') + '</div>';
+    html += '</button>';
+    html += '</div></div>';
+  }
+
   html += '<div class="preview-link"><a href="javascript:void(0)" onclick="openPreview(' + idx + ')">\ud83d\udc41 ' + t('Preview all words', '\u9884\u89c8\u5168\u90e8\u8bcd\u6c47') + ' \u2192</a></div>';
 
   /* Sort bar */

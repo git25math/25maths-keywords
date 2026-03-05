@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.4.0] - 2026-03-05 — 选择题练习模式（Phase 10B: Exam Practice）
+
+### 新功能
+- **Exam Practice 模式**：从 25maths-website 导入 1,460 道真题风格选择题（CIE 884 + Edexcel 576）
+- **Python 提取脚本**：`scripts/extract-questions.py` 自动过滤复杂 LaTeX，简单内联数学去 `$` 保留纯文本
+- **按分类筛选**：每次练习从当前词组对应分类随机抽取 10 题
+- **答题交互**：选项即时反馈（绿色/红色）+ 正确答案高亮 + 解析展示 + 手动 Next
+- **结果页**：分数/百分比 + 错题回顾列表 + 重试/返回
+- **进度追踪**：`localStorage wmatch_practice` 独立存储 + `markModeDone` 完成标记 ✓
+- **Deck 详情页**：CIE/Edexcel 词组显示独立 "Exam Practice / 真题练习" 分区；25m 不显示
+- **双语**：所有按钮/标签/结果页随 appLang 切换中英文
+- **暗色模式**：解析区通过 CSS 变量自动继承主题
+
+### 数据覆盖
+| Board | 分类数 | 题目数 |
+|-------|--------|--------|
+| CIE 0580 | 8 | 884 |
+| Edexcel 4MA1 | 6 | 576 |
+| **合计** | **14** | **1,460** |
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/extract-questions.py` | **新建** — 提取脚本（~80 行） |
+| `data/questions-cie.json` | **新建** — CIE 练习题 884 题 |
+| `data/questions-edx.json` | **新建** — Edexcel 练习题 576 题 |
+| `js/practice.js` | **新建** — 练习模式逻辑（~180 行） |
+| `index.html` | +1 行 panel-practice |
+| `js/mastery.js` | +12 行 Practice 按钮（CIE/Edexcel only） |
+| `css/style.css` | +33 行 practice 样式 |
+| `scripts/minify.sh` | practice.js 加入 bundle |
+| `js/config.js` | APP_VERSION → v1.4.0 |
+| `css/style.min.css` | 重新生成 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.3.5] - 2026-03-05 — 首次使用引导 Tour（步骤 Tooltip）
 
 ### 新功能

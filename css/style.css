@@ -1439,6 +1439,42 @@ input { font-family: inherit; }
 }
 
 
+/* ═══ PRACTICE MODE ═══ */
+.pq-meta {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+.pq-topic {
+  font-size: 11px; font-weight: 600; color: var(--c-text2);
+  background: var(--c-surface); padding: 3px 10px;
+  border-radius: 12px; border: 1px solid var(--c-border);
+}
+.pq-difficulty {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px;
+}
+.pq-d1 { background: var(--c-success-bg); color: var(--c-success); }
+.pq-d2 { background: var(--c-primary-bg); color: var(--c-primary); }
+.pq-question {
+  font-size: 16px; font-weight: 600; line-height: 1.5;
+  margin-bottom: 20px; text-align: center;
+}
+.pq-explanation {
+  margin-top: 14px; padding: 12px 16px; border-radius: var(--r);
+  background: var(--c-surface); border: 1px solid var(--c-border);
+  font-size: 13px; line-height: 1.6; color: var(--c-text2);
+}
+.pq-next-btn { min-width: 160px; }
+.pq-wrong-review {
+  max-width: 400px; margin: 16px auto; text-align: left;
+  font-size: 13px;
+}
+.pq-wrong-item {
+  padding: 8px 0; border-bottom: 1px solid var(--c-border-light);
+}
+.pq-wrong-q { color: var(--c-text); margin-bottom: 2px; }
+.pq-wrong-a { color: var(--c-success); font-weight: 600; }
+
 /* ═══ MATCH MODE ═══ */
 .match-area {
   display: flex; gap: 24px;

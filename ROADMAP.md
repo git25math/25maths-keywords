@@ -272,12 +272,12 @@
 - [x] 首屏从 ~114KB gzip → ~66-72KB gzip（按 board 懒加载 JSON）→ v1.3.3
 - [x] 首屏优化：资源提示 + 字体条件加载 + Supabase defer + homework 拆包（~66KB → ~47-55KB gzip）→ v1.3.4
 
-### Phase 10B — 选择题练习（Layer 3 快速突破）
-- [ ] 导入 25maths-website 纯文本选择题（~800 题无 LaTeX 依赖）
-- [ ] 复用 Quiz 模式 UI（支持 4 选项数学题）
-- [ ] 按 topic + difficulty 筛选
-- [ ] 练习进度独立存储（practice_progress 表）
-- [ ] 结果页显示 explanation 解析
+### Phase 10B — 选择题练习（Layer 3 快速突破）[DONE]
+- [x] 导入 25maths-website 纯文本选择题（1,460 题：CIE 884 + Edexcel 576）→ v1.4.0
+- [x] 复用 Quiz 模式 UI（支持 4 选项数学题）→ v1.4.0
+- [x] 按 topic + difficulty 筛选 → v1.4.0
+- [x] 练习进度独立存储（localStorage wmatch_practice）→ v1.4.0
+- [x] 结果页显示 explanation 解析 → v1.4.0
 
 ### Phase 10C — 概念卡 + KaTeX（Layer 2）
 - [ ] getPairs() 扩展支持 formula/example 字段

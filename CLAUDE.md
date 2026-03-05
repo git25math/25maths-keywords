@@ -4,16 +4,16 @@ Bilingual math vocabulary learning platform (双语数学词汇学习平台) for
 
 - **Live**: https://git25math.github.io/25maths-keywords/
 - **Repo**: https://github.com/git25math/25maths-keywords
-- **Version**: v1.3.5 (2026-03-05)
+- **Version**: v1.4.0 (2026-03-05)
 - **Scale**: 3 boards, 264 levels, 2,200 words
 - **Supabase**: shared with 25maths-website (ref: `jjjigohjvmyewasmmmyf`)
 - **See also**: [CHANGELOG.md](CHANGELOG.md) | [ROADMAP.md](ROADMAP.md)
 
 ## Project Structure
 
-- `index.html` — Main entry (sidebar + 16 panels + bottom-nav shell)
+- `index.html` — Main entry (sidebar + 17 panels + bottom-nav shell)
 - `css/style.css` — All styles (design tokens, 3 breakpoints, dark mode, components)
-- `js/` — 19 modular JS files loaded via `<script>` tags (no bundler)
+- `js/` — 20 modular JS files loaded via `<script>` tags (no bundler)
 - `supabase/migrations/` — 17 SQL migration files (tables, RLS, RPC, Edge Functions)
 - `scripts/` — Python build/extract scripts
 - `data/sources.json` — .tex file path mapping for vocab extraction
@@ -31,7 +31,7 @@ python3 scripts/extract-vocab.py
 python3 scripts/build-single.py
 ```
 
-## JS Load Order (19 files)
+## JS Load Order (20 files)
 
 Scripts are loaded via `<script>` tags in this order (each depends on previous):
 1. config.js — App constants, theme tokens, global state, breakpoint detection
@@ -49,10 +49,11 @@ Scripts are loaded via `<script>` tags in this order (each depends on previous):
 13. match.js — Simple pair matching mode
 14. export.js — Import (4 formats) + Export (CSV/JSON/Markdown)
 15. stats.js — Statistics dashboard, heatmap, trend chart
-16. admin.js — Teacher management (classes, students, grades, school overview)
-17. vocab-admin.js — Super-admin vocabulary CRUD (vocab_levels table)
-18. homework.js — Homework assignments + notifications + student submissions
-19. app.js — Init, leaderboard, URL deep linking, iOS share recovery
+16. practice.js — Exam practice mode (real MCQs from 25maths-website)
+17. admin.js — Teacher management (classes, students, grades, school overview)
+18. vocab-admin.js — Super-admin vocabulary CRUD (vocab_levels table)
+19. homework.js — Homework assignments + notifications + student submissions
+20. app.js — Init, leaderboard, URL deep linking, iOS share recovery
 
 ## Layout Architecture
 
@@ -60,8 +61,8 @@ Scripts are loaded via `<script>` tags in this order (each depends on previous):
 - **Tablet (640-1079px)**: Top header bar + bottom nav + content
 - **Phone (<640px)**: Compact mode, narrower padding
 
-Panel system: `showPanel(id)` switches between 16 panels:
-`panel-home`, `panel-deck`, `panel-study`, `panel-battle`, `panel-review-dash`, `panel-review`, `panel-quiz`, `panel-spell`, `panel-match`, `panel-preview`, `panel-daily`, `panel-import`, `panel-board`, `panel-stats`, `panel-admin`, `panel-homework`.
+Panel system: `showPanel(id)` switches between 17 panels:
+`panel-home`, `panel-deck`, `panel-study`, `panel-battle`, `panel-review-dash`, `panel-review`, `panel-quiz`, `panel-spell`, `panel-match`, `panel-preview`, `panel-daily`, `panel-practice`, `panel-import`, `panel-board`, `panel-stats`, `panel-admin`, `panel-homework`.
 
 ## User Roles
 
