@@ -310,6 +310,7 @@ function renderSectionDetail(ch, sec, secIdx) {
     html += '<div class="sec-module-sub">' + words.length + ' ' + t('words', '词') + ' · ';
     html += _renderMiniStars(stats.pct);
     html += '</div></div>';
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'vocabulary\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
   } else if (words.length === 0) {
@@ -329,6 +330,7 @@ function renderSectionDetail(ch, sec, secIdx) {
     html += '<div class="sec-module-title">' + t('Practice', '练习') + '</div>';
     html += '<div class="sec-module-sub">' + qCount + ' ' + t('questions', '题') + '</div>';
     html += '</div>';
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'practice\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
   }
@@ -391,6 +393,94 @@ function _renderMiniStars(pct) {
     s += '<span class="star-dot' + (i < filled ? ' filled' : '') + '" style="width:6px;height:6px"></span>';
   }
   return s;
+}
+
+/* ═══ SECTION MODULE REPORT ═══ */
+
+var _sectionReportTypes = {
+  vocabulary: [
+    ['wrong-def', 'Wrong definition / 定义错误'],
+    ['missing',   'Missing word / 缺少词汇'],
+    ['extra',     'Unnecessary word / 多余词汇'],
+    ['other',     'Other / 其他']
+  ],
+  practice: [
+    ['answer',   'Wrong answer / 答案错误'],
+    ['question', 'Question error / 题目有误'],
+    ['formula',  'Formula issue / 公式渲染问题'],
+    ['other',    'Other / 其他']
+  ]
+};
+
+function reportSectionModule(sectionId, moduleType) {
+  var info = getSectionInfo(sectionId);
+  if (!info) return;
+  var sec = info.section;
+  var types = _sectionReportTypes[moduleType] || _sectionReportTypes.vocabulary;
+  var typeOpts = types.map(function(tp) {
+    return '<option value="' + tp[0] + '">' + tp[1] + '</option>';
+  }).join('');
+  var modLabel = moduleType === 'practice' ? t('Practice', '练习') : t('Vocabulary', '核心词汇');
+
+  var html = '<div class="section-title">\ud83d\udea9 ' + t('Report Error', '报告错误') + ' — ' + sec.id + ' ' + modLabel + '</div>';
+  html += '<div style="text-align:left;margin-bottom:12px;padding:10px;background:var(--c-surface-alt);border-radius:var(--r);font-size:12px">';
+  html += '<strong>' + escapeHtml(sec.id) + '</strong> · ' + escapeHtml(sec.title);
+  if (appLang !== 'en' && sec.title_zh) html += ' · ' + escapeHtml(sec.title_zh);
+  html += '<br><span style="color:var(--c-text2)">' + t('Module', '模块') + ': ' + modLabel + '</span>';
+  html += '</div>';
+  html += '<label class="settings-label">' + t('Error type', '错误类型') + '</label>';
+  html += '<select class="bug-select" id="sec-report-type">' + typeOpts + '</select>';
+  html += '<label class="settings-label">' + t('Description', '描述') + ' *</label>';
+  html += '<textarea class="bug-textarea" id="sec-report-desc" rows="3" placeholder="' + t('Describe the error...', '请描述错误...') + '"></textarea>';
+  html += '<div id="sec-report-msg" style="font-size:13px;margin:8px 0;min-height:20px;color:var(--c-danger)"></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:12px">';
+  var submitLabel = (isLoggedIn() && !isGuest()) ? t('Submit', '提交') : t('Submit via Email', '通过邮件提交');
+  html += '<button class="btn btn-primary" style="flex:1" onclick="submitSectionReport(\'' + sectionId + '\',\'' + moduleType + '\')">' + submitLabel + '</button>';
+  html += '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>';
+  html += '</div>';
+  showModal(html);
+}
+
+function submitSectionReport(sectionId, moduleType) {
+  var desc = E('sec-report-desc').value.trim();
+  if (!desc) {
+    E('sec-report-msg').textContent = t('Please describe the error', '请描述错误');
+    return;
+  }
+  var type = E('sec-report-type').value;
+  var info = getSectionInfo(sectionId);
+  var sectionTitle = info ? info.section.title : sectionId;
+
+  /* Logged-in users: save to DB */
+  if (sb && isLoggedIn() && !isGuest()) {
+    sb.from('feedback').insert({
+      user_id: currentUser.id,
+      user_email: currentUser.email,
+      type: 'section',
+      description: desc,
+      steps: moduleType,
+      auto_info: { sectionId: sectionId, module: moduleType, sectionTitle: sectionTitle, board: 'cie' }
+    }).then(function(res) {
+      if (res.error) {
+        E('sec-report-msg').textContent = t('Submit failed: ', '提交失败：') + res.error.message;
+        return;
+      }
+      hideModal();
+      showToast(t('Report submitted! Thank you.', '报告已提交，谢谢！'));
+    });
+    return;
+  }
+
+  /* Guest: mailto fallback */
+  var subject = '[Section Error] ' + sectionId + ' ' + moduleType + ' - 25Maths Keywords';
+  var body = 'Section: ' + sectionId + ' - ' + sectionTitle +
+    '\nModule: ' + moduleType +
+    '\nError type: ' + type +
+    '\n\nDescription:\n' + desc;
+  var mailto = 'mailto:support@25maths.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  window.open(mailto, '_blank');
+  hideModal();
+  showToast(t('Opening email client...', '正在打开邮件客户端...'));
 }
 
 /* ═══ PRACTICE BY SECTION/CHAPTER ═══ */

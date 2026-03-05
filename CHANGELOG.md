@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.6.1] - 2026-03-06 — 知识点详情页模块纠错按钮
+
+### 新功能
+- **模块纠错按钮**：知识点详情页的 Vocabulary / Practice 模块卡片右侧新增 🚩 报告按钮
+- **纠错 Modal**：点击按钮弹出纠错表单，含知识点信息预览 + 错误类型选择 + 描述输入
+- **双路径提交**：登录用户提交到 Supabase `feedback` 表（`type='section'`）；Guest 用户 mailto 降级
+- **按模块区分错误类型**：Vocabulary（定义错误/缺少词汇/多余词汇/其他）、Practice（答案错误/题目有误/公式问题/其他）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | 模块卡片添加 🚩 按钮 + `reportSectionModule()` + `submitSectionReport()` + `_sectionReportTypes` |
+| `css/style.css` | `.sec-module-report` 按钮样式（hover 变橙） |
+| `js/config.js` | APP_VERSION → v1.6.1 |
+
 ## [1.6.0] - 2026-03-06 — CIE 考纲驱动重构（Phase A）
 
 ### 新功能

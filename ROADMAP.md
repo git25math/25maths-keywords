@@ -292,6 +292,11 @@
 - [x] `_openEditor()` 公共函数重构，两入口复用 → v1.5.1
 - [x] Practice/Review All 入口从 deck 详情页移到首页分类层级 → v1.5.4
 
+### Phase 10B+++ — 知识点模块纠错 [DONE]
+- [x] 知识点详情页 Vocabulary/Practice 模块🚩纠错按钮 → v1.6.1
+- [x] 双路径提交（登录→feedback 表 / Guest→mailto）→ v1.6.1
+- [x] 按模块区分错误类型（Vocabulary 4 类 / Practice 4 类）→ v1.6.1
+
 ### Phase 10C — CIE 考纲驱动重构 [Phase A DONE]
 - [x] **Phase A 考纲骨架 + 数据迁移**：9 章 72 知识点 + 517 词 + 1,488 题映射 → v1.6.0
 - [ ] **Phase B 经典例题**：AI 生成 ~300 道 worked examples + examples.js 渲染

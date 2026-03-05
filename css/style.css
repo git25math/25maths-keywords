@@ -2943,6 +2943,12 @@ input { font-family: inherit; }
 .sec-module-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--c-text); }
 .sec-module-sub { font-size: 12px; color: var(--c-text2); margin-top: 2px; }
 .sec-module-arrow { font-size: 16px; color: var(--c-muted); flex-shrink: 0; }
+.sec-module-report {
+  font-size: 12px; color: var(--c-muted); padding: 4px 8px;
+  border-radius: 6px; background: none; border: none; cursor: pointer;
+  transition: all 0.2s; flex-shrink: 0; line-height: 1;
+}
+.sec-module-report:hover { color: var(--c-warning); background: var(--c-warning-bg); }
 
 /* Syllabus requirements block */
 .sec-syllabus { background: var(--c-surface-alt); border-radius: var(--r); padding: 16px; margin-bottom: 20px; }
