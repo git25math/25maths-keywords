@@ -53,6 +53,19 @@
             openDeck(lvlIdx);
           }
         }
+
+        /* Recover from iOS page eviction after share */
+        try {
+          var shareLvl = sessionStorage.getItem('wmatch_share_lvl');
+          if (shareLvl !== null) {
+            sessionStorage.removeItem('wmatch_share_lvl');
+            var sIdx = parseInt(shareLvl, 10);
+            if (!isNaN(sIdx) && sIdx >= 0 && sIdx < LEVELS.length) {
+              openDeck(sIdx);
+            }
+          }
+        } catch(e) {}
+
         return;
       }
     } catch (e) {

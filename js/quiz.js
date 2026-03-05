@@ -501,11 +501,17 @@ function shareResult(opts) {
       var file = new File([blob], '25maths-result.png', { type: 'image/png' });
 
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        /* Save state for iOS page eviction recovery */
+        try { sessionStorage.setItem('wmatch_share_lvl', '' + currentLvl); } catch(e) {}
         navigator.share({
           files: [file],
           title: '25Maths Keywords',
           text: t('My result on 25Maths Keywords!', '\u6211\u5728 25Maths Keywords \u7684\u6210\u7ee9\uff01')
-        }).catch(function() {});
+        }).then(function() {
+          try { sessionStorage.removeItem('wmatch_share_lvl'); } catch(e) {}
+        }).catch(function() {
+          try { sessionStorage.removeItem('wmatch_share_lvl'); } catch(e) {}
+        });
       } else {
         /* Desktop fallback: download PNG */
         var url = URL.createObjectURL(blob);
