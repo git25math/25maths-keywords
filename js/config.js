@@ -113,8 +113,9 @@ var BOARD_OPTIONS = [
 
 /* Check if a level should be visible under current board filter */
 function isLevelVisible(lv) {
-  /* Hide old CIE levels when syllabus mode is active */
+  /* Hide old CIE/Edexcel levels when syllabus mode is active */
   if (lv._cieOld) return false;
+  if (lv._edxOld) return false;
   /* 25m content requires school_id (Harrow users only), unless guest full access is on */
   if (!userSchoolId && !(GUEST_FULL_ACCESS && isGuest()) && lv.board === '25m') return false;
   if (!userBoard) return true;
@@ -327,7 +328,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.6.1';
+var APP_VERSION = 'v1.7.0';
 
 /* ═══ TEACHER ROLE (shared across modules) ═══ */
 var isTeacherUser = false;

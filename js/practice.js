@@ -198,13 +198,18 @@ function startPractice(li) {
 
   Promise.all([loadPracticeData(board), loadKaTeX()]).then(function() {
     var questions;
-    /* Section/chapter filtering for CIE syllabus mode */
-    if (board === 'cie' && window._practiceSection) {
-      questions = getPracticeBySection(board, window._practiceSection, 10);
+    /* Resolve practice board (edexcel syllabus uses 'edx' for questions) */
+    var pqBoard = board;
+    if (window._practiceBoard === 'edexcel') pqBoard = 'edx';
+    /* Section/chapter filtering for syllabus mode (CIE + Edexcel) */
+    if (window._practiceSection) {
+      questions = getPracticeBySection(pqBoard, window._practiceSection, 10);
       window._practiceSection = null;
-    } else if (board === 'cie' && window._practiceChapter) {
-      questions = getPracticeByChapter(board, window._practiceChapter, 10);
+      window._practiceBoard = null;
+    } else if (window._practiceChapter) {
+      questions = getPracticeByChapter(pqBoard, window._practiceChapter, 10);
       window._practiceChapter = null;
+      window._practiceBoard = null;
     } else if (lv._isSection && lv._section) {
       questions = getPracticeBySection(board, lv._section, 10);
     } else {

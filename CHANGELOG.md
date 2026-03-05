@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.7.0] - 2026-03-06 — Edexcel 4MA1 考纲驱动重构
+
+### 新功能
+- **Edexcel 考纲驱动结构**：Edexcel 板块从"41 扁平 levels"重构为"6 章 × 39 知识点"，严格对齐 Edexcel 4MA1 Specification A
+- **多考试局架构泛化**：`syllabus.js` 从 CIE 专用重构为通用多考试局架构（`BOARD_SYLLABUS` / `BOARD_VOCAB` / `_boardSectionLevelMap`）
+- **Edexcel 章节首页**：6 章手风琴布局，每章展开显示知识点列表 + 词汇/练习统计
+- **Edexcel 知识点详情页**：复用 `panel-section`，显示 Foundation / Higher 考纲原文
+- **Foundation / Higher 层级标签**：Higher-only 知识点（2.5, 3.2, 3.4, 5.1）显示紫色 "H" 标签
+- **Edexcel 按知识点练习**：Practice 支持按单个知识点或整章筛选
+- **SoW 教学序列**：`syllabus-edexcel.json` 包含 Foundation 30 单元 + Higher 32 单元 SoW 映射
+
+### 数据文件
+| 文件 | 说明 |
+|------|------|
+| `data/syllabus-edexcel.json` | **新增** 考纲骨架（6 章 39 节，含考纲原文 + vocabSlugs + questionTopics + SoW） |
+| `data/vocabulary-edexcel.json` | **新增** 39 节词汇数据（从 41 levels 迁移重组 = 385 词，100% 覆盖） |
+| `data/questions-edx.json` | **修改** 936 题添加 `s` 字段映射到 39 个知识点 |
+
+### JS 变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | **重写** ~500 行：泛化为多考试局架构 — `_loadBoardSyllabus()` / `_initBoardLevels()` / `renderEdexcelHome()` / `renderSectionDetail()` 支持 board 参数 |
+| `js/config.js` | `isLevelVisible()` 新增 `_edxOld` 隐藏标记；APP_VERSION → v1.7.0 |
+| `js/mastery.js` | `renderHome()` Edexcel 委托给 `renderEdexcelHome()`；deck 返回键传 board 参数 |
+| `js/practice.js` | `startPractice()` 支持 Edexcel section/chapter 过滤（通过 `_practiceBoard` 全局变量） |
+| `js/levels-loader.js` | `_rebuildLevels()` 触发 Edexcel 虚拟 levels 重建 |
+| `css/style.css` | 新增 `.tier-higher` / `.tier-foundation` 标签样式（含 dark mode） |
+
+### 架构说明
+- **虚拟 LEVELS 模式**：Edexcel 同 CIE 一样，从 JSON 数据动态创建 LEVELS 条目（`_isSection: true, _board: 'edexcel'`），复用全部 7 种学习模式
+- **`_edxOld` 标记**：旧 41 Edexcel levels 标记为隐藏，不影响数据、仅从首页隐藏
+- **`BOARD_SYLLABUS` / `BOARD_VOCAB`**：通用数据存储，支持后续扩展更多考试局
+
 ## [1.6.1] - 2026-03-06 — 知识点详情页模块纠错按钮
 
 ### 新功能

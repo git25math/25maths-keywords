@@ -49,9 +49,12 @@ function _rebuildLevels() {
     if (_loadedData[bk]) base = base.concat(_loadedData[bk]);
   });
   LEVELS = base.concat(custom);
-  /* Re-init CIE virtual levels if syllabus was already loaded */
-  if (typeof _cieDataReady !== 'undefined' && _cieDataReady && typeof _initCIELevels === 'function') {
-    _initCIELevels();
+  /* Re-init virtual levels if syllabus data was already loaded */
+  if (typeof _cieDataReady !== 'undefined' && _cieDataReady && typeof _initBoardLevels === 'function') {
+    _initBoardLevels('cie');
+  }
+  if (typeof _edxDataReady !== 'undefined' && _edxDataReady && typeof _initBoardLevels === 'function') {
+    _initBoardLevels('edexcel');
   }
   if (typeof invalidateCache === 'function') invalidateCache();
   if (typeof invalidateGuestCache === 'function') invalidateGuestCache();

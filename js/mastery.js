@@ -252,6 +252,23 @@ function renderHome() {
       return;
     }
 
+    /* ── Edexcel board: syllabus-driven rendering ── */
+    if (board.id === 'edx' && typeof renderEdexcelHome === 'function' && _edxDataReady) {
+      var edxHtml = renderEdexcelHome();
+      if (edxHtml) {
+        hasAnyResult = true;
+        html += '<div class="board-section" id="board-edx">';
+        html += '<div class="board-header">';
+        html += '<span class="board-emoji">' + board.emoji + '</span>';
+        html += '<span class="board-name">' + boardName(board) + '</span>';
+        html += '<span class="board-code">' + board.code + '</span>';
+        html += '</div>';
+        html += edxHtml;
+        html += '</div>';
+      }
+      return;
+    }
+
     /* ── Non-CIE boards: original rendering ── */
     /* Pre-compute per-level stats + lock state for this board */
     var _levelStats = {};
@@ -445,7 +462,8 @@ function renderDeck(idx) {
   /* Header */
   html += '<div class="deck-header">';
   if (lv._isSection && lv._section) {
-    html += '<button class="back-btn" onclick="openSection(\'' + lv._section + '\')">\u2190</button>';
+    var _backBoard = lv._board || 'cie';
+    html += '<button class="back-btn" onclick="openSection(\'' + lv._section + '\',\'' + _backBoard + '\')">\u2190</button>';
     html += '<div class="deck-title">\ud83d\udcdd ' + lvTitle(lv) + '</div>';
   } else if (lv.board === '25m' && lv.unitNum) {
     html += '<button class="back-btn" onclick="navTo(\'home\')">\u2190</button>';

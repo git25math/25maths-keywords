@@ -2906,14 +2906,18 @@ input { font-family: inherit; }
 .tour-next { font-size:13px; font-weight:600; color:#fff; background:var(--c-primary); border:none; border-radius:var(--r-sm); padding:6px 14px; cursor:pointer; }
 .tour-next:hover { background:var(--c-primary-light); }
 
-/* ═══ CIE SYLLABUS SECTION STYLES ═══ */
+/* ═══ SYLLABUS SECTION STYLES (CIE + Edexcel) ═══ */
 
 /* Tier badges */
 .tier-badge { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 4px; vertical-align: middle; }
 .tier-ext { background: #DBEAFE; color: #1D4ED8; }
 .tier-core { background: #D1FAE5; color: #047857; }
+.tier-higher { background: #EDE9FE; color: #6D28D9; }
+.tier-foundation { background: #FEF3C7; color: #B45309; }
 [data-theme="dark"] .tier-ext { background: #1E3A5F; color: #93C5FD; }
 [data-theme="dark"] .tier-core { background: #064E3B; color: #6EE7B7; }
+[data-theme="dark"] .tier-higher { background: #2E1065; color: #C4B5FD; }
+[data-theme="dark"] .tier-foundation { background: #451A03; color: #FCD34D; }
 
 /* Section tag in deck row */
 .sec-tag { min-width: 32px; font-size: 10px; }

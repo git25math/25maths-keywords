@@ -1,53 +1,93 @@
 /* ══════════════════════════════════════════════════════════════
-   syllabus.js — CIE syllabus-driven navigation + section detail
+   syllabus.js — Multi-board syllabus-driven navigation + section detail
+   Supports CIE 0580 and Edexcel 4MA1.
    Loaded after mastery.js, before practice.js
    ══════════════════════════════════════════════════════════════ */
 
 /* ═══ GLOBALS ═══ */
-var CIE_SYLLABUS = null;        /* parsed syllabus-cie.json */
-var CIE_VOCAB = null;           /* parsed vocabulary-cie.json */
-var _cieSectionLevelMap = {};   /* sectionId → LEVELS index cache */
+var BOARD_SYLLABUS = {};      /* { cie: {...}, edexcel: {...} } */
+var BOARD_VOCAB = {};         /* { cie: {...}, edexcel: {...} } */
+var _boardSectionLevelMap = {};  /* { cie: {id→idx}, edexcel: {id→idx} } */
+
+/* Legacy aliases — keep existing code working */
+var CIE_SYLLABUS = null;
+var CIE_VOCAB = null;
+var _cieSectionLevelMap = {};
+
 var _cieDataReady = false;
 var _cieDataLoading = false;
+var _edxDataReady = false;
+var _edxDataLoading = false;
 
 /* Chapter collapse state (default all collapsed) */
 var cieChapterCollapsed = {};
 
 /* ═══ DATA LOADING ═══ */
-var _cieSyllabusRaw = null; /* raw fetch result, waiting for LEVELS */
 
 function loadCIESyllabus() {
-  if (_cieDataReady) return Promise.resolve();
-  if (_cieDataLoading) return _cieDataLoading;
-  _cieDataLoading = Promise.all([
-    fetch('data/syllabus-cie.json').then(function(r) { return r.json(); }),
-    fetch('data/vocabulary-cie.json').then(function(r) { return r.json(); })
+  return _loadBoardSyllabus('cie');
+}
+
+function loadEdexcelSyllabus() {
+  return _loadBoardSyllabus('edexcel');
+}
+
+function _loadBoardSyllabus(board) {
+  var readyKey = board === 'cie' ? '_cieDataReady' : '_edxDataReady';
+  var loadingKey = board === 'cie' ? '_cieDataLoading' : '_edxDataLoading';
+
+  if (board === 'cie' && _cieDataReady) return Promise.resolve();
+  if (board === 'edexcel' && _edxDataReady) return Promise.resolve();
+  if (board === 'cie' && _cieDataLoading) return _cieDataLoading;
+  if (board === 'edexcel' && _edxDataLoading) return _edxDataLoading;
+
+  var syllabusFile = 'data/syllabus-' + board + '.json';
+  var vocabFile = 'data/vocabulary-' + board + '.json';
+
+  var loadingPromise = Promise.all([
+    fetch(syllabusFile).then(function(r) { return r.json(); }),
+    fetch(vocabFile).then(function(r) { return r.json(); })
   ]).then(function(results) {
-    CIE_SYLLABUS = results[0];
-    CIE_VOCAB = results[1];
+    BOARD_SYLLABUS[board] = results[0];
+    BOARD_VOCAB[board] = results[1];
+
+    /* Legacy aliases for CIE */
+    if (board === 'cie') {
+      CIE_SYLLABUS = results[0];
+      CIE_VOCAB = results[1];
+    }
+
     /* Wait for levels to be ready before creating virtual levels */
     if (typeof _levelsReady !== 'undefined' && _levelsReady) {
-      _cieDataReady = true;
-      _initCIELevels();
+      _setBoardReady(board);
+      _initBoardLevels(board);
     } else if (typeof onLevelsReady === 'function') {
       onLevelsReady(function() {
-        _cieDataReady = true;
-        _initCIELevels();
-        /* Re-render home if already visible */
+        _setBoardReady(board);
+        _initBoardLevels(board);
         if (appView === 'home' && typeof renderHome === 'function') renderHome();
       });
     } else {
-      _cieDataReady = true;
-      _initCIELevels();
+      _setBoardReady(board);
+      _initBoardLevels(board);
     }
   }).catch(function(e) {
-    console.error('Failed to load CIE syllabus data:', e);
+    console.error('Failed to load ' + board + ' syllabus data:', e);
   });
-  return _cieDataLoading;
+
+  if (board === 'cie') _cieDataLoading = loadingPromise;
+  else _edxDataLoading = loadingPromise;
+
+  return loadingPromise;
+}
+
+function _setBoardReady(board) {
+  if (board === 'cie') _cieDataReady = true;
+  else if (board === 'edexcel') _edxDataReady = true;
 }
 
 /* ═══ VIRTUAL LEVELS CREATION ═══ */
-/* Convert vocabulary-cie.json format to LEVELS vocabulary format */
+/* Convert vocabulary JSON format to LEVELS vocabulary format */
 function _vocabToLevelsFormat(words) {
   var result = [];
   for (var i = 0; i < words.length; i++) {
@@ -58,35 +98,41 @@ function _vocabToLevelsFormat(words) {
   return result;
 }
 
-/* Mark old CIE levels as hidden and create new virtual levels (idempotent) */
-function _initCIELevels() {
-  /* Clear previous virtual levels from LEVELS */
+/* Mark old levels as hidden and create new virtual levels for a board (idempotent) */
+function _initBoardLevels(board) {
+  var syllabus = BOARD_SYLLABUS[board];
+  var vocab = BOARD_VOCAB[board];
+  var boardKey = board === 'edexcel' ? 'edx' : board;  /* LEVELS uses 'edx' not 'edexcel' */
+
+  /* Clear previous virtual levels for this board from LEVELS */
   var cleaned = [];
   for (var i = 0; i < LEVELS.length; i++) {
-    if (!LEVELS[i]._isSection) {
-      cleaned.push(LEVELS[i]);
-    }
+    if (LEVELS[i]._isSection && LEVELS[i].board === boardKey) continue;
+    cleaned.push(LEVELS[i]);
   }
   LEVELS.length = 0;
   for (var ci = 0; ci < cleaned.length; ci++) LEVELS.push(cleaned[ci]);
-  _cieSectionLevelMap = {};
 
-  /* Hide old CIE levels from rendering */
+  /* Reset section level map for this board */
+  _boardSectionLevelMap[board] = {};
+
+  /* Hide old levels from rendering */
+  var hideFlag = board === 'cie' ? '_cieOld' : '_edxOld';
   for (var j = 0; j < LEVELS.length; j++) {
-    if (LEVELS[j].board === 'cie' && !LEVELS[j]._isSection) {
-      LEVELS[j]._cieOld = true;
+    if (LEVELS[j].board === boardKey && !LEVELS[j]._isSection) {
+      LEVELS[j][hideFlag] = true;
     }
   }
 
   /* Create virtual levels for each syllabus section with vocabulary */
-  if (!CIE_SYLLABUS || !CIE_VOCAB) return;
-  CIE_SYLLABUS.chapters.forEach(function(ch) {
+  if (!syllabus || !vocab) return;
+  syllabus.chapters.forEach(function(ch) {
     ch.sections.forEach(function(sec) {
-      var words = CIE_VOCAB[sec.id];
+      var words = vocab[sec.id];
       if (!words || words.length === 0) return;
       var timer = Math.max(40, words.length * 7);
       var newLevel = {
-        board: 'cie',
+        board: boardKey,
         slug: sec.slug,
         category: 'ch' + ch.num,
         title: sec.id + ' ' + sec.title,
@@ -95,45 +141,77 @@ function _initCIELevels() {
         comboBonus: 2,
         vocabulary: _vocabToLevelsFormat(words),
         _section: sec.id,
-        _isSection: true
+        _isSection: true,
+        _board: board  /* 'cie' or 'edexcel' — for syllabus lookups */
       };
       var idx = LEVELS.length;
       LEVELS.push(newLevel);
-      _cieSectionLevelMap[sec.id] = idx;
+      _boardSectionLevelMap[board][sec.id] = idx;
     });
   });
+
+  /* Keep legacy CIE alias in sync */
+  if (board === 'cie') {
+    _cieSectionLevelMap = _boardSectionLevelMap.cie;
+  }
+
   /* Invalidate guest cache since LEVELS changed */
   if (typeof invalidateGuestCache === 'function') invalidateGuestCache();
 }
 
-/* Get LEVELS index for a given section, creating if needed */
-function getSectionLevelIdx(sectionId) {
-  return _cieSectionLevelMap[sectionId] || -1;
+/* Legacy wrapper — also used by CIE code path */
+function _initCIELevels() {
+  _initBoardLevels('cie');
 }
 
-/* Get section info from syllabus by ID */
-function getSectionInfo(sectionId) {
-  if (!CIE_SYLLABUS) return null;
-  for (var i = 0; i < CIE_SYLLABUS.chapters.length; i++) {
-    var ch = CIE_SYLLABUS.chapters[i];
-    for (var j = 0; j < ch.sections.length; j++) {
-      if (ch.sections[j].id === sectionId) {
-        return { chapter: ch, section: ch.sections[j], sectionIndex: j };
+/* Get LEVELS index for a given section */
+function getSectionLevelIdx(sectionId, board) {
+  /* Try specified board first */
+  if (board && _boardSectionLevelMap[board]) {
+    var idx = _boardSectionLevelMap[board][sectionId];
+    if (idx !== undefined) return idx;
+  }
+  /* Fallback: search all boards */
+  for (var b in _boardSectionLevelMap) {
+    var idx2 = _boardSectionLevelMap[b][sectionId];
+    if (idx2 !== undefined) return idx2;
+  }
+  return -1;
+}
+
+/* Get section info from syllabus by ID — searches all boards or specified board */
+function getSectionInfo(sectionId, board) {
+  var boards = board ? [board] : ['cie', 'edexcel'];
+  for (var bi = 0; bi < boards.length; bi++) {
+    var syl = BOARD_SYLLABUS[boards[bi]];
+    if (!syl) continue;
+    for (var i = 0; i < syl.chapters.length; i++) {
+      var ch = syl.chapters[i];
+      for (var j = 0; j < ch.sections.length; j++) {
+        if (ch.sections[j].id === sectionId) {
+          return { chapter: ch, section: ch.sections[j], sectionIndex: j, board: boards[bi] };
+        }
       }
     }
   }
   return null;
 }
 
-/* ═══ CIE HOME RENDERING ═══ */
-/* Returns HTML for CIE board in the home dashboard */
-function renderCIEHome() {
-  if (!_cieDataReady || !CIE_SYLLABUS) return '';
+/* ═══ BOARD HOME RENDERING (shared logic) ═══ */
+/* Returns HTML for a board in the home dashboard */
+function _renderBoardHome(board) {
+  var syllabus = BOARD_SYLLABUS[board];
+  var vocab = BOARD_VOCAB[board];
+  if (!syllabus || !vocab) return '';
 
   var html = '';
+  var prefix = board === 'cie' ? 'cie-ch' : 'edx-ch';
+  var emojis = board === 'cie'
+    ? ['', '\ud83d\udd22', '\ud83d\udcdd', '\ud83d\udccd', '\ud83d\udcd0', '\ud83d\udccf', '\ud83d\udcd0', '\u27a1\ufe0f', '\ud83c\udfb2', '\ud83d\udcc8']
+    : ['', '\ud83d\udd22', '\ud83d\udcdd', '\ud83d\udcca', '\ud83d\udcd0', '\u27a1\ufe0f', '\ud83d\udcc8'];
 
-  CIE_SYLLABUS.chapters.forEach(function(ch) {
-    var catKey = 'cie-ch' + ch.num;
+  syllabus.chapters.forEach(function(ch) {
+    var catKey = prefix + ch.num;
     if (!(catKey in cieChapterCollapsed)) cieChapterCollapsed[catKey] = true;
     var collapsed = appSearch ? false : cieChapterCollapsed[catKey];
 
@@ -142,7 +220,7 @@ function renderCIEHome() {
     var visibleSections = [];
 
     ch.sections.forEach(function(sec) {
-      var words = CIE_VOCAB[sec.id];
+      var words = vocab[sec.id];
       var wordCount = words ? words.length : 0;
 
       /* Apply search filter */
@@ -163,7 +241,7 @@ function renderCIEHome() {
       visibleSections.push(sec);
 
       /* Stats from virtual level */
-      var li = getSectionLevelIdx(sec.id);
+      var li = getSectionLevelIdx(sec.id, board);
       if (li >= 0) {
         var stats = getDeckStats(li);
         chTotalWords += stats.total;
@@ -175,15 +253,13 @@ function renderCIEHome() {
 
     if (visibleSections.length === 0) return;
 
-    var chPct = chMaxStars > 0 ? Math.round(chTotalStars / chMaxStars * 100) : 0;
-
     html += '<div class="category-section' + (collapsed ? ' collapsed' : '') + '" id="cat-' + catKey + '">';
     html += '<div class="category-header" onclick="toggleCIEChapter(\'' + catKey + '\')">';
-    html += '<span class="category-emoji">' + _chapterEmoji(ch.num) + '</span>';
+    html += '<span class="category-emoji">' + (emojis[ch.num] || '\ud83d\udcda') + '</span>';
     html += '<span class="category-name">' + ch.num + '. ' + ch.title;
     if (appLang !== 'en') html += ' ' + ch.title_zh;
     html += '</span>';
-    html += '<span class="category-count">' + ch.sections.length + ' ' + t('sections', '节') + '</span>';
+    html += '<span class="category-count">' + ch.sections.length + ' ' + t('sections', '\u8282') + '</span>';
     html += '<span class="category-chevron">\u25bc</span>';
     html += '</div>';
 
@@ -191,21 +267,31 @@ function renderCIEHome() {
 
     /* Practice actions for the chapter */
     var firstSec = visibleSections[0];
-    var firstLi = getSectionLevelIdx(firstSec.id);
+    var firstLi = getSectionLevelIdx(firstSec.id, board);
     if (firstLi >= 0) {
       html += '<div class="pq-cat-actions">';
-      html += '<button class="sort-btn" onclick="startPracticeByChapter(' + ch.num + ')">\ud83d\udcdd ' + t('Practice', '练习') + '</button>';
+      html += '<button class="sort-btn" onclick="startPracticeByChapter(' + ch.num + ',\'' + board + '\')">\ud83d\udcdd ' + t('Practice', '\u7ec3\u4e60') + '</button>';
       html += '</div>';
     }
 
     visibleSections.forEach(function(sec) {
-      html += _renderSectionRow(sec, ch);
+      html += _renderSectionRow(sec, ch, board);
     });
 
     html += '</div></div>';
   });
 
   return html;
+}
+
+function renderCIEHome() {
+  if (!_cieDataReady || !BOARD_SYLLABUS.cie) return '';
+  return _renderBoardHome('cie');
+}
+
+function renderEdexcelHome() {
+  if (!_edxDataReady || !BOARD_SYLLABUS.edexcel) return '';
+  return _renderBoardHome('edexcel');
 }
 
 /* Helper: chapter emoji */
@@ -215,17 +301,21 @@ function _chapterEmoji(num) {
 }
 
 /* Render a single section row in the home view */
-function _renderSectionRow(sec, ch) {
-  var li = getSectionLevelIdx(sec.id);
-  var words = CIE_VOCAB[sec.id] || [];
+function _renderSectionRow(sec, ch, board) {
+  board = board || 'cie';
+  var vocab = BOARD_VOCAB[board] || {};
+  var li = getSectionLevelIdx(sec.id, board);
+  var words = vocab[sec.id] || [];
   var stats = li >= 0 ? getDeckStats(li) : { pct: 0, started: 0, total: words.length, learningPct: 0, masteryPct: 0 };
 
   var tierBadge = '';
   if (sec.tier === 'extended') tierBadge = ' <span class="tier-badge tier-ext">E</span>';
   else if (sec.tier === 'core') tierBadge = ' <span class="tier-badge tier-core">C</span>';
+  else if (sec.tier === 'higher') tierBadge = ' <span class="tier-badge tier-higher">H</span>';
+  else if (sec.tier === 'foundation') tierBadge = ' <span class="tier-badge tier-foundation">F</span>';
 
   var h = '';
-  h += '<div class="deck-row" onclick="openSection(\'' + sec.id + '\')">';
+  h += '<div class="deck-row" onclick="openSection(\'' + sec.id + '\',\'' + board + '\')">';
   h += '<span class="deck-row-tag sec-tag">' + sec.id + '</span>';
   h += '<span class="deck-row-name">' + escapeHtml(sec.title);
   if (appLang !== 'en') h += ' ' + escapeHtml(sec.title_zh);
@@ -247,22 +337,25 @@ function toggleCIEChapter(catKey) {
 }
 
 /* ═══ SECTION DETAIL PAGE ═══ */
-function openSection(sectionId) {
-  var info = getSectionInfo(sectionId);
+function openSection(sectionId, board) {
+  var info = getSectionInfo(sectionId, board);
   if (!info) return;
-  renderSectionDetail(info.chapter, info.section, info.sectionIndex);
+  renderSectionDetail(info.chapter, info.section, info.sectionIndex, info.board);
   showPanel('section');
 }
 
-function renderSectionDetail(ch, sec, secIdx) {
-  var li = getSectionLevelIdx(sec.id);
-  var words = CIE_VOCAB[sec.id] || [];
+function renderSectionDetail(ch, sec, secIdx, board) {
+  board = board || 'cie';
+  var vocab = BOARD_VOCAB[board] || {};
+  var li = getSectionLevelIdx(sec.id, board);
+  var words = vocab[sec.id] || [];
   var stats = li >= 0 ? getDeckStats(li) : { pct: 0, started: 0, total: words.length, learningPct: 0, masteryPct: 0, mastered: 0 };
 
   /* Count practice questions for this section */
   var qCount = 0;
-  if (typeof _pqData !== 'undefined' && _pqData && _pqData.cie) {
-    _pqData.cie.forEach(function(q) { if (q.s === sec.id) qCount++; });
+  var pqBoard = board === 'edexcel' ? 'edx' : board;
+  if (typeof _pqData !== 'undefined' && _pqData && _pqData[pqBoard]) {
+    _pqData[pqBoard].forEach(function(q) { if (q.s === sec.id) qCount++; });
   }
 
   var html = '';
@@ -284,18 +377,22 @@ function renderSectionDetail(ch, sec, secIdx) {
     html += '<div class="sec-title-zh">' + escapeHtml(sec.title_zh) + '</div>';
   }
 
-  /* Tier badge */
+  /* Tier badge — board-aware */
   if (sec.tier === 'extended') {
     html += '<span class="tier-badge tier-ext" style="margin-top:8px">Extended Only</span>';
   } else if (sec.tier === 'core') {
     html += '<span class="tier-badge tier-core" style="margin-top:8px">Core Only</span>';
+  } else if (sec.tier === 'higher') {
+    html += '<span class="tier-badge tier-higher" style="margin-top:8px">Higher Only</span>';
+  } else if (sec.tier === 'foundation') {
+    html += '<span class="tier-badge tier-foundation" style="margin-top:8px">Foundation Only</span>';
   }
 
   /* Progress bar */
   html += '<div class="sec-progress-bar">';
   html += '<div class="sec-progress-fill" style="width:' + stats.pct + '%"></div>';
   html += '</div>';
-  html += '<div class="sec-progress-label">' + stats.pct + '% · ' + stats.mastered + '/' + stats.total + ' ' + t('mastered', '已掌握') + '</div>';
+  html += '<div class="sec-progress-label">' + stats.pct + '% \u00b7 ' + stats.mastered + '/' + stats.total + ' ' + t('mastered', '\u5df2\u638c\u63e1') + '</div>';
   html += '</div>';
 
   /* Module cards */
@@ -306,72 +403,88 @@ function renderSectionDetail(ch, sec, secIdx) {
     html += '<div class="sec-module" onclick="openDeck(' + li + ')">';
     html += '<div class="sec-module-icon">\ud83d\udcdd</div>';
     html += '<div class="sec-module-info">';
-    html += '<div class="sec-module-title">' + t('Vocabulary', '核心词汇') + '</div>';
-    html += '<div class="sec-module-sub">' + words.length + ' ' + t('words', '词') + ' · ';
+    html += '<div class="sec-module-title">' + t('Vocabulary', '\u6838\u5fc3\u8bcd\u6c47') + '</div>';
+    html += '<div class="sec-module-sub">' + words.length + ' ' + t('words', '\u8bcd') + ' \u00b7 ';
     html += _renderMiniStars(stats.pct);
     html += '</div></div>';
-    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'vocabulary\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'vocabulary\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
   } else if (words.length === 0) {
     html += '<div class="sec-module sec-module-empty">';
     html += '<div class="sec-module-icon">\ud83d\udcdd</div>';
     html += '<div class="sec-module-info">';
-    html += '<div class="sec-module-title">' + t('Vocabulary', '核心词汇') + '</div>';
-    html += '<div class="sec-module-sub">' + t('Coming soon', '即将推出') + '</div>';
+    html += '<div class="sec-module-title">' + t('Vocabulary', '\u6838\u5fc3\u8bcd\u6c47') + '</div>';
+    html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
     html += '</div></div>';
   }
 
   /* Practice module */
   if (qCount > 0) {
-    html += '<div class="sec-module" onclick="startPracticeBySection(\'' + sec.id + '\')">';
+    html += '<div class="sec-module" onclick="startPracticeBySection(\'' + sec.id + '\',\'' + board + '\')">';
     html += '<div class="sec-module-icon">\u270f\ufe0f</div>';
     html += '<div class="sec-module-info">';
-    html += '<div class="sec-module-title">' + t('Practice', '练习') + '</div>';
-    html += '<div class="sec-module-sub">' + qCount + ' ' + t('questions', '题') + '</div>';
+    html += '<div class="sec-module-title">' + t('Practice', '\u7ec3\u4e60') + '</div>';
+    html += '<div class="sec-module-sub">' + qCount + ' ' + t('questions', '\u9898') + '</div>';
     html += '</div>';
-    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'practice\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'practice\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
   }
 
-  /* Knowledge card placeholder (Phase C) */
+  /* Knowledge card placeholder */
   html += '<div class="sec-module sec-module-coming">';
   html += '<div class="sec-module-icon">\ud83d\udcd8</div>';
   html += '<div class="sec-module-info">';
-  html += '<div class="sec-module-title">' + t('Knowledge Card', '知识卡片') + '</div>';
-  html += '<div class="sec-module-sub">' + t('Coming soon', '即将推出') + '</div>';
+  html += '<div class="sec-module-title">' + t('Knowledge Card', '\u77e5\u8bc6\u5361\u7247') + '</div>';
+  html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
   html += '</div>';
-  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
   html += '</div>';
 
-  /* Examples placeholder (Phase B) */
+  /* Examples placeholder */
   html += '<div class="sec-module sec-module-coming">';
   html += '<div class="sec-module-icon">\ud83d\udcd6</div>';
   html += '<div class="sec-module-info">';
-  html += '<div class="sec-module-title">' + t('Worked Examples', '经典例题') + '</div>';
-  html += '<div class="sec-module-sub">' + t('Coming soon', '即将推出') + '</div>';
+  html += '<div class="sec-module-title">' + t('Worked Examples', '\u7ecf\u5178\u4f8b\u9898') + '</div>';
+  html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
   html += '</div>';
-  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
   html += '</div>';
 
   html += '</div>'; /* close sec-modules */
 
-  /* Syllabus requirements */
+  /* Syllabus requirements — board-aware labels */
   html += '<div class="sec-syllabus">';
   html += '<div class="sec-syllabus-header">';
-  html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '考纲要求') + '</div>';
-  html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\')" title="' + t('Report error', '报告错误') + '">\ud83d\udea9</button>';
+  html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42') + '</div>';
+  html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
   html += '</div>';
-  if (sec.core_content) {
-    html += '<div class="sec-syllabus-block">';
-    html += '<span class="sec-syllabus-label">Core:</span> ' + escapeHtml(sec.core_content);
-    html += '</div>';
-  }
-  if (sec.extended_content) {
-    html += '<div class="sec-syllabus-block">';
-    html += '<span class="sec-syllabus-label">Extended:</span> ' + escapeHtml(sec.extended_content);
-    html += '</div>';
+
+  if (board === 'edexcel') {
+    /* Edexcel uses foundation_content / higher_content */
+    if (sec.foundation_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Foundation:</span> ' + escapeHtml(sec.foundation_content);
+      html += '</div>';
+    }
+    if (sec.higher_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Higher:</span> ' + escapeHtml(sec.higher_content);
+      html += '</div>';
+    }
+  } else {
+    /* CIE uses core_content / extended_content */
+    if (sec.core_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Core:</span> ' + escapeHtml(sec.core_content);
+      html += '</div>';
+    }
+    if (sec.extended_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Extended:</span> ' + escapeHtml(sec.extended_content);
+      html += '</div>';
+    }
   }
   html += '</div>';
 
@@ -379,13 +492,13 @@ function renderSectionDetail(ch, sec, secIdx) {
   html += '<div class="sec-nav">';
   if (secIdx > 0) {
     var prevSec = ch.sections[secIdx - 1];
-    html += '<button class="btn btn-ghost" onclick="openSection(\'' + prevSec.id + '\')">\u2190 ' + prevSec.id + ' ' + escapeHtml(prevSec.title) + '</button>';
+    html += '<button class="btn btn-ghost" onclick="openSection(\'' + prevSec.id + '\',\'' + board + '\')">\u2190 ' + prevSec.id + ' ' + escapeHtml(prevSec.title) + '</button>';
   } else {
     html += '<span></span>';
   }
   if (secIdx < ch.sections.length - 1) {
     var nextSec = ch.sections[secIdx + 1];
-    html += '<button class="btn btn-ghost" onclick="openSection(\'' + nextSec.id + '\')">' + nextSec.id + ' ' + escapeHtml(nextSec.title) + ' \u2192</button>';
+    html += '<button class="btn btn-ghost" onclick="openSection(\'' + nextSec.id + '\',\'' + board + '\')">' + nextSec.id + ' ' + escapeHtml(nextSec.title) + ' \u2192</button>';
   }
   html += '</div>';
 
@@ -406,47 +519,48 @@ function _renderMiniStars(pct) {
 
 var _sectionReportTypes = {
   vocabulary: [
-    ['wrong-def', 'Wrong definition / 定义错误'],
-    ['missing',   'Missing word / 缺少词汇'],
-    ['extra',     'Unnecessary word / 多余词汇'],
-    ['other',     'Other / 其他']
+    ['wrong-def', 'Wrong definition / \u5b9a\u4e49\u9519\u8bef'],
+    ['missing',   'Missing word / \u7f3a\u5c11\u8bcd\u6c47'],
+    ['extra',     'Unnecessary word / \u591a\u4f59\u8bcd\u6c47'],
+    ['other',     'Other / \u5176\u4ed6']
   ],
   practice: [
-    ['answer',   'Wrong answer / 答案错误'],
-    ['question', 'Question error / 题目有误'],
-    ['formula',  'Formula issue / 公式渲染问题'],
-    ['other',    'Other / 其他']
+    ['answer',   'Wrong answer / \u7b54\u6848\u9519\u8bef'],
+    ['question', 'Question error / \u9898\u76ee\u6709\u8bef'],
+    ['formula',  'Formula issue / \u516c\u5f0f\u6e32\u67d3\u95ee\u9898'],
+    ['other',    'Other / \u5176\u4ed6']
   ],
   knowledge: [
-    ['wrong-info', 'Wrong information / 信息错误'],
-    ['incomplete', 'Incomplete content / 内容不完整'],
-    ['formula',    'Formula issue / 公式渲染问题'],
-    ['other',      'Other / 其他']
+    ['wrong-info', 'Wrong information / \u4fe1\u606f\u9519\u8bef'],
+    ['incomplete', 'Incomplete content / \u5185\u5bb9\u4e0d\u5b8c\u6574'],
+    ['formula',    'Formula issue / \u516c\u5f0f\u6e32\u67d3\u95ee\u9898'],
+    ['other',      'Other / \u5176\u4ed6']
   ],
   examples: [
-    ['wrong-step', 'Wrong step / 步骤错误'],
-    ['wrong-ans',  'Wrong answer / 答案错误'],
-    ['unclear',    'Unclear explanation / 解释不清'],
-    ['other',      'Other / 其他']
+    ['wrong-step', 'Wrong step / \u6b65\u9aa4\u9519\u8bef'],
+    ['wrong-ans',  'Wrong answer / \u7b54\u6848\u9519\u8bef'],
+    ['unclear',    'Unclear explanation / \u89e3\u91ca\u4e0d\u6e05'],
+    ['other',      'Other / \u5176\u4ed6']
   ],
   syllabus: [
-    ['wrong-req',  'Wrong requirement / 考纲要求有误'],
-    ['incomplete', 'Incomplete / 不完整'],
-    ['mismatch',   'Tier mismatch / 层级不匹配'],
-    ['other',      'Other / 其他']
+    ['wrong-req',  'Wrong requirement / \u8003\u7eb2\u8981\u6c42\u6709\u8bef'],
+    ['incomplete', 'Incomplete / \u4e0d\u5b8c\u6574'],
+    ['mismatch',   'Tier mismatch / \u5c42\u7ea7\u4e0d\u5339\u914d'],
+    ['other',      'Other / \u5176\u4ed6']
   ]
 };
 
 var _sectionModuleLabels = {
-  vocabulary: ['Vocabulary', '核心词汇'],
-  practice:   ['Practice', '练习'],
-  knowledge:  ['Knowledge Card', '知识卡片'],
-  examples:   ['Worked Examples', '经典例题'],
-  syllabus:   ['Syllabus Requirements', '考纲要求']
+  vocabulary: ['Vocabulary', '\u6838\u5fc3\u8bcd\u6c47'],
+  practice:   ['Practice', '\u7ec3\u4e60'],
+  knowledge:  ['Knowledge Card', '\u77e5\u8bc6\u5361\u7247'],
+  examples:   ['Worked Examples', '\u7ecf\u5178\u4f8b\u9898'],
+  syllabus:   ['Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42']
 };
 
-function reportSectionModule(sectionId, moduleType) {
-  var info = getSectionInfo(sectionId);
+function reportSectionModule(sectionId, moduleType, board) {
+  board = board || 'cie';
+  var info = getSectionInfo(sectionId, board);
   if (!info) return;
   var sec = info.section;
   var types = _sectionReportTypes[moduleType] || _sectionReportTypes.vocabulary;
@@ -456,33 +570,34 @@ function reportSectionModule(sectionId, moduleType) {
   var lbl = _sectionModuleLabels[moduleType] || _sectionModuleLabels.vocabulary;
   var modLabel = t(lbl[0], lbl[1]);
 
-  var html = '<div class="section-title">\ud83d\udea9 ' + t('Report Error', '报告错误') + ' — ' + sec.id + ' ' + modLabel + '</div>';
+  var html = '<div class="section-title">\ud83d\udea9 ' + t('Report Error', '\u62a5\u544a\u9519\u8bef') + ' \u2014 ' + sec.id + ' ' + modLabel + '</div>';
   html += '<div style="text-align:left;margin-bottom:12px;padding:10px;background:var(--c-surface-alt);border-radius:var(--r);font-size:12px">';
-  html += '<strong>' + escapeHtml(sec.id) + '</strong> · ' + escapeHtml(sec.title);
-  if (appLang !== 'en' && sec.title_zh) html += ' · ' + escapeHtml(sec.title_zh);
-  html += '<br><span style="color:var(--c-text2)">' + t('Module', '模块') + ': ' + modLabel + '</span>';
+  html += '<strong>' + escapeHtml(sec.id) + '</strong> \u00b7 ' + escapeHtml(sec.title);
+  if (appLang !== 'en' && sec.title_zh) html += ' \u00b7 ' + escapeHtml(sec.title_zh);
+  html += '<br><span style="color:var(--c-text2)">' + t('Module', '\u6a21\u5757') + ': ' + modLabel + '</span>';
   html += '</div>';
-  html += '<label class="settings-label">' + t('Error type', '错误类型') + '</label>';
+  html += '<label class="settings-label">' + t('Error type', '\u9519\u8bef\u7c7b\u578b') + '</label>';
   html += '<select class="bug-select" id="sec-report-type">' + typeOpts + '</select>';
-  html += '<label class="settings-label">' + t('Description', '描述') + ' *</label>';
-  html += '<textarea class="bug-textarea" id="sec-report-desc" rows="3" placeholder="' + t('Describe the error...', '请描述错误...') + '"></textarea>';
+  html += '<label class="settings-label">' + t('Description', '\u63cf\u8ff0') + ' *</label>';
+  html += '<textarea class="bug-textarea" id="sec-report-desc" rows="3" placeholder="' + t('Describe the error...', '\u8bf7\u63cf\u8ff0\u9519\u8bef...') + '"></textarea>';
   html += '<div id="sec-report-msg" style="font-size:13px;margin:8px 0;min-height:20px;color:var(--c-danger)"></div>';
   html += '<div style="display:flex;gap:8px;margin-top:12px">';
-  var submitLabel = (isLoggedIn() && !isGuest()) ? t('Submit', '提交') : t('Submit via Email', '通过邮件提交');
-  html += '<button class="btn btn-primary" style="flex:1" onclick="submitSectionReport(\'' + sectionId + '\',\'' + moduleType + '\')">' + submitLabel + '</button>';
-  html += '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '取消') + '</button>';
+  var submitLabel = (isLoggedIn() && !isGuest()) ? t('Submit', '\u63d0\u4ea4') : t('Submit via Email', '\u901a\u8fc7\u90ae\u4ef6\u63d0\u4ea4');
+  html += '<button class="btn btn-primary" style="flex:1" onclick="submitSectionReport(\'' + sectionId + '\',\'' + moduleType + '\',\'' + board + '\')">' + submitLabel + '</button>';
+  html += '<button class="btn btn-ghost" style="flex:1" onclick="hideModal()">' + t('Cancel', '\u53d6\u6d88') + '</button>';
   html += '</div>';
   showModal(html);
 }
 
-function submitSectionReport(sectionId, moduleType) {
+function submitSectionReport(sectionId, moduleType, board) {
+  board = board || 'cie';
   var desc = E('sec-report-desc').value.trim();
   if (!desc) {
-    E('sec-report-msg').textContent = t('Please describe the error', '请描述错误');
+    E('sec-report-msg').textContent = t('Please describe the error', '\u8bf7\u63cf\u8ff0\u9519\u8bef');
     return;
   }
   var type = E('sec-report-type').value;
-  var info = getSectionInfo(sectionId);
+  var info = getSectionInfo(sectionId, board);
   var sectionTitle = info ? info.section.title : sectionId;
 
   /* Logged-in users: save to DB */
@@ -493,59 +608,65 @@ function submitSectionReport(sectionId, moduleType) {
       type: 'section',
       description: desc,
       steps: moduleType,
-      auto_info: { sectionId: sectionId, module: moduleType, sectionTitle: sectionTitle, board: 'cie' }
+      auto_info: { sectionId: sectionId, module: moduleType, sectionTitle: sectionTitle, board: board }
     }).then(function(res) {
       if (res.error) {
-        E('sec-report-msg').textContent = t('Submit failed: ', '提交失败：') + res.error.message;
+        E('sec-report-msg').textContent = t('Submit failed: ', '\u63d0\u4ea4\u5931\u8d25\uff1a') + res.error.message;
         return;
       }
       hideModal();
-      showToast(t('Report submitted! Thank you.', '报告已提交，谢谢！'));
+      showToast(t('Report submitted! Thank you.', '\u62a5\u544a\u5df2\u63d0\u4ea4\uff0c\u8c22\u8c22\uff01'));
     });
     return;
   }
 
   /* Guest: mailto fallback */
-  var subject = '[Section Error] ' + sectionId + ' ' + moduleType + ' - 25Maths Keywords';
-  var body = 'Section: ' + sectionId + ' - ' + sectionTitle +
+  var subject = '[Section Error] ' + sectionId + ' ' + moduleType + ' - 25Maths Keywords (' + board + ')';
+  var body = 'Board: ' + board +
+    '\nSection: ' + sectionId + ' - ' + sectionTitle +
     '\nModule: ' + moduleType +
     '\nError type: ' + type +
     '\n\nDescription:\n' + desc;
   var mailto = 'mailto:support@25maths.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   window.open(mailto, '_blank');
   hideModal();
-  showToast(t('Opening email client...', '正在打开邮件客户端...'));
+  showToast(t('Opening email client...', '\u6b63\u5728\u6253\u5f00\u90ae\u4ef6\u5ba2\u6237\u7aef...'));
 }
 
 /* ═══ PRACTICE BY SECTION/CHAPTER ═══ */
-function startPracticeBySection(sectionId) {
+function startPracticeBySection(sectionId, board) {
+  board = board || 'cie';
   /* Get first level in this section for reference */
-  var li = getSectionLevelIdx(sectionId);
+  var li = getSectionLevelIdx(sectionId, board);
   if (li < 0) li = 0;
   currentLvl = li;
   /* Store section filter for practice.js */
   window._practiceSection = sectionId;
   window._practiceChapter = null;
+  window._practiceBoard = board;
   if (typeof startPractice === 'function') startPractice(li);
 }
 
-function startPracticeByChapter(chNum) {
-  /* Find first section in this chapter with a level */
-  if (!CIE_SYLLABUS) return;
-  var ch = CIE_SYLLABUS.chapters[chNum - 1];
+function startPracticeByChapter(chNum, board) {
+  board = board || 'cie';
+  var syllabus = BOARD_SYLLABUS[board];
+  if (!syllabus) return;
+  var ch = syllabus.chapters[chNum - 1];
   if (!ch) return;
   var li = -1;
   for (var i = 0; i < ch.sections.length; i++) {
-    li = getSectionLevelIdx(ch.sections[i].id);
+    li = getSectionLevelIdx(ch.sections[i].id, board);
     if (li >= 0) break;
   }
   if (li < 0) li = 0;
   currentLvl = li;
   window._practiceSection = null;
   window._practiceChapter = chNum;
+  window._practiceBoard = board;
   if (typeof startPractice === 'function') startPractice(li);
 }
 
 /* ═══ INIT ═══ */
-/* Auto-load CIE data on script load */
+/* Auto-load both board data on script load */
 loadCIESyllabus();
+loadEdexcelSyllabus();
