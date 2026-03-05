@@ -281,14 +281,14 @@ function getAllWords() {
   return all;
 }
 
-/* Get words due for review */
+/* Get words due for review — uses star-derived status, not stored st */
 function getDueWords() {
   var now = Date.now(), due = [];
   var wd = getWordData();
   getAllWords().forEach(function(w) {
     var d = wd[w.key];
-    if (d && d.st !== 'mastered' && d.nr <= now) due.push(w);
-    else if (!d || d.st === 'new') due.push(w);
+    if (d && w.status !== 'mastered' && d.nr <= now) due.push(w);
+    else if (!d || w.status === 'new') due.push(w);
   });
   return due;
 }

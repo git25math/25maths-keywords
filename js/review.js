@@ -14,13 +14,13 @@ function renderReviewDash() {
   all.forEach(function(w) { counts[w.lv]++; });
   var maxCount = Math.max.apply(null, counts) || 1;
 
-  /* Due words (lv < 3 or past due) */
+  /* Due words (lv < 3 or past due) — use star-derived w.status */
   var now = Date.now();
   var dueWords = all.filter(function(w) {
     var d = wd[w.key];
     if (!d) return true; /* new words are due */
     if (w.lv < 3) return true;
-    if (d.nr && d.nr <= now && d.st !== 'mastered') return true;
+    if (d.nr && d.nr <= now && w.status !== 'mastered') return true;
     return false;
   });
 
@@ -164,7 +164,7 @@ function startReviewSession() {
     var d = wd[w.key];
     if (!d) return true;
     if (w.lv < 3) return true;
-    if (d.nr && d.nr <= now && d.st !== 'mastered') return true;
+    if (d.nr && d.nr <= now && w.status !== 'mastered') return true;
     return false;
   });
 
@@ -191,16 +191,19 @@ function startReview(li) {
   var due = allP.map(function(p) {
     var key = wordKey(li, p.lid);
     var d = wd[key];
+    var wOk = d ? (d.ok || 0) : 0;
+    var wFail = d ? (d.fail || 0) : 0;
+    var wStars = d && d.stars != null ? d.stars : computeStars(wOk, wFail);
     return {
       key: key, word: p.word, def: p.def, level: li,
-      status: d ? d.st : 'new',
+      status: wStars === 0 ? 'new' : wStars === 4 ? 'mastered' : 'learning',
       lv: d ? (d.lv || 0) : 0
     };
   }).filter(function(w) {
     var d = wd[w.key];
     if (!d) return true;
     if (w.lv < 3) return true;
-    if (d.nr && d.nr <= now && d.st !== 'mastered') return true;
+    if (d.nr && d.nr <= now && w.status !== 'mastered') return true;
     return false;
   });
 
@@ -209,7 +212,14 @@ function startReview(li) {
     due = allP.map(function(p) {
       var key = wordKey(li, p.lid);
       var d = wd[key];
-      return { key: key, word: p.word, def: p.def, level: li, status: d ? d.st : 'new', lv: d ? (d.lv || 0) : 0 };
+      var rwOk = d ? (d.ok || 0) : 0;
+      var rwFail = d ? (d.fail || 0) : 0;
+      var rwStars = d && d.stars != null ? d.stars : computeStars(rwOk, rwFail);
+      return {
+        key: key, word: p.word, def: p.def, level: li,
+        status: rwStars === 0 ? 'new' : rwStars === 4 ? 'mastered' : 'learning',
+        lv: d ? (d.lv || 0) : 0
+      };
     });
   }
 
