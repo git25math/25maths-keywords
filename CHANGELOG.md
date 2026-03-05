@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.3.5] - 2026-03-05 — 首次使用引导 Tour（步骤 Tooltip）
+
+### 新功能
+- **5 步引导 Tour**：首次使用自动触发，逐步介绍统计卡片、每日挑战、词卡列表、导航栏、段位系统
+- **Spotlight + Tooltip**：全屏半透明遮罩 + 目标元素高亮"洞" + 白色浮窗卡片
+- **响应式导航引导**：Step 4 桌面端指向侧栏，手机端指向底部导航
+- **双语支持**：标题/描述/按钮随 appLang 自动切换中英文
+- **可跳过**：Skip 按钮或点击遮罩暗区即可关闭，不再显示
+- **自动位置**：tooltip 在目标上方/下方自适应，水平 clamp 到视口内
+- **暗色模式**：通过 CSS 变量自动继承暗色主题
+
+### 触发条件
+- `localStorage.wmatch_tour_done` 不存在时自动触发
+- Guest 和已登录用户均触发
+- 完成或跳过后写入 `localStorage.wmatch_tour_done = '1'`，二次访问不再显示
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `css/style.css` | 追加 13 行 tour 样式（overlay / spotlight / tooltip / dots / buttons） |
+| `js/ui.js` | showApp() +1 行 setTimeout + 末尾追加 ~80 行 tour 逻辑 |
+| `js/config.js` | APP_VERSION → v1.3.5 |
+| `css/style.min.css` | 重新生成 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.3.4] - 2026-03-05 — 首屏加载优化（资源提示 + 字体优化 + homework 拆包）
 
 ### 性能优化
