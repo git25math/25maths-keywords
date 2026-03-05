@@ -100,13 +100,13 @@ function checkSpell() {
     SP.correct++;
     input.classList.add('correct');
     input.disabled = true;
-    setWordStatus(key, 'learning', 3, true);
+    recordAnswer(key, 'spell', true);
     E('spell-answer').textContent = '';
     playCorrect();
   } else {
     input.classList.add('wrong');
     input.disabled = true;
-    setWordStatus(key, 'learning', 0.15, false);
+    recordAnswer(key, 'spell', false);
     E('spell-answer').textContent = t('Answer: ', '\u6b63\u786e\u7b54\u6848: ') + p.word;
     playWrong();
   }

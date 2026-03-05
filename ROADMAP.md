@@ -188,6 +188,19 @@
 - [x] 自定义词汇校验（最多 10 词上限）→ v1.1.1
 - [x] 品牌更名 AISL Harrow Haikou → Harrow Haikou Upper School Mathematics Curriculum → v1.1.3
 
+## Phase 9 — 星级计分系统重构 [DONE]
+- [x] computeStars(ok, fail) 纯函数（accuracy 阶梯封顶）→ v1.2.0
+- [x] recordAnswer() 统一计分入口（替代 setWordStatus）→ v1.2.0
+- [x] Study Easy 防刷（首次 ok=1，之后不变）→ v1.2.0
+- [x] Spell 双倍奖励（ok+2）→ v1.2.0
+- [x] Match mismatch 记录 fail → v1.2.0
+- [x] 双指标体系：学习进度（learningPct 星级加权）+ 精通率（masteryPct 4★占比）→ v1.2.0
+- [x] 首页统计卡片：Progress% + Mastery% 替代 Mastered 计数 → v1.2.0
+- [x] 卡组行显示 started/total + learningPct 进度条 → v1.2.0
+- [x] 卡组详情词汇星级指示器（4 圆点）→ v1.2.0
+- [x] 排行榜 score = learningPct × 20，mastery_pct 独立字段 → v1.2.0
+- [x] 零迁移：旧数据从 ok/fail 实时计算 stars → v1.2.0
+
 ## Phase 8.7 — UX 体验优化 + 内容排序 [DONE]
 - [x] BOARDS 显示顺序调整：哈罗海口→CIE→Edexcel → v1.1.5
 - [x] 刷新页面闪现登录页消除（localStorage 时间戳 + 内联 CSS 注入）→ v1.1.6

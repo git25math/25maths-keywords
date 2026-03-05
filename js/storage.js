@@ -60,9 +60,113 @@ function wordKey(li, wid) {
   return 'L_' + slug + '_W' + wid;
 }
 
+/* ═══ STAR CALCULATION (Spec v1.0 §4) ═══ */
+function computeStars(ok, fail) {
+  var raw = Math.min(ok, 4);
+  var attempts = ok + fail;
+  var acc = attempts === 0 ? 1.0 : ok / attempts;
+  var cap = acc < 0.5 ? 2 : acc < 0.6 ? 3 : 4;
+  return Math.min(raw, cap);
+}
+
+/* SRS interval table (days) for levels 0-7 */
+var SRS_INTERVALS = [0.014, 0.042, 0.375, 1, 2, 7, 30, 30];
+
+/* ═══ UNIFIED ANSWER RECORDER (Spec v1.0 §2) ═══ */
+function recordAnswer(key, mode, isCorrect) {
+  var s = loadS();
+  if (!s.words) s.words = {};
+  var now = Date.now();
+  var prev = s.words[key] || {};
+  var ok = prev.ok || 0;
+  var fail = prev.fail || 0;
+  var lv = prev.lv || 0;
+
+  /* 1. Update ok/fail per mode rules */
+  if (mode === 'study-easy') {
+    if (ok === 0) ok = 1;
+  } else if (mode === 'study-hard') {
+    fail += 1;
+  } else if (mode === 'study-okay') {
+    /* no-op: acknowledge only */
+  } else if (isCorrect) {
+    ok += (mode === 'spell' ? 2 : 1);
+  } else {
+    fail += 1;
+  }
+
+  /* 2. Recompute stars & status */
+  var stars = computeStars(ok, fail);
+  var st = stars === 0 ? 'new' : stars === 4 ? 'mastered' : 'learning';
+
+  /* 3. SRS scheduling */
+  if (isCorrect === true) {
+    lv = Math.min(lv + 1, 7);
+  } else if (isCorrect === false) {
+    lv = Math.max(lv - 2, 0);
+  }
+
+  var iv;
+  if (mode === 'review' && prev.iv) {
+    /* Review mode: scale existing interval */
+    if (isCorrect === false) {
+      iv = 0.15;
+    } else {
+      iv = (isCorrect && mode === 'review')
+        ? Math.max(prev.iv * (isCorrect && fail === 0 ? 2.5 : 1.2), 1)
+        : SRS_INTERVALS[lv] || 1;
+    }
+  } else {
+    iv = SRS_INTERVALS[lv] || 1;
+  }
+  var nr = now + iv * 86400000;
+
+  s.words[key] = { st: st, iv: iv, nr: nr, lr: now, ok: ok, fail: fail, lv: lv, stars: stars };
+
+  /* 4. Inline daily history */
+  if (!s.history) s.history = [];
+  var today = new Date().toLocaleDateString('en-CA');
+  var entry = null;
+  for (var i = s.history.length - 1; i >= 0; i--) {
+    if (s.history[i].d === today) { entry = s.history[i]; break; }
+  }
+  if (!entry) {
+    entry = { d: today, a: 0, ok: 0, fail: 0, m: 0 };
+    s.history.push(entry);
+  }
+  entry.a++;
+  if (isCorrect === true) entry.ok++;
+  else if (isCorrect === false) entry.fail++;
+  var wd = s.words || {};
+  var mc = 0;
+  for (var wk in wd) { if (wd[wk].st === 'mastered') mc++; }
+  entry.m = mc;
+  if (s.history.length > 365) {
+    s.history = s.history.slice(s.history.length - 365);
+  }
+
+  /* 5. Inline streak */
+  if (!s.streak) s.streak = { cur: 0, max: 0, last: '' };
+  var last = s.streak.last;
+  var newStreak = false;
+  if (today !== last) {
+    var td = new Date(today + 'T00:00:00');
+    var ld = last ? new Date(last + 'T00:00:00') : null;
+    var diff = ld ? Math.round((td - ld) / 86400000) : 999;
+    s.streak.cur = (diff === 1) ? (s.streak.cur || 0) + 1 : 1;
+    if (s.streak.cur > (s.streak.max || 0)) s.streak.max = s.streak.cur;
+    s.streak.last = today;
+    newStreak = true;
+  }
+
+  writeS(s);
+  if (newStreak) showToast('🔥 ' + t(getStreakCount() + '-day streak!', '连续学习 ' + getStreakCount() + ' 天！'));
+  debouncedSync();
+}
+
 /* Word mastery storage
    Each word key: "L_{slug}_W{wordId}"
-   Value: { st, iv, nr, lr, ok, fail, lv }
+   Value: { st, iv, nr, lr, ok, fail, lv, stars }
    - st: "mastered"|"learning"|"new"
    - iv: interval in days
    - nr: next review timestamp
@@ -70,6 +174,7 @@ function wordKey(li, wid) {
    - ok: correct count
    - fail: incorrect count
    - lv: SRS level 0-7 (Ebbinghaus)
+   - stars: 0-4 (cached, or computed from ok/fail)
 */
 function getWordData() {
   if (_wordDataCache && !_cacheDirty) return _wordDataCache;
@@ -155,14 +260,18 @@ function getAllWords() {
     for (var k in m) {
       var key = wordKey(li, k);
       var d = wd[key];
+      var wOk = d ? (d.ok || 0) : 0;
+      var wFail = d ? (d.fail || 0) : 0;
+      var wStars = d && d.stars != null ? d.stars : computeStars(wOk, wFail);
       all.push({
         key: key,
         word: m[k].word,
         def: m[k].def,
         level: li,
-        status: d ? d.st : 'new',
-        ok: d ? (d.ok || 0) : 0,
-        fail: d ? (d.fail || 0) : 0,
+        status: wStars === 0 ? 'new' : wStars === 4 ? 'mastered' : 'learning',
+        stars: wStars,
+        ok: wOk,
+        fail: wFail,
         lv: d ? (d.lv || 0) : 0
       });
     }
@@ -252,19 +361,24 @@ async function _doSyncToCloud() {
   /* Sync leaderboard score (skip for teachers) */
   if (!isTeacher()) {
     var allW = getAllWords();
-    var mastered = allW.filter(function(w) { return w.status === 'mastered'; }).length;
-    var pct = allW.length > 0 ? Math.round(mastered / allW.length * 100) : 0;
+    var totalStars = 0, masteredW = 0;
+    allW.forEach(function(w) {
+      totalStars += w.stars || 0;
+      if ((w.stars || 0) === 4) masteredW++;
+    });
+    var learningPct = allW.length > 0 ? Math.round(totalStars / (allW.length * 4) * 100) : 0;
+    var masteryPct = allW.length > 0 ? Math.round(masteredW / allW.length * 100) : 0;
     var r = getRank();
     var nick = getDisplayName();
     /* Include school_id/class_id from user metadata if available */
     var lbRow = {
       user_id: currentUser.id,
       nickname: nick,
-      score: pct * 20,
-      mastery_pct: pct,
+      score: learningPct * 20,
+      mastery_pct: masteryPct,
       rank_emoji: r.emoji,
       total_words: allW.length,
-      mastered_words: mastered,
+      mastered_words: masteredW,
       board: userBoard || '',
       updated_at: now
     };

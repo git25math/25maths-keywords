@@ -111,7 +111,7 @@ function pickMatch(btn) {
 
     /* Update word status */
     var key = wordKey(MT.lvl, leftLid);
-    setWordStatus(key, 'learning', 2, true);
+    recordAnswer(key, 'match', true);
 
     if (MT.matched === MT.pairs.length) {
       renderMatchBoard();
@@ -119,8 +119,10 @@ function pickMatch(btn) {
       return;
     }
   } else {
-    /* Mismatch */
+    /* Mismatch — record fail for both selected words */
     MT.errors++;
+    recordAnswer(wordKey(MT.lvl, leftLid), 'match', false);
+    recordAnswer(wordKey(MT.lvl, rightLid), 'match', false);
     MT.selected = null;
     playWrong();
 

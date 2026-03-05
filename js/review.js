@@ -275,11 +275,8 @@ function rateReview(r) {
   var w = RV.words[RV.idx];
   RV.ratings[r].push(w);
 
-  var wd = getWordData()[w.key];
-  var iv = wd ? wd.iv : 1;
-
   if (r === 'easy') {
-    setWordStatus(w.key, 'mastered', Math.max(iv * 2.5, 7), true);
+    recordAnswer(w.key, 'review', true);
     var box = E('rv-fc-box');
     if (box) {
       var rc = box.getBoundingClientRect();
@@ -287,9 +284,9 @@ function rateReview(r) {
     }
     playCorrect();
   } else if (r === 'ok') {
-    setWordStatus(w.key, 'learning', Math.max(iv * 1.2, 1), true);
+    recordAnswer(w.key, 'review', true);
   } else {
-    setWordStatus(w.key, 'learning', 0.15, false);
+    recordAnswer(w.key, 'review', false);
     playWrong();
   }
 

@@ -78,7 +78,7 @@ function rateStudy(r) {
   S.ratings[r].push(p);
 
   if (r === 'easy') {
-    setWordStatus(key, 'mastered', 30, true);
+    recordAnswer(key, 'study-easy', true);
     /* Spawn particles */
     var box = E('fc-box');
     if (box) {
@@ -87,9 +87,9 @@ function rateStudy(r) {
     }
     playCorrect();
   } else if (r === 'ok') {
-    setWordStatus(key, 'learning', 1);
+    recordAnswer(key, 'study-okay', null);
   } else {
-    setWordStatus(key, 'learning', 0.15, false);
+    recordAnswer(key, 'study-hard', false);
     playWrong();
   }
 

@@ -1034,6 +1034,17 @@ input { font-family: inherit; }
   border-radius: 10px;
 }
 
+.word-stars {
+  display: inline-flex; gap: 2px; align-items: center; margin-right: 4px;
+}
+.star-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--c-border); display: inline-block;
+}
+.star-dot.filled {
+  background: #F59E0B;
+}
+
 .word-stats {
   font-size: 10px; color: var(--c-muted); white-space: nowrap;
 }

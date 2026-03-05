@@ -1,5 +1,48 @@
 # Changelog
 
+## [1.2.0] - 2026-03-05 — 星级计分系统重构：统一模式计分 + 双指标（学习进度 + 精通率）
+
+### 核心引擎 (storage.js)
+- **computeStars(ok, fail)**：纯函数，根据正确/错误次数计算 0-4 星（含 accuracy 阶梯封顶：<50%→2★, <60%→3★, ≥60%→4★）
+- **recordAnswer(key, mode, isCorrect)**：统一计分入口，替代 setWordStatus 作为所有模式的公共接口
+  - Study Easy：首次 ok=1（防刷），之后不变
+  - Study Okay：仅记录翻卡，不计分
+  - Study Hard：fail+1
+  - Spell：正确 ok+2（拼写双倍奖励），错误 fail+1
+  - Quiz/Daily/Review/Match/Battle：正确 ok+1，错误 fail+1
+  - Review 模式保留特殊 SRS interval 逻辑（iv×2.5 / iv×1.2）
+- **getAllWords()**：新增 `stars` 字段，status 由 stars 派生（零迁移：旧数据实时计算）
+- **_doSyncToCloud()**：score = learningPct × 20（基于星级加权），mastery_pct = masteryPct（4★占比）
+
+### 模式调用替换
+- study.js：3 处 setWordStatus → recordAnswer（study-easy / study-okay / study-hard）
+- quiz.js：4 处替换（quiz 正确/错误 + daily 正确/错误）
+- spell.js：2 处替换（spell 正确/错误）
+- match.js：1 处替换 + 新增 mismatch 时对两个选中词记录 fail
+- review.js：3 处替换（review easy/ok/hard）
+
+### UI 更新 (mastery.js + CSS)
+- **getGlobalStats()**：返回 { total, mastered, learningPct, masteryPct }，getMasteryPct() 保留为兼容 wrapper
+- **getDeckStats()**：双指标（learningPct 星级加权 + masteryPct 4★占比 + started 已学词数）
+- **首页统计卡片**：Total / 学习进度% / 精通率% / Streak（替代原 Total / Mastered / Due / Streak）
+- **卡组行**：词数显示改为 started/total（如 6/10），进度条使用 learningPct
+- **卡组详情**：每词旁显示 4 圆点星级指示器（filled = 金色）
+- **段位计算**：基于 masteryPct（精通率），确保段位反映真实掌握水平
+- **排行榜**：score 改为 learningPct × 20，mastery_pct 独立字段
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/storage.js` | 新增 computeStars + recordAnswer + SRS_INTERVALS，更新 getAllWords + _doSyncToCloud |
+| `js/study.js` | 3 处 setWordStatus → recordAnswer |
+| `js/quiz.js` | 4 处 setWordStatus → recordAnswer |
+| `js/spell.js` | 2 处 setWordStatus → recordAnswer |
+| `js/match.js` | 1 处替换 + 新增 mismatch fail 记录 |
+| `js/review.js` | 3 处 setWordStatus → recordAnswer |
+| `js/mastery.js` | getGlobalStats + getDeckStats 双指标 + renderDeckRow/Home/Deck 星级 UI |
+| `css/style.css` | .word-stars / .star-dot 星级指示样式 |
+| `js/config.js` | APP_VERSION v1.2.0 |
+
 ## [1.1.10] - 2026-03-05 — 25m 卡组前缀改为 Y{n}.{unitNum} 编号 + 年级中文名修正
 
 ### UX 增强

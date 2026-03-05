@@ -109,11 +109,11 @@ function pickQuizOpt(btn) {
   if (isCorrect) {
     btn.classList.add('correct');
     Q.correct++;
-    setWordStatus(key, Q.correct >= 2 ? 'mastered' : 'learning', isCorrect ? 7 : 0.5, true);
+    recordAnswer(key, 'quiz', true);
     playCorrect();
   } else {
     btn.classList.add('wrong');
-    setWordStatus(key, 'learning', 0.15, false);
+    recordAnswer(key, 'quiz', false);
     playWrong();
     /* Highlight correct answer */
     document.querySelectorAll('#quiz-options .quiz-opt').forEach(function(o) {
@@ -288,11 +288,11 @@ function pickDailyOpt(btn) {
   if (isCorrect) {
     btn.classList.add('correct');
     DC.score++;
-    setWordStatus(w.key, 'learning', 7, true);
+    recordAnswer(w.key, 'daily', true);
     playCorrect();
   } else {
     btn.classList.add('wrong');
-    setWordStatus(w.key, 'learning', 0.15, false);
+    recordAnswer(w.key, 'daily', false);
     playWrong();
     document.querySelectorAll('#dc-options .quiz-opt').forEach(function(o) {
       if (o.dataset.correct === '1') o.classList.add('correct');

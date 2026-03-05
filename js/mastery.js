@@ -3,15 +3,31 @@
    ══════════════════════════════════════════════════════════════ */
 
 /* ═══ MASTERY CALCULATIONS ═══ */
-function getMasteryPct() {
+
+/* Dual-metric global stats (Spec v1.0 §7) */
+function getGlobalStats() {
   var all = getAllWords();
-  if (all.length === 0) return 0;
-  var m = all.filter(function(w) { return w.status === 'mastered'; }).length;
-  return Math.round(m / all.length * 100);
+  if (all.length === 0) return { total: 0, mastered: 0, learningPct: 0, masteryPct: 0 };
+  var totalStars = 0, mastered = 0;
+  all.forEach(function(w) {
+    totalStars += w.stars || 0;
+    if ((w.stars || 0) === 4) mastered++;
+  });
+  return {
+    total: all.length,
+    mastered: mastered,
+    learningPct: Math.round(totalStars / (all.length * 4) * 100),
+    masteryPct: Math.round(mastered / all.length * 100)
+  };
+}
+
+/* Backward-compatible wrapper */
+function getMasteryPct() {
+  return getGlobalStats().masteryPct;
 }
 
 function getRank() {
-  var pct = getMasteryPct();
+  var pct = getGlobalStats().masteryPct;
   var r = RANKS[0];
   for (var i = RANKS.length - 1; i >= 0; i--) {
     if (pct >= RANKS[i].min) { r = RANKS[i]; break; }
@@ -20,25 +36,37 @@ function getRank() {
 }
 
 function getNextRank() {
-  var pct = getMasteryPct();
+  var pct = getGlobalStats().masteryPct;
   for (var i = 0; i < RANKS.length; i++) {
     if (pct < RANKS[i].min) return RANKS[i];
   }
   return null;
 }
 
-/* ═══ DECK STATS ═══ */
+/* ═══ DECK STATS (dual metrics, Spec v1.0 §6) ═══ */
 function getDeckStats(li) {
   var lv = LEVELS[li];
   var pairs = getPairs(lv.vocabulary);
   var wd = getWordData();
-  var mastered = 0;
+  var totalStars = 0, mastered = 0, started = 0;
   pairs.forEach(function(p) {
     var key = wordKey(li, p.lid);
     var d = wd[key];
-    if (d && d.st === 'mastered') mastered++;
+    var s = d ? (d.stars != null ? d.stars : computeStars(d.ok || 0, d.fail || 0)) : 0;
+    totalStars += s;
+    if (s === 4) mastered++;
+    if (d && (d.ok || 0) >= 1) started++;
   });
-  return { total: pairs.length, mastered: mastered, pct: pairs.length > 0 ? Math.round(mastered / pairs.length * 100) : 0 };
+  var learningPct = pairs.length > 0 ? Math.round(totalStars / (pairs.length * 4) * 100) : 0;
+  var masteryPct = pairs.length > 0 ? Math.round(mastered / pairs.length * 100) : 0;
+  return {
+    total: pairs.length,
+    started: started,
+    mastered: mastered,
+    learningPct: learningPct,
+    masteryPct: masteryPct,
+    pct: learningPct  /* backward-compatible alias */
+  };
 }
 
 /* ═══ CATEGORY COLLAPSE STATE ═══ */
@@ -91,7 +119,7 @@ function selectCategory(catId) {
 /* ═══ DECK ROW HELPER ═══ */
 function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
   var locked = _levelLocked[cl.idx];
-  var stats = locked ? { pct: 0 } : (_levelStats[cl.idx] || { pct: 0 });
+  var stats = locked ? { pct: 0, started: 0, total: 0 } : (_levelStats[cl.idx] || { pct: 0, started: 0, total: 0 });
   var wordCount = Math.floor(cl.lv.vocabulary.length / 2);
   var h = '';
   h += '<div class="deck-row' + (locked ? ' locked' : '') + '" onclick="' + (locked ? 'showGuestLockPrompt()' : 'openDeck(' + cl.idx + ')') + '">';
@@ -102,7 +130,7 @@ function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
     h += '<span class="deck-row-emoji">' + cat.emoji + '</span>';
   }
   h += '<span class="deck-row-name">' + lvTitle(cl.lv) + '</span>';
-  h += '<span class="deck-row-count">' + wordCount + ' ' + t('words', '\u8bcd') + '</span>';
+  h += '<span class="deck-row-count">' + (locked ? wordCount + ' ' + t('words', '\u8bcd') : stats.started + '/' + stats.total) + '</span>';
   if (!locked) {
     h += '<span class="deck-row-progress"><span class="deck-row-progress-fill" style="width:' + stats.pct + '%"></span></span>';
     h += '<span class="deck-row-pct">' + stats.pct + '%</span>';
@@ -120,17 +148,17 @@ function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
 function renderHome() {
   var all = getAllWords();
   var wd = getWordData();
-  var total = all.length;
-  var mastered = all.filter(function(w) { return w.status === 'mastered'; }).length;
+  var gs = getGlobalStats();
+  var total = gs.total;
   var due = getDueWords().length;
 
   var html = '';
 
-  /* Stats row */
+  /* Stats row — Total / Learning% / Mastery% / Streak */
   html += '<div class="home-stats">';
   html += '<div class="stat-card"><div class="stat-val">' + total + '</div><div class="stat-label">' + t('Total', '\u603b\u8bcd\u6c47') + '</div></div>';
-  html += '<div class="stat-card"><div class="stat-val" style="color:var(--c-success)">' + mastered + '</div><div class="stat-label">' + t('Mastered', '\u5df2\u638c\u63e1') + '</div></div>';
-  html += '<div class="stat-card"><div class="stat-val" style="color:' + (due > 0 ? 'var(--c-warning)' : 'var(--c-muted)') + '">' + due + '</div><div class="stat-label">' + t('Due', '\u5f85\u590d\u4e60') + '</div></div>';
+  html += '<div class="stat-card"><div class="stat-val" style="color:var(--c-primary)">' + gs.learningPct + '%</div><div class="stat-label">' + t('Progress', '\u5b66\u4e60\u8fdb\u5ea6') + '</div></div>';
+  html += '<div class="stat-card"><div class="stat-val" style="color:var(--c-success)">' + gs.masteryPct + '%</div><div class="stat-label">' + t('Mastery', '\u7cbe\u901a\u7387') + '</div></div>';
   var streakN = getStreakCount();
   html += '<div class="stat-card stat-card-streak"><div class="stat-val" style="color:var(--c-streak)">🔥 ' + streakN + '</div><div class="stat-label">' + t('Streak', '连续天数') + '</div></div>';
   html += '</div>';
@@ -149,7 +177,7 @@ function renderHome() {
     html += '<span class="home-rank-name">' + rankName(homeRank) + '</span>';
     if (homeNext) {
       var nextNeeded = Math.ceil(homeNext.min / 100 * total);
-      var remaining = Math.max(nextNeeded - mastered, 0);
+      var remaining = Math.max(nextNeeded - gs.mastered, 0);
       html += '<span class="home-rank-sep">\u00b7</span>';
       html += '<span class="home-rank-next">' + t(remaining + ' to ' + rankName(homeNext), '\u8ddd ' + rankName(homeNext) + ' \u8fd8\u9700 ' + remaining + ' \u8bcd') + '</span>';
     }
@@ -205,25 +233,21 @@ function renderHome() {
         var locked = isGuestLocked(i);
         _levelLocked[i] = locked;
         if (!locked) {
-          var pairs = getPairs(lv.vocabulary);
-          var m = 0;
-          pairs.forEach(function(p) {
-            var key = wordKey(i, p.lid);
-            var d = wd[key];
-            if (d && d.st === 'mastered') m++;
-          });
-          _levelStats[i] = { total: pairs.length, mastered: m, pct: pairs.length > 0 ? Math.round(m / pairs.length * 100) : 0 };
+          _levelStats[i] = getDeckStats(i);
         }
       });
     });
 
-    /* Compute board-level stats from pre-computed */
-    var boardTotal = 0, boardMastered = 0;
+    /* Compute board-level stats from pre-computed (star-weighted) */
+    var boardTotalStars = 0, boardMaxStars = 0, boardMastered = 0, boardTotal = 0;
     for (var si in _levelStats) {
-      boardTotal += _levelStats[si].total;
-      boardMastered += _levelStats[si].mastered;
+      var ls = _levelStats[si];
+      boardTotal += ls.total;
+      boardMastered += ls.mastered;
+      boardTotalStars += Math.round(ls.learningPct * ls.total * 4 / 100);
+      boardMaxStars += ls.total * 4;
     }
-    var boardPct = boardTotal > 0 ? Math.round(boardMastered / boardTotal * 100) : 0;
+    var boardPct = boardMaxStars > 0 ? Math.round(boardTotalStars / boardMaxStars * 100) : 0;
 
     /* Build board HTML in temp var, only append if has matching content */
     var boardHtml = '';
@@ -311,7 +335,7 @@ function renderHome() {
       html += '<div class="board-header">';
       html += '<span class="board-emoji">' + board.emoji + '</span>';
       html += '<span class="board-name">' + boardName(board) + '</span>';
-      html += '<span class="board-stats">' + boardMastered + '/' + boardTotal + ' · ' + boardPct + '%</span>';
+      html += '<span class="board-stats">' + boardMastered + '/' + boardTotal + ' \u2605 · ' + boardPct + '%</span>';
       html += '<span class="board-code">' + board.code + '</span>';
       html += '</div>';
       html += boardHtml;
@@ -407,6 +431,7 @@ function renderDeck(idx) {
     var lvNum = d ? (d.lv || 0) : 0;
     var ok = d ? (d.ok || 0) : 0;
     var fail = d ? (d.fail || 0) : 0;
+    var wStars = d ? (d.stars != null ? d.stars : computeStars(ok, fail)) : 0;
     var lvColor = SRS_COLORS[lvNum] || SRS_COLORS[0];
 
     html += '<div class="word-row">';
@@ -414,6 +439,11 @@ function renderDeck(idx) {
     if (appLang === 'bilingual') {
       html += '<div class="word-zh">' + escapeHtml(p.def) + '</div>';
     }
+    html += '<span class="word-stars">';
+    for (var si = 0; si < 4; si++) {
+      html += '<span class="star-dot' + (si < wStars ? ' filled' : '') + '"></span>';
+    }
+    html += '</span>';
     html += '<span class="word-lv" style="background:' + lvColor + '20;color:' + lvColor + '">' + SRS_LABELS[lvNum] + '</span>';
     if (ok > 0 || fail > 0) {
       html += '<span class="word-stats">\u2713' + ok + ' \u2717' + fail + '</span>';
