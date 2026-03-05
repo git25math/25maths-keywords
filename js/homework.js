@@ -301,11 +301,7 @@ async function renderClassHwList(classId) {
   if (!ct) return;
 
   try {
-    var res = await sb.from('assignments')
-      .select('*')
-      .eq('class_id', classId)
-      .eq('is_deleted', false)
-      .order('created_at', { ascending: false });
+    var res = await sb.rpc('list_class_assignments', { p_class_id: classId });
     var hws = res.data || [];
 
     if (hws.length === 0) {
@@ -491,11 +487,7 @@ async function deleteHw(hwId, classId) {
 async function loadMyHomework() {
   if (!sb || !isLoggedIn() || isGuest() || !userClassId) return [];
   try {
-    var res = await sb.from('assignments')
-      .select('*')
-      .eq('class_id', userClassId)
-      .eq('is_deleted', false)
-      .order('deadline', { ascending: true });
+    var res = await sb.rpc('list_class_assignments', { p_class_id: userClassId });
     var hws = res.data || [];
 
     var rRes = await sb.from('assignment_results')
