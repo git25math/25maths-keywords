@@ -174,12 +174,11 @@ async function doCreateHw(classId) {
   msg.className = 'settings-msg';
 
   try {
-    var res = await sb.from('assignments').insert({
-      class_id: classId,
-      teacher_id: _teacherData.id,
-      title: title,
-      deck_slugs: slugs,
-      deadline: new Date(deadline).toISOString()
+    var res = await sb.rpc('create_assignment', {
+      p_class_id: classId,
+      p_title: title,
+      p_deck_slugs: slugs,
+      p_deadline: new Date(deadline).toISOString()
     });
     if (res.error) throw new Error(res.error.message);
 
@@ -273,13 +272,12 @@ async function doCreateCustomHw(classId, studentUserId) {
   msg.className = 'settings-msg';
 
   try {
-    var res = await sb.from('assignments').insert({
-      class_id: classId,
-      teacher_id: _teacherData.id,
-      title: title,
-      deck_slugs: [],
-      custom_vocabulary: vocab,
-      deadline: new Date(deadline).toISOString()
+    var res = await sb.rpc('create_assignment', {
+      p_class_id: classId,
+      p_title: title,
+      p_deck_slugs: [],
+      p_deadline: new Date(deadline).toISOString(),
+      p_custom_vocabulary: vocab
     });
     if (res.error) throw new Error(res.error.message);
 
