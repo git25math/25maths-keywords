@@ -1390,11 +1390,209 @@ var LEVELS = [
   ]
 },
 
+
 /* ══════════════════════════════════════════════════════════════
    25MATHS CURRICULUM Y7-Y11 (173 levels, 1502 words)
    ══════════════════════════════════════════════════════════════ */
 
+
 /* ═══ Year 7 (31 levels, 257 words) ═══ */
+
+{
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-1', category: '25m-y7', title: 'Multiplication of Fractions (1)', titleZh: '分数的乘法 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Addition"},{id:"0",type:"def",content:"加法"},
+    {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
+    {id:"2",type:"word",content:"BIDMAS / PEMDAS"},{id:"2",type:"def",content:"运算顺序 (BIDMAS / PEMDAS)"},
+    {id:"3",type:"word",content:"Common denominator"},{id:"3",type:"def",content:"公分母"},
+    {id:"4",type:"word",content:"Common factor"},{id:"4",type:"def",content:"公因数"},
+    {id:"5",type:"word",content:"Decimal"},{id:"5",type:"def",content:"小数"},
+    {id:"6",type:"word",content:"Decimal places"},{id:"6",type:"def",content:"小数位数"},
+    {id:"7",type:"word",content:"Denominator"},{id:"7",type:"def",content:"分母"},
+    {id:"8",type:"word",content:"Equation"},{id:"8",type:"def",content:"方程"},
+    {id:"9",type:"word",content:"Equivalent fractions"},{id:"9",type:"def",content:"等价分数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-2', category: '25m-y7', title: 'Multiplication of Fractions (2)', titleZh: '分数的乘法 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Expression"},{id:"0",type:"def",content:"表达式"},
+    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
+    {id:"2",type:"word",content:"Improper fraction"},{id:"2",type:"def",content:"假分数"},
+    {id:"3",type:"word",content:"Mixed number"},{id:"3",type:"def",content:"带分数"},
+    {id:"4",type:"word",content:"Multiplication"},{id:"4",type:"def",content:"乘法"},
+    {id:"5",type:"word",content:"Numerator"},{id:"5",type:"def",content:"分子"},
+    {id:"6",type:"word",content:"Of (implies multiplication)"},{id:"6",type:"def",content:"的 (表示乘法)"},
+    {id:"7",type:"word",content:"Order of operations"},{id:"7",type:"def",content:"运算顺序"},
+    {id:"8",type:"word",content:"Pre-cancelling"},{id:"8",type:"def",content:"预先约分"},
+    {id:"9",type:"word",content:"Problem solving"},{id:"9",type:"def",content:"解决问题"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-multiplication-of-fractions-3', category: '25m-y7', title: 'Multiplication of Fractions (3)', titleZh: '分数的乘法 (3)', timer: 80, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Product"},{id:"0",type:"def",content:"乘积"},
+    {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
+    {id:"2",type:"word",content:"Rounding"},{id:"2",type:"def",content:"四舍五入"},
+    {id:"3",type:"word",content:"Significant figures"},{id:"3",type:"def",content:"有效数字"},
+    {id:"4",type:"word",content:"Simplest form"},{id:"4",type:"def",content:"最简形式"},
+    {id:"5",type:"word",content:"Subtraction"},{id:"5",type:"def",content:"减法"},
+    {id:"6",type:"word",content:"Volume"},{id:"6",type:"def",content:"体积"},
+    {id:"7",type:"word",content:"Word problem"},{id:"7",type:"def",content:"应用题"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-division-of-fraction-1', category: '25m-y7', title: 'Division of Fraction (1)', titleZh: '分数的除法 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Brackets"},{id:"0",type:"def",content:"括号"},
+    {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
+    {id:"2",type:"word",content:"Division"},{id:"2",type:"def",content:"除法"},
+    {id:"3",type:"word",content:"Fraction"},{id:"3",type:"def",content:"分数"},
+    {id:"4",type:"word",content:"Improper Fraction"},{id:"4",type:"def",content:"假分数"},
+    {id:"5",type:"word",content:"Integer"},{id:"5",type:"def",content:"整数"},
+    {id:"6",type:"word",content:"Mixed Number"},{id:"6",type:"def",content:"带分数"},
+    {id:"7",type:"word",content:"Multiplicative Inverse"},{id:"7",type:"def",content:"乘法逆元"},
+    {id:"8",type:"word",content:"Numerator"},{id:"8",type:"def",content:"分子"},
+    {id:"9",type:"word",content:"Order of Operations"},{id:"9",type:"def",content:"运算顺序"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-division-of-fraction-2', category: '25m-y7', title: 'Division of Fraction (2)', titleZh: '分数的除法 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Reciprocal"},{id:"0",type:"def",content:"倒数"},
+    {id:"1",type:"word",content:"Simplify"},{id:"1",type:"def",content:"化简"},
+    {id:"2",type:"word",content:"Word Problem"},{id:"2",type:"def",content:"应用题"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-negative-number-1', category: '25m-y7', title: 'Negative Number (1)', titleZh: '负数 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
+    {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
+    {id:"2",type:"word",content:"Division"},{id:"2",type:"def",content:"除法"},
+    {id:"3",type:"word",content:"Greater than"},{id:"3",type:"def",content:"大于"},
+    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
+    {id:"5",type:"word",content:"Less than"},{id:"5",type:"def",content:"小于"},
+    {id:"6",type:"word",content:"Multiplication"},{id:"6",type:"def",content:"乘法"},
+    {id:"7",type:"word",content:"Negative number"},{id:"7",type:"def",content:"负数"},
+    {id:"8",type:"word",content:"Number line"},{id:"8",type:"def",content:"数轴"},
+    {id:"9",type:"word",content:"Opposite number"},{id:"9",type:"def",content:"相反数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-negative-number-2', category: '25m-y7', title: 'Negative Number (2)', titleZh: '负数 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Positive number"},{id:"0",type:"def",content:"正数"},
+    {id:"1",type:"word",content:"Sea level"},{id:"1",type:"def",content:"海平面"},
+    {id:"2",type:"word",content:"Subtraction"},{id:"2",type:"def",content:"减法"},
+    {id:"3",type:"word",content:"Temperature"},{id:"3",type:"def",content:"温度"},
+    {id:"4",type:"word",content:"Zero"},{id:"4",type:"def",content:"零"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-position-and-direction-1', category: '25m-y7', title: 'Position and Direction (1)', titleZh: '位置和方向 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Bearing"},{id:"0",type:"def",content:"方位角"},
+    {id:"1",type:"word",content:"Clockwise"},{id:"1",type:"def",content:"顺时针"},
+    {id:"2",type:"word",content:"Compass"},{id:"2",type:"def",content:"指南针"},
+    {id:"3",type:"word",content:"Coordinate"},{id:"3",type:"def",content:"坐标"},
+    {id:"4",type:"word",content:"Horizontal"},{id:"4",type:"def",content:"水平的"},
+    {id:"5",type:"word",content:"Length"},{id:"5",type:"def",content:"长度"},
+    {id:"6",type:"word",content:"Line segment"},{id:"6",type:"def",content:"线段"},
+    {id:"7",type:"word",content:"Midpoint"},{id:"7",type:"def",content:"中点"},
+    {id:"8",type:"word",content:"Ordered pair"},{id:"8",type:"def",content:"有序对"},
+    {id:"9",type:"word",content:"Origin"},{id:"9",type:"def",content:"原点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-position-and-direction-2', category: '25m-y7', title: 'Position and Direction (2)', titleZh: '位置和方向 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Plot"},{id:"0",type:"def",content:"描点/绘制"},
+    {id:"1",type:"word",content:"Quadrant"},{id:"1",type:"def",content:"象限"},
+    {id:"2",type:"word",content:"Vertical"},{id:"2",type:"def",content:"垂直的"},
+    {id:"3",type:"word",content:"X-axis"},{id:"3",type:"def",content:"X轴"},
+    {id:"4",type:"word",content:"Y-axis"},{id:"4",type:"def",content:"Y轴"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-ratio-and-proportion-1', category: '25m-y7', title: 'Ratio and Proportion (1)', titleZh: '比率和比例 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Colon"},{id:"0",type:"def",content:"冒号"},
+    {id:"1",type:"word",content:"Constant of proportionality"},{id:"1",type:"def",content:"比例常数"},
+    {id:"2",type:"word",content:"Corresponding"},{id:"2",type:"def",content:"对应的"},
+    {id:"3",type:"word",content:"Direct proportion"},{id:"3",type:"def",content:"正比例"},
+    {id:"4",type:"word",content:"Division"},{id:"4",type:"def",content:"除法"},
+    {id:"5",type:"word",content:"Equivalent"},{id:"5",type:"def",content:"等价的"},
+    {id:"6",type:"word",content:"Equivalent ratio"},{id:"6",type:"def",content:"等价比率"},
+    {id:"7",type:"word",content:"Estimate"},{id:"7",type:"def",content:"估计"},
+    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
+    {id:"9",type:"word",content:"Graph"},{id:"9",type:"def",content:"图表"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-ratio-and-proportion-2', category: '25m-y7', title: 'Ratio and Proportion (2)', titleZh: '比率和比例 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Map"},{id:"0",type:"def",content:"地图"},
+    {id:"1",type:"word",content:"Part"},{id:"1",type:"def",content:"部分"},
+    {id:"2",type:"word",content:"Proportion"},{id:"2",type:"def",content:"比例"},
+    {id:"3",type:"word",content:"Proportional relationship"},{id:"3",type:"def",content:"比例关系"},
+    {id:"4",type:"word",content:"Quantity"},{id:"4",type:"def",content:"数量"},
+    {id:"5",type:"word",content:"Rate"},{id:"5",type:"def",content:"比率/速率"},
+    {id:"6",type:"word",content:"Ratio"},{id:"6",type:"def",content:"比率"},
+    {id:"7",type:"word",content:"Scale"},{id:"7",type:"def",content:"比例尺"},
+    {id:"8",type:"word",content:"Share"},{id:"8",type:"def",content:"分享"},
+    {id:"9",type:"word",content:"Simplest form"},{id:"9",type:"def",content:"最简形式"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-ratio-and-proportion-3', category: '25m-y7', title: 'Ratio and Proportion (3)', titleZh: '比率和比例 (3)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Simplify"},{id:"0",type:"def",content:"简化"},
+    {id:"1",type:"word",content:"Term"},{id:"1",type:"def",content:"项"},
+    {id:"2",type:"word",content:"Total"},{id:"2",type:"def",content:"总数"},
+    {id:"3",type:"word",content:"Unitary method"},{id:"3",type:"def",content:"单位法"},
+    {id:"4",type:"word",content:"Units"},{id:"4",type:"def",content:"单位"},
+    {id:"5",type:"word",content:"Variable"},{id:"5",type:"def",content:"变量"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-percentage-1', category: '25m-y7', title: 'Percentage (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Convert"},{id:"0",type:"def",content:"转换"},
+    {id:"1",type:"word",content:"Decimal"},{id:"1",type:"def",content:"小数"},
+    {id:"2",type:"word",content:"Decrease"},{id:"2",type:"def",content:"减少"},
+    {id:"3",type:"word",content:"Discount"},{id:"3",type:"def",content:"折扣"},
+    {id:"4",type:"word",content:"Equivalent"},{id:"4",type:"def",content:"等价的"},
+    {id:"5",type:"word",content:"Fraction"},{id:"5",type:"def",content:"分数"},
+    {id:"6",type:"word",content:"Increase"},{id:"6",type:"def",content:"增加"},
+    {id:"7",type:"word",content:"Interest"},{id:"7",type:"def",content:"利息"},
+    {id:"8",type:"word",content:"Loss"},{id:"8",type:"def",content:"亏损"},
+    {id:"9",type:"word",content:"Per cent"},{id:"9",type:"def",content:"百分之"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y7-percentage-2', category: '25m-y7', title: 'Percentage (2)', titleZh: '百分比 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Percentage"},{id:"0",type:"def",content:"百分比"},
+    {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
+    {id:"2",type:"word",content:"Quantity"},{id:"2",type:"def",content:"数量"},
+    {id:"3",type:"word",content:"Tax"},{id:"3",type:"def",content:"税"},
+    {id:"4",type:"word",content:"Whole"},{id:"4",type:"def",content:"整体"}
+  ]
+},
 
 {
   board: '25m', slug: '25m-y7-circle-1', category: '25m-y7', title: 'Circle (1)', titleZh: '圆 (1)', timer: 70, comboBonus: 2,
@@ -1476,33 +1674,6 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-constructions-1', category: '25m-y7', title: 'Constructions (1)', titleZh: '作图 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
-    {id:"1",type:"word",content:"Angle bisector"},{id:"1",type:"def",content:"角平分线"},
-    {id:"2",type:"word",content:"Arc"},{id:"2",type:"def",content:"弧"},
-    {id:"3",type:"word",content:"Circle"},{id:"3",type:"def",content:"圆"},
-    {id:"4",type:"word",content:"Compasses"},{id:"4",type:"def",content:"圆规"},
-    {id:"5",type:"word",content:"Construction"},{id:"5",type:"def",content:"作图"},
-    {id:"6",type:"word",content:"Equilateral triangle"},{id:"6",type:"def",content:"等边三角形"},
-    {id:"7",type:"word",content:"Inscribe"},{id:"7",type:"def",content:"内接"},
-    {id:"8",type:"word",content:"Line segment"},{id:"8",type:"def",content:"线段"},
-    {id:"9",type:"word",content:"Locus"},{id:"9",type:"def",content:"轨迹"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-constructions-2', category: '25m-y7', title: 'Constructions (2)', titleZh: '作图 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Midpoint"},{id:"0",type:"def",content:"中点"},
-    {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂线/垂直的"},
-    {id:"2",type:"word",content:"Perpendicular bisector"},{id:"2",type:"def",content:"垂直平分线"},
-    {id:"3",type:"word",content:"Regular polygon"},{id:"3",type:"def",content:"正多边形"},
-    {id:"4",type:"word",content:"Straight edge"},{id:"4",type:"def",content:"直尺"}
-  ]
-},
-
-{
   board: '25m', slug: '25m-y7-cylinders-and-cones-1', category: '25m-y7', title: 'Cylinders and Cones (1)', titleZh: '圆柱和圆锥 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Apex"},{id:"0",type:"def",content:"顶点"},
@@ -1575,31 +1746,6 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-division-of-fraction-1', category: '25m-y7', title: 'Division of Fraction (1)', titleZh: '分数的除法 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Brackets"},{id:"0",type:"def",content:"括号"},
-    {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
-    {id:"2",type:"word",content:"Division"},{id:"2",type:"def",content:"除法"},
-    {id:"3",type:"word",content:"Fraction"},{id:"3",type:"def",content:"分数"},
-    {id:"4",type:"word",content:"Improper Fraction"},{id:"4",type:"def",content:"假分数"},
-    {id:"5",type:"word",content:"Integer"},{id:"5",type:"def",content:"整数"},
-    {id:"6",type:"word",content:"Mixed Number"},{id:"6",type:"def",content:"带分数"},
-    {id:"7",type:"word",content:"Multiplicative Inverse"},{id:"7",type:"def",content:"乘法逆元"},
-    {id:"8",type:"word",content:"Numerator"},{id:"8",type:"def",content:"分子"},
-    {id:"9",type:"word",content:"Order of Operations"},{id:"9",type:"def",content:"运算顺序"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-division-of-fraction-2', category: '25m-y7', title: 'Division of Fraction (2)', titleZh: '分数的除法 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Reciprocal"},{id:"0",type:"def",content:"倒数"},
-    {id:"1",type:"word",content:"Simplify"},{id:"1",type:"def",content:"化简"},
-    {id:"2",type:"word",content:"Word Problem"},{id:"2",type:"def",content:"应用题"}
-  ]
-},
-
-{
   board: '25m', slug: '25m-y7-linear-sequences-1', category: '25m-y7', title: 'Linear Sequences (1)', titleZh: '等差序列 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Arithmetic sequence"},{id:"0",type:"def",content:"算术序列"},
@@ -1642,133 +1788,6 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-1', category: '25m-y7', title: 'Multiplication of Fractions (1)', titleZh: '分数的乘法 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Addition"},{id:"0",type:"def",content:"加法"},
-    {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
-    {id:"2",type:"word",content:"BIDMAS / PEMDAS"},{id:"2",type:"def",content:"运算顺序 (BIDMAS / PEMDAS)"},
-    {id:"3",type:"word",content:"Common denominator"},{id:"3",type:"def",content:"公分母"},
-    {id:"4",type:"word",content:"Common factor"},{id:"4",type:"def",content:"公因数"},
-    {id:"5",type:"word",content:"Decimal"},{id:"5",type:"def",content:"小数"},
-    {id:"6",type:"word",content:"Decimal places"},{id:"6",type:"def",content:"小数位数"},
-    {id:"7",type:"word",content:"Denominator"},{id:"7",type:"def",content:"分母"},
-    {id:"8",type:"word",content:"Equation"},{id:"8",type:"def",content:"方程"},
-    {id:"9",type:"word",content:"Equivalent fractions"},{id:"9",type:"def",content:"等价分数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-2', category: '25m-y7', title: 'Multiplication of Fractions (2)', titleZh: '分数的乘法 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Expression"},{id:"0",type:"def",content:"表达式"},
-    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
-    {id:"2",type:"word",content:"Improper fraction"},{id:"2",type:"def",content:"假分数"},
-    {id:"3",type:"word",content:"Mixed number"},{id:"3",type:"def",content:"带分数"},
-    {id:"4",type:"word",content:"Multiplication"},{id:"4",type:"def",content:"乘法"},
-    {id:"5",type:"word",content:"Numerator"},{id:"5",type:"def",content:"分子"},
-    {id:"6",type:"word",content:"Of (implies multiplication)"},{id:"6",type:"def",content:"的 (表示乘法)"},
-    {id:"7",type:"word",content:"Order of operations"},{id:"7",type:"def",content:"运算顺序"},
-    {id:"8",type:"word",content:"Pre-cancelling"},{id:"8",type:"def",content:"预先约分"},
-    {id:"9",type:"word",content:"Problem solving"},{id:"9",type:"def",content:"解决问题"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-multiplication-of-fractions-3', category: '25m-y7', title: 'Multiplication of Fractions (3)', titleZh: '分数的乘法 (3)', timer: 80, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Product"},{id:"0",type:"def",content:"乘积"},
-    {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
-    {id:"2",type:"word",content:"Rounding"},{id:"2",type:"def",content:"四舍五入"},
-    {id:"3",type:"word",content:"Significant figures"},{id:"3",type:"def",content:"有效数字"},
-    {id:"4",type:"word",content:"Simplest form"},{id:"4",type:"def",content:"最简形式"},
-    {id:"5",type:"word",content:"Subtraction"},{id:"5",type:"def",content:"减法"},
-    {id:"6",type:"word",content:"Volume"},{id:"6",type:"def",content:"体积"},
-    {id:"7",type:"word",content:"Word problem"},{id:"7",type:"def",content:"应用题"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-negative-number-1', category: '25m-y7', title: 'Negative Number (1)', titleZh: '负数 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
-    {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
-    {id:"2",type:"word",content:"Division"},{id:"2",type:"def",content:"除法"},
-    {id:"3",type:"word",content:"Greater than"},{id:"3",type:"def",content:"大于"},
-    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
-    {id:"5",type:"word",content:"Less than"},{id:"5",type:"def",content:"小于"},
-    {id:"6",type:"word",content:"Multiplication"},{id:"6",type:"def",content:"乘法"},
-    {id:"7",type:"word",content:"Negative number"},{id:"7",type:"def",content:"负数"},
-    {id:"8",type:"word",content:"Number line"},{id:"8",type:"def",content:"数轴"},
-    {id:"9",type:"word",content:"Opposite number"},{id:"9",type:"def",content:"相反数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-negative-number-2', category: '25m-y7', title: 'Negative Number (2)', titleZh: '负数 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Positive number"},{id:"0",type:"def",content:"正数"},
-    {id:"1",type:"word",content:"Sea level"},{id:"1",type:"def",content:"海平面"},
-    {id:"2",type:"word",content:"Subtraction"},{id:"2",type:"def",content:"减法"},
-    {id:"3",type:"word",content:"Temperature"},{id:"3",type:"def",content:"温度"},
-    {id:"4",type:"word",content:"Zero"},{id:"4",type:"def",content:"零"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-percentage-1', category: '25m-y7', title: 'Percentage (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Convert"},{id:"0",type:"def",content:"转换"},
-    {id:"1",type:"word",content:"Decimal"},{id:"1",type:"def",content:"小数"},
-    {id:"2",type:"word",content:"Decrease"},{id:"2",type:"def",content:"减少"},
-    {id:"3",type:"word",content:"Discount"},{id:"3",type:"def",content:"折扣"},
-    {id:"4",type:"word",content:"Equivalent"},{id:"4",type:"def",content:"等价的"},
-    {id:"5",type:"word",content:"Fraction"},{id:"5",type:"def",content:"分数"},
-    {id:"6",type:"word",content:"Increase"},{id:"6",type:"def",content:"增加"},
-    {id:"7",type:"word",content:"Interest"},{id:"7",type:"def",content:"利息"},
-    {id:"8",type:"word",content:"Loss"},{id:"8",type:"def",content:"亏损"},
-    {id:"9",type:"word",content:"Per cent"},{id:"9",type:"def",content:"百分之"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-percentage-2', category: '25m-y7', title: 'Percentage (2)', titleZh: '百分比 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Percentage"},{id:"0",type:"def",content:"百分比"},
-    {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
-    {id:"2",type:"word",content:"Quantity"},{id:"2",type:"def",content:"数量"},
-    {id:"3",type:"word",content:"Tax"},{id:"3",type:"def",content:"税"},
-    {id:"4",type:"word",content:"Whole"},{id:"4",type:"def",content:"整体"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-position-and-direction-1', category: '25m-y7', title: 'Position and Direction (1)', titleZh: '位置和方向 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Bearing"},{id:"0",type:"def",content:"方位角"},
-    {id:"1",type:"word",content:"Clockwise"},{id:"1",type:"def",content:"顺时针"},
-    {id:"2",type:"word",content:"Compass"},{id:"2",type:"def",content:"指南针"},
-    {id:"3",type:"word",content:"Coordinate"},{id:"3",type:"def",content:"坐标"},
-    {id:"4",type:"word",content:"Horizontal"},{id:"4",type:"def",content:"水平的"},
-    {id:"5",type:"word",content:"Length"},{id:"5",type:"def",content:"长度"},
-    {id:"6",type:"word",content:"Line segment"},{id:"6",type:"def",content:"线段"},
-    {id:"7",type:"word",content:"Midpoint"},{id:"7",type:"def",content:"中点"},
-    {id:"8",type:"word",content:"Ordered pair"},{id:"8",type:"def",content:"有序对"},
-    {id:"9",type:"word",content:"Origin"},{id:"9",type:"def",content:"原点"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-position-and-direction-2', category: '25m-y7', title: 'Position and Direction (2)', titleZh: '位置和方向 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Plot"},{id:"0",type:"def",content:"描点/绘制"},
-    {id:"1",type:"word",content:"Quadrant"},{id:"1",type:"def",content:"象限"},
-    {id:"2",type:"word",content:"Vertical"},{id:"2",type:"def",content:"垂直的"},
-    {id:"3",type:"word",content:"X-axis"},{id:"3",type:"def",content:"X轴"},
-    {id:"4",type:"word",content:"Y-axis"},{id:"4",type:"def",content:"Y轴"}
-  ]
-},
-
-{
   board: '25m', slug: '25m-y7-probability-1', category: '25m-y7', title: 'Probability (1)', titleZh: '概率 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Certain Event"},{id:"0",type:"def",content:"必然事件"},
@@ -1796,51 +1815,169 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y7-ratio-and-proportion-1', category: '25m-y7', title: 'Ratio and Proportion (1)', titleZh: '比率和比例 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-constructions-1', category: '25m-y7', title: 'Constructions (1)', titleZh: '作图 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Colon"},{id:"0",type:"def",content:"冒号"},
-    {id:"1",type:"word",content:"Constant of proportionality"},{id:"1",type:"def",content:"比例常数"},
-    {id:"2",type:"word",content:"Corresponding"},{id:"2",type:"def",content:"对应的"},
-    {id:"3",type:"word",content:"Direct proportion"},{id:"3",type:"def",content:"正比例"},
-    {id:"4",type:"word",content:"Division"},{id:"4",type:"def",content:"除法"},
-    {id:"5",type:"word",content:"Equivalent"},{id:"5",type:"def",content:"等价的"},
-    {id:"6",type:"word",content:"Equivalent ratio"},{id:"6",type:"def",content:"等价比率"},
-    {id:"7",type:"word",content:"Estimate"},{id:"7",type:"def",content:"估计"},
-    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
-    {id:"9",type:"word",content:"Graph"},{id:"9",type:"def",content:"图表"}
+    {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
+    {id:"1",type:"word",content:"Angle bisector"},{id:"1",type:"def",content:"角平分线"},
+    {id:"2",type:"word",content:"Arc"},{id:"2",type:"def",content:"弧"},
+    {id:"3",type:"word",content:"Circle"},{id:"3",type:"def",content:"圆"},
+    {id:"4",type:"word",content:"Compasses"},{id:"4",type:"def",content:"圆规"},
+    {id:"5",type:"word",content:"Construction"},{id:"5",type:"def",content:"作图"},
+    {id:"6",type:"word",content:"Equilateral triangle"},{id:"6",type:"def",content:"等边三角形"},
+    {id:"7",type:"word",content:"Inscribe"},{id:"7",type:"def",content:"内接"},
+    {id:"8",type:"word",content:"Line segment"},{id:"8",type:"def",content:"线段"},
+    {id:"9",type:"word",content:"Locus"},{id:"9",type:"def",content:"轨迹"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y7-ratio-and-proportion-2', category: '25m-y7', title: 'Ratio and Proportion (2)', titleZh: '比率和比例 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y7-constructions-2', category: '25m-y7', title: 'Constructions (2)', titleZh: '作图 (2)', timer: 90, comboBonus: 3,
   vocabulary: [
-    {id:"0",type:"word",content:"Map"},{id:"0",type:"def",content:"地图"},
-    {id:"1",type:"word",content:"Part"},{id:"1",type:"def",content:"部分"},
-    {id:"2",type:"word",content:"Proportion"},{id:"2",type:"def",content:"比例"},
-    {id:"3",type:"word",content:"Proportional relationship"},{id:"3",type:"def",content:"比例关系"},
-    {id:"4",type:"word",content:"Quantity"},{id:"4",type:"def",content:"数量"},
-    {id:"5",type:"word",content:"Rate"},{id:"5",type:"def",content:"比率/速率"},
-    {id:"6",type:"word",content:"Ratio"},{id:"6",type:"def",content:"比率"},
-    {id:"7",type:"word",content:"Scale"},{id:"7",type:"def",content:"比例尺"},
-    {id:"8",type:"word",content:"Share"},{id:"8",type:"def",content:"分享"},
-    {id:"9",type:"word",content:"Simplest form"},{id:"9",type:"def",content:"最简形式"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y7-ratio-and-proportion-3', category: '25m-y7', title: 'Ratio and Proportion (3)', titleZh: '比率和比例 (3)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Simplify"},{id:"0",type:"def",content:"简化"},
-    {id:"1",type:"word",content:"Term"},{id:"1",type:"def",content:"项"},
-    {id:"2",type:"word",content:"Total"},{id:"2",type:"def",content:"总数"},
-    {id:"3",type:"word",content:"Unitary method"},{id:"3",type:"def",content:"单位法"},
-    {id:"4",type:"word",content:"Units"},{id:"4",type:"def",content:"单位"},
-    {id:"5",type:"word",content:"Variable"},{id:"5",type:"def",content:"变量"}
+    {id:"0",type:"word",content:"Midpoint"},{id:"0",type:"def",content:"中点"},
+    {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂线/垂直的"},
+    {id:"2",type:"word",content:"Perpendicular bisector"},{id:"2",type:"def",content:"垂直平分线"},
+    {id:"3",type:"word",content:"Regular polygon"},{id:"3",type:"def",content:"正多边形"},
+    {id:"4",type:"word",content:"Straight edge"},{id:"4",type:"def",content:"直尺"}
   ]
 },
 
 
 /* ═══ Year 8 (31 levels, 278 words) ═══ */
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-1', category: '25m-y8', title: 'Review of Numbers (1)', titleZh: '数的复习 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Absolute Value"},{id:"0",type:"def",content:"绝对值"},
+    {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
+    {id:"2",type:"word",content:"Approximation"},{id:"2",type:"def",content:"近似值"},
+    {id:"3",type:"word",content:"Ascending Order"},{id:"3",type:"def",content:"升序"},
+    {id:"4",type:"word",content:"Cancel"},{id:"4",type:"def",content:"约分"},
+    {id:"5",type:"word",content:"Common Denominator"},{id:"5",type:"def",content:"公分母"},
+    {id:"6",type:"word",content:"Common Factor"},{id:"6",type:"def",content:"公因数"},
+    {id:"7",type:"word",content:"Decimal"},{id:"7",type:"def",content:"小数"},
+    {id:"8",type:"word",content:"Decimal Place"},{id:"8",type:"def",content:"小数位"},
+    {id:"9",type:"word",content:"Decimal Place (dp)"},{id:"9",type:"def",content:"小数位"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-2', category: '25m-y8', title: 'Review of Numbers (2)', titleZh: '数的复习 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Decimal Point"},{id:"0",type:"def",content:"小数点"},
+    {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
+    {id:"2",type:"word",content:"Descending Order"},{id:"2",type:"def",content:"降序"},
+    {id:"3",type:"word",content:"Directed Number"},{id:"3",type:"def",content:"有方向的数"},
+    {id:"4",type:"word",content:"Division"},{id:"4",type:"def",content:"除法"},
+    {id:"5",type:"word",content:"Equivalent Calculation"},{id:"5",type:"def",content:"等效计算"},
+    {id:"6",type:"word",content:"Equivalent Fraction"},{id:"6",type:"def",content:"等价分数"},
+    {id:"7",type:"word",content:"Estimate"},{id:"7",type:"def",content:"估计"},
+    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
+    {id:"9",type:"word",content:"Greater Than"},{id:"9",type:"def",content:"大于"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-3', category: '25m-y8', title: 'Review of Numbers (3)', titleZh: '数的复习 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Hundred"},{id:"0",type:"def",content:"百"},
+    {id:"1",type:"word",content:"Hundredth"},{id:"1",type:"def",content:"百分位"},
+    {id:"2",type:"word",content:"Hundredths"},{id:"2",type:"def",content:"百分位"},
+    {id:"3",type:"word",content:"Improper Fraction"},{id:"3",type:"def",content:"假分数"},
+    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
+    {id:"5",type:"word",content:"Least Common Multiple (LCM)"},{id:"5",type:"def",content:"最小公倍数"},
+    {id:"6",type:"word",content:"Less Than"},{id:"6",type:"def",content:"小于"},
+    {id:"7",type:"word",content:"Magnitude"},{id:"7",type:"def",content:"大小/模"},
+    {id:"8",type:"word",content:"Mixed Number"},{id:"8",type:"def",content:"带分数"},
+    {id:"9",type:"word",content:"Multiplication"},{id:"9",type:"def",content:"乘法"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-4', category: '25m-y8', title: 'Review of Numbers (4)', titleZh: '数的复习 (4)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Nearest"},{id:"0",type:"def",content:"最接近的"},
+    {id:"1",type:"word",content:"Negative Number"},{id:"1",type:"def",content:"负数"},
+    {id:"2",type:"word",content:"Number Line"},{id:"2",type:"def",content:"数轴"},
+    {id:"3",type:"word",content:"Numerator"},{id:"3",type:"def",content:"分子"},
+    {id:"4",type:"word",content:"Opposite Number"},{id:"4",type:"def",content:"相反数"},
+    {id:"5",type:"word",content:"Origin"},{id:"5",type:"def",content:"原点"},
+    {id:"6",type:"word",content:"Positive Number"},{id:"6",type:"def",content:"正数"},
+    {id:"7",type:"word",content:"Power of 10"},{id:"7",type:"def",content:"10的幂"},
+    {id:"8",type:"word",content:"Product"},{id:"8",type:"def",content:"积"},
+    {id:"9",type:"word",content:"Proper Fraction"},{id:"9",type:"def",content:"真分数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-5', category: '25m-y8', title: 'Review of Numbers (5)', titleZh: '数的复习 (5)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Quotient"},{id:"0",type:"def",content:"商"},
+    {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
+    {id:"2",type:"word",content:"Rounding"},{id:"2",type:"def",content:"四舍五入"},
+    {id:"3",type:"word",content:"Significant Figure (sf)"},{id:"3",type:"def",content:"有效数字"},
+    {id:"4",type:"word",content:"Simplest Form"},{id:"4",type:"def",content:"最简分数"},
+    {id:"5",type:"word",content:"Subtraction"},{id:"5",type:"def",content:"减法"},
+    {id:"6",type:"word",content:"Tenth"},{id:"6",type:"def",content:"十分位"},
+    {id:"7",type:"word",content:"Tenths"},{id:"7",type:"def",content:"十分位"},
+    {id:"8",type:"word",content:"Thousand"},{id:"8",type:"def",content:"千"},
+    {id:"9",type:"word",content:"Thousandths"},{id:"9",type:"def",content:"千分位"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-review-of-numbers-6', category: '25m-y8', title: 'Review of Numbers (6)', titleZh: '数的复习 (6)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Truncation"},{id:"0",type:"def",content:"截断法"},
+    {id:"1",type:"word",content:"Whole Number"},{id:"1",type:"def",content:"整数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-1', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (1)', titleZh: '有理数、因数和质数 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Associative law"},{id:"0",type:"def",content:"结合律"},
+    {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
+    {id:"2",type:"word",content:"Commutative law"},{id:"2",type:"def",content:"交换律"},
+    {id:"3",type:"word",content:"Composite number"},{id:"3",type:"def",content:"合数"},
+    {id:"4",type:"word",content:"Cube root"},{id:"4",type:"def",content:"立方根"},
+    {id:"5",type:"word",content:"Decimal"},{id:"5",type:"def",content:"小数"},
+    {id:"6",type:"word",content:"Denominator"},{id:"6",type:"def",content:"分母"},
+    {id:"7",type:"word",content:"Distributive law"},{id:"7",type:"def",content:"分配律"},
+    {id:"8",type:"word",content:"Divisible"},{id:"8",type:"def",content:"可整除的"},
+    {id:"9",type:"word",content:"Exponentiation"},{id:"9",type:"def",content:"乘方"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-2', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (2)', titleZh: '有理数、因数和质数 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Factor"},{id:"0",type:"def",content:"因数"},
+    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
+    {id:"2",type:"word",content:"Greatest Common Factor (GCF) / Highest Common Factor (HCF)"},{id:"2",type:"def",content:"最大公因数"},
+    {id:"3",type:"word",content:"Index (Indices)"},{id:"3",type:"def",content:"指数"},
+    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
+    {id:"5",type:"word",content:"Irrational number"},{id:"5",type:"def",content:"无理数"},
+    {id:"6",type:"word",content:"Least Common Multiple (LCM)"},{id:"6",type:"def",content:"最小公倍数"},
+    {id:"7",type:"word",content:"Mixed operations"},{id:"7",type:"def",content:"混合运算"},
+    {id:"8",type:"word",content:"Multiple"},{id:"8",type:"def",content:"倍数"},
+    {id:"9",type:"word",content:"Negative number"},{id:"9",type:"def",content:"负数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-3', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (3)', titleZh: '有理数、因数和质数 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Number line"},{id:"0",type:"def",content:"数轴"},
+    {id:"1",type:"word",content:"Numerator"},{id:"1",type:"def",content:"分子"},
+    {id:"2",type:"word",content:"Prime factorization"},{id:"2",type:"def",content:"质因数分解"},
+    {id:"3",type:"word",content:"Prime number"},{id:"3",type:"def",content:"质数 (素数)"},
+    {id:"4",type:"word",content:"Rational number"},{id:"4",type:"def",content:"有理数"},
+    {id:"5",type:"word",content:"Real number"},{id:"5",type:"def",content:"实数"},
+    {id:"6",type:"word",content:"Root"},{id:"6",type:"def",content:"根"},
+    {id:"7",type:"word",content:"Sieve of Eratosthenes"},{id:"7",type:"def",content:"埃拉托色尼筛法"},
+    {id:"8",type:"word",content:"Square root"},{id:"8",type:"def",content:"平方根"}
+  ]
+},
 
 {
   board: '25m', slug: '25m-y8-algebraic-formula-1', category: '25m-y8', title: 'Algebraic Formula (1)', titleZh: '代数公式 (1)', timer: 70, comboBonus: 2,
@@ -1934,49 +2071,100 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-1', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (1)', titleZh: '坐标和绘制线性图表 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-inequalities-and-inequations-1', category: '25m-y8', title: 'Inequalities and Inequations (1)', titleZh: '不等式和不等式方程 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Cartesian coordinates"},{id:"0",type:"def",content:"笛卡尔坐标"},
-    {id:"1",type:"word",content:"Coordinate pair"},{id:"1",type:"def",content:"坐标对"},
-    {id:"2",type:"word",content:"Distance"},{id:"2",type:"def",content:"距离"},
-    {id:"3",type:"word",content:"Explicit form"},{id:"3",type:"def",content:"显式形式"},
-    {id:"4",type:"word",content:"Function"},{id:"4",type:"def",content:"函数"},
-    {id:"5",type:"word",content:"Gradient"},{id:"5",type:"def",content:"斜率"},
-    {id:"6",type:"word",content:"Horizontal"},{id:"6",type:"def",content:"水平的"},
-    {id:"7",type:"word",content:"Implicit form"},{id:"7",type:"def",content:"隐式形式"},
-    {id:"8",type:"word",content:"Intercept"},{id:"8",type:"def",content:"截距"},
-    {id:"9",type:"word",content:"Interpretation"},{id:"9",type:"def",content:"解释"}
+    {id:"0",type:"word",content:"Greater than"},{id:"0",type:"def",content:"大于"},
+    {id:"1",type:"word",content:"Greater than or equal to"},{id:"1",type:"def",content:"大于或等于"},
+    {id:"2",type:"word",content:"Inequality"},{id:"2",type:"def",content:"不等式"},
+    {id:"3",type:"word",content:"Inequation"},{id:"3",type:"def",content:"不等式方程"},
+    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
+    {id:"5",type:"word",content:"Less than"},{id:"5",type:"def",content:"小于"},
+    {id:"6",type:"word",content:"Less than or equal to"},{id:"6",type:"def",content:"小于或等于"},
+    {id:"7",type:"word",content:"Negative number"},{id:"7",type:"def",content:"负数"},
+    {id:"8",type:"word",content:"Number line"},{id:"8",type:"def",content:"数轴"},
+    {id:"9",type:"word",content:"Positive number"},{id:"9",type:"def",content:"正数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-2', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (2)', titleZh: '坐标和绘制线性图表 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-inequalities-and-inequations-2', category: '25m-y8', title: 'Inequalities and Inequations (2)', titleZh: '不等式和不等式方程 (2)', timer: 90, comboBonus: 3,
   vocabulary: [
-    {id:"0",type:"word",content:"Linear equation"},{id:"0",type:"def",content:"线性方程"},
-    {id:"1",type:"word",content:"Linear graph"},{id:"1",type:"def",content:"线性图表"},
-    {id:"2",type:"word",content:"Midpoint"},{id:"2",type:"def",content:"中点"},
-    {id:"3",type:"word",content:"Origin"},{id:"3",type:"def",content:"原点"},
-    {id:"4",type:"word",content:"Parallel lines"},{id:"4",type:"def",content:"平行线"},
-    {id:"5",type:"word",content:"Plot"},{id:"5",type:"def",content:"绘制"},
-    {id:"6",type:"word",content:"Point"},{id:"6",type:"def",content:"点"},
-    {id:"7",type:"word",content:"Quadrant"},{id:"7",type:"def",content:"象限"},
-    {id:"8",type:"word",content:"Real-life problem"},{id:"8",type:"def",content:"实际问题"},
-    {id:"9",type:"word",content:"Reflection"},{id:"9",type:"def",content:"反射"}
+    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"范围"},
+    {id:"1",type:"word",content:"Solution set"},{id:"1",type:"def",content:"解集"},
+    {id:"2",type:"word",content:"Solve"},{id:"2",type:"def",content:"求解"},
+    {id:"3",type:"word",content:"Symbol"},{id:"3",type:"def",content:"符号"},
+    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-3', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (3)', titleZh: '坐标和绘制线性图表 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-1', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (1)', titleZh: '勾股定理简介 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Solution"},{id:"0",type:"def",content:"解"},
-    {id:"1",type:"word",content:"Straight line"},{id:"1",type:"def",content:"直线"},
-    {id:"2",type:"word",content:"Table of values"},{id:"2",type:"def",content:"数值表"},
-    {id:"3",type:"word",content:"Translation"},{id:"3",type:"def",content:"平移"},
-    {id:"4",type:"word",content:"Vertical"},{id:"4",type:"def",content:"垂直的"},
-    {id:"5",type:"word",content:"x-axis"},{id:"5",type:"def",content:"x轴"},
-    {id:"6",type:"word",content:"x-intercept"},{id:"6",type:"def",content:"x截距"},
-    {id:"7",type:"word",content:"y-axis"},{id:"7",type:"def",content:"y轴"},
-    {id:"8",type:"word",content:"y-intercept"},{id:"8",type:"def",content:"y截距"}
+    {id:"0",type:"word",content:"Ancient China"},{id:"0",type:"def",content:"中国古代"},
+    {id:"1",type:"word",content:"Ancient Greece"},{id:"1",type:"def",content:"古希腊"},
+    {id:"2",type:"word",content:"Area"},{id:"2",type:"def",content:"面积"},
+    {id:"3",type:"word",content:"Diagonal"},{id:"3",type:"def",content:"对角线"},
+    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
+    {id:"5",type:"word",content:"Leg (of a right triangle)"},{id:"5",type:"def",content:"直角边"},
+    {id:"6",type:"word",content:"Perimeter"},{id:"6",type:"def",content:"周长"},
+    {id:"7",type:"word",content:"Proof"},{id:"7",type:"def",content:"证明"},
+    {id:"8",type:"word",content:"Pythagoras\' Theorem"},{id:"8",type:"def",content:"勾股定理"},
+    {id:"9",type:"word",content:"Pythagorean triple"},{id:"9",type:"def",content:"勾股数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-2', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (2)', titleZh: '勾股定理简介 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
+    {id:"1",type:"word",content:"Square"},{id:"1",type:"def",content:"平方"},
+    {id:"2",type:"word",content:"Square root"},{id:"2",type:"def",content:"平方根"},
+    {id:"3",type:"word",content:"Theorem"},{id:"3",type:"def",content:"定理"},
+    {id:"4",type:"word",content:"Two-dimensional"},{id:"4",type:"def",content:"二维"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-1', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (1)', titleZh: '相交线和平行线 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Adjacent angles"},{id:"0",type:"def",content:"邻角"},
+    {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
+    {id:"2",type:"word",content:"Angle"},{id:"2",type:"def",content:"角"},
+    {id:"3",type:"word",content:"Angle rules"},{id:"3",type:"def",content:"角度规则"},
+    {id:"4",type:"word",content:"Co-interior angles"},{id:"4",type:"def",content:"同旁内角"},
+    {id:"5",type:"word",content:"Congruent"},{id:"5",type:"def",content:"全等"},
+    {id:"6",type:"word",content:"Corresponding angles"},{id:"6",type:"def",content:"同位角"},
+    {id:"7",type:"word",content:"Degree"},{id:"7",type:"def",content:"度"},
+    {id:"8",type:"word",content:"Diagram"},{id:"8",type:"def",content:"图表"},
+    {id:"9",type:"word",content:"Exterior angles"},{id:"9",type:"def",content:"外角"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-2', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (2)', titleZh: '相交线和平行线 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Interior angles"},{id:"0",type:"def",content:"内角"},
+    {id:"1",type:"word",content:"Intersecting lines"},{id:"1",type:"def",content:"相交线"},
+    {id:"2",type:"word",content:"Parallel lines"},{id:"2",type:"def",content:"平行线"},
+    {id:"3",type:"word",content:"Perpendicular lines"},{id:"3",type:"def",content:"垂线"},
+    {id:"4",type:"word",content:"Point"},{id:"4",type:"def",content:"点"},
+    {id:"5",type:"word",content:"Proof"},{id:"5",type:"def",content:"证明"},
+    {id:"6",type:"word",content:"Quadrilateral"},{id:"6",type:"def",content:"四边形"},
+    {id:"7",type:"word",content:"Reasoning"},{id:"7",type:"def",content:"推理"},
+    {id:"8",type:"word",content:"Straight line"},{id:"8",type:"def",content:"直线"},
+    {id:"9",type:"word",content:"Sum"},{id:"9",type:"def",content:"和"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-3', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (3)', titleZh: '相交线和平行线 (3)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Supplementary"},{id:"0",type:"def",content:"互补的"},
+    {id:"1",type:"word",content:"Supplementary angles"},{id:"1",type:"def",content:"补角"},
+    {id:"2",type:"word",content:"Transversal"},{id:"2",type:"def",content:"截线"},
+    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"},
+    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"},
+    {id:"5",type:"word",content:"Vertically opposite angles"},{id:"5",type:"def",content:"对顶角"}
   ]
 },
 
@@ -2022,6 +2210,53 @@ var LEVELS = [
     {id:"4",type:"word",content:"Term"},{id:"4",type:"def",content:"项"},
     {id:"5",type:"word",content:"Unknown"},{id:"5",type:"def",content:"未知数"},
     {id:"6",type:"word",content:"Variable"},{id:"6",type:"def",content:"变量"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-1', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (1)', titleZh: '坐标和绘制线性图表 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Cartesian coordinates"},{id:"0",type:"def",content:"笛卡尔坐标"},
+    {id:"1",type:"word",content:"Coordinate pair"},{id:"1",type:"def",content:"坐标对"},
+    {id:"2",type:"word",content:"Distance"},{id:"2",type:"def",content:"距离"},
+    {id:"3",type:"word",content:"Explicit form"},{id:"3",type:"def",content:"显式形式"},
+    {id:"4",type:"word",content:"Function"},{id:"4",type:"def",content:"函数"},
+    {id:"5",type:"word",content:"Gradient"},{id:"5",type:"def",content:"斜率"},
+    {id:"6",type:"word",content:"Horizontal"},{id:"6",type:"def",content:"水平的"},
+    {id:"7",type:"word",content:"Implicit form"},{id:"7",type:"def",content:"隐式形式"},
+    {id:"8",type:"word",content:"Intercept"},{id:"8",type:"def",content:"截距"},
+    {id:"9",type:"word",content:"Interpretation"},{id:"9",type:"def",content:"解释"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-2', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (2)', titleZh: '坐标和绘制线性图表 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Linear equation"},{id:"0",type:"def",content:"线性方程"},
+    {id:"1",type:"word",content:"Linear graph"},{id:"1",type:"def",content:"线性图表"},
+    {id:"2",type:"word",content:"Midpoint"},{id:"2",type:"def",content:"中点"},
+    {id:"3",type:"word",content:"Origin"},{id:"3",type:"def",content:"原点"},
+    {id:"4",type:"word",content:"Parallel lines"},{id:"4",type:"def",content:"平行线"},
+    {id:"5",type:"word",content:"Plot"},{id:"5",type:"def",content:"绘制"},
+    {id:"6",type:"word",content:"Point"},{id:"6",type:"def",content:"点"},
+    {id:"7",type:"word",content:"Quadrant"},{id:"7",type:"def",content:"象限"},
+    {id:"8",type:"word",content:"Real-life problem"},{id:"8",type:"def",content:"实际问题"},
+    {id:"9",type:"word",content:"Reflection"},{id:"9",type:"def",content:"反射"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y8-co-ordinates-and-plotting-line-3', category: '25m-y8', title: 'Co-ordinates and Plotting Linear Graphs (3)', titleZh: '坐标和绘制线性图表 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Solution"},{id:"0",type:"def",content:"解"},
+    {id:"1",type:"word",content:"Straight line"},{id:"1",type:"def",content:"直线"},
+    {id:"2",type:"word",content:"Table of values"},{id:"2",type:"def",content:"数值表"},
+    {id:"3",type:"word",content:"Translation"},{id:"3",type:"def",content:"平移"},
+    {id:"4",type:"word",content:"Vertical"},{id:"4",type:"def",content:"垂直的"},
+    {id:"5",type:"word",content:"x-axis"},{id:"5",type:"def",content:"x轴"},
+    {id:"6",type:"word",content:"x-intercept"},{id:"6",type:"def",content:"x截距"},
+    {id:"7",type:"word",content:"y-axis"},{id:"7",type:"def",content:"y轴"},
+    {id:"8",type:"word",content:"y-intercept"},{id:"8",type:"def",content:"y截距"}
   ]
 },
 
@@ -2073,338 +2308,184 @@ var LEVELS = [
   ]
 },
 
-{
-  board: '25m', slug: '25m-y8-inequalities-and-inequations-1', category: '25m-y8', title: 'Inequalities and Inequations (1)', titleZh: '不等式和不等式方程 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Greater than"},{id:"0",type:"def",content:"大于"},
-    {id:"1",type:"word",content:"Greater than or equal to"},{id:"1",type:"def",content:"大于或等于"},
-    {id:"2",type:"word",content:"Inequality"},{id:"2",type:"def",content:"不等式"},
-    {id:"3",type:"word",content:"Inequation"},{id:"3",type:"def",content:"不等式方程"},
-    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
-    {id:"5",type:"word",content:"Less than"},{id:"5",type:"def",content:"小于"},
-    {id:"6",type:"word",content:"Less than or equal to"},{id:"6",type:"def",content:"小于或等于"},
-    {id:"7",type:"word",content:"Negative number"},{id:"7",type:"def",content:"负数"},
-    {id:"8",type:"word",content:"Number line"},{id:"8",type:"def",content:"数轴"},
-    {id:"9",type:"word",content:"Positive number"},{id:"9",type:"def",content:"正数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-inequalities-and-inequations-2', category: '25m-y8', title: 'Inequalities and Inequations (2)', titleZh: '不等式和不等式方程 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"范围"},
-    {id:"1",type:"word",content:"Solution set"},{id:"1",type:"def",content:"解集"},
-    {id:"2",type:"word",content:"Solve"},{id:"2",type:"def",content:"求解"},
-    {id:"3",type:"word",content:"Symbol"},{id:"3",type:"def",content:"符号"},
-    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-1', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (1)', titleZh: '相交线和平行线 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Adjacent angles"},{id:"0",type:"def",content:"邻角"},
-    {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
-    {id:"2",type:"word",content:"Angle"},{id:"2",type:"def",content:"角"},
-    {id:"3",type:"word",content:"Angle rules"},{id:"3",type:"def",content:"角度规则"},
-    {id:"4",type:"word",content:"Co-interior angles"},{id:"4",type:"def",content:"同旁内角"},
-    {id:"5",type:"word",content:"Congruent"},{id:"5",type:"def",content:"全等"},
-    {id:"6",type:"word",content:"Corresponding angles"},{id:"6",type:"def",content:"同位角"},
-    {id:"7",type:"word",content:"Degree"},{id:"7",type:"def",content:"度"},
-    {id:"8",type:"word",content:"Diagram"},{id:"8",type:"def",content:"图表"},
-    {id:"9",type:"word",content:"Exterior angles"},{id:"9",type:"def",content:"外角"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-2', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (2)', titleZh: '相交线和平行线 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Interior angles"},{id:"0",type:"def",content:"内角"},
-    {id:"1",type:"word",content:"Intersecting lines"},{id:"1",type:"def",content:"相交线"},
-    {id:"2",type:"word",content:"Parallel lines"},{id:"2",type:"def",content:"平行线"},
-    {id:"3",type:"word",content:"Perpendicular lines"},{id:"3",type:"def",content:"垂线"},
-    {id:"4",type:"word",content:"Point"},{id:"4",type:"def",content:"点"},
-    {id:"5",type:"word",content:"Proof"},{id:"5",type:"def",content:"证明"},
-    {id:"6",type:"word",content:"Quadrilateral"},{id:"6",type:"def",content:"四边形"},
-    {id:"7",type:"word",content:"Reasoning"},{id:"7",type:"def",content:"推理"},
-    {id:"8",type:"word",content:"Straight line"},{id:"8",type:"def",content:"直线"},
-    {id:"9",type:"word",content:"Sum"},{id:"9",type:"def",content:"和"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-intersecting-lines-and-paralle-3', category: '25m-y8', title: 'Intersecting Lines and Parallel Lines (3)', titleZh: '相交线和平行线 (3)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Supplementary"},{id:"0",type:"def",content:"互补的"},
-    {id:"1",type:"word",content:"Supplementary angles"},{id:"1",type:"def",content:"补角"},
-    {id:"2",type:"word",content:"Transversal"},{id:"2",type:"def",content:"截线"},
-    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"},
-    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"},
-    {id:"5",type:"word",content:"Vertically opposite angles"},{id:"5",type:"def",content:"对顶角"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-1', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (1)', titleZh: '勾股定理简介 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Ancient China"},{id:"0",type:"def",content:"中国古代"},
-    {id:"1",type:"word",content:"Ancient Greece"},{id:"1",type:"def",content:"古希腊"},
-    {id:"2",type:"word",content:"Area"},{id:"2",type:"def",content:"面积"},
-    {id:"3",type:"word",content:"Diagonal"},{id:"3",type:"def",content:"对角线"},
-    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
-    {id:"5",type:"word",content:"Leg (of a right triangle)"},{id:"5",type:"def",content:"直角边"},
-    {id:"6",type:"word",content:"Perimeter"},{id:"6",type:"def",content:"周长"},
-    {id:"7",type:"word",content:"Proof"},{id:"7",type:"def",content:"证明"},
-    {id:"8",type:"word",content:"Pythagoras\' Theorem"},{id:"8",type:"def",content:"勾股定理"},
-    {id:"9",type:"word",content:"Pythagorean triple"},{id:"9",type:"def",content:"勾股数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-introduction-to-pythagoras-the-2', category: '25m-y8', title: 'Introduction to Pythagoras\' Theorem (2)', titleZh: '勾股定理简介 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
-    {id:"1",type:"word",content:"Square"},{id:"1",type:"def",content:"平方"},
-    {id:"2",type:"word",content:"Square root"},{id:"2",type:"def",content:"平方根"},
-    {id:"3",type:"word",content:"Theorem"},{id:"3",type:"def",content:"定理"},
-    {id:"4",type:"word",content:"Two-dimensional"},{id:"4",type:"def",content:"二维"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-1', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (1)', titleZh: '有理数、因数和质数 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Associative law"},{id:"0",type:"def",content:"结合律"},
-    {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
-    {id:"2",type:"word",content:"Commutative law"},{id:"2",type:"def",content:"交换律"},
-    {id:"3",type:"word",content:"Composite number"},{id:"3",type:"def",content:"合数"},
-    {id:"4",type:"word",content:"Cube root"},{id:"4",type:"def",content:"立方根"},
-    {id:"5",type:"word",content:"Decimal"},{id:"5",type:"def",content:"小数"},
-    {id:"6",type:"word",content:"Denominator"},{id:"6",type:"def",content:"分母"},
-    {id:"7",type:"word",content:"Distributive law"},{id:"7",type:"def",content:"分配律"},
-    {id:"8",type:"word",content:"Divisible"},{id:"8",type:"def",content:"可整除的"},
-    {id:"9",type:"word",content:"Exponentiation"},{id:"9",type:"def",content:"乘方"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-2', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (2)', titleZh: '有理数、因数和质数 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Factor"},{id:"0",type:"def",content:"因数"},
-    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
-    {id:"2",type:"word",content:"Greatest Common Factor (GCF) / Highest Common Factor (HCF)"},{id:"2",type:"def",content:"最大公因数"},
-    {id:"3",type:"word",content:"Index (Indices)"},{id:"3",type:"def",content:"指数"},
-    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
-    {id:"5",type:"word",content:"Irrational number"},{id:"5",type:"def",content:"无理数"},
-    {id:"6",type:"word",content:"Least Common Multiple (LCM)"},{id:"6",type:"def",content:"最小公倍数"},
-    {id:"7",type:"word",content:"Mixed operations"},{id:"7",type:"def",content:"混合运算"},
-    {id:"8",type:"word",content:"Multiple"},{id:"8",type:"def",content:"倍数"},
-    {id:"9",type:"word",content:"Negative number"},{id:"9",type:"def",content:"负数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-rational-numbers-factors-and-p-3', category: '25m-y8', title: 'Rational Numbers, Factors and Primes (3)', titleZh: '有理数、因数和质数 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Number line"},{id:"0",type:"def",content:"数轴"},
-    {id:"1",type:"word",content:"Numerator"},{id:"1",type:"def",content:"分子"},
-    {id:"2",type:"word",content:"Prime factorization"},{id:"2",type:"def",content:"质因数分解"},
-    {id:"3",type:"word",content:"Prime number"},{id:"3",type:"def",content:"质数 (素数)"},
-    {id:"4",type:"word",content:"Rational number"},{id:"4",type:"def",content:"有理数"},
-    {id:"5",type:"word",content:"Real number"},{id:"5",type:"def",content:"实数"},
-    {id:"6",type:"word",content:"Root"},{id:"6",type:"def",content:"根"},
-    {id:"7",type:"word",content:"Sieve of Eratosthenes"},{id:"7",type:"def",content:"埃拉托色尼筛法"},
-    {id:"8",type:"word",content:"Square root"},{id:"8",type:"def",content:"平方根"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-1', category: '25m-y8', title: 'Review of Numbers (1)', titleZh: '数的复习 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Absolute Value"},{id:"0",type:"def",content:"绝对值"},
-    {id:"1",type:"word",content:"Addition"},{id:"1",type:"def",content:"加法"},
-    {id:"2",type:"word",content:"Approximation"},{id:"2",type:"def",content:"近似值"},
-    {id:"3",type:"word",content:"Ascending Order"},{id:"3",type:"def",content:"升序"},
-    {id:"4",type:"word",content:"Cancel"},{id:"4",type:"def",content:"约分"},
-    {id:"5",type:"word",content:"Common Denominator"},{id:"5",type:"def",content:"公分母"},
-    {id:"6",type:"word",content:"Common Factor"},{id:"6",type:"def",content:"公因数"},
-    {id:"7",type:"word",content:"Decimal"},{id:"7",type:"def",content:"小数"},
-    {id:"8",type:"word",content:"Decimal Place"},{id:"8",type:"def",content:"小数位"},
-    {id:"9",type:"word",content:"Decimal Place (dp)"},{id:"9",type:"def",content:"小数位"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-2', category: '25m-y8', title: 'Review of Numbers (2)', titleZh: '数的复习 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Decimal Point"},{id:"0",type:"def",content:"小数点"},
-    {id:"1",type:"word",content:"Denominator"},{id:"1",type:"def",content:"分母"},
-    {id:"2",type:"word",content:"Descending Order"},{id:"2",type:"def",content:"降序"},
-    {id:"3",type:"word",content:"Directed Number"},{id:"3",type:"def",content:"有方向的数"},
-    {id:"4",type:"word",content:"Division"},{id:"4",type:"def",content:"除法"},
-    {id:"5",type:"word",content:"Equivalent Calculation"},{id:"5",type:"def",content:"等效计算"},
-    {id:"6",type:"word",content:"Equivalent Fraction"},{id:"6",type:"def",content:"等价分数"},
-    {id:"7",type:"word",content:"Estimate"},{id:"7",type:"def",content:"估计"},
-    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
-    {id:"9",type:"word",content:"Greater Than"},{id:"9",type:"def",content:"大于"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-3', category: '25m-y8', title: 'Review of Numbers (3)', titleZh: '数的复习 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Hundred"},{id:"0",type:"def",content:"百"},
-    {id:"1",type:"word",content:"Hundredth"},{id:"1",type:"def",content:"百分位"},
-    {id:"2",type:"word",content:"Hundredths"},{id:"2",type:"def",content:"百分位"},
-    {id:"3",type:"word",content:"Improper Fraction"},{id:"3",type:"def",content:"假分数"},
-    {id:"4",type:"word",content:"Integer"},{id:"4",type:"def",content:"整数"},
-    {id:"5",type:"word",content:"Least Common Multiple (LCM)"},{id:"5",type:"def",content:"最小公倍数"},
-    {id:"6",type:"word",content:"Less Than"},{id:"6",type:"def",content:"小于"},
-    {id:"7",type:"word",content:"Magnitude"},{id:"7",type:"def",content:"大小/模"},
-    {id:"8",type:"word",content:"Mixed Number"},{id:"8",type:"def",content:"带分数"},
-    {id:"9",type:"word",content:"Multiplication"},{id:"9",type:"def",content:"乘法"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-4', category: '25m-y8', title: 'Review of Numbers (4)', titleZh: '数的复习 (4)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Nearest"},{id:"0",type:"def",content:"最接近的"},
-    {id:"1",type:"word",content:"Negative Number"},{id:"1",type:"def",content:"负数"},
-    {id:"2",type:"word",content:"Number Line"},{id:"2",type:"def",content:"数轴"},
-    {id:"3",type:"word",content:"Numerator"},{id:"3",type:"def",content:"分子"},
-    {id:"4",type:"word",content:"Opposite Number"},{id:"4",type:"def",content:"相反数"},
-    {id:"5",type:"word",content:"Origin"},{id:"5",type:"def",content:"原点"},
-    {id:"6",type:"word",content:"Positive Number"},{id:"6",type:"def",content:"正数"},
-    {id:"7",type:"word",content:"Power of 10"},{id:"7",type:"def",content:"10的幂"},
-    {id:"8",type:"word",content:"Product"},{id:"8",type:"def",content:"积"},
-    {id:"9",type:"word",content:"Proper Fraction"},{id:"9",type:"def",content:"真分数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-5', category: '25m-y8', title: 'Review of Numbers (5)', titleZh: '数的复习 (5)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Quotient"},{id:"0",type:"def",content:"商"},
-    {id:"1",type:"word",content:"Reciprocal"},{id:"1",type:"def",content:"倒数"},
-    {id:"2",type:"word",content:"Rounding"},{id:"2",type:"def",content:"四舍五入"},
-    {id:"3",type:"word",content:"Significant Figure (sf)"},{id:"3",type:"def",content:"有效数字"},
-    {id:"4",type:"word",content:"Simplest Form"},{id:"4",type:"def",content:"最简分数"},
-    {id:"5",type:"word",content:"Subtraction"},{id:"5",type:"def",content:"减法"},
-    {id:"6",type:"word",content:"Tenth"},{id:"6",type:"def",content:"十分位"},
-    {id:"7",type:"word",content:"Tenths"},{id:"7",type:"def",content:"十分位"},
-    {id:"8",type:"word",content:"Thousand"},{id:"8",type:"def",content:"千"},
-    {id:"9",type:"word",content:"Thousandths"},{id:"9",type:"def",content:"千分位"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y8-review-of-numbers-6', category: '25m-y8', title: 'Review of Numbers (6)', titleZh: '数的复习 (6)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Truncation"},{id:"0",type:"def",content:"截断法"},
-    {id:"1",type:"word",content:"Whole Number"},{id:"1",type:"def",content:"整数"}
-  ]
-},
-
 
 /* ═══ Year 9 (49 levels, 424 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-1', category: '25m-y9', title: '2D Shape (1)', titleZh: '二维图形 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-1', category: '25m-y9', title: 'Working with Irrational Numbers (1)', titleZh: '理数的运算 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
-    {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
-    {id:"2",type:"word",content:"Compound Shape"},{id:"2",type:"def",content:"复合图形"},
-    {id:"3",type:"word",content:"Congruent"},{id:"3",type:"def",content:"全等"},
-    {id:"4",type:"word",content:"Diagonal"},{id:"4",type:"def",content:"对角线"},
-    {id:"5",type:"word",content:"Formula"},{id:"5",type:"def",content:"公式"},
-    {id:"6",type:"word",content:"Gap"},{id:"6",type:"def",content:"间隙"},
-    {id:"7",type:"word",content:"Geometric Pattern"},{id:"7",type:"def",content:"几何图案"},
-    {id:"8",type:"word",content:"Interior Angle"},{id:"8",type:"def",content:"内角"},
-    {id:"9",type:"word",content:"Irregular Polygon"},{id:"9",type:"def",content:"不规则多边形"}
+    {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
+    {id:"1",type:"word",content:"Approximation"},{id:"1",type:"def",content:"近似值"},
+    {id:"2",type:"word",content:"Arithmetic square root"},{id:"2",type:"def",content:"算术平方根"},
+    {id:"3",type:"word",content:"Calculator"},{id:"3",type:"def",content:"计算器"},
+    {id:"4",type:"word",content:"Conjugate surds"},{id:"4",type:"def",content:"共轭根式"},
+    {id:"5",type:"word",content:"Consecutive integers"},{id:"5",type:"def",content:"连续整数"},
+    {id:"6",type:"word",content:"Cube root"},{id:"6",type:"def",content:"立方根"},
+    {id:"7",type:"word",content:"Decimal"},{id:"7",type:"def",content:"小数"},
+    {id:"8",type:"word",content:"Decimal places"},{id:"8",type:"def",content:"小数位数"},
+    {id:"9",type:"word",content:"Denominator"},{id:"9",type:"def",content:"分母"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-2', category: '25m-y9', title: '2D Shape (2)', titleZh: '二维图形 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-2', category: '25m-y9', title: 'Working with Irrational Numbers (2)', titleZh: '理数的运算 (2)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Kite"},{id:"0",type:"def",content:"风筝形"},
-    {id:"1",type:"word",content:"Line of Symmetry"},{id:"1",type:"def",content:"对称轴"},
-    {id:"2",type:"word",content:"Median Line"},{id:"2",type:"def",content:"中位线"},
-    {id:"3",type:"word",content:"Minimal Distance"},{id:"3",type:"def",content:"最短距离"},
-    {id:"4",type:"word",content:"Order of Rotational Symmetry"},{id:"4",type:"def",content:"旋转对称阶数"},
-    {id:"5",type:"word",content:"Overlap"},{id:"5",type:"def",content:"重叠"},
-    {id:"6",type:"word",content:"Parallel"},{id:"6",type:"def",content:"平行"},
-    {id:"7",type:"word",content:"Parallel Lines"},{id:"7",type:"def",content:"平行线"},
-    {id:"8",type:"word",content:"Parallelogram"},{id:"8",type:"def",content:"平行四边形"},
-    {id:"9",type:"word",content:"Pattern"},{id:"9",type:"def",content:"图案"}
+    {id:"0",type:"word",content:"Estimation"},{id:"0",type:"def",content:"估算"},
+    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
+    {id:"2",type:"word",content:"Index"},{id:"2",type:"def",content:"根指数"},
+    {id:"3",type:"word",content:"Integer"},{id:"3",type:"def",content:"整数"},
+    {id:"4",type:"word",content:"Inverse operation"},{id:"4",type:"def",content:"逆运算"},
+    {id:"5",type:"word",content:"Irrational number"},{id:"5",type:"def",content:"无理数"},
+    {id:"6",type:"word",content:"Irrational numbers"},{id:"6",type:"def",content:"无理数"},
+    {id:"7",type:"word",content:"Like surds"},{id:"7",type:"def",content:"同类二次根式"},
+    {id:"8",type:"word",content:"Lower bound"},{id:"8",type:"def",content:"下界"},
+    {id:"9",type:"word",content:"Natural numbers"},{id:"9",type:"def",content:"自然数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-3', category: '25m-y9', title: '2D Shape (3)', titleZh: '二维图形 (3)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-3', category: '25m-y9', title: 'Working with Irrational Numbers (3)', titleZh: '理数的运算 (3)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Perimeter"},{id:"0",type:"def",content:"周长"},
-    {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂直"},
-    {id:"2",type:"word",content:"Perpendicular Bisector"},{id:"2",type:"def",content:"垂直平分线"},
-    {id:"3",type:"word",content:"Property"},{id:"3",type:"def",content:"性质"},
-    {id:"4",type:"word",content:"Quadrilateral"},{id:"4",type:"def",content:"四边形"},
-    {id:"5",type:"word",content:"Rectangle"},{id:"5",type:"def",content:"长方形"},
-    {id:"6",type:"word",content:"Reflection"},{id:"6",type:"def",content:"反射/翻转"},
-    {id:"7",type:"word",content:"Regular Polygon"},{id:"7",type:"def",content:"正多边形"},
-    {id:"8",type:"word",content:"Repeating Pattern"},{id:"8",type:"def",content:"重复图案"},
-    {id:"9",type:"word",content:"Rhombus"},{id:"9",type:"def",content:"菱形"}
+    {id:"0",type:"word",content:"Negative numbers"},{id:"0",type:"def",content:"负数"},
+    {id:"1",type:"word",content:"Negative square root"},{id:"1",type:"def",content:"负平方根"},
+    {id:"2",type:"word",content:"Non-terminating non-repeating decimal"},{id:"2",type:"def",content:"无限不循环小数"},
+    {id:"3",type:"word",content:"Non-terminating repeating decimal"},{id:"3",type:"def",content:"无限循环小数"},
+    {id:"4",type:"word",content:"Number line"},{id:"4",type:"def",content:"数轴"},
+    {id:"5",type:"word",content:"Operation"},{id:"5",type:"def",content:"运算"},
+    {id:"6",type:"word",content:"Opposite number"},{id:"6",type:"def",content:"相反数"},
+    {id:"7",type:"word",content:"Perfect cube"},{id:"7",type:"def",content:"完全立方数"},
+    {id:"8",type:"word",content:"Perfect square"},{id:"8",type:"def",content:"完全平方数"},
+    {id:"9",type:"word",content:"Positive numbers"},{id:"9",type:"def",content:"正数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-4', category: '25m-y9', title: '2D Shape (4)', titleZh: '二维图形 (4)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-4', category: '25m-y9', title: 'Working with Irrational Numbers (4)', titleZh: '理数的运算 (4)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Rotation"},{id:"0",type:"def",content:"旋转"},
-    {id:"1",type:"word",content:"Rotational Symmetry"},{id:"1",type:"def",content:"旋转对称"},
-    {id:"2",type:"word",content:"Side"},{id:"2",type:"def",content:"边"},
-    {id:"3",type:"word",content:"Similar"},{id:"3",type:"def",content:"相似"},
-    {id:"4",type:"word",content:"Square"},{id:"4",type:"def",content:"正方形"},
-    {id:"5",type:"word",content:"Symmetry"},{id:"5",type:"def",content:"对称"},
-    {id:"6",type:"word",content:"Tessellation"},{id:"6",type:"def",content:"镶嵌"},
-    {id:"7",type:"word",content:"Tiling"},{id:"7",type:"def",content:"铺设"},
-    {id:"8",type:"word",content:"Transformation"},{id:"8",type:"def",content:"变换"},
-    {id:"9",type:"word",content:"Translation"},{id:"9",type:"def",content:"平移"}
+    {id:"0",type:"word",content:"Positive square root"},{id:"0",type:"def",content:"正平方根"},
+    {id:"1",type:"word",content:"Power"},{id:"1",type:"def",content:"幂"},
+    {id:"2",type:"word",content:"Precision"},{id:"2",type:"def",content:"精确度"},
+    {id:"3",type:"word",content:"Product property of surds"},{id:"3",type:"def",content:"根式的乘法性质"},
+    {id:"4",type:"word",content:"Quadratic Surd"},{id:"4",type:"def",content:"二次根式"},
+    {id:"5",type:"word",content:"Quotient property of surds"},{id:"5",type:"def",content:"根式的除法性质"},
+    {id:"6",type:"word",content:"Radical sign"},{id:"6",type:"def",content:"根号"},
+    {id:"7",type:"word",content:"Radicand"},{id:"7",type:"def",content:"被开方数"},
+    {id:"8",type:"word",content:"Range"},{id:"8",type:"def",content:"范围"},
+    {id:"9",type:"word",content:"Rational number"},{id:"9",type:"def",content:"有理数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-2d-shape-5', category: '25m-y9', title: '2D Shape (5)', titleZh: '二维图形 (5)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-5', category: '25m-y9', title: 'Working with Irrational Numbers (5)', titleZh: '理数的运算 (5)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Trapezium"},{id:"0",type:"def",content:"梯形"},
-    {id:"1",type:"word",content:"Vertex"},{id:"1",type:"def",content:"顶点"}
+    {id:"0",type:"word",content:"Rational numbers"},{id:"0",type:"def",content:"有理数"},
+    {id:"1",type:"word",content:"Rationalize the denominator"},{id:"1",type:"def",content:"分母有理化"},
+    {id:"2",type:"word",content:"Real numbers"},{id:"2",type:"def",content:"实数"},
+    {id:"3",type:"word",content:"Root notation"},{id:"3",type:"def",content:"根号表示法"},
+    {id:"4",type:"word",content:"Rounding"},{id:"4",type:"def",content:"四舍五入"},
+    {id:"5",type:"word",content:"Simplest surd form"},{id:"5",type:"def",content:"最简二次根式"},
+    {id:"6",type:"word",content:"Simplification"},{id:"6",type:"def",content:"化简"},
+    {id:"7",type:"word",content:"Square root"},{id:"7",type:"def",content:"平方根"},
+    {id:"8",type:"word",content:"Square root of a product"},{id:"8",type:"def",content:"积的平方根"},
+    {id:"9",type:"word",content:"Square root of a quotient"},{id:"9",type:"def",content:"商的平方根"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-fractions-1', category: '25m-y9', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-working-with-irrational-number-6', category: '25m-y9', title: 'Working with Irrational Numbers (6)', titleZh: '理数的运算 (6)', timer: 90, comboBonus: 3,
   vocabulary: [
-    {id:"0",type:"word",content:"Algebraic Fraction"},{id:"0",type:"def",content:"代数分数"},
-    {id:"1",type:"word",content:"Common Factor"},{id:"1",type:"def",content:"公因数"},
-    {id:"2",type:"word",content:"Denominator"},{id:"2",type:"def",content:"分母"},
-    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
-    {id:"4",type:"word",content:"Expression"},{id:"4",type:"def",content:"表达式"},
-    {id:"5",type:"word",content:"Factorise"},{id:"5",type:"def",content:"因式分解"},
-    {id:"6",type:"word",content:"Formula"},{id:"6",type:"def",content:"公式"},
-    {id:"7",type:"word",content:"Linear Equation"},{id:"7",type:"def",content:"线性方程"},
-    {id:"8",type:"word",content:"Numerator"},{id:"8",type:"def",content:"分子"},
-    {id:"9",type:"word",content:"Quadratic Expression"},{id:"9",type:"def",content:"二次表达式"}
+    {id:"0",type:"word",content:"Terminating decimal"},{id:"0",type:"def",content:"有限小数"},
+    {id:"1",type:"word",content:"Unlike surds"},{id:"1",type:"def",content:"非同类二次根式"},
+    {id:"2",type:"word",content:"Upper bound"},{id:"2",type:"def",content:"上界"},
+    {id:"3",type:"word",content:"Whole numbers"},{id:"3",type:"def",content:"非负整数"},
+    {id:"4",type:"word",content:"Zero"},{id:"4",type:"def",content:"零"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-algebraic-fractions-2', category: '25m-y9', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-working-with-expressions-1', category: '25m-y9', title: 'Working with Expressions (1)', titleZh: '表达式的运算 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Rational Expression"},{id:"0",type:"def",content:"有理表达式"},
-    {id:"1",type:"word",content:"Rearrange"},{id:"1",type:"def",content:"重排"},
+    {id:"0",type:"word",content:"Algebraic expression"},{id:"0",type:"def",content:"代数表达式"},
+    {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
+    {id:"2",type:"word",content:"Binomial"},{id:"2",type:"def",content:"二项式"},
+    {id:"3",type:"word",content:"Bracket"},{id:"3",type:"def",content:"括号"},
+    {id:"4",type:"word",content:"Calculation"},{id:"4",type:"def",content:"计算"},
+    {id:"5",type:"word",content:"Coefficient"},{id:"5",type:"def",content:"系数"},
+    {id:"6",type:"word",content:"Common factor"},{id:"6",type:"def",content:"公因数"},
+    {id:"7",type:"word",content:"Constant"},{id:"7",type:"def",content:"常数"},
+    {id:"8",type:"word",content:"Convert"},{id:"8",type:"def",content:"转换"},
+    {id:"9",type:"word",content:"Decimal point"},{id:"9",type:"def",content:"小数点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-working-with-expressions-2', category: '25m-y9', title: 'Working with Expressions (2)', titleZh: '表达式的运算 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Difference of squares"},{id:"0",type:"def",content:"平方差"},
+    {id:"1",type:"word",content:"Distributive law"},{id:"1",type:"def",content:"分配律"},
+    {id:"2",type:"word",content:"Evaluate"},{id:"2",type:"def",content:"求值"},
+    {id:"3",type:"word",content:"Expand"},{id:"3",type:"def",content:"展开"},
+    {id:"4",type:"word",content:"Exponent"},{id:"4",type:"def",content:"指数"},
+    {id:"5",type:"word",content:"Expression"},{id:"5",type:"def",content:"表达式"},
+    {id:"6",type:"word",content:"Factor"},{id:"6",type:"def",content:"因数"},
+    {id:"7",type:"word",content:"Factorize"},{id:"7",type:"def",content:"因式分解"},
+    {id:"8",type:"word",content:"FOIL method"},{id:"8",type:"def",content:"FOIL法则"},
+    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-working-with-expressions-3', category: '25m-y9', title: 'Working with Expressions (3)', titleZh: '表达式的运算 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Highest common factor (HCF)"},{id:"0",type:"def",content:"最大公因数"},
+    {id:"1",type:"word",content:"Identity"},{id:"1",type:"def",content:"恒等式"},
+    {id:"2",type:"word",content:"Index / Exponent"},{id:"2",type:"def",content:"指数"},
+    {id:"3",type:"word",content:"Index / Power"},{id:"3",type:"def",content:"指数"},
+    {id:"4",type:"word",content:"Index laws"},{id:"4",type:"def",content:"指数定律"},
+    {id:"5",type:"word",content:"Large number"},{id:"5",type:"def",content:"大数"},
+    {id:"6",type:"word",content:"Like terms"},{id:"6",type:"def",content:"同类项"},
+    {id:"7",type:"word",content:"Linear expression"},{id:"7",type:"def",content:"线性表达式"},
+    {id:"8",type:"word",content:"Multiplication formula"},{id:"8",type:"def",content:"乘法公式"},
+    {id:"9",type:"word",content:"Negative index"},{id:"9",type:"def",content:"负指数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-working-with-expressions-4', category: '25m-y9', title: 'Working with Expressions (4)', titleZh: '表达式的运算 (4)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Order of magnitude"},{id:"0",type:"def",content:"数量级"},
+    {id:"1",type:"word",content:"Perfect square"},{id:"1",type:"def",content:"完全平方"},
+    {id:"2",type:"word",content:"Power of a power rule"},{id:"2",type:"def",content:"幂的乘方法则"},
+    {id:"3",type:"word",content:"Power of ten"},{id:"3",type:"def",content:"10的幂"},
+    {id:"4",type:"word",content:"Prime factor decomposition"},{id:"4",type:"def",content:"质因数分解"},
+    {id:"5",type:"word",content:"Product"},{id:"5",type:"def",content:"乘积"},
+    {id:"6",type:"word",content:"Product rule"},{id:"6",type:"def",content:"乘法法则"},
+    {id:"7",type:"word",content:"Quadratic expression"},{id:"7",type:"def",content:"二次表达式"},
+    {id:"8",type:"word",content:"Quotient rule"},{id:"8",type:"def",content:"除法法则"},
+    {id:"9",type:"word",content:"Reciprocal"},{id:"9",type:"def",content:"倒数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-working-with-expressions-5', category: '25m-y9', title: 'Working with Expressions (5)', titleZh: '表达式的运算 (5)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Scientific notation"},{id:"0",type:"def",content:"科学记数法"},
+    {id:"1",type:"word",content:"Significant figures"},{id:"1",type:"def",content:"有效数字"},
     {id:"2",type:"word",content:"Simplify"},{id:"2",type:"def",content:"简化"},
-    {id:"3",type:"word",content:"Subject"},{id:"3",type:"def",content:"主项"},
-    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
+    {id:"3",type:"word",content:"Small number"},{id:"3",type:"def",content:"小数"},
+    {id:"4",type:"word",content:"Square"},{id:"4",type:"def",content:"平方"},
+    {id:"5",type:"word",content:"Standard form"},{id:"5",type:"def",content:"科学计数法"},
+    {id:"6",type:"word",content:"Substitute"},{id:"6",type:"def",content:"代入"},
+    {id:"7",type:"word",content:"Term"},{id:"7",type:"def",content:"项"},
+    {id:"8",type:"word",content:"Trinomial"},{id:"8",type:"def",content:"三项式"},
+    {id:"9",type:"word",content:"Variable"},{id:"9",type:"def",content:"变量"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-working-with-expressions-6', category: '25m-y9', title: 'Working with Expressions (6)', titleZh: '表达式的运算 (6)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Zero index"},{id:"0",type:"def",content:"零指数"}
   ]
 },
 
@@ -2516,28 +2597,247 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-congruence-and-similarity-1', category: '25m-y9', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-mastery-of-angles-1', category: '25m-y9', title: 'Mastery of Angles (1)', titleZh: '掌握角度 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
-    {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
-    {id:"2",type:"word",content:"Corresponding angles"},{id:"2",type:"def",content:"对应角"},
-    {id:"3",type:"word",content:"Corresponding sides"},{id:"3",type:"def",content:"对应边"},
-    {id:"4",type:"word",content:"Enlargement"},{id:"4",type:"def",content:"放大"},
-    {id:"5",type:"word",content:"Hypotenuse"},{id:"5",type:"def",content:"斜边"},
-    {id:"6",type:"word",content:"Proof"},{id:"6",type:"def",content:"证明"},
-    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比例"},
-    {id:"8",type:"word",content:"Right-angle-Hypotenuse-Side (RHS)"},{id:"8",type:"def",content:"直角-斜边-边 (RHS)"},
-    {id:"9",type:"word",content:"Scale factor"},{id:"9",type:"def",content:"比例因子"}
+    {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
+    {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
+    {id:"2",type:"word",content:"Angle"},{id:"2",type:"def",content:"角度"},
+    {id:"3",type:"word",content:"Around a point"},{id:"3",type:"def",content:"绕一点"},
+    {id:"4",type:"word",content:"Auxiliary line"},{id:"4",type:"def",content:"辅助线"},
+    {id:"5",type:"word",content:"Corresponding angles"},{id:"5",type:"def",content:"同位角"},
+    {id:"6",type:"word",content:"Decagon"},{id:"6",type:"def",content:"十边形"},
+    {id:"7",type:"word",content:"Equilateral triangle"},{id:"7",type:"def",content:"等边三角形"},
+    {id:"8",type:"word",content:"Exterior angle"},{id:"8",type:"def",content:"外角"},
+    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-congruence-and-similarity-2', category: '25m-y9', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-mastery-of-angles-2', category: '25m-y9', title: 'Mastery of Angles (2)', titleZh: '掌握角度 (2)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
-    {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
-    {id:"2",type:"word",content:"Similarity"},{id:"2",type:"def",content:"相似"},
-    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"}
+    {id:"0",type:"word",content:"Heptagon"},{id:"0",type:"def",content:"七边形"},
+    {id:"1",type:"word",content:"Hexagon"},{id:"1",type:"def",content:"六边形"},
+    {id:"2",type:"word",content:"Interior angle"},{id:"2",type:"def",content:"内角"},
+    {id:"3",type:"word",content:"Interior angles"},{id:"3",type:"def",content:"内角"},
+    {id:"4",type:"word",content:"Irregular polygon"},{id:"4",type:"def",content:"不规则多边形"},
+    {id:"5",type:"word",content:"Isosceles triangle"},{id:"5",type:"def",content:"等腰三角形"},
+    {id:"6",type:"word",content:"Nonagon"},{id:"6",type:"def",content:"九边形"},
+    {id:"7",type:"word",content:"Number of sides"},{id:"7",type:"def",content:"边数"},
+    {id:"8",type:"word",content:"Obtuse angle"},{id:"8",type:"def",content:"钝角"},
+    {id:"9",type:"word",content:"Octagon"},{id:"9",type:"def",content:"八边形"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-mastery-of-angles-3', category: '25m-y9', title: 'Mastery of Angles (3)', titleZh: '掌握角度 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Opposite interior angles"},{id:"0",type:"def",content:"相对内角"},
+    {id:"1",type:"word",content:"Parallel lines"},{id:"1",type:"def",content:"平行线"},
+    {id:"2",type:"word",content:"Pentagon"},{id:"2",type:"def",content:"五边形"},
+    {id:"3",type:"word",content:"Polygon"},{id:"3",type:"def",content:"多边形"},
+    {id:"4",type:"word",content:"Proof"},{id:"4",type:"def",content:"证明"},
+    {id:"5",type:"word",content:"Quadrilateral"},{id:"5",type:"def",content:"四边形"},
+    {id:"6",type:"word",content:"Reason"},{id:"6",type:"def",content:"理由"},
+    {id:"7",type:"word",content:"Reflex angle"},{id:"7",type:"def",content:"优角"},
+    {id:"8",type:"word",content:"Regular polygon"},{id:"8",type:"def",content:"正多边形"},
+    {id:"9",type:"word",content:"Right-angled triangle"},{id:"9",type:"def",content:"直角三角形"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-mastery-of-angles-4', category: '25m-y9', title: 'Mastery of Angles (4)', titleZh: '掌握角度 (4)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Scalene triangle"},{id:"0",type:"def",content:"不等边三角形"},
+    {id:"1",type:"word",content:"Statement"},{id:"1",type:"def",content:"陈述"},
+    {id:"2",type:"word",content:"Straight line"},{id:"2",type:"def",content:"直线"},
+    {id:"3",type:"word",content:"Sum"},{id:"3",type:"def",content:"和"},
+    {id:"4",type:"word",content:"Sum of angles"},{id:"4",type:"def",content:"角度和"},
+    {id:"5",type:"word",content:"Sum of exterior angles"},{id:"5",type:"def",content:"外角和"},
+    {id:"6",type:"word",content:"Sum of interior angles"},{id:"6",type:"def",content:"内角和"},
+    {id:"7",type:"word",content:"Theorem"},{id:"7",type:"def",content:"定理"},
+    {id:"8",type:"word",content:"Transversal"},{id:"8",type:"def",content:"截线"},
+    {id:"9",type:"word",content:"Triangle"},{id:"9",type:"def",content:"三角形"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-mastery-of-angles-5', category: '25m-y9', title: 'Mastery of Angles (5)', titleZh: '掌握角度 (5)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Vertex"},{id:"0",type:"def",content:"顶点"},
+    {id:"1",type:"word",content:"Vertically opposite angles"},{id:"1",type:"def",content:"对顶角"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-pythagoras-theorem-1', category: '25m-y9', title: 'Pythagoras Theorem (1)', titleZh: '勾股定理 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Area"},{id:"0",type:"def",content:"面积"},
+    {id:"1",type:"word",content:"Converse proposition"},{id:"1",type:"def",content:"逆命题"},
+    {id:"2",type:"word",content:"Converse theorem"},{id:"2",type:"def",content:"逆定理"},
+    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
+    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
+    {id:"5",type:"word",content:"Legs (of a right triangle)"},{id:"5",type:"def",content:"直角边"},
+    {id:"6",type:"word",content:"Perimeter"},{id:"6",type:"def",content:"周长"},
+    {id:"7",type:"word",content:"Proof"},{id:"7",type:"def",content:"证明"},
+    {id:"8",type:"word",content:"Pythagoras\' Theorem"},{id:"8",type:"def",content:"勾股定理"},
+    {id:"9",type:"word",content:"Pythagorean triple"},{id:"9",type:"def",content:"勾股数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-pythagoras-theorem-2', category: '25m-y9', title: 'Pythagoras Theorem (2)', titleZh: '勾股定理 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
+    {id:"1",type:"word",content:"Solve"},{id:"1",type:"def",content:"求解"},
+    {id:"2",type:"word",content:"Square"},{id:"2",type:"def",content:"平方"},
+    {id:"3",type:"word",content:"Square root"},{id:"3",type:"def",content:"平方根"},
+    {id:"4",type:"word",content:"Two-dimensional"},{id:"4",type:"def",content:"二维"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-2d-shape-1', category: '25m-y9', title: '2D Shape (1)', titleZh: '二维图形 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Angle"},{id:"0",type:"def",content:"角"},
+    {id:"1",type:"word",content:"Area"},{id:"1",type:"def",content:"面积"},
+    {id:"2",type:"word",content:"Compound Shape"},{id:"2",type:"def",content:"复合图形"},
+    {id:"3",type:"word",content:"Congruent"},{id:"3",type:"def",content:"全等"},
+    {id:"4",type:"word",content:"Diagonal"},{id:"4",type:"def",content:"对角线"},
+    {id:"5",type:"word",content:"Formula"},{id:"5",type:"def",content:"公式"},
+    {id:"6",type:"word",content:"Gap"},{id:"6",type:"def",content:"间隙"},
+    {id:"7",type:"word",content:"Geometric Pattern"},{id:"7",type:"def",content:"几何图案"},
+    {id:"8",type:"word",content:"Interior Angle"},{id:"8",type:"def",content:"内角"},
+    {id:"9",type:"word",content:"Irregular Polygon"},{id:"9",type:"def",content:"不规则多边形"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-2d-shape-2', category: '25m-y9', title: '2D Shape (2)', titleZh: '二维图形 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Kite"},{id:"0",type:"def",content:"风筝形"},
+    {id:"1",type:"word",content:"Line of Symmetry"},{id:"1",type:"def",content:"对称轴"},
+    {id:"2",type:"word",content:"Median Line"},{id:"2",type:"def",content:"中位线"},
+    {id:"3",type:"word",content:"Minimal Distance"},{id:"3",type:"def",content:"最短距离"},
+    {id:"4",type:"word",content:"Order of Rotational Symmetry"},{id:"4",type:"def",content:"旋转对称阶数"},
+    {id:"5",type:"word",content:"Overlap"},{id:"5",type:"def",content:"重叠"},
+    {id:"6",type:"word",content:"Parallel"},{id:"6",type:"def",content:"平行"},
+    {id:"7",type:"word",content:"Parallel Lines"},{id:"7",type:"def",content:"平行线"},
+    {id:"8",type:"word",content:"Parallelogram"},{id:"8",type:"def",content:"平行四边形"},
+    {id:"9",type:"word",content:"Pattern"},{id:"9",type:"def",content:"图案"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-2d-shape-3', category: '25m-y9', title: '2D Shape (3)', titleZh: '二维图形 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Perimeter"},{id:"0",type:"def",content:"周长"},
+    {id:"1",type:"word",content:"Perpendicular"},{id:"1",type:"def",content:"垂直"},
+    {id:"2",type:"word",content:"Perpendicular Bisector"},{id:"2",type:"def",content:"垂直平分线"},
+    {id:"3",type:"word",content:"Property"},{id:"3",type:"def",content:"性质"},
+    {id:"4",type:"word",content:"Quadrilateral"},{id:"4",type:"def",content:"四边形"},
+    {id:"5",type:"word",content:"Rectangle"},{id:"5",type:"def",content:"长方形"},
+    {id:"6",type:"word",content:"Reflection"},{id:"6",type:"def",content:"反射/翻转"},
+    {id:"7",type:"word",content:"Regular Polygon"},{id:"7",type:"def",content:"正多边形"},
+    {id:"8",type:"word",content:"Repeating Pattern"},{id:"8",type:"def",content:"重复图案"},
+    {id:"9",type:"word",content:"Rhombus"},{id:"9",type:"def",content:"菱形"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-2d-shape-4', category: '25m-y9', title: '2D Shape (4)', titleZh: '二维图形 (4)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Rotation"},{id:"0",type:"def",content:"旋转"},
+    {id:"1",type:"word",content:"Rotational Symmetry"},{id:"1",type:"def",content:"旋转对称"},
+    {id:"2",type:"word",content:"Side"},{id:"2",type:"def",content:"边"},
+    {id:"3",type:"word",content:"Similar"},{id:"3",type:"def",content:"相似"},
+    {id:"4",type:"word",content:"Square"},{id:"4",type:"def",content:"正方形"},
+    {id:"5",type:"word",content:"Symmetry"},{id:"5",type:"def",content:"对称"},
+    {id:"6",type:"word",content:"Tessellation"},{id:"6",type:"def",content:"镶嵌"},
+    {id:"7",type:"word",content:"Tiling"},{id:"7",type:"def",content:"铺设"},
+    {id:"8",type:"word",content:"Transformation"},{id:"8",type:"def",content:"变换"},
+    {id:"9",type:"word",content:"Translation"},{id:"9",type:"def",content:"平移"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-2d-shape-5', category: '25m-y9', title: '2D Shape (5)', titleZh: '二维图形 (5)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Trapezium"},{id:"0",type:"def",content:"梯形"},
+    {id:"1",type:"word",content:"Vertex"},{id:"1",type:"def",content:"顶点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-percentages-1', category: '25m-y9', title: 'Percentages (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Compound interest"},{id:"0",type:"def",content:"复利"},
+    {id:"1",type:"word",content:"Convert"},{id:"1",type:"def",content:"转换"},
+    {id:"2",type:"word",content:"Credit card"},{id:"2",type:"def",content:"信用卡"},
+    {id:"3",type:"word",content:"Data analysis"},{id:"3",type:"def",content:"数据分析"},
+    {id:"4",type:"word",content:"Decimal"},{id:"4",type:"def",content:"小数"},
+    {id:"5",type:"word",content:"Decrease"},{id:"5",type:"def",content:"减少"},
+    {id:"6",type:"word",content:"Denominator"},{id:"6",type:"def",content:"分母"},
+    {id:"7",type:"word",content:"Discount"},{id:"7",type:"def",content:"折扣"},
+    {id:"8",type:"word",content:"Equivalent"},{id:"8",type:"def",content:"等价的"},
+    {id:"9",type:"word",content:"Exponential decay"},{id:"9",type:"def",content:"指数衰减"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-percentages-2', category: '25m-y9', title: 'Percentages (2)', titleZh: '百分比 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Exponential growth"},{id:"0",type:"def",content:"指数增长"},
+    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
+    {id:"2",type:"word",content:"Increase"},{id:"2",type:"def",content:"增加"},
+    {id:"3",type:"word",content:"Interest rate"},{id:"3",type:"def",content:"利率"},
+    {id:"4",type:"word",content:"Loan"},{id:"4",type:"def",content:"贷款"},
+    {id:"5",type:"word",content:"Loss"},{id:"5",type:"def",content:"亏损"},
+    {id:"6",type:"word",content:"Mortgage"},{id:"6",type:"def",content:"抵押贷款"},
+    {id:"7",type:"word",content:"Numerator"},{id:"7",type:"def",content:"分子"},
+    {id:"8",type:"word",content:"Original amount"},{id:"8",type:"def",content:"原始数量"},
+    {id:"9",type:"word",content:"Percentage"},{id:"9",type:"def",content:"百分比"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-percentages-3', category: '25m-y9', title: 'Percentages (3)', titleZh: '百分比 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Principal"},{id:"0",type:"def",content:"本金"},
+    {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
+    {id:"2",type:"word",content:"Proportion"},{id:"2",type:"def",content:"比例"},
+    {id:"3",type:"word",content:"Quantity"},{id:"3",type:"def",content:"数量"},
+    {id:"4",type:"word",content:"Reverse percentage"},{id:"4",type:"def",content:"反向百分比"},
+    {id:"5",type:"word",content:"Savings"},{id:"5",type:"def",content:"储蓄"},
+    {id:"6",type:"word",content:"Simple interest"},{id:"6",type:"def",content:"单利"},
+    {id:"7",type:"word",content:"Tax"},{id:"7",type:"def",content:"税"},
+    {id:"8",type:"word",content:"Time period"},{id:"8",type:"def",content:"时间周期"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-statistical-sampling-1', category: '25m-y9', title: 'Statistical Sampling (1)', titleZh: '统计抽样 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Bias"},{id:"0",type:"def",content:"偏差/偏倚"},
+    {id:"1",type:"word",content:"Census"},{id:"1",type:"def",content:"普查"},
+    {id:"2",type:"word",content:"Continuous Data"},{id:"2",type:"def",content:"连续数据"},
+    {id:"3",type:"word",content:"Data Set"},{id:"3",type:"def",content:"数据集"},
+    {id:"4",type:"word",content:"Discrete Data"},{id:"4",type:"def",content:"离散数据"},
+    {id:"5",type:"word",content:"Mean"},{id:"5",type:"def",content:"平均数"},
+    {id:"6",type:"word",content:"Median"},{id:"6",type:"def",content:"中位数"},
+    {id:"7",type:"word",content:"Mode"},{id:"7",type:"def",content:"众数"},
+    {id:"8",type:"word",content:"Population"},{id:"8",type:"def",content:"总体"},
+    {id:"9",type:"word",content:"Random Sampling"},{id:"9",type:"def",content:"随机抽样"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y9-statistical-sampling-2', category: '25m-y9', title: 'Statistical Sampling (2)', titleZh: '统计抽样 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"极差"},
+    {id:"1",type:"word",content:"Representative Sample"},{id:"1",type:"def",content:"代表性样本"},
+    {id:"2",type:"word",content:"Sample"},{id:"2",type:"def",content:"样本"},
+    {id:"3",type:"word",content:"Sampling"},{id:"3",type:"def",content:"抽样"},
+    {id:"4",type:"word",content:"Survey"},{id:"4",type:"def",content:"调查"}
   ]
 },
 
@@ -2630,121 +2930,29 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-1', category: '25m-y9', title: 'Mastery of Angles (1)', titleZh: '掌握角度 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-fractions-1', category: '25m-y9', title: 'Algebraic Fractions (1)', titleZh: '代数分数 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
-    {id:"1",type:"word",content:"Alternate interior angles"},{id:"1",type:"def",content:"内错角"},
-    {id:"2",type:"word",content:"Angle"},{id:"2",type:"def",content:"角度"},
-    {id:"3",type:"word",content:"Around a point"},{id:"3",type:"def",content:"绕一点"},
-    {id:"4",type:"word",content:"Auxiliary line"},{id:"4",type:"def",content:"辅助线"},
-    {id:"5",type:"word",content:"Corresponding angles"},{id:"5",type:"def",content:"同位角"},
-    {id:"6",type:"word",content:"Decagon"},{id:"6",type:"def",content:"十边形"},
-    {id:"7",type:"word",content:"Equilateral triangle"},{id:"7",type:"def",content:"等边三角形"},
-    {id:"8",type:"word",content:"Exterior angle"},{id:"8",type:"def",content:"外角"},
-    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
+    {id:"0",type:"word",content:"Algebraic Fraction"},{id:"0",type:"def",content:"代数分数"},
+    {id:"1",type:"word",content:"Common Factor"},{id:"1",type:"def",content:"公因数"},
+    {id:"2",type:"word",content:"Denominator"},{id:"2",type:"def",content:"分母"},
+    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
+    {id:"4",type:"word",content:"Expression"},{id:"4",type:"def",content:"表达式"},
+    {id:"5",type:"word",content:"Factorise"},{id:"5",type:"def",content:"因式分解"},
+    {id:"6",type:"word",content:"Formula"},{id:"6",type:"def",content:"公式"},
+    {id:"7",type:"word",content:"Linear Equation"},{id:"7",type:"def",content:"线性方程"},
+    {id:"8",type:"word",content:"Numerator"},{id:"8",type:"def",content:"分子"},
+    {id:"9",type:"word",content:"Quadratic Expression"},{id:"9",type:"def",content:"二次表达式"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-mastery-of-angles-2', category: '25m-y9', title: 'Mastery of Angles (2)', titleZh: '掌握角度 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-algebraic-fractions-2', category: '25m-y9', title: 'Algebraic Fractions (2)', titleZh: '代数分数 (2)', timer: 90, comboBonus: 3,
   vocabulary: [
-    {id:"0",type:"word",content:"Heptagon"},{id:"0",type:"def",content:"七边形"},
-    {id:"1",type:"word",content:"Hexagon"},{id:"1",type:"def",content:"六边形"},
-    {id:"2",type:"word",content:"Interior angle"},{id:"2",type:"def",content:"内角"},
-    {id:"3",type:"word",content:"Interior angles"},{id:"3",type:"def",content:"内角"},
-    {id:"4",type:"word",content:"Irregular polygon"},{id:"4",type:"def",content:"不规则多边形"},
-    {id:"5",type:"word",content:"Isosceles triangle"},{id:"5",type:"def",content:"等腰三角形"},
-    {id:"6",type:"word",content:"Nonagon"},{id:"6",type:"def",content:"九边形"},
-    {id:"7",type:"word",content:"Number of sides"},{id:"7",type:"def",content:"边数"},
-    {id:"8",type:"word",content:"Obtuse angle"},{id:"8",type:"def",content:"钝角"},
-    {id:"9",type:"word",content:"Octagon"},{id:"9",type:"def",content:"八边形"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-mastery-of-angles-3', category: '25m-y9', title: 'Mastery of Angles (3)', titleZh: '掌握角度 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Opposite interior angles"},{id:"0",type:"def",content:"相对内角"},
-    {id:"1",type:"word",content:"Parallel lines"},{id:"1",type:"def",content:"平行线"},
-    {id:"2",type:"word",content:"Pentagon"},{id:"2",type:"def",content:"五边形"},
-    {id:"3",type:"word",content:"Polygon"},{id:"3",type:"def",content:"多边形"},
-    {id:"4",type:"word",content:"Proof"},{id:"4",type:"def",content:"证明"},
-    {id:"5",type:"word",content:"Quadrilateral"},{id:"5",type:"def",content:"四边形"},
-    {id:"6",type:"word",content:"Reason"},{id:"6",type:"def",content:"理由"},
-    {id:"7",type:"word",content:"Reflex angle"},{id:"7",type:"def",content:"优角"},
-    {id:"8",type:"word",content:"Regular polygon"},{id:"8",type:"def",content:"正多边形"},
-    {id:"9",type:"word",content:"Right-angled triangle"},{id:"9",type:"def",content:"直角三角形"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-mastery-of-angles-4', category: '25m-y9', title: 'Mastery of Angles (4)', titleZh: '掌握角度 (4)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Scalene triangle"},{id:"0",type:"def",content:"不等边三角形"},
-    {id:"1",type:"word",content:"Statement"},{id:"1",type:"def",content:"陈述"},
-    {id:"2",type:"word",content:"Straight line"},{id:"2",type:"def",content:"直线"},
-    {id:"3",type:"word",content:"Sum"},{id:"3",type:"def",content:"和"},
-    {id:"4",type:"word",content:"Sum of angles"},{id:"4",type:"def",content:"角度和"},
-    {id:"5",type:"word",content:"Sum of exterior angles"},{id:"5",type:"def",content:"外角和"},
-    {id:"6",type:"word",content:"Sum of interior angles"},{id:"6",type:"def",content:"内角和"},
-    {id:"7",type:"word",content:"Theorem"},{id:"7",type:"def",content:"定理"},
-    {id:"8",type:"word",content:"Transversal"},{id:"8",type:"def",content:"截线"},
-    {id:"9",type:"word",content:"Triangle"},{id:"9",type:"def",content:"三角形"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-mastery-of-angles-5', category: '25m-y9', title: 'Mastery of Angles (5)', titleZh: '掌握角度 (5)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Vertex"},{id:"0",type:"def",content:"顶点"},
-    {id:"1",type:"word",content:"Vertically opposite angles"},{id:"1",type:"def",content:"对顶角"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-percentages-1', category: '25m-y9', title: 'Percentages (1)', titleZh: '百分比 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Compound interest"},{id:"0",type:"def",content:"复利"},
-    {id:"1",type:"word",content:"Convert"},{id:"1",type:"def",content:"转换"},
-    {id:"2",type:"word",content:"Credit card"},{id:"2",type:"def",content:"信用卡"},
-    {id:"3",type:"word",content:"Data analysis"},{id:"3",type:"def",content:"数据分析"},
-    {id:"4",type:"word",content:"Decimal"},{id:"4",type:"def",content:"小数"},
-    {id:"5",type:"word",content:"Decrease"},{id:"5",type:"def",content:"减少"},
-    {id:"6",type:"word",content:"Denominator"},{id:"6",type:"def",content:"分母"},
-    {id:"7",type:"word",content:"Discount"},{id:"7",type:"def",content:"折扣"},
-    {id:"8",type:"word",content:"Equivalent"},{id:"8",type:"def",content:"等价的"},
-    {id:"9",type:"word",content:"Exponential decay"},{id:"9",type:"def",content:"指数衰减"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-percentages-2', category: '25m-y9', title: 'Percentages (2)', titleZh: '百分比 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Exponential growth"},{id:"0",type:"def",content:"指数增长"},
-    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
-    {id:"2",type:"word",content:"Increase"},{id:"2",type:"def",content:"增加"},
-    {id:"3",type:"word",content:"Interest rate"},{id:"3",type:"def",content:"利率"},
-    {id:"4",type:"word",content:"Loan"},{id:"4",type:"def",content:"贷款"},
-    {id:"5",type:"word",content:"Loss"},{id:"5",type:"def",content:"亏损"},
-    {id:"6",type:"word",content:"Mortgage"},{id:"6",type:"def",content:"抵押贷款"},
-    {id:"7",type:"word",content:"Numerator"},{id:"7",type:"def",content:"分子"},
-    {id:"8",type:"word",content:"Original amount"},{id:"8",type:"def",content:"原始数量"},
-    {id:"9",type:"word",content:"Percentage"},{id:"9",type:"def",content:"百分比"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-percentages-3', category: '25m-y9', title: 'Percentages (3)', titleZh: '百分比 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Principal"},{id:"0",type:"def",content:"本金"},
-    {id:"1",type:"word",content:"Profit"},{id:"1",type:"def",content:"利润"},
-    {id:"2",type:"word",content:"Proportion"},{id:"2",type:"def",content:"比例"},
-    {id:"3",type:"word",content:"Quantity"},{id:"3",type:"def",content:"数量"},
-    {id:"4",type:"word",content:"Reverse percentage"},{id:"4",type:"def",content:"反向百分比"},
-    {id:"5",type:"word",content:"Savings"},{id:"5",type:"def",content:"储蓄"},
-    {id:"6",type:"word",content:"Simple interest"},{id:"6",type:"def",content:"单利"},
-    {id:"7",type:"word",content:"Tax"},{id:"7",type:"def",content:"税"},
-    {id:"8",type:"word",content:"Time period"},{id:"8",type:"def",content:"时间周期"}
+    {id:"0",type:"word",content:"Rational Expression"},{id:"0",type:"def",content:"有理表达式"},
+    {id:"1",type:"word",content:"Rearrange"},{id:"1",type:"def",content:"重排"},
+    {id:"2",type:"word",content:"Simplify"},{id:"2",type:"def",content:"简化"},
+    {id:"3",type:"word",content:"Subject"},{id:"3",type:"def",content:"主项"},
+    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
   ]
 },
 
@@ -2796,234 +3004,28 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y9-pythagoras-theorem-1', category: '25m-y9', title: 'Pythagoras Theorem (1)', titleZh: '勾股定理 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y9-congruence-and-similarity-1', category: '25m-y9', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Area"},{id:"0",type:"def",content:"面积"},
-    {id:"1",type:"word",content:"Converse proposition"},{id:"1",type:"def",content:"逆命题"},
-    {id:"2",type:"word",content:"Converse theorem"},{id:"2",type:"def",content:"逆定理"},
-    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
-    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
-    {id:"5",type:"word",content:"Legs (of a right triangle)"},{id:"5",type:"def",content:"直角边"},
-    {id:"6",type:"word",content:"Perimeter"},{id:"6",type:"def",content:"周长"},
-    {id:"7",type:"word",content:"Proof"},{id:"7",type:"def",content:"证明"},
-    {id:"8",type:"word",content:"Pythagoras\' Theorem"},{id:"8",type:"def",content:"勾股定理"},
-    {id:"9",type:"word",content:"Pythagorean triple"},{id:"9",type:"def",content:"勾股数"}
+    {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
+    {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
+    {id:"2",type:"word",content:"Corresponding angles"},{id:"2",type:"def",content:"对应角"},
+    {id:"3",type:"word",content:"Corresponding sides"},{id:"3",type:"def",content:"对应边"},
+    {id:"4",type:"word",content:"Enlargement"},{id:"4",type:"def",content:"放大"},
+    {id:"5",type:"word",content:"Hypotenuse"},{id:"5",type:"def",content:"斜边"},
+    {id:"6",type:"word",content:"Proof"},{id:"6",type:"def",content:"证明"},
+    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比例"},
+    {id:"8",type:"word",content:"Right-angle-Hypotenuse-Side (RHS)"},{id:"8",type:"def",content:"直角-斜边-边 (RHS)"},
+    {id:"9",type:"word",content:"Scale factor"},{id:"9",type:"def",content:"比例因子"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y9-pythagoras-theorem-2', category: '25m-y9', title: 'Pythagoras Theorem (2)', titleZh: '勾股定理 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y9-congruence-and-similarity-2', category: '25m-y9', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
   vocabulary: [
-    {id:"0",type:"word",content:"Right-angled triangle"},{id:"0",type:"def",content:"直角三角形"},
-    {id:"1",type:"word",content:"Solve"},{id:"1",type:"def",content:"求解"},
-    {id:"2",type:"word",content:"Square"},{id:"2",type:"def",content:"平方"},
-    {id:"3",type:"word",content:"Square root"},{id:"3",type:"def",content:"平方根"},
-    {id:"4",type:"word",content:"Two-dimensional"},{id:"4",type:"def",content:"二维"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-statistical-sampling-1', category: '25m-y9', title: 'Statistical Sampling (1)', titleZh: '统计抽样 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Bias"},{id:"0",type:"def",content:"偏差/偏倚"},
-    {id:"1",type:"word",content:"Census"},{id:"1",type:"def",content:"普查"},
-    {id:"2",type:"word",content:"Continuous Data"},{id:"2",type:"def",content:"连续数据"},
-    {id:"3",type:"word",content:"Data Set"},{id:"3",type:"def",content:"数据集"},
-    {id:"4",type:"word",content:"Discrete Data"},{id:"4",type:"def",content:"离散数据"},
-    {id:"5",type:"word",content:"Mean"},{id:"5",type:"def",content:"平均数"},
-    {id:"6",type:"word",content:"Median"},{id:"6",type:"def",content:"中位数"},
-    {id:"7",type:"word",content:"Mode"},{id:"7",type:"def",content:"众数"},
-    {id:"8",type:"word",content:"Population"},{id:"8",type:"def",content:"总体"},
-    {id:"9",type:"word",content:"Random Sampling"},{id:"9",type:"def",content:"随机抽样"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-statistical-sampling-2', category: '25m-y9', title: 'Statistical Sampling (2)', titleZh: '统计抽样 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"极差"},
-    {id:"1",type:"word",content:"Representative Sample"},{id:"1",type:"def",content:"代表性样本"},
-    {id:"2",type:"word",content:"Sample"},{id:"2",type:"def",content:"样本"},
-    {id:"3",type:"word",content:"Sampling"},{id:"3",type:"def",content:"抽样"},
-    {id:"4",type:"word",content:"Survey"},{id:"4",type:"def",content:"调查"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-1', category: '25m-y9', title: 'Working with Expressions (1)', titleZh: '表达式的运算 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Algebraic expression"},{id:"0",type:"def",content:"代数表达式"},
-    {id:"1",type:"word",content:"Base"},{id:"1",type:"def",content:"底数"},
-    {id:"2",type:"word",content:"Binomial"},{id:"2",type:"def",content:"二项式"},
-    {id:"3",type:"word",content:"Bracket"},{id:"3",type:"def",content:"括号"},
-    {id:"4",type:"word",content:"Calculation"},{id:"4",type:"def",content:"计算"},
-    {id:"5",type:"word",content:"Coefficient"},{id:"5",type:"def",content:"系数"},
-    {id:"6",type:"word",content:"Common factor"},{id:"6",type:"def",content:"公因数"},
-    {id:"7",type:"word",content:"Constant"},{id:"7",type:"def",content:"常数"},
-    {id:"8",type:"word",content:"Convert"},{id:"8",type:"def",content:"转换"},
-    {id:"9",type:"word",content:"Decimal point"},{id:"9",type:"def",content:"小数点"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-2', category: '25m-y9', title: 'Working with Expressions (2)', titleZh: '表达式的运算 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Difference of squares"},{id:"0",type:"def",content:"平方差"},
-    {id:"1",type:"word",content:"Distributive law"},{id:"1",type:"def",content:"分配律"},
-    {id:"2",type:"word",content:"Evaluate"},{id:"2",type:"def",content:"求值"},
-    {id:"3",type:"word",content:"Expand"},{id:"3",type:"def",content:"展开"},
-    {id:"4",type:"word",content:"Exponent"},{id:"4",type:"def",content:"指数"},
-    {id:"5",type:"word",content:"Expression"},{id:"5",type:"def",content:"表达式"},
-    {id:"6",type:"word",content:"Factor"},{id:"6",type:"def",content:"因数"},
-    {id:"7",type:"word",content:"Factorize"},{id:"7",type:"def",content:"因式分解"},
-    {id:"8",type:"word",content:"FOIL method"},{id:"8",type:"def",content:"FOIL法则"},
-    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-3', category: '25m-y9', title: 'Working with Expressions (3)', titleZh: '表达式的运算 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Highest common factor (HCF)"},{id:"0",type:"def",content:"最大公因数"},
-    {id:"1",type:"word",content:"Identity"},{id:"1",type:"def",content:"恒等式"},
-    {id:"2",type:"word",content:"Index / Exponent"},{id:"2",type:"def",content:"指数"},
-    {id:"3",type:"word",content:"Index / Power"},{id:"3",type:"def",content:"指数"},
-    {id:"4",type:"word",content:"Index laws"},{id:"4",type:"def",content:"指数定律"},
-    {id:"5",type:"word",content:"Large number"},{id:"5",type:"def",content:"大数"},
-    {id:"6",type:"word",content:"Like terms"},{id:"6",type:"def",content:"同类项"},
-    {id:"7",type:"word",content:"Linear expression"},{id:"7",type:"def",content:"线性表达式"},
-    {id:"8",type:"word",content:"Multiplication formula"},{id:"8",type:"def",content:"乘法公式"},
-    {id:"9",type:"word",content:"Negative index"},{id:"9",type:"def",content:"负指数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-4', category: '25m-y9', title: 'Working with Expressions (4)', titleZh: '表达式的运算 (4)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Order of magnitude"},{id:"0",type:"def",content:"数量级"},
-    {id:"1",type:"word",content:"Perfect square"},{id:"1",type:"def",content:"完全平方"},
-    {id:"2",type:"word",content:"Power of a power rule"},{id:"2",type:"def",content:"幂的乘方法则"},
-    {id:"3",type:"word",content:"Power of ten"},{id:"3",type:"def",content:"10的幂"},
-    {id:"4",type:"word",content:"Prime factor decomposition"},{id:"4",type:"def",content:"质因数分解"},
-    {id:"5",type:"word",content:"Product"},{id:"5",type:"def",content:"乘积"},
-    {id:"6",type:"word",content:"Product rule"},{id:"6",type:"def",content:"乘法法则"},
-    {id:"7",type:"word",content:"Quadratic expression"},{id:"7",type:"def",content:"二次表达式"},
-    {id:"8",type:"word",content:"Quotient rule"},{id:"8",type:"def",content:"除法法则"},
-    {id:"9",type:"word",content:"Reciprocal"},{id:"9",type:"def",content:"倒数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-5', category: '25m-y9', title: 'Working with Expressions (5)', titleZh: '表达式的运算 (5)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Scientific notation"},{id:"0",type:"def",content:"科学记数法"},
-    {id:"1",type:"word",content:"Significant figures"},{id:"1",type:"def",content:"有效数字"},
-    {id:"2",type:"word",content:"Simplify"},{id:"2",type:"def",content:"简化"},
-    {id:"3",type:"word",content:"Small number"},{id:"3",type:"def",content:"小数"},
-    {id:"4",type:"word",content:"Square"},{id:"4",type:"def",content:"平方"},
-    {id:"5",type:"word",content:"Standard form"},{id:"5",type:"def",content:"科学计数法"},
-    {id:"6",type:"word",content:"Substitute"},{id:"6",type:"def",content:"代入"},
-    {id:"7",type:"word",content:"Term"},{id:"7",type:"def",content:"项"},
-    {id:"8",type:"word",content:"Trinomial"},{id:"8",type:"def",content:"三项式"},
-    {id:"9",type:"word",content:"Variable"},{id:"9",type:"def",content:"变量"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-expressions-6', category: '25m-y9', title: 'Working with Expressions (6)', titleZh: '表达式的运算 (6)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Zero index"},{id:"0",type:"def",content:"零指数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-1', category: '25m-y9', title: 'Working with Irrational Numbers (1)', titleZh: '理数的运算 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Absolute value"},{id:"0",type:"def",content:"绝对值"},
-    {id:"1",type:"word",content:"Approximation"},{id:"1",type:"def",content:"近似值"},
-    {id:"2",type:"word",content:"Arithmetic square root"},{id:"2",type:"def",content:"算术平方根"},
-    {id:"3",type:"word",content:"Calculator"},{id:"3",type:"def",content:"计算器"},
-    {id:"4",type:"word",content:"Conjugate surds"},{id:"4",type:"def",content:"共轭根式"},
-    {id:"5",type:"word",content:"Consecutive integers"},{id:"5",type:"def",content:"连续整数"},
-    {id:"6",type:"word",content:"Cube root"},{id:"6",type:"def",content:"立方根"},
-    {id:"7",type:"word",content:"Decimal"},{id:"7",type:"def",content:"小数"},
-    {id:"8",type:"word",content:"Decimal places"},{id:"8",type:"def",content:"小数位数"},
-    {id:"9",type:"word",content:"Denominator"},{id:"9",type:"def",content:"分母"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-2', category: '25m-y9', title: 'Working with Irrational Numbers (2)', titleZh: '理数的运算 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Estimation"},{id:"0",type:"def",content:"估算"},
-    {id:"1",type:"word",content:"Fraction"},{id:"1",type:"def",content:"分数"},
-    {id:"2",type:"word",content:"Index"},{id:"2",type:"def",content:"根指数"},
-    {id:"3",type:"word",content:"Integer"},{id:"3",type:"def",content:"整数"},
-    {id:"4",type:"word",content:"Inverse operation"},{id:"4",type:"def",content:"逆运算"},
-    {id:"5",type:"word",content:"Irrational number"},{id:"5",type:"def",content:"无理数"},
-    {id:"6",type:"word",content:"Irrational numbers"},{id:"6",type:"def",content:"无理数"},
-    {id:"7",type:"word",content:"Like surds"},{id:"7",type:"def",content:"同类二次根式"},
-    {id:"8",type:"word",content:"Lower bound"},{id:"8",type:"def",content:"下界"},
-    {id:"9",type:"word",content:"Natural numbers"},{id:"9",type:"def",content:"自然数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-3', category: '25m-y9', title: 'Working with Irrational Numbers (3)', titleZh: '理数的运算 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Negative numbers"},{id:"0",type:"def",content:"负数"},
-    {id:"1",type:"word",content:"Negative square root"},{id:"1",type:"def",content:"负平方根"},
-    {id:"2",type:"word",content:"Non-terminating non-repeating decimal"},{id:"2",type:"def",content:"无限不循环小数"},
-    {id:"3",type:"word",content:"Non-terminating repeating decimal"},{id:"3",type:"def",content:"无限循环小数"},
-    {id:"4",type:"word",content:"Number line"},{id:"4",type:"def",content:"数轴"},
-    {id:"5",type:"word",content:"Operation"},{id:"5",type:"def",content:"运算"},
-    {id:"6",type:"word",content:"Opposite number"},{id:"6",type:"def",content:"相反数"},
-    {id:"7",type:"word",content:"Perfect cube"},{id:"7",type:"def",content:"完全立方数"},
-    {id:"8",type:"word",content:"Perfect square"},{id:"8",type:"def",content:"完全平方数"},
-    {id:"9",type:"word",content:"Positive numbers"},{id:"9",type:"def",content:"正数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-4', category: '25m-y9', title: 'Working with Irrational Numbers (4)', titleZh: '理数的运算 (4)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Positive square root"},{id:"0",type:"def",content:"正平方根"},
-    {id:"1",type:"word",content:"Power"},{id:"1",type:"def",content:"幂"},
-    {id:"2",type:"word",content:"Precision"},{id:"2",type:"def",content:"精确度"},
-    {id:"3",type:"word",content:"Product property of surds"},{id:"3",type:"def",content:"根式的乘法性质"},
-    {id:"4",type:"word",content:"Quadratic Surd"},{id:"4",type:"def",content:"二次根式"},
-    {id:"5",type:"word",content:"Quotient property of surds"},{id:"5",type:"def",content:"根式的除法性质"},
-    {id:"6",type:"word",content:"Radical sign"},{id:"6",type:"def",content:"根号"},
-    {id:"7",type:"word",content:"Radicand"},{id:"7",type:"def",content:"被开方数"},
-    {id:"8",type:"word",content:"Range"},{id:"8",type:"def",content:"范围"},
-    {id:"9",type:"word",content:"Rational number"},{id:"9",type:"def",content:"有理数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-5', category: '25m-y9', title: 'Working with Irrational Numbers (5)', titleZh: '理数的运算 (5)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Rational numbers"},{id:"0",type:"def",content:"有理数"},
-    {id:"1",type:"word",content:"Rationalize the denominator"},{id:"1",type:"def",content:"分母有理化"},
-    {id:"2",type:"word",content:"Real numbers"},{id:"2",type:"def",content:"实数"},
-    {id:"3",type:"word",content:"Root notation"},{id:"3",type:"def",content:"根号表示法"},
-    {id:"4",type:"word",content:"Rounding"},{id:"4",type:"def",content:"四舍五入"},
-    {id:"5",type:"word",content:"Simplest surd form"},{id:"5",type:"def",content:"最简二次根式"},
-    {id:"6",type:"word",content:"Simplification"},{id:"6",type:"def",content:"化简"},
-    {id:"7",type:"word",content:"Square root"},{id:"7",type:"def",content:"平方根"},
-    {id:"8",type:"word",content:"Square root of a product"},{id:"8",type:"def",content:"积的平方根"},
-    {id:"9",type:"word",content:"Square root of a quotient"},{id:"9",type:"def",content:"商的平方根"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y9-working-with-irrational-number-6', category: '25m-y9', title: 'Working with Irrational Numbers (6)', titleZh: '理数的运算 (6)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Terminating decimal"},{id:"0",type:"def",content:"有限小数"},
-    {id:"1",type:"word",content:"Unlike surds"},{id:"1",type:"def",content:"非同类二次根式"},
-    {id:"2",type:"word",content:"Upper bound"},{id:"2",type:"def",content:"上界"},
-    {id:"3",type:"word",content:"Whole numbers"},{id:"3",type:"def",content:"非负整数"},
-    {id:"4",type:"word",content:"Zero"},{id:"4",type:"def",content:"零"}
+    {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
+    {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
+    {id:"2",type:"word",content:"Similarity"},{id:"2",type:"def",content:"相似"},
+    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"}
   ]
 },
 
@@ -3031,47 +3033,49 @@ var LEVELS = [
 /* ═══ Year 10 (36 levels, 327 words) ═══ */
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-1', category: '25m-y10', title: '3D Geometry (1)', titleZh: '立体几何 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-real-numbers-1', category: '25m-y10', title: 'Real Numbers (1)', titleZh: '实数 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"3D solid"},{id:"0",type:"def",content:"三维立体"},
-    {id:"1",type:"word",content:"Apex"},{id:"1",type:"def",content:"顶点"},
-    {id:"2",type:"word",content:"Axis"},{id:"2",type:"def",content:"轴"},
-    {id:"3",type:"word",content:"Compound shape"},{id:"3",type:"def",content:"复合形状"},
-    {id:"4",type:"word",content:"Cone"},{id:"4",type:"def",content:"圆锥体"},
-    {id:"5",type:"word",content:"Cross-section"},{id:"5",type:"def",content:"横截面"},
-    {id:"6",type:"word",content:"Cube"},{id:"6",type:"def",content:"立方体"},
-    {id:"7",type:"word",content:"Cuboid"},{id:"7",type:"def",content:"长方体"},
-    {id:"8",type:"word",content:"Cylinder"},{id:"8",type:"def",content:"圆柱体"},
-    {id:"9",type:"word",content:"Density"},{id:"9",type:"def",content:"密度"}
+    {id:"0",type:"word",content:"Approximate"},{id:"0",type:"def",content:"近似"},
+    {id:"1",type:"word",content:"Conjugate Surds"},{id:"1",type:"def",content:"共轭根式"},
+    {id:"2",type:"word",content:"Cube Root"},{id:"2",type:"def",content:"立方根"},
+    {id:"3",type:"word",content:"Decimal"},{id:"3",type:"def",content:"小数"},
+    {id:"4",type:"word",content:"Denominator"},{id:"4",type:"def",content:"分母"},
+    {id:"5",type:"word",content:"Difference of Squares"},{id:"5",type:"def",content:"平方差"},
+    {id:"6",type:"word",content:"Estimate"},{id:"6",type:"def",content:"估算"},
+    {id:"7",type:"word",content:"Expand Brackets"},{id:"7",type:"def",content:"展开括号"},
+    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
+    {id:"9",type:"word",content:"Index"},{id:"9",type:"def",content:"根指数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-2', category: '25m-y10', title: '3D Geometry (2)', titleZh: '立体几何 (2)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-real-numbers-2', category: '25m-y10', title: 'Real Numbers (2)', titleZh: '实数 (2)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Dimension"},{id:"0",type:"def",content:"尺寸"},
-    {id:"1",type:"word",content:"Elevation"},{id:"1",type:"def",content:"立面图"},
-    {id:"2",type:"word",content:"Front elevation"},{id:"2",type:"def",content:"正立面图"},
-    {id:"3",type:"word",content:"Isometric drawing"},{id:"3",type:"def",content:"等轴测图"},
-    {id:"4",type:"word",content:"Mass"},{id:"4",type:"def",content:"质量"},
-    {id:"5",type:"word",content:"Net"},{id:"5",type:"def",content:"展开图"},
-    {id:"6",type:"word",content:"Orthographic projection"},{id:"6",type:"def",content:"正交投影"},
-    {id:"7",type:"word",content:"Plan view"},{id:"7",type:"def",content:"平面图"},
-    {id:"8",type:"word",content:"Prism"},{id:"8",type:"def",content:"棱柱体"},
-    {id:"9",type:"word",content:"Pyramid"},{id:"9",type:"def",content:"棱锥体"}
+    {id:"0",type:"word",content:"Integer"},{id:"0",type:"def",content:"整数"},
+    {id:"1",type:"word",content:"Irrational Numbers"},{id:"1",type:"def",content:"无理数"},
+    {id:"2",type:"word",content:"Like Surds"},{id:"2",type:"def",content:"同类根式"},
+    {id:"3",type:"word",content:"Natural Numbers"},{id:"3",type:"def",content:"自然数"},
+    {id:"4",type:"word",content:"Non-terminating, Non-recurring Decimal"},{id:"4",type:"def",content:"无限不循环小数"},
+    {id:"5",type:"word",content:"Numerator"},{id:"5",type:"def",content:"分子"},
+    {id:"6",type:"word",content:"Quadratic Surd"},{id:"6",type:"def",content:"二次根式"},
+    {id:"7",type:"word",content:"Radical"},{id:"7",type:"def",content:"根式"},
+    {id:"8",type:"word",content:"Radicand"},{id:"8",type:"def",content:"被开方数"},
+    {id:"9",type:"word",content:"Rational Numbers"},{id:"9",type:"def",content:"有理数"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y10-3d-geometry-3', category: '25m-y10', title: '3D Geometry (3)', titleZh: '立体几何 (3)', timer: 80, comboBonus: 3,
+  board: '25m', slug: '25m-y10-real-numbers-3', category: '25m-y10', title: 'Real Numbers (3)', titleZh: '实数 (3)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Side elevation"},{id:"0",type:"def",content:"侧立面图"},
-    {id:"1",type:"word",content:"Sphere"},{id:"1",type:"def",content:"球体"},
-    {id:"2",type:"word",content:"Surface area"},{id:"2",type:"def",content:"表面积"},
-    {id:"3",type:"word",content:"Top view"},{id:"3",type:"def",content:"俯视图"},
-    {id:"4",type:"word",content:"Unit conversion"},{id:"4",type:"def",content:"单位换算"},
-    {id:"5",type:"word",content:"Viewpoint"},{id:"5",type:"def",content:"视点"},
-    {id:"6",type:"word",content:"Volume"},{id:"6",type:"def",content:"体积"}
+    {id:"0",type:"word",content:"Rationalize the Denominator"},{id:"0",type:"def",content:"有理化分母"},
+    {id:"1",type:"word",content:"Real Numbers"},{id:"1",type:"def",content:"实数"},
+    {id:"2",type:"word",content:"Recurring Decimal"},{id:"2",type:"def",content:"循环小数"},
+    {id:"3",type:"word",content:"Simplest Form"},{id:"3",type:"def",content:"最简形式"},
+    {id:"4",type:"word",content:"Square Root"},{id:"4",type:"def",content:"平方根"},
+    {id:"5",type:"word",content:"Surd"},{id:"5",type:"def",content:"根式"},
+    {id:"6",type:"word",content:"Terminating Decimal"},{id:"6",type:"def",content:"有限小数"},
+    {id:"7",type:"word",content:"Unlike Surds"},{id:"7",type:"def",content:"非同类根式"},
+    {id:"8",type:"word",content:"Whole Numbers"},{id:"8",type:"def",content:"非负整数"}
   ]
 },
 
@@ -3103,29 +3107,76 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-congruence-and-similarity-1', category: '25m-y10', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y10-quadratic-equations-1', category: '25m-y10', title: 'Quadratic Equations (1)', titleZh: '二次方程 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
-    {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
-    {id:"2",type:"word",content:"Corresponding angles"},{id:"2",type:"def",content:"对应角"},
-    {id:"3",type:"word",content:"Corresponding sides"},{id:"3",type:"def",content:"对应边"},
-    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
-    {id:"5",type:"word",content:"Proof"},{id:"5",type:"def",content:"证明"},
-    {id:"6",type:"word",content:"Proportion"},{id:"6",type:"def",content:"比例式"},
-    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比例"},
-    {id:"8",type:"word",content:"Right-angle-Hypotenuse-Side (RHS)"},{id:"8",type:"def",content:"直角-斜边-边 (RHS)"},
-    {id:"9",type:"word",content:"Scale factor"},{id:"9",type:"def",content:"比例因子"}
+    {id:"0",type:"word",content:"Axis of symmetry"},{id:"0",type:"def",content:"对称轴"},
+    {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
+    {id:"2",type:"word",content:"Completing the square"},{id:"2",type:"def",content:"配方法 / 完全平方法"},
+    {id:"3",type:"word",content:"Constant"},{id:"3",type:"def",content:"常数"},
+    {id:"4",type:"word",content:"Cubic equation"},{id:"4",type:"def",content:"立方方程"},
+    {id:"5",type:"word",content:"Difference of two squares"},{id:"5",type:"def",content:"平方差"},
+    {id:"6",type:"word",content:"Discriminant"},{id:"6",type:"def",content:"判别式"},
+    {id:"7",type:"word",content:"Elimination method"},{id:"7",type:"def",content:"消元法"},
+    {id:"8",type:"word",content:"Equation"},{id:"8",type:"def",content:"方程"},
+    {id:"9",type:"word",content:"Expand"},{id:"9",type:"def",content:"展开"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y10-congruence-and-similarity-2', category: '25m-y10', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y10-quadratic-equations-2', category: '25m-y10', title: 'Quadratic Equations (2)', titleZh: '二次方程 (2)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
-    {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
-    {id:"2",type:"word",content:"Similarity"},{id:"2",type:"def",content:"相似"},
-    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"},
-    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"}
+    {id:"0",type:"word",content:"Factorisation"},{id:"0",type:"def",content:"因式分解"},
+    {id:"1",type:"word",content:"Graph"},{id:"1",type:"def",content:"图 / 图形"},
+    {id:"2",type:"word",content:"Intercept"},{id:"2",type:"def",content:"截距"},
+    {id:"3",type:"word",content:"Linear equation"},{id:"3",type:"def",content:"线性方程"},
+    {id:"4",type:"word",content:"Maximum point"},{id:"4",type:"def",content:"最大值点"},
+    {id:"5",type:"word",content:"Minimum point"},{id:"5",type:"def",content:"最小值点"},
+    {id:"6",type:"word",content:"Parabola"},{id:"6",type:"def",content:"抛物线"},
+    {id:"7",type:"word",content:"Quadratic equation"},{id:"7",type:"def",content:"一元二次方程"},
+    {id:"8",type:"word",content:"Quadratic formula"},{id:"8",type:"def",content:"二次公式"},
+    {id:"9",type:"word",content:"Real roots"},{id:"9",type:"def",content:"实根"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-quadratic-equations-3', category: '25m-y10', title: 'Quadratic Equations (3)', titleZh: '二次方程 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Root / Solution"},{id:"0",type:"def",content:"根 / 解"},
+    {id:"1",type:"word",content:"Roots"},{id:"1",type:"def",content:"根"},
+    {id:"2",type:"word",content:"Simplify"},{id:"2",type:"def",content:"化简"},
+    {id:"3",type:"word",content:"Simultaneous equations"},{id:"3",type:"def",content:"联立方程"},
+    {id:"4",type:"word",content:"Sketch"},{id:"4",type:"def",content:"草图"},
+    {id:"5",type:"word",content:"Table of values"},{id:"5",type:"def",content:"数值表"},
+    {id:"6",type:"word",content:"Term"},{id:"6",type:"def",content:"项"},
+    {id:"7",type:"word",content:"Turning point / Vertex"},{id:"7",type:"def",content:"转折点 / 顶点"},
+    {id:"8",type:"word",content:"Variable"},{id:"8",type:"def",content:"变量"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-simultaneous-equations-1', category: '25m-y10', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Coefficient"},{id:"0",type:"def",content:"系数"},
+    {id:"1",type:"word",content:"Constant"},{id:"1",type:"def",content:"常数"},
+    {id:"2",type:"word",content:"Eliminate"},{id:"2",type:"def",content:"消去"},
+    {id:"3",type:"word",content:"Expression"},{id:"3",type:"def",content:"表达式"},
+    {id:"4",type:"word",content:"Isolate"},{id:"4",type:"def",content:"隔离"},
+    {id:"5",type:"word",content:"Linear Equation"},{id:"5",type:"def",content:"线性方程"},
+    {id:"6",type:"word",content:"Quadratic Equation"},{id:"6",type:"def",content:"二次方程"},
+    {id:"7",type:"word",content:"Simultaneous Equations"},{id:"7",type:"def",content:"联立方程组"},
+    {id:"8",type:"word",content:"Solution"},{id:"8",type:"def",content:"解"},
+    {id:"9",type:"word",content:"Substitution Method"},{id:"9",type:"def",content:"代入法"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-simultaneous-equations-2', category: '25m-y10', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"System of Equations"},{id:"0",type:"def",content:"方程组"},
+    {id:"1",type:"word",content:"Three Unknowns"},{id:"1",type:"def",content:"三个未知数"},
+    {id:"2",type:"word",content:"Two Unknowns"},{id:"2",type:"def",content:"两个未知数"},
+    {id:"3",type:"word",content:"Unknown"},{id:"3",type:"def",content:"未知数"},
+    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
   ]
 },
 
@@ -3249,269 +3300,6 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y10-practice-with-constructions-1', category: '25m-y10', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Angle bisector"},{id:"0",type:"def",content:"角平分线"},
-    {id:"1",type:"word",content:"Arc"},{id:"1",type:"def",content:"弧"},
-    {id:"2",type:"word",content:"ASA (Angle-Side-Angle)"},{id:"2",type:"def",content:"角边角"},
-    {id:"3",type:"word",content:"Bisect"},{id:"3",type:"def",content:"平分"},
-    {id:"4",type:"word",content:"Centroid"},{id:"4",type:"def",content:"重心"},
-    {id:"5",type:"word",content:"Circumcenter"},{id:"5",type:"def",content:"外心"},
-    {id:"6",type:"word",content:"Circumscribed circle"},{id:"6",type:"def",content:"外接圆"},
-    {id:"7",type:"word",content:"Compass"},{id:"7",type:"def",content:"圆规"},
-    {id:"8",type:"word",content:"Congruent triangles"},{id:"8",type:"def",content:"全等三角形"},
-    {id:"9",type:"word",content:"Construction"},{id:"9",type:"def",content:"构造"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-practice-with-constructions-2', category: '25m-y10', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Equidistant"},{id:"0",type:"def",content:"等距的"},
-    {id:"1",type:"word",content:"Equilateral triangle"},{id:"1",type:"def",content:"等边三角形"},
-    {id:"2",type:"word",content:"Incenter"},{id:"2",type:"def",content:"内心"},
-    {id:"3",type:"word",content:"Inscribed circle"},{id:"3",type:"def",content:"内切圆"},
-    {id:"4",type:"word",content:"Intersection"},{id:"4",type:"def",content:"交点"},
-    {id:"5",type:"word",content:"Isosceles triangle"},{id:"5",type:"def",content:"等腰三角形"},
-    {id:"6",type:"word",content:"Line"},{id:"6",type:"def",content:"线"},
-    {id:"7",type:"word",content:"Line segment"},{id:"7",type:"def",content:"线段"},
-    {id:"8",type:"word",content:"Locus"},{id:"8",type:"def",content:"轨迹"},
-    {id:"9",type:"word",content:"Median"},{id:"9",type:"def",content:"中线"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-practice-with-constructions-3', category: '25m-y10', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Perpendicular"},{id:"0",type:"def",content:"垂直的"},
-    {id:"1",type:"word",content:"Perpendicular bisector"},{id:"1",type:"def",content:"垂直平分线"},
-    {id:"2",type:"word",content:"Point"},{id:"2",type:"def",content:"点"},
-    {id:"3",type:"word",content:"Quadrilateral"},{id:"3",type:"def",content:"四边形"},
-    {id:"4",type:"word",content:"RHS (Right-angle-Hypotenuse-Side)"},{id:"4",type:"def",content:"直角、斜边、边"},
-    {id:"5",type:"word",content:"Right angle"},{id:"5",type:"def",content:"直角"},
-    {id:"6",type:"word",content:"SAS (Side-Angle-Side)"},{id:"6",type:"def",content:"边角边"},
-    {id:"7",type:"word",content:"SSS (Side-Side-Side)"},{id:"7",type:"def",content:"边边边"},
-    {id:"8",type:"word",content:"Straightedge"},{id:"8",type:"def",content:"直尺"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-probability-1', category: '25m-y10', title: 'Probability (1)', titleZh: '概率 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"At Least"},{id:"0",type:"def",content:"至少"},
-    {id:"1",type:"word",content:"Certain"},{id:"1",type:"def",content:"必然"},
-    {id:"2",type:"word",content:"Combined Probability"},{id:"2",type:"def",content:"联合概率"},
-    {id:"3",type:"word",content:"Complementary Event"},{id:"3",type:"def",content:"补事件"},
-    {id:"4",type:"word",content:"Conditional Probability"},{id:"4",type:"def",content:"条件概率"},
-    {id:"5",type:"word",content:"Dependent Events"},{id:"5",type:"def",content:"相关事件 / 依赖事件"},
-    {id:"6",type:"word",content:"Event"},{id:"6",type:"def",content:"事件"},
-    {id:"7",type:"word",content:"Exactly"},{id:"7",type:"def",content:"恰好"},
-    {id:"8",type:"word",content:"Failure"},{id:"8",type:"def",content:"失败"},
-    {id:"9",type:"word",content:"Favorable Outcome"},{id:"9",type:"def",content:"有利结果"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-probability-2', category: '25m-y10', title: 'Probability (2)', titleZh: '概率 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Frequency"},{id:"0",type:"def",content:"频率"},
-    {id:"1",type:"word",content:"Impossible"},{id:"1",type:"def",content:"不可能"},
-    {id:"2",type:"word",content:"Independent Events"},{id:"2",type:"def",content:"独立事件"},
-    {id:"3",type:"word",content:"Intersection"},{id:"3",type:"def",content:"交集"},
-    {id:"4",type:"word",content:"Likely"},{id:"4",type:"def",content:"可能"},
-    {id:"5",type:"word",content:"Mutually Exclusive"},{id:"5",type:"def",content:"互斥事件"},
-    {id:"6",type:"word",content:"Not Mutually Exclusive"},{id:"6",type:"def",content:"非互斥事件"},
-    {id:"7",type:"word",content:"Outcome"},{id:"7",type:"def",content:"结果"},
-    {id:"8",type:"word",content:"Probability"},{id:"8",type:"def",content:"概率"},
-    {id:"9",type:"word",content:"Product Rule"},{id:"9",type:"def",content:"乘法法则"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-probability-3', category: '25m-y10', title: 'Probability (3)', titleZh: '概率 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Random Event"},{id:"0",type:"def",content:"随机事件"},
-    {id:"1",type:"word",content:"Relative Frequency"},{id:"1",type:"def",content:"相对频率"},
-    {id:"2",type:"word",content:"Sample Space"},{id:"2",type:"def",content:"样本空间"},
-    {id:"3",type:"word",content:"Success"},{id:"3",type:"def",content:"成功"},
-    {id:"4",type:"word",content:"Sum Rule"},{id:"4",type:"def",content:"加法法则"},
-    {id:"5",type:"word",content:"Theoretical Probability"},{id:"5",type:"def",content:"理论概率"},
-    {id:"6",type:"word",content:"Tree Diagram"},{id:"6",type:"def",content:"树状图"},
-    {id:"7",type:"word",content:"Unlikely"},{id:"7",type:"def",content:"不太可能"},
-    {id:"8",type:"word",content:"With Replacement"},{id:"8",type:"def",content:"有放回"},
-    {id:"9",type:"word",content:"Without Replacement"},{id:"9",type:"def",content:"无放回"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-quadratic-equations-1', category: '25m-y10', title: 'Quadratic Equations (1)', titleZh: '二次方程 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Axis of symmetry"},{id:"0",type:"def",content:"对称轴"},
-    {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
-    {id:"2",type:"word",content:"Completing the square"},{id:"2",type:"def",content:"配方法 / 完全平方法"},
-    {id:"3",type:"word",content:"Constant"},{id:"3",type:"def",content:"常数"},
-    {id:"4",type:"word",content:"Cubic equation"},{id:"4",type:"def",content:"立方方程"},
-    {id:"5",type:"word",content:"Difference of two squares"},{id:"5",type:"def",content:"平方差"},
-    {id:"6",type:"word",content:"Discriminant"},{id:"6",type:"def",content:"判别式"},
-    {id:"7",type:"word",content:"Elimination method"},{id:"7",type:"def",content:"消元法"},
-    {id:"8",type:"word",content:"Equation"},{id:"8",type:"def",content:"方程"},
-    {id:"9",type:"word",content:"Expand"},{id:"9",type:"def",content:"展开"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-quadratic-equations-2', category: '25m-y10', title: 'Quadratic Equations (2)', titleZh: '二次方程 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Factorisation"},{id:"0",type:"def",content:"因式分解"},
-    {id:"1",type:"word",content:"Graph"},{id:"1",type:"def",content:"图 / 图形"},
-    {id:"2",type:"word",content:"Intercept"},{id:"2",type:"def",content:"截距"},
-    {id:"3",type:"word",content:"Linear equation"},{id:"3",type:"def",content:"线性方程"},
-    {id:"4",type:"word",content:"Maximum point"},{id:"4",type:"def",content:"最大值点"},
-    {id:"5",type:"word",content:"Minimum point"},{id:"5",type:"def",content:"最小值点"},
-    {id:"6",type:"word",content:"Parabola"},{id:"6",type:"def",content:"抛物线"},
-    {id:"7",type:"word",content:"Quadratic equation"},{id:"7",type:"def",content:"一元二次方程"},
-    {id:"8",type:"word",content:"Quadratic formula"},{id:"8",type:"def",content:"二次公式"},
-    {id:"9",type:"word",content:"Real roots"},{id:"9",type:"def",content:"实根"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-quadratic-equations-3', category: '25m-y10', title: 'Quadratic Equations (3)', titleZh: '二次方程 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Root / Solution"},{id:"0",type:"def",content:"根 / 解"},
-    {id:"1",type:"word",content:"Roots"},{id:"1",type:"def",content:"根"},
-    {id:"2",type:"word",content:"Simplify"},{id:"2",type:"def",content:"化简"},
-    {id:"3",type:"word",content:"Simultaneous equations"},{id:"3",type:"def",content:"联立方程"},
-    {id:"4",type:"word",content:"Sketch"},{id:"4",type:"def",content:"草图"},
-    {id:"5",type:"word",content:"Table of values"},{id:"5",type:"def",content:"数值表"},
-    {id:"6",type:"word",content:"Term"},{id:"6",type:"def",content:"项"},
-    {id:"7",type:"word",content:"Turning point / Vertex"},{id:"7",type:"def",content:"转折点 / 顶点"},
-    {id:"8",type:"word",content:"Variable"},{id:"8",type:"def",content:"变量"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-real-numbers-1', category: '25m-y10', title: 'Real Numbers (1)', titleZh: '实数 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Approximate"},{id:"0",type:"def",content:"近似"},
-    {id:"1",type:"word",content:"Conjugate Surds"},{id:"1",type:"def",content:"共轭根式"},
-    {id:"2",type:"word",content:"Cube Root"},{id:"2",type:"def",content:"立方根"},
-    {id:"3",type:"word",content:"Decimal"},{id:"3",type:"def",content:"小数"},
-    {id:"4",type:"word",content:"Denominator"},{id:"4",type:"def",content:"分母"},
-    {id:"5",type:"word",content:"Difference of Squares"},{id:"5",type:"def",content:"平方差"},
-    {id:"6",type:"word",content:"Estimate"},{id:"6",type:"def",content:"估算"},
-    {id:"7",type:"word",content:"Expand Brackets"},{id:"7",type:"def",content:"展开括号"},
-    {id:"8",type:"word",content:"Fraction"},{id:"8",type:"def",content:"分数"},
-    {id:"9",type:"word",content:"Index"},{id:"9",type:"def",content:"根指数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-real-numbers-2', category: '25m-y10', title: 'Real Numbers (2)', titleZh: '实数 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Integer"},{id:"0",type:"def",content:"整数"},
-    {id:"1",type:"word",content:"Irrational Numbers"},{id:"1",type:"def",content:"无理数"},
-    {id:"2",type:"word",content:"Like Surds"},{id:"2",type:"def",content:"同类根式"},
-    {id:"3",type:"word",content:"Natural Numbers"},{id:"3",type:"def",content:"自然数"},
-    {id:"4",type:"word",content:"Non-terminating, Non-recurring Decimal"},{id:"4",type:"def",content:"无限不循环小数"},
-    {id:"5",type:"word",content:"Numerator"},{id:"5",type:"def",content:"分子"},
-    {id:"6",type:"word",content:"Quadratic Surd"},{id:"6",type:"def",content:"二次根式"},
-    {id:"7",type:"word",content:"Radical"},{id:"7",type:"def",content:"根式"},
-    {id:"8",type:"word",content:"Radicand"},{id:"8",type:"def",content:"被开方数"},
-    {id:"9",type:"word",content:"Rational Numbers"},{id:"9",type:"def",content:"有理数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-real-numbers-3', category: '25m-y10', title: 'Real Numbers (3)', titleZh: '实数 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Rationalize the Denominator"},{id:"0",type:"def",content:"有理化分母"},
-    {id:"1",type:"word",content:"Real Numbers"},{id:"1",type:"def",content:"实数"},
-    {id:"2",type:"word",content:"Recurring Decimal"},{id:"2",type:"def",content:"循环小数"},
-    {id:"3",type:"word",content:"Simplest Form"},{id:"3",type:"def",content:"最简形式"},
-    {id:"4",type:"word",content:"Square Root"},{id:"4",type:"def",content:"平方根"},
-    {id:"5",type:"word",content:"Surd"},{id:"5",type:"def",content:"根式"},
-    {id:"6",type:"word",content:"Terminating Decimal"},{id:"6",type:"def",content:"有限小数"},
-    {id:"7",type:"word",content:"Unlike Surds"},{id:"7",type:"def",content:"非同类根式"},
-    {id:"8",type:"word",content:"Whole Numbers"},{id:"8",type:"def",content:"非负整数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-simultaneous-equations-1', category: '25m-y10', title: 'Simultaneous Equations (1)', titleZh: '联立方程组 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Coefficient"},{id:"0",type:"def",content:"系数"},
-    {id:"1",type:"word",content:"Constant"},{id:"1",type:"def",content:"常数"},
-    {id:"2",type:"word",content:"Eliminate"},{id:"2",type:"def",content:"消去"},
-    {id:"3",type:"word",content:"Expression"},{id:"3",type:"def",content:"表达式"},
-    {id:"4",type:"word",content:"Isolate"},{id:"4",type:"def",content:"隔离"},
-    {id:"5",type:"word",content:"Linear Equation"},{id:"5",type:"def",content:"线性方程"},
-    {id:"6",type:"word",content:"Quadratic Equation"},{id:"6",type:"def",content:"二次方程"},
-    {id:"7",type:"word",content:"Simultaneous Equations"},{id:"7",type:"def",content:"联立方程组"},
-    {id:"8",type:"word",content:"Solution"},{id:"8",type:"def",content:"解"},
-    {id:"9",type:"word",content:"Substitution Method"},{id:"9",type:"def",content:"代入法"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-simultaneous-equations-2', category: '25m-y10', title: 'Simultaneous Equations (2)', titleZh: '联立方程组 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"System of Equations"},{id:"0",type:"def",content:"方程组"},
-    {id:"1",type:"word",content:"Three Unknowns"},{id:"1",type:"def",content:"三个未知数"},
-    {id:"2",type:"word",content:"Two Unknowns"},{id:"2",type:"def",content:"两个未知数"},
-    {id:"3",type:"word",content:"Unknown"},{id:"3",type:"def",content:"未知数"},
-    {id:"4",type:"word",content:"Variable"},{id:"4",type:"def",content:"变量"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-transformations-1', category: '25m-y10', title: 'Transformations (1)', titleZh: '图形变换 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Angle of rotation"},{id:"0",type:"def",content:"旋转角度"},
-    {id:"1",type:"word",content:"Centre of enlargement"},{id:"1",type:"def",content:"放缩中心"},
-    {id:"2",type:"word",content:"Centre of rotation"},{id:"2",type:"def",content:"旋转中心"},
-    {id:"3",type:"word",content:"Combined transformation"},{id:"3",type:"def",content:"组合变换"},
-    {id:"4",type:"word",content:"Congruent"},{id:"4",type:"def",content:"全等"},
-    {id:"5",type:"word",content:"Coordinate"},{id:"5",type:"def",content:"坐标"},
-    {id:"6",type:"word",content:"Coordinate system"},{id:"6",type:"def",content:"坐标系"},
-    {id:"7",type:"word",content:"Enlargement"},{id:"7",type:"def",content:"放缩"},
-    {id:"8",type:"word",content:"Equation of a line"},{id:"8",type:"def",content:"直线方程"},
-    {id:"9",type:"word",content:"Horizontal line"},{id:"9",type:"def",content:"水平线"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-transformations-2', category: '25m-y10', title: 'Transformations (2)', titleZh: '图形变换 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Image"},{id:"0",type:"def",content:"像"},
-    {id:"1",type:"word",content:"Intercept"},{id:"1",type:"def",content:"截距"},
-    {id:"2",type:"word",content:"Line of reflection"},{id:"2",type:"def",content:"翻折线"},
-    {id:"3",type:"word",content:"Object"},{id:"3",type:"def",content:"原像"},
-    {id:"4",type:"word",content:"Origin"},{id:"4",type:"def",content:"原点"},
-    {id:"5",type:"word",content:"Proportion"},{id:"5",type:"def",content:"比例"},
-    {id:"6",type:"word",content:"Quadrant"},{id:"6",type:"def",content:"象限"},
-    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比率"},
-    {id:"8",type:"word",content:"Reflection"},{id:"8",type:"def",content:"翻折"},
-    {id:"9",type:"word",content:"Rotation"},{id:"9",type:"def",content:"旋转"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y10-transformations-3', category: '25m-y10', title: 'Transformations (3)', titleZh: '图形变换 (3)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Scale factor"},{id:"0",type:"def",content:"比例因子"},
-    {id:"1",type:"word",content:"Similar figures"},{id:"1",type:"def",content:"相似图形"},
-    {id:"2",type:"word",content:"Slope"},{id:"2",type:"def",content:"斜率"},
-    {id:"3",type:"word",content:"Transformation"},{id:"3",type:"def",content:"变换"},
-    {id:"4",type:"word",content:"Translation"},{id:"4",type:"def",content:"平移"},
-    {id:"5",type:"word",content:"Vector"},{id:"5",type:"def",content:"向量"},
-    {id:"6",type:"word",content:"Vertical line"},{id:"6",type:"def",content:"垂直线"},
-    {id:"7",type:"word",content:"X-axis"},{id:"7",type:"def",content:"X轴"},
-    {id:"8",type:"word",content:"Y-axis"},{id:"8",type:"def",content:"Y轴"}
-  ]
-},
-
-{
   board: '25m', slug: '25m-y10-unit-6-circles-1', category: '25m-y10', title: 'Unit 6 Circles (1)', titleZh: '圆 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
     {id:"0",type:"word",content:"Alternate segment theorem"},{id:"0",type:"def",content:"弦切角定理"},
@@ -3573,34 +3361,222 @@ var LEVELS = [
   ]
 },
 
+{
+  board: '25m', slug: '25m-y10-practice-with-constructions-1', category: '25m-y10', title: 'Practice with Constructions (1)', titleZh: '构造练习 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Angle bisector"},{id:"0",type:"def",content:"角平分线"},
+    {id:"1",type:"word",content:"Arc"},{id:"1",type:"def",content:"弧"},
+    {id:"2",type:"word",content:"ASA (Angle-Side-Angle)"},{id:"2",type:"def",content:"角边角"},
+    {id:"3",type:"word",content:"Bisect"},{id:"3",type:"def",content:"平分"},
+    {id:"4",type:"word",content:"Centroid"},{id:"4",type:"def",content:"重心"},
+    {id:"5",type:"word",content:"Circumcenter"},{id:"5",type:"def",content:"外心"},
+    {id:"6",type:"word",content:"Circumscribed circle"},{id:"6",type:"def",content:"外接圆"},
+    {id:"7",type:"word",content:"Compass"},{id:"7",type:"def",content:"圆规"},
+    {id:"8",type:"word",content:"Congruent triangles"},{id:"8",type:"def",content:"全等三角形"},
+    {id:"9",type:"word",content:"Construction"},{id:"9",type:"def",content:"构造"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-practice-with-constructions-2', category: '25m-y10', title: 'Practice with Constructions (2)', titleZh: '构造练习 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Equidistant"},{id:"0",type:"def",content:"等距的"},
+    {id:"1",type:"word",content:"Equilateral triangle"},{id:"1",type:"def",content:"等边三角形"},
+    {id:"2",type:"word",content:"Incenter"},{id:"2",type:"def",content:"内心"},
+    {id:"3",type:"word",content:"Inscribed circle"},{id:"3",type:"def",content:"内切圆"},
+    {id:"4",type:"word",content:"Intersection"},{id:"4",type:"def",content:"交点"},
+    {id:"5",type:"word",content:"Isosceles triangle"},{id:"5",type:"def",content:"等腰三角形"},
+    {id:"6",type:"word",content:"Line"},{id:"6",type:"def",content:"线"},
+    {id:"7",type:"word",content:"Line segment"},{id:"7",type:"def",content:"线段"},
+    {id:"8",type:"word",content:"Locus"},{id:"8",type:"def",content:"轨迹"},
+    {id:"9",type:"word",content:"Median"},{id:"9",type:"def",content:"中线"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-practice-with-constructions-3', category: '25m-y10', title: 'Practice with Constructions (3)', titleZh: '构造练习 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Perpendicular"},{id:"0",type:"def",content:"垂直的"},
+    {id:"1",type:"word",content:"Perpendicular bisector"},{id:"1",type:"def",content:"垂直平分线"},
+    {id:"2",type:"word",content:"Point"},{id:"2",type:"def",content:"点"},
+    {id:"3",type:"word",content:"Quadrilateral"},{id:"3",type:"def",content:"四边形"},
+    {id:"4",type:"word",content:"RHS (Right-angle-Hypotenuse-Side)"},{id:"4",type:"def",content:"直角、斜边、边"},
+    {id:"5",type:"word",content:"Right angle"},{id:"5",type:"def",content:"直角"},
+    {id:"6",type:"word",content:"SAS (Side-Angle-Side)"},{id:"6",type:"def",content:"边角边"},
+    {id:"7",type:"word",content:"SSS (Side-Side-Side)"},{id:"7",type:"def",content:"边边边"},
+    {id:"8",type:"word",content:"Straightedge"},{id:"8",type:"def",content:"直尺"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-congruence-and-similarity-1', category: '25m-y10', title: 'Congruence and Similarity (1)', titleZh: '全等和相似 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Angle-Side-Angle (ASA)"},{id:"0",type:"def",content:"角-边-角 (ASA)"},
+    {id:"1",type:"word",content:"Congruence"},{id:"1",type:"def",content:"全等"},
+    {id:"2",type:"word",content:"Corresponding angles"},{id:"2",type:"def",content:"对应角"},
+    {id:"3",type:"word",content:"Corresponding sides"},{id:"3",type:"def",content:"对应边"},
+    {id:"4",type:"word",content:"Hypotenuse"},{id:"4",type:"def",content:"斜边"},
+    {id:"5",type:"word",content:"Proof"},{id:"5",type:"def",content:"证明"},
+    {id:"6",type:"word",content:"Proportion"},{id:"6",type:"def",content:"比例式"},
+    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比例"},
+    {id:"8",type:"word",content:"Right-angle-Hypotenuse-Side (RHS)"},{id:"8",type:"def",content:"直角-斜边-边 (RHS)"},
+    {id:"9",type:"word",content:"Scale factor"},{id:"9",type:"def",content:"比例因子"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-congruence-and-similarity-2', category: '25m-y10', title: 'Congruence and Similarity (2)', titleZh: '全等和相似 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Side-Angle-Side (SAS)"},{id:"0",type:"def",content:"边-角-边 (SAS)"},
+    {id:"1",type:"word",content:"Side-Side-Side (SSS)"},{id:"1",type:"def",content:"边-边-边 (SSS)"},
+    {id:"2",type:"word",content:"Similarity"},{id:"2",type:"def",content:"相似"},
+    {id:"3",type:"word",content:"Triangle"},{id:"3",type:"def",content:"三角形"},
+    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-transformations-1', category: '25m-y10', title: 'Transformations (1)', titleZh: '图形变换 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Angle of rotation"},{id:"0",type:"def",content:"旋转角度"},
+    {id:"1",type:"word",content:"Centre of enlargement"},{id:"1",type:"def",content:"放缩中心"},
+    {id:"2",type:"word",content:"Centre of rotation"},{id:"2",type:"def",content:"旋转中心"},
+    {id:"3",type:"word",content:"Combined transformation"},{id:"3",type:"def",content:"组合变换"},
+    {id:"4",type:"word",content:"Congruent"},{id:"4",type:"def",content:"全等"},
+    {id:"5",type:"word",content:"Coordinate"},{id:"5",type:"def",content:"坐标"},
+    {id:"6",type:"word",content:"Coordinate system"},{id:"6",type:"def",content:"坐标系"},
+    {id:"7",type:"word",content:"Enlargement"},{id:"7",type:"def",content:"放缩"},
+    {id:"8",type:"word",content:"Equation of a line"},{id:"8",type:"def",content:"直线方程"},
+    {id:"9",type:"word",content:"Horizontal line"},{id:"9",type:"def",content:"水平线"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-transformations-2', category: '25m-y10', title: 'Transformations (2)', titleZh: '图形变换 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Image"},{id:"0",type:"def",content:"像"},
+    {id:"1",type:"word",content:"Intercept"},{id:"1",type:"def",content:"截距"},
+    {id:"2",type:"word",content:"Line of reflection"},{id:"2",type:"def",content:"翻折线"},
+    {id:"3",type:"word",content:"Object"},{id:"3",type:"def",content:"原像"},
+    {id:"4",type:"word",content:"Origin"},{id:"4",type:"def",content:"原点"},
+    {id:"5",type:"word",content:"Proportion"},{id:"5",type:"def",content:"比例"},
+    {id:"6",type:"word",content:"Quadrant"},{id:"6",type:"def",content:"象限"},
+    {id:"7",type:"word",content:"Ratio"},{id:"7",type:"def",content:"比率"},
+    {id:"8",type:"word",content:"Reflection"},{id:"8",type:"def",content:"翻折"},
+    {id:"9",type:"word",content:"Rotation"},{id:"9",type:"def",content:"旋转"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-transformations-3', category: '25m-y10', title: 'Transformations (3)', titleZh: '图形变换 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Scale factor"},{id:"0",type:"def",content:"比例因子"},
+    {id:"1",type:"word",content:"Similar figures"},{id:"1",type:"def",content:"相似图形"},
+    {id:"2",type:"word",content:"Slope"},{id:"2",type:"def",content:"斜率"},
+    {id:"3",type:"word",content:"Transformation"},{id:"3",type:"def",content:"变换"},
+    {id:"4",type:"word",content:"Translation"},{id:"4",type:"def",content:"平移"},
+    {id:"5",type:"word",content:"Vector"},{id:"5",type:"def",content:"向量"},
+    {id:"6",type:"word",content:"Vertical line"},{id:"6",type:"def",content:"垂直线"},
+    {id:"7",type:"word",content:"X-axis"},{id:"7",type:"def",content:"X轴"},
+    {id:"8",type:"word",content:"Y-axis"},{id:"8",type:"def",content:"Y轴"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-probability-1', category: '25m-y10', title: 'Probability (1)', titleZh: '概率 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"At Least"},{id:"0",type:"def",content:"至少"},
+    {id:"1",type:"word",content:"Certain"},{id:"1",type:"def",content:"必然"},
+    {id:"2",type:"word",content:"Combined Probability"},{id:"2",type:"def",content:"联合概率"},
+    {id:"3",type:"word",content:"Complementary Event"},{id:"3",type:"def",content:"补事件"},
+    {id:"4",type:"word",content:"Conditional Probability"},{id:"4",type:"def",content:"条件概率"},
+    {id:"5",type:"word",content:"Dependent Events"},{id:"5",type:"def",content:"相关事件 / 依赖事件"},
+    {id:"6",type:"word",content:"Event"},{id:"6",type:"def",content:"事件"},
+    {id:"7",type:"word",content:"Exactly"},{id:"7",type:"def",content:"恰好"},
+    {id:"8",type:"word",content:"Failure"},{id:"8",type:"def",content:"失败"},
+    {id:"9",type:"word",content:"Favorable Outcome"},{id:"9",type:"def",content:"有利结果"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-probability-2', category: '25m-y10', title: 'Probability (2)', titleZh: '概率 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Frequency"},{id:"0",type:"def",content:"频率"},
+    {id:"1",type:"word",content:"Impossible"},{id:"1",type:"def",content:"不可能"},
+    {id:"2",type:"word",content:"Independent Events"},{id:"2",type:"def",content:"独立事件"},
+    {id:"3",type:"word",content:"Intersection"},{id:"3",type:"def",content:"交集"},
+    {id:"4",type:"word",content:"Likely"},{id:"4",type:"def",content:"可能"},
+    {id:"5",type:"word",content:"Mutually Exclusive"},{id:"5",type:"def",content:"互斥事件"},
+    {id:"6",type:"word",content:"Not Mutually Exclusive"},{id:"6",type:"def",content:"非互斥事件"},
+    {id:"7",type:"word",content:"Outcome"},{id:"7",type:"def",content:"结果"},
+    {id:"8",type:"word",content:"Probability"},{id:"8",type:"def",content:"概率"},
+    {id:"9",type:"word",content:"Product Rule"},{id:"9",type:"def",content:"乘法法则"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-probability-3', category: '25m-y10', title: 'Probability (3)', titleZh: '概率 (3)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Random Event"},{id:"0",type:"def",content:"随机事件"},
+    {id:"1",type:"word",content:"Relative Frequency"},{id:"1",type:"def",content:"相对频率"},
+    {id:"2",type:"word",content:"Sample Space"},{id:"2",type:"def",content:"样本空间"},
+    {id:"3",type:"word",content:"Success"},{id:"3",type:"def",content:"成功"},
+    {id:"4",type:"word",content:"Sum Rule"},{id:"4",type:"def",content:"加法法则"},
+    {id:"5",type:"word",content:"Theoretical Probability"},{id:"5",type:"def",content:"理论概率"},
+    {id:"6",type:"word",content:"Tree Diagram"},{id:"6",type:"def",content:"树状图"},
+    {id:"7",type:"word",content:"Unlikely"},{id:"7",type:"def",content:"不太可能"},
+    {id:"8",type:"word",content:"With Replacement"},{id:"8",type:"def",content:"有放回"},
+    {id:"9",type:"word",content:"Without Replacement"},{id:"9",type:"def",content:"无放回"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-3d-geometry-1', category: '25m-y10', title: '3D Geometry (1)', titleZh: '立体几何 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"3D solid"},{id:"0",type:"def",content:"三维立体"},
+    {id:"1",type:"word",content:"Apex"},{id:"1",type:"def",content:"顶点"},
+    {id:"2",type:"word",content:"Axis"},{id:"2",type:"def",content:"轴"},
+    {id:"3",type:"word",content:"Compound shape"},{id:"3",type:"def",content:"复合形状"},
+    {id:"4",type:"word",content:"Cone"},{id:"4",type:"def",content:"圆锥体"},
+    {id:"5",type:"word",content:"Cross-section"},{id:"5",type:"def",content:"横截面"},
+    {id:"6",type:"word",content:"Cube"},{id:"6",type:"def",content:"立方体"},
+    {id:"7",type:"word",content:"Cuboid"},{id:"7",type:"def",content:"长方体"},
+    {id:"8",type:"word",content:"Cylinder"},{id:"8",type:"def",content:"圆柱体"},
+    {id:"9",type:"word",content:"Density"},{id:"9",type:"def",content:"密度"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-3d-geometry-2', category: '25m-y10', title: '3D Geometry (2)', titleZh: '立体几何 (2)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Dimension"},{id:"0",type:"def",content:"尺寸"},
+    {id:"1",type:"word",content:"Elevation"},{id:"1",type:"def",content:"立面图"},
+    {id:"2",type:"word",content:"Front elevation"},{id:"2",type:"def",content:"正立面图"},
+    {id:"3",type:"word",content:"Isometric drawing"},{id:"3",type:"def",content:"等轴测图"},
+    {id:"4",type:"word",content:"Mass"},{id:"4",type:"def",content:"质量"},
+    {id:"5",type:"word",content:"Net"},{id:"5",type:"def",content:"展开图"},
+    {id:"6",type:"word",content:"Orthographic projection"},{id:"6",type:"def",content:"正交投影"},
+    {id:"7",type:"word",content:"Plan view"},{id:"7",type:"def",content:"平面图"},
+    {id:"8",type:"word",content:"Prism"},{id:"8",type:"def",content:"棱柱体"},
+    {id:"9",type:"word",content:"Pyramid"},{id:"9",type:"def",content:"棱锥体"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y10-3d-geometry-3', category: '25m-y10', title: '3D Geometry (3)', titleZh: '立体几何 (3)', timer: 80, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Side elevation"},{id:"0",type:"def",content:"侧立面图"},
+    {id:"1",type:"word",content:"Sphere"},{id:"1",type:"def",content:"球体"},
+    {id:"2",type:"word",content:"Surface area"},{id:"2",type:"def",content:"表面积"},
+    {id:"3",type:"word",content:"Top view"},{id:"3",type:"def",content:"俯视图"},
+    {id:"4",type:"word",content:"Unit conversion"},{id:"4",type:"def",content:"单位换算"},
+    {id:"5",type:"word",content:"Viewpoint"},{id:"5",type:"def",content:"视点"},
+    {id:"6",type:"word",content:"Volume"},{id:"6",type:"def",content:"体积"}
+  ]
+},
+
 
 /* ═══ Year 11 (26 levels, 216 words) ═══ */
-
-{
-  board: '25m', slug: '25m-y11-differentiation-1', category: '25m-y11', title: 'Differentiation (1)', titleZh: '微分 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Curve"},{id:"0",type:"def",content:"曲线"},
-    {id:"1",type:"word",content:"Derivative"},{id:"1",type:"def",content:"导数"},
-    {id:"2",type:"word",content:"Derived function"},{id:"2",type:"def",content:"导函数"},
-    {id:"3",type:"word",content:"Differentiation"},{id:"3",type:"def",content:"微分"},
-    {id:"4",type:"word",content:"Function"},{id:"4",type:"def",content:"函数"},
-    {id:"5",type:"word",content:"Gradient"},{id:"5",type:"def",content:"梯度 / 斜率"},
-    {id:"6",type:"word",content:"Maximum point"},{id:"6",type:"def",content:"最大值点"},
-    {id:"7",type:"word",content:"Minimum point"},{id:"7",type:"def",content:"最小值点"},
-    {id:"8",type:"word",content:"Power rule"},{id:"8",type:"def",content:"幂法则"},
-    {id:"9",type:"word",content:"Rate of change"},{id:"9",type:"def",content:"变化率"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-differentiation-2', category: '25m-y11', title: 'Differentiation (2)', titleZh: '微分 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Second derivative"},{id:"0",type:"def",content:"二阶导数"},
-    {id:"1",type:"word",content:"Stationary point"},{id:"1",type:"def",content:"驻点"},
-    {id:"2",type:"word",content:"Tangent"},{id:"2",type:"def",content:"切线"},
-    {id:"3",type:"word",content:"Turning point"},{id:"3",type:"def",content:"转折点 / 驻点"}
-  ]
-},
 
 {
   board: '25m', slug: '25m-y11-estimation-bounds-1', category: '25m-y11', title: 'Estimation & Bounds (1)', titleZh: '估算与界限 (1)', timer: 70, comboBonus: 2,
@@ -3644,158 +3620,6 @@ var LEVELS = [
     {id:"4",type:"word",content:"Standard form"},{id:"4",type:"def",content:"标准形式 / 科学计数法"},
     {id:"5",type:"word",content:"Truncate"},{id:"5",type:"def",content:"截断"},
     {id:"6",type:"word",content:"Upper bound"},{id:"6",type:"def",content:"上限"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-functions-1', category: '25m-y11', title: 'Functions (1)', titleZh: '函数 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Composite Function"},{id:"0",type:"def",content:"复合函数"},
-    {id:"1",type:"word",content:"Cubic Function"},{id:"1",type:"def",content:"三次函数"},
-    {id:"2",type:"word",content:"Domain"},{id:"2",type:"def",content:"定义域"},
-    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
-    {id:"4",type:"word",content:"Exponential Function"},{id:"4",type:"def",content:"指数函数"},
-    {id:"5",type:"word",content:"Function"},{id:"5",type:"def",content:"函数"},
-    {id:"6",type:"word",content:"Function Notation"},{id:"6",type:"def",content:"函数符号"},
-    {id:"7",type:"word",content:"Graph"},{id:"7",type:"def",content:"图像"},
-    {id:"8",type:"word",content:"Independent Variable"},{id:"8",type:"def",content:"自变量"},
-    {id:"9",type:"word",content:"Inverse Function"},{id:"9",type:"def",content:"反函数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-functions-2', category: '25m-y11', title: 'Functions (2)', titleZh: '函数 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Linear Function"},{id:"0",type:"def",content:"线性函数"},
-    {id:"1",type:"word",content:"Quadratic Function"},{id:"1",type:"def",content:"二次函数"},
-    {id:"2",type:"word",content:"Range"},{id:"2",type:"def",content:"值域"},
-    {id:"3",type:"word",content:"Reciprocal Function"},{id:"3",type:"def",content:"倒数函数"},
-    {id:"4",type:"word",content:"Solution"},{id:"4",type:"def",content:"解"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-further-trigonometry-1', category: '25m-y11', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
-    {id:"1",type:"word",content:"Altitude"},{id:"1",type:"def",content:"高"},
-    {id:"2",type:"word",content:"Angle between a line and a plane"},{id:"2",type:"def",content:"直线与平面夹角"},
-    {id:"3",type:"word",content:"Area of a triangle"},{id:"3",type:"def",content:"三角形面积"},
-    {id:"4",type:"word",content:"Bearing"},{id:"4",type:"def",content:"方位角"},
-    {id:"5",type:"word",content:"Cosine Rule"},{id:"5",type:"def",content:"余弦定理"},
-    {id:"6",type:"word",content:"Included angle"},{id:"6",type:"def",content:"夹角"},
-    {id:"7",type:"word",content:"Line and plane"},{id:"7",type:"def",content:"直线与平面"},
-    {id:"8",type:"word",content:"Non-right-angled triangle"},{id:"8",type:"def",content:"任意三角形 / 非直角三角形"},
-    {id:"9",type:"word",content:"Obtuse angle"},{id:"9",type:"def",content:"钝角"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-further-trigonometry-2', category: '25m-y11', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Projection"},{id:"0",type:"def",content:"投影"},
-    {id:"1",type:"word",content:"Side length"},{id:"1",type:"def",content:"边长"},
-    {id:"2",type:"word",content:"Sine Rule"},{id:"2",type:"def",content:"正弦定理"},
-    {id:"3",type:"word",content:"Three-dimensional"},{id:"3",type:"def",content:"三维"},
-    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-1', category: '25m-y11', title: 'Graphs of Trigonometric Functions (1)', titleZh: '三角函数图像 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Amplitude"},{id:"0",type:"def",content:"振幅"},
-    {id:"1",type:"word",content:"Asymptote"},{id:"1",type:"def",content:"渐近线"},
-    {id:"2",type:"word",content:"Cosine function"},{id:"2",type:"def",content:"余弦函数"},
-    {id:"3",type:"word",content:"Domain"},{id:"3",type:"def",content:"定义域"},
-    {id:"4",type:"word",content:"Equilibrium position"},{id:"4",type:"def",content:"平衡位置"},
-    {id:"5",type:"word",content:"Intercept"},{id:"5",type:"def",content:"截距"},
-    {id:"6",type:"word",content:"Maximum value"},{id:"6",type:"def",content:"最大值"},
-    {id:"7",type:"word",content:"Minimum value"},{id:"7",type:"def",content:"最小值"},
-    {id:"8",type:"word",content:"Period"},{id:"8",type:"def",content:"周期"},
-    {id:"9",type:"word",content:"Phase shift"},{id:"9",type:"def",content:"相位移"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-2', category: '25m-y11', title: 'Graphs of Trigonometric Functions (2)', titleZh: '三角函数图像 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"值域"},
-    {id:"1",type:"word",content:"Sine function"},{id:"1",type:"def",content:"正弦函数"},
-    {id:"2",type:"word",content:"Tangent function"},{id:"2",type:"def",content:"正切函数"},
-    {id:"3",type:"word",content:"Trigonometric function"},{id:"3",type:"def",content:"三角函数"},
-    {id:"4",type:"word",content:"Vertical shift"},{id:"4",type:"def",content:"垂直平移"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-quadratic-sequences-1', category: '25m-y11', title: 'Quadratic Sequences (1)', titleZh: '二次数列 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Arithmetic progression"},{id:"0",type:"def",content:"等差数列"},
-    {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
-    {id:"2",type:"word",content:"Common difference"},{id:"2",type:"def",content:"公差"},
-    {id:"3",type:"word",content:"Common ratio"},{id:"3",type:"def",content:"公比"},
-    {id:"4",type:"word",content:"Constant second difference"},{id:"4",type:"def",content:"常数二阶差分"},
-    {id:"5",type:"word",content:"Cubic sequence"},{id:"5",type:"def",content:"三次数列"},
-    {id:"6",type:"word",content:"Degree"},{id:"6",type:"def",content:"次数"},
-    {id:"7",type:"word",content:"Exponential sequence"},{id:"7",type:"def",content:"指数数列"},
-    {id:"8",type:"word",content:"First difference"},{id:"8",type:"def",content:"一阶差分"},
-    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-quadratic-sequences-2', category: '25m-y11', title: 'Quadratic Sequences (2)', titleZh: '二次数列 (2)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"General form"},{id:"0",type:"def",content:"一般形式"},
-    {id:"1",type:"word",content:"Geometric sequence"},{id:"1",type:"def",content:"几何数列 / 等比数列"},
-    {id:"2",type:"word",content:"Identify"},{id:"2",type:"def",content:"识别"},
-    {id:"3",type:"word",content:"Linear sequence"},{id:"3",type:"def",content:"线性数列 / 等差数列"},
-    {id:"4",type:"word",content:"nth term"},{id:"4",type:"def",content:"第n项"},
-    {id:"5",type:"word",content:"nth term formula"},{id:"5",type:"def",content:"第n项公式"},
-    {id:"6",type:"word",content:"Pattern"},{id:"6",type:"def",content:"模式 / 规律"},
-    {id:"7",type:"word",content:"Position"},{id:"7",type:"def",content:"位置"},
-    {id:"8",type:"word",content:"Practical problem"},{id:"8",type:"def",content:"实际问题"},
-    {id:"9",type:"word",content:"Quadratic sequence"},{id:"9",type:"def",content:"二次数列"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-quadratic-sequences-3', category: '25m-y11', title: 'Quadratic Sequences (3)', titleZh: '二次数列 (3)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Second difference"},{id:"0",type:"def",content:"二阶差分"},
-    {id:"1",type:"word",content:"Sequence"},{id:"1",type:"def",content:"数列"},
-    {id:"2",type:"word",content:"Simultaneous equations"},{id:"2",type:"def",content:"联立方程"},
-    {id:"3",type:"word",content:"Substitute"},{id:"3",type:"def",content:"代入"},
-    {id:"4",type:"word",content:"Term"},{id:"4",type:"def",content:"项"},
-    {id:"5",type:"word",content:"Value"},{id:"5",type:"def",content:"值"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-regions-inequalities-1', category: '25m-y11', title: 'Regions & Inequalities (1)', titleZh: '区域与不等式 (1)', timer: 70, comboBonus: 2,
-  vocabulary: [
-    {id:"0",type:"word",content:"Boundary Line"},{id:"0",type:"def",content:"边界线"},
-    {id:"1",type:"word",content:"Bounded Region"},{id:"1",type:"def",content:"有界区域"},
-    {id:"2",type:"word",content:"Coordinate Plane"},{id:"2",type:"def",content:"坐标平面"},
-    {id:"3",type:"word",content:"Feasible Region"},{id:"3",type:"def",content:"可行域"},
-    {id:"4",type:"word",content:"Inequality"},{id:"4",type:"def",content:"不等式"},
-    {id:"5",type:"word",content:"Intersection"},{id:"5",type:"def",content:"交点/交集"},
-    {id:"6",type:"word",content:"Linear Inequality"},{id:"6",type:"def",content:"线性不等式"},
-    {id:"7",type:"word",content:"Maximum Value"},{id:"7",type:"def",content:"最大值"},
-    {id:"8",type:"word",content:"Minimum Value"},{id:"8",type:"def",content:"最小值"},
-    {id:"9",type:"word",content:"Objective Function"},{id:"9",type:"def",content:"目标函数"}
-  ]
-},
-
-{
-  board: '25m', slug: '25m-y11-regions-inequalities-2', category: '25m-y11', title: 'Regions & Inequalities (2)', titleZh: '区域与不等式 (2)', timer: 90, comboBonus: 3,
-  vocabulary: [
-    {id:"0",type:"word",content:"Region"},{id:"0",type:"def",content:"区域"},
-    {id:"1",type:"word",content:"Shaded Region"},{id:"1",type:"def",content:"阴影区域"},
-    {id:"2",type:"word",content:"Solution Set"},{id:"2",type:"def",content:"解集"},
-    {id:"3",type:"word",content:"System of Inequalities"},{id:"3",type:"def",content:"不等式组"},
-    {id:"4",type:"word",content:"Vertices"},{id:"4",type:"def",content:"顶点"}
   ]
 },
 
@@ -3895,29 +3719,180 @@ var LEVELS = [
 },
 
 {
-  board: '25m', slug: '25m-y11-statistics-and-probability-1', category: '25m-y11', title: 'Statistics and Probability (1)', titleZh: '统计与概率 (1)', timer: 70, comboBonus: 2,
+  board: '25m', slug: '25m-y11-quadratic-sequences-1', category: '25m-y11', title: 'Quadratic Sequences (1)', titleZh: '二次数列 (1)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Bivariate data"},{id:"0",type:"def",content:"双变量数据"},
-    {id:"1",type:"word",content:"Correlation"},{id:"1",type:"def",content:"相关性"},
-    {id:"2",type:"word",content:"Cumulative frequency"},{id:"2",type:"def",content:"累积频率"},
-    {id:"3",type:"word",content:"Cumulative frequency curve"},{id:"3",type:"def",content:"累积频率曲线"},
-    {id:"4",type:"word",content:"Interquartile range (IQR)"},{id:"4",type:"def",content:"四分位距"},
-    {id:"5",type:"word",content:"Line of best fit"},{id:"5",type:"def",content:"最佳拟合线"},
-    {id:"6",type:"word",content:"Lower quartile"},{id:"6",type:"def",content:"下四分位数"},
-    {id:"7",type:"word",content:"Median"},{id:"7",type:"def",content:"中位数"},
-    {id:"8",type:"word",content:"Negative correlation"},{id:"8",type:"def",content:"负相关"},
-    {id:"9",type:"word",content:"No correlation"},{id:"9",type:"def",content:"无相关"}
+    {id:"0",type:"word",content:"Arithmetic progression"},{id:"0",type:"def",content:"等差数列"},
+    {id:"1",type:"word",content:"Coefficient"},{id:"1",type:"def",content:"系数"},
+    {id:"2",type:"word",content:"Common difference"},{id:"2",type:"def",content:"公差"},
+    {id:"3",type:"word",content:"Common ratio"},{id:"3",type:"def",content:"公比"},
+    {id:"4",type:"word",content:"Constant second difference"},{id:"4",type:"def",content:"常数二阶差分"},
+    {id:"5",type:"word",content:"Cubic sequence"},{id:"5",type:"def",content:"三次数列"},
+    {id:"6",type:"word",content:"Degree"},{id:"6",type:"def",content:"次数"},
+    {id:"7",type:"word",content:"Exponential sequence"},{id:"7",type:"def",content:"指数数列"},
+    {id:"8",type:"word",content:"First difference"},{id:"8",type:"def",content:"一阶差分"},
+    {id:"9",type:"word",content:"Formula"},{id:"9",type:"def",content:"公式"}
   ]
 },
 
 {
-  board: '25m', slug: '25m-y11-statistics-and-probability-2', category: '25m-y11', title: 'Statistics and Probability (2)', titleZh: '统计与概率 (2)', timer: 90, comboBonus: 3,
+  board: '25m', slug: '25m-y11-quadratic-sequences-2', category: '25m-y11', title: 'Quadratic Sequences (2)', titleZh: '二次数列 (2)', timer: 70, comboBonus: 2,
   vocabulary: [
-    {id:"0",type:"word",content:"Outlier"},{id:"0",type:"def",content:"异常值"},
-    {id:"1",type:"word",content:"Percentile"},{id:"1",type:"def",content:"百分位数"},
-    {id:"2",type:"word",content:"Positive correlation"},{id:"2",type:"def",content:"正相关"},
-    {id:"3",type:"word",content:"Scatter diagram"},{id:"3",type:"def",content:"散点图"},
-    {id:"4",type:"word",content:"Upper quartile"},{id:"4",type:"def",content:"上四分位数"}
+    {id:"0",type:"word",content:"General form"},{id:"0",type:"def",content:"一般形式"},
+    {id:"1",type:"word",content:"Geometric sequence"},{id:"1",type:"def",content:"几何数列 / 等比数列"},
+    {id:"2",type:"word",content:"Identify"},{id:"2",type:"def",content:"识别"},
+    {id:"3",type:"word",content:"Linear sequence"},{id:"3",type:"def",content:"线性数列 / 等差数列"},
+    {id:"4",type:"word",content:"nth term"},{id:"4",type:"def",content:"第n项"},
+    {id:"5",type:"word",content:"nth term formula"},{id:"5",type:"def",content:"第n项公式"},
+    {id:"6",type:"word",content:"Pattern"},{id:"6",type:"def",content:"模式 / 规律"},
+    {id:"7",type:"word",content:"Position"},{id:"7",type:"def",content:"位置"},
+    {id:"8",type:"word",content:"Practical problem"},{id:"8",type:"def",content:"实际问题"},
+    {id:"9",type:"word",content:"Quadratic sequence"},{id:"9",type:"def",content:"二次数列"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-quadratic-sequences-3', category: '25m-y11', title: 'Quadratic Sequences (3)', titleZh: '二次数列 (3)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Second difference"},{id:"0",type:"def",content:"二阶差分"},
+    {id:"1",type:"word",content:"Sequence"},{id:"1",type:"def",content:"数列"},
+    {id:"2",type:"word",content:"Simultaneous equations"},{id:"2",type:"def",content:"联立方程"},
+    {id:"3",type:"word",content:"Substitute"},{id:"3",type:"def",content:"代入"},
+    {id:"4",type:"word",content:"Term"},{id:"4",type:"def",content:"项"},
+    {id:"5",type:"word",content:"Value"},{id:"5",type:"def",content:"值"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-functions-1', category: '25m-y11', title: 'Functions (1)', titleZh: '函数 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Composite Function"},{id:"0",type:"def",content:"复合函数"},
+    {id:"1",type:"word",content:"Cubic Function"},{id:"1",type:"def",content:"三次函数"},
+    {id:"2",type:"word",content:"Domain"},{id:"2",type:"def",content:"定义域"},
+    {id:"3",type:"word",content:"Equation"},{id:"3",type:"def",content:"方程"},
+    {id:"4",type:"word",content:"Exponential Function"},{id:"4",type:"def",content:"指数函数"},
+    {id:"5",type:"word",content:"Function"},{id:"5",type:"def",content:"函数"},
+    {id:"6",type:"word",content:"Function Notation"},{id:"6",type:"def",content:"函数符号"},
+    {id:"7",type:"word",content:"Graph"},{id:"7",type:"def",content:"图像"},
+    {id:"8",type:"word",content:"Independent Variable"},{id:"8",type:"def",content:"自变量"},
+    {id:"9",type:"word",content:"Inverse Function"},{id:"9",type:"def",content:"反函数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-functions-2', category: '25m-y11', title: 'Functions (2)', titleZh: '函数 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Linear Function"},{id:"0",type:"def",content:"线性函数"},
+    {id:"1",type:"word",content:"Quadratic Function"},{id:"1",type:"def",content:"二次函数"},
+    {id:"2",type:"word",content:"Range"},{id:"2",type:"def",content:"值域"},
+    {id:"3",type:"word",content:"Reciprocal Function"},{id:"3",type:"def",content:"倒数函数"},
+    {id:"4",type:"word",content:"Solution"},{id:"4",type:"def",content:"解"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-differentiation-1', category: '25m-y11', title: 'Differentiation (1)', titleZh: '微分 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Curve"},{id:"0",type:"def",content:"曲线"},
+    {id:"1",type:"word",content:"Derivative"},{id:"1",type:"def",content:"导数"},
+    {id:"2",type:"word",content:"Derived function"},{id:"2",type:"def",content:"导函数"},
+    {id:"3",type:"word",content:"Differentiation"},{id:"3",type:"def",content:"微分"},
+    {id:"4",type:"word",content:"Function"},{id:"4",type:"def",content:"函数"},
+    {id:"5",type:"word",content:"Gradient"},{id:"5",type:"def",content:"梯度 / 斜率"},
+    {id:"6",type:"word",content:"Maximum point"},{id:"6",type:"def",content:"最大值点"},
+    {id:"7",type:"word",content:"Minimum point"},{id:"7",type:"def",content:"最小值点"},
+    {id:"8",type:"word",content:"Power rule"},{id:"8",type:"def",content:"幂法则"},
+    {id:"9",type:"word",content:"Rate of change"},{id:"9",type:"def",content:"变化率"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-differentiation-2', category: '25m-y11', title: 'Differentiation (2)', titleZh: '微分 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Second derivative"},{id:"0",type:"def",content:"二阶导数"},
+    {id:"1",type:"word",content:"Stationary point"},{id:"1",type:"def",content:"驻点"},
+    {id:"2",type:"word",content:"Tangent"},{id:"2",type:"def",content:"切线"},
+    {id:"3",type:"word",content:"Turning point"},{id:"3",type:"def",content:"转折点 / 驻点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-further-trigonometry-1', category: '25m-y11', title: 'Further Trigonometry (1)', titleZh: '进阶三角学 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Acute angle"},{id:"0",type:"def",content:"锐角"},
+    {id:"1",type:"word",content:"Altitude"},{id:"1",type:"def",content:"高"},
+    {id:"2",type:"word",content:"Angle between a line and a plane"},{id:"2",type:"def",content:"直线与平面夹角"},
+    {id:"3",type:"word",content:"Area of a triangle"},{id:"3",type:"def",content:"三角形面积"},
+    {id:"4",type:"word",content:"Bearing"},{id:"4",type:"def",content:"方位角"},
+    {id:"5",type:"word",content:"Cosine Rule"},{id:"5",type:"def",content:"余弦定理"},
+    {id:"6",type:"word",content:"Included angle"},{id:"6",type:"def",content:"夹角"},
+    {id:"7",type:"word",content:"Line and plane"},{id:"7",type:"def",content:"直线与平面"},
+    {id:"8",type:"word",content:"Non-right-angled triangle"},{id:"8",type:"def",content:"任意三角形 / 非直角三角形"},
+    {id:"9",type:"word",content:"Obtuse angle"},{id:"9",type:"def",content:"钝角"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-further-trigonometry-2', category: '25m-y11', title: 'Further Trigonometry (2)', titleZh: '进阶三角学 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Projection"},{id:"0",type:"def",content:"投影"},
+    {id:"1",type:"word",content:"Side length"},{id:"1",type:"def",content:"边长"},
+    {id:"2",type:"word",content:"Sine Rule"},{id:"2",type:"def",content:"正弦定理"},
+    {id:"3",type:"word",content:"Three-dimensional"},{id:"3",type:"def",content:"三维"},
+    {id:"4",type:"word",content:"Vertex"},{id:"4",type:"def",content:"顶点"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-1', category: '25m-y11', title: 'Graphs of Trigonometric Functions (1)', titleZh: '三角函数图像 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Amplitude"},{id:"0",type:"def",content:"振幅"},
+    {id:"1",type:"word",content:"Asymptote"},{id:"1",type:"def",content:"渐近线"},
+    {id:"2",type:"word",content:"Cosine function"},{id:"2",type:"def",content:"余弦函数"},
+    {id:"3",type:"word",content:"Domain"},{id:"3",type:"def",content:"定义域"},
+    {id:"4",type:"word",content:"Equilibrium position"},{id:"4",type:"def",content:"平衡位置"},
+    {id:"5",type:"word",content:"Intercept"},{id:"5",type:"def",content:"截距"},
+    {id:"6",type:"word",content:"Maximum value"},{id:"6",type:"def",content:"最大值"},
+    {id:"7",type:"word",content:"Minimum value"},{id:"7",type:"def",content:"最小值"},
+    {id:"8",type:"word",content:"Period"},{id:"8",type:"def",content:"周期"},
+    {id:"9",type:"word",content:"Phase shift"},{id:"9",type:"def",content:"相位移"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-graphs-of-trigonometric-functi-2', category: '25m-y11', title: 'Graphs of Trigonometric Functions (2)', titleZh: '三角函数图像 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Range"},{id:"0",type:"def",content:"值域"},
+    {id:"1",type:"word",content:"Sine function"},{id:"1",type:"def",content:"正弦函数"},
+    {id:"2",type:"word",content:"Tangent function"},{id:"2",type:"def",content:"正切函数"},
+    {id:"3",type:"word",content:"Trigonometric function"},{id:"3",type:"def",content:"三角函数"},
+    {id:"4",type:"word",content:"Vertical shift"},{id:"4",type:"def",content:"垂直平移"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-regions-inequalities-1', category: '25m-y11', title: 'Regions & Inequalities (1)', titleZh: '区域与不等式 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Boundary Line"},{id:"0",type:"def",content:"边界线"},
+    {id:"1",type:"word",content:"Bounded Region"},{id:"1",type:"def",content:"有界区域"},
+    {id:"2",type:"word",content:"Coordinate Plane"},{id:"2",type:"def",content:"坐标平面"},
+    {id:"3",type:"word",content:"Feasible Region"},{id:"3",type:"def",content:"可行域"},
+    {id:"4",type:"word",content:"Inequality"},{id:"4",type:"def",content:"不等式"},
+    {id:"5",type:"word",content:"Intersection"},{id:"5",type:"def",content:"交点/交集"},
+    {id:"6",type:"word",content:"Linear Inequality"},{id:"6",type:"def",content:"线性不等式"},
+    {id:"7",type:"word",content:"Maximum Value"},{id:"7",type:"def",content:"最大值"},
+    {id:"8",type:"word",content:"Minimum Value"},{id:"8",type:"def",content:"最小值"},
+    {id:"9",type:"word",content:"Objective Function"},{id:"9",type:"def",content:"目标函数"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-regions-inequalities-2', category: '25m-y11', title: 'Regions & Inequalities (2)', titleZh: '区域与不等式 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Region"},{id:"0",type:"def",content:"区域"},
+    {id:"1",type:"word",content:"Shaded Region"},{id:"1",type:"def",content:"阴影区域"},
+    {id:"2",type:"word",content:"Solution Set"},{id:"2",type:"def",content:"解集"},
+    {id:"3",type:"word",content:"System of Inequalities"},{id:"3",type:"def",content:"不等式组"},
+    {id:"4",type:"word",content:"Vertices"},{id:"4",type:"def",content:"顶点"}
   ]
 },
 
@@ -3946,6 +3921,34 @@ var LEVELS = [
     {id:"3",type:"word",content:"Vector"},{id:"3",type:"def",content:"向量"},
     {id:"4",type:"word",content:"Zero vector"},{id:"4",type:"def",content:"零向量"}
   ]
+},
+
+{
+  board: '25m', slug: '25m-y11-statistics-and-probability-1', category: '25m-y11', title: 'Statistics and Probability (1)', titleZh: '统计与概率 (1)', timer: 70, comboBonus: 2,
+  vocabulary: [
+    {id:"0",type:"word",content:"Bivariate data"},{id:"0",type:"def",content:"双变量数据"},
+    {id:"1",type:"word",content:"Correlation"},{id:"1",type:"def",content:"相关性"},
+    {id:"2",type:"word",content:"Cumulative frequency"},{id:"2",type:"def",content:"累积频率"},
+    {id:"3",type:"word",content:"Cumulative frequency curve"},{id:"3",type:"def",content:"累积频率曲线"},
+    {id:"4",type:"word",content:"Interquartile range (IQR)"},{id:"4",type:"def",content:"四分位距"},
+    {id:"5",type:"word",content:"Line of best fit"},{id:"5",type:"def",content:"最佳拟合线"},
+    {id:"6",type:"word",content:"Lower quartile"},{id:"6",type:"def",content:"下四分位数"},
+    {id:"7",type:"word",content:"Median"},{id:"7",type:"def",content:"中位数"},
+    {id:"8",type:"word",content:"Negative correlation"},{id:"8",type:"def",content:"负相关"},
+    {id:"9",type:"word",content:"No correlation"},{id:"9",type:"def",content:"无相关"}
+  ]
+},
+
+{
+  board: '25m', slug: '25m-y11-statistics-and-probability-2', category: '25m-y11', title: 'Statistics and Probability (2)', titleZh: '统计与概率 (2)', timer: 90, comboBonus: 3,
+  vocabulary: [
+    {id:"0",type:"word",content:"Outlier"},{id:"0",type:"def",content:"异常值"},
+    {id:"1",type:"word",content:"Percentile"},{id:"1",type:"def",content:"百分位数"},
+    {id:"2",type:"word",content:"Positive correlation"},{id:"2",type:"def",content:"正相关"},
+    {id:"3",type:"word",content:"Scatter diagram"},{id:"3",type:"def",content:"散点图"},
+    {id:"4",type:"word",content:"Upper quartile"},{id:"4",type:"def",content:"上四分位数"}
+  ]
 }
+
 
 ];

@@ -112,9 +112,13 @@ def main():
     levels = []
     year_stats = {}
 
+    # Track per-year unit index to preserve source order
+    year_unit_counters = {}
     for unit in data['units']:
         year_group = unit['year_group']  # e.g. "Year 7"
         year_num = int(year_group.split()[-1])
+        unit_index = year_unit_counters.get(year_num, 0)
+        year_unit_counters[year_num] = unit_index + 1
         category = f'25m-y{year_num}'
 
         en_title, zh_title = parse_title(unit['title'])
@@ -145,6 +149,7 @@ def main():
                 'comboBonus': combo,
                 'vocabulary': chunk,
                 'year_num': year_num,
+                'src_order': unit_index,
             })
 
         # Track stats
@@ -155,7 +160,7 @@ def main():
         year_stats[year_num]['words'] += len(vocab)
 
     # Sort levels by year, then by order within year
-    levels.sort(key=lambda l: (l['year_num'], l['slug']))
+    levels.sort(key=lambda l: (l['year_num'], l['src_order']))
 
     # Print stats to stderr
     total_levels = 0

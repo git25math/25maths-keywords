@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.8] - 2026-03-05 — Y7-Y11 词卡按课纲教学顺序重排
+
+### 内容修正
+- **教学顺序重排**：Y7-Y11 共 55 个单元从字母排序改为课纲教学顺序（如 Y7 从 Circle 开头 → Multiplication of Fractions 开头）
+  - 源 JSON 按 `unit_id` 编号重排，保留 .docx 课纲原始单元顺序
+  - `gen-25m-levels.py` 新增 `src_order` 字段，排序 key 从 `slug`（字母序）改为 `src_order`（教学序）
+  - 173 个 level、1502 个词汇总数不变
+- **APP_VERSION**：`v1.1.7` → `v1.1.8`
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/levels.js` | 25m 部分 173 级按教学顺序重排 |
+| `js/config.js` | 版本号 v1.1.8 |
+| `scripts/gen-25m-levels.py` | `src_order` 字段 + 排序 key 修改 |
+| `y7-y11-unit-vocabulary.json` (Dashboard) | units 数组按教学顺序重排 |
+
 ## [1.1.7] - 2026-03-05 — 记住用户语言偏好
 
 ### UX 增强

@@ -318,7 +318,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.1.7';
+var APP_VERSION = 'v1.1.8';
 
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };
