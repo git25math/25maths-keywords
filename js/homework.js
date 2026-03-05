@@ -353,8 +353,8 @@ async function renderHwProgress(hwId, classId) {
   ct.innerHTML = '<div class="admin-loading">' + t('Loading...', '加载中...') + '</div>';
 
   try {
-    var aRes = await sb.from('assignments').select('*').eq('id', hwId).single();
-    var hw = aRes.data;
+    var aRes = await sb.rpc('get_assignment', { p_id: hwId });
+    var hw = (aRes.data && aRes.data.length > 0) ? aRes.data[0] : null;
     if (!hw) { ct.innerHTML = '<div class="admin-empty">Not found</div>'; return; }
 
     var activity = await loadActivityData(true);
@@ -388,6 +388,36 @@ async function renderHwProgress(hwId, classId) {
     html += summaryCard(t('Avg Score', '平均分'), avgScore + '%', 'var(--c-primary)');
     html += summaryCard(t('Deadline', '截止'), new Date(hw.deadline).toLocaleDateString(), new Date(hw.deadline) < new Date() ? 'var(--c-danger)' : 'var(--c-text2)');
     html += '</div>';
+
+    /* Vocabulary preview — show all words in this assignment */
+    var hwWords = [];
+    if (hw.custom_vocabulary && hw.custom_vocabulary.length > 0) {
+      var cvPairs = getPairs(hw.custom_vocabulary);
+      cvPairs.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+    } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
+      hw.deck_slugs.forEach(function(slug) {
+        for (var li = 0; li < LEVELS.length; li++) {
+          if (LEVELS[li].slug === slug) {
+            var dp = getPairs(LEVELS[li].vocabulary);
+            dp.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+            break;
+          }
+        }
+      });
+    }
+    if (hwWords.length > 0) {
+      html += '<div style="margin-bottom:16px">';
+      html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">';
+      html += '<div class="hw-section-title">' + t('Vocabulary', '词汇') + ' (' + hwWords.length + ')</div>';
+      html += '</div>';
+      html += '<div style="max-height:200px;overflow-y:auto;border:1px solid var(--c-border);border-radius:8px;padding:8px 12px;background:var(--c-surface)">';
+      hwWords.forEach(function(w, i) {
+        html += '<div style="padding:4px 0;font-size:13px;' + (i < hwWords.length - 1 ? 'border-bottom:1px solid var(--c-border-light)' : '') + '">';
+        html += '<strong>' + escapeHtml(w.word) + '</strong> — ' + escapeHtml(w.def);
+        html += '</div>';
+      });
+      html += '</div></div>';
+    }
 
     /* Student results table — clickable rows */
     html += '<div class="admin-table-wrap"><table class="admin-student-table"><thead><tr>';
@@ -475,7 +505,7 @@ async function showStudentHwDetail(hwId, studentUserId, studentName, classId) {
 async function deleteHw(hwId, classId) {
   if (!confirm(t('Delete this homework?', '确定删除此作业？'))) return;
   try {
-    await sb.from('assignments').update({ is_deleted: true }).eq('id', hwId);
+    await sb.rpc('delete_assignment', { p_id: hwId });
     showToast(t('Deleted!', '已删除！'));
     renderClassDetail(classId);
   } catch (e) {
@@ -574,15 +604,50 @@ async function showStudentHwPage() {
     var pct = (hasResult && hw._result.total_count > 0) ? Math.round(hw._result.correct_count / hw._result.total_count * 100) : 0;
     var isCustom = hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
 
-    html += '<div class="hw-list-item" style="cursor:pointer" onclick="startHwTest(\'' + hw.id + '\')">';
-    html += '<span class="hw-list-title">' + (isCustom ? '\ud83c\udfaf ' : '') + escapeHtml(hw.title) + '</span>';
+    /* Collect words for preview */
+    var pWords = [];
+    if (isCustom) {
+      var cp = getPairs(hw.custom_vocabulary);
+      cp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
+    } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
+      hw.deck_slugs.forEach(function(slug) {
+        for (var li = 0; li < LEVELS.length; li++) {
+          if (LEVELS[li].slug === slug) {
+            var dp = getPairs(LEVELS[li].vocabulary);
+            dp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
+            break;
+          }
+        }
+      });
+    }
+    var wordCount = pWords.length;
+
+    html += '<div class="hw-list-item" style="flex-wrap:wrap">';
+    html += '<div style="display:flex;align-items:center;gap:8px;width:100%">';
+    html += '<span class="hw-list-title" style="flex:1">' + (isCustom ? '\ud83c\udfaf ' : '') + escapeHtml(hw.title) + ' <span style="font-size:11px;color:var(--c-text2)">(' + wordCount + ' ' + t('words', '词') + ')</span></span>';
     if (hasResult) {
       html += '<span style="font-size:12px;color:var(--c-primary);font-weight:600">' + pct + '%</span>';
     }
     html += '<span class="hw-list-deadline" style="' + (isOverdue ? 'color:var(--c-danger)' : '') + '">';
     html += (isOverdue ? t('Overdue', '已逾期') + ' ' : '') + deadline.toLocaleDateString();
     html += '</span>';
-    html += '<span style="color:var(--c-primary);font-size:13px">GO \u2192</span>';
+    html += '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();startHwTest(\'' + hw.id + '\')">GO \u2192</button>';
+    html += '</div>';
+
+    /* Expandable word list */
+    if (wordCount > 0) {
+      var previewId = 'hw-preview-' + hw.id.slice(0, 8);
+      html += '<div style="width:100%;margin-top:6px">';
+      html += '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:2px 8px" onclick="event.stopPropagation();var el=document.getElementById(\'' + previewId + '\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">' + t('View words', '查看词汇') + ' \u25BC</button>';
+      html += '<div id="' + previewId + '" style="display:none;margin-top:6px;max-height:180px;overflow-y:auto;border:1px solid var(--c-border);border-radius:8px;padding:6px 10px;background:var(--c-surface)">';
+      pWords.forEach(function(w, i) {
+        html += '<div style="padding:3px 0;font-size:12px;' + (i < pWords.length - 1 ? 'border-bottom:1px solid var(--c-border-light)' : '') + '">';
+        html += '<strong>' + escapeHtml(w.word) + '</strong> — ' + escapeHtml(w.def);
+        html += '</div>';
+      });
+      html += '</div></div>';
+    }
+
     html += '</div>';
   });
 
@@ -626,8 +691,8 @@ async function startHwTest(hwId) {
   el.innerHTML = '<div class="admin-loading">' + t('Loading homework...', '加载作业中...') + '</div>';
 
   try {
-    var aRes = await sb.from('assignments').select('*').eq('id', hwId).single();
-    var hw = aRes.data;
+    var aRes = await sb.rpc('get_assignment', { p_id: hwId });
+    var hw = (aRes.data && aRes.data.length > 0) ? aRes.data[0] : null;
     if (!hw) { el.innerHTML = '<div class="admin-empty">Not found</div>'; return; }
 
     var words = [];
@@ -780,9 +845,10 @@ async function finishHwTest() {
     await sb.from('assignment_results').upsert(resultData, { onConflict: 'assignment_id,user_id' });
 
     /* Notify teacher about completion */
-    var aRes = await sb.from('assignments').select('teacher_id').eq('id', t_.hwId).single();
-    if (aRes.data) {
-      var tRes = await sb.from('teachers').select('user_id').eq('id', aRes.data.teacher_id).single();
+    var aRes = await sb.rpc('get_assignment', { p_id: t_.hwId });
+    var hwData = (aRes.data && aRes.data.length > 0) ? aRes.data[0] : null;
+    if (hwData) {
+      var tRes = await sb.from('teachers').select('user_id').eq('id', hwData.teacher_id).single();
       if (tRes.data) {
         await sendNotification(tRes.data.user_id, 'hw_result',
           getDisplayName() + ' ' + t('completed homework', '完成了作业'),
