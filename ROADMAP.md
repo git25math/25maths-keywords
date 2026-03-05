@@ -279,6 +279,12 @@
 - [x] 练习进度独立存储（localStorage wmatch_practice）→ v1.4.0
 - [x] 结果页显示 explanation 解析 → v1.4.0
 
+### Phase 10B+ — 题目纠错 + 管理员编辑器 [DONE]
+- [x] 题目纠错报告（所有用户，自动提取题目数据，存 feedback 表）→ v1.5.0
+- [x] 管理员富文本编辑器（超管，textarea + 实时预览 + KaTeX + 图片上传）→ v1.5.0
+- [x] 富文本渲染（题干/选项/解析支持 HTML + KaTeX + 图片）→ v1.5.0
+- [x] question_edits 覆盖表 + Supabase Storage 图片桶 → v1.5.0
+
 ### Phase 10C — 概念卡 + KaTeX（Layer 2）
 - [ ] getPairs() 扩展支持 formula/example 字段
 - [ ] KaTeX 按需加载（<50KB gzip，仅概念页触发）

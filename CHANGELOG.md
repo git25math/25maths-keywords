@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.5.0] - 2026-03-05 — 题目纠错 + 管理员富文本编辑器
+
+### 新功能
+- **题目纠错报告**：练习中每道题显示"🚩报告错误"按钮，自动提取题目 ID + 数据，已登录用户直接存入 feedback 表（type='question'），Guest 走 mailto 降级
+- **管理员富文本编辑器**：超管可直接在练习页点击"✏️编辑"打开宽屏 modal，左侧 6 个 textarea（题干/4 选项/解析）+ 右侧实时预览
+- **富文本支持**：题干、选项、解析均支持排版（加粗/斜体/上下标）+ 插入图片 + KaTeX 公式，白名单 HTML sanitizer 保障安全
+- **公式插入工具**：编辑器工具栏 ∑ 按钮打开浮层，输入 LaTeX 实时渲染预览，Insert 后自动插入 `$...$` 定界符
+- **图片上传**：支持上传图片到 Supabase Storage `question-images` 桶，自动插入 `<img>` 标签
+- **数据覆盖合并**：`question_edits` 表存储编辑后数据，加载练习时自动合并覆盖静态 JSON
+- **题目隐藏**：编辑器可将题目 status 设为 hidden，该题不再出现在练习中
+- **响应式编辑器**：桌面端左右分栏，手机端上下堆叠
+- **暗色模式**：编辑器 modal 通过 CSS 变量自动继承主题
+
+### 技术细节
+- `pqSanitize()` 白名单 HTML sanitizer：仅允许 `<b>/<i>/<em>/<strong>/<br>/<sub>/<sup>/<img>/<u>` 标签
+- `pqRender()` 替代 `escapeHtml()` 用于题干/选项/解析渲染
+- `loadQuestionEdits(board)` 从 Supabase 加载编辑覆盖数据
+- 编辑器工具栏：Bold / Italic / Sub / Sup / Formula / Image 6 个操作
+- Supabase Storage 策略：所有人可读图片，仅超管可上传/删除
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `supabase/migrations/20260305940000_question_edits.sql` | **新建** — question_edits 表 + RLS + Storage 桶 |
+| `js/practice.js` | 重构：pqSanitize/pqRender + 数据合并 + 报告 + 编辑器（268→565 行，+297 行） |
+| `css/style.css` | +80 行：报告按钮 + 编辑器 modal 样式 + 响应式 |
+| `js/config.js` | APP_VERSION → v1.5.0 |
+| `CLAUDE.md` | 版本号 |
+| `css/style.min.css` | 重新生成 |
+| `js/app.bundle.min.js` | 重新生成 |
+
 ## [1.4.0] - 2026-03-05 — 选择题练习模式（Phase 10B: Exam Practice）
 
 ### 新功能
