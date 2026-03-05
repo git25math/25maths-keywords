@@ -1,12 +1,13 @@
 # Changelog
 
-## [1.1.10] - 2026-03-05 — 25m 卡组前缀改为 Y{n}.{unitNum} 编号
+## [1.1.10] - 2026-03-05 — 25m 卡组前缀改为 Y{n}.{unitNum} 编号 + 年级中文名修正
 
 ### UX 增强
 - **卡组前缀**：25m 板块 deck-row 前缀从年级 emoji（⓻⓼⓽⓾⓫）改为 `Y7.1` 格式编号标签，同时标识年级和单元编号
   - 例：`⓻ Multiplication of Fractions (1)` → `Y7.1 · Multiplication of Fractions (1)`
   - 详情页标题同步更新为 `Y7.1 · lvTitle(lv)` 格式
   - CIE / Edexcel 板块不受影响，保持原有 emoji 前缀
+- **年级中文名修正**：英制 Year 对应中国年级下调一级（Y7→六年级、Y8→七年级、Y9→八年级、Y10→九年级、Y11→十年级）
 - **APP_VERSION**：`v1.1.9` → `v1.1.10`
 
 ### 文件变更

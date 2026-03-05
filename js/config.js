@@ -102,11 +102,11 @@ var BOARD_OPTIONS = [
   { value: 'all',     emoji: '\ud83c\udf10', name: 'All Courses',        nameZh: '\u5168\u90e8\u8bfe\u7a0b' },
   { value: 'cie',     emoji: '\ud83d\udcda', name: 'CIE IGCSE 0580',    nameZh: '\u5251\u6865 IGCSE 0580' },
   { value: 'edx',     emoji: '\ud83d\udcd8', name: 'Edexcel IGCSE 4MA1', nameZh: '\u7231\u5fb7\u601d IGCSE 4MA1' },
-  { value: '25m-y7',  emoji: '\u24fb',  name: 'Harrow Haikou Year 7',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u4e03\u5e74\u7ea7' },
-  { value: '25m-y8',  emoji: '\u24fc',  name: 'Harrow Haikou Year 8',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u516b\u5e74\u7ea7' },
-  { value: '25m-y9',  emoji: '\u24fd',  name: 'Harrow Haikou Year 9',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u4e5d\u5e74\u7ea7' },
-  { value: '25m-y10', emoji: '\u24fe', name: 'Harrow Haikou Year 10',   nameZh: '\u54c8\u7f57\u6d77\u53e3 \u5341\u5e74\u7ea7' },
-  { value: '25m-y11', emoji: '\u24eb', name: 'Harrow Haikou Year 11', nameZh: '\u54c8\u7f57\u6d77\u53e3 \u5341\u4e00\u5e74\u7ea7' }
+  { value: '25m-y7',  emoji: '\u24fb',  name: 'Harrow Haikou Year 7',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u516d\u5e74\u7ea7' },
+  { value: '25m-y8',  emoji: '\u24fc',  name: 'Harrow Haikou Year 8',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u4e03\u5e74\u7ea7' },
+  { value: '25m-y9',  emoji: '\u24fd',  name: 'Harrow Haikou Year 9',  nameZh: '\u54c8\u7f57\u6d77\u53e3 \u516b\u5e74\u7ea7' },
+  { value: '25m-y10', emoji: '\u24fe', name: 'Harrow Haikou Year 10',   nameZh: '\u54c8\u7f57\u6d77\u53e3 \u4e5d\u5e74\u7ea7' },
+  { value: '25m-y11', emoji: '\u24eb', name: 'Harrow Haikou Year 11', nameZh: '\u54c8\u7f57\u6d77\u53e3 \u5341\u5e74\u7ea7' }
 ];
 
 /* Check if a level should be visible under current board filter */
@@ -175,11 +175,11 @@ var BOARDS = [
   {
     id: '25m', name: 'Harrow Haikou Upper School Mathematics Curriculum', nameZh: '\u54c8\u7f57\u6d77\u53e3\u9ad8\u5e74\u7ea7\u6570\u5b66\u8bfe\u7a0b', code: 'Y7-11', emoji: '\ud83c\udfeb',
     categories: [
-      { id: '25m-y7',  name: 'Year 7',  emoji: '\u24fb',  nameZh: '\u4e03\u5e74\u7ea7' },
-      { id: '25m-y8',  name: 'Year 8',  emoji: '\u24fc',  nameZh: '\u516b\u5e74\u7ea7' },
-      { id: '25m-y9',  name: 'Year 9',  emoji: '\u24fd',  nameZh: '\u4e5d\u5e74\u7ea7' },
-      { id: '25m-y10', name: 'Year 10', emoji: '\u24fe', nameZh: '\u5341\u5e74\u7ea7' },
-      { id: '25m-y11', name: 'Year 11', emoji: '\u24eb', nameZh: '\u5341\u4e00\u5e74\u7ea7' }
+      { id: '25m-y7',  name: 'Year 7',  emoji: '\u24fb',  nameZh: '\u516d\u5e74\u7ea7' },
+      { id: '25m-y8',  name: 'Year 8',  emoji: '\u24fc',  nameZh: '\u4e03\u5e74\u7ea7' },
+      { id: '25m-y9',  name: 'Year 9',  emoji: '\u24fd',  nameZh: '\u516b\u5e74\u7ea7' },
+      { id: '25m-y10', name: 'Year 10', emoji: '\u24fe', nameZh: '\u4e5d\u5e74\u7ea7' },
+      { id: '25m-y11', name: 'Year 11', emoji: '\u24eb', nameZh: '\u5341\u5e74\u7ea7' }
     ]
   },
   {
