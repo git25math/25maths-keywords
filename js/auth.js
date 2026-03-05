@@ -7,6 +7,7 @@
 function toggleAuthLang() {
   appLang = appLang === 'en' ? 'bilingual' : 'en';
   try { localStorage.setItem('wmatch_lang', appLang); } catch(e) {}
+  if (appLang !== 'en') loadCJKFont();
   updateAuthLang();
 }
 
@@ -225,6 +226,10 @@ async function afterLogin() {
     showBoardSelection();
   } else {
     showApp();
+    /* Lazy-load homework module for students with a class */
+    if (sb && isLoggedIn() && userClassId) {
+      loadHomeworkModule();
+    }
     /* Init teacher panel after app shell is visible */
     if (sb && isLoggedIn()) {
       await loadAndInitTeacher();
@@ -243,6 +248,8 @@ async function loadAndInitTeacher() {
   } catch(e) { return; }
   /* Teacher needs all boards (cross-board homework) */
   try { await ensureAllBoardsLoaded(); } catch(e) {}
+  /* Load homework module (admin.js depends on homework functions like renderClassHwList) */
+  await loadHomeworkModule();
   /* Dynamically load admin.js + vocab-admin.js */
   await new Promise(function(resolve) {
     var s1 = document.createElement('script');

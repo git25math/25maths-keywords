@@ -321,7 +321,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v1.3.3';
+var APP_VERSION = 'v1.3.4';
 
 /* ═══ TEACHER ROLE (shared across modules) ═══ */
 var isTeacherUser = false;
@@ -349,3 +349,31 @@ async function callEdgeFunction(name, body) {
 
 /* DOM helper */
 var E = function(id) { return document.getElementById(id); };
+
+/* ═══ CONDITIONAL CJK FONT LOADING ═══ */
+var _cjkLoaded = false;
+function loadCJKFont() {
+  if (_cjkLoaded) return;
+  _cjkLoaded = true;
+  var lk = document.createElement('link');
+  lk.rel = 'stylesheet';
+  lk.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap';
+  document.head.appendChild(lk);
+}
+/* Load CJK font on startup if user prefers bilingual */
+if (appLang !== 'en') loadCJKFont();
+
+/* ═══ LAZY HOMEWORK MODULE ═══ */
+var _hwModuleLoaded = false;
+function loadHomeworkModule() {
+  /* Already loaded (or inlined by build-single.py offline build) */
+  if (_hwModuleLoaded || typeof showStudentHwPage === 'function') return Promise.resolve();
+  _hwModuleLoaded = true;
+  return new Promise(function(resolve) {
+    var s = document.createElement('script');
+    s.src = 'js/homework.min.js';
+    s.onload = resolve;
+    s.onerror = function() { _hwModuleLoaded = false; resolve(); };
+    document.head.appendChild(s);
+  });
+}

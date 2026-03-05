@@ -4,7 +4,7 @@ Bilingual math vocabulary learning platform (双语数学词汇学习平台) for
 
 - **Live**: https://git25math.github.io/25maths-keywords/
 - **Repo**: https://github.com/git25math/25maths-keywords
-- **Version**: v1.3.3 (2026-03-05)
+- **Version**: v1.3.4 (2026-03-05)
 - **Scale**: 3 boards, 264 levels, 2,200 words
 - **Supabase**: shared with 25maths-website (ref: `jjjigohjvmyewasmmmyf`)
 - **See also**: [CHANGELOG.md](CHANGELOG.md) | [ROADMAP.md](ROADMAP.md)
@@ -98,7 +98,7 @@ Panel system: `showPanel(id)` switches between 16 panels:
 
 ## Conventions
 
-- esbuild minify: 17 core JS → `js/app.bundle.min.js`, CSS → `css/style.min.css`; run `npm run build` after any JS/CSS change
+- esbuild minify: 16 core JS → `js/app.bundle.min.js` + `js/homework.min.js` (lazy-loaded), CSS → `css/style.min.css`; run `npm run build` after any JS/CSS change
 - All JS files use `var` declarations for browser compatibility
 - CSS uses custom properties (purple theme: `--c-primary: #5248C9`)
 - Fonts: Bricolage Grotesque (display) + DM Sans (body) + JetBrains Mono (code) + Noto Sans SC (Chinese)

@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.3.4] - 2026-03-05 — 首屏加载优化（资源提示 + 字体优化 + homework 拆包）
+
+### 性能优化
+- **资源提示**：4 个 preconnect/dns-prefetch（Google Fonts / gstatic / jsDelivr / Supabase），冷启动节省 100-300ms DNS
+- **字体精简**：移除 Noto Sans SC（改为 config.js 条件加载，EN 用户省 ~30KB）和 JetBrains Mono 500 字重
+- **Supabase SDK 延迟加载**：从 `<head>` 移到 `</body>` 前，不再阻塞 HTML 解析（省 ~200ms）
+- **homework.js 拆包**：从 bundle 拆出独立 `homework.min.js`（11KB gzip），Guest 和无班级学生不加载
+
+### 功能改进
+- **CJK 字体条件加载**：`loadCJKFont()` 公共函数，启动时按 appLang 判断，语言切换时动态加载
+- **homework 按需加载**：`loadHomeworkModule()` 公共函数，有班级学生 afterLogin 时加载，教师 loadAndInitTeacher 时加载
+- 离线构建（build-single.py）不受影响：homework.js 仍在 CORE_JS_FILES 中内联
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `index.html` | preconnect 4 行 + 字体精简 + Supabase 移到 body |
+| `js/config.js` | loadCJKFont() + loadHomeworkModule() + APP_VERSION → v1.3.4 |
+| `js/auth.js` | toggleAuthLang 加 loadCJKFont + afterLogin 加 loadHomeworkModule + loadAndInitTeacher 加 loadHomeworkModule |
+| `scripts/minify.sh` | homework.js 独立 minify |
+| `js/homework.min.js` | **新建** — homework 独立 minified |
+| `js/app.bundle.min.js` | 重新生成（不含 homework） |
+
 ## [1.3.3] - 2026-03-05 — 按 board 懒加载 JSON
 
 ### 性能优化

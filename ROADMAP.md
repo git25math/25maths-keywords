@@ -270,6 +270,7 @@
 - [x] 角色按需加载（学生不加载 admin/vocab-admin）→ v1.3.1
 - [x] esbuild minify 脚本（17 JS → 单文件 bundle + CSS minify）→ v1.3.2
 - [x] 首屏从 ~114KB gzip → ~66-72KB gzip（按 board 懒加载 JSON）→ v1.3.3
+- [x] 首屏优化：资源提示 + 字体条件加载 + Supabase defer + homework 拆包（~66KB → ~47-55KB gzip）→ v1.3.4
 
 ### Phase 10B — 选择题练习（Layer 3 快速突破）
 - [ ] 导入 25maths-website 纯文本选择题（~800 题无 LaTeX 依赖）
