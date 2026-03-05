@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0-docs] - 2026-03-05 — 架构分析文档 + 扩展路线规划
+
+### 文档新增
+- **扩展愿景 v1** (`docs/analysis/2026-03-05-expansion-vision.md`) — 四层扩展模型：词汇→概念→练习→评估
+- **模块审计** (`docs/analysis/2026-03-05-module-audit.md`) — v1.3.0 全模块一致性审计报告
+- **架构评审 v1** (`docs/analysis/2026-03-05-architecture-review.md`) — 五大架构约束 + 可行性初评
+- **架构评审 v2** (`docs/analysis/2026-03-05-architecture-review-v2.md`) — 深度技术审计，修正 v1 多项误判：
+  - 全局变量 73 个（非 200），分类清晰无冲突
+  - `getPairs()` 天然可扩展（`type` 字段是扩展点）
+  - levels.js 数据完美分段（CIE/Edx/25m 按行切割）
+  - 10/16 Panel 可低成本懒加载
+  - 800 道纯文本练习题可直接复用 Quiz UI
+
+### ROADMAP 更新
+- 新增 Phase 10A-10E 平台扩展路线（数据优化→练习题→概念卡→智能路径→评估）
+- PWA 移至 Phase 11
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `docs/analysis/` | 新增 4 份分析文档 + README 索引 |
+| `ROADMAP.md` | 新增 Phase 10A-10E + Phase 11 |
+| `CHANGELOG.md` | 本条目 |
+
 ## [1.3.0] - 2026-03-05 — 学习路径进度标记 + 错词即时复习
 
 ### 功能变更

@@ -261,7 +261,41 @@
 - [ ] Import/Export 增加 Anki 格式支持
 - [ ] 多语言扩展（pinyin 显示选项、繁体中文）
 
-## Phase 10 — PWA + 离线
+## Phase 10 — 平台扩展：从词汇工具到学习支撑平台
+
+> 详见 `docs/analysis/2026-03-05-architecture-review-v2.md`
+
+### Phase 10A — 数据层优化（前置）
+- [ ] levels.js 按 board 拆分为 3 个 JSON（异步按需加载）
+- [ ] 角色按需加载（学生不加载 admin/vocab-admin）
+- [ ] 简单 minify 脚本（esbuild 一行命令）
+- [ ] 首屏从 ~114KB gzip → ~75KB gzip
+
+### Phase 10B — 选择题练习（Layer 3 快速突破）
+- [ ] 导入 25maths-website 纯文本选择题（~800 题无 LaTeX 依赖）
+- [ ] 复用 Quiz 模式 UI（支持 4 选项数学题）
+- [ ] 按 topic + difficulty 筛选
+- [ ] 练习进度独立存储（practice_progress 表）
+- [ ] 结果页显示 explanation 解析
+
+### Phase 10C — 概念卡 + KaTeX（Layer 2）
+- [ ] getPairs() 扩展支持 formula/example 字段
+- [ ] KaTeX 按需加载（<50KB gzip，仅概念页触发）
+- [ ] 独立 panel-concept（概念卡翻转学习）
+- [ ] 剩余 ~400 含 LaTeX 练习题接入
+
+### Phase 10D — 智能学习路径（跨层整合）
+- [ ] 词汇→概念→练习 三层关联（subtopicId 映射）
+- [ ] 薄弱点检测（wordData.fail 聚合到 topic 维度）
+- [ ] 练习推荐引擎（错误率高的 topic 优先推练习题）
+- [ ] 教师端：布置练习题作业
+
+### Phase 10E — 评估层（Layer 4，可选）
+- [ ] 诊断测试（快速 20 题定位薄弱点）
+- [ ] 按考试局模拟卷格式组题
+- [ ] 服务端评分（Edge Function）
+
+## Phase 11 — PWA + 离线
 - [ ] Service Worker 离线缓存
 - [ ] PWA manifest + install prompt
 - [ ] 离线状态自动检测 + 重连同步
