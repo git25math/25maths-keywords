@@ -299,8 +299,8 @@
 
 ### Phase 10C — CIE 考纲驱动重构 [Phase A DONE]
 - [x] **Phase A 考纲骨架 + 数据迁移**：9 章 72 知识点 + 517 词 + 1,488 题映射 → v1.6.0
-- [ ] **Phase B 经典例题**：AI 生成 ~300 道 worked examples + examples.js 渲染
-- [ ] **Phase C 知识卡片**：72 张双语富文本知识卡 + knowledge.js + KaTeX
+- [ ] **Phase B 经典例题**：AI 生成 ~300 道 worked examples + ~~examples.js 渲染~~ 超管内联编辑 (v1.7.2)
+- [ ] **Phase C 知识卡片**：72 张双语富文本知识卡 + ~~knowledge.js~~ 超管内联编辑 (v1.7.2) + KaTeX
 - [ ] **Phase D 掌握度系统**：4 维掌握度追踪 + 复习计划 + Ebbinghaus 曲线
 
 ### Phase 10C-EDX — Edexcel 4MA1 考纲驱动重构 [Phase A+B DONE]

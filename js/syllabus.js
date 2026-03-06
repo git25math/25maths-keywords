@@ -8,6 +8,7 @@
 var BOARD_SYLLABUS = {};      /* { cie: {...}, edexcel: {...} } */
 var BOARD_VOCAB = {};         /* { cie: {...}, edexcel: {...} } */
 var _boardSectionLevelMap = {};  /* { cie: {id→idx}, edexcel: {id→idx} } */
+var _sectionEditsCache = {};  /* { cie: { secId: { module: data } }, edexcel: ... } */
 
 /* Legacy aliases — keep existing code working */
 var CIE_SYLLABUS = null;
@@ -21,6 +22,30 @@ var _edxDataLoading = false;
 
 /* Chapter collapse state (default all collapsed) */
 var cieChapterCollapsed = {};
+
+/* ═══ SECTION EDITS LOADING ═══ */
+
+function loadSectionEdits(board) {
+  if (_sectionEditsCache[board]) return Promise.resolve(_sectionEditsCache[board]);
+  if (!sb) return Promise.resolve({});
+  return sb.from('section_edits').select('section_id,module,data').eq('board', board)
+    .then(function(res) {
+      var map = {};
+      if (res.data) res.data.forEach(function(row) {
+        if (!map[row.section_id]) map[row.section_id] = {};
+        map[row.section_id][row.module] = row.data;
+      });
+      _sectionEditsCache[board] = map;
+      return map;
+    }).catch(function() { return {}; });
+}
+
+/* Get section edit data for a specific module */
+function _getSectionEdit(board, sectionId, module) {
+  var c = _sectionEditsCache[board];
+  if (!c || !c[sectionId]) return null;
+  return c[sectionId][module] || null;
+}
 
 /* ═══ DATA LOADING ═══ */
 
@@ -46,7 +71,8 @@ function _loadBoardSyllabus(board) {
 
   var loadingPromise = Promise.all([
     fetch(syllabusFile).then(function(r) { return r.json(); }),
-    fetch(vocabFile).then(function(r) { return r.json(); })
+    fetch(vocabFile).then(function(r) { return r.json(); }),
+    loadSectionEdits(board)
   ]).then(function(results) {
     BOARD_SYLLABUS[board] = results[0];
     BOARD_VOCAB[board] = results[1];
@@ -396,34 +422,43 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   html += '</div>';
 
   /* Syllabus requirements — board-aware labels (1st) */
+  var syllabusEdit = _getSectionEdit(board, sec.id, 'syllabus');
   html += '<div class="sec-syllabus">';
   html += '<div class="sec-syllabus-header">';
   html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42') + '</div>';
+  html += '<div style="display:flex;gap:4px;align-items:center">';
+  if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+    html += '<button class="sec-module-edit" onclick="editSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+  }
   html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
-  html += '</div>';
+  html += '</div></div>';
 
   if (board === 'edexcel') {
     /* Edexcel uses foundation_content / higher_content */
-    if (sec.foundation_content) {
+    var fc = (syllabusEdit && syllabusEdit.foundation_content) || sec.foundation_content;
+    var hc = (syllabusEdit && syllabusEdit.higher_content) || sec.higher_content;
+    if (fc) {
       html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Foundation:</span> ' + pqRender(sec.foundation_content);
+      html += '<span class="sec-syllabus-label">Foundation:</span> ' + pqRender(fc);
       html += '</div>';
     }
-    if (sec.higher_content) {
+    if (hc) {
       html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Higher:</span> ' + pqRender(sec.higher_content);
+      html += '<span class="sec-syllabus-label">Higher:</span> ' + pqRender(hc);
       html += '</div>';
     }
   } else {
     /* CIE uses core_content / extended_content */
-    if (sec.core_content) {
+    var cc = (syllabusEdit && syllabusEdit.core_content) || sec.core_content;
+    var ec = (syllabusEdit && syllabusEdit.extended_content) || sec.extended_content;
+    if (cc) {
       html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Core:</span> ' + pqRender(sec.core_content);
+      html += '<span class="sec-syllabus-label">Core:</span> ' + pqRender(cc);
       html += '</div>';
     }
-    if (sec.extended_content) {
+    if (ec) {
       html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Extended:</span> ' + pqRender(sec.extended_content);
+      html += '<span class="sec-syllabus-label">Extended:</span> ' + pqRender(ec);
       html += '</div>';
     }
   }
@@ -441,6 +476,9 @@ function renderSectionDetail(ch, sec, secIdx, board) {
     html += '<div class="sec-module-sub">' + words.length + ' ' + t('words', '\u8bcd') + ' \u00b7 ';
     html += _renderMiniStars(stats.pct);
     html += '</div></div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();openDeck(' + li + ')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
     html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'vocabulary\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
@@ -461,30 +499,83 @@ function renderSectionDetail(ch, sec, secIdx, board) {
     html += '<div class="sec-module-title">' + t('Practice', '\u7ec3\u4e60') + '</div>';
     html += '<div class="sec-module-sub">' + qCount + ' ' + t('questions', '\u9898') + '</div>';
     html += '</div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();startPracticeBySection(\'' + sec.id + '\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
     html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'practice\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
     html += '<div class="sec-module-arrow">\u2192</div>';
     html += '</div>';
   }
 
-  /* Knowledge card placeholder (3rd) */
-  html += '<div class="sec-module sec-module-coming">';
-  html += '<div class="sec-module-icon">\ud83d\udcd8</div>';
-  html += '<div class="sec-module-info">';
-  html += '<div class="sec-module-title">' + t('Knowledge Card', '\u77e5\u8bc6\u5361\u7247') + '</div>';
-  html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
-  html += '</div>';
-  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
-  html += '</div>';
+  /* Knowledge card (3rd) — show content if edited, else "Coming soon" */
+  var knowledgeEdit = _getSectionEdit(board, sec.id, 'knowledge');
+  if (knowledgeEdit && knowledgeEdit.content) {
+    html += '<div class="sec-module sec-module-expandable" onclick="toggleSectionContent(this)">';
+    html += '<div class="sec-module-icon">\ud83d\udcd8</div>';
+    html += '<div class="sec-module-info">';
+    html += '<div class="sec-module-title">' + t('Knowledge Card', '\u77e5\u8bc6\u5361\u7247') + '</div>';
+    html += '<div class="sec-module-sub">' + t('Click to expand', '\u70b9\u51fb\u5c55\u5f00') + '</div>';
+    html += '</div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();editSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
+    html += '<div class="sec-module-arrow">\u25bc</div>';
+    html += '</div>';
+    html += '<div class="sec-module-content" style="display:none">';
+    html += '<div class="sec-module-content-body">' + pqRender(knowledgeEdit.content) + '</div>';
+    if (knowledgeEdit.content_zh) {
+      html += '<div class="sec-module-content-body" style="margin-top:8px;color:var(--c-text2)">' + pqRender(knowledgeEdit.content_zh) + '</div>';
+    }
+    html += '</div>';
+  } else {
+    html += '<div class="sec-module sec-module-coming">';
+    html += '<div class="sec-module-icon">\ud83d\udcd8</div>';
+    html += '<div class="sec-module-info">';
+    html += '<div class="sec-module-title">' + t('Knowledge Card', '\u77e5\u8bc6\u5361\u7247') + '</div>';
+    html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
+    html += '</div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();editSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
+    html += '</div>';
+  }
 
-  /* Examples placeholder (4th) */
-  html += '<div class="sec-module sec-module-coming">';
-  html += '<div class="sec-module-icon">\ud83d\udcd6</div>';
-  html += '<div class="sec-module-info">';
-  html += '<div class="sec-module-title">' + t('Worked Examples', '\u7ecf\u5178\u4f8b\u9898') + '</div>';
-  html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
-  html += '</div>';
-  html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
-  html += '</div>';
+  /* Worked Examples (4th) — show content if edited, else "Coming soon" */
+  var examplesEdit = _getSectionEdit(board, sec.id, 'examples');
+  if (examplesEdit && examplesEdit.content) {
+    html += '<div class="sec-module sec-module-expandable" onclick="toggleSectionContent(this)">';
+    html += '<div class="sec-module-icon">\ud83d\udcd6</div>';
+    html += '<div class="sec-module-info">';
+    html += '<div class="sec-module-title">' + t('Worked Examples', '\u7ecf\u5178\u4f8b\u9898') + '</div>';
+    html += '<div class="sec-module-sub">' + t('Click to expand', '\u70b9\u51fb\u5c55\u5f00') + '</div>';
+    html += '</div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();editSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
+    html += '<div class="sec-module-arrow">\u25bc</div>';
+    html += '</div>';
+    html += '<div class="sec-module-content" style="display:none">';
+    html += '<div class="sec-module-content-body">' + pqRender(examplesEdit.content) + '</div>';
+    if (examplesEdit.content_zh) {
+      html += '<div class="sec-module-content-body" style="margin-top:8px;color:var(--c-text2)">' + pqRender(examplesEdit.content_zh) + '</div>';
+    }
+    html += '</div>';
+  } else {
+    html += '<div class="sec-module sec-module-coming">';
+    html += '<div class="sec-module-icon">\ud83d\udcd6</div>';
+    html += '<div class="sec-module-info">';
+    html += '<div class="sec-module-title">' + t('Worked Examples', '\u7ecf\u5178\u4f8b\u9898') + '</div>';
+    html += '<div class="sec-module-sub">' + t('Coming soon', '\u5373\u5c06\u63a8\u51fa') + '</div>';
+    html += '</div>';
+    if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
+      html += '<button class="sec-module-edit" onclick="event.stopPropagation();editSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
+    }
+    html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'examples\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
+    html += '</div>';
+  }
 
   html += '</div>'; /* close sec-modules */
 
@@ -514,6 +605,195 @@ function _renderMiniStars(pct) {
     s += '<span class="star-dot' + (i < filled ? ' filled' : '') + '" style="width:6px;height:6px"></span>';
   }
   return s;
+}
+
+/* ═══ EXPANDABLE MODULE TOGGLE ═══ */
+function toggleSectionContent(moduleEl) {
+  var content = moduleEl.nextElementSibling;
+  if (!content || !content.classList.contains('sec-module-content')) return;
+  var arrow = moduleEl.querySelector('.sec-module-arrow');
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    if (arrow) arrow.textContent = '\u25b2';
+    loadKaTeX().then(function() { renderMath(content); });
+  } else {
+    content.style.display = 'none';
+    if (arrow) arrow.textContent = '\u25bc';
+  }
+}
+
+/* ═══ SECTION MODULE EDITOR (super-admin) ═══ */
+
+var _sePreviewTimer = null;
+
+function editSectionModule(sectionId, module, board) {
+  if (!isSuperAdmin()) return;
+  board = board || 'cie';
+  var info = getSectionInfo(sectionId, board);
+  if (!info) return;
+  var sec = info.section;
+  var existing = _getSectionEdit(board, sectionId, module);
+
+  var html = '<div class="modal-card pq-editor-modal" onclick="event.stopPropagation()">';
+
+  /* Header */
+  var modLabels = { syllabus: ['Syllabus', '\u8003\u7eb2\u8981\u6c42'], knowledge: ['Knowledge Card', '\u77e5\u8bc6\u5361\u7247'], examples: ['Worked Examples', '\u7ecf\u5178\u4f8b\u9898'] };
+  var modLabel = modLabels[module] || modLabels.syllabus;
+  html += '<div class="pq-editor-header">';
+  html += '<div class="section-title" style="margin:0">\u270f\ufe0f ' + t(modLabel[0], modLabel[1]) + ' <span style="color:var(--c-muted);font-size:13px">' + escapeHtml(sectionId) + ' ' + escapeHtml(sec.title) + '</span></div>';
+  html += '</div>';
+
+  /* Toolbar */
+  html += '<div class="pq-editor-toolbar">';
+  html += '<button type="button" onclick="pqToolBold()" title="Bold"><b>B</b></button>';
+  html += '<button type="button" onclick="pqToolItalic()" title="Italic"><i>I</i></button>';
+  html += '<button type="button" onclick="pqToolSub()" title="Subscript">X<sub>2</sub></button>';
+  html += '<button type="button" onclick="pqToolSup()" title="Superscript">X<sup>2</sup></button>';
+  html += '<button type="button" onclick="pqToolFormula()" title="Formula">\u2211</button>';
+  html += '</div>';
+
+  /* Split: fields + preview */
+  html += '<div class="pq-editor-split">';
+  html += '<div class="pq-editor-fields">';
+
+  if (module === 'syllabus') {
+    if (board === 'edexcel') {
+      var fVal = (existing && existing.foundation_content) || sec.foundation_content || '';
+      var hVal = (existing && existing.higher_content) || sec.higher_content || '';
+      html += _pqFieldGroup('Foundation', 'se-ed-f1', fVal, 4);
+      html += _pqFieldGroup('Higher', 'se-ed-f2', hVal, 4);
+    } else {
+      var cVal = (existing && existing.core_content) || sec.core_content || '';
+      var eVal = (existing && existing.extended_content) || sec.extended_content || '';
+      html += _pqFieldGroup('Core', 'se-ed-f1', cVal, 4);
+      html += _pqFieldGroup('Extended', 'se-ed-f2', eVal, 4);
+    }
+  } else {
+    /* knowledge / examples: content + content_zh */
+    var c1 = (existing && existing.content) || '';
+    var c2 = (existing && existing.content_zh) || '';
+    html += _pqFieldGroup('Content', 'se-ed-f1', c1, 6);
+    html += _pqFieldGroup('Content (\u4e2d\u6587)', 'se-ed-f2', c2, 6);
+  }
+
+  html += '</div>'; /* end fields */
+
+  /* Preview */
+  html += '<div class="pq-editor-preview" id="se-ed-preview"></div>';
+  html += '</div>'; /* end split */
+
+  /* Formula popup (shared with practice editor) */
+  html += '<div class="pq-formula-popup" id="pq-formula-popup" style="display:none">';
+  html += '<label class="pq-field-label">LaTeX</label>';
+  html += '<textarea id="pq-formula-input" class="bug-textarea" rows="2" placeholder="\\frac{1}{2}" style="font-family:var(--font-mono)"></textarea>';
+  html += '<div class="pq-formula-preview" id="pq-formula-preview"></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:8px">';
+  html += '<button class="btn btn-primary btn-sm" onclick="pqInsertFormula()">' + t('Insert', '\u63d2\u5165') + '</button>';
+  html += '<button class="btn btn-ghost btn-sm" onclick="pqCloseFormula()">' + t('Cancel', '\u53d6\u6d88') + '</button>';
+  html += '</div></div>';
+
+  /* Footer */
+  html += '<div class="pq-editor-footer">';
+  html += '<button class="btn btn-primary" onclick="saveSectionEdit(\'' + escapeHtml(sectionId) + '\',\'' + escapeHtml(module) + '\',\'' + escapeHtml(board) + '\')">\ud83d\udcbe ' + t('Save to DB', '\u4fdd\u5b58\u5230\u6570\u636e\u5e93') + '</button>';
+  html += '<button class="btn btn-ghost" onclick="hideModal()">' + t('Cancel', '\u53d6\u6d88') + '</button>';
+  html += '</div>';
+
+  html += '</div>'; /* end modal-card */
+
+  E('modal-card').className = 'modal-card pq-editor-modal';
+  showModal(html);
+
+  /* Bind live preview */
+  setTimeout(function() {
+    var fields = ['se-ed-f1', 'se-ed-f2'];
+    fields.forEach(function(fid) {
+      var el = E(fid);
+      if (el) {
+        el.addEventListener('input', function() { _seUpdatePreview(module, board); });
+        el.addEventListener('focus', function() { _pqFocusedTextarea = this; });
+      }
+    });
+    _seUpdatePreview(module, board);
+  }, 50);
+}
+
+function _seUpdatePreview(module, board) {
+  var prev = E('se-ed-preview');
+  if (!prev) return;
+  var f1 = E('se-ed-f1') ? E('se-ed-f1').value : '';
+  var f2 = E('se-ed-f2') ? E('se-ed-f2').value : '';
+
+  var h = '';
+  if (module === 'syllabus') {
+    var l1 = board === 'edexcel' ? 'Foundation' : 'Core';
+    var l2 = board === 'edexcel' ? 'Higher' : 'Extended';
+    if (f1) {
+      h += '<div class="pq-preview-section"><div class="pq-preview-label">' + l1 + '</div>';
+      h += '<div class="pq-preview-content">' + pqRender(f1) + '</div></div>';
+    }
+    if (f2) {
+      h += '<div class="pq-preview-section"><div class="pq-preview-label">' + l2 + '</div>';
+      h += '<div class="pq-preview-content">' + pqRender(f2) + '</div></div>';
+    }
+  } else {
+    if (f1) {
+      h += '<div class="pq-preview-section"><div class="pq-preview-label">Content</div>';
+      h += '<div class="pq-preview-content">' + pqRender(f1) + '</div></div>';
+    }
+    if (f2) {
+      h += '<div class="pq-preview-section"><div class="pq-preview-label">Content (\u4e2d\u6587)</div>';
+      h += '<div class="pq-preview-content" style="color:var(--c-text2)">' + pqRender(f2) + '</div></div>';
+    }
+  }
+
+  prev.innerHTML = h;
+  /* Debounce KaTeX rendering */
+  clearTimeout(_sePreviewTimer);
+  _sePreviewTimer = setTimeout(function() { renderMath(prev); }, 300);
+}
+
+function saveSectionEdit(sectionId, module, board) {
+  if (!sb || !isSuperAdmin()) { showToast('Not authorized'); return; }
+  var f1 = E('se-ed-f1') ? E('se-ed-f1').value : '';
+  var f2 = E('se-ed-f2') ? E('se-ed-f2').value : '';
+
+  var data = {};
+  if (module === 'syllabus') {
+    if (board === 'edexcel') {
+      data.foundation_content = f1;
+      data.higher_content = f2;
+    } else {
+      data.core_content = f1;
+      data.extended_content = f2;
+    }
+  } else {
+    data.content = f1;
+    data.content_zh = f2;
+  }
+
+  showToast(t('Saving...', '\u4fdd\u5b58\u4e2d...'));
+  sb.from('section_edits').upsert({
+    board: board,
+    section_id: sectionId,
+    module: module,
+    data: data,
+    updated_by: currentUser.id,
+    updated_at: new Date().toISOString()
+  }, { onConflict: 'board,section_id,module' }).then(function(res) {
+    if (res.error) {
+      showToast(t('Save failed: ', '\u4fdd\u5b58\u5931\u8d25\uff1a') + res.error.message);
+      return;
+    }
+    /* Clear cache and re-render */
+    _sectionEditsCache[board] = null;
+    hideModal();
+    E('modal-card').className = 'modal-card';
+    showToast(t('Saved!', '\u5df2\u4fdd\u5b58\uff01'));
+    /* Reload edits and re-render section detail */
+    loadSectionEdits(board).then(function() {
+      openSection(sectionId, board);
+    });
+  });
 }
 
 /* ═══ SECTION MODULE REPORT ═══ */

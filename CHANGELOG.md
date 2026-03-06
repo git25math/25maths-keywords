@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.7.2] - 2026-03-06 — 超管知识点模块内联编辑
+
+### 新功能
+- **知识点模块内联编辑**：超级管理员可在知识点详情页直接编辑「考纲要求」「知识卡片」「经典例题」三类模块内容
+- **section_edits 表**：新建 Supabase `section_edits` 表，支持按 (board, section_id, module) 覆盖模块内容
+- **富文本编辑器**：复用 practice.js 编辑器基础设施（工具栏 + KaTeX 公式插入 + 实时预览）
+- **内容覆盖渲染**：编辑后的内容自动覆盖 JSON 原始数据，知识卡片/经典例题从 "Coming soon" 变为实际内容
+- **可展开模块**：有内容的知识卡片/经典例题变为可点击展开的模块，支持 KaTeX 渲染
+- **5 个编辑入口**：每个模块右上角显示 ✏️ 按钮（仅超管可见），分别跳转到对应编辑器或功能页
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `supabase/migrations/20260306000000_section_edits.sql` | 新建 section_edits 表 + RLS 策略 |
+| `js/syllabus.js` | `loadSectionEdits()` / `editSectionModule()` / `saveSectionEdit()` / `toggleSectionContent()` + 编辑按钮 + 覆盖渲染 |
+| `css/style.css` | `.sec-module-edit` / `.sec-module-expandable` / `.sec-module-content` 样式 |
+| `js/config.js` | APP_VERSION → v1.7.2 |
+
 ## [1.7.1] - 2026-03-06 — 考纲内容支持 LaTeX 数学公式渲染
 
 ### 新功能
