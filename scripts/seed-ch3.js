@@ -34,8 +34,13 @@ add('cie', '3.1', 'examples', {
     '<b>Exam Tip:</b> Sketch the shape on axes to visualise the missing vertex.',
   content_zh:
     '<b>经典例题</b> [2 分]<br>' +
-    '矩形顶点 $A(1,2)$, $B(5,2)$, $C(5,6)$，求 $D$。<br><br>' +
-    '<b>解答：</b>$D = (1, 6)$'
+    '一个长方形的顶点位于 $A(1, 2)$，$B(5, 2)$，$C(5, 6)$。求 $D$ 的坐标。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '$D$ 必须完善该长方形：其 $x$ 坐标与 $A$ 相同，$y$ 坐标与 $C$ 相同。<br>' +
+    '$D = (1, 6)$<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>在轴线上草绘该形状，以便直观观察缺失的顶点。'
 });
 
 // ── 3.2 Drawing linear graphs ──
@@ -52,11 +57,16 @@ add('cie', '3.2', 'knowledge', {
     'Use 3 points to draw a line — the third point checks for errors.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 一次函数图像是直线。$y = mx + c$。<br>' +
-    '• 画法：列表求至少3个点，描点连线。<br>' +
-    '• 特殊线：$y = c$ 水平；$x = a$ 垂直。<br><br>' +
+    '• 线性图是一条直线。方程为：$y = mx + c$。<br>' +
+    '• 绘制方法：列出至少 3 组 $(x, y)$ 值的表格，描点，并用直尺连接。<br>' +
+    '• 特殊直线：$y = c$ 是水平线；$x = a$ 是垂直线。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 根据方程画线。从图表中读取方程。<br>' +
+    '• 找到两条直线的交点（联立求解）。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '用3个点画线，第3个点用于检验。'
+    '使用 3 个点来画线 —— 第三个点用于检查错误。'
 });
 
 add('cie', '3.2', 'examples', {
@@ -89,11 +99,18 @@ add('cie', '3.3', 'knowledge', {
     'Pick two points far apart on the line for a more accurate gradient calculation.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>斜率</b> = $\\frac{y_2 - y_1}{x_2 - x_1}$。<br>' +
-    '• 正斜率：上升。负斜率：下降。零斜率：水平。未定义：垂直。<br>' +
-    '• $y = mx + c$ 中 $m$ 为斜率。<br><br>' +
+    '• <b>斜率（Gradient/slope）</b> = $\\frac{\\text{上升}}{\\text{水平距离}} = \\frac{y_2 - y_1}{x_2 - x_1}$。<br>' +
+    '• 正斜率：直线向上倾斜（从左到右）。<br>' +
+    '• 负斜率：直线向下倾斜。<br>' +
+    '• 零斜率：水平线。未定义斜率：垂直线。<br>' +
+    '• 在 $y = mx + c$ 中，$m$ 是斜率。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 根据两点计算斜率。<br>' +
+    '• 使用直角三角形从图表中读取斜率。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '选距离较远的两点计算斜率更准确。'
+    '在直线上选取两个相距较远的点，以获得更准确的斜率计算结果。'
 });
 
 add('cie', '3.3', 'examples', {
@@ -157,11 +174,17 @@ add('cie', '3.5', 'knowledge', {
     'If given a graph, read off the $y$-intercept and calculate the gradient to write $y = mx + c$.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• $y = mx + c$：斜率 $m$，$y$ 截距 $c$。<br>' +
-    '• 已知斜率和一点：$y - y_1 = m(x - x_1)$。<br>' +
-    '• 已知两点：先求 $m$，再用点斜式。<br><br>' +
+    '• <b>斜截式</b>：$y = mx + c$（斜率 $m$，$y$ 轴截距 $c$）。<br>' +
+    '• 已知斜率和一个点：$y - y_1 = m(x - x_1)$。<br>' +
+    '• 已知两点：先求出 $m$，然后使用点斜式。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 根据图像写出直线方程。<br>' +
+    '• 根据斜率 + 一个点，或两点写出方程。<br>' +
+    '• 在 $y = mx + c$ 和 $ax + by = c$ 之间进行转换。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '从图中读出 $y$ 截距和斜率即可写出方程。'
+    '如果给出图像，读取 $y$ 轴截距并计算斜率以写出 $y = mx + c$。'
 });
 
 add('cie', '3.5', 'examples', {
@@ -189,10 +212,12 @@ add('cie', '3.6', 'knowledge', {
     'When asked "find the equation of the line parallel to $y = 3x + 1$ through $(2, 5)$", the gradient is 3.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>平行线</b>斜率相同。<br>' +
-    '• 求过某点的平行线：用相同斜率 $m$ 代入点斜式。<br><br>' +
+    '• <b>平行线</b>具有相同的斜率。<br>' +
+    '• 如果 $L_1$ 的斜率为 $m$，则任何与其平行的直线斜率也为 $m$。<br>' +
+    '• 求过已知点的平行线：使用相同的 $m$ 并代入 $y - y_1 = m(x - x_1)$。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '"平行于 $y = 3x+1$" → 斜率为 3。'
+    '当题目要求"求过点 $(2, 5)$ 且平行于 $y = 3x + 1$ 的直线方程"时，斜率为 3。'
 });
 
 add('cie', '3.6', 'examples', {

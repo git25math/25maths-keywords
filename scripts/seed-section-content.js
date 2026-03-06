@@ -541,10 +541,15 @@ add('cie', '1.10', 'knowledge', {
     'The question will say "by rounding each number to 1 significant figure" or "estimate the value of". You MUST show the rounded values, not just the answer.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>估算</b>：将数字取整（通常取 1 位有效数字）使计算更简单。<br>' +
-    '• 用 ≈ 表示近似值。<br><br>' +
+    '• <b>估算</b>是指对数字进行四舍五入以使计算更容易（通常保留至 1 位有效数字）。<br>' +
+    '• 使用 ≈ 表示近似答案。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 将计算中的每个数字四舍五入至 1 位有效数字，然后进行计算。<br>' +
+    '• 使用估算来检查计算器得出的答案是否合理。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '题目说"估算"时，必须写出取整后的数值，不能只写最终答案。'
+    '题目会要求“通过将每个数字四舍五入至 1 位有效数字”或“估算...的值”。你必须写出四舍五入后的数值，而不仅仅是答案。'
 });
 
 add('cie', '1.10', 'examples', {
@@ -732,14 +737,16 @@ add('cie', '1.14', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'When using a calculator, always write down intermediate steps. If you just write the final answer and it\'s wrong, you get zero marks.',
   content_zh:
-    '<b>仅 Core</b><br><br>' +
+    '<b>仅限核心</b><br>' +
+    '<br>' +
     '<b>关键技能</b><br>' +
-    '• 熟练使用科学计算器。<br>' +
-    '• 用括号确保运算顺序正确。<br>' +
-    '• 用分数键输入和转换分数。<br>' +
-    '• 用估算或逆运算检查答案。<br><br>' +
+    '• 高效地使用科学计算器进行复杂的计算。<br>' +
+    '• 在计算器上使用括号以确保正确的运算顺序。<br>' +
+    '• 使用分数按钮输入和转换分数。<br>' +
+    '• 通过估算或逆运算检查答案。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '使用计算器时也要写中间步骤，只写最终答案可能得零分。'
+    '使用计算器时，务必写下中间步骤。如果你只写出最终答案且答案错误，你将得到零分。'
 });
 
 add('cie', '1.14', 'examples', {

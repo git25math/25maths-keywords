@@ -27,12 +27,18 @@ add('cie', '5.1', 'knowledge', {
     'When converting area or volume, apply the conversion factor twice (area) or three times (volume). E.g. $2\\text{ m}^2 = 2 \\times 10\\,000 = 20\\,000\\text{ cm}^2$.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 长度：mm → cm → m → km（×10, ×100, ×1000）。<br>' +
-    '• 质量：g → kg → t（×1000）。容量：ml → l（×1000），$1\\text{ l} = 1000\\text{ cm}^3$。<br>' +
-    '• 面积换算：$1\\text{ m}^2 = 10\\,000\\text{ cm}^2$（因子<b>平方</b>）。<br>' +
-    '• 体积换算：$1\\text{ m}^3 = 1\\,000\\,000\\text{ cm}^3$（因子<b>立方</b>）。<br>' +
-    '• 复合量度：速度 = $\\frac{d}{t}$，密度 = $\\frac{m}{V}$。<br><br>' +
-    '<b>注意！</b>面积和体积换算必须乘方！'
+    '• <b>公制单位</b>：长度 (mm, cm, m, km)，质量 (g, kg, t)，容量 (ml, cl, l)。<br>' +
+    '• $1\\text{ km} = 1000\\text{ m}$, $1\\text{ m} = 100\\text{ cm}$, $1\\text{ cm} = 10\\text{ mm}$。<br>' +
+    '• $1\\text{ kg} = 1000\\text{ g}$, $1\\text{ tonne} = 1000\\text{ kg}$, $1\\text{ litre} = 1000\\text{ ml} = 1000\\text{ cm}^3$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 单位换算：换算为更小单位时用乘法 → 数值变大；换算为更大单位时用除法 → 数值变小。<br>' +
+    '• <b>面积换算</b>：$1\\text{ m}^2 = 10\\,000\\text{ cm}^2$（乘换算因子的<b>平方</b>）。<br>' +
+    '• <b>体积换算</b>：$1\\text{ m}^3 = 1\\,000\\,000\\text{ cm}^3$（乘换算因子的<b>立方</b>）。<br>' +
+    '• <b>复合度量</b>：速度 $= \\frac{d}{t}$，密度 $= \\frac{m}{V}$，人口密度 $= \\frac{\\text{population}}{\\text{area}}$。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '进行面积或体积换算时，需应用两次（面积）或三次（体积）换算因子。例如：$2\\text{ m}^2 = 2 \\times 10\\,000 = 20\\,000\\text{ cm}^2$。'
 });
 
 add('cie', '5.1', 'examples', {
@@ -72,11 +78,19 @@ add('cie', '5.2', 'knowledge', {
     'Always check you are using the <b>perpendicular</b> height, not a slant side.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 长方形 $A = lw$。三角形 $A = \\frac{1}{2}bh$。<br>' +
-    '• 平行四边形 $A = bh$。梯形 $A = \\frac{1}{2}(a+b)h$。<br>' +
-    '• 筝形 $A = \\frac{1}{2}d_1 d_2$（对角线）。<br><br>' +
+    '• <b>长方形</b>：$A = lw$，$P = 2(l+w)$。<br>' +
+    '• <b>三角形</b>：$A = \\frac{1}{2}bh$（垂直高度）。<br>' +
+    '• <b>平行四边形</b>：$A = bh$。<br>' +
+    '• <b>梯形</b>：$A = \\frac{1}{2}(a+b)h$。<br>' +
+    '• <b>筝形</b>：$A = \\frac{1}{2}d_1 d_2$（对角线）。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 将复合图形分解为更简单的图形。<br>' +
+    '• 通过减法求阴影部分面积：整体图形减去扣除部分。<br>' +
+    '• 对于非直角三角形，使用 $A = \\frac{1}{2}ab\\sin C$（进阶部分）。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '始终检查使用的是<b>垂直高</b>而非斜边。'
+    '务必检查你使用的是<b>垂直</b>高度，而非斜边。'
 });
 
 add('cie', '5.2', 'examples', {
@@ -154,12 +168,20 @@ add('cie', '5.4', 'knowledge', {
     'Formulae for cone, sphere, and pyramid are given on the formula sheet — but practise using them.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 长方体 $V = lwh$。棱柱 $V = 截面积 \\times 长$。<br>' +
-    '• 圆柱 $V = \\pi r^2 h$。圆锥 $V = \\frac{1}{3}\\pi r^2 h$。<br>' +
-    '• 球 $V = \\frac{4}{3}\\pi r^3$，$SA = 4\\pi r^2$。<br>' +
-    '• 棱锥 $V = \\frac{1}{3} \\times 底面积 \\times h$。<br><br>' +
+    '• <b>长方体</b>：$V = lwh$，SA $= 2(lw + lh + wh)$。<br>' +
+    '• <b>棱柱</b>：$V = \\text{cross-section} \\times \\text{length}$。<br>' +
+    '• <b>圆柱体</b>：$V = \\pi r^2 h$，侧面积 $= 2\\pi rh$，总表面积 $= 2\\pi rh + 2\\pi r^2$。<br>' +
+    '• <b>圆锥体</b>：$V = \\frac{1}{3}\\pi r^2 h$，侧面积 $= \\pi rl$（$l$ = 斜高, $l^2 = r^2 + h^2$）。<br>' +
+    '• <b>球体</b>：$V = \\frac{4}{3}\\pi r^3$，SA $= 4\\pi r^2$。<br>' +
+    '• <b>棱锥</b>：$V = \\frac{1}{3} \\times \\text{base area} \\times h$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 求复合几何体的体积和表面积（例如圆柱体上的半球）。<br>' +
+    '• 已知体积或表面积求缺失的尺寸。<br>' +
+    '• 使用勾股定理求圆锥的斜高。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '锥、球、棱锥公式在考卷公式页上给出——但要熟练使用。'
+    '公式表上提供了圆锥、球体和棱锥的公式 —— 但要通过练习掌握它们的使用方法。'
 });
 
 add('cie', '5.4', 'examples', {
@@ -179,10 +201,21 @@ add('cie', '5.4', 'examples', {
     '<b>Watch Out:</b> No top circle on the cylinder (hemisphere covers it) and no flat face on the hemisphere.',
   content_zh:
     '<b>经典例题</b> [5 分]<br>' +
-    '圆柱（半径 5 cm，高 10 cm）顶部加半球。求总体积和总表面积。<br><br>' +
-    '<b>体积：</b>圆柱 $250\\pi$ + 半球 $\\frac{250\\pi}{3}$ = $\\frac{1000\\pi}{3} = 1047\\text{ cm}^3$<br><br>' +
-    '<b>表面积：</b>圆柱侧面 $100\\pi$ + 底面 $25\\pi$ + 半球曲面 $50\\pi$ = $175\\pi = 550\\text{ cm}^2$<br>' +
-    '注意：圆柱顶部和半球底面不计！'
+    '一个几何体由一个圆柱体（半径 5 cm，高 10 cm）及其顶部的半球体组成。求其总体积和总表面积。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '<b>体积：</b><br>' +
+    '圆柱体：$\\pi \\times 25 \\times 10 = 250\\pi$<br>' +
+    '半球体：$\\frac{1}{2} \\times \\frac{4}{3}\\pi \\times 125 = \\frac{250\\pi}{3}$<br>' +
+    '总计 $= 250\\pi + \\frac{250\\pi}{3} = \\frac{1000\\pi}{3} = 1047\\text{ cm}^3$<br>' +
+    '<br>' +
+    '<b>表面积：</b><br>' +
+    '圆柱侧面积：$2\\pi \\times 5 \\times 10 = 100\\pi$<br>' +
+    '底面圆面积：$\\pi \\times 25 = 25\\pi$<br>' +
+    '半球曲面面积：$2\\pi \\times 25 = 50\\pi$<br>' +
+    '总计 $= 100\\pi + 25\\pi + 50\\pi = 175\\pi = 550\\text{ cm}^2$<br>' +
+    '<br>' +
+    '<b>注意！</b> 圆柱顶部没有圆（被半球覆盖了），且半球没有平面。'
 });
 
 // ── 5.5 Compound shapes ──
@@ -201,11 +234,18 @@ add('cie', '5.5', 'knowledge', {
     'Sketch and label each sub-shape separately. This makes it easier to identify all dimensions.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>组合图形</b>：由多个基本图形组合。<br>' +
-    '• 加法：总面积 = 各部分之和。减法：整体 - 去除部分。<br>' +
-    '• 周长只算<b>外边缘</b>。<br><br>' +
+    '• <b>组合图形</b>由两个或多个基本图形组合而成。<br>' +
+    '• 将图形分解为长方形、三角形、圆、梯形等。<br>' +
+    '• <b>相加法</b>：整体面积 = 各部分面积之和。<br>' +
+    '• <b>相减法</b>：整体面积减去移除的部分。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 根据给定信息找出未知的边长。<br>' +
+    '• 计算组合图形的周长 —— 只计算<b>外部</b>边长。<br>' +
+    '• 解决结合 2D 和 3D 组合图形的问题。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '把每个子图形单独画出来标尺寸，更容易识别。'
+    '分别画出每个子图形并标注。这使得识别所有尺寸变得更加容易。'
 });
 
 add('cie', '5.5', 'examples', {
@@ -219,9 +259,14 @@ add('cie', '5.5', 'examples', {
     '<b>Exam Tip:</b> For perimeter, trace around the outside of the shape to make sure you count every edge.',
   content_zh:
     '<b>经典例题</b> [4 分]<br>' +
-    'L 形房间 10 m × 8 m，一个角去掉 4 m × 3 m 的矩形。求面积和周长。<br><br>' +
-    '<b>解答：</b>面积 $= 80 - 12 = 68\\text{ m}^2$<br>' +
-    '周长：$10 + 8 + 6 + 3 + 4 + 5 = 36$ m'
+    '一个 L 形房间的长宽分别为 10 m 和 8 m，其中一个角被扣除了一个 4 m 乘以 3 m 的长方形。求其面积和周长。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '面积 $= (10 \\times 8) - (4 \\times 3) = 80 - 12 = 68\\text{ m}^2$<br>' +
+    '周长：沿外围追踪：$10 + 8 + 6 + 3 + 4 + 5 = 36$ m<br>' +
+    '(或者 $10 + 8 + (10-4) + 3 + 4 + (8-3) = 36$ m)<br>' +
+    '<br>' +
+    '<b>考试技巧：</b> 对于周长，沿图形外围追踪一圈，确保计算到每一条边。'
 });
 
 /* ══════════════════════════════════════════════════
@@ -243,10 +288,17 @@ add('cie', '6.1', 'knowledge', {
     'The hypotenuse is always opposite the right angle. Always identify it first before applying the theorem.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 直角三角形：$a^2 + b^2 = c^2$（$c$ 为斜边）。<br>' +
-    '• 求斜边：$c = \\sqrt{a^2 + b^2}$。求直角边：$a = \\sqrt{c^2 - b^2}$。<br>' +
-    '• 3D 勾股（Extended）：空间对角线 $d = \\sqrt{l^2 + w^2 + h^2}$。<br><br>' +
-    '<b>注意！</b>斜边始终对着直角，先找到它再套公式。'
+    '• 在直角三角形中：$a^2 + b^2 = c^2$，其中 $c$ 是<b>斜边</b>（最长边，直角的对边）。<br>' +
+    '• 求斜边：$c = \\sqrt{a^2 + b^2}$。<br>' +
+    '• 求较短边：$a = \\sqrt{c^2 - b^2}$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 在 2D 问题（距离、对角线）中应用勾股定理。<br>' +
+    '• <b>3D 勾股定理</b>（拓展）：求空间对角线 $d = \\sqrt{l^2 + w^2 + h^2}$。<br>' +
+    '• 使用勾股定理检查三角形是否为直角三角形：如果 $a^2 + b^2 = c^2$，则是。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '斜边总是直角的对边。在应用定理之前，务必先确定斜边。'
 });
 
 add('cie', '6.1', 'examples', {
@@ -282,12 +334,18 @@ add('cie', '6.2', 'knowledge', {
     'Label the sides O, A, H relative to the angle you are using. Then choose the correct ratio.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>SOHCAHTOA</b>：$\\sin = \\frac{对}{斜}$, $\\cos = \\frac{邻}{斜}$, $\\tan = \\frac{对}{邻}$。<br>' +
-    '• 求边：选包含已知边和未知边的比。<br>' +
-    '• 求角：用反函数 $\\sin^{-1}, \\cos^{-1}, \\tan^{-1}$。<br>' +
-    '• 仰角：从水平向上看。俯角：从水平向下看。<br><br>' +
+    '• <b>SOHCAHTOA</b>：<br>' +
+    '&nbsp;&nbsp;$\\sin\\theta = \\frac{\\text{对边}}{\\text{斜边}}$<br>' +
+    '&nbsp;&nbsp;$\\cos\\theta = \\frac{\\text{邻边}}{\\text{斜边}}$<br>' +
+    '&nbsp;&nbsp;$\\tan\\theta = \\frac{\\text{对边}}{\\text{邻边}}$<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 求未知边：确定哪个比率涉及已知边和未知边。<br>' +
+    '• 求未知角：使用反函数（$\\sin^{-1}$，$\\cos^{-1}$，$\\tan^{-1}$）。<br>' +
+    '• <b>仰角</b>：从水平线向上看。<b>俯角</b>：从水平线向下看。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '先标 O, A, H（相对于所用角），再选正确比。'
+    '相对于你正在使用的角，将各边标注为 O（对边）、A（邻边）、H（斜边）。然后选择正确的比率。'
 });
 
 add('cie', '6.2', 'examples', {
@@ -300,8 +358,13 @@ add('cie', '6.2', 'examples', {
     '<b>Exam Tip:</b> Draw a clear diagram. Angle of depression from the top equals the angle of elevation from the bottom (alternate angles).',
   content_zh:
     '<b>经典例题</b> [4 分]<br>' +
-    '25 m 高的悬崖顶部，俯角 $32°$ 看到船。求船到崖底的水平距离。<br><br>' +
-    '<b>解答：</b>$\\tan 32° = \\frac{25}{d}$，$d = \\frac{25}{\\tan 32°} = 40.0$ m'
+    '从 25 m 高的悬崖顶部看一艘船的俯角为 $32°$。求从悬崖底部到船的水平距离。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '顶部的俯角 = 船的仰角 = $32°$。<br>' +
+    '$\\tan 32° = \\frac{25}{d}$ → $d = \\frac{25}{\\tan 32°} = \\frac{25}{0.6249} = 40.0$ m<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>画一个清晰的图示。顶部的俯角等于底部的仰角（内错角）。'
 });
 
 // ── 6.3 Exact trigonometric values ──
@@ -309,12 +372,11 @@ add('cie', '6.3', 'knowledge', {
   content:
     '<b>Recap</b><br>' +
     'You must know these exact values (no calculator):<br><br>' +
-    '| Angle | $\\sin$ | $\\cos$ | $\\tan$ |<br>' +
-    '| $0°$ | $0$ | $1$ | $0$ |<br>' +
-    '| $30°$ | $\\frac{1}{2}$ | $\\frac{\\sqrt{3}}{2}$ | $\\frac{1}{\\sqrt{3}}$ |<br>' +
-    '| $45°$ | $\\frac{\\sqrt{2}}{2}$ | $\\frac{\\sqrt{2}}{2}$ | $1$ |<br>' +
-    '| $60°$ | $\\frac{\\sqrt{3}}{2}$ | $\\frac{1}{2}$ | $\\sqrt{3}$ |<br>' +
-    '| $90°$ | $1$ | $0$ | undefined |<br><br>' +
+    '• $0°$: $\\sin = 0$, $\\cos = 1$, $\\tan = 0$<br>' +
+    '• $30°$: $\\sin = \\frac{1}{2}$, $\\cos = \\frac{\\sqrt{3}}{2}$, $\\tan = \\frac{1}{\\sqrt{3}}$<br>' +
+    '• $45°$: $\\sin = \\frac{\\sqrt{2}}{2}$, $\\cos = \\frac{\\sqrt{2}}{2}$, $\\tan = 1$<br>' +
+    '• $60°$: $\\sin = \\frac{\\sqrt{3}}{2}$, $\\cos = \\frac{1}{2}$, $\\tan = \\sqrt{3}$<br>' +
+    '• $90°$: $\\sin = 1$, $\\cos = 0$, $\\tan$ = undefined<br><br>' +
     '<b>Key Skills</b><br>' +
     '• Derive values from the 45-45-90 triangle (sides $1, 1, \\sqrt{2}$) and 30-60-90 triangle (sides $1, \\sqrt{3}, 2$).<br>' +
     '• Use exact values in calculations without a calculator.',
@@ -363,13 +425,20 @@ add('cie', '6.4', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'Sketch the graph to see how many solutions exist in the given range. CAST diagram helps determine signs in each quadrant.',
   content_zh:
-    '<b>仅 Extended</b><br><br>' +
+    '<b>仅限进阶 (Extended Only)</b><br>' +
+    '<br>' +
     '<b>知识回顾</b><br>' +
-    '• 正弦 $y = \\sin x$：周期 $360°$，振幅 1，过原点。<br>' +
-    '• 余弦 $y = \\cos x$：周期 $360°$，振幅 1，从 $(0,1)$ 开始。<br>' +
-    '• 正切 $y = \\tan x$：周期 $180°$，有垂直渐近线。<br><br>' +
-    '<b>关键技巧</b><br>' +
-    '利用图形对称性找多个解。CAST 图判定各象限正负。'
+    '• <b>正弦曲线</b> $y = \\sin x$：周期为 $360°$，振幅为 1，过原点。<br>' +
+    '• <b>余弦曲线</b> $y = \\cos x$：周期为 $360°$，振幅为 1，起始于 $(0, 1)$。<br>' +
+    '• <b>正切曲线</b> $y = \\tan x$：周期为 $180°$，在 $90°, 270°$ 等处有垂直渐近线。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 绘制 $0° \\leq x \\leq 360°$（或更大范围）的三角函数图像。<br>' +
+    '• 利用三角函数图像的对称性寻找多个解：例如，若 $\\sin x = 0.5$，则 $x = 30°$ 或 $x = 150°$。<br>' +
+    '• 在给定范围内解方程，如 $\\sin x = k$。<br>' +
+    '<br>' +
+    '<b>考试技巧</b><br>' +
+    '绘制图像以查看在给定范围内存在多少个解。CAST 图有助于确定每个象限中的符号。'
 });
 
 add('cie', '6.4', 'examples', {
@@ -383,8 +452,14 @@ add('cie', '6.4', 'examples', {
     '<b>Exam Tip:</b> For $\\sin x = k$ (positive): solutions are $x$ and $180° - x$. For $\\cos x = k$ (positive): solutions are $x$ and $360° - x$.',
   content_zh:
     '<b>经典例题</b> [3 分]<br>' +
-    '在 $0° \\leq x \\leq 360°$ 范围内解 $\\sin x = 0.6$。<br><br>' +
-    '<b>解答：</b>$x = 36.9°$（Q1）或 $x = 180° - 36.9° = 143.1°$（Q2）'
+    '解 $\\sin x = 0.6$ 对于 $0° \\leq x \\leq 360°$。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '$x = \\sin^{-1}(0.6) = 36.87°$<br>' +
+    '正弦在第二象限也是正值：$x = 180° - 36.87° = 143.13°$<br>' +
+    '$x = 36.9°$ 或 $x = 143.1°$（保留 1 位小数）<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>对于 $\\sin x = k$（正值）：解为 $x$ 和 $180° - x$。对于 $\\cos x = k$（正值）：解为 $x$ 和 $360° - x$。'
 });
 
 // ── 6.5 Non-right-angled triangles ──
@@ -447,16 +522,20 @@ add('cie', '6.6', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'Draw a clear 2D right triangle extracted from the 3D shape. Label all known and unknown sides/angles.',
   content_zh:
-    '<b>仅 Extended</b><br><br>' +
+    '<b>仅限进阶 (Extended Only)</b><br>' +
+    '<br>' +
     '<b>知识回顾</b><br>' +
-    '• 3D 问题中找出立体内的直角三角形。<br>' +
-    '• 用勾股定理和三角比在 2D 截面上求解。<br><br>' +
-    '<b>关键技巧</b><br>' +
-    '• 线面角：从点作垂线到平面，找直角三角形。<br>' +
-    '• 面面角：找交线，在各面上作垂线。<br>' +
-    '• 通常分两步：先用勾股求长度，再用三角比求角。<br><br>' +
+    '• 在 3D 问题中，识别立体图形内部的<b>直角三角形</b>。<br>' +
+    '• 将<b>勾股定理</b>（Pythagoras）和 <b>SOHCAHTOA</b> 应用于这些 2D 截面。<br>' +
+    '• 常见的 3D 图形：长方体、棱锥、楔形体、圆锥。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 求<b>直线与平面之间的夹角</b>：从点向平面作垂线，识别直角三角形。<br>' +
+    '• 求<b>两个平面之间的夹角</b>：找到它们的交线，然后在每个平面内画出垂直于该交线的垂线。<br>' +
+    '• 通常需要<b>两步</b>：首先求长度（利用勾股定理），然后求角度（利用三角函数）。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '从 3D 中抽出 2D 直角三角形，清晰标注。'
+    '画出从 3D 图形中提取的清晰 2D 直角三角形。标记所有已知和未知的边/角。'
 });
 
 add('cie', '6.6', 'examples', {
@@ -473,9 +552,17 @@ add('cie', '6.6', 'examples', {
     '<b>Exam Tip:</b> Always identify which plane and which line. The angle is measured AT the base.',
   content_zh:
     '<b>经典例题</b> [5 分]<br>' +
-    '长方体 $8 \\times 6 \\times 4$ cm。求空间对角线 $AG$ 与底面 $ABCD$ 的夹角。<br><br>' +
-    '<b>解答：</b>底面对角线 $AC = \\sqrt{100} = 10$<br>' +
-    '$\\tan\\theta = \\frac{4}{10}$，$\\theta = 21.8°$'
+    '一个长方体的尺寸为 $8 \\times 6 \\times 4$ cm。求空间对角线 $AG$ 与底面 $ABCD$ 之间的夹角。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '第一步：求底面对角线 $AC = \\sqrt{8^2 + 6^2} = \\sqrt{100} = 10$ cm。<br>' +
+    '第二步：空间对角线 $AG$ 从底部的 $A$ 延伸到顶部的 $G$。对应的直角三角形具有：<br>' +
+    '• 底边 $= AC = 10$ cm（沿底面）<br>' +
+    '• 高度 $= CG = 4$ cm（垂直棱）<br>' +
+    '$\\tan\\theta = \\frac{4}{10} = 0.4$<br>' +
+    '$\\theta = \\tan^{-1}(0.4) = 21.8°$<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>始终明确是哪个平面和哪条线。角度是在底面（AT the base）处测量的。'
 });
 
 /* ══════════════════════════════════════════════════

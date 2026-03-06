@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.9.3] - 2026-03-07 — 考点精讲知识卡片内容质量审核
+
+### 修复
+- **Markdown 表格转换**: 6.3 三角函数精确值表格 + 9.3 分组频率表格，从 markdown 管道格式转为 pqSanitize 兼容的列表格式
+- **60 张卡片 ZH 内容补全**: 通过 Gemini CLI 批量翻译，覆盖 CIE Ch1-Ch9 全部低质量中文内容
+
+### 数据统计
+- 修复前: 122 张卡片 ZH/EN ratio < 40%（最低 16.8%，平均 28.5%）
+- 修复后: 仅 21 张 < 40%（最低 35.0%，平均 52.3%），0 张 < 30%
+- Markdown 表格: 2 → 0
+- 翻译补全: 60 张 CIE 卡片（知识卡 + 经典例题），覆盖全部 72 知识点
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/seed-section-content.js` | 2 张卡片 ZH 补全（Ch1） |
+| `scripts/seed-ch2.js` | 10 张卡片 ZH 补全 |
+| `scripts/seed-ch3.js` | 5 张卡片 ZH 补全 |
+| `scripts/seed-ch4.js` | 8 张卡片 ZH 补全 |
+| `scripts/seed-ch5-6.js` | 13 张卡片 ZH 补全 + 6.3 表格修复 |
+| `scripts/seed-ch7-9.js` | 22 张卡片 ZH 补全 + 9.3 表格修复 |
+
 ## [1.9.2] - 2026-03-06 — 全量 Subtopic 标注 Phase B
 
 ### 新增功能
