@@ -508,38 +508,8 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   }
 
   /* Past Papers module — between Practice and Knowledge Card */
-  if (board === 'cie' && typeof ppGetSectionStats === 'function') {
-    var ppStats = ppGetSectionStats(board, sec.id);
-    if (ppStats.total > 0) {
-      html += '<div class="sec-module" style="flex-direction:column;align-items:stretch;gap:8px">';
-      html += '<div style="display:flex;align-items:center;gap:12px">';
-      html += '<div class="sec-module-icon">\ud83d\udcc4</div>';
-      html += '<div class="sec-module-info">';
-      html += '<div class="sec-module-title">' + t('Past Papers', '\u771f\u9898\u7ec3\u4e60') + '</div>';
-      html += '<div class="sec-module-sub">' + ppStats.total + ' ' + t('questions', '\u9898') + ' \u00b7 CIE 0580</div>';
-      html += '</div></div>';
-
-      /* Mastery stats row */
-      html += '<div class="pp-module-stats">';
-      if (ppStats.newQ > 0) html += '<span class="pp-module-stat new">\u2b1c ' + ppStats.newQ + ' ' + t('New', '\u65b0\u9898') + '</span>';
-      if (ppStats.needsWork > 0) html += '<span class="pp-module-stat needs-work">\ud83d\udd34 ' + ppStats.needsWork + ' ' + t('Needs Work', '\u5f85\u6539\u8fdb') + '</span>';
-      if (ppStats.partial > 0) html += '<span class="pp-module-stat partial-stat">\ud83d\udfe1 ' + ppStats.partial + ' ' + t('Partial', '\u90e8\u5206') + '</span>';
-      if (ppStats.mastered > 0) html += '<span class="pp-module-stat mastered-stat">\u2705 ' + ppStats.mastered + ' ' + t('Mastered', '\u5df2\u638c\u63e1') + '</span>';
-      html += '</div>';
-
-      /* Action buttons */
-      html += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
-      html += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + sec.id + '\',\'' + board + '\',\'practice\')" style="flex:1;min-width:100px">';
-      html += '\ud83d\udcd6 ' + t('Practice', '\u7ec3\u4e60') + ' (' + ppStats.total + ')</button>';
-      html += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + sec.id + '\',\'' + board + '\',\'exam\')" style="flex:1;min-width:100px">';
-      html += '\u23f1 ' + t('Exam Mode', '\u5b9e\u6218') + '</button>';
-      if (ppStats.wrongActive > 0) {
-        html += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + sec.id + '\',\'' + board + '\',\'wrongbook\')" style="flex:1;min-width:100px;color:#ef5350">';
-        html += '\ud83d\udcd5 ' + t('Review', '\u590d\u4e60') + ' (' + ppStats.wrongActive + ')</button>';
-      }
-      html += '</div>';
-      html += '</div>';
-    }
+  if (board === 'cie' && typeof loadPastPaperData === 'function') {
+    html += '<div id="pp-section-module" data-section="' + sec.id + '" data-board="' + board + '"></div>';
   }
 
   /* Knowledge card (3rd) — show content if edited, else "Coming soon" */
@@ -630,6 +600,51 @@ function renderSectionDetail(ch, sec, secIdx, board) {
 
   E('panel-section').innerHTML = html;
   loadKaTeX().then(function() { renderMath(E('panel-section')); });
+
+  /* Async-load Past Papers data and populate module */
+  var ppSlot = document.getElementById('pp-section-module');
+  if (ppSlot && typeof loadPastPaperData === 'function') {
+    var ppSecId = ppSlot.getAttribute('data-section');
+    var ppBoard = ppSlot.getAttribute('data-board');
+    loadPastPaperData(ppBoard).then(function() {
+      _renderPPSectionModule(ppSlot, ppSecId, ppBoard);
+    }).catch(function() { /* silently ignore if no data */ });
+  }
+}
+
+function _renderPPSectionModule(slot, secId, board) {
+  var ppStats = ppGetSectionStats(board, secId);
+  if (ppStats.total === 0) { slot.style.display = 'none'; return; }
+
+  var h = '';
+  h += '<div class="sec-module" style="flex-direction:column;align-items:stretch;gap:8px">';
+  h += '<div style="display:flex;align-items:center;gap:12px">';
+  h += '<div class="sec-module-icon">\ud83d\udcc4</div>';
+  h += '<div class="sec-module-info">';
+  h += '<div class="sec-module-title">' + t('Past Papers', '\u771f\u9898\u7ec3\u4e60') + '</div>';
+  h += '<div class="sec-module-sub">' + ppStats.total + ' ' + t('questions', '\u9898') + ' \u00b7 CIE 0580</div>';
+  h += '</div></div>';
+
+  h += '<div class="pp-module-stats">';
+  if (ppStats.newQ > 0) h += '<span class="pp-module-stat new">\u2b1c ' + ppStats.newQ + ' ' + t('New', '\u65b0\u9898') + '</span>';
+  if (ppStats.needsWork > 0) h += '<span class="pp-module-stat needs-work">\ud83d\udd34 ' + ppStats.needsWork + ' ' + t('Needs Work', '\u5f85\u6539\u8fdb') + '</span>';
+  if (ppStats.partial > 0) h += '<span class="pp-module-stat partial-stat">\ud83d\udfe1 ' + ppStats.partial + ' ' + t('Partial', '\u90e8\u5206') + '</span>';
+  if (ppStats.mastered > 0) h += '<span class="pp-module-stat mastered-stat">\u2705 ' + ppStats.mastered + ' ' + t('Mastered', '\u5df2\u638c\u63e1') + '</span>';
+  h += '</div>';
+
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+  h += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'practice\')" style="flex:1;min-width:100px">';
+  h += '\ud83d\udcd6 ' + t('Practice', '\u7ec3\u4e60') + ' (' + ppStats.total + ')</button>';
+  h += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'exam\')" style="flex:1;min-width:100px">';
+  h += '\u23f1 ' + t('Exam Mode', '\u5b9e\u6218') + '</button>';
+  if (ppStats.wrongActive > 0) {
+    h += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'wrongbook\')" style="flex:1;min-width:100px;color:#ef5350">';
+    h += '\ud83d\udcd5 ' + t('Review', '\u590d\u4e60') + ' (' + ppStats.wrongActive + ')</button>';
+  }
+  h += '</div>';
+  h += '</div>';
+
+  slot.innerHTML = h;
 }
 
 /* Mini star display helper */
