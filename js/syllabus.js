@@ -231,6 +231,19 @@ function _renderBoardHome(board) {
   if (!syllabus || !vocab) return '';
 
   var html = '';
+
+  /* Past Papers (Full) entry for CIE */
+  if (board === 'cie' && typeof ppShowPaperBrowse === 'function') {
+    html += '<div class="pp-browse-entry" onclick="ppShowPaperBrowse(\'cie\')">';
+    html += '<span class="pp-browse-icon">\ud83d\udcdd</span>';
+    html += '<div class="pp-browse-info">';
+    html += '<div class="pp-browse-title">' + t('Past Papers', '\u5957\u5377\u7ec3\u4e60') + '</div>';
+    html += '<div class="pp-browse-sub">' + t('228 papers \u00b7 4,110 questions \u00b7 2018\u20132025', '228\u5957\u5377 \u00b7 4,110\u9053\u9898 \u00b7 2018\u20132025') + '</div>';
+    html += '</div>';
+    html += '<span class="pp-browse-arrow">\u2192</span>';
+    html += '</div>';
+  }
+
   var prefix = board === 'cie' ? 'cie-ch' : 'edx-ch';
   var emojis = board === 'cie'
     ? ['', '\ud83d\udd22', '\ud83d\udcdd', '\ud83d\udccd', '\ud83d\udcd0', '\ud83d\udccf', '\ud83d\udcd0', '\u27a1\ufe0f', '\ud83c\udfb2', '\ud83d\udcc8']

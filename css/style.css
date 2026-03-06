@@ -3161,6 +3161,68 @@ input { font-family: inherit; }
 .pp-empty { text-align: center; padding: 40px 20px; color: var(--c-muted); }
 .pp-empty-icon { font-size: 48px; margin-bottom: 12px; }
 
+/* ─── Paper Browse Entry Card ─── */
+.pp-browse-entry { display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  margin-bottom: 12px; border-radius: var(--r); cursor: pointer; transition: all 0.15s;
+  background: linear-gradient(135deg, var(--c-primary-bg) 0%, var(--c-surface) 100%);
+  border: 1px solid var(--c-primary); border-left: 4px solid var(--c-primary); }
+.pp-browse-entry:hover { box-shadow: 0 2px 8px rgba(82,72,201,0.12); }
+.pp-browse-icon { font-size: 24px; }
+.pp-browse-info { flex: 1; min-width: 0; }
+.pp-browse-title { font-weight: 700; font-size: 15px; font-family: var(--font-display); }
+.pp-browse-sub { font-size: 12px; color: var(--c-text2); margin-top: 2px; }
+.pp-browse-arrow { font-size: 18px; color: var(--c-primary); font-weight: 700; }
+
+/* ─── Paper Browse ─── */
+.pp-year-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.pp-year-tab { padding: 6px 14px; border-radius: var(--r-sm); border: 1px solid var(--c-border-light);
+  background: var(--c-surface); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: all 0.15s; }
+.pp-year-tab:hover { background: var(--c-surface-alt); }
+.pp-year-tab.active { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+
+.pp-session-heading { margin: 20px 0 10px; font-size: 14px; color: var(--c-text2);
+  font-weight: 600; font-family: var(--font-display); }
+
+.pp-paper-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
+  margin-bottom: 12px; }
+@media (max-width: 639px) { .pp-paper-grid { grid-template-columns: 1fr 1fr; } }
+
+.pp-paper-card { border: 1px solid var(--c-border-light); border-radius: var(--r);
+  padding: 14px; cursor: pointer; transition: all 0.15s; background: var(--c-surface); }
+.pp-paper-card:hover { border-color: var(--c-primary); box-shadow: 0 2px 8px rgba(82,72,201,0.10); }
+
+.pp-paper-card-top { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px; }
+.pp-paper-num { font-weight: 700; font-size: 15px; }
+.pp-paper-type { font-size: 10px; padding: 2px 8px; border-radius: var(--r-sm); font-weight: 600; }
+.pp-type-core { background: #e8f5e9; color: #2e7d32; }
+.pp-type-ext { background: #fff3e0; color: #e65100; }
+
+.pp-paper-card-info { display: flex; gap: 12px; font-size: 12px; color: var(--c-muted); }
+.pp-paper-card-result { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--c-border-light); }
+.pp-paper-score { font-size: 13px; font-weight: 600; color: var(--c-primary); font-family: var(--font-mono); }
+
+/* Paper detail */
+.pp-paper-detail-info { background: var(--c-surface); border: 1px solid var(--c-border-light);
+  border-radius: var(--r); padding: 4px 0; margin-bottom: 16px; }
+.pp-detail-row { display: flex; justify-content: space-between; padding: 8px 16px;
+  font-size: 13px; border-bottom: 1px solid var(--c-border-light); }
+.pp-detail-row:last-child { border-bottom: none; }
+.pp-detail-row span:first-child { color: var(--c-text2); }
+.pp-detail-row span:last-child { font-weight: 600; }
+
+.pp-topic-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Question preview list */
+.pp-q-preview { display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+  border: 1px solid var(--c-border-light); border-radius: var(--r-sm); margin-bottom: 6px;
+  cursor: pointer; font-size: 13px; transition: background 0.15s; }
+.pp-q-preview:hover { background: var(--c-surface-alt); }
+.pp-q-num { font-weight: 700; font-family: var(--font-mono); min-width: 32px; }
+.pp-q-topic { color: var(--c-text2); }
+.pp-q-mastery { font-size: 14px; min-width: 18px; text-align: center; }
+
 /* Dark mode overrides */
 .dark .pp-diff-core { background: #1b3a1b; color: #66bb6a; }
 .dark .pp-diff-ext { background: #3e2723; color: #ffb74d; }
@@ -3173,6 +3235,8 @@ input { font-family: inherit; }
 .dark .pp-module-stat.needs-work { background: #3e1515; color: #ef5350; }
 .dark .pp-module-stat.partial-stat { background: #3e2723; color: #ffb74d; }
 .dark .pp-module-stat.mastered-stat { background: #1b3a1b; color: #66bb6a; }
+.dark .pp-type-core { background: #1b3a1b; color: #66bb6a; }
+.dark .pp-type-ext { background: #3e2723; color: #ffb74d; }
 
 /* ═══ REDUCED MOTION ═══ */
 @media (prefers-reduced-motion: reduce) {

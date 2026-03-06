@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.9.0] - 2026-03-06 — 套卷系统 Phase 1+2（Paper-Centric Architecture）
+
+### 新增功能
+- **统一数据管道**: `build-papers-data.py` 从 TikzVault catalog 提取全部 4,110 道 CIE 0580 真题，生成 `papers-cie.json`（含 228 套卷元数据 + 2,175 道已标注题 + 1,935 道大类标注题）
+- **套卷浏览入口**: CIE 考试局首页新增"套卷练习"入口卡片，进入年份→考期→Paper 三级浏览
+- **Paper 详情页**: 显示试卷类型（Core/Extended + Calc/Non-Calc）、总分、时间、题数、知识点分布、最高分记录、题目列表预览
+- **练习模式**: 选择任意套卷 → 按原卷顺序逐题浏览 → 自评打分（Needs Work / Partial / Mastered）
+- **考试模式**: 选择套卷 → 全卷计时答题（150min/90min/60min 按卷型推断）→ 交卷 → 逐题批改 → 总分统计
+- **Paper 成绩持久化**: localStorage 存储每套卷最高分，浏览页面显示完成状态
+- **错题联动**: 考试模式批改后错题自动进入错题本（复用现有 `_ppWrongBook` 系统）
+- **向后兼容**: 现有专题视图（按 syllabus section 过滤）功能完全保持，数据源切换为统一 JSON
+
+### 数据统计
+- 4,110 道题 · 228 套卷 · 2018-2025 全覆盖
+- Core: 2,015 题 · Extended: 2,095 题
+- 含图题: 1,107 道
+- 已标注 subtopic: 2,175 道（Algebra 803 + Number 1,372）
+- 9 大知识领域: Number(1,700) Algebra(803) Geometry(762) Coord(308) Statistics(173) Mensuration(151) Probability(124) Vectors(69) Trigonometry(20)
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/build-papers-data.py` | 重写：统一数据管道，全量 4,110 题 + paperMeta |
+| `data/papers-cie.json` | 新建 ~2.9MB 统一数据文件 |
+| `js/practice.js` | +`getPPByPaper()` `getPaperList()` `getPaperMeta()` `_ppSavePaperResult()` `ppShowPaperBrowse()` `ppShowPaperDetail()` `ppStartFullPaper()` + 数据层适配 v2.0 格式 |
+| `js/syllabus.js` | +CIE 首页"套卷练习"入口卡片 |
+| `js/config.js` | v1.9.0 |
+| `css/style.css` | +套卷浏览 UI 样式（年份标签、Paper 卡片、详情页、题目预览） |
+| `index.html` | +`panel-papers` |
+
 ## [1.8.4] - 2026-03-06 — TikZ→SVG 图表渲染试点
 
 ### 新增功能

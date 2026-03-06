@@ -964,9 +964,10 @@ function _pqFindQ(qid, board) {
    PAST PAPER MODULE — Practice + Exam + Wrong Book
    ══════════════════════════════════════════════════════════════ */
 
-var _ppData = {};          /* { cie: [...] } lazy-loaded */
+var _ppData = {};          /* { cie: { paperMeta: {}, questions: [] } } lazy-loaded */
 var _ppFigures = {};       /* { qid: ["figures/xxx.svg", ...] } from manifest.json */
-var _ppSession = null;     /* { questions, current, mode, startTime, results[], board, sectionId, ... } */
+var _ppSession = null;     /* { questions, current, mode, startTime, results[], board, sectionId, paperKey, ... } */
+var _ppPaperResults = null; /* lazy-loaded paper results from localStorage */
 var _ppTimer = null;       /* exam timer interval */
 
 var PP_ERROR_TYPES = [
@@ -983,7 +984,7 @@ var PP_ERROR_TYPES = [
 function loadPastPaperData(board) {
   board = board || 'cie';
   if (_ppData[board]) return Promise.resolve(_ppData[board]);
-  var file = 'data/pastpapers-' + board + '.json?v=' + APP_VERSION;
+  var file = 'data/papers-' + board + '.json?v=' + APP_VERSION;
   /* Load figure manifest in parallel (fire-and-forget) */
   if (!_ppFigures._loaded) {
     _ppFigures._loaded = true;
@@ -996,15 +997,73 @@ function loadPastPaperData(board) {
     if (!r.ok) throw new Error('Failed to load ' + file);
     return r.json();
   }).then(function(data) {
-    _ppData[board] = data;
-    return data;
+    /* v2.0 format: { v, paperMeta, questions } */
+    if (data.v === '2.0') {
+      _ppData[board] = data;
+    } else {
+      /* Legacy flat array fallback */
+      _ppData[board] = { paperMeta: {}, questions: data };
+    }
+    return _ppData[board];
   });
 }
 
+function getPPQuestions(board) {
+  var d = _ppData[board];
+  return d ? d.questions || [] : [];
+}
+
 function getPPBySection(board, sectionId) {
-  var data = _ppData[board];
-  if (!data) return [];
-  return data.filter(function(q) { return q.s === sectionId; });
+  var qs = getPPQuestions(board);
+  return qs.filter(function(q) { return q.s === sectionId; });
+}
+
+function getPPByPaper(board, paperKey) {
+  var qs = getPPQuestions(board);
+  var filtered = qs.filter(function(q) { return q.paper === paperKey; });
+  filtered.sort(function(a, b) { return a.qnum - b.qnum; });
+  return filtered;
+}
+
+function getPaperMeta(board) {
+  var d = _ppData[board];
+  return d ? d.paperMeta || {} : {};
+}
+
+function getPaperList(board) {
+  var meta = getPaperMeta(board);
+  var keys = Object.keys(meta);
+  var sessionOrder = { March: 0, FebMarch: 0, MayJune: 1, June: 1, OctNov: 2, November: 2, Specimen: 3 };
+  keys.sort(function(a, b) {
+    var ma = meta[a], mb = meta[b];
+    if (ma.year !== mb.year) return mb.year - ma.year;
+    var sa = sessionOrder[ma.session] || 9, sb = sessionOrder[mb.session] || 9;
+    if (sa !== sb) return sa - sb;
+    return (ma.paper || '').localeCompare(mb.paper || '');
+  });
+  return keys.map(function(k) { return Object.assign({ key: k }, meta[k]); });
+}
+
+/* ═══ PAPER RESULTS PERSISTENCE ═══ */
+
+function _ppResultsKey() { return 'pp_paper_results'; }
+function _ppGetPaperResults() {
+  if (_ppPaperResults) return _ppPaperResults;
+  try { _ppPaperResults = JSON.parse(localStorage.getItem(_ppResultsKey())) || {}; }
+  catch(e) { _ppPaperResults = {}; }
+  return _ppPaperResults;
+}
+function _ppSavePaperResult(paperKey, result) {
+  var all = _ppGetPaperResults();
+  var existing = all[paperKey];
+  /* Keep best score */
+  if (!existing || result.score > existing.score) {
+    all[paperKey] = result;
+  }
+  /* Always update latest attempt date */
+  all[paperKey].lastDate = result.date || new Date().toISOString();
+  _ppPaperResults = all;
+  localStorage.setItem(_ppResultsKey(), JSON.stringify(all));
 }
 
 /* ═══ MASTERY STORAGE ═══ */
@@ -1391,8 +1450,14 @@ function ppGoTo(idx) {
 
 function ppBack() {
   if (_ppTimer) { clearInterval(_ppTimer); _ppTimer = null; }
+  var wasPaper = _ppSession && _ppSession.paperKey;
+  var board = _ppSession ? _ppSession.board : 'cie';
   _ppSession = null;
-  showPanel('section');
+  if (wasPaper) {
+    ppShowPaperBrowse(board);
+  } else {
+    showPanel('section');
+  }
 }
 
 function ppClearFilter() {
@@ -1948,6 +2013,15 @@ function ppFinishMarking() {
   };
   _ppSaveExam(examRecord);
 
+  /* Save paper-level result if this was a full paper exam */
+  if (_ppSession.paperKey) {
+    _ppSavePaperResult(_ppSession.paperKey, {
+      score: scored, total: totalMarks,
+      date: new Date().toISOString(),
+      time: _ppSession.duration || 0
+    });
+  }
+
   /* Show results */
   ppShowResults(examRecord, conceptErrors);
 }
@@ -1997,7 +2071,12 @@ function ppShowResults(exam, conceptErrors) {
 
   /* Action buttons */
   html += '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;padding-bottom:40px">';
-  if (_ppSession) {
+  if (_ppSession && _ppSession.paperKey) {
+    html += '<button class="btn btn-ghost" onclick="ppShowPaperBrowse(\'' + _ppSession.board + '\')">';
+    html += t('Back to Papers', '\u8fd4\u56de\u5957\u5377') + '</button>';
+    html += '<button class="btn btn-primary" onclick="ppStartFullPaper(\'' + _ppSession.paperKey + '\',\'' + _ppSession.board + '\',\'exam\')">';
+    html += '\ud83d\udd04 ' + t('Try Again', '\u518d\u6765\u4e00\u8f6e') + '</button>';
+  } else if (_ppSession) {
     html += '<button class="btn btn-ghost" onclick="ppShowWrongBook(\'' + _ppSession.sectionId + '\',\'' + _ppSession.board + '\')">';
     html += '\ud83d\udcd5 ' + t('Wrong Book', '\u9519\u9898\u672c') + '</button>';
     html += '<button class="btn btn-primary" onclick="ppStartExam(\'' + _ppSession.sectionId + '\',\'' + _ppSession.board + '\')">';
@@ -2140,6 +2219,256 @@ function ppStartWrongBookReview(sectionId, board) {
     };
     showPanel('pastpaper');
     renderPPCard();
+  });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FULL PAPER BROWSING + EXAM MODULE
+   ══════════════════════════════════════════════════════════════ */
+
+var PP_TYPE_LABELS = {
+  'core-nocalc': { en: 'Core Non-Calc', zh: 'Core 非计算器', cls: 'pp-type-core' },
+  'ext-nocalc':  { en: 'Extended Non-Calc', zh: 'Extended 非计算器', cls: 'pp-type-ext' },
+  'core-calc':   { en: 'Core Calculator', zh: 'Core 计算器', cls: 'pp-type-core' },
+  'ext-calc':    { en: 'Extended Calculator', zh: 'Extended 计算器', cls: 'pp-type-ext' }
+};
+
+var PP_SESSION_LABELS = {
+  'March': { en: 'March', zh: '三月' },
+  'FebMarch': { en: 'Feb/March', zh: '二/三月' },
+  'MayJune': { en: 'May/June', zh: '五/六月' },
+  'OctNov': { en: 'Oct/Nov', zh: '十/十一月' },
+  'Specimen': { en: 'Specimen', zh: '样卷' }
+};
+
+/* ─── Paper browse panel ─── */
+
+function ppShowPaperBrowse(board) {
+  board = board || 'cie';
+
+  Promise.all([loadPastPaperData(board), loadKaTeX()]).then(function() {
+    var el = E('panel-papers');
+    if (!el) return;
+
+    var papers = getPaperList(board);
+    var results = _ppGetPaperResults();
+
+    /* Group by year → session */
+    var years = {};
+    for (var i = 0; i < papers.length; i++) {
+      var p = papers[i];
+      if (!years[p.year]) years[p.year] = {};
+      if (!years[p.year][p.session]) years[p.year][p.session] = [];
+      years[p.year][p.session].push(p);
+    }
+
+    var yearKeys = Object.keys(years).sort(function(a, b) { return b - a; });
+
+    var html = '';
+    html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">';
+    html += '<button class="btn-icon" onclick="ppBack()" title="Back">&larr;</button>';
+    html += '<h2 style="margin:0;flex:1">' + t('Past Papers', '套卷练习') + '</h2>';
+    html += '<span class="pp-src">' + papers.length + ' ' + t('papers', '套') + '</span>';
+    html += '</div>';
+
+    /* Year tabs */
+    html += '<div class="pp-year-tabs" id="pp-year-tabs">';
+    for (var yi = 0; yi < yearKeys.length; yi++) {
+      var yr = yearKeys[yi];
+      var cls = yi === 0 ? 'pp-year-tab active' : 'pp-year-tab';
+      html += '<button class="' + cls + '" onclick="ppSelectYear(' + yr + ',\'' + board + '\')" data-year="' + yr + '">' + yr + '</button>';
+    }
+    html += '</div>';
+
+    /* Paper cards for first year */
+    html += '<div id="pp-papers-body">';
+    html += _ppRenderYearPapers(years[yearKeys[0]], yearKeys[0], board, results);
+    html += '</div>';
+
+    /* Store data for tab switching */
+    window._ppYearsData = years;
+    window._ppBrowseBoard = board;
+
+    el.innerHTML = html;
+    showPanel('papers');
+  });
+}
+
+function ppSelectYear(year, board) {
+  /* Update tab highlight */
+  var tabs = document.querySelectorAll('#pp-year-tabs .pp-year-tab');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.toggle('active', tabs[i].getAttribute('data-year') == year);
+  }
+  /* Render papers for selected year */
+  var body = E('pp-papers-body');
+  if (!body || !window._ppYearsData) return;
+  var results = _ppGetPaperResults();
+  body.innerHTML = _ppRenderYearPapers(window._ppYearsData[year], year, board, results);
+}
+
+function _ppRenderYearPapers(sessions, year, board, results) {
+  if (!sessions) return '';
+  var sessionOrder = ['March', 'FebMarch', 'MayJune', 'OctNov', 'Specimen'];
+  var html = '';
+
+  for (var si = 0; si < sessionOrder.length; si++) {
+    var sess = sessionOrder[si];
+    if (!sessions[sess]) continue;
+    var papers = sessions[sess];
+    var sl = PP_SESSION_LABELS[sess] || { en: sess, zh: sess };
+
+    html += '<h4 class="pp-session-heading">' + t(sl.en, sl.zh) + ' ' + year + '</h4>';
+    html += '<div class="pp-paper-grid">';
+
+    for (var pi = 0; pi < papers.length; pi++) {
+      var p = papers[pi];
+      var tl = PP_TYPE_LABELS[p.type] || { en: p.type, zh: p.type, cls: '' };
+      var result = results[p.key];
+
+      html += '<div class="pp-paper-card" onclick="ppShowPaperDetail(\'' + p.key + '\',\'' + board + '\')">';
+      html += '<div class="pp-paper-card-top">';
+      html += '<span class="pp-paper-type ' + tl.cls + '">' + t(tl.en, tl.zh) + '</span>';
+      html += '<span class="pp-paper-num">Paper ' + p.paper + '</span>';
+      html += '</div>';
+      html += '<div class="pp-paper-card-info">';
+      html += '<span>' + p.totalMarks + ' ' + t('marks', '分') + '</span>';
+      html += '<span>' + p.time + ' min</span>';
+      html += '<span>' + p.qcount + ' Q</span>';
+      html += '</div>';
+      if (result) {
+        var pct = Math.round((result.score / result.total) * 100);
+        html += '<div class="pp-paper-card-result">';
+        html += '<span class="pp-paper-score">' + result.score + '/' + result.total + ' (' + pct + '%)</span>';
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+/* ─── Paper detail / mode selection ─── */
+
+function ppShowPaperDetail(paperKey, board) {
+  board = board || 'cie';
+  var meta = getPaperMeta(board)[paperKey];
+  if (!meta) return;
+
+  var questions = getPPByPaper(board, paperKey);
+  var tl = PP_TYPE_LABELS[meta.type] || { en: meta.type, zh: meta.type, cls: '' };
+  var result = _ppGetPaperResults()[paperKey];
+
+  var html = '';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">';
+  html += '<button class="btn-icon" onclick="ppShowPaperBrowse(\'' + board + '\')" title="Back">&larr;</button>';
+  html += '<h2 style="margin:0;flex:1">Paper ' + meta.paper + '</h2>';
+  html += '<span class="pp-paper-type ' + tl.cls + '">' + t(tl.en, tl.zh) + '</span>';
+  html += '</div>';
+
+  html += '<div class="pp-paper-detail-info">';
+  html += '<div class="pp-detail-row"><span>' + t('Year', '年份') + '</span><span>' + meta.year + ' ' + (PP_SESSION_LABELS[meta.session] ? t(PP_SESSION_LABELS[meta.session].en, PP_SESSION_LABELS[meta.session].zh) : meta.session) + '</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Total Marks', '总分') + '</span><span>' + meta.totalMarks + '</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Time', '时间') + '</span><span>' + meta.time + ' min</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Questions', '题目') + '</span><span>' + meta.qcount + '</span></div>';
+  if (result) {
+    var pct = Math.round((result.score / result.total) * 100);
+    html += '<div class="pp-detail-row"><span>' + t('Best Score', '最高分') + '</span><span class="pp-paper-score">' + result.score + '/' + result.total + ' (' + pct + '%)</span></div>';
+  }
+  html += '</div>';
+
+  /* Topic breakdown */
+  var topicCounts = {};
+  for (var i = 0; i < questions.length; i++) {
+    var ts = questions[i].topics || [];
+    for (var j = 0; j < ts.length; j++) {
+      topicCounts[ts[j]] = (topicCounts[ts[j]] || 0) + 1;
+    }
+  }
+  if (Object.keys(topicCounts).length > 0) {
+    html += '<h4 style="margin:20px 0 8px">' + t('Topics', '知识点分布') + '</h4>';
+    html += '<div class="pp-topic-chips">';
+    for (var tp in topicCounts) {
+      html += '<span class="pp-error-chip">' + tp + ' (' + topicCounts[tp] + ')</span>';
+    }
+    html += '</div>';
+  }
+
+  /* Action buttons */
+  html += '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">';
+  html += '<button class="btn btn-primary" onclick="ppStartFullPaper(\'' + paperKey + '\',\'' + board + '\',\'practice\')">';
+  html += t('Practice', '练习模式') + '</button>';
+  html += '<button class="btn btn-ghost" onclick="ppStartFullPaper(\'' + paperKey + '\',\'' + board + '\',\'exam\')">';
+  html += '\u23f1 ' + t('Exam Mode', '考试模式') + ' (' + meta.time + ' min)</button>';
+  html += '</div>';
+
+  /* Question list preview */
+  html += '<h4 style="margin:24px 0 8px">' + t('Questions', '题目列表') + '</h4>';
+  for (var qi = 0; qi < questions.length; qi++) {
+    var q = questions[qi];
+    var mastery = _ppGetQMastery(q.id);
+    var mIcon = mastery === 'mastered' ? '✓' : mastery === 'partial' ? '◐' : mastery === 'needs_work' ? '✗' : '';
+    html += '<div class="pp-q-preview" onclick="ppStartFullPaper(\'' + paperKey + '\',\'' + board + '\',\'practice\',' + qi + ')">';
+    html += '<span class="pp-q-num">Q' + q.qnum + '</span>';
+    html += '<span class="pp-q-topic" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (q.topics || []).join(', ') + '</span>';
+    html += '<span class="pp-marks-badge">' + q.marks + '</span>';
+    if (mIcon) html += '<span class="pp-q-mastery">' + mIcon + '</span>';
+    html += '</div>';
+  }
+
+  var el = E('panel-papers');
+  if (el) el.innerHTML = html;
+  showPanel('papers');
+  /* KaTeX not needed for this view */
+}
+
+/* ─── Start full paper practice/exam ─── */
+
+function ppStartFullPaper(paperKey, board, mode, startIdx) {
+  board = board || 'cie';
+  mode = mode || 'practice';
+
+  Promise.all([loadPastPaperData(board), loadKaTeX()]).then(function() {
+    var questions = getPPByPaper(board, paperKey);
+    if (!questions.length) {
+      showToast(t('No questions found for this paper', '该套卷暂无题目'));
+      return;
+    }
+
+    var meta = getPaperMeta(board)[paperKey] || {};
+
+    if (mode === 'exam') {
+      _ppSession = {
+        questions: questions,
+        current: 0,
+        mode: 'exam',
+        board: board,
+        sectionId: null,
+        paperKey: paperKey,
+        startTime: Date.now(),
+        results: [],
+        totalMarks: 0
+      };
+      for (var i = 0; i < questions.length; i++) {
+        _ppSession.totalMarks += questions[i].marks;
+        _ppSession.results.push({ flagged: false, scored: null, status: null, errorType: '' });
+      }
+      showPanel('pastpaper');
+      renderPPCard();
+    } else {
+      _ppSession = {
+        questions: questions,
+        current: startIdx || 0,
+        mode: 'practice',
+        board: board,
+        sectionId: null,
+        paperKey: paperKey,
+        results: []
+      };
+      showPanel('pastpaper');
+      renderPPCard();
+    }
   });
 }
 
