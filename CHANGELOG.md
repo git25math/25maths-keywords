@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.7.2-data] - 2026-03-06 — 全量知识卡片+经典例题内容填充
+
+### 数据
+- **111 个知识点 × 2 模块 = 222 条内容**：为 CIE 0580 全 9 章 72 个知识点 + Edexcel 4MA1 全 6 章 39 个知识点填充「知识卡片」和「经典例题」
+- **内容格式**：Exam Success 风格 — Recap → Key Skills → Exam Tip → Watch Out! → Worked Examples（含分值和逐步解答）
+- **双语**：每条内容包含 English + 中文版本，数学公式用 `$...$` KaTeX 渲染
+- **覆盖范围**：Ch1 (58行) + Ch2 (42行) + Ch3 (22行) + Ch4 (38行) + Ch5-6 (32行) + Ch7-9 (30行)
+
+### 种子脚本
+| 文件 | 覆盖范围 | 行数 |
+|------|----------|------|
+| `scripts/seed-section-content.js` | CIE 1.1-1.18 + Edexcel 1.1-1.11 | 58 |
+| `scripts/seed-ch2.js` | CIE 2.1-2.13 + Edexcel 2.1-2.8 | 42 |
+| `scripts/seed-ch3.js` | CIE 3.1-3.7 + Edexcel 3.1-3.4 | 22 |
+| `scripts/seed-ch4.js` | CIE 4.1-4.8 + Edexcel 4.1-4.11 | 38 |
+| `scripts/seed-ch5-6.js` | CIE 5.1-6.6 + Edexcel 5.1-6.3 | 32 |
+| `scripts/seed-ch7-9.js` | CIE 7.1-9.7 | 30 |
+
 ## [1.7.2] - 2026-03-06 — 超管知识点模块内联编辑
 
 ### 新功能
