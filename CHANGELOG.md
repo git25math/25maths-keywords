@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.3-dedup] - 2026-03-06 — CIE 词汇审核去重
+
+### 修复
+- **9.6 section 内去重**：删除重复 "Percentile"（id=8），替换同义 "Box plot" 为 "Upper quartile"
+- **4.2 vs 4.8 高重叠拆分**（71% → 0%）：4.2 重写为 Protractor / Bisect / Perpendicular / Straight edge / Set square / Measure / Accurate drawing
+- **15 个跨 section 重复词替换**为更精准的同领域词汇（涉及 1.10/1.18/2.2/2.4/2.8/3.2/3.6/3.7/4.5/7.3/8.2/9.7）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `data/vocabulary-cie.json` | 9.6 去重 + 4.2 重写 + 15 处替换（595→594 词） |
+
 ## [1.7.3] - 2026-03-06 — 核心词汇关联性审核与重组
 
 ### 修复
