@@ -1267,7 +1267,19 @@ function renderPPCard() {
   /* Header */
   html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">';
   html += '<button class="btn btn-ghost btn-sm" onclick="ppBack()">\u2190 ' + t('Back', '\u8fd4\u56de') + '</button>';
-  html += '<div style="flex:1"></div>';
+  if (_ppSession.paperKey) {
+    var _hMeta = getPaperMeta(_ppSession.board)[_ppSession.paperKey];
+    if (_hMeta) {
+      var _hSl = PP_SESSION_LABELS[_hMeta.session] || { en: _hMeta.session, zh: _hMeta.session };
+      html += '<div style="flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--c-text2)">';
+      html += 'Paper ' + _hMeta.paper + ' \u00b7 ' + _hMeta.year + ' ' + t(_hSl.en, _hSl.zh);
+      html += '</div>';
+    } else {
+      html += '<div style="flex:1"></div>';
+    }
+  } else {
+    html += '<div style="flex:1"></div>';
+  }
   if (_ppSession.mode === 'exam') {
     html += '<div class="pp-timer" id="pp-timer">00:00</div>';
   }
@@ -1449,6 +1461,21 @@ function ppGoTo(idx) {
 }
 
 function ppBack() {
+  /* Confirm before leaving an active exam */
+  if (_ppSession && _ppSession.mode === 'exam' && _ppSession.startTime) {
+    var html = '<h3 class="section-title">' + t('Quit Exam?', '\u9000\u51fa\u8003\u8bd5\uff1f') + '</h3>';
+    html += '<p style="color:var(--c-text2);margin:12px 0">' + t('Your progress will be lost.', '\u8fdb\u5ea6\u5c06\u4e22\u5931\uff0c\u786e\u5b9a\u9000\u51fa\u5417\uff1f') + '</p>';
+    html += '<div style="display:flex;gap:12px;justify-content:flex-end;margin-top:16px">';
+    html += '<button class="btn btn-ghost" onclick="hideModal()">' + t('Cancel', '\u53d6\u6d88') + '</button>';
+    html += '<button class="btn btn-primary" onclick="hideModal();ppForceBack()">' + t('Quit', '\u786e\u5b9a\u9000\u51fa') + '</button>';
+    html += '</div>';
+    showModal(html);
+    return;
+  }
+  ppForceBack();
+}
+
+function ppForceBack() {
   if (_ppTimer) { clearInterval(_ppTimer); _ppTimer = null; }
   var wasPaper = _ppSession && _ppSession.paperKey;
   var board = _ppSession ? _ppSession.board : 'cie';
@@ -1571,13 +1598,31 @@ function _ppStartTimer() {
   if (_ppTimer) clearInterval(_ppTimer);
   _ppTimer = setInterval(function() {
     if (!_ppSession || _ppSession.mode !== 'exam') { clearInterval(_ppTimer); _ppTimer = null; return; }
-    var elapsed = Math.floor((Date.now() - _ppSession.startTime) / 1000);
-    var min = Math.floor(elapsed / 60);
-    var sec = elapsed % 60;
     var timerEl = document.getElementById('pp-timer');
-    if (timerEl) {
+    if (!timerEl) return;
+    var elapsed = Math.floor((Date.now() - _ppSession.startTime) / 1000);
+
+    if (_ppSession.timeLimit) {
+      /* Countdown mode */
+      var remaining = _ppSession.timeLimit - elapsed;
+      if (remaining <= 0) {
+        timerEl.textContent = '00:00';
+        timerEl.className = 'pp-timer danger';
+        clearInterval(_ppTimer); _ppTimer = null;
+        ppSubmitExam();
+        return;
+      }
+      var min = Math.floor(remaining / 60);
+      var sec = remaining % 60;
       timerEl.textContent = (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
-      /* Warning at reference time */
+      if (remaining <= 300) timerEl.className = 'pp-timer danger';
+      else if (remaining <= 600) timerEl.className = 'pp-timer warning';
+      else timerEl.className = 'pp-timer';
+    } else {
+      /* Count-up mode */
+      var min = Math.floor(elapsed / 60);
+      var sec = elapsed % 60;
+      timerEl.textContent = (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
       var refSec = _ppSession.totalMarks * 60;
       if (elapsed > refSec * 1.2) timerEl.className = 'pp-timer danger';
       else if (elapsed > refSec) timerEl.className = 'pp-timer warning';
@@ -2044,7 +2089,13 @@ function ppShowResults(exam, conceptErrors) {
   html += '<div class="pp-results-score">';
   html += '<h2>' + t('Results', '\u7ed3\u679c') + '</h2>';
   html += '<div class="pp-results-pct ' + pctClass + '">' + exam.scored + ' / ' + exam.totalMarks + ' (' + pct + '%)</div>';
-  html += '<div class="pp-results-time">\u23f1 ' + min + ':' + (sec < 10 ? '0' : '') + sec + '</div>';
+  var timeStr = '\u23f1 ' + min + ':' + (sec < 10 ? '0' : '') + sec;
+  if (_ppSession && _ppSession.timeLimit) {
+    var limMin = Math.floor(_ppSession.timeLimit / 60);
+    var limSec = _ppSession.timeLimit % 60;
+    timeStr += ' / ' + t('limit', '\u65f6\u9650') + ' ' + limMin + ':' + (limSec < 10 ? '0' : '') + limSec;
+  }
+  html += '<div class="pp-results-time">' + timeStr + '</div>';
   html += '</div>';
 
   /* Concept breakdown */
@@ -2439,23 +2490,7 @@ function ppStartFullPaper(paperKey, board, mode, startIdx) {
     var meta = getPaperMeta(board)[paperKey] || {};
 
     if (mode === 'exam') {
-      _ppSession = {
-        questions: questions,
-        current: 0,
-        mode: 'exam',
-        board: board,
-        sectionId: null,
-        paperKey: paperKey,
-        startTime: Date.now(),
-        results: [],
-        totalMarks: 0
-      };
-      for (var i = 0; i < questions.length; i++) {
-        _ppSession.totalMarks += questions[i].marks;
-        _ppSession.results.push({ flagged: false, scored: null, status: null, errorType: '' });
-      }
-      showPanel('pastpaper');
-      renderPPCard();
+      ppShowPaperExamSetup(paperKey, board, questions, meta);
     } else {
       _ppSession = {
         questions: questions,
@@ -2470,6 +2505,67 @@ function ppStartFullPaper(paperKey, board, mode, startIdx) {
       renderPPCard();
     }
   });
+}
+
+/* ─── Paper exam setup (confirmation screen) ─── */
+
+function ppShowPaperExamSetup(paperKey, board, questions, meta) {
+  var el = E('panel-pastpaper');
+  if (!el) return;
+
+  var tl = PP_TYPE_LABELS[meta.type] || { en: meta.type, zh: meta.type };
+  var sl = PP_SESSION_LABELS[meta.session] || { en: meta.session, zh: meta.session };
+
+  var html = '';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">';
+  html += '<button class="btn btn-ghost btn-sm" onclick="ppShowPaperBrowse(\'' + board + '\')">\u2190 ' + t('Back', '\u8fd4\u56de') + '</button>';
+  html += '</div>';
+
+  html += '<div class="pp-setup">';
+  html += '<h3>\u23f1 ' + t('Exam Mode', '\u5b9e\u6218\u6a21\u5f0f') + '</h3>';
+  html += '<p style="color:var(--c-text2);margin-bottom:20px">Paper ' + meta.paper + ' \u00b7 ' + meta.year + ' ' + t(sl.en, sl.zh) + '</p>';
+
+  html += '<div class="pp-paper-detail-info" style="margin-bottom:20px">';
+  html += '<div class="pp-detail-row"><span>' + t('Type', '\u7c7b\u578b') + '</span><span>' + t(tl.en, tl.zh) + '</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Total Marks', '\u603b\u5206') + '</span><span>' + meta.totalMarks + '</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Time Limit', '\u65f6\u9650') + '</span><span>' + meta.time + ' min</span></div>';
+  html += '<div class="pp-detail-row"><span>' + t('Questions', '\u9898\u6570') + '</span><span>' + questions.length + '</span></div>';
+  html += '</div>';
+
+  html += '<div style="margin-top:24px;text-align:center">';
+  html += '<button class="btn btn-primary" onclick="ppStartPaperExam(\'' + paperKey + '\',\'' + board + '\')" style="padding:12px 32px;font-size:15px">';
+  html += '\u25b6 ' + t('Start Exam', '\u5f00\u59cb\u8003\u8bd5') + '</button>';
+  html += '</div>';
+
+  html += '</div>';
+
+  el.innerHTML = html;
+  showPanel('pastpaper');
+}
+
+function ppStartPaperExam(paperKey, board) {
+  board = board || 'cie';
+  var questions = getPPByPaper(board, paperKey);
+  var meta = getPaperMeta(board)[paperKey] || {};
+
+  _ppSession = {
+    questions: questions,
+    current: 0,
+    mode: 'exam',
+    board: board,
+    sectionId: null,
+    paperKey: paperKey,
+    startTime: Date.now(),
+    results: [],
+    totalMarks: 0,
+    timeLimit: meta.time ? meta.time * 60 : null
+  };
+  for (var i = 0; i < questions.length; i++) {
+    _ppSession.totalMarks += questions[i].marks;
+    _ppSession.results.push({ flagged: false, scored: null, status: null, errorType: '' });
+  }
+  showPanel('pastpaper');
+  renderPPCard();
 }
 
 /* ═══ MASTER QUESTION TYPE MASTERY ═══ */

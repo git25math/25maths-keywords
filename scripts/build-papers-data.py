@@ -386,6 +386,10 @@ def main():
             if m:
                 marks = int(m.group(1))
 
+        # Skip marks=0 questions (removed by exam board or data error)
+        if marks == 0:
+            continue
+
         # Parse parts
         parts = parse_parts(raw_tex)
 

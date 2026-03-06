@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.9.1] - 2026-03-06 — 套卷系统 UX 优化
+
+### 改进
+- **倒计时器**: 全卷考试使用真实时限倒计时（60/90/120/150 min），剩余 ≤10min 黄色警告，≤5min 红色警告，倒计时归零自动交卷
+- **考试确认屏**: exam 模式新增确认页面，显示 Paper 信息（类型/年份/总分/时限/题数），确认后才开始计时
+- **Header 试卷标识**: 练习/考试进行中 header 显示当前试卷 "Paper 42 · 2024 O/N"
+- **退出确认**: 考试模式中途退出弹出确认对话框，防止误操作丢失进度
+- **结果页时间对比**: 全卷考试结果页显示 "用时 XX:XX / 时限 YY:XX"
+- **过滤废题**: `build-papers-data.py` 跳过 marks=0 题目（3 道被移除），总题数 4,110→4,107
+- **暗色模式补全**: 入口卡片、Paper 卡片、详情页、题目预览列表暗色适配
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | 计时器重构 + `ppShowPaperExamSetup()` + `ppStartPaperExam()` + `ppForceBack()` + header 试卷信息 + 结果页时限对比 |
+| `scripts/build-papers-data.py` | +marks=0 过滤 |
+| `data/papers-cie.json` | 重新生成（4,107 题） |
+| `css/style.css` | +7 条暗色模式规则 |
+| `js/config.js` | v1.9.1 |
+
 ## [1.9.0] - 2026-03-06 — 套卷系统 Phase 1+2（Paper-Centric Architecture）
 
 ### 新增功能
