@@ -355,13 +355,17 @@ add('cie', '2.7', 'knowledge', {
     'Always check your $n$th term formula by substituting $n = 1, 2, 3$ to verify it gives the correct terms.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>数列</b>：按规则排列的数。<br>' +
-    '• <b>等差数列</b>：公差 $d$ 恒定。$T_n = a + (n-1)d$。<br><br>' +
-    '<b>Extended 扩展</b><br>' +
-    '• <b>二次数列</b>：二阶差恒定。$T_n = an^2 + bn + c$。<br>' +
-    '• $a = \\frac{\\text{二阶差}}{2}$，再代入已知项求 $b$ 和 $c$。<br><br>' +
+    '• <b>数列</b>是遵循特定规则排列的一组数字。<br>' +
+    '• <b>项与项之间的规则</b>：描述如何从一项得到下一项。<br>' +
+    '• <b>位置与项之间的规则</b> ($n$th term)：直接给出任意项。例如 $T_n = 3n + 1$。<br>' +
+    '• <b>等差数列</b>：公差 $d$ 保持不变。$T_n = a + (n-1)d$。<br>' +
+    '<br>' +
+    '<b>仅 Extended</b><br>' +
+    '• <b>二次数列</b>：二阶差分是常数。$T_n = an^2 + bn + c$。<br>' +
+    '• 求 $a$：$a = \\frac{\\text{二阶差分}}{2}$。然后利用已知项求出 $b$ 和 $c$。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '用 $n = 1, 2, 3$ 代入验证通项公式。'
+    '始终通过代入 $n = 1, 2, 3$ 来检查你的第 $n$ 项公式，以验证它是否给出正确的项。'
 });
 
 add('cie', '2.7', 'examples', {
@@ -410,13 +414,22 @@ add('cie', '2.8', 'knowledge', {
     '<b>Watch Out!</b><br>' +
     '$y \\propto x^2$ does NOT mean $y \\propto x$ squared — they have different relationships.',
   content_zh:
-    '<b>仅 Extended</b><br><br>' +
+    '<b>仅 Extended</b><br>' +
+    '<br>' +
     '<b>知识回顾</b><br>' +
-    '• <b>正比例</b>：$y \\propto x$ → $y = kx$。<br>' +
-    '• $y \\propto x^2$, $y \\propto \\sqrt{x}$ 等变体。<br>' +
-    '• <b>反比例</b>：$y \\propto \\frac{1}{x}$ → $y = \\frac{k}{x}$。<br><br>' +
+    '• <b>正比例</b>：$y \\propto x$ 意味着 $y = kx$。当 $x$ 翻倍时，$y$ 也翻倍。<br>' +
+    '• $y \\propto x^2$：$y = kx^2$。$y \\propto \\sqrt{x}$：$y = k\\sqrt{x}$。<br>' +
+    '• <b>反比例</b>：$y \\propto \\frac{1}{x}$ 意味着 $y = \\frac{k}{x}$。当 $x$ 翻倍时，$y$ 减半。<br>' +
+    '• $y \\propto \\frac{1}{x^2}$：$y = \\frac{k}{x^2}$。<br>' +
+    '<br>' +
     '<b>方法</b><br>' +
-    '1. 写出比例关系。2. 用 $k$ 替换 $\\propto$。3. 代入已知值求 $k$。4. 写出完整公式。'
+    '1. 写出比例关系式。<br>' +
+    '2. 将 $\\propto$ 替换为 $= k$（引入常数）。<br>' +
+    '3. 代入已知值求出 $k$。<br>' +
+    '4. 写出完整公式并应用它。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '$y \\propto x^2$ 并不意味着 $y \\propto x$ 的平方 —— 它们具有不同的关系。'
 });
 
 add('cie', '2.8', 'examples', {
@@ -714,10 +727,15 @@ add('edexcel', '2.1', 'knowledge', {
   content_zh:
     '<b>知识回顾</b><br>' +
     '• 字母代表未知数或变量。<br>' +
-    '• <b>表达式</b>：无等号。<b>方程</b>：有等号。<br>' +
-    '• <b>公式</b>：变量间的关系。<b>恒等式</b>：对所有值成立。<br><br>' +
+    '• <b>代数式 (Expression)</b>：没有等号。例如 $3x + 2y$。<br>' +
+    '• <b>方程 (Equation)</b>：有等号。例如 $3x + 2 = 11$。<br>' +
+    '• <b>公式 (Formula)</b>：关联变量。例如 $s = \\frac{d}{t}$。<br>' +
+    '• <b>恒等式 (Identity)</b>：对所有值都成立。例如 $3(x + 1) \\equiv 3x + 3$。<br>' +
+    '<br>' +
     '<b>关键技能</b><br>' +
-    '• 代入求值。从文字题写出表达式。区分四种代数形式。'
+    '• 将数值代入代数式和公式。<br>' +
+    '• 根据应用题列出代数式。<br>' +
+    '• 区分代数式、方程、公式和恒等式。'
 });
 
 add('edexcel', '2.1', 'examples', {
@@ -749,11 +767,18 @@ add('edexcel', '2.2', 'knowledge', {
     '$(x + 3)^2 = x^2 + 6x + 9$, NOT $x^2 + 9$. Do not forget the middle term!',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 合并同类项、展开括号、因式分解。<br><br>' +
+    '• <b>合并同类项</b>：$5a + 3a = 8a$，但 $5a + 3b$ 无法化简。<br>' +
+    '• <b>展开单括号</b>：$3(2x - 5) = 6x - 15$。<br>' +
+    '• <b>展开双括号</b>：$(x + 3)(x - 2) = x^2 + x - 6$。<br>' +
+    '• <b>因式分解</b>：提取公因式。$12x^2 + 8x = 4x(3x + 2)$。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 二次因式分解、平方差、代数分式运算。<br><br>' +
+    '• 二次项因式分解：$x^2 + 5x + 6 = (x + 2)(x + 3)$。<br>' +
+    '• 平方差公式：$x^2 - 49 = (x + 7)(x - 7)$。<br>' +
+    '• <b>分式代数式</b>：使用公分母进行化简、加法和减法。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '$(x+3)^2 = x^2 + 6x + 9$，不是 $x^2 + 9$，别漏中间项！'
+    '$(x + 3)^2 = x^2 + 6x + 9$，而不是 $x^2 + 9$。不要忘记中间项！'
 });
 
 add('edexcel', '2.2', 'examples', {
@@ -790,12 +815,16 @@ add('edexcel', '2.3', 'knowledge', {
     'When rearranging, do inverse operations in reverse BIDMAS order: undo add/subtract first, then multiply/divide, then powers/roots.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>代入</b>：用数值替换字母。<br>' +
-    '• <b>变换公式</b>：用逆运算改变主语。<br><br>' +
+    '• <b>代入法 (Substitution)</b>：用数字替换字母并计算结果。<br>' +
+    '• <b>公式变形 (Rearranging formulae)</b>：使用逆运算改变主元。<br>' +
+    '• 例如 $v = u + at$ → $t = \\frac{v - u}{a}$。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 变量出现两次时：合并 → 提公因式 → 除。<br><br>' +
+    '• 当主元出现<b>两次</b>时进行公式变形：移项、因式分解、除法。<br>' +
+    '• 例如 $T = \\frac{ax}{x + b}$ → 将 $x$ 设为主元。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '按逆 BIDMAS 顺序操作：先解加减，再解乘除，最后解幂/根。'
+    '在进行公式变形时，按照与 BIDMAS 相反的顺序进行逆运算：先撤销加/减，然后是乘/除，最后是幂/根。'
 });
 
 add('edexcel', '2.3', 'examples', {
@@ -833,11 +862,18 @@ add('edexcel', '2.4', 'knowledge', {
     'Always check your answer by substituting it back into the original equation.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>一次方程</b>：变量幂次为 1。两边做相同运算求解。<br>' +
-    '• 含括号：先展开。含分数：先通分。<br>' +
-    '• 变量在两边：变量移一边，数字移另一边。<br><br>' +
+    '• <b>线性方程</b>变量的最高次数仅为 1。<br>' +
+    '• 通过对等式两边进行相同的运算来求解。<br>' +
+    '• 带括号的方程：先展开。<br>' +
+    '• 带分数的方程：乘以公分母。<br>' +
+    '• 两边都有变量：将变量项移到一边，常数项移到另一边。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 解 $ax + b = c$, $a(x + b) = c$, $\\frac{ax + b}{c} = d$。<br>' +
+    '• 根据应用题列方程并求解。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '把答案代回原方程检验。'
+    '务必通过将答案代回原方程来检查结果。'
 });
 
 add('edexcel', '2.4', 'examples', {
@@ -874,11 +910,22 @@ add('edexcel', '2.5', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'Read the question carefully: "directly proportional to the square of $x$" means $y \\propto x^2$, not $y \\propto x$.',
   content_zh:
-    '<b>仅 Higher</b><br><br>' +
+    '<b>仅 Higher</b><br>' +
+    '<br>' +
     '<b>知识回顾</b><br>' +
-    '• 正比例：$y = kx$, $y = kx^2$ 等。反比例：$y = \\frac{k}{x}$, $y = \\frac{k}{x^2}$。<br><br>' +
+    '• $y \\propto x$ → $y = kx$（正比例）。<br>' +
+    '• $y \\propto x^2$ → $y = kx^2$。$y \\propto x^3$ → $y = kx^3$。<br>' +
+    '• $y \\propto \\frac{1}{x}$ → $y = \\frac{k}{x}$（反比例）。<br>' +
+    '• $y \\propto \\frac{1}{x^2}$ → $y = \\frac{k}{x^2}$。<br>' +
+    '<br>' +
     '<b>方法</b><br>' +
-    '1. 写出比例关系。2. 用 $k$ 替换 $\\propto$。3. 代入求 $k$。4. 用公式求解。'
+    '1. 写出比例关系式。<br>' +
+    '2. 用 $= k$ 替换 $\\propto$。<br>' +
+    '3. 代入数值求出 $k$。<br>' +
+    '4. 写出完整的方程并使用它。<br>' +
+    '<br>' +
+    '<b>考试技巧</b><br>' +
+    '仔细阅读题目："与 $x$ 的平方成正比"意味着 $y \\propto x^2$，而不是 $y \\propto x$。'
 });
 
 add('edexcel', '2.5', 'examples', {
@@ -911,13 +958,16 @@ add('edexcel', '2.6', 'knowledge', {
     'After finding one variable, substitute back to find the other. Always find BOTH values.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>联立方程</b>：两个方程两个未知数。<br>' +
-    '• <b>消元法</b>：使一个变量系数相同，加减消去。<br>' +
-    '• <b>代入法</b>：用一个变量表示另一个，代入。<br><br>' +
+    '• <b>联立方程</b>是两个包含两个未知数的方程。<br>' +
+    '• <b>加减消元法</b>：使一个变量的系数相等，然后通过相加或相减消去该变量。<br>' +
+    '• <b>代入消元法</b>：用一个变量表示另一个变量，然后代入另一个方程。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 一个一次方程 + 一个非线性方程：用代入法。<br><br>' +
+    '• 解一个线性方程和一个非线性方程（如二次方程）：使用代入法。<br>' +
+    '• 例如 $y = 2x + 1$ 和 $x^2 + y^2 = 25$：将 $y$ 的表达式代入第二个方程。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '求出一个变量后代回求另一个，两个值都要求！'
+    '求出一个变量后，代回原式求另一个。务必求出**两个**变量的值。'
 });
 
 add('edexcel', '2.6', 'examples', {
@@ -962,14 +1012,19 @@ add('edexcel', '2.7', 'knowledge', {
     'The equation must be in the form $= 0$ before factorising or using the formula.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 二次方程：$ax^2 + bx + c = 0$。<br>' +
-    '• 因式分解法求解。<br><br>' +
+    '• <b>一元二次方程</b>的形式为 $ax^2 + bx + c = 0$。<br>' +
+    '• <b>因式分解</b>：$(x + p)(x + q) = 0$ → $x = -p$ 或 $x = -q$。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 求根公式：$x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$。<br>' +
-    '• 配方法。<br>' +
-    '• 判别式 $D = b^2 - 4ac$：$D > 0$ 两个实根，$D = 0$ 一个重根，$D < 0$ 无实根。<br><br>' +
+    '• <b>求根公式</b>：$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$。<br>' +
+    '• <b>配方法</b>：$x^2 + bx + c = (x + \\frac{b}{2})^2 - (\\frac{b}{2})^2 + c$。<br>' +
+    '• <b>判别式</b> $D = b^2 - 4ac$：<br>' +
+    '&nbsp;&nbsp;$D > 0$：两个不同的实数根。<br>' +
+    '&nbsp;&nbsp;$D = 0$：一个重根。<br>' +
+    '&nbsp;&nbsp;$D < 0$：没有实数根。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '使用公式前方程必须等于 0。'
+    '在进行因式分解或使用公式之前，方程必须整理为 $= 0$ 的形式。'
 });
 
 add('edexcel', '2.7', 'examples', {
@@ -1009,14 +1064,17 @@ add('edexcel', '2.8', 'knowledge', {
     'For "list the integers" questions, remember to include endpoints if the inequality allows (≤ or ≥).',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 不等号：$<, >, \\leq, \\geq$。<br>' +
-    '• 解法同方程，乘除负数翻转不等号。<br>' +
-    '• 数轴：空心圈 = 不含端点，实心圈 = 含端点。<br><br>' +
+    '• $<$ 小于，$>$ 大于，$\\leq$ 小于或等于，$\\geq$ 大于或等于。<br>' +
+    '• 像解方程一样求解。<b>当乘以或除以负数时，要改变不等号的方向。</b><br>' +
+    '• 数轴：空心圆 (○) 表示严格不等号，实心圆 (●) 表示 $\\leq, \\geq$。<br>' +
+    '• 列出满足不等式的整数值。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 二次不等式：先解方程，再判断区间。<br>' +
-    '• 图形不等式：实线表示 $\\leq/\\geq$，虚线表示 $</>$。<br><br>' +
+    '• <b>二次不等式</b>：解对应的方程，然后确定哪些区间满足不等式。<br>' +
+    '• <b>图解不等式</b>：给区域涂色，$\\leq/\\geq$ 使用实线，$</>$ 使用虚线。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '"列出满足条件的整数"时注意是否包含端点。'
+    '对于"列出整数"的问题，如果不等式允许（$\\leq$ 或 $\\geq$），记得包括端点值。'
 });
 
 add('edexcel', '2.8', 'examples', {

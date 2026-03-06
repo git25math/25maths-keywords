@@ -128,10 +128,18 @@ add('cie', '5.3', 'knowledge', {
     'Perimeter of a sector is NOT just the arc. You must add the two radii: $P = \\frac{\\theta}{360} \\times 2\\pi r + 2r$.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 圆周长 $C = 2\\pi r$，面积 $A = \\pi r^2$。<br>' +
-    '• 弧长 $= \\frac{\\theta}{360} \\times 2\\pi r$，扇形面积 $= \\frac{\\theta}{360} \\times \\pi r^2$。<br>' +
-    '• 扇形周长 = 弧长 + $2r$（别忘两条半径！）。<br><br>' +
-    '<b>注意！</b>扇形周长不只是弧长，还要加两条半径。'
+    '• <b>圆</b>：周长 $C = 2\\pi r = \\pi d$，面积 $A = \\pi r^2$。<br>' +
+    '• <b>弧长</b> $= \\frac{\\theta}{360} \\times 2\\pi r$。<br>' +
+    '• <b>扇形面积</b> $= \\frac{\\theta}{360} \\times \\pi r^2$。<br>' +
+    '• <b>扇形周长</b> $=$ 弧长 $+ 2r$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 已知角度和半径，求弧长和扇形面积。<br>' +
+    '• 已知弧长或面积，求角度。<br>' +
+    '• 已知面积或周长，求半径。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '扇形的周长不仅是弧长。你必须加上两条半径：$P = \\frac{\\theta}{360} \\times 2\\pi r + 2r$。'
 });
 
 add('cie', '5.3', 'examples', {
@@ -636,11 +644,18 @@ add('edexcel', '5.2', 'knowledge', {
     '"Describe fully" means you need ALL the details. For rotation: centre + angle + direction. For enlargement: centre + scale factor. Missing any one loses marks.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>平移</b>：用向量 $\\binom{a}{b}$ 描述。大小、形状、方向不变。<br>' +
-    '• <b>反射</b>：沿镜像线翻转。需说明线的方程。<br>' +
-    '• <b>旋转</b>：需说明<b>中心、角度、方向</b>。<br>' +
-    '• <b>放大</b>：需说明<b>中心、缩放因子</b>。$k > 1$ 放大，$0 < k < 1$ 缩小，$k < 0$ 翻转。<br><br>' +
-    '<b>注意！</b>"Describe fully"必须包含所有细节，缺一扣分。'
+    '• <b>平移</b>：按向量 $\\binom{a}{b}$ 滑动。大小、形状或方向没有变化。<br>' +
+    '• <b>反射</b>：在镜像线中翻转。用<b>直线方程</b>描述。<br>' +
+    '• <b>旋转</b>：绕中心转动。用<b>中心、角度、方向</b>（顺时针/逆时针）描述。<br>' +
+    '• <b>位似（放大/缩小）</b>：从中心调整大小。用<b>中心、比例因子</b>描述。<br>' +
+    '&nbsp;&nbsp;$k > 1$：变大。$0 < k < 1$：变小。$k < 0$：倒置（仅 Higher）。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 在坐标网格上的图形上执行每种变换。<br>' +
+    '• <b>完整描述</b>给定的变换（必须包括所有必需的细节）。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '"Describe fully"（完整描述）意味着你需要所有的细节。对于旋转：中心 + 角度 + 方向。对于位似：中心 + 比例因子。遗漏任何一项都会扣分。'
 });
 
 add('edexcel', '5.2', 'examples', {
@@ -687,12 +702,21 @@ add('edexcel', '6.1', 'knowledge', {
     'In histograms, the <b>area</b> of each bar represents frequency, not the height.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 柱状图：分类数据，柱间有间隙。饼图：角度 ∝ 频率，总 $360°$。<br>' +
-    '• 茎叶图：有序原始数据，须有图例。频率折线图：用组中值。<br>' +
-    '• 散点图：两变量关系，描述相关性。<br><br>' +
+    '• <b>柱状图</b>：用于分类数据的条形。条形之间有间隔。<br>' +
+    '• <b>象形图</b>：图片代表数据。包括图例（Key）。<br>' +
+    '• <b>饼图</b>：角度与频率成正比。总计 $= 360°$。<br>' +
+    '• <b>折线图</b>：用于时间序列数据。描点并连接。<br>' +
+    '• <b>茎叶图</b>：有序原始数据显示。必须包括图例（Key）。<br>' +
+    '• <b>频率多边形</b>：描出各组的中点，用直线连接。<br>' +
+    '• <b>散点图</b>：显示两个变量之间的关系。描述<b>相关性</b>（正相关、负相关、无相关）。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 直方图：频率密度 = $\\frac{频率}{组距}$，柱间无间隙。<b>面积</b>代表频率。<br>' +
-    '• 累积频率曲线：在上组界处画点。箱线图：最小值, LQ, 中位数, UQ, 最大值。'
+    '• <b>直方图</b>：频率密度 $= \\frac{\\text{frequency}}{\\text{class width}}$。条形之间<b>没有间隔</b>。<br>' +
+    '• <b>累积频率</b>：在组上限描出的累计总量。S 形曲线。<br>' +
+    '• <b>箱线图</b>（盒须图）：最小值、下四分位数（LQ）、中位数、上四分位数（UQ）、最大值。<br>' +
+    '<br>' +
+    '<b>考试技巧</b><br>' +
+    '在直方图中，每个条形的<b>面积</b>代表频率，而不是高度。'
 });
 
 add('edexcel', '6.1', 'examples', {
@@ -730,13 +754,18 @@ add('edexcel', '6.2', 'knowledge', {
     'For grouped data, the mean uses midpoints so it is an <b>estimate</b>. Say "estimated mean".',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 平均值 $= \\frac{总和}{个数}$。分组数据：$\\bar{x} = \\frac{\\sum fx}{\\sum f}$（用组中值）。<br>' +
-    '• 中位数：有序数据中间值。众数：出现最多。<br>' +
-    '• 极差 = 最大 - 最小。<br><br>' +
+    '• <b>平均数 (Mean)</b> $= \\frac{\\text{sum of values}}{\\text{number of values}}$。对于分组数据：$\\bar{x} = \\frac{\\sum fx}{\\sum f}$（使用组中值）。<br>' +
+    '• <b>中位数 (Median)</b>：数据排序后的中间值。位置：$\\frac{n+1}{2}$。<br>' +
+    '• <b>众数 (Mode)</b>：最常见的值。可以没有众数或有多个众数。<br>' +
+    '• <b>极差 (Range)</b> $=$ largest $-$ smallest。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• IQR $= Q_3 - Q_1$。累积频率求：中位数在 $\\frac{n}{2}$，$Q_1$ 在 $\\frac{n}{4}$，$Q_3$ 在 $\\frac{3n}{4}$。<br><br>' +
+    '• <b>四分位距 (IQR)</b> $= Q_3 - Q_1$。衡量中间 50% 数据的离散程度。<br>' +
+    '• 根据累积频数：中位数位于 $\\frac{n}{2}$，$Q_1$ 位于 $\\frac{n}{4}$，$Q_3$ 位于 $\\frac{3n}{4}$。<br>' +
+    '• 使用平均数（平均值或中位数）以及离散程度（极差或 IQR）来比较分布。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '分组数据求的是"估计平均值"（用组中值）。'
+    '对于分组数据，平均数使用组中值计算，因此它是一个<b>估计值</b>。请表述为"估计平均数 (estimated mean)"。'
 });
 
 add('edexcel', '6.2', 'examples', {
@@ -755,11 +784,20 @@ add('edexcel', '6.2', 'examples', {
     'IQR $= 64 - 43 = 21$.',
   content_zh:
     '<b>经典例题 1</b> [3 分]<br>' +
-    '五人成绩 45, 62, 58, 71, 54，求平均值、中位数、极差。<br><br>' +
-    '<b>解答：</b>均值 58，中位数 58，极差 26<br><br>' +
+    '五名学生的得分为：45, 62, 58, 71, 54。求平均数、中位数和极差。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '平均数 $= \\frac{45+62+58+71+54}{5} = \\frac{290}{5} = 58$<br>' +
+    '排序后：45, 54, 58, 62, 71。中位数 $= 58$<br>' +
+    '极差 $= 71 - 45 = 26$<br>' +
+    '<br>' +
     '<b>经典例题 2</b>（Higher）[4 分]<br>' +
-    '累积频率图 $n = 80$。<br><br>' +
-    '<b>解答：</b>中位数在第 40 → 52。$Q_1 = 43, Q_3 = 64$。IQR $= 21$。'
+    '根据累积频数图，$n = 80$。读出中位数和四分位距（IQR）。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '中位数位于第 $\\frac{80}{2} = 40$ 个数值处。水平读取：中位数 $= 52$。<br>' +
+    '$Q_1$ 位于第 20 个数值处 $= 43$。$Q_3$ 位于第 60 个数值处 $= 64$。<br>' +
+    'IQR $= 64 - 43 = 21$。'
 });
 
 // ── Edexcel 6.3 Probability ──
@@ -807,12 +845,24 @@ add('edexcel', '6.3', 'examples', {
     'Check: $P(A) \\times P(B) = 0.18 \\neq 0.15$, so NOT independent.<br><br>' +
     '<b>Exam Tip:</b> Independent ⟺ $P(A \\cap B) = P(A) \\times P(B)$.',
   content_zh:
-    '<b>经典例题 1</b> [3 分]<br>' +
-    '袋中 5 红 3 蓝，不放回取两个。求都是红色的概率。<br><br>' +
-    '<b>解答：</b>$\\frac{5}{8} \\times \\frac{4}{7} = \\frac{5}{14}$<br><br>' +
-    '<b>经典例题 2</b>（Higher）[3 分]<br>' +
-    '$P(A) = 0.6, P(B) = 0.3, P(A \\cap B) = 0.15$。判断是否独立。<br><br>' +
-    '<b>解答：</b>$P(A \\cup B) = 0.75$。$P(A)P(B) = 0.18 \\neq 0.15$，不独立。'
+    '<b>知识回顾</b><br>' +
+    '• $P(\\text{event}) = \\frac{\\text{favourable outcomes}}{\\text{total outcomes}}$。始终满足 $0 \\leq P \\leq 1$。<br>' +
+    '• $P(\\text{not } A) = 1 - P(A)$。<br>' +
+    '• <b>样本空间 (Sample space)</b>：列出所有结果的清单。对于复合事件，使用表格或列表。<br>' +
+    '• <b>相对频数 (Relative frequency)</b> $= \\frac{\\text{number of times event occurs}}{\\text{total trials}}$。试验次数越多，估计效果越好。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• <b>树状图</b>：沿分叉相乘（AND），分叉间相加（OR）。<br>' +
+    '• <b>独立事件</b>：$P(A \\text{ and } B) = P(A) \\times P(B)$。<br>' +
+    '• <b>互斥事件</b>：$P(A \\text{ or } B) = P(A) + P(B)$。<br>' +
+    '<br>' +
+    '<b>仅 Higher</b><br>' +
+    '• <b>条件概率</b>：$P(A | B) = \\frac{P(A \\cap B)}{P(B)}$。<br>' +
+    '• <b>不放回 (Without replacement)</b>：第二次抽取的概率会发生变化。<br>' +
+    '• <b>维恩图 (Venn diagrams)</b>：$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '"至少一个"最容易通过 $1 - P(\\text{none})$ 来解答。'
 });
 
 /* ══════════════════════════════════════════════════

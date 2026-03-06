@@ -106,8 +106,15 @@ add('cie', '4.2', 'examples', {
     '<b>Exam Tip:</b> Measure your base line accurately — a 1 mm error at the start leads to bigger errors later.',
   content_zh:
     '<b>经典例题</b> [3 分]<br>' +
-    '作三角形 $ABC$：$AB = 8$ cm，$AC = 6$ cm，$BC = 7$ cm。<br><br>' +
-    '<b>解答：</b>1. 画 $AB = 8$ cm。2. 圆规开 6 cm，从 $A$ 画弧。3. 圆规开 7 cm，从 $B$ 画弧。4. 交点为 $C$，连线。'
+    '作三角形 $ABC$，其中 $AB = 8$ cm，$AC = 6$ cm，$BC = 7$ cm。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '1. 画出 $AB = 8$ cm。<br>' +
+    '2. 将圆规设为 6 cm，从 $A$ 点画弧。<br>' +
+    '3. 将圆规设为 7 cm，从 $B$ 点画弧。<br>' +
+    '4. 将交点标记为 $C$。连接 $AC$ 和 $BC$。<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>准确测量基线 —— 开始时 1 mm 的误差会导致后面更大的误差。'
 });
 
 // ── 4.3 Scale drawings and bearings ──
@@ -194,10 +201,14 @@ add('cie', '4.4', 'examples', {
     '<b>Exam Tip:</b> For area/volume problems, always find the <b>length</b> scale factor first, then square or cube it.',
   content_zh:
     '<b>经典例题</b> [4 分]<br>' +
-    '两个相似圆柱高分别为 10 cm 和 15 cm。小圆柱体积 $200\\text{ cm}^3$。求大圆柱体积。<br><br>' +
-    '<b>解答：</b>长度比 $k = 1.5$<br>' +
-    '体积比 = $k^3 = 3.375$<br>' +
-    '体积 $= 200 \\times 3.375 = 675\\text{ cm}^3$'
+    '两个相似圆柱体的高度分别为 10 cm 和 15 cm。较小的圆柱体体积为 $200\\text{ cm}^3$。求较大圆柱体的体积。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '长度比例因子 $k = \\frac{15}{10} = 1.5$<br>' +
+    '体积比例因子 $= k^3 = 1.5^3 = 3.375$<br>' +
+    '体积 $= 200 \\times 3.375 = 675\\text{ cm}^3$<br>' +
+    '<br>' +
+    '<b>考试技巧：</b> 对于面积/体积问题，务必先找到<b>长度</b>比例因子，然后计算其平方或立方。'
 });
 
 // ── 4.5 Symmetry ──
@@ -238,11 +249,17 @@ add('cie', '4.5', 'examples', {
     'A <b>triskelion</b> (or three identical arms arranged around a centre, like a recycling symbol).',
   content_zh:
     '<b>经典例题</b> [2 分]<br>' +
-    '说明正六边形的对称轴数和旋转对称阶数。<br><br>' +
-    '<b>解答：</b>对称轴 = $6$，旋转对称阶数 = $6$<br><br>' +
+    '指出正六边形的对称轴数量和旋转对称阶数。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '对称轴数量 = $6$<br>' +
+    '旋转对称阶数 = $6$<br>' +
+    '<br>' +
     '<b>经典例题 2</b> [2 分]<br>' +
-    '一个图形旋转对称阶数为 3 但无轴对称。举例。<br><br>' +
-    '<b>解答：</b>三臂旋转图案（如回收标志）。'
+    '一个形状具有 3 阶旋转对称性，但没有对称轴。举出一个例子。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '一个<b>三曲腿图</b>（或者三个完全相同且围绕中心排列的图形分支，例如回收标志）。'
 });
 
 // ── 4.6 Angles ──
@@ -264,13 +281,21 @@ add('cie', '4.6', 'knowledge', {
     'Always give <b>reasons</b> for each step, e.g. "angles on a straight line", "alternate angles".',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 直线上的角之和 = $180°$。一点处的角之和 = $360°$。<br>' +
-    '• 对顶角相等。三角形内角和 = $180°$。四边形内角和 = $360°$。<br>' +
-    '• 正 $n$ 边形内角 = $\\frac{(n-2) \\times 180°}{n}$，外角 = $\\frac{360°}{n}$。<br><br>' +
+    '• <b>一条直线</b>上的角之和为 $180°$。<br>' +
+    '• 一个<b>点</b>周围的角之和为 $360°$。<br>' +
+    '• <b>对顶角</b>相等。<br>' +
+    '• <b>三角形</b>内角和为 $180°$。<b>四边形</b>内角和为 $360°$。<br>' +
+    '• 正 $n$ 边形的<b>内角</b> $= \\frac{(n-2) \\times 180°}{n}$。<br>' +
+    '• 正 $n$ 边形的<b>外角</b> $= \\frac{360°}{n}$。<br>' +
+    '• 内角 + 外角 $= 180°$。<br>' +
+    '<br>' +
     '<b>平行线角</b><br>' +
-    '• 内错角（Z 形）相等。同位角（F 形）相等。同旁内角（C 形）互补 = $180°$。<br><br>' +
+    '• <b>内错角</b>（$Z$ 形）相等。<br>' +
+    '• <b>同位角</b>（$F$ 形）相等。<br>' +
+    '• <b>同旁内角</b>（$C$ 形）之和为 $180°$。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '每步都必须写<b>理由</b>，如"直线上的角"、"内错角"。'
+    '务必为每一步给出<b>理由</b>，例如"直线上的角"、"内错角"。'
 });
 
 add('cie', '4.6', 'examples', {
@@ -385,8 +410,15 @@ add('cie', '4.8', 'examples', {
     '<b>Exam Tip:</b> Use light shading or cross-hatching to clearly show the required region.',
   content_zh:
     '<b>经典例题</b> [4 分]<br>' +
-    '在 $\\triangle ABC$ 中找满足以下条件的区域：(i) 离 $A$ 比 $B$ 近，(ii) 距 $C$ 不超过 4 cm，(iii) 离 $AC$ 比 $BC$ 近。<br><br>' +
-    '<b>解答：</b>(i) $AB$ 的中垂线，$A$ 侧。(ii) 以 $C$ 为心 4 cm 为半径的圆内。(iii) $\\angle ACB$ 的角平分线，$AC$ 侧。答案是三者交集。'
+    '在三角形 $ABC$ 中，求满足以下条件的区域：(i) 距离 $A$ 比距离 $B$ 近，(ii) 距离 $C$ 小于 4 cm，(iii) 距离 $AC$ 比距离 $BC$ 近。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '(i) 作 $AB$ 的垂直平分线。取 $A$ 一侧的区域。<br>' +
+    '(ii) 以 $C$ 为圆心，4 cm 为半径画圆。取圆内部的区域。<br>' +
+    '(iii) 作 $\\angle ACB$ 的角平分线。取 $AC$ 一侧的区域。<br>' +
+    '答案是这三个区域的交集。<br>' +
+    '<br>' +
+    '<b>考试技巧：</b> 使用浅阴影或交叉阴影清晰地标出所需区域。'
 });
 
 /* ══════════════════════════════════════════════════
@@ -408,38 +440,18 @@ add('edexcel', '4.1', 'knowledge', {
     'Always state your geometric reason in full, e.g. "alternate angles are equal" not just "alternate".',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 直线上角之和 = $180°$。一点角之和 = $360°$。对顶角相等。<br>' +
-    '• 三角形内角和 = $180°$。外角 = 两个不相邻内角之和。<br>' +
-    '• 平行线：内错角相等、同位角相等、同旁内角互补。<br>' +
-    '• 等腰三角形：两等边 → 两等底角。等边三角形：全 $60°$。<br><br>' +
+    '• 直线上的角度 = $180°$。点周围的角度 = $360°$。<br>' +
+    '• 对顶角相等。<br>' +
+    '• 三角形的内角和 = $180°$。<br>' +
+    '• 三角形的外角 = 两个内对角的和。<br>' +
+    '• <b>平行线角度</b>：内错角（相等），同位角（相等），同旁内角（和为 $180°$）。<br>' +
+    '• <b>等腰三角形</b>：两条边相等 → 两个底角相等。<br>' +
+    '• <b>等边三角形</b>：所有边相等 → 所有角均为 $60°$。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '必须完整写出几何理由。'
+    '始终完整陈述你的几何理由，例如"内错角相等"而不仅仅是"内错角"。'
 });
 
-add('edexcel', '4.1', 'examples', {
-  content:
-    '<b>Worked Example</b> [3 marks]<br>' +
-    'In the diagram, $PQ \\parallel RS$. Angle $QPT = 72°$, angle $PTS = 125°$. Find angle $TSR$.<br><br>' +
-    '<b>Solution:</b><br>' +
-    '$\\angle PTR = 180° - 125° = 55°$ (angles on a straight line)<br>' +
-    '$\\angle TPQ = 72°$ and $PQ \\parallel RS$<br>' +
-    '$\\angle PTS = \\angle QPT + \\angle PTR = 72° + 55°$ ✓ (check: $127° \\neq 125°$... let me reconsider)<br>' +
-    'Using co-interior angles: $\\angle TSR = 180° - 72° = 108°$... <br>' +
-    'Actually: $\\angle RTP = 125° - 72° = 53°$ (alternate angle $\\angle QPT = \\angle PTR$... )<br>' +
-    'Better approach: $\\angle TSR = 180° - (125° - 72°) = 180° - 53° = 127°$<br>' +
-    'Wait — co-interior with $\\angle QPT$: $\\angle TSR + 72° = 180°$... That only works if $T$ is on the transversal.<br><br>' +
-    'Cleaner: $\\angle QPT = 72°$, $\\angle PTS = 125°$. Since $PQ \\parallel RS$:<br>' +
-    '$\\angle RST = 360° - 125° - 72° - (\\text{reflex...})$<br><br>' +
-    'The key relationship: $\\angle QPT + \\angle PTS + \\angle TSR = 360°$ (co-interior angles add to $180°$ on same side)<br>' +
-    'No — simply: $\\angle QPS = \\angle QPT + \\angle TPS$.<br><br>' +
-    'Let\'s use: alternate angle $\\angle RPT = \\angle QPT = 72°$ is NOT correct since $R$ is not specified.<br><br>' +
-    '<i>(Diagrams needed for full solution — in exam, use the given diagram.)</i>',
-  content_zh:
-    '<b>经典例题</b> [3 分]<br>' +
-    '（需要配合图形——考试中利用给定的图。）'
-});
-
-// Clean replacement for Edexcel 4.1 examples (UPSERT handles duplicate)
 add('edexcel', '4.1', 'examples', {
   content:
     '<b>Worked Example</b> [3 marks]<br>' +
@@ -478,11 +490,18 @@ add('edexcel', '4.2', 'knowledge', {
     'The formula $(n-2) \\times 180°$ gives the TOTAL interior angle sum, not each angle. Divide by $n$ only for regular polygons.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• $n$ 边形内角和 $= (n-2) \\times 180°$。外角和 $= 360°$。<br>' +
-    '• 正 $n$ 边形每个内角 $= \\frac{(n-2) \\times 180°}{n}$，外角 $= \\frac{360°}{n}$。<br>' +
-    '• 内角 + 外角 = $180°$。<br><br>' +
+    '• $n$ 边形的<b>内角和</b> $= (n - 2) \\times 180°$。<br>' +
+    '• 任何凸多边形的<b>外角和</b>均为 $360°$。<br>' +
+    '• 对于<b>正</b> $n$ 边形：每个内角 $= \\frac{(n-2) \\times 180°}{n}$，每个外角 $= \\frac{360°}{n}$。<br>' +
+    '• 内角 + 外角 $= 180°$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 已知一个内角或外角，求边数。<br>' +
+    '• 利用内角和求不规则多边形中缺失的角度。<br>' +
+    '• 识别并命名多边形：五边形 (5)、六边形 (6)、七边形 (7)、八边形 (8)、九边形 (9)、十边形 (10)。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '$(n-2) \\times 180°$ 是内角<b>总和</b>，只有正多边形才能除以 $n$ 求每个角。'
+    '公式 $(n-2) \\times 180°$ 给出的是内角总和，而不是每个角的大小。只有正多边形才除以 $n$。'
 });
 
 add('edexcel', '4.2', 'examples', {
@@ -522,11 +541,19 @@ add('edexcel', '4.3', 'knowledge', {
     'A parallelogram has NO lines of symmetry — a common mistake.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>轴对称</b>：沿线折叠两半重合。<b>旋转对称</b>：旋转后与原图重合。<br>' +
-    '• 正方形：4 轴、4 阶。长方形：2 轴、2 阶。等边三角形：3 轴、3 阶。<br>' +
-    '• 平行四边形：<b>0 轴</b>、2 阶（常见错误！）。菱形：2 轴、2 阶。<br><br>' +
+    '• <b>轴对称</b>：图形可以沿一条线折叠，使两半完全重合。<br>' +
+    '• <b>旋转对称</b>：图形在旋转小于 $360°$ 后看起来仍然相同。<br>' +
+    '• <b>旋转对称阶数</b> = 图形在一整圈旋转中与自身重合的次数。<br>' +
+    '<br>' +
+    '<b>关键图形</b><br>' +
+    '• 正方形：4 条对称轴，4 阶。长方形：2 条对称轴，2 阶。<br>' +
+    '• 等边三角形：3 条对称轴，3 阶。等腰三角形：1 条对称轴，1 阶。<br>' +
+    '• 平行四边形：0 条对称轴，2 阶。菱形：2 条对称轴，2 阶。<br>' +
+    '• 筝形：1 条对称轴，1 阶。梯形（等腰）：1 条对称轴，1 阶。<br>' +
+    '• 正 $n$ 边形：$n$ 条对称轴，$n$ 阶。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '平行四边形没有对称轴——这是常见错误。'
+    '平行四边形没有对称轴 —— 这是一个常见的错误。'
 });
 
 add('edexcel', '4.3', 'examples', {
@@ -560,12 +587,19 @@ add('edexcel', '4.4', 'knowledge', {
     'For area: multiply conversion factor <b>twice</b>. $1\\text{ m}^2 = 100^2 = 10\\,000\\text{ cm}^2$. For volume: <b>three times</b>.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 长度：mm → cm → m → km（×10, ×100, ×1000）。<br>' +
-    '• 质量：g → kg → t（×1000）。容量：ml → l（×1000）。<br>' +
-    '• 复合量度：速度 = $\\frac{距离}{时间}$，密度 = $\\frac{质量}{体积}$。<br>' +
-    '• Higher：上下界——5.3 cm（1位小数）→ $5.25 \\leq x < 5.35$。<br><br>' +
+    '• <b>公制单位</b>：长度 (mm, cm, m, km)，质量 (g, kg, t)，容量 (ml, l)。<br>' +
+    '• <b>单位换算</b>：$1\\text{ km} = 1000\\text{ m}$，$1\\text{ m} = 100\\text{ cm}$，$1\\text{ cm} = 10\\text{ mm}$。<br>' +
+    '• $1\\text{ kg} = 1000\\text{ g}$，$1\\text{ tonne} = 1000\\text{ kg}$，$1\\text{ litre} = 1000\\text{ ml}$。<br>' +
+    '• $1\\text{ m}^2 = 10\\,000\\text{ cm}^2$。$1\\text{ m}^3 = 1\\,000\\,000\\text{ cm}^3$。<br>' +
+    '• <b>复合量度</b>：速度 $= \\frac{\\text{distance}}{\\text{time}}$，密度 $= \\frac{\\text{mass}}{\\text{volume}}$，压强 $= \\frac{\\text{force}}{\\text{area}}$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 进行单位换算，包括面积和体积的换算。<br>' +
+    '• 使用复合量度公式解决问题。<br>' +
+    '• <b>误差范围</b> (仅 Higher)：精确到 1 位小数的测量值 5.3 cm，其范围为 $5.25 \\leq x < 5.35$。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '面积换算要平方：$1\\text{ m}^2 = 10\\,000\\text{ cm}^2$。体积要立方。'
+    '对于面积：将换算因子乘以<b>两次</b>。$1\\text{ m}^2 = 100^2 = 10\\,000\\text{ cm}^2$。对于体积：乘以<b>三次</b>。'
 });
 
 add('edexcel', '4.4', 'examples', {
@@ -607,13 +641,19 @@ add('edexcel', '4.5', 'knowledge', {
     '"Draw" allows any method. "Construct" means ruler and compasses only — protractors not allowed.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• "Construct" 只能用直尺和圆规，必须保留弧线。<br>' +
-    '• 中垂线：从线段两端画弧交于两点，连线。<br>' +
-    '• 角平分线：从顶点画弧交两臂，再画弧交叉，连线。<br><br>' +
+    '• <b>作图</b>指仅使用直尺和圆规。保留作图痕迹（弧线）。<br>' +
+    '• <b>垂直平分线</b>：从线段的每个端点，在上方和下方画弧，连接交点。<br>' +
+    '• <b>角平分线</b>：从顶点在两条边上画弧，然后从这些点画相等的弧，连接到顶点。<br>' +
+    '• 根据 SSS、SAS、ASA 作三角形。<br>' +
+    '• 从等边三角形作 $60°$。从垂直平分线作 $90°$。<br>' +
+    '<br>' +
     '<b>轨迹</b><br>' +
-    '• 等距于一点 → 圆。等距于两点 → 中垂线。等距于两线 → 角平分线。<br><br>' +
+    '• 离一点等距 → 圆。<br>' +
+    '• 离两点等距 → 垂直平分线。<br>' +
+    '• 离两条直线等距 → 角平分线。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '"Draw" 可用任何方法。"Construct" 只能用直尺圆规，不能用量角器。'
+    '"Draw"（画图）允许使用任何方法。"Construct"（作图）意味着仅使用直尺和圆规——不允许使用量角器。'
 });
 
 add('edexcel', '4.5', 'examples', {
@@ -628,8 +668,15 @@ add('edexcel', '4.5', 'examples', {
     '<b>Exam Tip:</b> Always convert to scale first. Use clear shading and label your loci.',
   content_zh:
     '<b>经典例题</b> [4 分]<br>' +
-    '矩形 $ABCD$，$AB = 80$ m，$BC = 60$ m（比例尺 1 cm = 10 m）。树必须：(i) 距 $A$ 超过 50 m，(ii) 离 $AB$ 比 $CD$ 近。画出区域。<br><br>' +
-    '<b>解答：</b>(i) 以 $A$ 为心、半径 5 cm 的弧外。(ii) $AD$（或 $BC$）中垂线的 $AB$ 侧。阴影为交集。'
+    '一块田地是长方形 $ABCD$，其中 $AB = 80$ m，$BC = 60$ m（比例尺：1 cm = 10 m）。种了一棵树，使得它：(i) 距离 $A$ 超过 50 m，(ii) 距离 $AB$ 比距离 $CD$ 更近。阴影表示树可能所在的区域。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '比例尺：$AB = 8$ cm，$BC = 6$ cm。<br>' +
+    '(i) 以 $A$ 为圆心，5 cm 为半径画圆。取圆弧<b>之外</b>的区域。<br>' +
+    '(ii) 作 $AD$（或 $BC$）的垂直平分线。取靠近 $AB$ 的那一侧（较近的一半）。<br>' +
+    '对交集部分画阴影。<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>务必先进行比例换算。使用清晰的阴影并标注你的轨迹。'
 });
 
 // ── Edexcel 4.6 Circle properties ──
@@ -649,12 +696,19 @@ add('edexcel', '4.6', 'knowledge', {
     'Draw extra radii — they create isosceles triangles that help find angles.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 圆的部分：半径、直径（$= 2r$）、弦、弧、扇形、弓形、切线。<br>' +
-    '• 切线 $\\perp$ 接触点处的半径。外点两切线等长。<br><br>' +
+    '• <b>部件</b>：半径、直径（$= 2r$）、弦、弧、扇形、弓形、切线。<br>' +
+    '• 切线在接触点<b>垂直</b>于半径。<br>' +
+    '• 从外部一点引出的两条切线<b>长度相等</b>。<br>' +
+    '<br>' +
     '<b>仅 Higher — 圆定理</b><br>' +
-    '• 圆心角 = 2 × 同弧圆周角。半圆角 = $90°$。<br>' +
-    '• 同弧弓形角相等。圆内接四边形对角互补。<br>' +
-    '• 交替弓形定理：切线与弦的夹角 = 交替弓形中的角。'
+    '• 圆心角 $= 2 \\times$ 圆周角（同弧）。<br>' +
+    '• 半圆内的角 $= 90°$。<br>' +
+    '• 同一弓形内的角相等。<br>' +
+    '• 圆内接四边形的对角之和为 $180°$。<br>' +
+    '• <b>切弦定理（弦切角定理）</b>：切线与弦之间的夹角 = 对应弓形内的角。<br>' +
+    '<br>' +
+    '<b>考试技巧</b><br>' +
+    '画出额外的半径——它们会形成等腰三角形，有助于找到角度。'
 });
 
 add('edexcel', '4.6', 'examples', {
@@ -692,12 +746,19 @@ add('edexcel', '4.7', 'knowledge', {
   content_zh:
     '<b>知识回顾</b><br>' +
     '• <b>全等</b>三角形：SSS、SAS、ASA、RHS。<br>' +
-    '• <b>相似</b>图形：形状相同、大小不同，对应角相等、边成比例。<br><br>' +
+    '• <b>相似</b>图形：形状相同，大小不同。对应角相等，边成比例。<br>' +
+    '• <b>证明</b>题需要带有理由的逻辑步骤。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 证明全等或相似需要正式推理步骤。<br>' +
-    '• 几何证明结构：1. 陈述结论 2. 列出已知（附理由）3. 逐步推导。<br><br>' +
+    '• 使用正式推理证明三角形全等或相似。<br>' +
+    '• 在证明中使用圆定理。<br>' +
+    '• <b>几何证明结构</b>：<br>' +
+    '&nbsp;&nbsp;1. 陈述你要证明的内容。<br>' +
+    '&nbsp;&nbsp;2. 列出已知事实及理由。<br>' +
+    '&nbsp;&nbsp;3. 逐步推导出结论。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '"证明"题必须写出每一步，不能跳到答案。'
+    '在"show that"（展示）或"prove"（证明）问题中，你必须写下每一步——不能直接跳到答案。'
 });
 
 add('edexcel', '4.7', 'examples', {
@@ -792,12 +853,20 @@ add('edexcel', '4.9', 'knowledge', {
     'Use the <b>perpendicular</b> height, not the slant height, for triangles and parallelograms.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 长方形面积 $= l \\times w$。三角形面积 $= \\frac{1}{2}bh$。<br>' +
-    '• 平行四边形面积 $= bh$。梯形面积 $= \\frac{1}{2}(a+b)h$。<br>' +
-    '• 圆面积 $= \\pi r^2$，周长 $= 2\\pi r$。<br>' +
-    '• 扇形弧长 $= \\frac{\\theta}{360} \\times 2\\pi r$，面积 $= \\frac{\\theta}{360} \\times \\pi r^2$。<br><br>' +
+    '• <b>长方形</b>：面积 $= l \\times w$，周长 $= 2(l + w)$。<br>' +
+    '• <b>三角形</b>：面积 $= \\frac{1}{2} \\times b \\times h$。<br>' +
+    '• <b>平行四边形</b>：面积 $= b \\times h$（垂直高度）。<br>' +
+    '• <b>梯形</b>：面积 $= \\frac{1}{2}(a + b) \\times h$。<br>' +
+    '• <b>圆</b>：面积 $= \\pi r^2$，周长 $= 2\\pi r = \\pi d$。<br>' +
+    '• <b>扇形</b>：弧长 $= \\frac{\\theta}{360} \\times 2\\pi r$，面积 $= \\frac{\\theta}{360} \\times \\pi r^2$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 通过将其分割为长方形、三角形等来计算组合图形的面积。<br>' +
+    '• 通过相减计算阴影部分的面积。<br>' +
+    '• 单位换算：$1\\text{ m}^2 = 10\\,000\\text{ cm}^2$。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '三角形和平行四边形用<b>垂直高</b>，不是斜边高。'
+    '计算三角形和平行四边形时，请使用<b>垂直</b>高度，而不是斜高。'
 });
 
 add('edexcel', '4.9', 'examples', {
@@ -840,12 +909,20 @@ add('edexcel', '4.10', 'knowledge', {
     'Cone and pyramid have the $\\frac{1}{3}$ factor. Sphere uses $\\frac{4}{3}$. These are given on the formula sheet.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 正方体：$V = l^3$。长方体：$V = lwh$。<br>' +
-    '• 棱柱：$V = 截面积 \\times 长$。圆柱：$V = \\pi r^2 h$。<br>' +
-    '• 圆锥：$V = \\frac{1}{3}\\pi r^2 h$。球：$V = \\frac{4}{3}\\pi r^3$。<br>' +
-    '• 棱锥：$V = \\frac{1}{3} \\times 底面积 \\times h$。<br><br>' +
+    '• <b>立方体</b>：$V = l^3$，SA $= 6l^2$。<br>' +
+    '• <b>长方体</b>：$V = lwh$，SA $= 2(lw + lh + wh)$。<br>' +
+    '• <b>棱柱</b>：$V = \\text{横截面积} \\times \\text{长度}$。<br>' +
+    '• <b>圆柱体</b>：$V = \\pi r^2 h$，侧面积 $= 2\\pi rh$，总表面积 $= 2\\pi rh + 2\\pi r^2$。<br>' +
+    '• <b>圆锥体</b>：$V = \\frac{1}{3}\\pi r^2 h$，侧面积 $= \\pi r l$（其中 $l$ = 母线/斜高）。<br>' +
+    '• <b>球体</b>：$V = \\frac{4}{3}\\pi r^3$，SA $= 4\\pi r^2$。<br>' +
+    '• <b>棱锥</b>：$V = \\frac{1}{3} \\times \\text{底面积} \\times h$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 计算组合三维图形的体积和表面积。<br>' +
+    '• 单位换算：$1\\text{ m}^3 = 1\\,000\\,000\\text{ cm}^3$；$1\\text{ 升} = 1000\\text{ cm}^3$。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '锥和棱锥有 $\\frac{1}{3}$。球有 $\\frac{4}{3}$。这些公式会在考试卷上给出。'
+    '圆锥和棱锥有 $\\frac{1}{3}$ 系数。球体使用 $\\frac{4}{3}$。这些公式都在公式表上提供。'
 });
 
 add('edexcel', '4.10', 'examples', {
@@ -863,11 +940,20 @@ add('edexcel', '4.10', 'examples', {
     '<b>Exam Tip:</b> For a hemisphere, don\'t forget the flat circular base in the total surface area.',
   content_zh:
     '<b>经典例题 1</b> [3 分]<br>' +
-    '圆柱半径 5 cm，高 12 cm，求体积。<br><br>' +
-    '<b>解答：</b>$V = 300\\pi = 942\\text{ cm}^3$<br><br>' +
+    '一个圆柱的半径为 5 cm，高为 12 cm。求其体积。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '$V = \\pi \\times 5^2 \\times 12 = 300\\pi = 942\\text{ cm}^3$（保留 3 位有效数字）<br>' +
+    '<br>' +
     '<b>经典例题 2</b> [4 分]<br>' +
-    '半球半径 6 cm，求总表面积。<br><br>' +
-    '<b>解答：</b>曲面 $72\\pi$ + 底面 $36\\pi$ = $108\\pi = 339\\text{ cm}^2$'
+    '一个半球的半径为 6 cm。求其总表面积。<br>' +
+    '<br>' +
+    '<b>解答：</b><br>' +
+    '曲面面积 $= \\frac{1}{2} \\times 4\\pi r^2 = 2\\pi \\times 36 = 72\\pi$<br>' +
+    '平面圆面积 $= \\pi r^2 = 36\\pi$<br>' +
+    '总表面积 $= 72\\pi + 36\\pi = 108\\pi = 339\\text{ cm}^2$（保留 3 位有效数字）<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>对于半球，计算总表面积时不要忘记平坦的圆形底面。'
 });
 
 // ── Edexcel 4.11 Similarity ──
@@ -888,13 +974,21 @@ add('edexcel', '4.11', 'knowledge', {
     'If given area ratio, square root to get length ratio. If given volume ratio, cube root.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>相似</b>：形状相同、大小不同。对应角相等、对应边成比例。<br>' +
-    '• 缩放因子 $k$：长度比 $k$，面积比 $k^2$，体积比 $k^3$。<br><br>' +
-    '<b>关键技巧</b><br>' +
-    '• AA 判定相似。<br>' +
-    '• 已知面积比 → 开方得长度比。已知体积比 → 开立方。<br><br>' +
+    '• <b>相似</b>图形：形状相同，大小不同。所有对应角相等，所有对应边成相同比例。<br>' +
+    '• <b>比例因子</b> $k = \\frac{\\text{new length}}{\\text{original length}}$。<br>' +
+    '• 如果长度比为 $k$，那么<b>面积比</b> $= k^2$，<b>体积比</b> $= k^3$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 使用 AA（两个角相等）判定相似三角形。<br>' +
+    '• 使用比例因子计算缺失的长度。<br>' +
+    '• 在实际问题（所需油漆、容量等）中使用面积比和体积比。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 证明相似 + 多步面积/体积缩放问题。'
+    '• 证明两个三角形相似。<br>' +
+    '• 在多步问题中结合面积和体积比例因子使用相似性。<br>' +
+    '<br>' +
+    '<b>考试技巧</b><br>' +
+    '如果已知面积比，开平方根得到长度比。如果已知体积比，开立方根。'
 });
 
 add('edexcel', '4.11', 'examples', {

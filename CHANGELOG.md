@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.9.5] - 2026-03-07 — 知识卡片 Edexcel + 剩余 ZH 补全
+
+### 修复
+- **Edexcel 30 张 ZH 补全**: 通过 Gemini CLI 批量翻译全部 Edexcel 4MA1 知识卡片低质量中文内容
+- **剩余 32 张 ZH 补全**: CIE 21 + Edexcel 11 张 35-40% 区间卡片中文翻译
+- **重复条目清理**: 移除 Edexcel 4.1 examples 中有错误解题过程的旧版本
+
+### 数据统计
+- 修复前 (v1.9.3 后): 33 张 < 40%，平均 51.4%
+- 修复后: 2 张 < 40%（CIE 1.14 知识 39%, Edexcel 6.3 知识 39%），平均 54.8%
+- 翻译补全: 62 张卡片（Edexcel 30 + 剩余 CIE/Edexcel 32）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/seed-section-content.js` | 11 张 ZH 补全（CIE Ch1 + Edexcel Ch1） |
+| `scripts/seed-ch2.js` | 3 张 ZH 补全 |
+| `scripts/seed-ch3.js` | 6 张 ZH 补全 |
+| `scripts/seed-ch4.js` | 7 张 ZH 补全 + 移除 4.1 examples 重复 |
+| `scripts/seed-ch5-6.js` | 4 张 ZH 补全 |
+| `scripts/seed-ch7-9.js` | 1 张 ZH 补全 |
+| `js/config.js` | 版本号 v1.9.3 → v1.9.5 |
+
 ## [1.9.4] - 2026-03-07 — Keywords 表重命名 kw_ 前缀
 
 ### 变更

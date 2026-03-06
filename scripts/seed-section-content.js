@@ -311,19 +311,29 @@ add('cie', '1.5', 'knowledge', {
     'When adding fractions, do NOT add the denominators. Find a common denominator first.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>真分数</b>：分子 < 分母，如 $\\frac{3}{5}$。<br>' +
-    '• <b>假分数</b>：分子 ≥ 分母，如 $\\frac{7}{4}$。<br>' +
-    '• <b>带分数</b>：整数+真分数，如 $1\\frac{3}{4}$。<br>' +
-    '• 互化：$1\\frac{3}{4} = \\frac{7}{4}$。<br><br>' +
-    '<b>相互转换</b><br>' +
-    '• 分数→小数：分子÷分母。<br>' +
-    '• 小数→百分数：×100。<br>' +
-    '• 分数→百分数：$\\frac{a}{b} \\times 100\\%$。<br><br>' +
-    '<b>Extended 扩展</b><br>' +
-    '• <b>循环小数</b>转分数：<br>' +
-    '设 $x = 0.\\dot{3}$，则 $10x = 3.\\dot{3}$，$9x = 3$，$x = \\frac{1}{3}$。<br><br>' +
+    '• <b>真分数</b>的分子 < 分母：$\\frac{3}{5}$。<br>' +
+    '• <b>假分数</b>的分子 ≥ 分母：$\\frac{7}{4}$。<br>' +
+    '• <b>带分数</b>由整数和真分数组成：$1\\frac{3}{4}$。<br>' +
+    '• 两者之间的转换：$1\\frac{3}{4} = \\frac{4 \\times 1 + 3}{4} = \\frac{7}{4}$。<br>' +
+    '<br>' +
+    '<b>数值转换</b><br>' +
+    '• 分数 → 小数：分子除以分母。<br>' +
+    '• 小数 → 百分比：乘以 100。<br>' +
+    '• 分数 → 百分比：$\\frac{a}{b} \\times 100\\%$。<br>' +
+    '<br>' +
+    '<b>仅 Extended</b><br>' +
+    '• 将<b>循环小数</b>转换为分数：<br>' +
+    '设 $x = 0.\\dot{3} = 0.333...$<br>' +
+    '$10x = 3.333...$<br>' +
+    '$10x - x = 3$，所以 $9x = 3$，因此 $x = \\frac{1}{3}$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 分数加减法：寻找通分分母。<br>' +
+    '• 分数乘法：$\\frac{a}{b} \\times \\frac{c}{d} = \\frac{ac}{bd}$（如果可能，先约分）。<br>' +
+    '• 分数除法：乘以倒数：$\\frac{a}{b} \\div \\frac{c}{d} = \\frac{a}{b} \\times \\frac{d}{c}$。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '分数相加时不能直接加分母，必须先通分。'
+    '分数的加法运算时，切勿将分母相加。请先寻找通分分母。'
 });
 
 add('cie', '1.5', 'examples', {
@@ -375,13 +385,19 @@ add('cie', '1.6', 'knowledge', {
     '$6 \\div 2(1+2) = 6 \\div 2 \\times 3 = 9$, not $1$. After brackets, division and multiplication are done left to right.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '运算顺序 <b>BIDMAS</b>：<br>' +
+    '标准的运算顺序是 <b>BIDMAS</b>（或 BODMAS）：<br>' +
     '1. <b>B</b>rackets（括号）<br>' +
-    '2. <b>I</b>ndices（指数）<br>' +
-    '3. <b>D</b>ivision / <b>M</b>ultiplication（乘除，优先级相同，从左到右）<br>' +
-    '4. <b>A</b>ddition / <b>S</b>ubtraction（加减，优先级相同，从左到右）<br><br>' +
+    '2. <b>I</b>ndices（指数，即幂和根号）<br>' +
+    '3. <b>D</b>ivision（除法）和 <b>M</b>ultiplication（乘法）（优先级相同，从左到右）<br>' +
+    '4. <b>A</b>ddition（加法）和 <b>S</b>ubtraction（减法）（优先级相同，从左到右）<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 务必先计算括号内的内容。<br>' +
+    '• 乘法和除法具有相同的优先级 —— 从左到右依次计算。<br>' +
+    '• 加法和减法具有相同的优先级 —— 从左到右依次计算。<br>' +
+    '<br>' +
     '<b>注意！</b><br>' +
-    '乘和除优先级相同，从左到右计算；加和减同理。'
+    '$6 \\div 2(1+2) = 6 \\div 2 \\times 3 = 9$，而不是 $1$。在计算完括号后，除法和乘法应按从左到右的顺序进行。'
 });
 
 add('cie', '1.6', 'examples', {
@@ -421,11 +437,16 @@ add('cie', '1.7', 'knowledge', {
     'For significant figures, zeros at the start are NOT significant: $0.00304$ has 3 s.f. Zeros in the middle ARE significant: $3004$ has 4 s.f.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>小数位(d.p.)</b>：小数点后的位数。$3.146 \\approx 3.15$（2 d.p.）。<br>' +
-    '• <b>有效数字(s.f.)</b>：从第一个非零数字开始计数。$0.003047 \\approx 0.00305$（3 s.f.）。<br>' +
-    '• 四舍五入：看下一位，≥5 则进位。<br><br>' +
+    '• <b>小数位数 (d.p.)</b>：计算小数点后的数字个数。$3.146 \\approx 3.15$ (2 d.p.)。<br>' +
+    '• <b>有效数字 (s.f.)</b>：从第一个非零数字开始计数。$0.003047 \\approx 0.00305$ (3 s.f.)。<br>' +
+    '• 取整时，看下一位数字：如果是 5 或更高，则向上进位；否则，向下舍去。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 四舍五入到指定的小数位数或有效数字。<br>' +
+    '• 理解末尾零：$2.30$ (2 d.p.) 的精度与 $2.3$ (1 d.p.) 不同。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '有效数字中，开头的零不算：$0.00304$ 是 3 个有效数字。中间的零要算：$3004$ 是 4 个有效数字。'
+    '对于有效数字，开头的零是**不**显著的：$0.00304$ 有 3 位有效数字。中间的零**是**显著的：$3004$ 有 4 位有效数字。'
 });
 
 add('cie', '1.7', 'examples', {
@@ -438,10 +459,13 @@ add('cie', '1.7', 'examples', {
     '<b>Exam Tip:</b> Always write down what degree of accuracy you\'re rounding to when asked for "a reasonable degree of accuracy".',
   content_zh:
     '<b>经典例题</b> [2 分]<br>' +
-    '将 0.06372 分别精确到 (a) 2 位小数，(b) 2 位有效数字。<br><br>' +
+    '将 0.06372 保留至 (a) 2 位小数，(b) 2 位有效数字。<br>' +
+    '<br>' +
     '<b>解答：</b><br>' +
-    '(a) 2 d.p.：第3位小数是 3 < 5，舍去：$0.06$<br>' +
-    '(b) 2 s.f.：第1个有效数字是 6，第2个是 3，下一位 7 ≥ 5，进位：$0.064$'
+    '(a) 2 位小数：观察第 3 位小数位 (3)，由于 < 5，所以舍去：$0.06$<br>' +
+    '(b) 2 位有效数字：第一个有效数字是 6，第二个是 3。下一位数字是 7 ≥ 5，所以进位：$0.064$<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>当题目要求"合理的精确度"时，务必写下你四舍五入时所保留的精确位数。'
 });
 
 // ── 1.8 Standard form ──
@@ -502,13 +526,15 @@ add('cie', '1.9', 'knowledge', {
     'Show all working. In non-calculator questions, you must demonstrate the method clearly.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '四则运算：<b>加、减、乘、除</b>，适用于整数、分数和小数。<br><br>' +
+    '四则运算包括<b>加、减、乘、除</b>，适用于整数、分数和小数。<br>' +
+    '<br>' +
     '<b>关键技能</b><br>' +
-    '• 多种运算混合时遵循 BIDMAS。<br>' +
-    '• 分数乘除前先化为假分数。<br>' +
-    '• 不用计算器时要会竖式计算。<br><br>' +
+    '• 当出现多个运算时，遵循 BIDMAS 顺序。<br>' +
+    '• 在乘除运算前，将带分数转换为假分数。<br>' +
+    '• 不使用计算器的长乘法和长除法。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '写出所有步骤。非计算器题必须展示方法。'
+    '展示所有过程。在非计算器题目中，你必须清晰地演示解题方法。'
 });
 
 add('cie', '1.9', 'examples', {
@@ -737,16 +763,16 @@ add('cie', '1.14', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'When using a calculator, always write down intermediate steps. If you just write the final answer and it\'s wrong, you get zero marks.',
   content_zh:
-    '<b>仅限核心</b><br>' +
+    '<b>仅 Core</b><br>' +
     '<br>' +
     '<b>关键技能</b><br>' +
-    '• 高效地使用科学计算器进行复杂的计算。<br>' +
+    '• 高效使用科学计算器进行复杂计算。<br>' +
     '• 在计算器上使用括号以确保正确的运算顺序。<br>' +
     '• 使用分数按钮输入和转换分数。<br>' +
     '• 通过估算或逆运算检查答案。<br>' +
     '<br>' +
     '<b>考试技巧</b><br>' +
-    '使用计算器时，务必写下中间步骤。如果你只写出最终答案且答案错误，你将得到零分。'
+    '使用计算器时，务必写下中间步骤。如果你只写最终答案且答案错误，你将得到 0 分。'
 });
 
 add('cie', '1.14', 'examples', {
@@ -869,16 +895,24 @@ add('cie', '1.17', 'knowledge', {
     '• Calculate the value after $t$ periods.<br>' +
     '• Find the number of periods to reach a target value (trial and improvement).',
   content_zh:
-    '<b>仅 Extended</b><br><br>' +
+    '<b>仅 Extended</b><br>' +
+    '<br>' +
     '<b>知识回顾</b><br>' +
-    '• <b>指数增长</b>：每个周期增长固定百分比。<br>' +
+    '• <b>指数增长</b>：数量在每个时间段内以固定百分比增加。<br>' +
     '公式：$y = A(1 + \\frac{r}{100})^t$<br>' +
-    '• <b>指数衰减</b>：每个周期减少固定百分比。<br>' +
-    '公式：$y = A(1 - \\frac{r}{100})^t$<br><br>' +
-    '其中 $A$ = 初始值，$r$ = 百分比，$t$ = 周期数。<br><br>' +
+    '• <b>指数衰减</b>：数量在每个时间段内以固定百分比减少。<br>' +
+    '公式：$y = A(1 - \\frac{r}{100})^t$<br>' +
+    '<br>' +
+    '其中 $A$ = 初始量，$r$ = 利率/增长率 (%)，$t$ = 时间段数。<br>' +
+    '<br>' +
     '<b>应用</b><br>' +
-    '• 增长：人口增长、复利、细菌繁殖。<br>' +
-    '• 衰减：折旧、放射性衰变、冷却。'
+    '• 人口增长、复利、细菌生长（增长）。<br>' +
+    '• 折旧、放射性衰减、冷却（衰减）。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 根据应用题列出正确的增长/衰减公式。<br>' +
+    '• 计算 $t$ 个周期后的数值。<br>' +
+    '• 找到达到目标值所需的周期数（试错法）。'
 });
 
 add('cie', '1.17', 'examples', {
@@ -987,17 +1021,26 @@ add('edexcel', '1.1', 'knowledge', {
     '2 is the only even prime number. 1 is neither prime nor composite.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>整数</b>：..., $-3, -2, -1, 0, 1, 2, 3$, ...<br>' +
-    '• <b>位值</b>：每位数字的位置决定其值。<br>' +
-    '• <b>有向数</b>：正数和负数。<br><br>' +
-    '<b>数的类型</b><br>' +
-    '• <b>偶数</b>：能被 2 整除。<b>奇数</b>：不能被 2 整除。<br>' +
-    '• <b>质数</b>：恰好有 2 个因数。1 不是质数。<br>' +
-    '• <b>因数</b>：能整除该数的数。<b>倍数</b>：该数的乘法表。<br>' +
-    '• <b>HCF</b>：最大公因数。<b>LCM</b>：最小公倍数。<br><br>' +
+    '• <b>整数</b>是全数：..., $-3, -2, -1, 0, 1, 2, 3$, ...<br>' +
+    '• <b>位值</b>：每个数字的位置决定了它的数值（千位、百位、十位、个位）。<br>' +
+    '• <b>有向数</b>：在特定情境（温度、海拔、财务）中使用的正数和负数。<br>' +
+    '<br>' +
+    '<b>数字类型</b><br>' +
+    '• <b>偶数</b>：能被 2 整除（0, 2, 4, 6, ...）。<br>' +
+    '• <b>奇数</b>：不能被 2 整除（1, 3, 5, 7, ...）。<br>' +
+    '• <b>质数</b>：恰好有 2 个因数（2, 3, 5, 7, 11, ...）。注意：1 不是质数。<br>' +
+    '• $n$ 的<b>因数</b>：能整除 $n$ 的数。<br>' +
+    '• $n$ 的<b>倍数</b>：$n$ 的乘法表。<br>' +
+    '• <b>最大公因数 (HCF)</b>：两个数共有的最大因数。<br>' +
+    '• <b>最小公倍数 (LCM)</b>：两个数共有的最小倍数。<br>' +
+    '<br>' +
     '<b>关键技能</b><br>' +
-    '• 质因数分解 → 求 HCF 和 LCM。<br>' +
-    '• 遵循 BIDMAS 运算顺序。'
+    '• 将一个数表示为<b>质因数分解式</b>。<br>' +
+    '• 使用质因数分解寻找最大公因数和最小公倍数。<br>' +
+    '• 应用 BIDMAS/BODMAS 确定运算顺序。<br>' +
+    '<br>' +
+    '<b>注意！</b><br>' +
+    '2 是唯一的偶质数。1 既不是质数也不是合数。'
 });
 
 add('edexcel', '1.1', 'examples', {
@@ -1037,13 +1080,19 @@ add('edexcel', '1.2', 'knowledge', {
     'To order fractions, convert them all to the same denominator, then compare numerators.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>等值分数</b>：$\\frac{2}{4} = \\frac{1}{2}$，约分。<br>' +
-    '• <b>加减</b>：先通分。<br>' +
-    '• <b>乘法</b>：$\\frac{a}{b} \\times \\frac{c}{d} = \\frac{ac}{bd}$。<br>' +
-    '• <b>除法</b>：乘以倒数。<br>' +
-    '• <b>带分数</b>：乘除前先化为假分数。<br><br>' +
+    '• <b>等值分数</b>：$\\frac{2}{4} = \\frac{1}{2}$。通过除以公因数进行约分。<br>' +
+    '• <b>加法/减法</b>：通分找到共同分母。<br>' +
+    '• <b>乘法</b>：$\\frac{a}{b} \\times \\frac{c}{d} = \\frac{ac}{bd}$。如果可能，在相乘前先约分。<br>' +
+    '• <b>除法</b>：乘以倒数：$\\frac{a}{b} \\div \\frac{c}{d} = \\frac{a}{b} \\times \\frac{d}{c}$。<br>' +
+    '• <b>带分数</b>：在进行乘法或除法之前先转换为假分数。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 在分数、小数和百分比之间进行转换。<br>' +
+    '• 通过通分对分数进行排序。<br>' +
+    '• 理解单位分数作为乘法逆元：$\\frac{1}{n} \\times n = 1$。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '比较分数大小时，通分后比较分子。'
+    '若要对分数排序，先将它们全部转换为相同分母，然后比较分子。'
 });
 
 add('edexcel', '1.2', 'examples', {
@@ -1075,10 +1124,17 @@ add('edexcel', '1.3', 'knowledge', {
     '• Convert fluently between fractions, decimals and percentages.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 小数<b>位值</b>：十分位、百分位、千分位。<br>' +
-    '• <b>有限小数</b>会终止：$0.625 = \\frac{5}{8}$。<b>循环小数</b>会重复：$0.333... = \\frac{1}{3}$。<br><br>' +
+    '• 理解小数中的<b>数位价值</b>：十分位、百分位、千分位。<br>' +
+    '• <b>有限小数</b>有尽头：$0.625 = \\frac{5}{8}$。<b>循环小数</b>重复：$0.333... = \\frac{1}{3}$。<br>' +
+    '• 通过从左到右逐位比较来排列小数顺序。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• <b>循环小数转分数</b>：设 $x = 0.\\dot{7}$，则 $10x = 7.\\dot{7}$，$9x = 7$，$x = \\frac{7}{9}$。'
+    '• 将<b>循环小数转换为分数</b>：<br>' +
+    '设 $x = 0.\\dot{7}$，则 $10x = 7.\\dot{7}$，因此 $9x = 7$，得出 $x = \\frac{7}{9}$。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 进行小数的加、减、乘、除运算。<br>' +
+    '• 在分数、小数和百分数之间流利转换。'
 });
 
 add('edexcel', '1.3', 'examples', {
@@ -1240,11 +1296,19 @@ add('edexcel', '1.6', 'examples', {
     '<b>Exam Tip:</b> For reverse percentage, always divide by the multiplier. For compound changes, use $(\\text{multiplier})^n$.',
   content_zh:
     '<b>经典例题 1</b> [2 分]<br>' +
-    '打 85 折后一件夹克 $\\$68$，求原价。<br><br>' +
-    '<b>解答：</b>原价 = $\\frac{68}{0.85} = \\$80$<br><br>' +
-    '<b>经典例题 2</b>（Higher）[3 分]<br>' +
-    '一辆 $\\$18\\,000$ 的车每年折旧 8%，求 5 年后的价值。<br><br>' +
-    '<b>解答：</b>$V = 18000 \\times 0.92^5 = \\$11\\,863.28$'
+    '在促销活动中，价格降低了 15%。一件夹克现在的价格是 $\\$68$。求原价。<br>' +
+    '<br>' +
+    '<b>解答:</b><br>' +
+    '减少 15% 的乘数 $= 0.85$<br>' +
+    '原价 $= \\frac{68}{0.85} = \\$80$<br>' +
+    '<br>' +
+    '<b>经典例题 2</b> (Higher) [3 分]<br>' +
+    '一辆价值 $\\$18\\,000$ 的汽车每年贬值 8%。求其 5 年后的价值。<br>' +
+    '<br>' +
+    '<b>解答:</b><br>' +
+    '$V = 18000 \\times (0.92)^5 = 18000 \\times 0.6591 = \\$11\\,863.28$<br>' +
+    '<br>' +
+    '<b>考试技巧:</b> 对于逆百分比计算，始终除以乘数。对于复合变化，使用 $(\\text{乘数})^n$。'
 });
 
 // ── Edexcel 1.7 Ratio and proportion ──
@@ -1260,12 +1324,14 @@ add('edexcel', '1.7', 'knowledge', {
     'For proportion problems, always find the value of ONE unit first (unitary method), then scale up or down.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>比</b>：$a : b$，约分。<b>按比分配</b>：总份数 = $a + b$。<br>' +
-    '• <b>正比例</b>：一个量增大，另一个同比例增大。用<b>单位量法</b>。<br>' +
-    '• <b>反比例</b>：一个增大，另一个减小。<br>' +
-    '• <b>地图比例尺</b>：$1 : 25\\,000$ 表示图上 1cm = 实际 250m。<br><br>' +
+    '• <b>比 (ratio)</b> 用于比较各部分：$a : b$。通过除以公因数来化简。<br>' +
+    '• <b>按比例分配</b>：总份数 = $a + b$，每一份 = $\\frac{\\text{部分}}{\\text{总份数}} \\times \\text{总量}$。<br>' +
+    '• <b>正比例</b>：随着一个量增加，另一个量以相同的速率增加。使用<b>归一法 (unitary method)</b>。<br>' +
+    '• <b>反比例</b>：随着一个量增加，另一个量减少。如果 4 名工人需要 6 小时，那么 8 名工人需要 3 小时。<br>' +
+    '• <b>地图比例尺</b>：例如 $1 : 25\\,000$ 表示地图上的 1 cm = 实际中的 25,000 cm = 250 m。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '比例问题先求一个单位的值，再按需要缩放。'
+    '对于比例问题，始终先找到"一个单位"的值（归一法），然后按比例放大或缩小。'
 });
 
 add('edexcel', '1.7', 'examples', {
@@ -1279,10 +1345,14 @@ add('edexcel', '1.7', 'examples', {
     '<b>Exam Tip:</b> Check: is it direct or inverse proportion? More workers → less time = inverse.',
   content_zh:
     '<b>经典例题</b> [3 分]<br>' +
-    '5 个工人 12 天建完一面墙。8 个工人需要几天？<br><br>' +
+    '5 名工人在 12 天内可以建好一堵墙。8 名工人需要多少天？<br>' +
+    '<br>' +
     '<b>解答：</b><br>' +
-    '反比例：总工作量 = $5 \\times 12 = 60$ 人天<br>' +
-    '8 个工人：$\\frac{60}{8} = 7.5$ 天'
+    '这是反比例关系（工人越多 = 时间越短）。<br>' +
+    '总工日数 = $5 \\times 12 = 60$<br>' +
+    '8 名工人的时间 = $\\frac{60}{8} = 7.5$ 天<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>检查：是正比例还是反比例？更多工人 → 更少时间 = 反比例。'
 });
 
 // ── Edexcel 1.8 Degree of accuracy ──
@@ -1302,13 +1372,19 @@ add('edexcel', '1.8', 'knowledge', {
     'For estimation, show the rounded values before calculating. This is where the marks are.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• <b>小数位</b>和<b>有效数字</b>。<br>' +
-    '• <b>上下界</b>：$x = 3.7$（1 d.p.），则 $3.65 \\leq x < 3.75$。<br>' +
-    '• <b>估算</b>：取 1 s.f. 近似计算。<br><br>' +
+    '• <b>小数位数 (d.p.)</b>：计算小数点后的位数。<br>' +
+    '• <b>有效数字 (s.f.)</b>：从第一个非零数字开始计算。<br>' +
+    '• <b>上限与下限</b>：如果 $x = 3.7$ (1 d.p.)，则 $3.65 \\leq x < 3.75$。<br>' +
+    '• <b>估算</b>：将每个数字四舍五入到 1 位有效数字以近似计算。<br>' +
+    '<br>' +
     '<b>仅 Higher</b><br>' +
-    '• 表达式的界限计算：最大 $\\frac{a}{b}$ = $\\frac{a\\text{的上界}}{b\\text{的下界}}$。<br><br>' +
+    '• 计算<b>表达式的上下界</b>：<br>' +
+    '&nbsp;&nbsp;$a + b$ 的最大值：上限 + 上限<br>' +
+    '&nbsp;&nbsp;$a - b$ 的最大值：$a$ 的上限 − $b$ 的下限<br>' +
+    '&nbsp;&nbsp;$\\frac{a}{b}$ 的最大值：$a$ 的上限 ÷ $b$ 的下限<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '估算题要写出取整后的值再算，这才是得分点。'
+    '进行估算时，在计算前写出四舍五入后的数值。这是得分点所在。'
 });
 
 add('edexcel', '1.8', 'examples', {
@@ -1365,9 +1441,14 @@ add('edexcel', '1.9', 'examples', {
     '<b>Exam Tip:</b> Divide $A$ values and subtract powers separately. If $A < 1$, adjust by multiplying by 10 and reducing the power by 1.',
   content_zh:
     '<b>经典例题</b> [3 分]<br>' +
-    '日地距离 $1.5 \\times 10^8$ km，光速 $3 \\times 10^5$ km/s。光从太阳到地球要多久？<br><br>' +
+    '地球到太阳的距离是 $1.5 \\times 10^8$ km。光速为 $3 \\times 10^5$ km/s。光从太阳传播到地球需要多长时间？<br>' +
+    '<br>' +
     '<b>解答：</b><br>' +
-    '时间 = $\\frac{1.5 \\times 10^8}{3 \\times 10^5} = 0.5 \\times 10^3 = 500$ 秒 = 8 分 20 秒'
+    '时间 = $\\frac{\\text{距离}}{\\text{速度}} = \\frac{1.5 \\times 10^8}{3 \\times 10^5}$<br>' +
+    '$= \\frac{1.5}{3} \\times 10^{8-5} = 0.5 \\times 10^3 = 500$ 秒<br>' +
+    '$= 8$ 分 $20$ 秒<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>分别对 $A$ 值进行相除，并对幂进行相减。如果 $A < 1$，通过乘以 10 并将幂减 1 来进行调整。'
 });
 
 // ── Edexcel 1.10 Applying number ──
@@ -1384,11 +1465,15 @@ add('edexcel', '1.10', 'knowledge', {
     '• Pressure = $\\frac{\\text{force}}{\\text{area}}$',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 四则运算的实际应用：货币、时间、质量、长度。<br>' +
-    '• <b>公制单位转换</b>：$1\\text{ km} = 1000\\text{ m}$，$1\\text{ kg} = 1000\\text{ g}$。<br>' +
-    '• <b>英制↔公制</b>：1 英寸 ≈ 2.5 cm，1 英里 ≈ 1.6 km。<br><br>' +
-    '<b>复合量</b><br>' +
-    '• 速度 = 路程÷时间，密度 = 质量÷体积，压强 = 力÷面积。'
+    '• 在实际情境中应用四则运算：货币、时间、质量、长度。<br>' +
+    '• <b>公制单位</b>：mm, cm, m, km（长度）；g, kg（质量）；ml, l（容积）；cm², m²（面积）；cm³, m³（体积）。<br>' +
+    '• <b>公制换算</b>：$1\\text{ km} = 1000\\text{ m}$，$1\\text{ kg} = 1000\\text{ g}$，$1\\text{ l} = 1000\\text{ ml}$。<br>' +
+    '• <b>常用英制 ↔ 公制</b>：1 英寸 ≈ 2.5 cm，1 英里 ≈ 1.6 km，1 kg ≈ 2.2 磅，1 加仑 ≈ 4.5 升。<br>' +
+    '<br>' +
+    '<b>复合度量</b><br>' +
+    '• 速度 = $\\frac{\\text{距离}}{\\text{时间}}$<br>' +
+    '• 密度 = $\\frac{\\text{质量}}{\\text{体积}}$<br>' +
+    '• 压强 = $\\frac{\\text{压力}}{\\text{面积}}$'
 });
 
 add('edexcel', '1.10', 'examples', {
@@ -1421,12 +1506,18 @@ add('edexcel', '1.11', 'knowledge', {
     'Even when using a calculator, always show working and write down at least one intermediate step.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• 熟练使用科学计算器。<br>' +
-    '• 用括号确保运算顺序正确。<br>' +
-    '• 常用功能键：$x^2$, $\\sqrt{}$, $x^y$, 分数键, 标准式键。<br>' +
-    '• 解读显示：$3.5\\text{E}6 = 3.5 \\times 10^6$。<br><br>' +
+    '• 高效使用科学计算器进行多步计算。<br>' +
+    '• 使用括号确保正确的运算顺序：将 $\\frac{a+b}{c-d}$ 输入为 $(a+b) \\div (c-d)$。<br>' +
+    '• 使用功能键：$x^2$, $\\sqrt{}$, $x^y$, $\\frac{a}{b}$ (分数), $\\times 10^x$ (科学计数法)。<br>' +
+    '• 了解如何输入循环小数以及如何在不同形式之间转换。<br>' +
+    '<br>' +
+    '<b>关键技能</b><br>' +
+    '• 理解显示内容：$3.5\\text{E}6 = 3.5 \\times 10^6$。<br>' +
+    '• 使用 ANS 键进行链式计算。<br>' +
+    '• 使用估算或逆运算检查答案。<br>' +
+    '<br>' +
     '<b>考试技巧</b><br>' +
-    '即使用计算器也要写步骤和中间结果。'
+    '即使使用计算器，也务必写出计算过程并写下至少一个中间步骤。'
 });
 
 add('edexcel', '1.11', 'examples', {
@@ -1442,9 +1533,16 @@ add('edexcel', '1.11', 'examples', {
     '<b>Exam Tip:</b> Show the intermediate value before dividing. Use brackets around the entire expression under the square root.',
   content_zh:
     '<b>经典例题</b> [2 分]<br>' +
-    '用计算器求 $\\frac{\\sqrt{5.7^2 + 3.2^2}}{1.8}$，精确到 3 s.f。<br><br>' +
+    '使用计算器计算 $\\frac{\\sqrt{5.7^2 + 3.2^2}}{1.8}$。结果保留 3 位有效数字。<br>' +
+    '<br>' +
     '<b>解答：</b><br>' +
-    '$= \\frac{\\sqrt{42.73}}{1.8} = \\frac{6.537...}{1.8} = 3.63$（3 s.f.）'
+    '输入：$\\sqrt{(5.7^2 + 3.2^2)} \\div 1.8$<br>' +
+    '$= \\sqrt{32.49 + 10.24} \\div 1.8$<br>' +
+    '$= \\sqrt{42.73} \\div 1.8$<br>' +
+    '$= 6.537... \\div 1.8$<br>' +
+    '$= 3.631... \\approx 3.63$ (3 位有效数字)<br>' +
+    '<br>' +
+    '<b>考试技巧：</b>在除法之前写出中间值。在根号下的整个表达式周围使用括号。'
 });
 
 /* ══════════════════════════════════════════════════
