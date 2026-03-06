@@ -395,10 +395,44 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   html += '<div class="sec-progress-label">' + stats.pct + '% \u00b7 ' + stats.mastered + '/' + stats.total + ' ' + t('mastered', '\u5df2\u638c\u63e1') + '</div>';
   html += '</div>';
 
-  /* Module cards */
+  /* Syllabus requirements — board-aware labels (1st) */
+  html += '<div class="sec-syllabus">';
+  html += '<div class="sec-syllabus-header">';
+  html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42') + '</div>';
+  html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
+  html += '</div>';
+
+  if (board === 'edexcel') {
+    /* Edexcel uses foundation_content / higher_content */
+    if (sec.foundation_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Foundation:</span> ' + pqRender(sec.foundation_content);
+      html += '</div>';
+    }
+    if (sec.higher_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Higher:</span> ' + pqRender(sec.higher_content);
+      html += '</div>';
+    }
+  } else {
+    /* CIE uses core_content / extended_content */
+    if (sec.core_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Core:</span> ' + pqRender(sec.core_content);
+      html += '</div>';
+    }
+    if (sec.extended_content) {
+      html += '<div class="sec-syllabus-block">';
+      html += '<span class="sec-syllabus-label">Extended:</span> ' + pqRender(sec.extended_content);
+      html += '</div>';
+    }
+  }
+  html += '</div>';
+
+  /* Module cards: Vocabulary → Practice → Knowledge → Examples */
   html += '<div class="sec-modules">';
 
-  /* Vocabulary module */
+  /* Vocabulary module (2nd) */
   if (words.length > 0 && li >= 0) {
     html += '<div class="sec-module" onclick="openDeck(' + li + ')">';
     html += '<div class="sec-module-icon">\ud83d\udcdd</div>';
@@ -432,7 +466,7 @@ function renderSectionDetail(ch, sec, secIdx, board) {
     html += '</div>';
   }
 
-  /* Knowledge card placeholder */
+  /* Knowledge card placeholder (3rd) */
   html += '<div class="sec-module sec-module-coming">';
   html += '<div class="sec-module-icon">\ud83d\udcd8</div>';
   html += '<div class="sec-module-info">';
@@ -442,7 +476,7 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   html += '<button class="sec-module-report" onclick="event.stopPropagation();reportSectionModule(\'' + sec.id + '\',\'knowledge\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
   html += '</div>';
 
-  /* Examples placeholder */
+  /* Examples placeholder (4th) */
   html += '<div class="sec-module sec-module-coming">';
   html += '<div class="sec-module-icon">\ud83d\udcd6</div>';
   html += '<div class="sec-module-info">';
@@ -453,40 +487,6 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   html += '</div>';
 
   html += '</div>'; /* close sec-modules */
-
-  /* Syllabus requirements — board-aware labels */
-  html += '<div class="sec-syllabus">';
-  html += '<div class="sec-syllabus-header">';
-  html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42') + '</div>';
-  html += '<button class="sec-module-report" onclick="reportSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Report error', '\u62a5\u544a\u9519\u8bef') + '">\ud83d\udea9</button>';
-  html += '</div>';
-
-  if (board === 'edexcel') {
-    /* Edexcel uses foundation_content / higher_content */
-    if (sec.foundation_content) {
-      html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Foundation:</span> ' + pqRender(sec.foundation_content);
-      html += '</div>';
-    }
-    if (sec.higher_content) {
-      html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Higher:</span> ' + pqRender(sec.higher_content);
-      html += '</div>';
-    }
-  } else {
-    /* CIE uses core_content / extended_content */
-    if (sec.core_content) {
-      html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Core:</span> ' + pqRender(sec.core_content);
-      html += '</div>';
-    }
-    if (sec.extended_content) {
-      html += '<div class="sec-syllabus-block">';
-      html += '<span class="sec-syllabus-label">Extended:</span> ' + pqRender(sec.extended_content);
-      html += '</div>';
-    }
-  }
-  html += '</div>';
 
   /* Navigation: prev/next section */
   html += '<div class="sec-nav">';
