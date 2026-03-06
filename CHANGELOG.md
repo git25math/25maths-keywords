@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.7.3-dedup2] - 2026-03-06 — CIE 跨 section 重复词分级处理
+
+### 修复
+- **10 个跨 section 重复词替换**为更精准的专属词汇：
+  - 1.6: Exponent→Indices, Simplify→Expression
+  - 1.10: Accuracy→Order of magnitude
+  - 2.6: Number line→Open circle
+  - 3.2: Origin→Axes
+  - 4.2: Perpendicular→Midpoint
+  - 4.5: Congruent→Tessellation
+  - 7.3: Scalar→Component
+  - 8.2: Frequency→Bias
+  - 9.7: Frequency table→Modal class
+- 跨 section 重复词从 37 降至 31（剩余为不同语境下的有价值重复）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `data/vocabulary-cie.json` | 10 处词汇替换（594 词总数不变） |
+
 ## [1.7.3-dedup] - 2026-03-06 — CIE 词汇审核去重
 
 ### 修复
