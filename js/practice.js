@@ -1701,6 +1701,7 @@ function reportPastPaperQ(qIdx) {
     ['marks', t('Wrong marks', '分值错误')],
     ['qtype', t('Wrong question type', '题型分类错误')],
     ['source', t('Wrong source info', '来源信息错误')],
+    ['figure', t('Figure rendering issue', '图片渲染问题')],
     ['other', t('Other', '其他')]
   ];
   var typeOpts = types.map(function(tp) {
