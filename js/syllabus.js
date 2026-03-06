@@ -632,14 +632,14 @@ function _renderPPSectionModule(slot, secId, board) {
   if (ppStats.mastered > 0) h += '<span class="pp-module-stat mastered-stat">\u2705 ' + ppStats.mastered + ' ' + t('Mastered', '\u5df2\u638c\u63e1') + '</span>';
   h += '</div>';
 
-  h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
-  h += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'practice\')" style="flex:1;min-width:100px">';
-  h += '\ud83d\udcd6 ' + t('Practice', '\u7ec3\u4e60') + ' (' + ppStats.total + ')</button>';
-  h += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'exam\')" style="flex:1;min-width:100px">';
-  h += '\u23f1 ' + t('Exam Mode', '\u5b9e\u6218') + '</button>';
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">';
+  h += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'practice\')" style="flex:1;min-width:120px">';
+  h += '\ud83d\udcd6 ' + t('Practice Mode', '\u7ec3\u4e60\u6a21\u5f0f') + '</button>';
+  h += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'exam\')" style="flex:1;min-width:120px;background:var(--c-warning);border-color:var(--c-warning);color:#fff">';
+  h += '\u23f1 ' + t('Exam Mode', '\u5b9e\u6218\u6a21\u5f0f') + '</button>';
   if (ppStats.wrongActive > 0) {
-    h += '<button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'wrongbook\')" style="flex:1;min-width:100px;color:#ef5350">';
-    h += '\ud83d\udcd5 ' + t('Review', '\u590d\u4e60') + ' (' + ppStats.wrongActive + ')</button>';
+    h += '<button class="btn btn-sm" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'wrongbook\')" style="flex:1;min-width:120px;background:#ef5350;border-color:#ef5350;color:#fff">';
+    h += '\ud83d\udcd5 ' + t('Wrong Book', '\u9519\u9898\u672c') + ' (' + ppStats.wrongActive + ')</button>';
   }
   h += '</div>';
   h += '</div>';
