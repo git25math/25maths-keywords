@@ -1,5 +1,48 @@
 # Changelog
 
+## [1.7.4] - 2026-03-06 — CIE + Edexcel 练习题质量审计与修复
+
+### Phase A — 题目搬迁（改 `s` 字段）
+- **CIE 55 题搬迁**：修正错配 section
+  - 1.4→1.1: 15 题（place value/ordering 非有向数题）
+  - 2.1→2.2/2.3: 3 题（rearranging/factorising）
+  - 2.3→2.2: 2 题（make subject）
+  - 2.8→1.12/4.3: 3 题（ratio/scale drawing）
+  - 2.11→3.2: 4 题（linear graph 题）
+  - 3.1→3.4/7.1: 13 题（midpoint/reflection/translation）
+  - 3.5→3.7: 3 题（perpendicular line）
+  - 4.6→4.7: 1 题（cyclic quadrilateral）
+  - 5.2→5.3: 3 题（circle area/circumference/sector）
+  - 6.4→6.2: 6 题（right-triangle trig）
+  - 9.4→9.7: 2 题（histogram/frequency density）
+- **Edexcel 78 题搬迁**：
+  - 2.4→2.5/2.6: 24 题（proportion + simultaneous equations）
+  - 3.1→3.2/3.3: 36 题（function notation + graph-of-sequence）
+  - 4.9→4.10: 6 题（3D mensuration）
+  - 5.1→5.2: 12 题（transformation geometry）
+
+### Phase B — 去重 + 质量修复
+- **CIE 11 题隐藏**（精确重复）：1.3×7, 1.10×2, 1.12×1, 4.5×1
+- **Edexcel 4 题隐藏**（精确重复）：e842/e351/e210/e160
+- **Edexcel 6 题隐藏**（超纲）：3.4 积分/二阶导×4, 5.2 shear×1, 4.7 非推理×1
+- **5 道链式依赖题修复**：移除 "previous question" 引用，改为独立题干
+- **5 道 LaTeX 渲染错误修复**：1.10 除法表达式断裂分数修正
+- **Edexcel 4.11 topic 规范化**：22 题 "Geometry"→"Similarity"
+
+### Phase D3 — 层级异常修复
+- **32 题 d=1→d=2**：Extended-only section（1.11/2.11/4.7）中错标为 Core 的题目
+
+### 代码变更
+- `practice.js`：新增 JSON `status: "hidden"` 过滤支持
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `data/questions-cie.json` | 55 题改 s + 11 题 hidden + 5 链式修复 + 5 LaTeX 修复 + 32 题 d 修正 |
+| `data/questions-edx.json` | 78 题改 s + 10 题 hidden + 22 题 topic 修正 |
+| `js/practice.js` | 增加 JSON status=hidden 过滤 |
+| `scripts/fix-questions-audit.py` | 审计修复脚本（一次性） |
+
 ## [1.7.3-dedup4] - 2026-03-06 — CIE 跨 section 重复词深度优化（27→13）
 
 ### 优化

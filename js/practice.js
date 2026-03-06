@@ -147,8 +147,9 @@ function loadPracticeData(board) {
         base[i].id = q.id;
       }
     });
-    /* Filter hidden questions */
+    /* Filter hidden questions (from JSON status or question_edits) */
     base = base.filter(function(q) {
+      if (q.status === 'hidden') return false;
       return !edits[q.id] || edits[q.id].status !== 'hidden';
     });
     _pqData[board] = base;

@@ -2306,7 +2306,7 @@
   {
     "id": "e145",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "Given that y is directly proportional to x, and $y = 42$ when $x = 7$, find the value of y when $x = 12$.",
     "o": [
       "6",
@@ -2317,12 +2317,12 @@
     "a": 1,
     "e": "If y is directly proportional to x, then y = kx. Using $y = 42$ and $x = 7$, we find k = $\\frac{42}{7}$ = 6. So, y = 6x. When $x = 12$, $y = 6$ * 12 = 72.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e146",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "P is inversely proportional to R. When P = 10, R = 4. Calculate the value of P when R = 2.5.",
     "o": [
       "6.25",
@@ -2333,12 +2333,12 @@
     "a": 1,
     "e": "If P is inversely proportional to R, then P = k/R. Using P = 10 and R = 4, we find $k = 10$ * 4 = 40. So, P = 40/R. When R = 2.5, P = $\\frac{40}{2}$.5 = 16.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e147",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "A is directly proportional to the square of B. When A = 50, B = 5. Find the value of A when B = 3.",
     "o": [
       "18",
@@ -2349,12 +2349,12 @@
     "a": 0,
     "e": "If A is directly proportional to the square of B, then A = $kB^2$. Using A = 50 and B = 5, we find $k = 50$ / ($5^2$) = $\\frac{50}{25}$ = 2. So, A = 2$B^2$. When B = 3, A = 2 * ($3^2$) = 2 * 9 = 18.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e148",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "Y is inversely proportional to the cube of X. When Y = 4, X = 2. Determine the value of Y when X = 4.",
     "o": [
       "0.5",
@@ -2365,12 +2365,12 @@
     "a": 0,
     "e": "If Y is inversely proportional to the cube of X, then Y = k/$X^3$. Using Y = 4 and X = 2, we find $k = 4$ * ($2^3$) = 4 * 8 = 32. So, Y = $32/X^3$. When X = 4, Y = 32 / ($4^3$) = $\\frac{32}{64}$ = 0.5.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e149",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "The force, F, between two magnets is inversely proportional to the square of the distance, d, between them. When d = 3 cm, F = 10 N. What is the force when d = 5 cm?",
     "o": [
       "3.6 N",
@@ -2381,12 +2381,12 @@
     "a": 0,
     "e": "F is inversely proportional to $d^2$, so F = k/$d^2$. Using F = 10 and $d = 3$, $k = 10$ * ($3^2$) = 10 * 9 = 90. So, F = $90/d^2$. When $d = 5$, F = 90 / ($5^2$) = $\\frac{90}{25}$ = 3.6 N.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e150",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "The cost, C, of hiring a coach is directly proportional to the number of passengers, P. If it costs £180 to hire a coach for 20 passengers, how much will it cost for 35 passengers?",
     "o": [
       "£270",
@@ -2397,12 +2397,12 @@
     "a": 1,
     "e": "C is directly proportional to P, so C = kP. Using C = 180 and P = 20, k = $\\frac{180}{20}$ = 9. So, C = 9P. When P = 35, C = 9 * 35 = £315.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e151",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "E is directly proportional to M and inversely proportional to the square root of L. E = 12 when M = 3 and L = 9. Find E when M = 5 and L = 16.",
     "o": [
       "15",
@@ -2413,12 +2413,12 @@
     "a": 0,
     "e": "E = kM/$\\sqrt{L}$. Using E = 12, M = 3, L = 9: 12 = k * 3 / $\\sqrt{9}$ => 12 = k * $\\frac{3}{3}$ => $k = 12$. So, E = 12M/$\\sqrt{L}$. When M = 5 and L = 16: E = 12 * 5 / $\\sqrt{16} = 12 * \\frac{5}{4}$ = $\\frac{60}{4}$ = 15.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e152",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "The time, T, it takes to complete a task is inversely proportional to the number of workers, W. If 4 workers can complete the task in 15 hours, how many hours will it take 6 workers?",
     "o": [
       "8 hours",
@@ -2429,12 +2429,12 @@
     "a": 1,
     "e": "T is inversely proportional to W, so T = k/W. Using T = 15 and W = 4, $k = 15$ * 4 = 60. So, T = 60/W. When W = 6, T = $\\frac{60}{6}$ = 10 hours.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e153",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "Given that y is proportional to (x + 1), and $y = 20$ when $x = 3$, find y when $x = 7$.",
     "o": [
       "10",
@@ -2445,12 +2445,12 @@
     "a": 3,
     "e": "y = k(x + 1). Using $y = 20$ and $x = 3$: 20 = k(3 + 1) => 20 = 4k => $k = 5$. So, y = 5(x + 1). When $x = 7$, y = 5(7 + 1) = 5 * 8 = 40.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e154",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "The volume, V, of a cone is directly proportional to the square of its radius, r, and its height, h. If V = $100 \\pi when r = 5$ and $h = 12$, find the constant of proportionality.",
     "o": [
       "$\\frac{1}{3}$",
@@ -2461,12 +2461,12 @@
     "a": 3,
     "e": "V = $kr^2$h. Using V = $100\\pi$, $r = 5$, $h = 12$: $100\\pi$ = k * ($5^2$) * 12 => $100\\pi$ = k * 25 * 12 => $100\\pi$ = 300k. So, $k = 100\\pi / 300 = \\pi/3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e155",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "P is proportional to the square root of Q. When P = 12, Q = 9. Find Q when P = 20.",
     "o": [
       "16",
@@ -2477,12 +2477,12 @@
     "a": 1,
     "e": "P = k$\\sqrt{Q}$. Using P = 12 and Q = 9: 12 = k$\\sqrt{9}$ => 12 = 3k => $k = 4$. So, P = $4\\sqrt{Q}$. When P = 20: 20 = $4\\sqrt{Q}$ => $\\sqrt{Q}$ = 5 => Q = $5^2$ = 25.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e156",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Proportion",
     "q": "The intensity of light, I, from a lamp is inversely proportional to the square of the distance, d, from the lamp. If the intensity is 30 lux at a distance of 2 meters, what is the intensity at a distance of 5 meters?",
     "o": [
       "4.8 lux",
@@ -2493,12 +2493,12 @@
     "a": 0,
     "e": "I = k/$d^2$. Using I = 30 and $d = 2$: $k = 30$ * ($2^2$) = 30 * 4 = 120. So, I = $120/d^2$. When $d = 5$: I = 120 / ($5^2$) = $\\frac{120}{25}$ = 4.8 lux.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.5"
   },
   {
     "id": "e157",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $y = 2x + 1$ $3x + y = 11$",
     "o": [
       "$x=2, y=5$",
@@ -2509,12 +2509,12 @@
     "a": 0,
     "e": "Substitute the first equation into the second: $3x + (2x + 1) = 11 \\Rightarrow 5x + 1 = 11 \\Rightarrow 5x = 10 \\Rightarrow x = 2$. Substitute $x=2$ into $y=2x+1$: $y = 2(2) + 1 = 5$. Thus, $x=2, y=5$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e158",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $2x + y = 7$ $5x + y = 13$",
     "o": [
       "$x=2, y=3$",
@@ -2525,12 +2525,12 @@
     "a": 0,
     "e": "Subtract the first equation from the second: $(5x+y) - (2x+y) = 13 - 7 \\Rightarrow 3x = 6 \\Rightarrow x = 2$. Substitute $x=2$ into $2x+y=7$: $2(2)+y=7 \\Rightarrow 4+y=7 \\Rightarrow y=3$. Thus, $x=2, y=3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e159",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $4x + 2y = 10$ $x - 2y = -5$",
     "o": [
       "$x=1, y=3$",
@@ -2541,12 +2541,12 @@
     "a": 0,
     "e": "Add the two equations: $(4x+2y) + (x-2y) = 10 + (-5) \\Rightarrow 5x = 5 \\Rightarrow x = 1$. Substitute $x=1$ into $4x+2y=10$: $4(1)+2y=10 \\Rightarrow 4+2y=10 \\Rightarrow 2y=6 \\Rightarrow y=3$. Thus, $x=1, y=3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e160",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $x + 3y = 10$ $2x + y = 5$",
     "o": [
       "$x=1, y=3$",
@@ -2557,12 +2557,13 @@
     "a": 0,
     "e": "Multiply the second equation by 3: $3(2x + y) = 3(5) \\Rightarrow 6x + 3y = 15$. Subtract the first equation from this new equation: $(6x + 3y) - (x + 3y) = 15 - 10 \\Rightarrow 5x = 5 \\Rightarrow x = 1$. Substitute $x=1$ into $x+3y=10$: $1+3y=10 \\Rightarrow 3y=9 \\Rightarrow y=3$. Thus, $x=1, y=3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6",
+    "status": "hidden"
   },
   {
     "id": "e161",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $3x + 2y = 12$ $2x - 3y = -5$",
     "o": [
       "$x=2, y=3$",
@@ -2573,12 +2574,12 @@
     "a": 0,
     "e": "Multiply the first equation by 3 ($9x + 6y = 36$) and the second by 2 ($4x - 6y = -10$). Add the resulting equations: $(9x+6y) + (4x-6y) = 36 + (-10) \\Rightarrow 13x = 26 \\Rightarrow x = 2$. Substitute $x=2$ into $3x+2y=12$: $3(2)+2y=12 \\Rightarrow 6+2y=12 \\Rightarrow 2y=6 \\Rightarrow y=3$. Thus, $x=2, y=3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e162",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "The sum of two numbers is 15. Their difference is 3. What are the two numbers?",
     "o": [
       "8 and 7",
@@ -2589,12 +2590,12 @@
     "a": 1,
     "e": "Let the numbers be $x$ and $y$. The equations are $x+y=15$ and $x-y=3$. Adding these equations gives $2x=18 \\Rightarrow x=9$. Substituting $x=9$ into $x+y=15$ gives $9+y=15 \\Rightarrow y=6$. The numbers are 9 and 6.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e163",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "A shop sells pens and notebooks. 2 pens and 3 notebooks cost £13. 3 pens and 1 notebook cost £9. How much does one pen cost?",
     "o": [
       "£1.00",
@@ -2605,12 +2606,12 @@
     "a": 2,
     "e": "Let $p$ be the cost of a pen and $n$ the cost of a notebook. The equations are $2p+3n=13$ (1) and $3p+n=9$ (2). From (2), $n=9-3p$. Substitute this into (1): $2p+3(9-3p)=13 \\Rightarrow 2p+27-9p=13 \\Rightarrow -7p=-14 \\Rightarrow p=2$. Therefore, one pen costs £2.00.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e164",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $y = 3x - 1$ $2x - y = 3$",
     "o": [
       "$x=2, y=5$",
@@ -2621,12 +2622,12 @@
     "a": 1,
     "e": "Substitute $y=3x-1$ into the second equation: $2x - (3x - 1) = 3 \\Rightarrow 2x - 3x + 1 = 3 \\Rightarrow -x + 1 = 3 \\Rightarrow -x = 2 \\Rightarrow x = -2$. Substitute $x=-2$ into $y=3x-1$: $y = 3(-2) - 1 = -6 - 1 = -7$. Thus, $x=-2, y=-7$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e165",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $5x = 2y + 11$ $3x + 4y = 17$",
     "o": [
       "$x=3, y=2$",
@@ -2637,12 +2638,12 @@
     "a": 0,
     "e": "Rearrange the first equation to $5x - 2y = 11$. Multiply this by 2: $2(5x - 2y) = 2(11) \\Rightarrow 10x - 4y = 22$. Add this new equation to $3x + 4y = 17$: $(10x-4y) + (3x+4y) = 22+17 \\Rightarrow 13x = 39 \\Rightarrow x = 3$. Substitute $x=3$ into $5x - 2y = 11$: $5(3) - 2y = 11 \\Rightarrow 15 - 2y = 11 \\Rightarrow -2y = -4 \\Rightarrow y = 2$. Thus, $x=3, y=2$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e166",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "Solve the simultaneous equations: $\\frac{x}{2} + \\frac{y}{3} = 3$ $x - \\frac{y}{2} = 2.5$",
     "o": [
       "$x=4, y=3$",
@@ -2653,12 +2654,12 @@
     "a": 0,
     "e": "Multiply the first equation by 6 to clear denominators: $6(\\frac{x}{2} + \\frac{y}{3}) = 6(3) \\Rightarrow 3x + 2y = 18$. Multiply the second equation by 2 to clear denominators: $2(x - \\frac{y}{2}) = 2(2.5) \\Rightarrow 2x - y = 5$. From $2x-y=5$, we get $y=2x-5$. Substitute this into $3x+2y=18$: $3x+2(2x-5)=18 \\Rightarrow 3x+4x-10=18 \\Rightarrow 7x=28 \\Rightarrow x=4$. Substitute $x=4$ into $y=2x-5$: $y=2(4)-5=8-5=3$. Thus, $x=4, y=3$.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e167",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "A rectangle has a perimeter of 40 cm. The length of the rectangle is 4 cm more than its width. Find the length and width of the rectangle.",
     "o": [
       "Length = 12 cm, Width = 8 cm",
@@ -2669,12 +2670,12 @@
     "a": 0,
     "e": "Let $l$ be the length and $w$ be the width. The equations are $2l+2w=40 \\Rightarrow l+w=20$ (1) and $l=w+4$ (2). Substitute (2) into (1): $(w+4)+w=20 \\Rightarrow 2w+4=20 \\Rightarrow 2w=16 \\Rightarrow w=8$. Substitute $w=8$ into $l=w+4$: $l=8+4=12$. Thus, Length = 12 cm, Width = 8 cm.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e168",
     "cat": "edx-algebra",
-    "topic": "Equations",
+    "topic": "Simultaneous Linear Equations",
     "q": "The current age of a father is three times the age of his son. In 5 years, the father's age will be two and a half times his son's age. Find their current ages.",
     "o": [
       "Father = 45, Son = 15",
@@ -2685,7 +2686,7 @@
     "a": 0,
     "e": "Let $F$ be the father's current age and $S$ be the son's current age. Equations are $F=3S$ (1) and $F+5=2.5(S+5)$ (2). Substitute (1) into (2): $3S+5=2.5S+12.5 \\Rightarrow 0.5S=7.5 \\Rightarrow S=15$. Substitute $S=15$ into $F=3S$: $F=3(15)=45$. Thus, Father = 45, Son = 15.",
     "d": 2,
-    "s": "2.4"
+    "s": "2.6"
   },
   {
     "id": "e169",
@@ -3357,7 +3358,8 @@
     "a": 3,
     "e": "A regular hexagon has 6 sides, and a regular polygon has a number of lines of symmetry equal to its number of sides.",
     "d": 1,
-    "s": "4.2"
+    "s": "4.2",
+    "status": "hidden"
   },
   {
     "id": "e211",
@@ -4994,7 +4996,7 @@
   {
     "id": "e313",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two triangles are similar if their corresponding angles are equal. Which statement is true for two similar triangles?",
     "o": [
       "Their corresponding sides are equal in length.",
@@ -5010,7 +5012,7 @@
   {
     "id": "e314",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Triangle ABC has sides 3 cm, 4 cm, and 5 cm. Triangle PQR is similar to ABC. If the shortest side of PQR is 6 cm, what is the length of its longest side?",
     "o": [
       "8 cm",
@@ -5026,7 +5028,7 @@
   {
     "id": "e315",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two rectangles are similar. The first rectangle has length 10 cm and width 5 cm. The second rectangle has a length of 15 cm. What is the width of the second rectangle?",
     "o": [
       "7.5 cm",
@@ -5042,7 +5044,7 @@
   {
     "id": "e316",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "A large photo has dimensions 20 cm by 30 cm. It is reduced to a smaller similar photo where the new width is 10 cm. What is the new length?",
     "o": [
       "5 cm",
@@ -5058,7 +5060,7 @@
   {
     "id": "e317",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two triangles are similar. The sides of the first triangle are 6 cm, 9 cm, and 12 cm. The smallest side of the second triangle is 4 cm. What is the perimeter of the second triangle?",
     "o": [
       "18 cm",
@@ -5074,7 +5076,7 @@
   {
     "id": "e318",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Which of these pairs of shapes are always similar?",
     "o": [
       "Two rectangles",
@@ -5090,7 +5092,7 @@
   {
     "id": "e319",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Triangle ABC has angles 50°, 60°, 70°. Triangle DEF has angles 50°, 70°, 60°. Are these triangles similar?",
     "o": [
       "No, because the angles are in a different order.",
@@ -5106,7 +5108,7 @@
   {
     "id": "e320",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "A model car is built to a scale of 1:20. If the actual car is 4 meters long, how long is the model car in cm?",
     "o": [
       "20 cm",
@@ -5122,7 +5124,7 @@
   {
     "id": "e321",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar pentagons have corresponding sides in the ratio 2:3. If the perimeter of the smaller pentagon is 10 cm, what is the perimeter of the larger pentagon?",
     "o": [
       "15 cm",
@@ -5138,7 +5140,7 @@
   {
     "id": "e322",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "If two shapes are congruent, are they also similar?",
     "o": [
       "No, they are different concepts.",
@@ -5154,7 +5156,7 @@
   {
     "id": "e323",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Triangle ABC has sides 8 cm and 12 cm, with an angle of 40° between them. Triangle DEF has sides 12 cm and 18 cm, with an angle of 40° between them. Are these triangles similar?",
     "o": [
       "No, the sides are not in the same ratio for both pairs.",
@@ -5170,7 +5172,7 @@
   {
     "id": "e324",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "A rectangle has sides 4 cm and 6 cm. Another rectangle has sides 6 cm and 9 cm. Are these two rectangles similar?",
     "o": [
       "No, because the aspect ratios are different.",
@@ -5613,7 +5615,8 @@
     "a": 3,
     "e": "A square can be rotated by 90°, 180°, 270°, and 360° to look identical. This means it has rotational symmetry of order 4.",
     "d": 2,
-    "s": "4.3"
+    "s": "4.3",
+    "status": "hidden"
   },
   {
     "id": "e352",
@@ -5773,7 +5776,8 @@
     "a": 1,
     "e": "The perimeter of the field is 2 × (120 + 80) = 2 × 200 = 400 m. The total cost of the fence is 400 × £8.25 = £3300.",
     "d": 2,
-    "s": "4.7"
+    "s": "4.7",
+    "status": "hidden"
   },
   {
     "id": "e362",
@@ -6733,7 +6737,7 @@
     "a": 1,
     "e": "Curved surface area of a cylinder = $2 \\pi rh.$ Area = 2 × $\\pi$ × 5 × 12 = $120\\pi$ ≈ 377 $\\text{cm}^2$ (3 s.f.).",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e422",
@@ -6749,7 +6753,7 @@
     "a": 0,
     "e": "Radius r = diameter / 2 = $\\frac{10}{2}$ = 5 cm. Volume of a sphere = ($\\frac{4}{3}$)$\\pir^3$. Volume = ($\\frac{4}{3}$) × $\\pi \\times 5^3$ = ($\\frac{4}{3}$) × $\\pi$ × 125 = 500$\\pi/3$ ≈ 524 $\\text{cm}^3$ (3 s.f.).",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e423",
@@ -6781,7 +6785,7 @@
     "a": 2,
     "e": "Using Pythagoras theorem: $h^{2}$ + $r^2$ = $l^{2}$. $h^{2}$ + $3^2 = 5^2$. $h^{2}$ + 9 = 25. $h^{2}$ = 16. h = 4 cm.",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e425",
@@ -6797,7 +6801,7 @@
     "a": 2,
     "e": "Total surface area = 2(lw + lh + wh). Area = 2((2×3) + (2×5) + (3×5)). Area = 2(6 + 10 + 15). Area = 2(31) = 62 $\\text{cm}^2$.",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e426",
@@ -6829,7 +6833,7 @@
     "a": 2,
     "e": "Total surface area = 2$\\pir^2$ + $2 \\pi rh.$ Area = 2$\\pi(4)^2$ + $2\\pi$(4)(10). Area = $32\\pi$ + $80\\pi$ = $112\\pi$ ≈ 352 $\\text{cm}^2$ (3 s.f.).",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e428",
@@ -6861,7 +6865,7 @@
     "a": 1,
     "e": "Volume = length × width × height. 120 = 6 × 4 × h. 120 = 24h. h = $\\frac{120}{24}$ = 5 cm.",
     "d": 2,
-    "s": "4.9"
+    "s": "4.10"
   },
   {
     "id": "e430",
@@ -7106,7 +7110,7 @@
   {
     "id": "e445",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two triangles are similar. The sides of the first triangle are 3 cm, 4 cm, and 5 cm. The longest side of the second triangle is 10 cm. What is the perimeter of the second triangle?",
     "o": [
       "12 cm",
@@ -7122,7 +7126,7 @@
   {
     "id": "e446",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar rectangles have corresponding sides in the ratio 2:5. If the area of the smaller rectangle is 12 $\\text{cm}^2$, what is the area of the larger rectangle?",
     "o": [
       "30 $\\text{cm}^2$",
@@ -7138,7 +7142,7 @@
   {
     "id": "e447",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar cones have heights in the ratio 3:4. If the volume of the smaller cone is 54 $\\text{cm}^3$, what is the volume of the larger cone?",
     "o": [
       "72 $\\text{cm}^3$",
@@ -7154,7 +7158,7 @@
   {
     "id": "e448",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Triangle ABC is similar to Triangle XYZ. AB = 6 cm, BC = 8 cm, AC = 10 cm. If XY = 9 cm, find the length of YZ.",
     "o": [
       "10 cm",
@@ -7186,7 +7190,7 @@
   {
     "id": "e450",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar cylinders have surface areas in the ratio 9:16. If the radius of the smaller cylinder is 6 cm, what is the radius of the larger cylinder?",
     "o": [
       "7.5 cm",
@@ -7202,7 +7206,7 @@
   {
     "id": "e451",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two spheres are similar. The radius of the smaller sphere is 3 cm and the radius of the larger sphere is 5 cm. If the volume of the smaller sphere is $36\\pi \\text{cm}^3$, find the volume of the larger sphere.",
     "o": [
       "$60\\pi \\text{cm}^3$",
@@ -7218,7 +7222,7 @@
   {
     "id": "e452",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "The areas of two similar shapes are 20 $\\text{cm}^2$ and 45 $\\text{cm}^2$. What is the ratio of their corresponding lengths?",
     "o": [
       "4:9",
@@ -7234,7 +7238,7 @@
   {
     "id": "e453",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar cuboids have corresponding side lengths in the ratio 1:3. What is the ratio of their volumes?",
     "o": [
       "1:3",
@@ -7266,7 +7270,7 @@
   {
     "id": "e455",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar pentagons have corresponding sides of length 7 cm and 14 cm. If the area of the smaller pentagon is 30 $\\text{cm}^2$, what is the area of the larger pentagon?",
     "o": [
       "60 $\\text{cm}^2$",
@@ -7282,7 +7286,7 @@
   {
     "id": "e456",
     "cat": "edx-geometry",
-    "topic": "Geometry",
+    "topic": "Similarity",
     "q": "Two similar jugs have heights of 10 cm and 15 cm. If the larger jug can hold 1350 ml of water, how much water can the smaller jug hold?",
     "o": [
       "400 ml",
@@ -11714,7 +11718,7 @@
   {
     "id": "e733",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "If $f(n) = 3n + 2$, what is the value of $f(4)$?",
     "o": [
       "5",
@@ -11725,12 +11729,12 @@
     "a": 2,
     "e": "Substitute n=4 into the function: $f(4) = 3(4) + 2 = 12 + 2 = 14$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e734",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "Given $g(n) = n^2 - 1$, find $g(3)$.",
     "o": [
       "2",
@@ -11741,12 +11745,12 @@
     "a": 2,
     "e": "Substitute n=3 into the function: $g(3) = (3)^2 - 1 = 9 - 1 = 8$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e735",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "A sequence is defined by $h(n) = 20 - 2n$. What is the 5th term of the sequence?",
     "o": [
       "10",
@@ -11757,12 +11761,12 @@
     "a": 0,
     "e": "The 5th term is found by substituting n=5 into the function: $h(5) = 20 - 2(5) = 20 - 10 = 10$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e736",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "If $f(n) = 5n - 7$, find the value of $n$ for which $f(n) = 13$.",
     "o": [
       "2",
@@ -11773,12 +11777,12 @@
     "a": 2,
     "e": "Set the function equal to 13 and solve for n: $5n - 7 = 13 \\Rightarrow 5n = 20 \\Rightarrow n = 4$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e737",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "The $n$th term of a sequence is given by $u_n = 4n + 1$. What is the value of $u_6$?",
     "o": [
       "21",
@@ -11789,12 +11793,12 @@
     "a": 2,
     "e": "Substitute n=6 into the formula for the $n$th term: $u_6 = 4(6) + 1 = 24 + 1 = 25$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e738",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "Consider the function $k(n) = \\frac{n+1}{2}$. Find $k(9)$.",
     "o": [
       "4",
@@ -11805,12 +11809,12 @@
     "a": 1,
     "e": "Substitute n=9 into the function: $k(9) = \\frac{9+1}{2} = \\frac{10}{2} = 5$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e739",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "Given $m(n) = 2n^2 + n$, find $m(2)$.",
     "o": [
       "6",
@@ -11821,12 +11825,12 @@
     "a": 2,
     "e": "Substitute n=2 into the function: $m(2) = 2(2)^2 + 2 = 2(4) + 2 = 8 + 2 = 10$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e740",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "A sequence has its $n$th term defined as $a_n = 15 - 3n$. Which term in the sequence is equal to 0?",
     "o": [
       "3rd",
@@ -11837,12 +11841,12 @@
     "a": 2,
     "e": "Set the $n$th term equal to 0 and solve for n: $15 - 3n = 0 \\Rightarrow 3n = 15 \\Rightarrow n = 5$. So, it's the 5th term.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e741",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "If $p(n) = (n+1)^2$, calculate $p(4)$.",
     "o": [
       "16",
@@ -11853,12 +11857,12 @@
     "a": 2,
     "e": "Substitute n=4 into the function: $p(4) = (4+1)^2 = (5)^2 = 25$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e742",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "For the function $q(n) = 3n + 5$, find $n$ when $q(n) = 26$.",
     "o": [
       "5",
@@ -11869,12 +11873,12 @@
     "a": 1,
     "e": "Set the function equal to 26 and solve for n: $3n + 5 = 26 \\Rightarrow 3n = 21 \\Rightarrow n = 7$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e743",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "The $n$th term of a sequence is $T_n = n^2 + 2n$. Find $T_3$.",
     "o": [
       "9",
@@ -11885,12 +11889,12 @@
     "a": 2,
     "e": "Substitute n=3 into the formula for the $n$th term: $T_3 = (3)^2 + 2(3) = 9 + 6 = 15$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e744",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Function Notation",
     "q": "If $s(n) = \\frac{10-n}{2}$, what is $s(4)$?",
     "o": [
       "1",
@@ -11901,12 +11905,12 @@
     "a": 2,
     "e": "Substitute n=4 into the function: $s(4) = \\frac{10-4}{2} = \\frac{6}{2} = 3$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.2"
   },
   {
     "id": "e745",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Which coordinate pair represents the 3rd term of the sequence 3, 5, 7, 9, ... when plotted on a graph of term number (x-axis) vs. term value (y-axis)?",
     "o": [
       "(3, 7)",
@@ -11917,12 +11921,12 @@
     "a": 0,
     "e": "The third term of the sequence is 7. On a graph of term number vs. term value, the x-coordinate is the term number and the y-coordinate is the term value. So, the 3rd term is represented by (3, 7).",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e746",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence has an nth term given by $2n + 1$. Which description correctly identifies the graph of this sequence?",
     "o": [
       "A series of points forming a straight line passing through (0,1).",
@@ -11933,12 +11937,12 @@
     "a": 1,
     "e": "For an nth term rule of the form an + b, the sequence is linear, so its graph will consist of points that lie on a straight line. Since n is always a positive integer, the graph is a series of discrete points, not a continuous line.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e747",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A graph shows the first five terms of a sequence. The points are (1, 4), (2, 7), (3, 10), (4, 13), (5, 16). What is the 4th term of the sequence?",
     "o": [
       "4",
@@ -11949,12 +11953,12 @@
     "a": 1,
     "e": "The 4th term corresponds to the point where the term number (x-coordinate) is 4. From the given points, when $x = 4$, the y-coordinate (term value) is 13.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e748",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The graph of a sequence shows points at (1, 5), (2, 7), (3, 9), (4, 11). What is the nth term rule for this sequence?",
     "o": [
       "$n + 4$",
@@ -11965,12 +11969,12 @@
     "a": 1,
     "e": "The sequence terms are 5, 7, 9, 11... The common difference is 2, so the nth term starts with 2n. For $n = 1$, 2(1) = 2. To get 5, we add 3. So, the nth term is $2n + 3$.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e749",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Why are the points on the graph of a sequence usually not joined by a continuous line?",
     "o": [
       "Because sequences are always infinite.",
@@ -11981,12 +11985,12 @@
     "a": 1,
     "e": "A sequence is defined only for positive integer term numbers (1, 2, 3, ...). There are no fractional term numbers, so connecting the points would imply values that do not exist in the sequence.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e750",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A graph shows a sequence where the points are (1, 1), (2, 4), (3, 9), (4, 16). What type of sequence does this graph represent?",
     "o": [
       "Linear sequence",
@@ -11997,12 +12001,12 @@
     "a": 1,
     "e": "The terms are 1, 4, 9, 16... which are square numbers ($n^{2}$). A sequence with an nth term rule involving $n^{2}$ is a quadratic sequence.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e751",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Which of the following statements about the graph of the sequence 10, 8, 6, 4, ... is FALSE?",
     "o": [
       "The points will form a straight line.",
@@ -12013,12 +12017,12 @@
     "a": 3,
     "e": "This is a linear sequence with a common difference of -2. Its graph will be discrete points on a straight line with a negative gradient, and the first point is (1, 10). However, sequence points should not be joined by a continuous line.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e752",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A graph of a sequence shows the 3rd term at $y = 12$ and the 4th term at $y = 16$. What is the common difference between these two consecutive terms?",
     "o": [
       "4",
@@ -12029,12 +12033,12 @@
     "a": 0,
     "e": "The 3rd term is 12 and the 4th term is 16. The common difference between consecutive terms is 16 - 12 = 4.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e753",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence has an nth term rule of 5n - 2. Which statement correctly describes the graph of this sequence?",
     "o": [
       "It is a continuous line starting from (1,3) with a gradient of 5.",
@@ -12045,12 +12049,12 @@
     "a": 1,
     "e": "The '5n' indicates a common difference of 5, corresponding to the gradient of the line on which the points lie. As it's a sequence, the graph consists of discrete points.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e754",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Consider a sequence where each term is found by adding the two previous terms, starting with 1, 1 (e.g., 1, 1, 2, 3, 5...). If you plot this sequence on a graph, what general shape would the points tend to form?",
     "o": [
       "A straight line going upwards.",
@@ -12061,12 +12065,12 @@
     "a": 2,
     "e": "The terms of this type of sequence (like the Fibonacci sequence) grow exponentially, meaning the terms increase faster and faster, resulting in a curve that gets steeper as it moves to the right.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e755",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The graph of a sequence has its first point at (1, 6). What is the first term of the sequence?",
     "o": [
       "1",
@@ -12077,12 +12081,12 @@
     "a": 1,
     "e": "In a sequence graph, the x-coordinate represents the term number (n) and the y-coordinate represents the term value. The first point (1, 6) means that when $n = 1$, the term value is 6. Therefore, the first term is 6.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e756",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Which description best fits the graph of the sequence with nth term 10 - 2n?",
     "o": [
       "Discrete points on a straight line, decreasing as n increases.",
@@ -12093,7 +12097,7 @@
     "a": 0,
     "e": "The nth term rule 10 - 2n is linear, so its graph will consist of points on a straight line. The coefficient of n is -2, indicating a negative common difference, meaning the terms decrease as n increases. As it's a sequence, the points are discrete.",
     "d": 1,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e757",
@@ -12674,7 +12678,7 @@
   {
     "id": "e793",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence is defined by the nth term $U_n = 2n + 3$. Which graph represents this sequence?",
     "o": [
       "A graph with points (1, 5), (2, 7), (3, 9), ...",
@@ -12685,12 +12689,12 @@
     "a": 0,
     "e": "For the sequence $U_n = 2n + 3$: when $n = 1$, $U_1 = 2(1)+3 = 5$; when $n = 2$, $U_2 = 2(2)+3 = 7$; when $n = 3$, $U_3 = 2(3)+3 = 9$. The graph should plot (n, $U_n$) points, so (1, 5), (2, 7), (3, 9), ...",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e794",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The graph shows the first four terms of an arithmetic sequence. What is the nth term of this sequence? [Imagine a graph with points (1, 7), (2, 10), (3, 13), (4, 16)]",
     "o": [
       "$U_n = 3n + 4$",
@@ -12701,12 +12705,12 @@
     "a": 0,
     "e": "From the points (1, 7), (2, 10), (3, 13), (4, 16), the first term is 7 and the common difference is 3. The nth term of an arithmetic sequence is $U_n = a + (n-1)d$. So, $U_n = 7 + (n-1)3 = 7 + 3n - 3 = 3n + 4$.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e795",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A quadratic sequence has terms represented by points on a parabolic curve. Which of the following describes the first differences of a quadratic sequence? [Imagine a graph with points that follow a parabolic shape, e.g., (1, 2), (2, 5), (3, 10), (4, 17)]",
     "o": [
       "They form a linear sequence.",
@@ -12717,12 +12721,12 @@
     "a": 0,
     "e": "For a quadratic sequence, the first differences form an arithmetic (linear) sequence, and the second differences are constant. For example, for $U_n = n^2 + 1$, terms are 2, 5, 10, 17... First differences are 3, 5, 7..., which is a linear sequence.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e796",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The graph of a sequence has points (1, 10), (2, 8), (3, 6), (4, 4). What type of sequence is this?",
     "o": [
       "Arithmetic sequence",
@@ -12733,12 +12737,12 @@
     "a": 0,
     "e": "The terms are 10, 8, 6, 4. The common difference between consecutive terms is -2 (8-10=-2, 6-8=-2, 4-6=-2). A constant difference indicates an arithmetic sequence.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e797",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Which statement is true for the graph of a linear sequence?",
     "o": [
       "The points lie on a straight line.",
@@ -12749,12 +12753,12 @@
     "a": 0,
     "e": "A linear sequence (arithmetic sequence) has a constant common difference, meaning the terms increase or decrease by a fixed amount each time. When plotted, these points will always fall on a straight line.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e798",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence is defined by $U_n = n^2 + 2$. When this sequence is plotted on a graph, what shape will the points generally follow?",
     "o": [
       "A parabola",
@@ -12765,12 +12769,12 @@
     "a": 0,
     "e": "The nth term $U_n = n^2 + 2$ is a quadratic expression in terms of n. Graphs of quadratic functions are parabolas. Since n takes integer values (1, 2, 3, ...), the points will lie on the curve of a parabola.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e799",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The graph of a geometric sequence has points (1, 2), (2, 6), (3, 18), (4, 54). What is the common ratio?",
     "o": [
       "3",
@@ -12781,12 +12785,12 @@
     "a": 0,
     "e": "The terms are 2, 6, 18, 54. The common ratio is found by dividing a term by its preceding term: $\\frac{6}{2}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{54}{18}$ = 3. The common ratio is 3.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e800",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence of square numbers is plotted on a graph. What would you observe about the spacing between consecutive points as n increases?",
     "o": [
       "The vertical distance between points increases.",
@@ -12797,12 +12801,12 @@
     "a": 0,
     "e": "Square numbers are 1, 4, 9, 16, 25, ... The differences between consecutive terms are 3, 5, 7, 9, ... These are the first differences. As n increases, the first differences increase, meaning the vertical distance between consecutive points on the graph increases.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e801",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "Which of these graphs could represent the sequence $U_n = 2^n$? [Assume graphs show discrete points for $n = 1$, 2, 3, ...]",
     "o": [
       "A graph with points (1, 2), (2, 4), (3, 8), (4, 16)",
@@ -12813,12 +12817,12 @@
     "a": 0,
     "e": "For $U_n = 2^n$: $U_1 = 2^1 = 2$; $U_2 = 2^2 = 4$; $U_3 = 2^3 = 8$; $U_4 = 2^4 = 16$. The points on the graph should be (1, 2), (2, 4), (3, 8), (4, 16).",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e802",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "The points on a graph represent the terms of an arithmetic sequence. If the graph passes through (1, 5) and (3, 11), what is the common difference of the sequence?",
     "o": [
       "3",
@@ -12829,12 +12833,12 @@
     "a": 0,
     "e": "The first term $U_1 = 5$ and the third term $U_3 = 11$. For an arithmetic sequence, $U_3 = U_1 + 2d$. So, $11 = 5 + 2d$. Subtracting 5 from both sides gives $6 = 2d$, so ${d = 3}$. The common difference is 3.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e803",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "What kind of graph would you expect for a sequence where the nth term is $U_n = \\frac{1}{n}$?",
     "o": [
       "A curve approaching the x-axis",
@@ -12845,12 +12849,12 @@
     "a": 0,
     "e": "For $U_n = \\frac{1}{n}$, the terms are 1, $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{4}$, ... As n increases, $U_n$ decreases but never reaches zero. This forms a curve that approaches the x-axis (n-axis) but never touches it. This is a reciprocal function.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e804",
     "cat": "edx-functions",
-    "topic": "Sequences",
+    "topic": "Graphs",
     "q": "A sequence has its terms plotted on a graph. The points are (1, 3), (2, 6), (3, 12), (4, 24). What is the nth term rule for this sequence?",
     "o": [
       "$U_n = 3 \\times 2^{n-1}$",
@@ -12861,7 +12865,7 @@
     "a": 0,
     "e": "The terms are 3, 6, 12, 24. This is a geometric sequence with first term $a = 3$ and common ratio $r = 6/3 = 2$. The formula for the nth term of a geometric sequence is $U_n = a r^{n-1}$. So, $U_n = 3 \\times 2^{n-1}$.",
     "d": 2,
-    "s": "3.1"
+    "s": "3.3"
   },
   {
     "id": "e805",
@@ -12941,7 +12945,8 @@
     "a": 0,
     "e": "The first derivative is $\\frac{dy}{dx} = 8x^3 - 6x + 1$. The second derivative is found by differentiating the first derivative: $\\frac{d^2y}{dx^2} = 24x^2 - 6$.",
     "d": 2,
-    "s": "3.4"
+    "s": "3.4",
+    "status": "hidden"
   },
   {
     "id": "e810",
@@ -12989,7 +12994,8 @@
     "a": 0,
     "e": "Using the power rule for integration $\\int ax^n dx = \\frac{ax^{n+1}}{n+1} + C$. $\\int 4x^3 dx = x^4$, $\\int -2x dx = -x^2$, and $\\int 5 dx = 5x$. Don't forget the constant of integration, C.",
     "d": 2,
-    "s": "3.4"
+    "s": "3.4",
+    "status": "hidden"
   },
   {
     "id": "e813",
@@ -13005,7 +13011,8 @@
     "a": 0,
     "e": "First, integrate the expression: $\\int (3x^2 + 1) dx = [x^3 + x]$. Then evaluate at the limits: $(2^3 + 2) - (1^3 + 1) = (8 + 2) - (1 + 1) = 10 - 2 = 8$.",
     "d": 2,
-    "s": "3.4"
+    "s": "3.4",
+    "status": "hidden"
   },
   {
     "id": "e814",
@@ -13053,7 +13060,8 @@
     "a": 0,
     "e": "The area is given by the definite integral $\\int_0^3 (2x + 1) dx$. Integrate: $[x^2 + x]_0^3$. Evaluate at the limits: $(3^2 + 3) - (0^2 + 0) = (9 + 3) - 0 = 12$.",
     "d": 2,
-    "s": "3.4"
+    "s": "3.4",
+    "status": "hidden"
   },
   {
     "id": "e817",
@@ -13469,7 +13477,8 @@
     "a": 1,
     "e": "The sum of the probability of an event happening and the probability of it not happening is 1. So, 1 - 0.4 = 0.6.",
     "d": 1,
-    "s": "6.3"
+    "s": "6.3",
+    "status": "hidden"
   },
   {
     "id": "e843",
@@ -14402,7 +14411,7 @@
   {
     "id": "e901",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A square has vertices at (1,1), (3,1), (3,3), and (1,3). If the square is translated by the vector $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$, what are the new coordinates of the vertex that was originally at (1,1)?",
     "o": [
       "(3,0)",
@@ -14413,12 +14422,12 @@
     "a": 0,
     "e": "To translate a point by a vector, you add the vector's components to the point's coordinates. So, (1,1) + $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$ = (1+2, 1-1) = (3,0).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e902",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "Which transformation moves a shape without changing its size or orientation?",
     "o": [
       "Rotation",
@@ -14429,12 +14438,12 @@
     "a": 3,
     "e": "A translation moves every point of a figure or a space by the same distance in a given direction. It does not change the size, shape, or orientation of the object.",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e903",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A triangle has vertices A(2,1), B(4,1), C(3,3). It is reflected in the x-axis. What are the new coordinates of vertex A'?",
     "o": [
       "(2,-1)",
@@ -14445,12 +14454,12 @@
     "a": 0,
     "e": "When reflecting a point (x,y) in the x-axis, the x-coordinate remains the same and the y-coordinate changes sign. So, A(2,1) becomes A'(2,-1).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e904",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A shape is rotated 90° clockwise about the origin (0,0). If an original point is (3,2), what are its new coordinates?",
     "o": [
       "(2,-3)",
@@ -14461,12 +14470,12 @@
     "a": 0,
     "e": "A 90° clockwise rotation about the origin transforms a point (x,y) to (y,-x). So, (3,2) becomes (2,-3).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e905",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "An enlargement with a scale factor of 2 and centre (0,0) is applied to a point (1,4). What are the new coordinates of the point?",
     "o": [
       "(2,8)",
@@ -14477,12 +14486,12 @@
     "a": 0,
     "e": "For an enlargement with centre (0,0) and scale factor k, a point (x,y) transforms to (kx, ky). So, for scale factor 2, (1,4) becomes (2*1, 2*4) = (2,8).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e906",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "Which of these transformations results in a mirror image of the original shape?",
     "o": [
       "Translation",
@@ -14493,12 +14502,12 @@
     "a": 2,
     "e": "A reflection flips a shape across a line (the mirror line) to create a mirror image.",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e907",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A point P has coordinates (5, -3). It is reflected in the y-axis. What are the coordinates of P'?",
     "o": [
       "(-5, -3)",
@@ -14509,12 +14518,12 @@
     "a": 0,
     "e": "When reflecting a point (x,y) in the y-axis, the x-coordinate changes sign and the y-coordinate remains the same. So, P(5,-3) becomes P'(-5,-3).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e908",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A triangle is rotated 180° about the origin (0,0). If an original vertex is (-1,4), what are its new coordinates?",
     "o": [
       "(1,-4)",
@@ -14525,12 +14534,12 @@
     "a": 0,
     "e": "A 180° rotation about the origin transforms a point (x,y) to (-x,-y). So, (-1,4) becomes (1,-4).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e909",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "Describe the transformation that moves a shape from position A to position B, where every point in A moves 3 units right and 2 units up.",
     "o": [
       "Translation by vector $\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$",
@@ -14541,12 +14550,12 @@
     "a": 0,
     "e": "Moving 3 units right corresponds to a change of +3 in the x-component, and 2 units up corresponds to a change of +2 in the y-component. This is a translation by the vector $\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$.",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e910",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "A point (2, -4) is reflected in the line $y = 0$. What are the coordinates of the image point?",
     "o": [
       "(2, 4)",
@@ -14557,12 +14566,12 @@
     "a": 0,
     "e": "The line y = 0 is the x-axis. Reflecting a point (x,y) in the x-axis transforms it to (x,-y). So, (2,-4) becomes (2, -(-4)) = (2,4).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e911",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "If a shape is enlarged with a scale factor of $\\frac{1}{2}$, what happens to its area?",
     "o": [
       "It is quartered",
@@ -14573,12 +14582,12 @@
     "a": 0,
     "e": "When a shape is enlarged by a scale factor of k, its area is enlarged by a scale factor of $k^2$. If the scale factor is $\\frac{1}{2}$, the area is multiplied by $(1/2)^2$ = $\\frac{1}{4}$ (quartered).",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e912",
     "cat": "edx-vectors",
-    "topic": "Vectors",
+    "topic": "Transformation Geometry",
     "q": "What type of transformation involves turning a shape around a fixed point?",
     "o": [
       "Translation",
@@ -14589,7 +14598,7 @@
     "a": 2,
     "e": "A rotation is a transformation that turns a figure about a fixed point called the center of rotation.",
     "d": 1,
-    "s": "5.1"
+    "s": "5.2"
   },
   {
     "id": "e913",
@@ -14973,6 +14982,7 @@
     "a": 1,
     "e": "For a shear transformation with the x-axis as the invariant line and shear factor k, a point (x, y) maps to (x + ky, y). Given $k = 2$: (0,0) -> (0 + 2*0, 0) = (0,0); (1,0) -> (1 + 2*0, 0) = (1,0); (1,1) -> (1 + 2*1, 1) = (3,1); (0,1) -> (0 + 2*1, 1) = (2,1).",
     "d": 2,
-    "s": "5.2"
+    "s": "5.2",
+    "status": "hidden"
   }
 ]
