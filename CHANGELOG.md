@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.7.3-dedup4] - 2026-03-06 — CIE 跨 section 重复词深度优化（27→13）
+
+### 优化
+- **14 个跨 section 重复词替换**为更精准的专属词汇，保留 13 个两侧都不可替代的核心术语：
+  - 1.3: Square root → nth root（1.18 Surds 更需要 square root）
+  - 1.5: Decimal place → Terminating decimal（1.7 Bounds 更需要 decimal place）
+  - 1.17: Multiplier → Growth factor（1.13 Percentages 定义 multiplier）
+  - 2.10: y-intercept → Minimum point（3.6 Parallel lines 更需要 y-intercept）
+  - 2.11: Reciprocal → Hyperbola（1.1 Types of number 定义 reciprocal）
+  - 3.3: Parallel → Equal gradients（4.1 Geometrical terms 定义 parallel）
+  - 4.4: Corresponding angles → Similar triangles + Enlargement → Proportional sides
+  - 6.3: Exact value → Trigonometric ratio（1.18 Surds 定义 exact value）
+  - 7.1: Clockwise → Anticlockwise + Mirror line → Axis of reflection
+  - 7.3: Length → Direction（5.1 Units 定义 length）
+  - 9.6: Median → Cumulative frequency curve + Upper quartile → Five-number summary
+- **保留 13 个核心重复词**：Arc / Asymptote / Constant / Factorise / Perpendicular bisector / Quartile / Rate of change / Region / Scale / Semicircle / Variable / x-intercept / y = mx + c
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `data/vocabulary-cie.json` | 14 处词汇替换（594 词总数不变） |
+
 ## [1.7.3-dedup3] - 2026-03-06 — 修复 4 个新增跨 section 重复词
 
 ### 修复
