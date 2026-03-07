@@ -432,6 +432,23 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   html += '<div class="sec-progress-fill" style="width:' + stats.pct + '%"></div>';
   html += '</div>';
   html += '<div class="sec-progress-label">' + stats.pct + '% \u00b7 ' + stats.mastered + '/' + stats.total + ' ' + t('mastered', '\u5df2\u638c\u63e1') + '</div>';
+
+  /* Section Health indicator */
+  if (typeof getSectionHealth === 'function') {
+    var sh = getSectionHealth(sec.id, board);
+    html += '<div class="sec-health">';
+    html += '<div class="sec-health-ring" style="--pct:' + sh.score + '">' + sh.score + '</div>';
+    html += '<div class="sec-health-info">';
+    html += '<div class="sec-health-label">' + t('Section Health', '\u77e5\u8bc6\u70b9\u5065\u5eb7\u5ea6') + '</div>';
+    html += '<div class="sec-health-rec">' + _spRecLabel(sh.rec) + '</div>';
+    html += '<div class="sec-health-breakdown">';
+    html += '\ud83d\udcdd ' + t('Vocab', '\u8bcd\u6c47') + ': ' + sh.vocabScore + '%';
+    if (sh.hasPP) html += ' \u00b7 \ud83d\udcc4 ' + t('Papers', '\u771f\u9898') + ': ' + sh.ppScore + '%';
+    if (sh.failRate > 0) html += ' \u00b7 \u274c ' + t('Fail rate', '\u9519\u8bef\u7387') + ': ' + sh.failRate + '%';
+    html += '</div>';
+    html += '</div></div>';
+  }
+
   html += '</div>';
 
   /* Syllabus requirements — board-aware labels (1st) */
@@ -664,6 +681,201 @@ var PP_CMD_LABELS = {
 };
 var PP_CMD_ORDER = ['calculate','find','draw','complete','write','simplify',
                     'show','solve','explain','describe','rearrange','sketch','other'];
+
+/* ═══ SMART PATH — Section Health + Recommendations (Phase 10D-A) ═══ */
+
+var _sectionHealthCache = {};
+
+function _invalidateSectionHealthCache() { _sectionHealthCache = {}; }
+
+var _SP_REC = {
+  start:        { icon: '\ud83d\ude80', en: 'Start learning',       zh: '\u5f00\u59cb\u5b66\u4e60' },
+  vocab:        { icon: '\ud83d\udcdd', en: 'Study vocabulary',      zh: '\u5b66\u4e60\u8bcd\u6c47' },
+  past_papers:  { icon: '\ud83d\udcc4', en: 'Practice past papers',  zh: '\u7ec3\u4e60\u771f\u9898' },
+  review_words: { icon: '\ud83d\udd04', en: 'Review weak words',     zh: '\u590d\u4e60\u8584\u5f31\u8bcd\u6c47' },
+  practice:     { icon: '\ud83d\udcaa', en: 'Keep practicing',        zh: '\u7ee7\u7eed\u7ec3\u4e60' },
+  great:        { icon: '\ud83c\udf89', en: 'Well done!',            zh: '\u505a\u5f97\u5f88\u597d!' }
+};
+
+function _spRecLabel(rec) {
+  var r = _SP_REC[rec] || _SP_REC.practice;
+  return r.icon + ' ' + t(r.en, r.zh);
+}
+
+/**
+ * getSectionHealth(sectionId, board) → unified health score for a syllabus section
+ * Returns: { score, vocabScore, ppScore, failRate, recency, rec, hasVocab, hasPP, sectionId, board, levelIdx }
+ */
+function getSectionHealth(sectionId, board) {
+  var cacheKey = board + ':' + sectionId;
+  if (_sectionHealthCache[cacheKey]) return _sectionHealthCache[cacheKey];
+
+  var li = getSectionLevelIdx(sectionId, board);
+  var hasVocab = li >= 0;
+  var hasPP = false;
+  var vocabScore = 0;
+  var ppScore = 0;
+  var failRate = 0;
+
+  /* Vocab score from getDeckStats */
+  if (hasVocab) {
+    var ds = getDeckStats(li);
+    vocabScore = ds.learningPct || 0;
+
+    /* Fail rate from word data */
+    var lv = LEVELS[li];
+    var pairs = getPairs(lv.vocabulary);
+    var wd = getWordData();
+    var totalOk = 0, totalFail = 0;
+    pairs.forEach(function(p) {
+      var key = wordKey(li, p.lid);
+      var d = wd[key];
+      if (d) { totalOk += d.ok || 0; totalFail += d.fail || 0; }
+    });
+    failRate = (totalOk + totalFail) > 0 ? Math.round(totalFail / (totalOk + totalFail) * 100) : 0;
+  }
+
+  /* PP score from ppGetSectionStats (only if data loaded) */
+  var ppBoard = board === 'edexcel' ? 'edx' : board;
+  if (typeof ppGetSectionStats === 'function' && typeof _ppData !== 'undefined' && _ppData[ppBoard]) {
+    var ps = ppGetSectionStats(ppBoard, sectionId);
+    if (ps.total > 0) {
+      hasPP = true;
+      ppScore = Math.round((ps.mastered * 100 + ps.partial * 50 + ps.needsWork * 10) / (ps.total * 100) * 100);
+    }
+  }
+
+  /* Recency decay based on last activity */
+  var recency = 0.7;
+  if (hasVocab) {
+    var wd2 = getWordData();
+    var lv2 = LEVELS[li];
+    var pairs2 = getPairs(lv2.vocabulary);
+    var lastActive = 0;
+    pairs2.forEach(function(p) {
+      var d = wd2[wordKey(li, p.lid)];
+      if (d && d.lr && d.lr > lastActive) lastActive = d.lr;
+    });
+    if (lastActive > 0) {
+      var daysAgo = (Date.now() - lastActive) / 86400000;
+      if (daysAgo < 1) recency = 1.0;
+      else if (daysAgo < 7) recency = 0.95;
+      else if (daysAgo < 30) recency = 0.85;
+      else recency = 0.7;
+    }
+  }
+
+  /* Composite score */
+  var score;
+  if (hasVocab && hasPP) {
+    score = Math.round((vocabScore * 0.4 + ppScore * 0.6) * recency);
+  } else if (hasVocab) {
+    score = Math.round(vocabScore * recency);
+  } else if (hasPP) {
+    score = Math.round(ppScore * recency);
+  } else {
+    score = 0;
+  }
+
+  /* Recommendation */
+  var rec;
+  if (vocabScore === 0 && ppScore === 0) rec = 'start';
+  else if (score >= 80) rec = 'great';
+  else if (failRate > 40) rec = 'review_words';
+  else if (vocabScore < 30) rec = 'vocab';
+  else if (hasPP && ppScore < 20) rec = 'past_papers';
+  else rec = 'practice';
+
+  var result = {
+    score: score, vocabScore: vocabScore, ppScore: ppScore, failRate: failRate,
+    recency: recency, rec: rec, hasVocab: hasVocab, hasPP: hasPP,
+    sectionId: sectionId, board: board, levelIdx: li
+  };
+  _sectionHealthCache[cacheKey] = result;
+  return result;
+}
+
+/**
+ * getWeakestSections(board, limit) → sorted array of section health objects (weakest first)
+ */
+function getWeakestSections(board, limit) {
+  var syllabus = BOARD_SYLLABUS[board];
+  if (!syllabus) return [];
+  var results = [];
+  for (var i = 0; i < syllabus.chapters.length; i++) {
+    var ch = syllabus.chapters[i];
+    for (var j = 0; j < ch.sections.length; j++) {
+      var sec = ch.sections[j];
+      var h = getSectionHealth(sec.id, board);
+      /* Only include sections that have vocab or PP data */
+      if (h.hasVocab || h.hasPP) results.push(h);
+    }
+  }
+  results.sort(function(a, b) { return a.score - b.score; });
+  return limit ? results.slice(0, limit) : results;
+}
+
+/**
+ * renderSmartPath() → HTML string for home page Smart Path recommendations
+ */
+function renderSmartPath() {
+  var boards = getVisibleBoards();
+  var all = [];
+  for (var i = 0; i < boards.length; i++) {
+    var bid = boards[i].id;
+    /* Skip 25m board — no syllabus sections */
+    if (bid === '25m') continue;
+    var syllabusBoard = bid === 'edx' ? 'edexcel' : bid;
+    if (!BOARD_SYLLABUS[syllabusBoard]) continue;
+    var weak = getWeakestSections(syllabusBoard, 10);
+    for (var j = 0; j < weak.length; j++) {
+      weak[j]._boardId = bid;
+      all.push(weak[j]);
+    }
+  }
+  /* Sort combined by score ascending, take top 5 */
+  all.sort(function(a, b) { return a.score - b.score; });
+  /* Filter out score >= 80 (already mastered) */
+  all = all.filter(function(h) { return h.score < 80; });
+  all = all.slice(0, 5);
+
+  if (all.length === 0) return '';
+
+  var collapsed = false;
+  try { collapsed = localStorage.getItem('sp_collapsed') === '1'; } catch(e) {}
+
+  var html = '';
+  html += '<div class="smart-path' + (collapsed ? ' collapsed' : '') + '" id="smart-path-box">';
+  html += '<div class="smart-path-header" onclick="toggleSmartPath()">';
+  html += '<span class="smart-path-icon">\ud83c\udfaf</span>';
+  html += '<span class="smart-path-title">' + t('Recommended Study', '\u63a8\u8350\u5b66\u4e60') + '</span>';
+  html += '<span class="smart-path-toggle">' + (collapsed ? '\u25bc' : '\u25b2') + '</span>';
+  html += '</div>';
+
+  if (!collapsed) {
+    html += '<div class="smart-path-list">';
+    for (var k = 0; k < all.length; k++) {
+      var h = all[k];
+      var info = getSectionInfo(h.sectionId, h.board);
+      var secTitle = info ? escapeHtml(info.section.title) : h.sectionId;
+      var boardLabel = h._boardId === 'edx' ? '4MA1' : '0580';
+      html += '<div class="smart-path-card" onclick="openSection(\'' + h.sectionId + '\',\'' + h.board + '\')">';
+      html += '<div class="sp-score-ring" style="--pct:' + h.score + '">' + h.score + '</div>';
+      html += '<div class="smart-path-info">';
+      html += '<div class="smart-path-section">' + h.sectionId + ' ' + secTitle + '</div>';
+      html += '<div class="smart-path-rec">' + _spRecLabel(h.rec);
+      html += ' · ' + t('Vocab', '\u8bcd\u6c47') + ' ' + h.vocabScore + '%';
+      if (h.hasPP) html += ' · ' + t('Papers', '\u771f\u9898') + ' ' + h.ppScore + '%';
+      html += '</div>';
+      html += '</div>';
+      html += '<span class="smart-path-board">' + boardLabel + '</span>';
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
 
 function _renderPPSectionModule(slot, secId, board) {
   var ppStats = ppGetSectionStats(board, secId);

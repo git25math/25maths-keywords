@@ -237,6 +237,11 @@ function renderHome() {
     html += '<div id="hw-banner"></div>';
   }
 
+  /* Smart Path recommendations */
+  if (typeof renderSmartPath === 'function') {
+    html += renderSmartPath();
+  }
+
   /* Search bar */
   html += '<div class="search-bar">';
   html += '<input class="search-input" id="home-search" type="text" placeholder="' + t('Search groups or words...', '\u641c\u7d22\u8bcd\u7ec4\u6216\u5355\u8bcd...') + '" value="' + appSearch.replace(/"/g, '&quot;') + '" oninput="onHomeSearch(this.value)">';
@@ -424,6 +429,12 @@ function renderHome() {
   /* Async fill homework banner */
   if (isLoggedIn() && !isGuest() && userClassId && typeof renderHomeworkBanner === 'function') {
     renderHomeworkBanner();
+  }
+
+  /* Preload PP data for Smart Path scoring (fire-and-forget, no re-render) */
+  if (typeof loadPastPaperData === 'function') {
+    if (_cieDataReady) loadPastPaperData('cie').catch(function() {});
+    if (_edxDataReady) loadPastPaperData('edx').catch(function() {});
   }
 }
 
@@ -751,5 +762,16 @@ function onHomeSearch(val) {
 
 function clearHomeSearch() {
   appSearch = '';
+  renderHome();
+}
+
+/* ═══ SMART PATH TOGGLE ═══ */
+function toggleSmartPath() {
+  var box = document.getElementById('smart-path-box');
+  if (!box) return;
+  var collapsed = box.classList.toggle('collapsed');
+  try { localStorage.setItem('sp_collapsed', collapsed ? '1' : '0'); } catch(e) {}
+  /* Re-render to update content */
+  if (typeof _invalidateSectionHealthCache === 'function') _invalidateSectionHealthCache();
   renderHome();
 }

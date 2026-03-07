@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.9.8] - 2026-03-07 — 智能学习路径：薄弱点检测 + 学习推荐
+
+### 新增
+- **知识点健康度评分** `getSectionHealth()`: 融合词汇 SRS 星级（40%权重）和真题掌握度（60%权重），计算 0-100 综合分数，附带活跃度衰减因子（recency 0.7-1.0）
+- **薄弱知识点排序** `getWeakestSections()`: 遍历全部考纲章节，按健康度升序排列，识别最需要加强的知识点
+- **首页推荐学习区域** `renderSmartPath()`: 合并 CIE + Edexcel 最弱 5 个知识点，每张卡片含环形分数 + 知识点名 + 推荐操作 + Vocab%/Papers% + 考试局标签
+- **6 种智能推荐**: start（未开始）/ vocab（词汇薄弱）/ past_papers（真题薄弱）/ review_words（错误率高）/ practice（继续练习）/ great（已掌握）
+- **折叠/展开持久化**: `toggleSmartPath()` + localStorage 保存折叠状态
+- **知识点详情页健康度**: 进度条下方显示环形分数 + 分项明细（Vocab% · Papers% · Fail rate%）
+- **PP 数据预加载**: 首页渲染时 fire-and-forget 加载真题数据，确保下次访问包含真题维度
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | +`_sectionHealthCache` +`getSectionHealth()` +`getWeakestSections()` +`renderSmartPath()` +`_spRecLabel()` + 详情页健康度区域 |
+| `js/mastery.js` | `renderHome()` +Smart Path 插入 +`toggleSmartPath()` + PP 预加载 |
+| `css/style.css` | +`.smart-path-*` +`.sp-score-ring` +`.sec-health-*` |
+| `js/config.js` | 版本号 v1.9.7 → v1.9.8 |
+
 ## [1.9.7] - 2026-03-07 — 词汇联动：真题关联词汇
 
 ### 新增
