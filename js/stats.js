@@ -96,6 +96,9 @@ function renderStats() {
   html += '<div class="stat-card stat-card-streak"><div class="stat-num">' + stats.streak + '</div><div class="stat-label">' + t('Streak', '连续') + '</div></div>';
   html += '</div>';
 
+  /* Mode breakdown */
+  html += renderModeBreakdown();
+
   /* Heatmap */
   html += renderCalendarHeatmap(heatData);
 
@@ -103,6 +106,53 @@ function renderStats() {
   html += renderTrendChart(trendData);
 
   panel.innerHTML = html;
+}
+
+/* ═══ MODE BREAKDOWN ═══ */
+function renderModeBreakdown() {
+  var s = loadS();
+  var md = s.modeDone || {};
+  var modes = [
+    { key: 'study',   icon: '\ud83d\udcda', en: 'Study',   zh: '\u5b66\u4e60' },
+    { key: 'quiz',    icon: '\u2753',       en: 'Quiz',    zh: '\u6d4b\u9a8c' },
+    { key: 'spell',   icon: '\u270d\ufe0f', en: 'Spell',   zh: '\u62fc\u5199' },
+    { key: 'match',   icon: '\ud83c\udfaf', en: 'Match',   zh: '\u914d\u5bf9' },
+    { key: 'battle',  icon: '\u26a1',       en: 'Battle',  zh: '\u6311\u6218' },
+    { key: 'review',  icon: '\ud83d\udd04', en: 'Review',  zh: '\u590d\u4e60' },
+    { key: 'practice',icon: '\u270f\ufe0f', en: 'Practice',zh: '\u7ec3\u4e60' }
+  ];
+
+  var counts = {};
+  var total = 0;
+  modes.forEach(function(m) { counts[m.key] = 0; });
+  for (var k in md) {
+    if (!md[k]) continue;
+    var parts = k.split(':');
+    if (parts.length === 2 && counts[parts[1]] !== undefined) {
+      counts[parts[1]]++;
+      total++;
+    }
+  }
+
+  if (total === 0) return '';
+
+  var maxCount = 1;
+  modes.forEach(function(m) { if (counts[m.key] > maxCount) maxCount = counts[m.key]; });
+
+  var html = '<div class="stats-section">';
+  html += '<div class="stats-section-title">' + t('Mode Completion', '\u6a21\u5f0f\u5b8c\u6210\u5ea6') + '</div>';
+  html += '<div class="mode-breakdown">';
+  modes.forEach(function(m) {
+    var c = counts[m.key];
+    var pct = Math.round(c / maxCount * 100);
+    html += '<div class="mode-break-row">';
+    html += '<div class="mode-break-label">' + m.icon + ' ' + t(m.en, m.zh) + '</div>';
+    html += '<div class="mode-break-bar"><div class="mode-break-fill" style="width:' + pct + '%"></div></div>';
+    html += '<div class="mode-break-count">' + c + '</div>';
+    html += '</div>';
+  });
+  html += '</div></div>';
+  return html;
 }
 
 /* ═══ CALENDAR HEATMAP ═══ */

@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.12.2] - 2026-03-07 — 统计分模式细分 + 打印样式
+
+### 新增
+- **模式完成度统计** `renderModeBreakdown()`: 在统计面板新增 7 种学习模式（Study/Quiz/Spell/Match/Battle/Review/Practice）的完成卡组数横向条形图，基于 `modeDone` 数据
+- **打印友好样式** `@media print`: 隐藏侧栏/导航/按钮/遮罩等非内容元素，保留统计图表色彩打印
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/stats.js` | +`renderModeBreakdown()` + renderStats 调用 |
+| `css/style.css` | +`.mode-breakdown` 样式 + `@media print` 打印规则 |
+| `js/config.js` | 版本号 v1.12.1 -> v1.12.2 |
+
 ## [1.12.1] - 2026-03-07 — 作业模板 + 键盘快捷键
 
 ### 新增
