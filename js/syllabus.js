@@ -791,10 +791,17 @@ function getSectionHealth(sectionId, board) {
   else if (hasPP && ppScore < 20) rec = 'past_papers';
   else rec = 'practice';
 
+  /* Weakest question group (for targeted practice recommendation) */
+  var weakGroup = null;
+  if (hasPP && typeof ppGetWeakGroups === 'function') {
+    var wgs = ppGetWeakGroups(ppBoard, sectionId);
+    if (wgs.length > 0) weakGroup = wgs[0].group;
+  }
+
   var result = {
     score: score, vocabScore: vocabScore, ppScore: ppScore, failRate: failRate,
     recency: recency, rec: rec, hasVocab: hasVocab, hasPP: hasPP,
-    sectionId: sectionId, board: board, levelIdx: li
+    sectionId: sectionId, board: board, levelIdx: li, weakGroup: weakGroup
   };
   _sectionHealthCache[cacheKey] = result;
   return result;
@@ -892,6 +899,10 @@ function renderSmartPath() {
     html += '<div class="smart-path-rec">' + _spRecLabel(h.rec);
     html += ' \u00b7 ' + t('Vocab', '\u8bcd\u6c47') + ' ' + h.vocabScore + '%';
     if (h.hasPP) html += ' \u00b7 ' + t('Papers', '\u771f\u9898') + ' ' + h.ppScore + '%';
+    if (h.weakGroup && PP_GROUP_LABELS[h.weakGroup]) {
+      var _wgl = PP_GROUP_LABELS[h.weakGroup];
+      html += ' \u00b7 <span class="smart-path-weak">' + t('Focus', '\u91cd\u70b9') + ': ' + t(_wgl.en, _wgl.zh) + '</span>';
+    }
     html += '</div>';
     html += '</div>';
     html += '<span class="smart-path-board">' + boardLabel + '</span>';
@@ -992,6 +1003,22 @@ function _renderPPSectionModule(slot, secId, board) {
       var cml = PP_CMD_LABELS[cmk];
       h += '<span class="pp-error-chip" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'practice\',null,\'' + cmk + '\')">';
       h += t(cml.en, cml.zh) + ' <b>' + cmc + '</b></span>';
+    }
+    h += '</div></div>';
+  }
+
+  /* Focus areas: targeted practice for weak groups */
+  var _secWeak = ppGetWeakGroups(board, secId);
+  if (_secWeak.length > 0) {
+    h += '<div class="pp-focus-areas" style="margin-top:6px">';
+    h += '<div class="pp-focus-title">' + t('Focus Areas', '\u91cd\u70b9\u7ec3\u4e60') + '</div>';
+    h += '<div class="pp-focus-chips">';
+    for (var wi = 0; wi < Math.min(_secWeak.length, 3); wi++) {
+      var wg = _secWeak[wi];
+      var wgl = PP_GROUP_LABELS[wg.group];
+      var wglabel = wgl ? t(wgl.en, wgl.zh) : wg.group;
+      h += '<span class="pp-focus-chip" onclick="event.stopPropagation();startPastPaper(\'' + secId + '\',\'' + board + '\',\'practice\',\'' + wg.group + '\')">';
+      h += wglabel + ' <span class="pp-focus-pct">' + wg.pct + '%</span></span>';
     }
     h += '</div></div>';
   }

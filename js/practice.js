@@ -1568,6 +1568,33 @@ function ppClearCmdFilter() {
   startPastPaper(_ppSession.sectionId, _ppSession.board, _ppSession.mode, _ppSession.groupFilter || null, null);
 }
 
+/* ═══ WEAK GROUP ANALYSIS ═══ */
+
+function ppGetWeakGroups(board, sectionId) {
+  var allQ = getPPBySection(board, sectionId);
+  var mastery = _ppGetMastery();
+  var groups = {};
+  for (var i = 0; i < allQ.length; i++) {
+    var g = allQ[i].g || 'mixed';
+    if (!groups[g]) groups[g] = { total: 0, mastered: 0, attempted: 0 };
+    groups[g].total++;
+    var qm = mastery[allQ[i].id];
+    if (qm) {
+      groups[g].attempted++;
+      if (qm.m === 'mastered') groups[g].mastered++;
+    }
+  }
+  var weak = [];
+  for (var gk in groups) {
+    var gr = groups[gk];
+    if (gr.attempted === 0) continue; /* skip untouched groups */
+    var pct = Math.round(gr.mastered / gr.total * 100);
+    if (pct < 60) weak.push({ group: gk, pct: pct, total: gr.total, mastered: gr.mastered });
+  }
+  weak.sort(function(a, b) { return a.pct - b.pct; });
+  return weak;
+}
+
 /* ═══ LEARNING LOOP HELPERS ═══ */
 
 function _getSectionLevelIdx(sectionId, board) {
@@ -2248,6 +2275,24 @@ function ppShowResults(exam, conceptErrors) {
       html += '<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + c + '</span>';
       html += '<span style="font-weight:600;font-family:var(--font-mono)">' + ce.scored + '/' + ce.total + '</span>';
       html += '</div>';
+    }
+  }
+
+  /* Focus areas: targeted practice for weak question groups */
+  if (_ppSession && _ppSession.sectionId && !_ppSession.paperKey && pct < 80) {
+    var _wkGroups = ppGetWeakGroups(_ppSession.board, _ppSession.sectionId);
+    if (_wkGroups.length > 0) {
+      html += '<div class="pp-focus-areas">';
+      html += '<div class="pp-focus-title">' + t('Focus Areas', '\u91cd\u70b9\u7ec3\u4e60') + '</div>';
+      html += '<div class="pp-focus-chips">';
+      for (var fi = 0; fi < Math.min(_wkGroups.length, 3); fi++) {
+        var wg = _wkGroups[fi];
+        var gl = PP_GROUP_LABELS[wg.group];
+        var glabel = gl ? t(gl.en, gl.zh) : wg.group;
+        html += '<span class="pp-focus-chip" onclick="startPastPaper(\'' + _ppSession.sectionId + '\',\'' + _ppSession.board + '\',\'practice\',\'' + wg.group + '\')">';
+        html += glabel + ' <span class="pp-focus-pct">' + wg.pct + '%</span></span>';
+      }
+      html += '</div></div>';
     }
   }
 

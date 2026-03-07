@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.10.0] - 2026-03-07 — 练习推荐引擎：薄弱题型检测 + 精准练习
+
+### 新增
+- **薄弱题型分析** `ppGetWeakGroups()`: 按真题 question group 统计掌握率，返回 mastery<60% 的弱项（按弱到强排序）
+- **Section 详情页 Focus Areas**: PP 模块内显示最弱 3 个题型芯片，一键进入针对性练习（红色高亮 + 掌握率%）
+- **PP 结果页 Focus Areas**: 得分<80% 时显示薄弱题型，支持点击即刻重练特定题型
+- **Smart Path 弱项标注**: 首页推荐卡片新增 "Focus: [题型名]" 标签，显示该知识点最弱的题型
+- **三层关联显性化**: `getSectionHealth()` 返回 `weakGroup` 字段，统一 Vocab-Practice-Papers 跨层分析
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | +`ppGetWeakGroups()` + PP 结果页 Focus Areas chips |
+| `js/syllabus.js` | +`_renderPPSectionModule()` Focus Areas 行 + `getSectionHealth()` weakGroup + Smart Path weak 标签 |
+| `css/style.css` | +`.pp-focus-*` 芯片样式 + `.smart-path-weak` + 暗色模式 |
+| `js/config.js` | 版本号 v1.9.9 → v1.10.0 |
+
 ## [1.9.9] - 2026-03-07 — 完整学习闭环：Vocab → Practice → Papers → Review
 
 ### 新增
