@@ -112,18 +112,27 @@ function handleNotifClick(notifId, linkType, linkId) {
 
 /* ═══ TEACHER: CREATE HOMEWORK ═══ */
 var _hwMode = 'deck';
+var _hwPracticeLoaded = false;
 
 function hwSwitchTab(mode) {
   _hwMode = mode;
   var deckArea = E('hw-deck-area');
   var customArea = E('hw-custom-area');
+  var practiceArea = E('hw-practice-area');
   var tabDeck = E('hw-tab-deck');
   var tabCustom = E('hw-tab-custom');
+  var tabPractice = E('hw-tab-practice');
   if (!deckArea || !customArea) return;
   deckArea.style.display = mode === 'deck' ? 'block' : 'none';
   customArea.style.display = mode === 'custom' ? 'block' : 'none';
+  if (practiceArea) practiceArea.style.display = mode === 'practice' ? 'block' : 'none';
   tabDeck.className = 'btn btn-sm ' + (mode === 'deck' ? 'btn-primary' : 'btn-ghost');
   tabCustom.className = 'btn btn-sm ' + (mode === 'custom' ? 'btn-primary' : 'btn-ghost');
+  if (tabPractice) tabPractice.className = 'btn btn-sm ' + (mode === 'practice' ? 'btn-primary' : 'btn-ghost');
+  if (mode === 'practice' && !_hwPracticeLoaded) {
+    _hwPracticeLoaded = true;
+    _loadHwPracticeData();
+  }
 }
 
 function hwAddRow() {
@@ -245,6 +254,7 @@ function showCreateHwModal(classId) {
   var deadlineDefault = nextWeek.toISOString().slice(0, 16);
 
   _hwMode = 'deck';
+  _hwPracticeLoaded = false;
 
   var html = '<div class="section-title">' + t('Create Homework', '布置作业') + '</div>';
 
@@ -266,9 +276,10 @@ function showCreateHwModal(classId) {
   html += '<input class="auth-input" id="hw-title" placeholder="' + t('e.g. Week 3 Vocab Test', '如 第3周词汇测试') + '">';
 
   /* Tab buttons */
-  html += '<div style="display:flex;gap:6px;margin:12px 0 8px">';
+  html += '<div style="display:flex;gap:6px;margin:12px 0 8px;flex-wrap:wrap">';
   html += '<button id="hw-tab-deck" class="btn btn-sm btn-primary" onclick="hwSwitchTab(\'deck\')">' + t('Select Groups', '选择词组') + '</button>';
   html += '<button id="hw-tab-custom" class="btn btn-sm btn-ghost" onclick="hwSwitchTab(\'custom\')">' + t('Custom Vocab', '自定义词汇') + '</button>';
+  html += '<button id="hw-tab-practice" class="btn btn-sm btn-ghost" onclick="hwSwitchTab(\'practice\')">' + t('Practice MCQ', '练习题') + '</button>';
   html += '</div>';
 
   /* Deck selection area (default visible) */
@@ -287,6 +298,30 @@ function showCreateHwModal(classId) {
   html += '<div id="hw-custom-rows" style="max-height:240px;overflow-y:auto"></div>';
   html += '<button class="btn btn-ghost btn-sm" onclick="hwAddRow()">+ ' + t('Add row', '添加行') + '</button>';
   html += '</div>';
+
+  /* Practice MCQ area (hidden) */
+  html += '<div id="hw-practice-area" style="display:none">';
+  html += '<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center">';
+  html += '<label class="settings-label" style="margin:0;white-space:nowrap">' + t('Board', '考试局') + '</label>';
+  html += '<select id="hw-pq-board" class="auth-input" style="margin:0;flex:1" onchange="_renderHwSections(this.value)">';
+  html += '<option value="cie">CIE 0580</option>';
+  html += '<option value="edexcel">Edexcel 4MA1</option>';
+  html += '</select>';
+  html += '</div>';
+  html += '<div style="display:flex;gap:8px;margin-bottom:8px">';
+  html += '<div style="flex:1"><label class="settings-label" style="margin:0">' + t('Questions', '题数') + '</label>';
+  html += '<select id="hw-pq-count" class="auth-input" style="margin:4px 0 0">';
+  html += '<option value="5">5</option><option value="10" selected>10</option><option value="15">15</option><option value="20">20</option>';
+  html += '</select></div>';
+  html += '<div style="flex:1"><label class="settings-label" style="margin:0">' + t('Difficulty', '难度') + '</label>';
+  html += '<select id="hw-pq-diff" class="auth-input" style="margin:4px 0 0">';
+  html += '<option value="">' + t('All', '全部') + '</option><option value="1">Core</option><option value="2">Extended</option>';
+  html += '</select></div>';
+  html += '</div>';
+  html += '<div id="hw-pq-sections" style="max-height:200px;overflow-y:auto;border:1px solid var(--c-border);border-radius:8px;padding:8px 12px">';
+  html += '<div style="color:var(--c-text2);font-size:13px">' + t('Loading...', '加载中...') + '</div>';
+  html += '</div>';
+  html += '</div>';
   html += '<label class="settings-label" style="margin-top:12px">' + t('Deadline', '截止日期') + '</label>';
   html += '<input class="auth-input" id="hw-deadline" type="datetime-local" value="' + deadlineDefault + '">';
   html += '<div id="hw-msg" class="settings-msg" style="margin-top:8px"></div>';
@@ -301,6 +336,80 @@ function showCreateHwModal(classId) {
   for (var r = 0; r < 3; r++) hwAddRow();
 }
 
+/* ═══ PRACTICE HOMEWORK DETECTION ═══ */
+function _isPracticeHw(hw) {
+  return hw.custom_vocabulary && hw.custom_vocabulary._type === 'practice';
+}
+
+/* ═══ PRACTICE HOMEWORK HELPERS ═══ */
+
+async function _loadHwPracticeData() {
+  var board = E('hw-pq-board') ? E('hw-pq-board').value : 'cie';
+  var dataBoard = board === 'edexcel' ? 'edx' : board;
+  try {
+    await loadPracticeData(dataBoard);
+    var syllabusBoard = board;
+    if (board === 'cie' && !BOARD_SYLLABUS.cie) await loadCIESyllabus();
+    if (board === 'edexcel' && !BOARD_SYLLABUS.edexcel) await loadEdexcelSyllabus();
+  } catch (e) { /* ignore */ }
+  _renderHwSections(board);
+}
+
+function _renderHwSections(board) {
+  var ct = E('hw-pq-sections');
+  if (!ct) return;
+  var syllabus = BOARD_SYLLABUS[board];
+  var dataBoard = board === 'edexcel' ? 'edx' : board;
+  var questions = _pqData[dataBoard] || [];
+
+  if (!syllabus || !syllabus.chapters) {
+    /* Try loading */
+    ct.innerHTML = '<div style="color:var(--c-text2);font-size:13px">' + t('Loading...', '加载中...') + '</div>';
+    var loadFn = board === 'cie' ? loadCIESyllabus : loadEdexcelSyllabus;
+    loadFn().then(function() {
+      loadPracticeData(dataBoard).then(function() { _renderHwSections(board); });
+    });
+    return;
+  }
+
+  /* Count questions per section */
+  var secCounts = {};
+  questions.forEach(function(q) { if (q.s) secCounts[q.s] = (secCounts[q.s] || 0) + 1; });
+
+  var html = '';
+  syllabus.chapters.forEach(function(ch) {
+    var chSecs = ch.sections.filter(function(sec) { return (secCounts[sec.id] || 0) > 0; });
+    if (chSecs.length === 0) return;
+    var chId = 'hw-ch-' + board + '-' + ch.num;
+    html += '<div style="margin-bottom:6px">';
+    html += '<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--c-text2);cursor:pointer;padding:2px 0">';
+    html += '<input type="checkbox" class="hw-ch-cb" data-ch="' + ch.num + '" data-board="' + board + '" onchange="_hwToggleChapter(this)">';
+    html += ch.num + '. ' + ch.title;
+    if (ch.title_zh) html += ' ' + ch.title_zh;
+    html += '</label>';
+    chSecs.forEach(function(sec) {
+      html += '<label style="display:flex;align-items:center;gap:6px;padding:2px 0 2px 20px;font-size:13px;cursor:pointer">';
+      html += '<input type="checkbox" class="hw-sec-cb" value="' + sec.id + '" data-ch="' + ch.num + '" data-board="' + board + '">';
+      html += sec.id + ' ' + sec.title;
+      html += ' <span style="color:var(--c-text2);font-size:11px">(' + (secCounts[sec.id] || 0) + ')</span>';
+      html += '</label>';
+    });
+    html += '</div>';
+  });
+
+  if (!html) html = '<div style="color:var(--c-text2);font-size:13px">' + t('No questions available', '暂无题目') + '</div>';
+  ct.innerHTML = html;
+}
+
+function _hwToggleChapter(el) {
+  var chNum = el.getAttribute('data-ch');
+  var board = el.getAttribute('data-board');
+  var checked = el.checked;
+  document.querySelectorAll('.hw-sec-cb[data-ch="' + chNum + '"][data-board="' + board + '"]').forEach(function(cb) {
+    cb.checked = checked;
+  });
+}
+
 async function doCreateHw(classId) {
   var title = E('hw-title').value.trim();
   var msg = E('hw-msg');
@@ -312,7 +421,16 @@ async function doCreateHw(classId) {
   var slugs = [];
   var customVocab = null;
 
-  if (_hwMode === 'custom') {
+  if (_hwMode === 'practice') {
+    var pBoard = E('hw-pq-board') ? E('hw-pq-board').value : 'cie';
+    var pCount = parseInt(E('hw-pq-count') ? E('hw-pq-count').value : '10') || 10;
+    var pDiff = E('hw-pq-diff') ? E('hw-pq-diff').value : '';
+    var sectionIds = [];
+    document.querySelectorAll('.hw-sec-cb:checked').forEach(function(cb) { sectionIds.push(cb.value); });
+    if (sectionIds.length === 0) { msg.textContent = t('Select at least 1 section', '至少选择1个知识点'); msg.className = 'settings-msg error'; return; }
+    slugs = sectionIds;
+    customVocab = { _type: 'practice', board: pBoard, count: pCount, difficulty: pDiff ? parseInt(pDiff) : null };
+  } else if (_hwMode === 'custom') {
     /* Collect custom rows */
     var vocab = [];
     var vid = 1;
@@ -492,39 +610,57 @@ async function renderClassHwList(classId) {
       var hw = hws[i];
       var deadline = new Date(hw.deadline).toLocaleDateString();
       var isOverdue = new Date(hw.deadline) < new Date();
-      var isCustom = hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
+      var isPractice = _isPracticeHw(hw);
+      var isCustom = !isPractice && hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
 
       var results = resultsByHw[hw.id] || [];
       var completed = results.filter(function(r) { return r.completed_at; }).length;
 
-      /* Collect words for this assignment */
-      var hwWords = [];
-      if (isCustom) {
-        var cvP = getPairs(hw.custom_vocabulary);
-        cvP.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
-      } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
-        hw.deck_slugs.forEach(function(slug) {
-          for (var li = 0; li < LEVELS.length; li++) {
-            if (LEVELS[li].slug === slug) {
-              var dp = getPairs(LEVELS[li].vocabulary);
-              dp.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
-              break;
+      var prefix = isPractice ? '\u270f\ufe0f ' : (isCustom ? '\ud83c\udfaf ' : '');
+      var countLabel = '';
+
+      if (isPractice) {
+        var cfg = hw.custom_vocabulary;
+        countLabel = cfg.count + ' ' + t('questions', '题');
+      } else {
+        /* Collect words for this assignment */
+        var hwWords = [];
+        if (isCustom) {
+          var cvP = getPairs(hw.custom_vocabulary);
+          cvP.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+        } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
+          hw.deck_slugs.forEach(function(slug) {
+            for (var li = 0; li < LEVELS.length; li++) {
+              if (LEVELS[li].slug === slug) {
+                var dp = getPairs(LEVELS[li].vocabulary);
+                dp.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+                break;
+              }
             }
-          }
-        });
+          });
+        }
+        countLabel = hwWords.length + ' ' + t('words', '\u8bcd');
       }
 
       html += '<div class="hw-list-item" style="flex-wrap:wrap">';
       html += '<div style="display:flex;align-items:center;gap:8px;width:100%">';
-      html += '<span class="hw-list-title" style="flex:1">' + (isCustom ? '\ud83c\udfaf ' : '') + escapeHtml(hw.title) + ' <span style="font-size:11px;color:var(--c-text2)">(' + hwWords.length + ' ' + t('words', '词') + ')</span></span>';
+      html += '<span class="hw-list-title" style="flex:1">' + prefix + escapeHtml(hw.title) + ' <span style="font-size:11px;color:var(--c-text2)">(' + countLabel + ')</span></span>';
       html += '<span class="hw-list-deadline" style="' + (isOverdue ? 'color:var(--c-danger)' : '') + '">' + deadline + '</span>';
       html += '<span class="hw-list-rate">' + completed + ' ' + t('done', '完成') + '</span>';
       html += '<button class="btn btn-ghost btn-sm" onclick="renderHwProgress(\'' + hw.id + '\', \'' + classId + '\')">' + t('Detail', '详情') + '</button>';
       html += '<button class="btn btn-ghost btn-sm" style="color:var(--c-danger)" onclick="deleteHw(\'' + hw.id + '\', \'' + classId + '\')">' + t('Del', '删') + '</button>';
       html += '</div>';
 
-      /* Expandable word list */
-      if (hwWords.length > 0) {
+      if (isPractice) {
+        /* Show config summary for practice HW */
+        var cfg2 = hw.custom_vocabulary;
+        var boardLabel = cfg2.board === 'edexcel' ? 'Edexcel 4MA1' : 'CIE 0580';
+        var diffLabel = cfg2.difficulty === 1 ? 'Core' : cfg2.difficulty === 2 ? 'Extended' : t('All', '全部');
+        html += '<div style="width:100%;margin-top:4px;font-size:11px;color:var(--c-text2)">';
+        html += boardLabel + ' | ' + t('Sections', '知识点') + ': ' + (hw.deck_slugs || []).join(', ') + ' | ' + t('Difficulty', '难度') + ': ' + diffLabel;
+        html += '</div>';
+      } else if (typeof hwWords !== 'undefined' && hwWords.length > 0) {
+        /* Expandable word list */
         var pid = 'thw-' + hw.id.slice(0, 8);
         html += '<div style="width:100%;margin-top:6px">';
         html += '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:2px 8px" onclick="var el=document.getElementById(\'' + pid + '\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">' + t('View words', '查看词汇') + ' \u25BC</button>';
@@ -590,21 +726,36 @@ async function renderHwProgress(hwId, classId) {
     html += summaryCard(t('Deadline', '截止'), new Date(hw.deadline).toLocaleDateString(), new Date(hw.deadline) < new Date() ? 'var(--c-danger)' : 'var(--c-text2)');
     html += '</div>';
 
-    /* Vocabulary preview — show all words in this assignment */
+    /* Content preview */
+    if (_isPracticeHw(hw)) {
+      var cfg = hw.custom_vocabulary;
+      var boardLabel = cfg.board === 'edexcel' ? 'Edexcel 4MA1' : 'CIE 0580';
+      var diffLabel = cfg.difficulty === 1 ? 'Core' : cfg.difficulty === 2 ? 'Extended' : t('All', '\u5168\u90e8');
+      html += '<div style="margin-bottom:16px;padding:10px 14px;border:1px solid var(--c-border);border-radius:8px;background:var(--c-surface);font-size:13px">';
+      html += '<div class="hw-section-title" style="margin-bottom:6px">\u270f\ufe0f ' + t('Practice MCQ', '\u7ec3\u4e60\u9898') + '</div>';
+      html += '<div>' + t('Board', '\u8003\u8bd5\u5c40') + ': <strong>' + boardLabel + '</strong></div>';
+      html += '<div>' + t('Questions', '\u9898\u6570') + ': <strong>' + cfg.count + '</strong></div>';
+      html += '<div>' + t('Difficulty', '\u96be\u5ea6') + ': <strong>' + diffLabel + '</strong></div>';
+      html += '<div>' + t('Sections', '\u77e5\u8bc6\u70b9') + ': <strong>' + (hw.deck_slugs || []).join(', ') + '</strong></div>';
+      html += '</div>';
+    }
+
     var hwWords = [];
-    if (hw.custom_vocabulary && hw.custom_vocabulary.length > 0) {
-      var cvPairs = getPairs(hw.custom_vocabulary);
-      cvPairs.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
-    } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
-      hw.deck_slugs.forEach(function(slug) {
-        for (var li = 0; li < LEVELS.length; li++) {
-          if (LEVELS[li].slug === slug) {
-            var dp = getPairs(LEVELS[li].vocabulary);
-            dp.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
-            break;
+    if (!_isPracticeHw(hw)) {
+      if (hw.custom_vocabulary && hw.custom_vocabulary.length > 0) {
+        var cvPairs = getPairs(hw.custom_vocabulary);
+        cvPairs.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+      } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
+        hw.deck_slugs.forEach(function(slug) {
+          for (var li = 0; li < LEVELS.length; li++) {
+            if (LEVELS[li].slug === slug) {
+              var dp = getPairs(LEVELS[li].vocabulary);
+              dp.forEach(function(p) { hwWords.push({ word: p.word, def: p.def }); });
+              break;
+            }
           }
-        }
-      });
+        });
+      }
     }
     if (hwWords.length > 0) {
       html += '<div style="margin-bottom:16px">';
@@ -802,8 +953,9 @@ async function renderHomeworkBanner() {
     var dateStr = deadline.toLocaleDateString();
     var hasResult = hw._result && hw._result.attempts > 0;
 
-    html += '<div class="hw-banner-item" onclick="event.stopPropagation();startHwTest(\'' + hw.id + '\')">';
-    html += '<span>' + escapeHtml(hw.title) + '</span>';
+    var bannerAction = _isPracticeHw(hw) ? 'startHwPractice(\'' + hw.id + '\')' : 'startHwTest(\'' + hw.id + '\')';
+    html += '<div class="hw-banner-item" onclick="event.stopPropagation();' + bannerAction + '">';
+    html += '<span>' + (_isPracticeHw(hw) ? '\u270f\ufe0f ' : '') + escapeHtml(hw.title) + '</span>';
     if (hasResult) {
       html += '<span class="hw-banner-status pending">' + hw._result.correct_count + '/' + hw._result.total_count + '</span>';
     }
@@ -851,47 +1003,57 @@ async function showStudentHwPage() {
     var isOverdue = deadline < new Date();
     var hasResult = hw._result && hw._result.attempts > 0;
     var pct = (hasResult && hw._result.total_count > 0) ? Math.round(hw._result.correct_count / hw._result.total_count * 100) : 0;
-    var isCustom = hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
+    var isPractice = _isPracticeHw(hw);
+    var isCustom = !isPractice && hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
 
-    /* Collect words for preview */
+    var prefix = isPractice ? '\u270f\ufe0f ' : (isCustom ? '\ud83c\udfaf ' : '');
+    var countLabel = '';
     var pWords = [];
-    if (isCustom) {
-      var cp = getPairs(hw.custom_vocabulary);
-      cp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
-    } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
-      hw.deck_slugs.forEach(function(slug) {
-        for (var li = 0; li < LEVELS.length; li++) {
-          if (LEVELS[li].slug === slug) {
-            var dp = getPairs(LEVELS[li].vocabulary);
-            dp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
-            break;
+
+    if (isPractice) {
+      countLabel = hw.custom_vocabulary.count + ' ' + t('questions', '\u9898');
+    } else {
+      /* Collect words for preview */
+      if (isCustom) {
+        var cp = getPairs(hw.custom_vocabulary);
+        cp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
+      } else if (hw.deck_slugs && hw.deck_slugs.length > 0) {
+        hw.deck_slugs.forEach(function(slug) {
+          for (var li = 0; li < LEVELS.length; li++) {
+            if (LEVELS[li].slug === slug) {
+              var dp = getPairs(LEVELS[li].vocabulary);
+              dp.forEach(function(p) { pWords.push({ word: p.word, def: p.def }); });
+              break;
+            }
           }
-        }
-      });
+        });
+      }
+      countLabel = pWords.length + ' ' + t('words', '\u8bcd');
     }
-    var wordCount = pWords.length;
+
+    var goAction = isPractice ? 'startHwPractice(\'' + hw.id + '\')' : 'startHwTest(\'' + hw.id + '\')';
 
     html += '<div class="hw-list-item" style="flex-wrap:wrap">';
     html += '<div style="display:flex;align-items:center;gap:8px;width:100%">';
-    html += '<span class="hw-list-title" style="flex:1">' + (isCustom ? '\ud83c\udfaf ' : '') + escapeHtml(hw.title) + ' <span style="font-size:11px;color:var(--c-text2)">(' + wordCount + ' ' + t('words', '词') + ')</span></span>';
+    html += '<span class="hw-list-title" style="flex:1">' + prefix + escapeHtml(hw.title) + ' <span style="font-size:11px;color:var(--c-text2)">(' + countLabel + ')</span></span>';
     if (hasResult) {
       html += '<span style="font-size:12px;color:var(--c-primary);font-weight:600">' + pct + '%</span>';
     }
     html += '<span class="hw-list-deadline" style="' + (isOverdue ? 'color:var(--c-danger)' : '') + '">';
-    html += (isOverdue ? t('Overdue', '已逾期') + ' ' : '') + deadline.toLocaleDateString();
+    html += (isOverdue ? t('Overdue', '\u5df2\u903e\u671f') + ' ' : '') + deadline.toLocaleDateString();
     html += '</span>';
-    html += '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();startHwTest(\'' + hw.id + '\')">GO \u2192</button>';
+    html += '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();' + goAction + '">GO \u2192</button>';
     html += '</div>';
 
-    /* Expandable word list */
-    if (wordCount > 0) {
+    /* Expandable word list (vocab HW only) */
+    if (!isPractice && pWords.length > 0) {
       var previewId = 'hw-preview-' + hw.id.slice(0, 8);
       html += '<div style="width:100%;margin-top:6px">';
-      html += '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:2px 8px" onclick="event.stopPropagation();var el=document.getElementById(\'' + previewId + '\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">' + t('View words', '查看词汇') + ' \u25BC</button>';
+      html += '<button class="btn btn-ghost btn-sm" style="font-size:11px;padding:2px 8px" onclick="event.stopPropagation();var el=document.getElementById(\'' + previewId + '\');el.style.display=el.style.display===\'none\'?\'block\':\'none\'">' + t('View words', '\u67e5\u770b\u8bcd\u6c47') + ' \u25BC</button>';
       html += '<div id="' + previewId + '" style="display:none;margin-top:6px;max-height:180px;overflow-y:auto;border:1px solid var(--c-border);border-radius:8px;padding:6px 10px;background:var(--c-surface)">';
       pWords.forEach(function(w, i) {
         html += '<div style="padding:3px 0;font-size:12px;' + (i < pWords.length - 1 ? 'border-bottom:1px solid var(--c-border-light)' : '') + '">';
-        html += '<strong>' + escapeHtml(w.word) + '</strong> — ' + escapeHtml(w.def);
+        html += '<strong>' + escapeHtml(w.word) + '</strong> \u2014 ' + escapeHtml(w.def);
         html += '</div>';
       });
       html += '</div></div>';
@@ -901,24 +1063,28 @@ async function showStudentHwPage() {
   });
 
   /* Completed section */
-  html += '<div class="hw-section-title" style="margin-top:20px">' + t('Completed', '已完成') + ' (' + completed.length + ')</div>';
+  html += '<div class="hw-section-title" style="margin-top:20px">' + t('Completed', '\u5df2\u5b8c\u6210') + ' (' + completed.length + ')</div>';
   completed.forEach(function(hw) {
     var r = hw._result;
     var pct = r.total_count > 0 ? Math.round(r.correct_count / r.total_count * 100) : 0;
     var completedDate = r.completed_at ? new Date(r.completed_at).toLocaleDateString() : '';
-    var isCustom = hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
+    var isPractice2 = _isPracticeHw(hw);
+    var isCustom = !isPractice2 && hw.custom_vocabulary && hw.custom_vocabulary.length > 0;
+    var prefix2 = isPractice2 ? '\u270f\ufe0f ' : (isCustom ? '\ud83c\udfaf ' : '');
 
     /* Study suggestion based on score */
     var tip = '';
-    if (pct >= 90) tip = t('Excellent! Move to next topic', '很棒！可以继续下一专题');
-    else if (pct >= 70) tip = t('Good! Review wrong words', '不错！复习一下错词');
-    else tip = t('Keep practicing this group', '继续练习这个词组');
+    if (pct >= 90) tip = t('Excellent! Move to next topic', '\u5f88\u68d2\uff01\u53ef\u4ee5\u7ee7\u7eed\u4e0b\u4e00\u4e13\u9898');
+    else if (pct >= 70) tip = isPractice2 ? t('Good! Try harder questions', '\u4e0d\u9519\uff01\u8bd5\u8bd5\u66f4\u96be\u7684\u9898') : t('Good! Review wrong words', '\u4e0d\u9519\uff01\u590d\u4e60\u4e00\u4e0b\u9519\u8bcd');
+    else tip = isPractice2 ? t('Review the sections and try again', '\u590d\u4e60\u77e5\u8bc6\u70b9\u540e\u518d\u8bd5') : t('Keep practicing this group', '\u7ee7\u7eed\u7ec3\u4e60\u8fd9\u4e2a\u8bcd\u7ec4');
+
+    var retryAction = isPractice2 ? 'startHwPractice(\'' + hw.id + '\')' : 'startHwTest(\'' + hw.id + '\')';
 
     html += '<div class="hw-list-item" style="flex-wrap:wrap">';
-    html += '<span class="hw-list-title">' + (isCustom ? '\ud83c\udfaf ' : '') + escapeHtml(hw.title) + '</span>';
+    html += '<span class="hw-list-title">' + prefix2 + escapeHtml(hw.title) + '</span>';
     html += '<span style="font-size:12px;font-weight:600;color:' + (pct >= 70 ? 'var(--c-success)' : 'var(--c-warning)') + '">' + r.correct_count + '/' + r.total_count + ' (' + pct + '%)</span>';
     html += '<span class="hw-list-deadline">' + completedDate + '</span>';
-    html += '<button class="btn btn-ghost btn-sm" onclick="startHwTest(\'' + hw.id + '\')">' + t('Retry', '重做') + '</button>';
+    html += '<button class="btn btn-ghost btn-sm" onclick="' + retryAction + '">' + t('Retry', '\u91cd\u505a') + '</button>';
     html += '<div style="width:100%;font-size:11px;color:var(--c-text2);margin-top:4px">\ud83d\udca1 ' + tip + '</div>';
     html += '</div>';
   });
@@ -1175,6 +1341,211 @@ function saveWrongWordsAsDeck() {
   var btns = document.querySelectorAll('[onclick="saveWrongWordsAsDeck()"]');
   btns.forEach(function(b) {
     b.disabled = true;
-    b.textContent = t('Saved \u2713', '已保存 \u2713');
+    b.textContent = t('Saved \u2713', '\u5df2\u4fdd\u5b58 \u2713');
   });
+}
+
+/* ═══ STUDENT: PRACTICE HOMEWORK ═══ */
+var _hwPractice = null;
+
+async function startHwPractice(hwId) {
+  showPanel('homework');
+  var el = E('panel-homework');
+  if (!el) return;
+  el.innerHTML = '<div class="admin-loading">' + t('Loading practice...', '\u52a0\u8f7d\u7ec3\u4e60\u9898\u4e2d...') + '</div>';
+
+  try {
+    var aRes = await sb.rpc('get_assignment', { p_id: hwId });
+    var hw = (aRes.data && aRes.data.length > 0) ? aRes.data[0] : null;
+    if (!hw) { el.innerHTML = '<div class="admin-empty">Not found</div>'; return; }
+
+    var config = hw.custom_vocabulary;
+    if (!config || config._type !== 'practice') {
+      startHwTest(hwId);
+      return;
+    }
+
+    var sectionIds = hw.deck_slugs || [];
+    var dataBoard = config.board === 'edexcel' ? 'edx' : config.board;
+
+    await Promise.all([loadPracticeData(dataBoard), loadKaTeX()]);
+
+    var allQ = [];
+    sectionIds.forEach(function(secId) {
+      var secQ = (_pqData[dataBoard] || []).filter(function(q) { return q.s === secId; });
+      allQ = allQ.concat(secQ);
+    });
+    if (config.difficulty) {
+      var diff = config.difficulty;
+      allQ = allQ.filter(function(q) { return q.d === diff; });
+    }
+    allQ = shuffle(allQ).slice(0, config.count);
+
+    if (allQ.length === 0) {
+      el.innerHTML = '<div class="admin-empty">' + t('No questions found for selected sections', '\u6240\u9009\u77e5\u8bc6\u70b9\u6682\u65e0\u9898\u76ee') + '</div>';
+      return;
+    }
+
+    _hwPractice = {
+      hwId: hwId,
+      title: hw.title,
+      questions: allQ,
+      current: 0,
+      correct: 0,
+      total: allQ.length,
+      answers: [],
+      wrongQuestions: []
+    };
+
+    renderHwPracticeCard();
+  } catch (e) {
+    el.innerHTML = '<div class="admin-empty">' + escapeHtml(e.message) + '</div>';
+  }
+}
+
+function renderHwPracticeCard() {
+  var el = E('panel-homework');
+  if (!el || !_hwPractice) return;
+
+  var s = _hwPractice;
+  if (s.current >= s.total) {
+    finishHwPractice();
+    return;
+  }
+
+  var q = s.questions[s.current];
+  var progressPct = Math.round(s.current / s.total * 100);
+
+  var html = '<div class="hw-header">';
+  html += '<button class="back-btn" onclick="if(confirm(\'' + t('Quit practice?', '\u9000\u51fa\u7ec3\u4e60\uff1f') + '\'))showStudentHwPage()">\u2190</button>';
+  html += '<div class="deck-title">' + escapeHtml(s.title) + '</div>';
+  html += '<div style="font-size:13px;color:var(--c-text2);margin-left:auto">' + (s.current + 1) + '/' + s.total + '</div>';
+  html += '</div>';
+
+  html += '<div class="hw-progress-bar"><div class="hw-progress-fill" style="width:' + progressPct + '%"></div></div>';
+
+  html += '<div class="pq-card" style="margin:16px 0">';
+  html += '<div class="pq-question" style="font-size:15px;padding:16px">' + pqRender(q.q) + '</div>';
+  html += '<div class="pq-options" style="padding:0 16px 16px">';
+  for (var i = 0; i < q.o.length; i++) {
+    html += '<button class="pq-opt hw-pq-opt" data-idx="' + i + '" onclick="pickHwPracticeOpt(this,' + i + ')">';
+    html += '<span class="pq-opt-letter">' + String.fromCharCode(65 + i) + '</span>';
+    html += '<span class="pq-opt-text">' + pqRender(q.o[i]) + '</span>';
+    html += '</button>';
+  }
+  html += '</div></div>';
+
+  el.innerHTML = html;
+  renderMath(el);
+}
+
+function pickHwPracticeOpt(btn, idx) {
+  if (btn.classList.contains('correct') || btn.classList.contains('wrong')) return;
+
+  var s = _hwPractice;
+  var q = s.questions[s.current];
+  var opts = document.querySelectorAll('.hw-pq-opt');
+  opts.forEach(function(o) { o.classList.add('disabled'); });
+
+  var isCorrect = idx === q.a;
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    s.correct++;
+    playCorrect();
+  } else {
+    btn.classList.add('wrong');
+    opts.forEach(function(o) {
+      if (parseInt(o.getAttribute('data-idx')) === q.a) o.classList.add('correct');
+    });
+    playWrong();
+    s.wrongQuestions.push({ qid: q.id, q: (q.q || '').slice(0, 80), correctAnswer: q.o[q.a] });
+  }
+
+  /* Show explanation */
+  if (q.e) {
+    var expDiv = document.createElement('div');
+    expDiv.className = 'pq-explanation';
+    expDiv.style.cssText = 'margin:8px 16px 16px;padding:10px 14px;border-radius:8px;background:var(--c-surface-alt);font-size:13px';
+    expDiv.innerHTML = '<strong>' + t('Explanation', '\u89e3\u6790') + ':</strong> ' + pqRender(q.e);
+    var card = btn.closest('.pq-card');
+    if (card) card.appendChild(expDiv);
+    renderMath(expDiv);
+  }
+
+  s.answers.push({ qid: q.id, correct: isCorrect });
+  s.current++;
+
+  setTimeout(function() {
+    renderHwPracticeCard();
+  }, 1200);
+}
+
+async function finishHwPractice() {
+  var el = E('panel-homework');
+  if (!el || !_hwPractice) return;
+
+  var s = _hwPractice;
+  var pct = s.total > 0 ? Math.round(s.correct / s.total * 100) : 0;
+
+  /* Upsert result to DB */
+  try {
+    var now = new Date().toISOString();
+    var existing = await sb.from('assignment_results')
+      .select('attempts')
+      .eq('assignment_id', s.hwId)
+      .eq('user_id', currentUser.id)
+      .maybeSingle();
+
+    var resultData = {
+      assignment_id: s.hwId,
+      user_id: currentUser.id,
+      attempts: (existing.data ? (existing.data.attempts || 0) : 0) + 1,
+      correct_count: s.correct,
+      total_count: s.total,
+      wrong_words: s.wrongQuestions,
+      completed_at: now,
+      last_attempt_at: now
+    };
+
+    await sb.from('assignment_results').upsert(resultData, { onConflict: 'assignment_id,user_id' });
+
+    /* Notify teacher */
+    var aRes = await sb.rpc('get_assignment', { p_id: s.hwId });
+    var hwData = (aRes.data && aRes.data.length > 0) ? aRes.data[0] : null;
+    if (hwData) {
+      var tRes = await sb.from('teachers').select('user_id').eq('id', hwData.teacher_id).single();
+      if (tRes.data) {
+        await sendNotification(tRes.data.user_id, 'hw_result',
+          getDisplayName() + ' ' + t('completed practice', '\u5b8c\u6210\u4e86\u7ec3\u4e60\u9898'),
+          s.title + ' \u2014 ' + s.correct + '/' + s.total + ' (' + pct + '%)',
+          'hw_result', s.hwId);
+      }
+    }
+  } catch (e) { /* ignore */ }
+
+  /* Show result screen */
+  var resultHtml = resultScreenHTML(
+    s.correct, s.total,
+    'startHwPractice(\'' + s.hwId + '\')',
+    'showStudentHwPage()',
+    'practice-hw'
+  );
+
+  /* Wrong questions review */
+  if (s.wrongQuestions.length > 0) {
+    resultHtml += '<div style="margin-top:16px;text-align:left">';
+    resultHtml += '<div class="hw-section-title" style="color:var(--c-danger)">' + t('Wrong Questions', '\u9519\u9898') + ' (' + s.wrongQuestions.length + ')</div>';
+    s.wrongQuestions.forEach(function(w) {
+      resultHtml += '<div style="padding:6px 0;font-size:13px;border-bottom:1px solid var(--c-border-light)">';
+      resultHtml += '<div>' + pqRender(w.q) + '</div>';
+      resultHtml += '<div style="color:var(--c-success);font-size:12px;margin-top:2px">' + t('Answer', '\u7b54\u6848') + ': ' + pqRender(w.correctAnswer) + '</div>';
+      resultHtml += '</div>';
+    });
+    resultHtml += '</div>';
+  }
+
+  el.innerHTML = resultHtml;
+  renderMath(el);
+  _hwPractice = null;
 }

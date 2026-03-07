@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.12.4] - 2026-03-07 — 教师端布置练习题作业
+
+### 新增
+- **练习题作业类型**: 教师在创建作业 Modal 中新增"练习题"标签页，可选择 CIE/Edexcel 考试局、知识点章节、题目数量(5/10/15/20)、难度(All/Core/Extended)
+- **学生练习题答题**: 学生收到练习题作业后点击 GO 进入 MCQ 答题界面，支持 KaTeX 数学公式渲染、答题后显示解析、进度条、800ms 自动跳题
+- **结果存储**: 复用 `assignment_results` 表，`wrong_words` 字段存储错题(qid/题干/正确答案)，完全兼容现有 DB Schema（零迁移）
+- **教师端适配**: 作业列表显示练习题作业配置摘要(考试局/知识点/难度)，详情页显示练习题配置卡片替代词汇预览
+- **数据复用策略**: `custom_vocabulary` 字段存储 `{_type:'practice', board, count, difficulty}`，`deck_slugs` 存储 section IDs
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/homework.js` | +练习题标签页 + `_renderHwSections()` + `startHwPractice()` + `renderHwPracticeCard()` + `pickHwPracticeOpt()` + `finishHwPractice()` + 列表/详情/Banner 适配 |
+| `js/config.js` | 版本号 v1.12.3 -> v1.12.4 |
+
 ## [1.12.3] - 2026-03-07 — 打印词卡 + 统计导出 + 复习增强
 
 ### 新增
