@@ -7,3 +7,4 @@ __pycache__/
 *.pyc
 word-match-pro.html
 CLAUDE-CODE-BRIEF.md
+.env*

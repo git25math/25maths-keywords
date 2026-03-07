@@ -864,8 +864,9 @@ async function exportHwCSV(hwId, classId) {
 async function showStudentHwDetail(hwId, studentUserId, studentName, classId) {
   var rRes = await sb.from('assignment_results').select('*')
     .eq('assignment_id', hwId).eq('user_id', studentUserId).single();
+  if (rRes.error) { showToast(t('Load failed', '\u52a0\u8f7d\u5931\u8d25')); return; }
   var r = rRes.data;
-  if (!r) { showToast(t('No data', '无数据')); return; }
+  if (!r) { showToast(t('No data', '\u65e0\u6570\u636e')); return; }
 
   var pct = r.total_count > 0 ? Math.round(r.correct_count / r.total_count * 100) : 0;
   var wrongWords = r.wrong_words || [];

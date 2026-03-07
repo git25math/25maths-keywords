@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.12.5] - 2026-03-07 — 代码质量修复 + 版本同步
+
+### 修复
+- **practice.js 错误处理**: 3 处 `.insert()` 调用添加 `.catch()` 网络错误捕获（纠错报告/真题报告/管理员修正）
+- **practice.js 事件泄漏**: 编辑器 Modal 的 `addEventListener` 改为 `onX` 属性赋值，避免重复打开累积监听器
+- **homework.js 错误检查**: `showStudentHwDetail` 的 `.single()` 查询添加 `res.error` 检查
+- **.gitignore**: 添加 `.env*` 规则防止密钥误提交
+
+### 同步
+- **index.html**: 缓存标签 `?v=1.8.4` → `?v=1.12.5`（停滞 7 个版本）
+- **package.json**: version `1.0.0` → `1.12.5`
+
+### 文档
+- **expansion-vision.md**: 从 v1.9.8 更新到 v1.12.5 进度（Layer 4 已完成 70%，7 项 P0-P4 已完成标记）
+- **project-audit.md**: 审计建议修复状态更新（7/11 项已修复）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | +3 `.catch()` + 2 处 addEventListener→onX |
+| `js/homework.js` | +`res.error` 检查 |
+| `js/config.js` | 版本号 v1.12.4 -> v1.12.5 |
+| `index.html` | 缓存标签 v1.8.4 -> v1.12.5 |
+| `package.json` | version 1.0.0 -> 1.12.5 |
+| `.gitignore` | +`.env*` |
+| `docs/analysis/*.md` | 进度更新 |
+
 ## [1.12.4] - 2026-03-07 — 教师端布置练习题作业
 
 ### 新增

@@ -489,6 +489,9 @@ function submitPracticeReport() {
       }
       hideModal();
       showToast(t('Report submitted! Thank you.', '报告已提交，谢谢！'));
+    }).catch(function(e) {
+      var el = E('pq-report-msg');
+      if (el) el.textContent = t('Network error', '网络错误');
     });
     return;
   }
@@ -598,20 +601,20 @@ function _openEditor(q, board, onSaveCb) {
   E('modal-card').className = 'modal-card pq-editor-modal';
   showModal(html);
 
-  /* Bind input events for live preview */
+  /* Bind input events for live preview (use { once: false } style, elements are recreated each time) */
   setTimeout(function() {
     var fields = ['pq-ed-q', 'pq-ed-o0', 'pq-ed-o1', 'pq-ed-o2', 'pq-ed-o3', 'pq-ed-e'];
     fields.forEach(function(fid) {
       var el = E(fid);
       if (el) {
-        el.addEventListener('input', _pqUpdatePreview);
-        el.addEventListener('focus', function() { _pqFocusedTextarea = this; });
+        el.oninput = _pqUpdatePreview;
+        el.onfocus = function() { _pqFocusedTextarea = this; };
       }
     });
     var radios = document.querySelectorAll('[name="pq-ed-correct"]');
-    radios.forEach(function(r) { r.addEventListener('change', _pqUpdatePreview); });
+    radios.forEach(function(r) { r.onchange = _pqUpdatePreview; });
     var dSel = E('pq-ed-d');
-    if (dSel) dSel.addEventListener('change', _pqUpdatePreview);
+    if (dSel) dSel.onchange = _pqUpdatePreview;
     _pqUpdatePreview();
   }, 50);
 }
@@ -2265,6 +2268,9 @@ function submitPPReport(qid) {
       }
       hideModal();
       showToast(t('Report submitted! Thank you.', '报告已提交，谢谢！'));
+    }).catch(function(e) {
+      var el = E('pp-report-msg');
+      if (el) el.textContent = t('Network error', '网络错误');
     });
     return;
   }
@@ -2341,11 +2347,11 @@ function editPastPaperQ(qIdx) {
 
   showModal(html);
 
-  /* Live preview */
+  /* Live preview (use onX to avoid listener accumulation) */
   setTimeout(function() {
     var texEl = E('pp-ed-tex');
     if (texEl) {
-      texEl.addEventListener('input', _ppUpdateEditPreview);
+      texEl.oninput = _ppUpdateEditPreview;
       _ppUpdateEditPreview();
     }
   }, 50);
@@ -2410,6 +2416,9 @@ function submitPPEdit(qid) {
     hideModal();
     showToast(t('Correction submitted!', '修正已提交！'));
     renderPPCard();
+  }).catch(function(e) {
+    var el = E('pp-ed-msg');
+    if (el) el.textContent = t('Network error', '网络错误');
   });
 }
 
