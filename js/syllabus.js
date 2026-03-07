@@ -694,6 +694,30 @@ function _renderPPSectionModule(slot, secId, board) {
   if (ppStats.mastered > 0) h += '<span class="pp-module-stat mastered-stat">\u2705 ' + ppStats.mastered + ' ' + t('Mastered', '\u5df2\u638c\u63e1') + '</span>';
   h += '</div>';
 
+  /* Vocab progress for this section */
+  var secLevelIdx = (_boardSectionLevelMap[board] || {})[secId];
+  if (secLevelIdx !== undefined) {
+    var secLv = LEVELS[secLevelIdx];
+    if (secLv && secLv.vocabulary) {
+      var totalW = secLv.vocabulary.length / 2;
+      var learnedW = 0;
+      var wd = getWordData();
+      for (var wi = 0; wi < secLv.vocabulary.length; wi += 2) {
+        var wk = wordKey(secLevelIdx, secLv.vocabulary[wi].id);
+        if (wd[wk] && (wd[wk].ok || 0) > 0) learnedW++;
+      }
+      h += '<div style="font-size:12px;color:var(--c-muted);margin-top:4px">';
+      h += '\ud83d\udcdd ' + t('Vocabulary', '\u8bcd\u6c47') + ': ';
+      h += '<b>' + learnedW + '</b>/' + totalW + ' ' + t('learned', '\u5df2\u5b66');
+      if (learnedW < totalW) {
+        h += ' \u00b7 <span style="cursor:pointer;color:var(--c-primary);text-decoration:underline" ';
+        h += 'onclick="event.stopPropagation();openDeck(' + secLevelIdx + ')">';
+        h += t('Study now', '\u53bb\u5b66\u4e60') + '</span>';
+      }
+      h += '</div>';
+    }
+  }
+
   /* Question type breakdown */
   h += '<div style="margin-top:4px">';
   h += '<div style="font-size:11px;color:var(--c-muted);margin-bottom:4px">' + t('By Question Type', '\u8003\u6cd5\u9898\u578b\u5206\u7c7b') + '</div>';

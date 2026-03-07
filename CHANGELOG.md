@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.9.7] - 2026-03-07 — 词汇联动：真题关联词汇
+
+### 新增
+- **真题题卡"相关词汇"折叠区**: 练习模式下，已标注知识点的题卡自动显示关联词汇列表（词 + 释义 + 星级/new 状态）
+- **词汇查找函数** `_ppGetSectionVocab()`: 通过 `question.s` → `_boardSectionLevelMap` → `LEVELS` 映射链获取知识点对应词汇及学习状态
+- **折叠交互** `ppToggleVocab()`: 复用 Mark Scheme 的 `.pp-ms-content.show` 交互模式
+- **"学习词汇"按钮**: 折叠区底部一键跳转到对应词汇卡组详情页（`openDeck()`）
+- **知识点详情页词汇进度**: `_renderPPSectionModule()` 新增 "📝 词汇: X/Y 已学 · 去学习" 摘要行
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | +`_ppGetSectionVocab()` +vocab toggle 区域 +`ppToggleVocab()` |
+| `js/syllabus.js` | `_renderPPSectionModule()` +词汇进度摘要行 |
+| `css/style.css` | +`.pp-vocab-row/word/def/stars/new` |
+| `js/config.js` | 版本号 v1.9.6 → v1.9.7 |
+
 ## [1.9.6] - 2026-03-07 — 题型归纳：按指令动词分类真题
 
 ### 新增

@@ -1355,6 +1355,38 @@ function renderPPCard() {
     html += '</div></div>';
   }
 
+  /* Related Vocabulary toggle (practice mode + has section) */
+  if (_ppSession.mode === 'practice' && q.s) {
+    var vocabInfo = _ppGetSectionVocab(q.s, _ppSession.board);
+    if (vocabInfo && vocabInfo.words.length > 0) {
+      html += '<div class="pp-ms-toggle" onclick="ppToggleVocab()">';
+      html += '<span id="pp-vocab-arrow">\u25b6</span> ';
+      html += t('Related Vocabulary', '\u76f8\u5173\u8bcd\u6c47');
+      html += ' <span style="font-size:11px;color:var(--c-muted)">(' + vocabInfo.words.length + ')</span>';
+      html += '</div>';
+      html += '<div class="pp-ms-content" id="pp-vocab-body">';
+      for (var vi = 0; vi < vocabInfo.words.length; vi++) {
+        var vw = vocabInfo.words[vi];
+        html += '<div class="pp-vocab-row">';
+        html += '<span class="pp-vocab-word">' + vw.word + '</span>';
+        html += '<span class="pp-vocab-def">' + vw.def + '</span>';
+        if (vw.stars < 0) {
+          html += '<span class="pp-vocab-new">new</span>';
+        } else {
+          html += '<span class="pp-vocab-stars">';
+          for (var si = 0; si < vw.stars; si++) html += '\u2605';
+          if (vw.stars === 0) html += '\u2606';
+          html += '</span>';
+        }
+        html += '</div>';
+      }
+      html += '<div style="text-align:center;padding:8px">';
+      html += '<button class="btn btn-sm" onclick="openDeck(' + vocabInfo.levelIdx + ')">';
+      html += '\ud83d\udcd6 ' + t('Study Vocabulary', '\u5b66\u4e60\u8bcd\u6c47') + '</button></div>';
+      html += '</div>';
+    }
+  }
+
   html += '</div>'; /* end pp-card */
 
   /* Self-assessment (practice mode) */
@@ -1516,6 +1548,35 @@ function _ppCmdLabel(ck) {
 function ppClearCmdFilter() {
   if (!_ppSession) return;
   startPastPaper(_ppSession.sectionId, _ppSession.board, _ppSession.mode, _ppSession.groupFilter || null, null);
+}
+
+/* ═══ RELATED VOCABULARY ═══ */
+
+function _ppGetSectionVocab(sectionId, board) {
+  var map = (typeof _boardSectionLevelMap !== 'undefined') ? _boardSectionLevelMap[board] : null;
+  if (!map || map[sectionId] === undefined) return null;
+  var li = map[sectionId];
+  var lv = LEVELS[li];
+  if (!lv || !lv.vocabulary) return null;
+  var wd = getWordData();
+  var words = [];
+  for (var i = 0; i < lv.vocabulary.length; i += 2) {
+    var item = lv.vocabulary[i];
+    var def  = lv.vocabulary[i + 1];
+    var key = wordKey(li, item.id);
+    var d = wd[key] || {};
+    var stars = (d.ok !== undefined) ? computeStars(d.ok || 0, d.fail || 0) : -1;
+    words.push({ word: item.content, def: def.content, stars: stars, key: key });
+  }
+  return { levelIdx: li, slug: lv.slug, title: lv.title, words: words };
+}
+
+function ppToggleVocab() {
+  var body = document.getElementById('pp-vocab-body');
+  var arrow = document.getElementById('pp-vocab-arrow');
+  if (!body) return;
+  body.classList.toggle('show');
+  if (arrow) arrow.textContent = body.classList.contains('show') ? '\u25bc' : '\u25b6';
 }
 
 /* ═══ EXAM MODE ═══ */
