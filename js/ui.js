@@ -125,6 +125,9 @@ function applyDark() {
     var ic = sbEl.querySelector('.sf-icon');
     if (ic) ic.textContent = icon; else sbEl.textContent = icon;
   }
+  /* Sync theme-color meta for PWA / mobile browser chrome */
+  var tcMeta = document.querySelector('meta[name="theme-color"]');
+  if (tcMeta) tcMeta.setAttribute('content', appDark ? '#0F0E1A' : '#5248C9');
   /* Header bar button: plain text */
   var hbEl = E('dark-toggle-hb');
   if (hbEl) hbEl.textContent = icon;

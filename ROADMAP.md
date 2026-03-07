@@ -336,4 +336,7 @@
 - [x] **Service Worker 离线缓存**: 三层策略（shell cache-first / data network-first / CDN cache-first）→ v1.11.0
 - [x] **PWA manifest + install prompt**: manifest.json + SVG 图标 + 首页安装提示横条 → v1.11.0
 - [x] **离线状态自动检测 + 重连同步**: online/offline 事件 + Toast + is-offline 样式 → v1.11.0
+- [x] **SW 版本自动同步**: 构建脚本自动注入 APP_VERSION → sw.js CACHE_VERSION → v1.11.1
+- [x] **暗色模式 theme-color**: applyDark() 动态更新 meta theme-color → v1.11.1
+- [x] **成绩趋势图**: 诊断/模拟卷结果页历史得分柱状图（>=2 次显示） → v1.11.1
 - [ ] build-single.py 更新适配新架构

@@ -17,6 +17,13 @@ npx esbuild js/homework.js --minify --outfile=js/homework.min.js
 # CSS minify
 npx esbuild css/style.css --minify --outfile=css/style.min.css
 
+# Sync SW cache version with APP_VERSION from config.js
+APP_VER=$(sed -n "s/.*APP_VERSION *= *'\([^']*\)'.*/\1/p" js/config.js)
+if [ -n "$APP_VER" ]; then
+  sed -i '' "s/^var CACHE_VERSION = '.*';/var CACHE_VERSION = '$APP_VER';/" sw.js
+  echo "SW CACHE_VERSION synced to $APP_VER"
+fi
+
 echo "=== Build complete ==="
 ls -lh js/app.bundle.min.js js/homework.min.js css/style.min.css
 printf "JS bundle gzip: "; gzip -c js/app.bundle.min.js | wc -c

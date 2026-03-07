@@ -1789,13 +1789,36 @@ function _diagShowResults(exam, conceptErrors) {
   }
 
   /* Save diagnostic result */
-  var diagResult = { date: new Date().toISOString(), board: board, score: exam.scored, total: exam.totalMarks, pct: pct, sections: secResults };
+  var diagResult = { date: new Date().toISOString(), board: board, score: exam.scored, total: exam.totalMarks, pct: pct, sections: secResults, isMock: !!_isMockExam };
   try {
     var diagHistory = JSON.parse(localStorage.getItem('diag_history') || '[]');
     diagHistory.push(diagResult);
     if (diagHistory.length > 10) diagHistory = diagHistory.slice(-10);
     localStorage.setItem('diag_history', JSON.stringify(diagHistory));
   } catch(e) {}
+
+  /* History trend chart (show if >=2 results) */
+  if (diagHistory && diagHistory.length >= 2) {
+    html += '<div class="diag-trend">';
+    html += '<h4 style="margin:20px 0 12px">' + t('Score History', '\u6210\u7ee9\u8d8b\u52bf') + '</h4>';
+    html += '<div class="diag-trend-chart">';
+    for (var hi = 0; hi < diagHistory.length; hi++) {
+      var dh = diagHistory[hi];
+      var dhPct = dh.pct || 0;
+      var dhColor = dhPct >= 70 ? 'var(--c-success)' : dhPct >= 40 ? 'var(--c-warning)' : 'var(--c-danger)';
+      var dhDate = dh.date ? dh.date.slice(5, 10) : '';
+      var dhType = dh.isMock ? 'Mock' : 'Diag';
+      var dhTip = dhDate + ' ' + dhType + ': ' + dhPct + '%';
+      html += '<div class="diag-trend-col" title="' + escapeHtml(dhTip) + '">';
+      html += '<div class="diag-trend-bar" style="height:' + dhPct + '%;background:' + dhColor + '">';
+      html += '<span class="diag-trend-val">' + dhPct + '</span>';
+      html += '</div>';
+      html += '<div class="diag-trend-label">' + dhDate + '</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+    html += '</div>';
+  }
 
   /* Action buttons */
   html += '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;padding-bottom:40px">';

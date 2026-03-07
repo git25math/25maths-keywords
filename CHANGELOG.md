@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.11.1] - 2026-03-07 — 质量优化：SW 版本同步 + 暗色 theme-color + 成绩趋势图
+
+### 修复
+- **SW 版本同步**: `scripts/minify.sh` 构建时自动从 `config.js` 提取 `APP_VERSION` 注入 `sw.js` 的 `CACHE_VERSION`，消除手动同步遗漏
+- **暗色模式 theme-color**: 切换深色模式时动态更新 `<meta name="theme-color">`（深色 `#0F0E1A` / 浅色 `#5248C9`），PWA 和移动浏览器地址栏颜色同步
+
+### 新增
+- **诊断/模拟卷成绩趋势图**: 结果页展示历史得分柱状图（绿/黄/红三色，最多 10 次），需 >=2 次记录时显示；`diag_history` 新增 `isMock` 字段区分测试类型
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/minify.sh` | +SW 版本自动同步（sed 注入 APP_VERSION） |
+| `sw.js` | CACHE_VERSION v1.10.3 -> v1.11.1（由构建脚本管理） |
+| `js/ui.js` | `applyDark()` +theme-color meta 动态更新 |
+| `js/practice.js` | `_diagShowResults()` +成绩趋势图 + diagResult.isMock 字段 |
+| `css/style.css` | +`.diag-trend-*` 趋势图样式 |
+| `js/config.js` | 版本号 v1.11.0 -> v1.11.1 |
+
 ## [1.11.0] - 2026-03-07 — PWA 离线支持：Service Worker + 安装提示 + 离线检测
 
 ### 新增

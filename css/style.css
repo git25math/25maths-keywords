@@ -3372,6 +3372,12 @@ input { font-family: inherit; }
 .dark .diag-section-row:hover { background: rgba(82,72,201,0.12); }
 .dark .diag-recs { background: rgba(255,152,0,0.1); border-color: rgba(255,152,0,0.3); }
 .dark .diag-rec-item { border-color: rgba(255,255,255,0.06); }
+.diag-trend { margin-top: 20px; }
+.diag-trend-chart { display: flex; align-items: flex-end; gap: 6px; height: 100px; padding: 8px 0; }
+.diag-trend-col { flex: 1; display: flex; flex-direction: column; align-items: center; min-width: 28px; height: 100%; }
+.diag-trend-bar { width: 100%; min-height: 4px; border-radius: 4px 4px 0 0; display: flex; align-items: flex-start; justify-content: center; margin-top: auto; transition: height 0.3s; }
+.diag-trend-val { font-size: 10px; font-weight: 700; color: #fff; padding-top: 2px; }
+.diag-trend-label { font-size: 10px; color: var(--c-text2); margin-top: 4px; }
 
 /* ═══ PWA ═══ */
 .pwa-install-hint { display: flex; align-items: center; gap: 10px; padding: 10px 14px; margin: 8px 0; background: linear-gradient(135deg, rgba(82,72,201,0.06), rgba(82,72,201,0.02)); border: 1px dashed var(--c-primary); border-radius: 10px; cursor: pointer; transition: all 0.2s; }
