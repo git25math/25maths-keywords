@@ -104,8 +104,8 @@ function ensureAllBoardsLoaded() {
 /* ─── initial boot ─── */
 (function() {
   /* Determine which board(s) to load at startup */
-  var startBoard = null;
-  try { startBoard = localStorage.getItem('userBoard'); } catch(e) {}
+  var startBoard = _hostBoard || null;
+  if (!startBoard) { try { startBoard = localStorage.getItem('userBoard'); } catch(e) {} }
   var keys = _boardKeysFor(startBoard);
 
   var urls = keys.map(function(bk) { return { bk: bk, url: _urlForBoard(bk) }; });

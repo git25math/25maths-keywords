@@ -60,6 +60,15 @@ var userClassId = null;      /* student's class_id from metadata */
 var userSchoolId = null;     /* student/teacher's school_id from metadata */
 var appSearch = '';           /* current search keyword (lowercase) */
 
+/* ═══ SUBDOMAIN BOARD DETECTION ═══ */
+var HOST_BOARD_MAP = {
+  'cie-0580.25maths.com': 'cie',
+  'edx-4ma1.25maths.com': 'edx',
+  'hhk.25maths.com': '25m'
+};
+var _hostBoard = HOST_BOARD_MAP[location.hostname] || null;
+function isSubdomainLocked() { return !!_hostBoard; }
+
 var appDark = (function() {
   try {
     var stored = localStorage.getItem('wmatch_dark');
@@ -330,7 +339,7 @@ function isSuperAdmin() {
 }
 
 /* App version */
-var APP_VERSION = 'v2.1.1';
+var APP_VERSION = 'v2.2.0';
 
 /* ═══ TEACHER ROLE (shared across modules) ═══ */
 var isTeacherUser = false;

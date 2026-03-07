@@ -1,5 +1,30 @@
 # Changelog
 
+## [2.2.0] - 2026-03-07 — 子域名自动检测 + Board 锁定
+
+### 子域名 Board 检测
+- **HOST_BOARD_MAP**: 根据 `location.hostname` 自动锁定 board（`cie-0580.25maths.com`→CIE, `edx-4ma1.25maths.com`→Edexcel, `hhk.25maths.com`→HHK）
+- **`_hostBoard` + `isSubdomainLocked()`**: 全局检测函数，子站启动即锁定，通用站保持原有逻辑
+- **启动加载优化**: `levels-loader.js` boot 阶段优先读 `_hostBoard`，子站无需依赖 localStorage
+
+### 登录 + 选课流程适配
+- **`showBoardSelection()` 守卫**: 子站自动跳过选课页，Guest 首次进入直接进对应 board
+- **`afterLogin()` 子站分支**: 强制锁定 board，HHK 特殊处理保留 metadata 中的具体年级（如 `25m-y9`）
+- **设置页"更换课程"按钮**: 子站隐藏，仅通用站显示（board 名称仍展示）
+
+### PWA 兼容
+- **manifest.json**: `start_url` / `scope` 改为相对路径 `./`，支持任意域名部署
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/config.js` | HOST_BOARD_MAP + _hostBoard + isSubdomainLocked() + v2.1.1→v2.2.0 |
+| `js/levels-loader.js` | boot startBoard 优先读 _hostBoard |
+| `js/auth.js` | showBoardSelection() 守卫 + afterLogin() 子站分支 + showSettings() 隐藏更换按钮 |
+| `manifest.json` | start_url/scope → `./` |
+
+---
+
 ## [2.1.1] - 2026-03-07 — 导航动线优化 + 质量修复
 
 ### 错题本增强

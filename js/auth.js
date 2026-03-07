@@ -226,7 +226,19 @@ async function afterLogin() {
   }
 
   try { localStorage.setItem('wmatch_login_ts', '' + Date.now()); } catch(e) {}
-  if (!userBoard) {
+  if (_hostBoard) {
+    /* Subdomain: force-lock board */
+    if (_hostBoard === '25m' && userBoard && userBoard.indexOf('25m-') === 0) {
+      /* keep specific year from metadata */
+    } else {
+      userBoard = _hostBoard;
+    }
+    try { localStorage.setItem('userBoard', userBoard); } catch(e) {}
+    try { await ensureBoardLoaded(userBoard); } catch(e) {}
+    showApp();
+    if (sb && isLoggedIn() && userClassId) loadHomeworkModule();
+    if (sb && isLoggedIn()) await loadAndInitTeacher();
+  } else if (!userBoard) {
     showBoardSelection();
   } else {
     showApp();
@@ -273,6 +285,13 @@ async function loadAndInitTeacher() {
 
 /* ═══ BOARD SELECTION ═══ */
 function showBoardSelection() {
+  if (_hostBoard) {
+    userBoard = _hostBoard;
+    try { localStorage.setItem('userBoard', userBoard); } catch(e) {}
+    hideBoardSelection();
+    showApp();
+    return;
+  }
   E('ov-auth').classList.remove('vis');
   E('ov-auth').style.display = 'none';
   E('board-sel-title').textContent = t('Choose Your Course', '\u9009\u62e9\u4f60\u7684\u8bfe\u7a0b');
@@ -394,7 +413,9 @@ function showSettings() {
     gHtml += '<div class="settings-section">';
     gHtml += '<label class="settings-label">' + t('Course / Year', '\u8003\u8bd5\u5c40 / \u5e74\u7ea7') + '</label>';
     gHtml += '<div class="settings-board-current">' + boardDisplay + '</div>';
-    gHtml += '<button class="btn btn-ghost btn-sm" onclick="changeBoardFromSettings()">' + t('Change', '\u66f4\u6362') + '</button>';
+    if (!isSubdomainLocked()) {
+      gHtml += '<button class="btn btn-ghost btn-sm" onclick="changeBoardFromSettings()">' + t('Change', '\u66f4\u6362') + '</button>';
+    }
     gHtml += '</div>';
     gHtml += '<div class="settings-divider"></div>';
     /* Locked features list */
@@ -428,7 +449,7 @@ function showSettings() {
     '<div class="settings-section">' +
     '<label class="settings-label">' + t('Course / Year', '\u8003\u8bd5\u5c40 / \u5e74\u7ea7') + '</label>' +
     '<div class="settings-board-current">' + boardDisplay + '</div>' +
-    '<button class="btn btn-ghost btn-sm" onclick="changeBoardFromSettings()">' + t('Change', '\u66f4\u6362') + '</button>' +
+    (isSubdomainLocked() ? '' : '<button class="btn btn-ghost btn-sm" onclick="changeBoardFromSettings()">' + t('Change', '\u66f4\u6362') + '</button>') +
     '</div>' +
     '<div class="settings-divider"></div>' +
     '<div class="settings-section">' +

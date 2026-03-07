@@ -369,3 +369,10 @@
 - [x] **Phase C — HHK 练习引擎解锁**: 55 道 Y7 MCQ + board guard 放行 25m + Journey Bar 三步 + getSectionHealth practiceScore → v2.1.0
 - [x] **Phase D — 诊断反馈 + 学习闭环**: diag 字段 + 答错诊断提示 + 结果页 diag 摘要 + 错题本联动 + Smart Path rec 增强 → v2.1.0
 - [x] **v2.1.1 质量修复**: 错题本操作按钮 + Tab 委托优化 + Review/Mistakes badge + 暗色模式补全 + 手机端响应式 + 今日进度 → v2.1.1
+
+## v2.2 子域名自动检测 + Board 锁定 [DONE]
+- [x] **HOST_BOARD_MAP 子域名检测**: 3 子站域名→board 映射 + `_hostBoard` + `isSubdomainLocked()` → v2.2.0
+- [x] **启动加载优化**: levels-loader boot 优先读 _hostBoard，子站不依赖 localStorage → v2.2.0
+- [x] **登录流程适配**: showBoardSelection 守卫跳过 + afterLogin 强制锁定 + HHK 年级保留 → v2.2.0
+- [x] **设置页适配**: 子站隐藏"更换课程"按钮 → v2.2.0
+- [x] **PWA 兼容**: manifest.json start_url/scope 改为相对路径 `./` → v2.2.0
