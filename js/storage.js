@@ -308,6 +308,17 @@ function getReviewCount() {
   return getDueWords().length;
 }
 
+/* Count only studied words that are due (exclude new/unseen words) */
+function getStudiedDueCount() {
+  var now = Date.now(), count = 0;
+  var wd = getWordData();
+  getAllWords().forEach(function(w) {
+    var d = wd[w.key];
+    if (d && w.status !== 'new' && w.status !== 'mastered' && d.nr <= now) count++;
+  });
+  return count;
+}
+
 /* Custom levels persistence */
 function getCustomLevels() {
   return loadS().customLevels || [];

@@ -368,3 +368,4 @@
 - [x] **Phase B — 今日计划 + 错题本**: renderTodaysPlan（日期/连续天数/待复习/Smart Path/Review Plan）+ renderMistakeBook（Tab 切换/词汇错题/练习错题）→ v2.1.0
 - [x] **Phase C — HHK 练习引擎解锁**: 55 道 Y7 MCQ + board guard 放行 25m + Journey Bar 三步 + getSectionHealth practiceScore → v2.1.0
 - [x] **Phase D — 诊断反馈 + 学习闭环**: diag 字段 + 答错诊断提示 + 结果页 diag 摘要 + 错题本联动 + Smart Path rec 增强 → v2.1.0
+- [x] **v2.1.1 质量修复**: 错题本操作按钮 + Tab 委托优化 + Review/Mistakes badge + 暗色模式补全 + 手机端响应式 + 今日进度 → v2.1.1

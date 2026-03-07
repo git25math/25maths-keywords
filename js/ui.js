@@ -57,13 +57,27 @@ function updateNav() {
   document.querySelectorAll('[data-en][data-zh]').forEach(function(el) {
     el.textContent = el.dataset[langKey];
   });
-  /* Review badge */
-  var rc = getReviewCount();
-  var badges = [E('nav-rv-badge')];
-  badges.forEach(function(b) {
+  /* Review badge — only studied words that are due, not new/unseen */
+  var rc = typeof getStudiedDueCount === 'function' ? getStudiedDueCount() : getReviewCount();
+  var rvBadges = [E('nav-rv-badge'), E('bnav-rv-badge')];
+  rvBadges.forEach(function(b) {
     if (b) {
       b.textContent = rc;
       b.style.display = rc > 0 ? 'inline-block' : 'none';
+    }
+  });
+  /* Mistake badge */
+  var mc = 0;
+  if (typeof _getVocabMistakes === 'function') mc += _getVocabMistakes().length;
+  if (typeof _ppGetWB === 'function') {
+    var wb = _ppGetWB();
+    for (var k in wb) { if (wb[k].status === 'active') mc++; }
+  }
+  var mkBadges = [E('nav-mk-badge'), E('bnav-mk-badge')];
+  mkBadges.forEach(function(b) {
+    if (b) {
+      b.textContent = mc;
+      b.style.display = mc > 0 ? 'inline-block' : 'none';
     }
   });
 }

@@ -2009,6 +2009,24 @@ function renderTodaysPlan() {
   }
   html += '</div>';
 
+  /* Today's progress */
+  var todayStr = new Date().toLocaleDateString('en-CA');
+  var _planS = loadS();
+  var todayEntry = null;
+  if (_planS.history) {
+    for (var hi = _planS.history.length - 1; hi >= 0; hi--) {
+      if (_planS.history[hi].d === todayStr) { todayEntry = _planS.history[hi]; break; }
+    }
+  }
+  var todayCount = todayEntry ? (todayEntry.a || 0) : 0;
+  html += '<div class="plan-card">';
+  html += '<div class="plan-card-header">';
+  html += '<span class="plan-card-icon">\ud83d\udcc8</span>';
+  html += '<span class="plan-card-title">' + t("Today's Progress", '\u4eca\u65e5\u8fdb\u5ea6') + '</span>';
+  html += '</div>';
+  html += '<div class="plan-card-count">' + todayCount + ' ' + t('activities completed', '\u6b21\u5b66\u4e60\u6d3b\u52a8') + '</div>';
+  html += '</div>';
+
   /* Mistake summary */
   var vocabMistakes = _getVocabMistakes();
   var wb = typeof _ppGetWB === 'function' ? _ppGetWB() : {};
@@ -2056,6 +2074,59 @@ function _getVocabMistakes() {
 }
 
 var _mistakeTab = 'all';
+var _mistakeTabBound = false;
+
+/* Find which board and section a practice question belongs to */
+function _findPQInfo(qid) {
+  var boards = ['cie', 'edx', '25m'];
+  for (var i = 0; i < boards.length; i++) {
+    var bd = boards[i];
+    if (_pqData[bd]) {
+      for (var j = 0; j < _pqData[bd].length; j++) {
+        if (_pqData[bd][j].id === qid) return { board: bd, section: _pqData[bd][j].s };
+      }
+    }
+  }
+  /* Also check past paper data */
+  if (typeof _ppData !== 'undefined') {
+    for (var bi = 0; bi < boards.length; bi++) {
+      var b2 = boards[bi];
+      if (_ppData[b2] && _ppData[b2].questions) {
+        for (var qi = 0; qi < _ppData[b2].questions.length; qi++) {
+          if (_ppData[b2].questions[qi].id === qid) return { board: b2, section: _ppData[b2].questions[qi].s };
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function reviewMistakeQ(qid) {
+  var info = _findPQInfo(qid);
+  if (info && typeof ppReviewWrongItem === 'function') {
+    ppReviewWrongItem(qid, info.section, info.board);
+  } else {
+    showToast(t('Loading question data...', '\u6b63\u5728\u52a0\u8f7d\u9898\u76ee\u6570\u636e...'));
+    /* Try loading all boards then retry */
+    var loads = [];
+    if (typeof loadPastPaperData === 'function') {
+      loads.push(loadPastPaperData('cie').catch(function() {}));
+      loads.push(loadPastPaperData('edx').catch(function() {}));
+    }
+    if (typeof loadPracticeData === 'function') {
+      loads.push(loadPracticeData('cie').catch(function() {}));
+      loads.push(loadPracticeData('edx').catch(function() {}));
+    }
+    Promise.all(loads).then(function() {
+      var info2 = _findPQInfo(qid);
+      if (info2 && typeof ppReviewWrongItem === 'function') {
+        ppReviewWrongItem(qid, info2.section, info2.board);
+      } else {
+        showToast(t('Question not found', '\u672a\u627e\u5230\u8be5\u9898\u76ee'));
+      }
+    });
+  }
+}
 
 function renderMistakeBook() {
   var panel = E('panel-mistakes');
@@ -2089,7 +2160,7 @@ function renderMistakeBook() {
         html += '</div>';
       }
       html += '<div style="text-align:center;margin-top:12px">';
-      html += '<button class="btn btn-primary btn-sm" onclick="startMistakeReview(\'vocab\')">' + t('Review Wrong Words', '\u590d\u4e60\u9519\u8bcd') + '</button>';
+      html += '<button class="btn btn-primary btn-sm" onclick="startMistakeReview(\'vocab\')">' + t('Review Wrong Words (SRS Priority)', '\u590d\u4e60\u9519\u8bcd\uff08SRS \u4f18\u5148\uff09') + '</button>';
       html += '</div>';
       html += '</div>';
     } else if (_mistakeTab === 'vocab') {
@@ -2124,8 +2195,12 @@ function renderMistakeBook() {
         html += '<div class="mistake-word">' + escapeHtml(item.qid) + '</div>';
         if (errLabel) html += '<div class="mistake-def">' + escapeHtml(errLabel) + '</div>';
         html += '<div class="mistake-fail">\u00d7' + (item.data.reviewCount || 0) + '</div>';
+        html += '<button class="btn btn-ghost btn-xs mistake-review-btn" onclick="reviewMistakeQ(\'' + escapeHtml(item.qid) + '\')">' + t('Review', '\u590d\u4e60') + '</button>';
         html += '</div>';
       }
+      html += '<div style="text-align:center;margin-top:12px">';
+      html += '<button class="btn btn-primary btn-sm" onclick="reviewAllMistakeQs()">' + t('Review All', '\u5168\u90e8\u590d\u4e60') + ' (' + ppItems.length + ')</button>';
+      html += '</div>';
       html += '</div>';
     } else if (_mistakeTab === 'practice') {
       html += '<div class="mistake-empty">\ud83c\udf89 ' + t('No practice mistakes!', '\u6ca1\u6709\u7ec3\u4e60\u9519\u9898\uff01') + '</div>';
@@ -2142,20 +2217,33 @@ function renderMistakeBook() {
 
   panel.innerHTML = html;
 
-  /* Tab click delegation */
-  panel.addEventListener('click', function _mtabHandler(e) {
-    var tab = e.target.closest('[data-mtab]');
-    if (tab) {
-      _mistakeTab = tab.dataset.mtab;
-      panel.removeEventListener('click', _mtabHandler);
-      renderMistakeBook();
-    }
-  });
+  /* Tab click delegation — bind once */
+  if (!_mistakeTabBound) {
+    _mistakeTabBound = true;
+    E('panel-mistakes').addEventListener('click', function(e) {
+      var tab = e.target.closest('[data-mtab]');
+      if (tab && tab.dataset.mtab !== _mistakeTab) {
+        _mistakeTab = tab.dataset.mtab;
+        renderMistakeBook();
+      }
+    });
+  }
+}
+
+function reviewAllMistakeQs() {
+  var wb = typeof _ppGetWB === 'function' ? _ppGetWB() : {};
+  var qids = [];
+  for (var qid in wb) {
+    if (wb[qid].status === 'active') qids.push(qid);
+  }
+  if (qids.length === 0) return;
+  /* Review the first one; user can continue through wrong book from practice.js */
+  reviewMistakeQ(qids[0]);
 }
 
 function startMistakeReview(type) {
   if (type === 'vocab') {
-    /* Jump to review dashboard — SRS naturally prioritizes failed words */
+    /* SRS naturally prioritizes failed words (low stars → low SRS level → due first) */
     navTo('review-dash');
   }
 }

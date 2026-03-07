@@ -1,5 +1,39 @@
 # Changelog
 
+## [2.1.1] - 2026-03-07 — 导航动线优化 + 质量修复
+
+### 错题本增强
+- **练习错题操作按钮**: 每行新增 [复习] 按钮，点击直接跳转做题；底部新增 [全部复习] 按钮
+- **题目反查**: `_findPQInfo()` 跨 board 查找 qid 对应 section（MCQ + Past Paper 双源）
+- **Tab 事件委托优化**: `_mistakeTabBound` 标记确保 listener 只绑定一次，消除重复注册
+
+### Badge 系统
+- **底栏 Review badge**: `bnav-rv-badge` 显示待复习词数（仅已学习但到期的词，排除未学新词）
+- **错题 badge**: 侧栏 `nav-mk-badge` + 底栏 `bnav-mk-badge` 显示待解决错题总数
+- **`getStudiedDueCount()`**: 新增函数，只计算已学习过且到期的词（排除 new/mastered）
+
+### 今日计划
+- **今日进度卡片**: 显示当日学习活动次数（基于 history 数据）
+
+### 词汇复习
+- **文案优化**: 错词复习按钮改为"复习错词（SRS 优先）"，明确表达排序逻辑
+
+### 视觉修复
+- **暗色模式**: 补充 `.plan-streak` opacity + `.mistake-row` border-color 规则
+- **手机端响应式**: `.mistake-row` flex-wrap + `.mistake-def` 换行显示，防溢出
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | _findPQInfo + reviewMistakeQ + reviewAllMistakeQs + Tab 委托优化 + 今日进度 + 文案优化 |
+| `js/ui.js` | updateNav() badge 扩展（Review + Mistakes，双位置同步） |
+| `js/storage.js` | getStudiedDueCount() 新增 |
+| `index.html` | 底栏 Review/Mistakes badge span + 侧栏 Mistakes badge span |
+| `css/style.css` | .bnav-badge + .mistake-review-btn + 暗色模式补全 + 手机端响应式 |
+| `js/config.js` | v2.1.0 → v2.1.1 |
+
+---
+
 ## [2.1.0] - 2026-03-07 — 侧栏导航重构 + HHK 技能学习系统
 
 ### Phase A: 侧栏导航重构
