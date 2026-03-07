@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.11.2] - 2026-03-07 — 离线单文件构建器重构
+
+### 重构
+- **build-single.py 全面重写**: 适配新架构（18 核心 JS + 分拆数据 JSON + 懒加载模块）
+- **数据预注入**: 12 个 data/*.json 文件内联为 JS 变量 + `fetch()` 拦截层，离线时零网络请求
+- **JS 文件清单更新**: 新增 syllabus.js + practice.js（Phase 10C/10F 新增文件）
+- **动态模块内联**: homework.js + admin.js + vocab-admin.js 全部内联（教师离线可用）
+- **PWA 构件移除**: 单文件构建自动去除 manifest / SW 注册（避免冲突）
+- **输出**: `dist/word-match-pro.html`（~6 MB，含全部 3 考试局词汇 + 2,424 练习题 + 4,107 真题）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/build-single.py` | 全面重写：18 JS + 12 数据 JSON 内联 + fetch 拦截 + PWA 移除 |
+| `js/config.js` | 版本号 v1.11.1 -> v1.11.2 |
+
 ## [1.11.1] - 2026-03-07 — 质量优化：SW 版本同步 + 暗色 theme-color + 成绩趋势图
 
 ### 修复

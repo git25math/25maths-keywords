@@ -339,4 +339,4 @@
 - [x] **SW 版本自动同步**: 构建脚本自动注入 APP_VERSION → sw.js CACHE_VERSION → v1.11.1
 - [x] **暗色模式 theme-color**: applyDark() 动态更新 meta theme-color → v1.11.1
 - [x] **成绩趋势图**: 诊断/模拟卷结果页历史得分柱状图（>=2 次显示） → v1.11.1
-- [ ] build-single.py 更新适配新架构
+- [x] **build-single.py 全面重写**: 18 JS + 12 数据 JSON 内联 + fetch 拦截 + PWA 移除 → v1.11.2
