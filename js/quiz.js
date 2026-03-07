@@ -30,7 +30,7 @@ function startQuiz(li, subset) {
   Q.correct = 0;
   Q.lvl = li;
   Q.locked = false;
-  Q.dir = 'en2zh';
+  Q.dir = localStorage.getItem('wmatch_quiz_dir') || 'en2zh';
   Q.wrongPairs = [];
 
   showPanel('quiz');
@@ -39,6 +39,7 @@ function startQuiz(li, subset) {
 
 function setQuizDir(dir) {
   Q.dir = dir;
+  try { localStorage.setItem('wmatch_quiz_dir', dir); } catch(e) {}
   Q.locked = false;
   renderQuizCard();
 }

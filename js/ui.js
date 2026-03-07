@@ -69,6 +69,10 @@ function showToast(msg) {
 }
 
 /* ═══ MODAL ═══ */
+var _modalPrevFocus = null;
+var _modalEscHandler = null;
+var _modalTabHandler = null;
+
 function showModal(html) {
   var card = E('modal-card');
   card.innerHTML = html;
@@ -78,10 +82,41 @@ function showModal(html) {
   if (title && !title.id) title.id = 'modal-title-auto';
   if (title) E('modal-overlay').setAttribute('aria-labelledby', title.id);
   else E('modal-overlay').removeAttribute('aria-labelledby');
+
+  /* Save previous focus + focus modal */
+  _modalPrevFocus = document.activeElement;
+  card.setAttribute('tabindex', '-1');
+  card.focus();
+
+  /* ESC to close */
+  _modalEscHandler = function(e) { if (e.key === 'Escape') hideModal(); };
+  document.addEventListener('keydown', _modalEscHandler);
+
+  /* Tab trap within modal-card */
+  _modalTabHandler = function(e) {
+    if (e.key !== 'Tab') return;
+    var focusable = card.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) { e.preventDefault(); return; }
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first || document.activeElement === card) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  };
+  document.addEventListener('keydown', _modalTabHandler);
 }
 
 function hideModal() {
   E('modal-overlay').style.display = 'none';
+  /* Remove listeners */
+  if (_modalEscHandler) { document.removeEventListener('keydown', _modalEscHandler); _modalEscHandler = null; }
+  if (_modalTabHandler) { document.removeEventListener('keydown', _modalTabHandler); _modalTabHandler = null; }
+  /* Restore focus */
+  if (_modalPrevFocus && typeof _modalPrevFocus.focus === 'function') {
+    try { _modalPrevFocus.focus(); } catch(e) {}
+    _modalPrevFocus = null;
+  }
 }
 
 E('modal-overlay').addEventListener('click', function(e) {

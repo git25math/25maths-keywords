@@ -58,10 +58,10 @@ function getNextRank() {
 }
 
 /* ═══ DECK STATS (dual metrics, Spec v1.0 §6) ═══ */
-function getDeckStats(li) {
+function getDeckStats(li, _wd) {
   var lv = LEVELS[li];
   var pairs = getPairs(lv.vocabulary);
-  var wd = getWordData();
+  var wd = _wd || getWordData();
   var totalStars = 0, mastered = 0, started = 0;
   pairs.forEach(function(p) {
     var key = wordKey(li, p.lid);
@@ -84,16 +84,22 @@ function getDeckStats(li) {
 }
 
 /* ═══ CATEGORY COLLAPSE STATE ═══ */
-/* All categories default collapsed */
+/* All categories default collapsed; restore from localStorage */
 var catCollapsed = {};
 (function initCatCollapsed() {
+  var saved = null;
+  try { saved = JSON.parse(localStorage.getItem('wmatch_catCollapsed')); } catch(e) {}
   BOARDS.forEach(function(b) {
-    b.categories.forEach(function(c) { catCollapsed[c.id] = true; });
+    b.categories.forEach(function(c) {
+      catCollapsed[c.id] = saved && c.id in saved ? saved[c.id] : true;
+    });
   });
 })();
 
 /* Unit collapse state (25m only, default all collapsed) */
-var unitCollapsed = {};
+var unitCollapsed = (function() {
+  try { return JSON.parse(localStorage.getItem('wmatch_unitCollapsed')) || {}; } catch(e) { return {}; }
+})();
 
 /* Sidebar board accordion state (per board) */
 var sidebarBoardOpen = {};
@@ -107,12 +113,14 @@ function toggleCategory(catId) {
   catCollapsed[catId] = !catCollapsed[catId];
   var el = document.getElementById('cat-' + catId);
   if (el) el.classList.toggle('collapsed', catCollapsed[catId]);
+  try { localStorage.setItem('wmatch_catCollapsed', JSON.stringify(catCollapsed)); } catch(e) {}
 }
 
 function toggleUnit(unitKey) {
   unitCollapsed[unitKey] = !unitCollapsed[unitKey];
   var el = document.getElementById('unit-' + unitKey);
   if (el) el.classList.toggle('collapsed', unitCollapsed[unitKey]);
+  try { localStorage.setItem('wmatch_unitCollapsed', JSON.stringify(unitCollapsed)); } catch(e) {}
 }
 
 /* Called from sidebar: expand right-side category + scroll to it */
@@ -326,7 +334,7 @@ function renderHome() {
         var locked = isGuestLocked(i);
         _levelLocked[i] = locked;
         if (!locked) {
-          _levelStats[i] = getDeckStats(i);
+          _levelStats[i] = getDeckStats(i, wd);
         }
       });
     });

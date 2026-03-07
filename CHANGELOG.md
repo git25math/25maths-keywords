@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.12.7] - 2026-03-07 — P0 快速优化（可访问性 + 暗色模式 + 持久化 + 性能）
+
+### 新增
+- **Modal 焦点陷阱 + ESC 关闭**: showModal() 保存之前焦点、自动 focus modal-card、ESC 键关闭、Tab 键循环 focusable 元素；hideModal() 恢复之前焦点
+- **Quiz 方向偏好持久化**: 测验方向（en2zh/zh2en）保存到 localStorage，重新开始测验时恢复
+- **折叠状态持久化**: 首页 catCollapsed / unitCollapsed / cieChapterCollapsed 写入 localStorage，刷新后保留展开/折叠状态
+
+### 修复
+- **暗色模式选择器修正**: 28 条 `.dark` CSS 规则修正为 `[data-theme="dark"]`（pp-diff、pp-dot、sec-journey、diag-*、pwa-install-hint 等），此前这些暗色规则完全无效
+
+### 优化
+- **getDeckStats 缓存传递**: renderHome() 循环中复用已缓存的 wordData，避免每个 level 重复调用 getWordData()
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/ui.js` | Modal focus trap + ESC + Tab trap + 焦点恢复 |
+| `js/quiz.js` | Q.dir localStorage 读写 |
+| `js/mastery.js` | getDeckStats 可选 _wd 参数 + 折叠状态 localStorage |
+| `js/syllabus.js` | cieChapterCollapsed localStorage 持久化 |
+| `css/style.css` | 28 处 `.dark` → `[data-theme="dark"]` |
+| `js/config.js` | 版本号 v1.12.6→v1.12.7 |
+
 ## [1.12.6] - 2026-03-07 — Edexcel 真题引擎 + 考纲教学流程
 
 ### 新增

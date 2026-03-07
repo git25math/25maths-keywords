@@ -20,8 +20,10 @@ var _cieDataLoading = false;
 var _edxDataReady = false;
 var _edxDataLoading = false;
 
-/* Chapter collapse state (default all collapsed) */
-var cieChapterCollapsed = {};
+/* Chapter collapse state (default all collapsed; restore from localStorage) */
+var cieChapterCollapsed = (function() {
+  try { return JSON.parse(localStorage.getItem('wmatch_chapterCollapsed')) || {}; } catch(e) { return {}; }
+})();
 
 /* Helper: mastery dimension bar */
 function _masteryBar(icon, label, pct) {
@@ -389,6 +391,7 @@ function toggleCIEChapter(catKey) {
   cieChapterCollapsed[catKey] = !cieChapterCollapsed[catKey];
   var el = document.getElementById('cat-' + catKey);
   if (el) el.classList.toggle('collapsed', cieChapterCollapsed[catKey]);
+  try { localStorage.setItem('wmatch_chapterCollapsed', JSON.stringify(cieChapterCollapsed)); } catch(e) {}
 }
 
 /* ═══ SECTION DETAIL PAGE ═══ */
