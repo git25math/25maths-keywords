@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.9.9] - 2026-03-07 — 完整学习闭环：Vocab → Practice → Papers → Review
+
+### 新增
+- **学习旅程条**: Section 详情页新增 3 步水平进度条（Vocab → Practice → Papers），实时显示每步完成/进行中/未开始状态
+- **Module 完成标记**: Vocabulary（learningPct>=80%）/ Practice（isModeDone）/ Past Papers（mastered>=50%）三个模块卡片右上角绿色 ✓
+- **Practice 智能下一步**: 从 section 进入 Practice 完成后，推荐 "Try Past Papers"（有真题时）或 "Back to Section"（无真题时），非 section 来源保持原有 "Back to Study"
+- **Past Papers 智能下一步**: 根据得分推荐不同行动 — <50% "Review Vocabulary" / 50-79% "Review Wrong Questions" / >=80% "Next Topic"
+- **Section 完成里程碑**: 三模块全部完成时弹出一次性 Toast，localStorage 防重复
+- **辅助函数**: `_getSectionLevelIdx()` + `_getNextSection()` 支持跨章节导航
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/practice.js` | +`_capturedSection/Board` 上下文捕获 + `_pqSession.sectionId/sectionBoard` + `finishPractice()` 智能下一步 + `ppShowResults()` 分数引导 + `_getSectionLevelIdx()` + `_getNextSection()` |
+| `js/syllabus.js` | +学习旅程条 HTML + Vocab/Practice 完成 ✓ + PP 完成 ✓ + journey bar 异步更新 + 里程碑检测 |
+| `css/style.css` | +`.sec-journey*` 旅程条 + `.sec-module-done` 完成标记 + 暗色模式适配 |
+| `js/config.js` | 版本号 v1.9.8 → v1.9.9 |
+
 ## [1.9.8] - 2026-03-07 — 智能学习路径：薄弱点检测 + 学习推荐
 
 ### 新增

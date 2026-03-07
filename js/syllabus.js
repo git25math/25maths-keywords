@@ -495,12 +495,28 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   }
   html += '</div>';
 
+  /* Learning journey bar */
+  var _jVocabDone = stats.learningPct >= 80;
+  var _jPracticeDone = li >= 0 && isModeDone(li, 'practice');
+  var _jPapersDone = false; /* updated async after PP data loads */
+  var _jVocabClass = _jVocabDone ? 'done' : (stats.started > 0 ? 'current' : '');
+  var _jPracticeClass = _jPracticeDone ? 'done' : (_jVocabDone ? 'current' : '');
+  var _jPapersClass = ''; /* set async */
+  html += '<div class="sec-journey" id="sec-journey-bar">';
+  html += '<div class="sec-journey-step ' + _jVocabClass + '"><span class="sec-journey-icon">\ud83d\udcdd</span> ' + t('Vocab', '\u8bcd\u6c47') + '</div>';
+  html += '<div class="sec-journey-arrow">\u2192</div>';
+  html += '<div class="sec-journey-step ' + _jPracticeClass + '"><span class="sec-journey-icon">\u270f\ufe0f</span> ' + t('Practice', '\u7ec3\u4e60') + '</div>';
+  html += '<div class="sec-journey-arrow">\u2192</div>';
+  html += '<div class="sec-journey-step ' + _jPapersClass + '" id="sec-journey-papers"><span class="sec-journey-icon">\ud83d\udcc4</span> ' + t('Papers', '\u771f\u9898') + '</div>';
+  html += '</div>';
+
   /* Module cards: Vocabulary → Practice → Knowledge → Examples */
   html += '<div class="sec-modules">';
 
   /* Vocabulary module (2nd) */
   if (words.length > 0 && li >= 0) {
     html += '<div class="sec-module" onclick="openDeck(' + li + ')">';
+    if (_jVocabDone) html += '<div class="sec-module-done">\u2713</div>';
     html += '<div class="sec-module-icon">\ud83d\udcdd</div>';
     html += '<div class="sec-module-info">';
     html += '<div class="sec-module-title">' + t('Vocabulary', '\u6838\u5fc3\u8bcd\u6c47') + '</div>';
@@ -525,6 +541,7 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   /* Practice module */
   if (qCount > 0) {
     html += '<div class="sec-module" onclick="startPracticeBySection(\'' + sec.id + '\',\'' + board + '\')">';
+    if (_jPracticeDone) html += '<div class="sec-module-done">\u2713</div>';
     html += '<div class="sec-module-icon">\u270f\ufe0f</div>';
     html += '<div class="sec-module-info">';
     html += '<div class="sec-module-title">' + t('Practice', '\u7ec3\u4e60') + '</div>';
@@ -897,8 +914,12 @@ function _renderPPSectionModule(slot, secId, board) {
     groupCounts[g] = (groupCounts[g] || 0) + 1;
   }
 
+  var _ppDoneRatio = ppStats.total > 0 ? ppStats.mastered / ppStats.total : 0;
+  var _ppModuleDone = _ppDoneRatio >= 0.5;
+
   var h = '';
-  h += '<div class="sec-module" style="flex-direction:column;align-items:stretch;gap:8px">';
+  h += '<div class="sec-module" style="flex-direction:column;align-items:stretch;gap:8px;position:relative">';
+  if (_ppModuleDone) h += '<div class="sec-module-done">\u2713</div>';
   h += '<div style="display:flex;align-items:center;gap:12px">';
   h += '<div class="sec-module-icon">\ud83d\udcc4</div>';
   h += '<div class="sec-module-info">';
@@ -989,6 +1010,30 @@ function _renderPPSectionModule(slot, secId, board) {
   h += '</div>';
 
   slot.innerHTML = h;
+
+  /* Update journey bar Papers step (async) */
+  var jPapersEl = document.getElementById('sec-journey-papers');
+  if (jPapersEl) {
+    if (_ppModuleDone) {
+      jPapersEl.classList.add('done');
+    } else if (ppStats.mastered > 0 || ppStats.needsWork > 0 || ppStats.partial > 0) {
+      jPapersEl.classList.add('current');
+    }
+  }
+
+  /* Section complete milestone */
+  var secLi = (_boardSectionLevelMap[board] || {})[secId];
+  if (_ppModuleDone && secLi !== undefined) {
+    var _vocDone = getDeckStats(secLi).learningPct >= 80;
+    var _praDone = isModeDone(secLi, 'practice');
+    if (_vocDone && _praDone) {
+      var msKey = 'milestone:' + secId;
+      if (!localStorage.getItem(msKey)) {
+        localStorage.setItem(msKey, '1');
+        showToast(t('Section Complete!', '\u77e5\u8bc6\u70b9\u5b8c\u6210\uff01') + ' \ud83c\udf89');
+      }
+    }
+  }
 }
 
 /* ═══ MASTER QUESTION SUMMARY ═══ */

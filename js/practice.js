@@ -204,6 +204,9 @@ function startPractice(li) {
     /* Resolve practice board (edexcel syllabus uses 'edx' for questions) */
     var pqBoard = board;
     if (window._practiceBoard === 'edexcel') pqBoard = 'edx';
+    /* Capture section context before clearing (for smart next-step) */
+    var _capturedSection = window._practiceSection || null;
+    var _capturedBoard = window._practiceBoard || null;
     /* Section/chapter filtering for syllabus mode (CIE + Edexcel) */
     if (window._practiceSection) {
       questions = getPracticeBySection(pqBoard, window._practiceSection, 10);
@@ -227,7 +230,9 @@ function startPractice(li) {
       current: 0,
       correct: 0,
       answers: [],
-      lvl: li
+      lvl: li,
+      sectionId: _capturedSection || (lv._isSection ? lv._section : null),
+      sectionBoard: _capturedBoard || board
     };
     showPanel('practice');
     renderPracticeCard();
@@ -377,7 +382,20 @@ function finishPractice() {
     'startPractice(' + s.lvl + ')',
     'openDeck(' + s.lvl + ')', 'practice');
 
-  var step = nextStepHTML('\ud83d\udcd6', t('Back to Study', '返回学习'), 'openDeck(' + s.lvl + ')');
+  /* Smart next step: context-aware recommendation */
+  var step;
+  if (s.sectionId && typeof startPastPaper === 'function' && typeof _ppData !== 'undefined' && _ppData[s.sectionBoard === 'edexcel' ? 'edx' : s.sectionBoard]) {
+    var _ppCheck = getPPBySection(s.sectionBoard, s.sectionId);
+    if (_ppCheck && _ppCheck.length > 0) {
+      step = nextStepHTML('\ud83d\udcc4', t('Try Past Papers', '\u5c1d\u8bd5\u771f\u9898'), 'startPastPaper(\'' + s.sectionId + '\',\'' + s.sectionBoard + '\',\'practice\')');
+    } else {
+      step = nextStepHTML('\ud83d\udcd8', t('Back to Section', '\u8fd4\u56de\u77e5\u8bc6\u70b9'), 'openSection(\'' + s.sectionId + '\',\'' + s.sectionBoard + '\')');
+    }
+  } else if (s.sectionId) {
+    step = nextStepHTML('\ud83d\udcd8', t('Back to Section', '\u8fd4\u56de\u77e5\u8bc6\u70b9'), 'openSection(\'' + s.sectionId + '\',\'' + s.sectionBoard + '\')');
+  } else {
+    step = nextStepHTML('\ud83d\udcd6', t('Back to Study', '\u8fd4\u56de\u5b66\u4e60'), 'openDeck(' + s.lvl + ')');
+  }
 
   /* Wrong questions review list */
   var wrongHtml = '';
@@ -1550,6 +1568,32 @@ function ppClearCmdFilter() {
   startPastPaper(_ppSession.sectionId, _ppSession.board, _ppSession.mode, _ppSession.groupFilter || null, null);
 }
 
+/* ═══ LEARNING LOOP HELPERS ═══ */
+
+function _getSectionLevelIdx(sectionId, board) {
+  var map = (typeof _boardSectionLevelMap !== 'undefined') ? _boardSectionLevelMap[board] : null;
+  if (!map || map[sectionId] === undefined) return -1;
+  return map[sectionId];
+}
+
+function _getNextSection(sectionId, board) {
+  var syllabus = (typeof BOARD_SYLLABUS !== 'undefined') ? BOARD_SYLLABUS[board] : null;
+  if (!syllabus || !syllabus.chapters) return null;
+  for (var ci = 0; ci < syllabus.chapters.length; ci++) {
+    var secs = syllabus.chapters[ci].sections;
+    for (var si = 0; si < secs.length; si++) {
+      if (secs[si].id === sectionId) {
+        if (si + 1 < secs.length) return secs[si + 1].id;
+        if (ci + 1 < syllabus.chapters.length && syllabus.chapters[ci + 1].sections.length > 0) {
+          return syllabus.chapters[ci + 1].sections[0].id;
+        }
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
 /* ═══ RELATED VOCABULARY ═══ */
 
 function _ppGetSectionVocab(sectionId, board) {
@@ -2204,6 +2248,25 @@ function ppShowResults(exam, conceptErrors) {
       html += '<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + c + '</span>';
       html += '<span style="font-weight:600;font-family:var(--font-mono)">' + ce.scored + '/' + ce.total + '</span>';
       html += '</div>';
+    }
+  }
+
+  /* Smart next step based on score */
+  if (_ppSession && _ppSession.sectionId && !_ppSession.paperKey) {
+    var _nsSecId = _ppSession.sectionId;
+    var _nsBoard = _ppSession.board;
+    if (pct < 50) {
+      var _nsLi = _getSectionLevelIdx(_nsSecId, _nsBoard);
+      if (_nsLi >= 0) {
+        html += nextStepHTML('\ud83d\udcdd', t('Review Vocabulary', '\u590d\u4e60\u8bcd\u6c47'), 'openDeck(' + _nsLi + ')');
+      }
+    } else if (pct < 80) {
+      html += nextStepHTML('\ud83d\udcd5', t('Review Wrong Questions', '\u590d\u4e60\u9519\u9898'), 'ppShowWrongBook(\'' + _nsSecId + '\',\'' + _nsBoard + '\')');
+    } else {
+      var _nextSec = _getNextSection(_nsSecId, _nsBoard);
+      if (_nextSec) {
+        html += nextStepHTML('\ud83d\udcd8', t('Next Topic', '\u4e0b\u4e00\u77e5\u8bc6\u70b9'), 'openSection(\'' + _nextSec + '\',\'' + _nsBoard + '\')');
+      }
     }
   }
 
