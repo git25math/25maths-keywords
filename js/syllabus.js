@@ -23,6 +23,18 @@ var _edxDataLoading = false;
 /* Chapter collapse state (default all collapsed) */
 var cieChapterCollapsed = {};
 
+/* Helper: mastery dimension bar */
+function _masteryBar(icon, label, pct) {
+  pct = pct || 0;
+  var color = pct >= 70 ? 'var(--c-success)' : pct >= 30 ? 'var(--c-warning)' : 'var(--c-danger)';
+  if (pct === 0) color = 'var(--c-muted)';
+  return '<div class="sec-mastery-item">' +
+    '<span class="sec-mastery-icon">' + icon + '</span>' +
+    '<span class="sec-mastery-label">' + label + '</span>' +
+    '<div class="sec-mastery-track"><div class="sec-mastery-fill" style="width:' + pct + '%;background:' + color + '"></div></div>' +
+    '<span class="sec-mastery-pct">' + pct + '%</span></div>';
+}
+
 /* ═══ SECTION EDITS LOADING ═══ */
 
 function loadSectionEdits(board) {
@@ -442,10 +454,11 @@ function renderSectionDetail(ch, sec, secIdx, board) {
     html += '<div class="sec-health-info">';
     html += '<div class="sec-health-label">' + t('Section Health', '\u77e5\u8bc6\u70b9\u5065\u5eb7\u5ea6') + '</div>';
     html += '<div class="sec-health-rec">' + _spRecLabel(sh.rec) + '</div>';
-    html += '<div class="sec-health-breakdown">';
-    html += '\ud83d\udcdd ' + t('Vocab', '\u8bcd\u6c47') + ': ' + sh.vocabScore + '%';
-    if (sh.hasPP) html += ' \u00b7 \ud83d\udcc4 ' + t('Papers', '\u771f\u9898') + ': ' + sh.ppScore + '%';
-    if (sh.failRate > 0) html += ' \u00b7 \u274c ' + t('Fail rate', '\u9519\u8bef\u7387') + ': ' + sh.failRate + '%';
+    html += '<div class="sec-mastery-bars">';
+    html += _masteryBar('\ud83d\udcdd', t('Vocab', '\u8bcd\u6c47'), sh.vocabScore);
+    html += _masteryBar('\u270f\ufe0f', t('Practice', '\u7ec3\u4e60'), sh.practiceScore);
+    if (sh.hasPP) html += _masteryBar('\ud83d\udcc4', t('Papers', '\u771f\u9898'), sh.ppScore);
+    html += _masteryBar('\ud83e\udde0', t('Retention', '\u8bb0\u5fc6'), sh.retentionScore);
     html += '</div>';
     html += '</div></div>';
   }
@@ -737,7 +750,9 @@ function getSectionHealth(sectionId, board) {
   var failRate = 0;
   var recency = 0.7;
 
-  /* Vocab score + fail rate + recency in single pass */
+  /* Vocab score + fail rate + recency + retention in single pass */
+  var retentionScore = 0;
+  var practiceScore = 0;
   if (hasVocab) {
     var ds = getDeckStats(li);
     vocabScore = ds.learningPct || 0;
@@ -746,18 +761,28 @@ function getSectionHealth(sectionId, board) {
     var pairs = getPairs(lv.vocabulary);
     var wd = getWordData();
     var totalOk = 0, totalFail = 0, lastActive = 0;
+    var srsSum = 0, srsCount = 0;
     pairs.forEach(function(p) {
       var d = wd[wordKey(li, p.lid)];
       if (d) {
         totalOk += d.ok || 0;
         totalFail += d.fail || 0;
         if (d.lr && d.lr > lastActive) lastActive = d.lr;
+        if (d.lv != null) { srsSum += d.lv; srsCount++; }
       }
     });
     failRate = (totalOk + totalFail) > 0 ? Math.round(totalFail / (totalOk + totalFail) * 100) : 0;
     if (lastActive > 0) {
       var daysAgo = (Date.now() - lastActive) / 86400000;
       recency = daysAgo < 1 ? 1.0 : daysAgo < 7 ? 0.95 : daysAgo < 30 ? 0.85 : 0.7;
+    }
+    /* Retention: avg SRS level (0-7) → 0-100%, with recency decay */
+    if (srsCount > 0) {
+      retentionScore = Math.round((srsSum / srsCount / 7) * 100 * recency);
+    }
+    /* Practice MCQ score */
+    if (typeof isModeDone === 'function' && isModeDone(li, 'practice')) {
+      practiceScore = 100;
     }
   }
 
@@ -801,6 +826,7 @@ function getSectionHealth(sectionId, board) {
 
   var result = {
     score: score, vocabScore: vocabScore, ppScore: ppScore, failRate: failRate,
+    practiceScore: practiceScore, retentionScore: retentionScore,
     recency: recency, rec: rec, hasVocab: hasVocab, hasPP: hasPP,
     sectionId: sectionId, board: board, levelIdx: li, weakGroup: weakGroup
   };
@@ -910,6 +936,57 @@ function renderSmartPath() {
     html += '</div>';
   }
   html += '</div>';
+  html += '</div>';
+  return html;
+}
+
+/**
+ * renderReviewPlan() → HTML for home page review plan (sections due for review)
+ */
+function renderReviewPlan() {
+  var boards = getVisibleBoards();
+  var candidates = [];
+  for (var i = 0; i < boards.length; i++) {
+    var bid = boards[i].id;
+    if (bid === '25m') continue;
+    var syllabusBoard = bid === 'edx' ? 'edexcel' : bid;
+    if (!BOARD_SYLLABUS[syllabusBoard]) continue;
+    var syllabus = BOARD_SYLLABUS[syllabusBoard];
+    for (var ci = 0; ci < syllabus.chapters.length; ci++) {
+      var ch = syllabus.chapters[ci];
+      for (var si = 0; si < ch.sections.length; si++) {
+        var sec = ch.sections[si];
+        var h = getSectionHealth(sec.id, syllabusBoard);
+        /* Only include sections that have been started but need review */
+        if (h.vocabScore > 0 && h.recency < 0.95 && h.retentionScore < 70) {
+          h._boardId = bid;
+          candidates.push(h);
+        }
+      }
+    }
+  }
+  if (candidates.length === 0) return '';
+  /* Sort by retention ascending (most forgotten first) */
+  candidates.sort(function(a, b) { return a.retentionScore - b.retentionScore; });
+  candidates = candidates.slice(0, 3);
+
+  var html = '<div class="review-plan">';
+  html += '<div class="review-plan-header">';
+  html += '<span class="review-plan-icon">\ud83d\udd04</span>';
+  html += '<span class="review-plan-title">' + t('Review Plan', '\u590d\u4e60\u8ba1\u5212') + '</span>';
+  html += '</div>';
+  html += '<div class="review-plan-sub">' + t('These topics need review to strengthen your memory', '\u8fd9\u4e9b\u77e5\u8bc6\u70b9\u9700\u8981\u590d\u4e60\u4ee5\u5de9\u56fa\u8bb0\u5fc6') + '</div>';
+  for (var k = 0; k < candidates.length; k++) {
+    var c = candidates[k];
+    var info = getSectionInfo(c.sectionId, c.board);
+    var title = info ? escapeHtml(info.section.title) : c.sectionId;
+    var retColor = c.retentionScore >= 50 ? 'var(--c-warning)' : 'var(--c-danger)';
+    html += '<div class="review-plan-item" onclick="openSection(\'' + c.sectionId + '\',\'' + c.board + '\')">';
+    html += '<span class="review-plan-sec">' + c.sectionId + '</span>';
+    html += '<span class="review-plan-name">' + title + '</span>';
+    html += '<span class="review-plan-ret" style="color:' + retColor + '">\ud83e\udde0 ' + c.retentionScore + '%</span>';
+    html += '</div>';
+  }
   html += '</div>';
   return html;
 }

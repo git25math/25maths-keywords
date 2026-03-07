@@ -242,6 +242,11 @@ function renderHome() {
     html += renderSmartPath();
   }
 
+  /* Review Plan */
+  if (typeof renderReviewPlan === 'function') {
+    html += renderReviewPlan();
+  }
+
   /* Diagnostic test button (only if PP data available) */
   var _diagBoard = (userBoard === 'edx') ? 'edx' : 'cie';
   if (typeof startDiagnostic === 'function' && gs.total > 0) {

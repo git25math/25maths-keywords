@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.12.0] - 2026-03-07 — 4 维掌握度系统 + 复习计划推荐
+
+### 新增
+- **4 维掌握度展示**: 知识点详情页的健康度区域升级为 4 根进度条 — 词汇 (Vocab) / 练习 (Practice) / 真题 (Papers) / 记忆 (Retention)，取代原文本摘要
+- **记忆保留度指标** `retentionScore`: 基于 SRS 等级均值（0-7 → 0-100%）× 时间衰减系数，衡量长期记忆强度
+- **练习完成度指标** `practiceScore`: 基于 `isModeDone(li, 'practice')` 追踪 MCQ 练习是否完成
+- **首页复习计划** `renderReviewPlan()`: 自动筛选已学但记忆衰退的知识点（retentionScore < 70% 且 recency < 0.95），按遗忘程度排序，最多显示 3 个推荐复习项
+- 复习计划卡片显示知识点编号、标题和记忆保留度，点击直达知识点详情页
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | `getSectionHealth()` +retentionScore/practiceScore + `_masteryBar()` + `renderReviewPlan()` + 详情页 4 维 mastery bars |
+| `js/mastery.js` | `renderHome()` +复习计划区域 |
+| `css/style.css` | +`.sec-mastery-*` 4 维进度条 + `.review-plan-*` 复习计划样式 |
+| `js/config.js` | 版本号 v1.11.4 -> v1.12.0 |
+
 ## [1.11.4] - 2026-03-07 — Anki 格式导出
 
 ### 新增

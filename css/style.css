@@ -3141,6 +3141,24 @@ input { font-family: inherit; }
 .sec-health-rec { font-size: 12px; color: var(--c-text2); margin-top: 2px; }
 .sec-health-breakdown { font-size: 11px; color: var(--c-muted); margin-top: 4px;
   display: flex; gap: 12px; flex-wrap: wrap; }
+.sec-mastery-bars { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; width: 100%; }
+.sec-mastery-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.sec-mastery-icon { width: 18px; text-align: center; flex-shrink: 0; }
+.sec-mastery-label { width: 60px; color: var(--c-text2); flex-shrink: 0; }
+.sec-mastery-track { flex: 1; height: 6px; background: var(--c-border-light); border-radius: 3px; overflow: hidden; }
+.sec-mastery-fill { height: 100%; border-radius: 3px; transition: width 0.3s; min-width: 2px; }
+.sec-mastery-pct { width: 32px; text-align: right; font-weight: 600; font-size: 11px; color: var(--c-text); flex-shrink: 0; }
+.review-plan { margin: 12px 0; padding: 14px; background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(139,92,246,0.02)); border: 1px solid rgba(139,92,246,0.15); border-radius: var(--r); }
+.review-plan-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.review-plan-icon { font-size: 18px; }
+.review-plan-title { font-weight: 700; font-size: 14px; }
+.review-plan-sub { font-size: 11px; color: var(--c-text2); margin-bottom: 10px; }
+.review-plan-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--c-surface); border-radius: 8px; margin-bottom: 6px; cursor: pointer; transition: background 0.15s; }
+.review-plan-item:hover { background: var(--c-surface-alt); }
+.review-plan-item:last-child { margin-bottom: 0; }
+.review-plan-sec { font-size: 11px; font-weight: 700; color: var(--c-primary); min-width: 28px; }
+.review-plan-name { flex: 1; font-size: 13px; }
+.review-plan-ret { font-size: 12px; font-weight: 600; white-space: nowrap; }
 
 /* Master Question Summary */
 .mq-summary { padding: 16px; margin: 8px 0; background: var(--c-surface);
