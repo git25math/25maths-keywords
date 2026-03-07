@@ -40,7 +40,7 @@ function renderMatchBoard() {
   html += '<div class="match-area">';
 
   /* Left column (English) */
-  html += '<div class="match-col" id="match-left">';
+  html += '<div class="match-col" id="match-left" aria-label="' + t('English words', '英文单词') + '">';
   MT.leftItems.forEach(function(item, i) {
     var cls = 'match-item';
     if (item.matched) cls += ' matched';
@@ -50,7 +50,7 @@ function renderMatchBoard() {
   html += '</div>';
 
   /* Right column (Chinese) */
-  html += '<div class="match-col" id="match-right">';
+  html += '<div class="match-col" id="match-right" aria-label="' + t('Chinese definitions', '中文释义') + '">';
   MT.rightItems.forEach(function(item, i) {
     var cls = 'match-item';
     if (item.matched) cls += ' matched';

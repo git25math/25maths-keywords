@@ -211,6 +211,7 @@ function startDaily() {
   DC.idx = 0;
   DC.score = 0;
   DC.locked = false;
+  _dailyFinished = false;
   DC.remaining = 60;
   DC.startTime = Date.now();
 
@@ -324,7 +325,11 @@ function endDailyEarly() {
   finishDaily();
 }
 
+var _dailyFinished = false;
+
 function finishDaily() {
+  if (_dailyFinished) return;
+  _dailyFinished = true;
   clearInterval(DC.timer);
   var elapsed = Math.min(60, Math.floor((Date.now() - DC.startTime) / 1000));
   saveDailyResult(DC.score, elapsed);

@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.12.8] - 2026-03-07 — P1 优化（数据安全 + 可访问性 + 缓存标签）
+
+### 修复
+- **syncToCloud 并发防护**: 添加 `_syncInProgress` 互斥锁，防止多处调用（debouncedSync/recordActivity/saveCustomLevel）并发写入云端
+- **finishDaily 双调用防护**: 添加 `_dailyFinished` 标志，防止定时器到期和答完最后一题同时触发 `saveDailyResult()` 重复写入
+
+### 新增
+- **Battle 网格键盘可访问性**: 卡片添加 `role="button"` + `tabindex="0"` + Enter/Space 键盘翻牌
+- **Battle HUD 无障碍**: HUD 容器添加 `aria-live="polite"` + `aria-atomic="true"`，计时器添加 `aria-label`
+- **Match 列容器 aria-label**: 左右配对列添加 `aria-label`（英文单词/中文释义）
+
+### 优化
+- **缓存标签更新**: `style.min.css?v=1.12.6` → `?v=1.12.8`，确保浏览器加载最新样式
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/storage.js` | syncToCloud `_syncInProgress` 并发互斥锁 |
+| `js/quiz.js` | finishDaily `_dailyFinished` 双调用防护 |
+| `js/battle.js` | 网格 role/tabindex/keydown + HUD aria-live |
+| `js/match.js` | 配对列 aria-label |
+| `js/config.js` | 版本号 v1.12.7→v1.12.8 |
+| `index.html` | CSS 缓存标签 v1.12.6→v1.12.8 |
+
 ## [1.12.7] - 2026-03-07 — P0 快速优化（可访问性 + 暗色模式 + 持久化 + 性能）
 
 ### 新增

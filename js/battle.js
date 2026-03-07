@@ -37,8 +37,8 @@ function renderBattle(lv) {
   html += '</div>';
 
   /* HUD */
-  html += '<div class="battle-hud" id="battle-hud">';
-  html += '<div class="hud-item" id="hud-time"><span class="hud-icon">\u23f1</span><span id="d-time">' + G.timeLeft + 's</span></div>';
+  html += '<div class="battle-hud" id="battle-hud" aria-live="polite" aria-atomic="true">';
+  html += '<div class="hud-item" id="hud-time"><span class="hud-icon">\u23f1</span><span id="d-time" aria-label="Time remaining">' + G.timeLeft + 's</span></div>';
   html += '<div class="hud-item"><span class="hud-icon">\ud83c\udccf</span><span id="d-moves">0</span></div>';
   html += '<div class="hud-item"><span class="hud-icon">\ud83d\udd25</span><span id="d-combo">0</span></div>';
   html += '</div>';
@@ -61,7 +61,10 @@ function renderBattle(lv) {
     s.style.animationDelay = i * 0.04 + 's';
     s.innerHTML = '<div class="ci"><div class="cf cf-b"></div><div class="cf cf-f"><div class="ct-l">' +
       (item.type === 'word' ? 'EN' : t('CN', '\u4e2d')) + '</div><div class="ct-t">' + escapeHtml(item.content) + '</div></div></div>';
+    s.setAttribute('role', 'button');
+    s.setAttribute('tabindex', '0');
     s.addEventListener('click', function() { onFlip(s); });
+    s.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onFlip(s); } });
     gridEl.appendChild(s);
   });
 

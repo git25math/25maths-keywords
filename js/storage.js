@@ -349,6 +349,7 @@ var _lastSyncErrAt = 0;
 var _syncStatus = 'idle';   /* 'idle' | 'syncing' | 'ok' | 'error' */
 var _lastSyncOkAt = 0;
 var _syncRetryCount = 0;
+var _syncInProgress = false;
 
 async function _doSyncToCloud() {
   if (!sb || !isLoggedIn()) return;
@@ -394,6 +395,8 @@ async function _doSyncToCloud() {
 
 async function syncToCloud() {
   if (!sb || !isLoggedIn()) return;
+  if (_syncInProgress) return;
+  _syncInProgress = true;
   _syncStatus = 'syncing';
   try {
     await _doSyncToCloud();
@@ -413,6 +416,8 @@ async function syncToCloud() {
       _syncRetryCount++;
       setTimeout(function() { syncToCloud(); }, delay);
     }
+  } finally {
+    _syncInProgress = false;
   }
 }
 
