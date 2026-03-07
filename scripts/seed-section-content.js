@@ -763,16 +763,14 @@ add('cie', '1.14', 'knowledge', {
     '<b>Exam Tip</b><br>' +
     'When using a calculator, always write down intermediate steps. If you just write the final answer and it\'s wrong, you get zero marks.',
   content_zh:
-    '<b>仅 Core</b><br>' +
-    '<br>' +
+    '<b>仅 Core</b><br><br>' +
     '<b>关键技能</b><br>' +
-    '• 高效使用科学计算器进行复杂计算。<br>' +
-    '• 在计算器上使用括号以确保正确的运算顺序。<br>' +
-    '• 使用分数按钮输入和转换分数。<br>' +
-    '• 通过估算或逆运算检查答案。<br>' +
-    '<br>' +
+    '• 高效地使用科学计算器处理复杂的计算问题。<br>' +
+    '• 在计算器上正确使用括号，以确保遵循正确的运算顺序（如 BODMAS/BIDMAS）。<br>' +
+    '• 熟练运用分数键输入分数，并进行分数、小数以及带分数之间的转换。<br>' +
+    '• 通过估算（estimation）或逆运算（inverse operations）的方法来检查答案的准确性。<br><br>' +
     '<b>考试技巧</b><br>' +
-    '使用计算器时，务必写下中间步骤。如果你只写最终答案且答案错误，你将得到 0 分。'
+    '在使用计算器解题时，务必写下所有中间计算步骤。如果你只写下最终答案，一旦答案错误，你将无法获得任何分数（零分）。'
 });
 
 add('cie', '1.14', 'examples', {

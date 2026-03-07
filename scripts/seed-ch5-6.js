@@ -820,14 +820,20 @@ add('edexcel', '6.3', 'knowledge', {
     '"At least one" is easiest solved as $1 - P(\\text{none})$.',
   content_zh:
     '<b>知识回顾</b><br>' +
-    '• $P = \\frac{有利结果}{总结果}$，$0 \\leq P \\leq 1$。$P(\\bar{A}) = 1 - P(A)$。<br>' +
-    '• 树形图：沿分支乘（和），不同分支加（或）。<br>' +
-    '• 独立事件：$P(A \\cap B) = P(A) \\times P(B)$。互斥：$P(A \\cup B) = P(A) + P(B)$。<br><br>' +
+    '• $P(\\text{事件}) = \\frac{\\text{有利结果}}{\\text{总结果}}$。概率值始终满足 $0 \\leq P \\leq 1$。<br>' +
+    '• $P(\\text{非 } A) = 1 - P(A)$。<br>' +
+    '• <b>样本空间 (Sample space)</b>：列出所有可能结果的完整清单。对于组合事件，建议使用表格或列表进行系统列举。<br>' +
+    '• <b>相对频率 (Relative frequency)</b> $= \\frac{\\text{事件发生的次数}}{\\text{总试验次数}}$。随着试验次数的增加，相对频率对理论概率的估算会越发准确。<br><br>' +
+    '<b>关键技能</b><br>' +
+    '• <b>树状图 (Tree diagrams)</b>：沿路径的分支相乘（表示"且" AND），不同路径的分支结果相加（表示"或" OR）。<br>' +
+    '• <b>独立事件 (Independent events)</b>：$P(A \\text{ 且 } B) = P(A) \\times P(B)$。<br>' +
+    '• <b>互斥事件 (Mutually exclusive)</b>：$P(A \\text{ 或 } B) = P(A) + P(B)$。<br><br>' +
     '<b>仅 Higher</b><br>' +
-    '• 条件概率：$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$。<br>' +
-    '• 不放回：第二次概率改变。<br>' +
-    '• 韦恩图：$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$。<br><br>' +
-    '<b>注意！</b>"至少一个"最简单方法：$1 - P(\\text{一个也没有})$。'
+    '• <b>条件概率 (Conditional probability)</b>：$P(A | B) = \\frac{P(A \\cap B)}{P(B)}$。<br>' +
+    '• <b>不放回抽样 (Without replacement)</b>：在第二次抽取时，由于总数和符合条件数通常都会减少，概率会随之改变。<br>' +
+    '• <b>韦恩图 (Venn diagrams)</b>：$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$。<br><br>' +
+    '<b>注意！</b><br>' +
+    '解决"至少一个 (At least one)"类问题时，最简便的方法通常是使用补集计算：$1 - P(\\text{一个都没有})$。'
 });
 
 add('edexcel', '6.3', 'examples', {
