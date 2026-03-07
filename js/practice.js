@@ -1542,6 +1542,9 @@ function renderPPCard() {
   if (_ppSession.mode === 'exam' && idx === total - 1) {
     html += '<button class="pp-nav-btn primary" onclick="ppSubmitExam()">';
     html += '\u270b ' + t('Submit', '\u4ea4\u5377') + '</button>';
+  } else if (_ppSession.fromMistakeBook && idx === total - 1) {
+    html += '<button class="pp-nav-btn primary" onclick="ppNext()">';
+    html += '\u2713 ' + t('Done', '\u5b8c\u6210') + '</button>';
   } else {
     html += '<button class="pp-nav-btn primary" onclick="ppNext()">';
     html += t('Next', '\u4e0b\u4e00\u9898') + ' \u2192</button>';
@@ -1609,6 +1612,11 @@ function ppNext() {
   if (_ppSession.current < _ppSession.questions.length - 1) {
     _ppSession.current++;
     renderPPCard();
+  } else if (_ppSession.fromMistakeBook) {
+    /* End of mistake book review — show done and go back */
+    _ppSession = null;
+    showToast(t('Review complete!', '\u590d\u4e60\u5b8c\u6210\uff01'));
+    navTo('mistakes');
   }
 }
 
@@ -1638,9 +1646,12 @@ function ppForceBack() {
   var wasPaper = _ppSession && _ppSession.paperKey;
   var wasDiag = _ppSession && _ppSession.isDiagnostic;
   var wasMock = _ppSession && _ppSession.isMock;
+  var fromMistakeBook = _ppSession && _ppSession.fromMistakeBook;
   var board = _ppSession ? _ppSession.board : 'cie';
   _ppSession = null;
-  if (wasPaper) {
+  if (fromMistakeBook) {
+    navTo('mistakes');
+  } else if (wasPaper) {
     ppShowPaperBrowse(board);
   } else if (wasDiag || wasMock) {
     navTo('home');

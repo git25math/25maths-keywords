@@ -2102,30 +2102,64 @@ function _findPQInfo(qid) {
 }
 
 function reviewMistakeQ(qid) {
-  var info = _findPQInfo(qid);
-  if (info && typeof ppReviewWrongItem === 'function') {
-    ppReviewWrongItem(qid, info.section, info.board);
-  } else {
-    showToast(t('Loading question data...', '\u6b63\u5728\u52a0\u8f7d\u9898\u76ee\u6570\u636e...'));
-    /* Try loading all boards then retry */
-    var loads = [];
-    if (typeof loadPastPaperData === 'function') {
-      loads.push(loadPastPaperData('cie').catch(function() {}));
-      loads.push(loadPastPaperData('edx').catch(function() {}));
-    }
-    if (typeof loadPracticeData === 'function') {
-      loads.push(loadPracticeData('cie').catch(function() {}));
-      loads.push(loadPracticeData('edx').catch(function() {}));
-    }
-    Promise.all(loads).then(function() {
-      var info2 = _findPQInfo(qid);
-      if (info2 && typeof ppReviewWrongItem === 'function') {
-        ppReviewWrongItem(qid, info2.section, info2.board);
-      } else {
-        showToast(t('Question not found', '\u672a\u627e\u5230\u8be5\u9898\u76ee'));
-      }
-    });
+  _startMistakeReviewSession([qid]);
+}
+
+function _startMistakeReviewSession(qids) {
+  /* Load all board data first, then find and start session */
+  var loads = [];
+  if (typeof loadPastPaperData === 'function') {
+    loads.push(loadPastPaperData('cie').catch(function() {}));
+    loads.push(loadPastPaperData('edx').catch(function() {}));
   }
+  if (typeof loadPracticeData === 'function') {
+    loads.push(loadPracticeData('cie').catch(function() {}));
+    loads.push(loadPracticeData('edx').catch(function() {}));
+  }
+  if (typeof loadKaTeX === 'function') loads.push(loadKaTeX());
+  showToast(t('Loading...', '\u52a0\u8f7d\u4e2d...'));
+  Promise.all(loads).then(function() {
+    var questions = [];
+    var sessionBoard = null;
+    var sessionSection = null;
+    for (var i = 0; i < qids.length; i++) {
+      var info = _findPQInfo(qids[i]);
+      if (!info) continue;
+      if (!sessionBoard) { sessionBoard = info.board; sessionSection = info.section; }
+      /* Get the question object */
+      var q = null;
+      if (typeof getPPBySection === 'function') {
+        var allQ = getPPBySection(info.board, info.section);
+        for (var j = 0; j < allQ.length; j++) {
+          if (allQ[j].id === qids[i]) { q = allQ[j]; break; }
+        }
+      }
+      if (q) questions.push(q);
+    }
+    if (questions.length === 0) {
+      showToast(t('Question not found', '\u672a\u627e\u5230\u8be5\u9898\u76ee'));
+      return;
+    }
+    /* Update review counts */
+    var wb = typeof _ppGetWB === 'function' ? _ppGetWB() : {};
+    for (var k = 0; k < questions.length; k++) {
+      var id = questions[k].id;
+      if (wb[id]) { wb[id].reviewCount = (wb[id].reviewCount || 0) + 1; wb[id].lastReview = Date.now(); }
+    }
+    if (typeof _ppSaveWB === 'function') _ppSaveWB(wb);
+
+    _ppSession = {
+      questions: questions,
+      current: 0,
+      mode: 'practice',
+      board: sessionBoard,
+      sectionId: sessionSection,
+      results: [],
+      fromMistakeBook: true
+    };
+    showPanel('pastpaper');
+    renderPPCard();
+  });
 }
 
 function renderMistakeBook() {
@@ -2237,8 +2271,7 @@ function reviewAllMistakeQs() {
     if (wb[qid].status === 'active') qids.push(qid);
   }
   if (qids.length === 0) return;
-  /* Review the first one; user can continue through wrong book from practice.js */
-  reviewMistakeQ(qids[0]);
+  _startMistakeReviewSession(qids);
 }
 
 function startMistakeReview(type) {
