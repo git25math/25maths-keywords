@@ -584,7 +584,8 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   var syllabusEdit = _getSectionEdit(board, sec.id, 'syllabus');
   html += '<div class="sec-syllabus">';
   html += '<div class="sec-syllabus-header">';
-  html += '<div class="sec-syllabus-title">' + t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42') + '</div>';
+  var _syllTitle = board === 'hhk' ? t('Learning Objectives', '\u5b66\u4e60\u76ee\u6807') : t('Syllabus Requirements', '\u8003\u7eb2\u8981\u6c42');
+  html += '<div class="sec-syllabus-title">' + _syllTitle + '</div>';
   html += '<div style="display:flex;gap:4px;align-items:center">';
   if (typeof isSuperAdmin === 'function' && isSuperAdmin()) {
     html += '<button class="sec-module-edit" onclick="editSectionModule(\'' + sec.id + '\',\'syllabus\',\'' + board + '\')" title="' + t('Edit', '\u7f16\u8f91') + '">\u270f\ufe0f</button>';
@@ -607,10 +608,29 @@ function renderSectionDetail(ch, sec, secIdx, board) {
       html += '</div>';
     }
   } else if (board === 'hhk') {
-    /* HHK uses simple core_content */
+    /* HHK: learning objectives list + sub-units */
     var hcc = (syllabusEdit && syllabusEdit.core_content) || sec.core_content;
     if (hcc) {
-      html += '<div class="sec-syllabus-block">' + pqRender(hcc) + '</div>';
+      var loLines = hcc.split('\n').filter(function(l) { return l.trim(); });
+      html += '<ol class="sec-lo-list">';
+      for (var li = 0; li < loLines.length; li++) {
+        var loText = loLines[li].replace(/^\d+\.\s*/, '');
+        html += '<li class="sec-lo-item">' + pqRender(loText) + '</li>';
+      }
+      html += '</ol>';
+    }
+    if (sec.sub_units && sec.sub_units.length) {
+      html += '<div class="sec-subunit-header">' + t('Sub-units', '子单元') + '</div>';
+      html += '<div class="sec-subunit-grid">';
+      for (var si = 0; si < sec.sub_units.length; si++) {
+        var su = sec.sub_units[si];
+        var suTitle = isZH ? (su.title_zh || su.title) : su.title;
+        html += '<div class="sec-subunit-card">';
+        html += '<div class="sec-subunit-title">' + suTitle + '</div>';
+        html += '<span class="sec-subunit-periods">' + su.periods + ' ' + t('periods', '课时') + '</span>';
+        html += '</div>';
+      }
+      html += '</div>';
     }
   } else {
     /* CIE uses core_content / extended_content */

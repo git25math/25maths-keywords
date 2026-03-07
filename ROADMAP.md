@@ -361,3 +361,4 @@
 - [x] **Phase 4 — 黏性系统**: 12 成就徽章 + 周目标 + 每日欢迎 + 复习提醒 → v2.0.0
 - [x] **Phase 5 — 去 AI 味**: Smart Path/Section Detail/进度标签人性化 + 3 态圆点 + 彩条替代环形分数 → v2.0.0
 - [x] **v2.0.1 质量优化**: onclick XSS 消除 9 处 + getDueWords 缓存 + checkBadges 节流 + 暗色模式 8 规则 + 手机端 3 规则 → v2.0.1
+- [x] **v2.0.2 HHK 教学目标**: 55 sections core_content→407 条真实双语 LO + 111 子单元卡片 → v2.0.2

@@ -3119,6 +3119,15 @@ input { font-family: inherit; }
 .sec-syllabus-block { font-size: 13px; line-height: 1.6; color: var(--c-text2); margin-bottom: 8px; }
 .sec-syllabus-label { font-weight: 700; color: var(--c-primary); }
 
+/* HHK Learning Objectives */
+.sec-lo-list { margin: 0; padding-left: 22px; list-style: decimal; }
+.sec-lo-item { font-size: 13px; line-height: 1.65; color: var(--c-text2); padding: 3px 0; }
+.sec-subunit-header { font-size: 12px; font-weight: 700; color: var(--c-text3); text-transform: uppercase; letter-spacing: .5px; margin: 14px 0 8px; }
+.sec-subunit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+.sec-subunit-card { background: var(--c-bg); border-radius: var(--r-sm); padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sec-subunit-title { font-size: 13px; font-weight: 600; color: var(--c-text); }
+.sec-subunit-periods { font-size: 11px; font-weight: 600; color: var(--c-primary); background: var(--c-primary-bg); padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+
 /* Section prev/next nav */
 .sec-nav { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; }
 .sec-nav .btn { font-size: 12px; max-width: 48%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

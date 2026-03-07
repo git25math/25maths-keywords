@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.0.2] - 2026-03-07 — HHK 教学目标全量替换
+
+### 数据替换
+- **syllabus-hhk.json**: 55 sections 的 `core_content` 从占位文本替换为真实教学目标（407 条双语 LO）
+- **sub_units 新增**: 111 个子单元（含 EN/ZH 标题 + 课时数），来源 teaching-units-all.json
+
+### UI 渲染
+- **syllabus.js**: HHK section detail 标题改为"学习目标 / Learning Objectives"
+- **syllabus.js**: core_content 渲染为 `<ol>` 有序列表（按 `\n` 分割，去除编号前缀）
+- **syllabus.js**: sub_units 渲染为网格卡片（双语标题 + 课时 badge）
+
+### 样式
+- **style.css**: 新增 7 条样式（`.sec-lo-list/item` + `.sec-subunit-header/grid/card/title/periods`）
+- 暗色模式通过 CSS 变量自动适配，无需额外规则
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `scripts/rebuild-hhk-syllabus.py` | 新建：从 teaching-units-all.json 重建 syllabus-hhk.json |
+| `data/syllabus-hhk.json` | 重写：core_content→教学目标；新增 sub_units |
+| `js/syllabus.js` | HHK 渲染改为学习目标列表 + 子单元网格 |
+| `css/style.css` | 新增 7 条学习目标 + 子单元样式 |
+| `js/config.js` | 版本号 v2.0.1→v2.0.2 |
+
 ## [2.0.1] - 2026-03-07 — 质量优化（onclick XSS + 性能 + 暗色模式）
 
 ### P0 — onclick XSS 消除（9 处）
