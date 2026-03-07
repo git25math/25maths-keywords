@@ -242,6 +242,18 @@ function renderHome() {
     html += renderSmartPath();
   }
 
+  /* Diagnostic test button (only if PP data available) */
+  if (typeof startDiagnostic === 'function' && gs.total > 0) {
+    html += '<div class="diag-home-btn" onclick="startDiagnostic(\'cie\')">';
+    html += '<span class="diag-home-icon">\ud83c\udfaf</span>';
+    html += '<div class="diag-home-info">';
+    html += '<div class="diag-home-title">' + t('Diagnostic Test', '\u8bca\u65ad\u6d4b\u8bd5') + '</div>';
+    html += '<div class="diag-home-sub">' + t('20 questions across all topics \u00b7 Find your weak spots', '20 \u9898\u8de8\u77e5\u8bc6\u70b9\u6d4b\u8bd5 \u00b7 \u53d1\u73b0\u8584\u5f31\u73af\u8282') + '</div>';
+    html += '</div>';
+    html += '<span class="diag-home-go">GO \u2192</span>';
+    html += '</div>';
+  }
+
   /* Search bar */
   html += '<div class="search-bar">';
   html += '<input class="search-input" id="home-search" type="text" placeholder="' + t('Search groups or words...', '\u641c\u7d22\u8bcd\u7ec4\u6216\u5355\u8bcd...') + '" value="' + appSearch.replace(/"/g, '&quot;') + '" oninput="onHomeSearch(this.value)">';

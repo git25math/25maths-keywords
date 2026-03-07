@@ -1595,6 +1595,200 @@ function ppGetWeakGroups(board, sectionId) {
   return weak;
 }
 
+/* ═══ DIAGNOSTIC TEST ═══ */
+
+function startDiagnostic(board) {
+  board = board || 'cie';
+  showToast(t('Preparing diagnostic...', '\u51c6\u5907\u8bca\u65ad\u6d4b\u8bd5\u4e2d...'));
+
+  Promise.all([loadPastPaperData(board), loadKaTeX()]).then(function() {
+    var allQ = getPPQuestions(board);
+    if (!allQ || allQ.length === 0) {
+      showToast(t('No questions available', '\u6682\u65e0\u9898\u76ee'));
+      return;
+    }
+
+    /* Group questions by section */
+    var secQs = {};
+    for (var i = 0; i < allQ.length; i++) {
+      var s = allQ[i].s;
+      if (!s) continue;
+      if (!secQs[s]) secQs[s] = [];
+      secQs[s].push(allQ[i]);
+    }
+
+    /* Weight sections by health: weaker sections get more weight */
+    var secIds = Object.keys(secQs);
+    var weighted = [];
+    for (var si = 0; si < secIds.length; si++) {
+      var sid = secIds[si];
+      var health = (typeof getSectionHealth === 'function') ? getSectionHealth(sid, board) : null;
+      var weight = 1;
+      if (health) {
+        if (health.score < 20) weight = 3;
+        else if (health.score < 50) weight = 2;
+        else if (health.score >= 80) weight = 0.5;
+      }
+      weighted.push({ id: sid, qs: secQs[sid], weight: weight });
+    }
+
+    /* Select ~20 questions ensuring breadth */
+    var selected = [];
+    var maxPerSec = 3;
+    var target = 20;
+
+    /* First pass: 1 question per section (shuffled) */
+    weighted.sort(function() { return Math.random() - 0.5; });
+    for (var wi = 0; wi < weighted.length && selected.length < target; wi++) {
+      var pool = weighted[wi].qs.slice().sort(function() { return Math.random() - 0.5; });
+      selected.push(pool[0]);
+      weighted[wi]._picked = 1;
+    }
+
+    /* Second pass: fill remaining slots weighted by weakness */
+    if (selected.length < target) {
+      var remaining = [];
+      for (var ri = 0; ri < weighted.length; ri++) {
+        var w = weighted[ri];
+        var picked = w._picked || 0;
+        if (picked >= maxPerSec) continue;
+        for (var qi = 1; qi < w.qs.length && picked < maxPerSec; qi++) {
+          var already = false;
+          for (var si2 = 0; si2 < selected.length; si2++) {
+            if (selected[si2].id === w.qs[qi].id) { already = true; break; }
+          }
+          if (!already) {
+            remaining.push({ q: w.qs[qi], weight: w.weight });
+            picked++;
+          }
+        }
+      }
+      /* Weighted shuffle */
+      remaining.sort(function(a, b) { return (Math.random() * b.weight) - (Math.random() * a.weight); });
+      for (var fi = 0; fi < remaining.length && selected.length < target; fi++) {
+        selected.push(remaining[fi].q);
+      }
+    }
+
+    /* Shuffle final order */
+    selected.sort(function() { return Math.random() - 0.5; });
+
+    _ppSession = {
+      questions: selected,
+      current: 0,
+      mode: 'exam',
+      board: board,
+      sectionId: null,
+      isDiagnostic: true,
+      startTime: Date.now(),
+      results: [],
+      totalMarks: 0
+    };
+
+    for (var mi = 0; mi < selected.length; mi++) {
+      _ppSession.totalMarks += selected[mi].marks;
+      _ppSession.results.push({ flagged: false, scored: null, status: null, errorType: '' });
+    }
+
+    showPanel('pastpaper');
+    renderPPCard();
+  }).catch(function() {
+    showToast(t('Failed to load questions', '\u52a0\u8f7d\u5931\u8d25'));
+  });
+}
+
+function _diagShowResults(exam, conceptErrors) {
+  var el = E('panel-pastpaper');
+  if (!el) return;
+
+  var pct = exam.totalMarks > 0 ? Math.round((exam.scored / exam.totalMarks) * 100) : 0;
+  var pctClass = pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'low';
+  var min = Math.floor(exam.duration / 60);
+  var sec = exam.duration % 60;
+
+  var html = '<div class="pp-results">';
+
+  /* Header */
+  html += '<div class="pp-results-score">';
+  html += '<h2>\ud83c\udfaf ' + t('Diagnostic Results', '\u8bca\u65ad\u7ed3\u679c') + '</h2>';
+  html += '<div class="pp-results-pct ' + pctClass + '">' + exam.scored + ' / ' + exam.totalMarks + ' (' + pct + '%)</div>';
+  html += '<div class="pp-results-time">\u23f1 ' + min + ':' + (sec < 10 ? '0' : '') + sec + '</div>';
+  html += '</div>';
+
+  /* Section-by-section breakdown */
+  var secResults = {};
+  for (var i = 0; i < exam.questions.length; i++) {
+    var qr = exam.questions[i];
+    var q = _ppSession ? _ppSession.questions[i] : null;
+    var sid = q ? q.s : 'unknown';
+    if (!secResults[sid]) secResults[sid] = { scored: 0, total: 0, count: 0 };
+    secResults[sid].scored += qr.scored || 0;
+    secResults[sid].total += qr.marks || 0;
+    secResults[sid].count++;
+  }
+
+  var secKeys = Object.keys(secResults).sort(function(a, b) {
+    var pa = secResults[a].total > 0 ? secResults[a].scored / secResults[a].total : 0;
+    var pb = secResults[b].total > 0 ? secResults[b].scored / secResults[b].total : 0;
+    return pa - pb;
+  });
+
+  html += '<h4 style="margin:20px 0 12px">' + t('By Topic', '\u6309\u77e5\u8bc6\u70b9') + '</h4>';
+  var board = _ppSession ? _ppSession.board : 'cie';
+  for (var si = 0; si < secKeys.length; si++) {
+    var sk = secKeys[si];
+    var sr = secResults[sk];
+    var spct = sr.total > 0 ? Math.round(sr.scored / sr.total * 100) : 0;
+    var icon = spct >= 80 ? '\u2705' : spct >= 40 ? '\ud83d\udfe1' : '\ud83d\udd34';
+    var info = (typeof getSectionInfo === 'function') ? getSectionInfo(sk, board) : null;
+    var secLabel = info ? info.section.title : sk;
+
+    html += '<div class="diag-section-row" onclick="openSection(\'' + sk + '\',\'' + board + '\')">';
+    html += '<span class="diag-icon">' + icon + '</span>';
+    html += '<span class="diag-label">' + sk + ' ' + escapeHtml(secLabel) + '</span>';
+    html += '<span class="diag-score">' + sr.scored + '/' + sr.total + '</span>';
+    html += '<span class="diag-pct">' + spct + '%</span>';
+    html += '</div>';
+  }
+
+  /* Weak sections recommendation */
+  var weakSecs = secKeys.filter(function(k) {
+    return secResults[k].total > 0 && (secResults[k].scored / secResults[k].total) < 0.5;
+  });
+  if (weakSecs.length > 0) {
+    html += '<div class="diag-recs">';
+    html += '<div class="diag-recs-title">\u26a0\ufe0f ' + t('Recommended Focus', '\u5efa\u8bae\u91cd\u70b9\u590d\u4e60') + '</div>';
+    for (var wi = 0; wi < Math.min(weakSecs.length, 5); wi++) {
+      var wk = weakSecs[wi];
+      var wInfo = (typeof getSectionInfo === 'function') ? getSectionInfo(wk, board) : null;
+      var wLabel = wInfo ? wInfo.section.title : wk;
+      html += '<div class="diag-rec-item" onclick="openSection(\'' + wk + '\',\'' + board + '\')">';
+      html += '<span>' + wk + ' ' + escapeHtml(wLabel) + '</span>';
+      html += '<span class="diag-rec-go">' + t('Review', '\u53bb\u590d\u4e60') + ' \u2192</span>';
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+
+  /* Save diagnostic result */
+  var diagResult = { date: new Date().toISOString(), board: board, score: exam.scored, total: exam.totalMarks, pct: pct, sections: secResults };
+  try {
+    var diagHistory = JSON.parse(localStorage.getItem('diag_history') || '[]');
+    diagHistory.push(diagResult);
+    if (diagHistory.length > 10) diagHistory = diagHistory.slice(-10);
+    localStorage.setItem('diag_history', JSON.stringify(diagHistory));
+  } catch(e) {}
+
+  /* Action buttons */
+  html += '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;padding-bottom:40px">';
+  html += '<button class="btn btn-primary" onclick="startDiagnostic(\'' + board + '\')">\ud83d\udd04 ' + t('Retry', '\u91cd\u65b0\u6d4b\u8bd5') + '</button>';
+  html += '<button class="btn btn-ghost" onclick="navTo(\'home\')">\u2190 ' + t('Home', '\u9996\u9875') + '</button>';
+  html += '</div>';
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
 /* ═══ LEARNING LOOP HELPERS ═══ */
 
 function _getSectionLevelIdx(sectionId, board) {
@@ -2226,7 +2420,11 @@ function ppFinishMarking() {
   }
 
   /* Show results */
-  ppShowResults(examRecord, conceptErrors);
+  if (_ppSession && _ppSession.isDiagnostic) {
+    _diagShowResults(examRecord, conceptErrors);
+  } else {
+    ppShowResults(examRecord, conceptErrors);
+  }
 }
 
 /* ═══ RESULTS ═══ */
