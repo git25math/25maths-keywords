@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.0.4] - 2026-03-07 — HHK 点击修复 + 下架导入功能 + 缓存同步
+
+### Bug 修复
+- **syllabus.js:627**: `isZH` 未定义 → `appLang !== 'en'`，修复 HHK 知识点点击无响应（sub_units 渲染抛 ReferenceError 导致 openSection 中断）
+
+### 移除
+- **导入功能**: 侧栏 + 底部导航移除 Import/导入入口（panel 容器保留）
+
+### 构建优化
+- **minify.sh**: `npm run build` 自动同步 index.html 的 `?v=` 缓存参数（此前需手动更新）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/syllabus.js` | `isZH` → `appLang !== 'en'`（第 627 行） |
+| `index.html` | 移除侧栏 + 底栏 Import 按钮；缓存参数自动同步 |
+| `scripts/minify.sh` | 新增 cache-bust 自动同步逻辑 |
+| `js/config.js` | 版本号 v2.0.3 → v2.0.4 |
+
 ## [2.0.3] - 2026-03-07 — 侧栏导航 UI 重设计
 
 ### 移除

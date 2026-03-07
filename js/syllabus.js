@@ -624,7 +624,7 @@ function renderSectionDetail(ch, sec, secIdx, board) {
       html += '<div class="sec-subunit-grid">';
       for (var si = 0; si < sec.sub_units.length; si++) {
         var su = sec.sub_units[si];
-        var suTitle = isZH ? (su.title_zh || su.title) : su.title;
+        var suTitle = appLang !== 'en' ? (su.title_zh || su.title) : su.title;
         html += '<div class="sec-subunit-card">';
         html += '<div class="sec-subunit-title">' + suTitle + '</div>';
         html += '<span class="sec-subunit-periods">' + su.periods + ' ' + t('periods', '课时') + '</span>';

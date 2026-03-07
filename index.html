@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <!-- App Styles -->
-  <link rel="stylesheet" href="css/style.min.css?v=2.0.2">
+  <link rel="stylesheet" href="css/style.min.css?v=2.0.4">
   <script>(function(){try{if(localStorage.getItem('wmatch_dark')==='1'||(localStorage.getItem('wmatch_dark')===null&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})()</script>
   <script>(function(){try{var ts=localStorage.getItem('wmatch_login_ts');if(ts&&(Date.now()-parseInt(ts,10))<1800000){var s=document.createElement('style');s.id='auth-hide-style';s.textContent='#ov-auth{display:none}';document.head.appendChild(s)}}catch(e){}})()</script>
 </head>
@@ -92,9 +92,6 @@
       <div class="sidebar-sep"></div>
       <div class="sidebar-group-label" data-en="TOOLS" data-zh="工具">TOOLS</div>
 
-      <button class="nav-item" data-panel="import" onclick="navTo('import')">
-        <span class="nav-icon">📥</span><span class="nav-label" data-en="Import" data-zh="导入">导入</span>
-      </button>
       <button class="nav-item" data-panel="board" onclick="navTo('board')">
         <span class="nav-icon">🏆</span><span class="nav-label" data-en="Leaderboard" data-zh="排行榜">排行榜</span>
       </button>
@@ -205,9 +202,6 @@
     <button class="bnav-item" data-panel="review-dash" onclick="navTo('review-dash')">
       <span class="bnav-icon">🧠</span><span class="bnav-label" data-en="Review" data-zh="复习">复习</span>
     </button>
-    <button class="bnav-item" data-panel="import" onclick="navTo('import')">
-      <span class="bnav-icon">📥</span><span class="bnav-label" data-en="Import" data-zh="导入">导入</span>
-    </button>
     <button class="bnav-item" data-panel="board" onclick="navTo('board')">
       <span class="bnav-icon">🏆</span><span class="bnav-label" data-en="Board" data-zh="排行">排行</span>
     </button>
@@ -238,7 +232,7 @@
 <!-- Supabase SDK (deferred to body to avoid blocking HTML parse) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <!-- App Bundle (core JS files, minified) -->
-<script src="js/app.bundle.min.js?v=2.0.2"></script>
+<script src="js/app.bundle.min.js?v=2.0.4"></script>
 <!-- homework.min.js loaded dynamically for students with classes + teachers (see auth.js) -->
 <!-- admin.js + vocab-admin.js loaded dynamically for teachers (see auth.js) -->
 
