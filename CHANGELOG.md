@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.12.3] - 2026-03-07 — 打印词卡 + 统计导出 + 复习增强
+
+### 新增
+- **词卡预览打印** — Preview 页面新增 Print 按钮，打印时隐藏导航、优化卡片布局（避免分页断裂）
+- **统计数据导出** `exportStats()` — 统计面板新增 Export 按钮，一键导出 CSV（30 天活动明细 + 汇总 + 模式完成度），UTF-8 BOM 兼容 Excel
+- **SRS 等级图例** — 复习仪表盘条形图下方新增三色图例（New / Learning / Mastered）
+- **到期词汇排序** — 复习仪表盘待复习词汇按紧急度排序（SRS 等级最低优先 + 最早到期优先）
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/mastery.js` | Preview 页面 +Print 按钮 |
+| `js/stats.js` | +`exportStats()` + 标题栏 Export 按钮 |
+| `js/review.js` | +SRS 图例 + dueWords 排序 |
+| `css/style.css` | +`.srs-legend` 图例样式 + `@media print` 增强（.no-print / preview-card / back-btn） |
+| `js/config.js` | 版本号 v1.12.2 -> v1.12.3 |
+
 ## [1.12.2] - 2026-03-07 — 统计分模式细分 + 打印样式
 
 ### 新增

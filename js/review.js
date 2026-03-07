@@ -24,6 +24,14 @@ function renderReviewDash() {
     return false;
   });
 
+  /* Sort: lowest SRS level first, then most overdue first */
+  dueWords.sort(function(a, b) {
+    if (a.lv !== b.lv) return a.lv - b.lv;
+    var aNr = (wd[a.key] && wd[a.key].nr) || 0;
+    var bNr = (wd[b.key] && wd[b.key].nr) || 0;
+    return aNr - bNr;
+  });
+
   var html = '';
 
   html += '<div class="section-title" style="display:flex;align-items:center;gap:8px">\ud83e\udde0 ' + t('Ebbinghaus Review', '\u827e\u5bbe\u6d69\u65af\u590d\u4e60') + ' <button class="btn-help" onclick="showEbbinghausGuide()" title="' + t('About Ebbinghaus method', '\u4e86\u89e3\u827e\u5bbe\u6d69\u65af\u8bb0\u5fc6\u6cd5') + '">\u2753</button></div>';
@@ -38,6 +46,13 @@ function renderReviewDash() {
     html += '<div class="srs-bar-label">' + label + '</div>';
     html += '</div>';
   });
+  html += '</div>';
+
+  /* SRS legend */
+  html += '<div class="srs-legend">';
+  html += '<span class="srs-legend-item" style="color:' + SRS_COLORS[0] + '">\u25cf ' + t('New', '\u65b0\u8bcd') + '</span>';
+  html += '<span class="srs-legend-item" style="color:' + SRS_COLORS[3] + '">\u25cf ' + t('Learning', '\u5b66\u4e60\u4e2d') + '</span>';
+  html += '<span class="srs-legend-item" style="color:' + SRS_COLORS[7] + '">\u25cf ' + t('Mastered', '\u5df2\u638c\u63e1') + '</span>';
   html += '</div>';
 
   /* Stats summary */

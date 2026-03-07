@@ -772,8 +772,9 @@ function renderPreview(idx) {
   });
   html += '</div>';
 
-  html += '<div style="margin-top:16px;text-align:center">';
+  html += '<div style="margin-top:16px;text-align:center;display:flex;gap:8px;justify-content:center">';
   html += '<button class="btn btn-secondary" onclick="openDeck(' + idx + ')">\u2190 ' + t('Back', '\u8fd4\u56de\u5361\u7ec4') + '</button>';
+  html += '<button class="btn btn-ghost no-print" onclick="window.print()">\ud83d\udda8 ' + t('Print', '\u6253\u5370') + '</button>';
   html += '</div>';
 
   E('panel-preview').innerHTML = html;

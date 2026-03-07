@@ -86,7 +86,7 @@ function renderStats() {
   var heatData = getHeatmapData(91);
   var trendData = getTrendData(30);
 
-  var html = '<div class="section-title">' + t('Learning Analytics', '学习数据') + '</div>';
+  var html = '<div class="section-title" style="display:flex;align-items:center;gap:8px">' + t('Learning Analytics', '\u5b66\u4e60\u6570\u636e') + ' <button class="btn btn-ghost btn-sm no-print" onclick="exportStats()" style="margin-left:auto;font-size:11px">\u2b07 ' + t('Export', '\u5bfc\u51fa') + '</button></div>';
 
   /* Summary cards */
   html += '<div class="stats-summary">';
@@ -238,4 +238,41 @@ function renderTrendChart(data) {
 
   html += '</div>';
   return html;
+}
+
+/* ═══ EXPORT STATS ═══ */
+function exportStats() {
+  var stats = calcSummaryStats();
+  var gs = getGlobalStats();
+  var trend = getTrendData(30);
+  var s = loadS();
+  var md = s.modeDone || {};
+
+  var modes = ['study', 'quiz', 'spell', 'match', 'battle', 'review', 'practice'];
+  var modeCounts = {};
+  modes.forEach(function(m) { modeCounts[m] = 0; });
+  for (var k in md) {
+    if (!md[k]) continue;
+    var parts = k.split(':');
+    if (parts.length === 2 && modeCounts[parts[1]] !== undefined) modeCounts[parts[1]]++;
+  }
+
+  var lines = ['\ufeff' + 'Date,Activities,Correct,Wrong'];
+  trend.forEach(function(d) { lines.push(d.d + ',' + d.a + ',' + d.ok + ',' + d.fail); });
+  lines.push('');
+  lines.push('Summary');
+  lines.push('Total Activities,' + stats.total);
+  lines.push('Accuracy,' + stats.accuracy + '%');
+  lines.push('Active Days,' + stats.activeDays);
+  lines.push('Streak,' + stats.streak);
+  lines.push('Total Words,' + gs.total);
+  lines.push('Progress,' + gs.learningPct + '%');
+  lines.push('Mastery,' + gs.masteryPct + '%');
+  lines.push('');
+  lines.push('Mode Completion');
+  modes.forEach(function(m) { lines.push(m + ',' + modeCounts[m]); });
+
+  var blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  downloadBlob(blob, '25maths-stats-' + new Date().toLocaleDateString('en-CA') + '.csv');
+  showToast(t('Stats exported!', '\u6570\u636e\u5df2\u5bfc\u51fa\uff01'));
 }
