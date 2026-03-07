@@ -308,7 +308,7 @@
 - [x] **Phase B JS 架构**：泛化 syllabus.js 多考试局支持 + Edexcel 首页/详情页/练习 → v1.7.0
 - [x] **Phase C 词汇审核与重组**：7 section 词汇重写 + 22 section 补充（385→387 词）→ v1.7.3
 - [x] **Phase D 练习题质量审计**：133 题搬迁 + 21 题隐藏 + 质量修复 + 层级修正 → v1.7.4
-- [ ] **Phase C+ 内容继续扩容**：补充练习题（CIE 1.6/1.7/4.8 + Edexcel 4.7 需补题）
+- [x] **Phase C+ 内容继续扩容**：补充练习题（CIE 1.6/1.7/4.8 各 10 题 = 30 题）→ v1.12.6
 
 ### Phase 10F — Past Paper 真题引擎 [Phase F+G DONE]
 - [x] **Phase A 试点 (2.5 Equations)**: 数据管道 + 127 题 LaTeX→KaTeX + 练习/实战/错题本 → v1.8.0
