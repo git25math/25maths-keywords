@@ -417,29 +417,6 @@ function updateSidebar() {
     menuHeader.innerHTML = lines.map(function(l) { return escapeHtml(l); }).join('<br>');
   }
 
-  /* Sidebar: multi-board accordions with category sub-items */
-  var deckEl = E('sidebar-decks');
-  if (deckEl) {
-    var html = '';
-    getVisibleBoards().forEach(function(board) {
-      var isOpen = sidebarBoardOpen[board.id] ? true : false;
-      html += '<div class="sidebar-cat-group' + (isOpen ? ' open' : '') + '">';
-      html += '<button class="sidebar-deck-item sidebar-cat-toggle" onclick="toggleBoardSidebar(\'' + board.id + '\')">' +
-        '<span class="deck-emoji">' + board.emoji + '</span>' +
-        '<span>' + t(board.name, board.nameZh) + '</span>' +
-        '<span class="sidebar-chevron">\u25b6</span>' +
-        '</button>';
-      html += '<div class="sidebar-cat-decks">';
-      board.categories.forEach(function(cat) {
-        html += '<button class="sidebar-sub-item" onclick="selectCategory(\'' + cat.id + '\')">' +
-          '<span style="margin-right:6px">' + cat.emoji + '</span>' +
-          '<span class="sidebar-sub-name">' + catName(cat) + '</span>' +
-          '</button>';
-      });
-      html += '</div></div>';
-    });
-    deckEl.innerHTML = html;
-  }
 
   /* Guest: sidebar logout → login/register */
   var sbLogout = E('btn-logout-sb');

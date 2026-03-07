@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.0.3] - 2026-03-07 — 侧栏导航 UI 重设计
+
+### 移除
+- **sidebar-decks**: 删除考试局分类手风琴区域（已失效的滚动导航）
+- **CSS**: 删除 ~40 行 deck 相关样式（sidebar-decks/deck-label/deck-item/cat-group/cat-toggle/chevron/cat-decks/sub-item/sub-name/sub-pct）
+
+### 新增
+- **分组导航**: 7 个 nav-item 分为"学习"（Home/Review）+"工具"（Import/Leaderboard/Stats/Homework/Admin）两组
+- **分隔线**: `.sidebar-sep` 分组间视觉分隔（1px border-light）
+- **分组标签**: `.sidebar-group-label` "TOOLS / 工具" 大写标签，支持中英切换
+- **Active 竖条**: nav-item active 态左侧 3px 主色指示条（`::before` 伪元素）+ 微阴影
+- **Hover 动效**: nav-icon hover 微放大 `scale(1.08)` + transition
+- **Logo 阴影**: brand-logo 添加 `box-shadow: 0 2px 8px rgba(82,72,201,0.25)`
+- **折叠态**: 分隔线和标签在侧栏收缩时自动隐藏
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `index.html` | 删除 `#sidebar-decks`；nav-item 分两组 + 分隔线 + 标签 |
+| `js/ui.js` | 删除 `updateSidebar()` 中 sidebar-decks 渲染块（~22 行） |
+| `css/style.css` | 删除 deck 样式 ~40 行；新增 active 竖条 + hover + 分隔线 + 标签 ~15 行 |
+| `js/config.js` | 版本号 v2.0.2 → v2.0.3 |
+
 ## [2.0.2] - 2026-03-07 — HHK 教学目标全量替换
 
 ### 数据替换
