@@ -566,12 +566,6 @@ function renderSectionDetail(ch, sec, secIdx, board) {
     html += '<div class="sec-health">';
     html += '<div class="sec-health-bar" style="background:' + statusColor + ';width:4px;min-height:100%;border-radius:2px"></div>';
     html += '<div class="sec-health-info">';
-    /* Natural language status */
-    var statusText;
-    if (sh.score >= 80) statusText = t('Well done! Keep it up.', '\u505a\u5f97\u5f88\u597d\uff01\u7ee7\u7eed\u4fdd\u6301\u3002');
-    else if (sh.score >= 50) statusText = t('Making progress!', '\u8fdb\u6b65\u4e2d\uff01');
-    else if (sh.score > 0) statusText = t('Getting started \u2014 keep going!', '\u521a\u5f00\u59cb\u2014\u2014\u7ee7\u7eed\u52a0\u6cb9\uff01');
-    else statusText = t('Ready to begin!', '\u51c6\u5907\u5f00\u59cb\uff01');
     html += '<div class="sec-health-rec">' + _spRecLabel(sh.rec) + '</div>';
     /* Concise summary instead of 4 dimension bars */
     var _summaryParts = [];
@@ -654,31 +648,21 @@ function renderSectionDetail(ch, sec, secIdx, board) {
   var _jQuizClass = _jQuizDone ? 'done' : (_jVocabDone ? 'current pulse' : 'locked');
   var _jPracticeClass = _jPracticeDone ? 'done' : (_jQuizDone ? 'current pulse' : 'locked');
 
-  /* Vocab step click → open first available level */
-  var _jVocabClick = li >= 0 ? 'openDeck(' + li + ')' : '';
+  /* Resolve level index for vocab/quiz step clicks */
+  var _jLevelIdx = li;
   if (board === 'hhk' && sec.vocabSlugs && sec.vocabSlugs.length > 0) {
     for (var _vi = 0; _vi < LEVELS.length; _vi++) {
-      if (LEVELS[_vi].slug === sec.vocabSlugs[0]) { _jVocabClick = 'openDeck(' + _vi + ')'; break; }
+      if (LEVELS[_vi].slug === sec.vocabSlugs[0]) { _jLevelIdx = _vi; break; }
     }
   }
-  /* Quiz step click → start quiz on first level (only if unlocked) */
-  var _jQuizClick = '';
-  if (_jVocabDone && li >= 0) _jQuizClick = 'startQuiz(' + li + ')';
-  if (_jVocabDone && board === 'hhk' && sec.vocabSlugs) {
-    for (var _qci = 0; _qci < LEVELS.length; _qci++) {
-      if (sec.vocabSlugs.indexOf(LEVELS[_qci].slug) >= 0) { _jQuizClick = 'startQuiz(' + _qci + ')'; break; }
-    }
-  }
-  /* Practice step click */
-  var _jPracticeClick = (_jQuizDone && board !== 'hhk') ? 'startPracticeBySection(\'' + sec.id + '\',\'' + board + '\')' : '';
 
   html += '<div class="sec-journey" id="sec-journey-bar">';
-  html += '<div class="sec-journey-step ' + _jVocabClass + '"' + (_jVocabClick ? ' onclick="' + _jVocabClick + '"' : '') + '><span class="sec-journey-icon">' + (_jVocabDone ? '\u2713' : '\ud83d\udcdd') + '</span> ' + t('Vocab', '\u8bcd\u6c47') + '</div>';
+  html += '<div class="sec-journey-step ' + _jVocabClass + '"' + (_jLevelIdx >= 0 ? ' data-journey="vocab" data-level="' + _jLevelIdx + '"' : '') + '><span class="sec-journey-icon">' + (_jVocabDone ? '\u2713' : '\ud83d\udcdd') + '</span> ' + t('Vocab', '\u8bcd\u6c47') + '</div>';
   html += '<div class="sec-journey-arrow">\u2192</div>';
-  html += '<div class="sec-journey-step ' + _jQuizClass + '"' + (_jQuizClick ? ' onclick="' + _jQuizClick + '"' : '') + '><span class="sec-journey-icon">' + (_jQuizDone ? '\u2713' : '\u2753') + '</span> ' + t('Quiz', '\u6d4b\u9a8c') + '</div>';
+  html += '<div class="sec-journey-step ' + _jQuizClass + '"' + (_jVocabDone && _jLevelIdx >= 0 ? ' data-journey="quiz" data-level="' + _jLevelIdx + '"' : '') + '><span class="sec-journey-icon">' + (_jQuizDone ? '\u2713' : '\u2753') + '</span> ' + t('Quiz', '\u6d4b\u9a8c') + '</div>';
   if (_jHasPractice) {
     html += '<div class="sec-journey-arrow">\u2192</div>';
-    html += '<div class="sec-journey-step ' + _jPracticeClass + '"' + (_jPracticeClick ? ' onclick="' + _jPracticeClick + '"' : '') + '><span class="sec-journey-icon">' + (_jPracticeDone ? '\u2713' : '\u270f\ufe0f') + '</span> ' + t('Practice', '\u7ec3\u4e60') + '</div>';
+    html += '<div class="sec-journey-step ' + _jPracticeClass + '"' + (_jQuizDone ? ' data-journey="practice" data-sec="' + sec.id + '" data-board="' + board + '"' : '') + '><span class="sec-journey-icon">' + (_jPracticeDone ? '\u2713' : '\u270f\ufe0f') + '</span> ' + t('Practice', '\u7ec3\u4e60') + '</div>';
   }
   if (_jHasPP) {
     var _jPPClass = (_jHasPractice ? _jPracticeDone : _jQuizDone) ? '' : 'locked';
@@ -1119,6 +1103,8 @@ function getWeakestSections(board, limit) {
  */
 function checkSectionMilestone() {
   if (!_currentSectionContext) return;
+  if (typeof _invalidateSectionHealthCache === 'function') _invalidateSectionHealthCache();
+  if (typeof invalidateCache === 'function') invalidateCache();
   var ctx = _currentSectionContext;
   var ms = getSectionMilestone(ctx.sectionId, ctx.board);
   var prevKey = 'wmatch_milestone_' + ctx.board + ':' + ctx.sectionId;
@@ -1932,6 +1918,21 @@ function startPracticeByChapter(chNum, board) {
       startPastPaper(sp.dataset.spSec, sp.dataset.spBoard, 'practice');
     } else {
       openSection(sp.dataset.spSec, sp.dataset.spBoard);
+    }
+  });
+
+  /* B12: Journey bar step clicks */
+  document.addEventListener('click', function(e) {
+    var step = e.target.closest('[data-journey]');
+    if (!step) return;
+    var action = step.dataset.journey;
+    var lvl = parseInt(step.dataset.level, 10);
+    if (action === 'vocab' && lvl >= 0) {
+      openDeck(lvl);
+    } else if (action === 'quiz' && lvl >= 0) {
+      startQuiz(lvl);
+    } else if (action === 'practice' && step.dataset.sec) {
+      startPracticeBySection(step.dataset.sec, step.dataset.board);
     }
   });
 })();

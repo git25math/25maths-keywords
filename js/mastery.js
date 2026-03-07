@@ -169,9 +169,9 @@ function renderDeckRow(cl, cat, _levelLocked, _levelStats) {
 /* ═══ HOME DASHBOARD — 3-Zone Architecture ═══ */
 
 /* Next action recommendation logic (priority-based) */
-function _getNextAction() {
+function _getNextAction(dueCount) {
   var boards = getVisibleBoards();
-  var due = getDueWords().length;
+  var due = dueCount != null ? dueCount : getDueWords().length;
   var dcData = getDailyData();
 
   /* Check all syllabus boards for in-progress or next sections */
@@ -224,18 +224,19 @@ function _renderHeroAction() {
   var gs = getGlobalStats();
   var streakN = getStreakCount();
   var homeRank = getRank();
-  var action = _getNextAction();
+  var dueCount = getDueWords().length;  /* cached — used 3 places */
+  var action = _getNextAction(dueCount);
   var dcData = getDailyData();
   var wg = typeof getWeeklyGoal === 'function' ? getWeeklyGoal() : null;
 
   var html = '<div class="hero-card">';
 
   /* Daily welcome (first visit of the day) */
-  var _todayKey = new Date().toLocaleDateString('en-CA');
-  var _lastWelcome = '';
-  try { _lastWelcome = localStorage.getItem('wmatch_last_welcome') || ''; } catch(e) {}
-  if (_todayKey !== _lastWelcome) {
-    try { localStorage.setItem('wmatch_last_welcome', _todayKey); } catch(e) {}
+  var todayKey = new Date().toLocaleDateString('en-CA');
+  var lastWelcome = '';
+  try { lastWelcome = localStorage.getItem('wmatch_last_welcome') || ''; } catch(e) {}
+  if (todayKey !== lastWelcome) {
+    try { localStorage.setItem('wmatch_last_welcome', todayKey); } catch(e) {}
     var welcomeMsg;
     if (streakN >= 7) welcomeMsg = t('Amazing dedication!', '\u575a\u6301\u5f97\u592a\u68d2\u4e86\uff01');
     else if (streakN >= 3) welcomeMsg = t(streakN + ' days strong!', '\u8fde\u7eed ' + streakN + ' \u5929\u4e86\uff0c\u7ee7\u7eed\uff01');
@@ -247,10 +248,9 @@ function _renderHeroAction() {
   html += '<div class="hero-top">';
   html += '<span class="hero-streak">\ud83d\udd25 ' + t(streakN + '-day streak', '\u8fde\u7eed ' + streakN + ' \u5929') + '</span>';
   if (wg) {
-    var wgPct = Math.min(100, Math.round((wg.learned / wg.target) * 100));
     html += '<span class="hero-weekly">' + t('Week', '\u672c\u5468') + ': ' + wg.learned + '/' + wg.target + '</span>';
   }
-  html += '<span class="hero-rank" onclick="showRankGuide()">' + homeRank.emoji + ' ' + rankName(homeRank) + '</span>';
+  html += '<span class="hero-rank" data-hero-action="rank">' + homeRank.emoji + ' ' + rankName(homeRank) + '</span>';
   html += '</div>';
 
   /* Main action area */
@@ -259,23 +259,23 @@ function _renderHeroAction() {
     html += '<div class="hero-label">' + t('Continue', '\u7ee7\u7eed\u5b66\u4e60') + '</div>';
     html += '<div class="hero-section">' + escapeHtml(action.label) + '</div>';
     if (appLang !== 'en' && action.labelZh) html += '<div class="hero-section-zh">' + escapeHtml(action.labelZh) + '</div>';
-    html += '<button class="btn btn-primary hero-btn" onclick="openSection(\'' + action.section.id + '\',\'' + action.board + '\')">';
+    html += '<button class="btn btn-primary hero-btn" data-hero-action="continue" data-hero-sec="' + action.section.id + '" data-hero-board="' + action.board + '">';
     html += t('Continue Learning', '\u7ee7\u7eed\u5b66\u4e60') + ' \u2192</button>';
   } else if (action.type === 'review') {
     html += '<div class="hero-label">' + t('Time to review', '\u8be5\u590d\u4e60\u4e86') + '</div>';
     html += '<div class="hero-section">' + t(action.count + ' words need a quick refresh', '\u6709 ' + action.count + ' \u4e2a\u8bcd\u9700\u8981\u590d\u4e60') + '</div>';
-    html += '<button class="btn btn-primary hero-btn" onclick="navTo(\'review-dash\')">';
+    html += '<button class="btn btn-primary hero-btn" data-hero-action="review">';
     html += t('Start Review', '\u5f00\u59cb\u590d\u4e60') + ' \u2192</button>';
   } else if (action.type === 'daily') {
     html += '<div class="hero-label">' + t('Daily Challenge', '\u6bcf\u65e5\u6311\u6218') + '</div>';
     html += '<div class="hero-section">' + t('10 words \u00b7 60 seconds \u00b7 test your speed!', '10 \u4e2a\u8bcd \u00b7 60 \u79d2 \u00b7 \u6d4b\u8bd5\u4f60\u7684\u901f\u5ea6\uff01') + '</div>';
-    html += '<button class="btn btn-primary hero-btn" onclick="startDaily()">';
+    html += '<button class="btn btn-primary hero-btn" data-hero-action="daily">';
     html += t('GO', '\u5f00\u59cb') + ' \u2192</button>';
   } else if (action.type === 'start') {
     html += '<div class="hero-label">' + t('Up next', '\u4e0b\u4e00\u7ad9') + '</div>';
     html += '<div class="hero-section">' + escapeHtml(action.label) + '</div>';
     if (appLang !== 'en' && action.labelZh) html += '<div class="hero-section-zh">' + escapeHtml(action.labelZh) + '</div>';
-    html += '<button class="btn btn-primary hero-btn" onclick="openSection(\'' + action.section.id + '\',\'' + action.board + '\')">';
+    html += '<button class="btn btn-primary hero-btn" data-hero-action="start" data-hero-sec="' + action.section.id + '" data-hero-board="' + action.board + '">';
     html += t('Start Learning', '\u5f00\u59cb\u5b66\u4e60') + ' \u2192</button>';
   } else {
     html += '<div class="hero-label">' + t('Explore', '\u63a2\u7d22') + '</div>';
@@ -284,30 +284,24 @@ function _renderHeroAction() {
   html += '</div>';
 
   /* Review reminder — gentle nudge when overdue */
-  if (action.type !== 'review') {
-    var _dueCount = getDueWords().length;
-    if (_dueCount >= 5) {
-      var _lastReview = 0;
-      try { _lastReview = parseInt(localStorage.getItem('wmatch_last_review') || '0'); } catch(e) {}
-      var _daysSinceReview = _lastReview > 0 ? (Date.now() - _lastReview) / 86400000 : 999;
-      if (_daysSinceReview >= 2) {
-        html += '<div class="hero-reminder" onclick="navTo(\'review-dash\')">\ud83d\udca1 ' + t(_dueCount + ' words waiting for a quick refresh \u2014 just 2 min!', '\u6709 ' + _dueCount + ' \u4e2a\u8bcd\u7b49\u4f60\u590d\u4e60\u2014\u2014\u53ea\u9700 2 \u5206\u949f\uff01') + '</div>';
-      }
+  if (action.type !== 'review' && dueCount >= 5) {
+    var lastReviewAt = 0;
+    try { lastReviewAt = parseInt(localStorage.getItem('wmatch_last_review') || '0'); } catch(e) {}
+    var daysSinceReview = lastReviewAt > 0 ? (Date.now() - lastReviewAt) / 86400000 : 999;
+    if (daysSinceReview >= 2) {
+      html += '<div class="hero-reminder" data-hero-action="review">\ud83d\udca1 ' + t(dueCount + ' words waiting for a quick refresh \u2014 just 2 min!', '\u6709 ' + dueCount + ' \u4e2a\u8bcd\u7b49\u4f60\u590d\u4e60\u2014\u2014\u53ea\u9700 2 \u5206\u949f\uff01') + '</div>';
     }
   }
 
   /* Secondary actions */
   html += '<div class="hero-alt">';
   if (action.type !== 'daily') {
-    html += '<button class="hero-alt-btn" onclick="startDaily()">\u26a1 ' + t('Daily Challenge', '\u6bcf\u65e5\u6311\u6218');
+    html += '<button class="hero-alt-btn" data-hero-action="daily">\u26a1 ' + t('Daily Challenge', '\u6bcf\u65e5\u6311\u6218');
     if (dcData) html += ' (' + dcData.score + '/10)';
     html += '</button>';
   }
-  if (action.type !== 'review') {
-    var due = getDueWords().length;
-    if (due > 0) {
-      html += '<button class="hero-alt-btn" onclick="navTo(\'review-dash\')">\ud83e\udde0 ' + t('Review', '\u590d\u4e60') + ' (' + due + ')</button>';
-    }
+  if (action.type !== 'review' && dueCount > 0) {
+    html += '<button class="hero-alt-btn" data-hero-action="review">\ud83e\udde0 ' + t('Review', '\u590d\u4e60') + ' (' + dueCount + ')</button>';
   }
   html += '</div>';
 
@@ -315,12 +309,35 @@ function _renderHeroAction() {
   return html;
 }
 
+/* Hero card event delegation */
+var _heroDelegated = false;
+function _initHeroDelegation() {
+  if (_heroDelegated) return;
+  _heroDelegated = true;
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-hero-action]');
+    if (!el) return;
+    var act = el.dataset.heroAction;
+    if (act === 'continue' || act === 'start') {
+      openSection(el.dataset.heroSec, el.dataset.heroBoard);
+    } else if (act === 'review') {
+      navTo('review-dash');
+    } else if (act === 'daily') {
+      startDaily();
+    } else if (act === 'rank') {
+      showRankGuide();
+    } else if (act === 'stats') {
+      navTo('stats');
+    }
+  });
+}
+
 /* Zone 2: Quick Stats Strip */
 function _renderQuickStats() {
   var gs = getGlobalStats();
   var streakN = getStreakCount();
   var homeRank = getRank();
-  var html = '<div class="quick-stats" onclick="navTo(\'stats\')">';
+  var html = '<div class="quick-stats" data-hero-action="stats">';
   html += '<span class="qs-pill">\ud83d\udd25 ' + streakN + t('d', '\u5929') + '</span>';
   html += '<span class="qs-pill">\ud83d\udcca ' + gs.total + t(' words', '\u8bcd') + '</span>';
   html += '<span class="qs-pill">\u2b50 ' + gs.masteryPct + '%</span>';
@@ -336,6 +353,7 @@ function _renderHomeworkSlot() {
 }
 
 function renderHome() {
+  _initHeroDelegation();
   var gs = getGlobalStats();
   var html = '';
 

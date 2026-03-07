@@ -1,5 +1,37 @@
 # Changelog
 
+## [2.0.1] - 2026-03-07 — 质量优化（onclick XSS + 性能 + 暗色模式）
+
+### P0 — onclick XSS 消除（9 处）
+- **mastery.js Hero Card**: 6 处 onclick（openSection/navTo/startDaily/showRankGuide）→ `data-hero-action` + 全局委托
+- **mastery.js Quick Stats**: `onclick="navTo('stats')"` → `data-hero-action="stats"` + 委托
+- **mastery.js hero-alt-btn**: 2 处 onclick（startDaily/navTo）→ `data-hero-action` + 委托
+- **mastery.js hero-reminder**: `onclick="navTo('review-dash')"` → `data-hero-action="review"` + 委托
+- **syllabus.js 旅程条**: 3 处 onclick（openDeck/startQuiz/startPracticeBySection）→ `data-journey` + B12 委托
+
+### P1 — 性能优化
+- **getDueWords() 3 次→1 次**: _renderHeroAction 开头缓存 dueCount，传入 _getNextAction(dueCount)
+- **checkBadges() 10 秒节流**: _lastBadgeCheckAt 时间戳防重复计算
+
+### P2 — Bug 修复
+- **statusText 死代码删除**: syllabus.js section detail 中定义但未使用的变量
+- **checkSectionMilestone() 缓存失效**: 调用前 _invalidateSectionHealthCache() + invalidateCache()
+- **wgPct 死变量删除**: mastery.js hero card 中定义但未使用
+
+### P3 — 暗色模式 + 响应式
+- **暗色模式**: journey pulse 动画 + hero-reminder + badge 边框 + sec-dot 颜色 + done-check
+- **手机端**: hero-top 字号缩小 + quick-stats gap 紧凑 + badge-grid 2 列
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `js/mastery.js` | onclick→data 委托 9 处 + getDueWords 缓存 + _initHeroDelegation + 删 wgPct |
+| `js/syllabus.js` | 旅程条 onclick→data + B12 委托 + 删 statusText + cache invalidate |
+| `js/storage.js` | checkBadges 10 秒节流 |
+| `css/style.css` | 暗色模式 8 规则 + 手机端 3 规则 |
+| `js/config.js` | 版本号 v2.0.0→v2.0.1 |
+| `index.html` | 缓存标签 v2.0.1 |
+
 ## [2.0.0] - 2026-03-07 — v2.0 结构性重构（5 Phase 全量）
 
 ### Phase 1 — HHK 考纲化（架构统一）

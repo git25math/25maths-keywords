@@ -618,7 +618,11 @@ function _saveBadges(arr) {
   try { localStorage.setItem('wmatch_badges', JSON.stringify(arr)); } catch(e) {}
 }
 
+var _lastBadgeCheckAt = 0;
 function checkBadges() {
+  var now = Date.now();
+  if (now - _lastBadgeCheckAt < 10000) return getUnlockedBadges();
+  _lastBadgeCheckAt = now;
   var unlocked = getUnlockedBadges();
   var gs = typeof getGlobalStats === 'function' ? getGlobalStats() : { mastered: 0 };
   var streak = getStreakCount();

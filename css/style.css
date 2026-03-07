@@ -756,10 +756,13 @@ input { font-family: inherit; }
 /* Phone: hero card & quick stats responsive */
 @media (max-width: 639px) {
   .hero-card { padding: 16px; }
+  .hero-top { font-size: 11px; gap: 6px; }
   .hero-section { font-size: 16px; }
   .hero-btn { font-size: 14px; padding: 10px 18px; }
   .hero-alt-btn { font-size: 12px; padding: 5px 10px; }
+  .quick-stats { gap: 6px; }
   .qs-pill { font-size: 11px; padding: 5px 8px; min-width: 50px; }
+  .badge-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .section-title {
@@ -3484,6 +3487,14 @@ input { font-family: inherit; }
 [data-theme="dark"] .sec-journey-step.current { background: rgba(82,72,201,0.2); color: #9d97f0; border-color: var(--c-primary); }
 [data-theme="dark"] .sec-journey-step.done { background: rgba(76,175,80,0.15); color: #66bb6a; border-color: #4caf50; }
 [data-theme="dark"] .sec-journey-step.locked { opacity: 0.35; }
+[data-theme="dark"] .sec-journey-step.pulse { animation-name: journeyPulseDark; }
+@keyframes journeyPulseDark { 0%, 100% { box-shadow: 0 0 0 0 rgba(157,151,240,0.3); } 50% { box-shadow: 0 0 0 6px rgba(157,151,240,0); } }
+[data-theme="dark"] .hero-reminder { background: rgba(255,255,255,0.1); }
+[data-theme="dark"] .badge-item { background: var(--c-surface); border-color: var(--c-border); }
+[data-theme="dark"] .badge-item.unlocked { border-color: #9d97f0; }
+[data-theme="dark"] .sec-dot-half { border-color: #fbbf24; }
+[data-theme="dark"] .sec-dot-full { border-color: #4ade80; background: #4ade80; }
+[data-theme="dark"] .sec-done-check { color: #4ade80; }
 [data-theme="dark"] .sec-module-done { background: #388e3c; }
 
 /* ═══ FOCUS AREAS (Weak Group Chips) ═══ */
